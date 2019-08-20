@@ -1,0 +1,12 @@
+# coding: utf-8
+from enum import Enum, unique
+
+
+@unique
+class TokenizationnMode(Enum):
+    
+    FORCE_UPDATE = "FORCE_UPDATE"
+    FORCE_CREATION = "FORCE_CREATION"
+    FORCE_CREATION_WITH_ONE_CLICK_PAYMENT = "FORCE_CREATION_WITH_ONE_CLICK_PAYMENT"
+    ALLOW_ONE_CLICK_PAYMENT = "ALLOW_ONE_CLICK_PAYMENT"
+
