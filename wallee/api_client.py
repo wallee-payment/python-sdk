@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 1.0.2
+    OpenAPI spec version: 1.0.3
     
 """
 
@@ -59,7 +59,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/1.0.2/python'
+        self.user_agent = 'wallee/1.0.3/python'
 
     def __del__(self):
         if self._pool is not None:

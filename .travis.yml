@@ -11,6 +11,7 @@ install:
 script: python -m unittest discover -s test/ -p 'test_*.py'
 deploy:
     provider: pypi
+    skip_existing: true
     user: customweb
     password:
         secure: epgHaWX0QFn4Fsid+ShhCmcSJGKeBZ7RHEywG3bZDpiavRZahi7Lueo0IElIYK4gbYDbM9qn1kfZYmCMVCH8CC2DYtZtU3fkNhnoF4JYoOwycDDrmZSZfQ899vw28NEEydSIkmIPrVtCOm/f3AhDbS/GPMtPfxm/vUL1vqN3f1nbmBSJYmxSobIUwr9mJcQwYCpm8rnCmhLZtSUBUwgK5BMzKdHTbe6Zof5/cx1JrYiIlzB2HRUl0iBhIF2Wf5JRnPNV0aEG8SF1vf1ZqSHBJbi1rj1TbSTLvC4Y1lpdT59BeFSkYrzNd3jnjVODSNhMGFPX39dDxxvdDXSrOgH3+Tfvx0EPUoCXItvZWja98syDPLLT1TRrTeDl7B12D7cRuuX+vmW2ASvJ7dgKt8/LjDLC36eN3G/Fxmilt4VZ+Jr/fl7n0oVg0fBIqDRWzKaDTpmfAD+P9hHzd872UTl6X31WS5OGNg7R2Df1vRgd2oxXp2bPAeR8H5x4UQ8UarkseCSlsU/jB4SZNcCQC/2OUD78tpz6eQ/uOebcosC84yEBaX6N7hn4tj/n5EhsAbsi6Ye3XDEeD9kg0Y/F7XF9HyvXSxgn7z/Sf51w+J3JWheja473YfBb7178cYD5FG4KOTAXvWKctBSMqkJeHa8J352ECgxU/opTOizJGJzbNpM=

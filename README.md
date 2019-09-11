@@ -2,8 +2,6 @@
 
 # wallee Python Library
 
-[![Build Status](https://travis-ci.org/wallee-payment/python-sdk.svg)](https://travis-ci.org/wallee-payment/python-sdk)
-
 The wallee Python library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, subscriptions.
 
 ## Documentation
