@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductMeteredTierFeeUpdate(object):
+class ProductMeteredTierFeeUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'fee': 'list[PersistableCurrencyAmountUpdate]',
@@ -16,11 +17,7 @@ class ProductMeteredTierFeeUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'fee': 'fee',
-        'metered_fee': 'meteredFee',
-        'start_range': 'startRange',
+        'id': 'id','version': 'version','fee': 'fee','metered_fee': 'meteredFee','start_range': 'startRange',
     }
 
     
@@ -34,15 +31,15 @@ class ProductMeteredTierFeeUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.fee = kwargs.get('fee', None)
         self.metered_fee = kwargs.get('metered_fee', None)
         self.start_range = kwargs.get('start_range', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ProductMeteredTierFeeUpdate.
@@ -67,7 +64,7 @@ class ProductMeteredTierFeeUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this ProductMeteredTierFeeUpdate.
@@ -92,7 +89,7 @@ class ProductMeteredTierFeeUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def fee(self):
         """Gets the fee of this ProductMeteredTierFeeUpdate.
@@ -115,7 +112,7 @@ class ProductMeteredTierFeeUpdate(object):
         """
 
         self._fee = fee
-
+    
     @property
     def metered_fee(self):
         """Gets the metered_fee of this ProductMeteredTierFeeUpdate.
@@ -138,7 +135,7 @@ class ProductMeteredTierFeeUpdate(object):
         """
 
         self._metered_fee = metered_fee
-
+    
     @property
     def start_range(self):
         """Gets the start_range of this ProductMeteredTierFeeUpdate.
@@ -161,6 +158,7 @@ class ProductMeteredTierFeeUpdate(object):
         """
 
         self._start_range = start_range
+    
 
     def to_dict(self):
         result = {}

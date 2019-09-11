@@ -8,7 +8,7 @@ import six
 from wallee.api_client import ApiClient
 
 
-class CardProcessingService(object):
+class CardProcessingServiceApi:
 
     def __init__(self, api_client=None):
         if api_client is None:

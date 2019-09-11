@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractTransactionCommentActive(object):
+class AbstractTransactionCommentActive:
 
     swagger_types = {
+    
         'content': 'str',
     }
 
@@ -22,11 +23,9 @@ class AbstractTransactionCommentActive(object):
         self.discriminator = None
         
         self.content = kwargs.get('content', None)
-
-        
-        
         
 
+    
     @property
     def content(self):
         """Gets the content of this AbstractTransactionCommentActive.
@@ -49,6 +48,7 @@ class AbstractTransactionCommentActive(object):
         """
 
         self._content = content
+    
 
     def to_dict(self):
         result = {}

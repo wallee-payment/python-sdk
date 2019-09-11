@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductMeteredFeeUpdate(object):
+class ProductMeteredFeeUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'component': 'int',
@@ -18,13 +19,7 @@ class ProductMeteredFeeUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'component': 'component',
-        'description': 'description',
-        'metric': 'metric',
-        'name': 'name',
-        'tier_pricing': 'tierPricing',
+        'id': 'id','version': 'version','component': 'component','description': 'description','metric': 'metric','name': 'name','tier_pricing': 'tierPricing',
     }
 
     
@@ -40,17 +35,17 @@ class ProductMeteredFeeUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.component = kwargs.get('component', None)
         self.description = kwargs.get('description', None)
         self.metric = kwargs.get('metric', None)
         self.name = kwargs.get('name', None)
         self.tier_pricing = kwargs.get('tier_pricing', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ProductMeteredFeeUpdate.
@@ -75,7 +70,7 @@ class ProductMeteredFeeUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this ProductMeteredFeeUpdate.
@@ -100,7 +95,7 @@ class ProductMeteredFeeUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def component(self):
         """Gets the component of this ProductMeteredFeeUpdate.
@@ -123,7 +118,7 @@ class ProductMeteredFeeUpdate(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductMeteredFeeUpdate.
@@ -146,7 +141,7 @@ class ProductMeteredFeeUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def metric(self):
         """Gets the metric of this ProductMeteredFeeUpdate.
@@ -169,7 +164,7 @@ class ProductMeteredFeeUpdate(object):
         """
 
         self._metric = metric
-
+    
     @property
     def name(self):
         """Gets the name of this ProductMeteredFeeUpdate.
@@ -192,7 +187,7 @@ class ProductMeteredFeeUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def tier_pricing(self):
         """Gets the tier_pricing of this ProductMeteredFeeUpdate.
@@ -215,6 +210,7 @@ class ProductMeteredFeeUpdate(object):
         """
 
         self._tier_pricing = tier_pricing
+    
 
     def to_dict(self):
         result = {}

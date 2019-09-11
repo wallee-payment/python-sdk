@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TransactionInvoiceReplacement(object):
+class TransactionInvoiceReplacement:
 
     swagger_types = {
+    
         'billing_address': 'AddressCreate',
         'due_on': 'datetime',
         'external_id': 'str',
@@ -17,12 +18,7 @@ class TransactionInvoiceReplacement(object):
     }
 
     attribute_map = {
-        'billing_address': 'billingAddress',
-        'due_on': 'dueOn',
-        'external_id': 'externalId',
-        'line_items': 'lineItems',
-        'merchant_reference': 'merchantReference',
-        'sent_to_customer': 'sentToCustomer',
+        'billing_address': 'billingAddress','due_on': 'dueOn','external_id': 'externalId','line_items': 'lineItems','merchant_reference': 'merchantReference','sent_to_customer': 'sentToCustomer',
     }
 
     
@@ -39,14 +35,14 @@ class TransactionInvoiceReplacement(object):
         self.billing_address = kwargs.get('billing_address', None)
         self.due_on = kwargs.get('due_on', None)
         self.external_id = kwargs.get('external_id')
+
         self.line_items = kwargs.get('line_items')
+
         self.merchant_reference = kwargs.get('merchant_reference', None)
         self.sent_to_customer = kwargs.get('sent_to_customer', None)
-
-        
-        
         
 
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this TransactionInvoiceReplacement.
@@ -69,7 +65,7 @@ class TransactionInvoiceReplacement(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def due_on(self):
         """Gets the due_on of this TransactionInvoiceReplacement.
@@ -92,7 +88,7 @@ class TransactionInvoiceReplacement(object):
         """
 
         self._due_on = due_on
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this TransactionInvoiceReplacement.
@@ -117,7 +113,7 @@ class TransactionInvoiceReplacement(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this TransactionInvoiceReplacement.
@@ -142,7 +138,7 @@ class TransactionInvoiceReplacement(object):
             raise ValueError("Invalid value for `line_items`, must not be `None`")
 
         self._line_items = line_items
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this TransactionInvoiceReplacement.
@@ -165,7 +161,7 @@ class TransactionInvoiceReplacement(object):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def sent_to_customer(self):
         """Gets the sent_to_customer of this TransactionInvoiceReplacement.
@@ -188,6 +184,7 @@ class TransactionInvoiceReplacement(object):
         """
 
         self._sent_to_customer = sent_to_customer
+    
 
     def to_dict(self):
         result = {}

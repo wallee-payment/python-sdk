@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class LocalizedString(object):
+class LocalizedString:
 
     swagger_types = {
+    
         'display_name': 'str',
         'language': 'str',
         'string': 'str',
     }
 
     attribute_map = {
-        'display_name': 'displayName',
-        'language': 'language',
-        'string': 'string',
+        'display_name': 'displayName','language': 'language','string': 'string',
     }
 
     
@@ -30,11 +29,9 @@ class LocalizedString(object):
         self.display_name = kwargs.get('display_name', None)
         self.language = kwargs.get('language', None)
         self.string = kwargs.get('string', None)
-
-        
-        
         
 
+    
     @property
     def display_name(self):
         """Gets the display_name of this LocalizedString.
@@ -57,7 +54,7 @@ class LocalizedString(object):
         """
 
         self._display_name = display_name
-
+    
     @property
     def language(self):
         """Gets the language of this LocalizedString.
@@ -80,7 +77,7 @@ class LocalizedString(object):
         """
 
         self._language = language
-
+    
     @property
     def string(self):
         """Gets the string of this LocalizedString.
@@ -103,6 +100,7 @@ class LocalizedString(object):
         """
 
         self._string = string
+    
 
     def to_dict(self):
         result = {}

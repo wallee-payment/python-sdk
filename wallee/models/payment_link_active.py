@@ -8,6 +8,7 @@ from . import PaymentLinkUpdate
 class PaymentLinkActive(PaymentLinkUpdate):
 
     swagger_types = {
+    
         'state': 'CreationEntityState',
     }
 
@@ -22,11 +23,11 @@ class PaymentLinkActive(PaymentLinkUpdate):
         self.discriminator = None
         
         self.state = kwargs.get('state', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def state(self):
         """Gets the state of this PaymentLinkActive.
@@ -49,6 +50,7 @@ class PaymentLinkActive(PaymentLinkUpdate):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class StaticValue(object):
+class StaticValue:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'features': 'list[int]',
         'id': 'int',
@@ -15,10 +16,7 @@ class StaticValue(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'features': 'features',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','features': 'features','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class StaticValue(object):
         self.features = kwargs.get('features', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this StaticValue.
@@ -61,7 +57,7 @@ class StaticValue(object):
         """
 
         self._description = description
-
+    
     @property
     def features(self):
         """Gets the features of this StaticValue.
@@ -84,7 +80,7 @@ class StaticValue(object):
         """
 
         self._features = features
-
+    
     @property
     def id(self):
         """Gets the id of this StaticValue.
@@ -107,7 +103,7 @@ class StaticValue(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this StaticValue.
@@ -130,6 +126,7 @@ class StaticValue(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

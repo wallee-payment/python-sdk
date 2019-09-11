@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectionCaseDocument(object):
+class DebtCollectionCaseDocument:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'debt_collection_case': 'int',
         'file_name': 'str',
@@ -22,17 +23,7 @@ class DebtCollectionCaseDocument(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'debt_collection_case': 'debtCollectionCase',
-        'file_name': 'fileName',
-        'id': 'id',
-        'labels': 'labels',
-        'linked_space_id': 'linkedSpaceId',
-        'mime_type': 'mimeType',
-        'planned_purge_date': 'plannedPurgeDate',
-        'storage_id': 'storageId',
-        'unique_id': 'uniqueId',
-        'version': 'version',
+        'created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','file_name': 'fileName','id': 'id','labels': 'labels','linked_space_id': 'linkedSpaceId','mime_type': 'mimeType','planned_purge_date': 'plannedPurgeDate','storage_id': 'storageId','unique_id': 'uniqueId','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class DebtCollectionCaseDocument(object):
         self.storage_id = kwargs.get('storage_id', None)
         self.unique_id = kwargs.get('unique_id', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this DebtCollectionCaseDocument.
@@ -89,7 +78,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def debt_collection_case(self):
         """Gets the debt_collection_case of this DebtCollectionCaseDocument.
@@ -112,7 +101,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._debt_collection_case = debt_collection_case
-
+    
     @property
     def file_name(self):
         """Gets the file_name of this DebtCollectionCaseDocument.
@@ -135,7 +124,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._file_name = file_name
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectionCaseDocument.
@@ -158,7 +147,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._id = id
-
+    
     @property
     def labels(self):
         """Gets the labels of this DebtCollectionCaseDocument.
@@ -181,7 +170,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._labels = labels
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DebtCollectionCaseDocument.
@@ -204,7 +193,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def mime_type(self):
         """Gets the mime_type of this DebtCollectionCaseDocument.
@@ -227,7 +216,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._mime_type = mime_type
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DebtCollectionCaseDocument.
@@ -250,7 +239,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def storage_id(self):
         """Gets the storage_id of this DebtCollectionCaseDocument.
@@ -273,7 +262,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._storage_id = storage_id
-
+    
     @property
     def unique_id(self):
         """Gets the unique_id of this DebtCollectionCaseDocument.
@@ -296,7 +285,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._unique_id = unique_id
-
+    
     @property
     def version(self):
         """Gets the version of this DebtCollectionCaseDocument.
@@ -319,6 +308,7 @@ class DebtCollectionCaseDocument(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RefundComment(object):
+class RefundComment:
 
     swagger_types = {
+    
         'content': 'str',
         'created_by': 'int',
         'created_on': 'datetime',
@@ -21,16 +22,7 @@ class RefundComment(object):
     }
 
     attribute_map = {
-        'content': 'content',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'edited_by': 'editedBy',
-        'edited_on': 'editedOn',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'pinned': 'pinned',
-        'refund': 'refund',
-        'version': 'version',
+        'content': 'content','created_by': 'createdBy','created_on': 'createdOn','edited_by': 'editedBy','edited_on': 'editedOn','id': 'id','linked_space_id': 'linkedSpaceId','pinned': 'pinned','refund': 'refund','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class RefundComment(object):
         self.pinned = kwargs.get('pinned', None)
         self.refund = kwargs.get('refund', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def content(self):
         """Gets the content of this RefundComment.
@@ -85,7 +75,7 @@ class RefundComment(object):
         """
 
         self._content = content
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this RefundComment.
@@ -108,7 +98,7 @@ class RefundComment(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this RefundComment.
@@ -131,7 +121,7 @@ class RefundComment(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def edited_by(self):
         """Gets the edited_by of this RefundComment.
@@ -154,7 +144,7 @@ class RefundComment(object):
         """
 
         self._edited_by = edited_by
-
+    
     @property
     def edited_on(self):
         """Gets the edited_on of this RefundComment.
@@ -177,7 +167,7 @@ class RefundComment(object):
         """
 
         self._edited_on = edited_on
-
+    
     @property
     def id(self):
         """Gets the id of this RefundComment.
@@ -200,7 +190,7 @@ class RefundComment(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this RefundComment.
@@ -223,7 +213,7 @@ class RefundComment(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def pinned(self):
         """Gets the pinned of this RefundComment.
@@ -246,7 +236,7 @@ class RefundComment(object):
         """
 
         self._pinned = pinned
-
+    
     @property
     def refund(self):
         """Gets the refund of this RefundComment.
@@ -269,7 +259,7 @@ class RefundComment(object):
         """
 
         self._refund = refund
-
+    
     @property
     def version(self):
         """Gets the version of this RefundComment.
@@ -292,6 +282,7 @@ class RefundComment(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionSuspensionCreate(object):
+class SubscriptionSuspensionCreate:
 
     swagger_types = {
+    
         'end_action': 'SubscriptionSuspensionAction',
         'note': 'str',
         'planned_end_date': 'datetime',
@@ -15,10 +16,7 @@ class SubscriptionSuspensionCreate(object):
     }
 
     attribute_map = {
-        'end_action': 'endAction',
-        'note': 'note',
-        'planned_end_date': 'plannedEndDate',
-        'subscription': 'subscription',
+        'end_action': 'endAction','note': 'note','planned_end_date': 'plannedEndDate','subscription': 'subscription',
     }
 
     
@@ -31,14 +29,15 @@ class SubscriptionSuspensionCreate(object):
         self.discriminator = None
         
         self.end_action = kwargs.get('end_action')
+
         self.note = kwargs.get('note', None)
         self.planned_end_date = kwargs.get('planned_end_date')
+
         self.subscription = kwargs.get('subscription')
 
         
-        
-        
 
+    
     @property
     def end_action(self):
         """Gets the end_action of this SubscriptionSuspensionCreate.
@@ -63,7 +62,7 @@ class SubscriptionSuspensionCreate(object):
             raise ValueError("Invalid value for `end_action`, must not be `None`")
 
         self._end_action = end_action
-
+    
     @property
     def note(self):
         """Gets the note of this SubscriptionSuspensionCreate.
@@ -86,7 +85,7 @@ class SubscriptionSuspensionCreate(object):
         """
 
         self._note = note
-
+    
     @property
     def planned_end_date(self):
         """Gets the planned_end_date of this SubscriptionSuspensionCreate.
@@ -111,7 +110,7 @@ class SubscriptionSuspensionCreate(object):
             raise ValueError("Invalid value for `planned_end_date`, must not be `None`")
 
         self._planned_end_date = planned_end_date
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionSuspensionCreate.
@@ -136,6 +135,7 @@ class SubscriptionSuspensionCreate(object):
             raise ValueError("Invalid value for `subscription`, must not be `None`")
 
         self._subscription = subscription
+    
 
     def to_dict(self):
         result = {}

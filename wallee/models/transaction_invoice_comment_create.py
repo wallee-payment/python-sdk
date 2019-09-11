@@ -8,6 +8,7 @@ from . import AbstractTransactionInvoiceCommentActive
 class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
 
     swagger_types = {
+    
         'transaction_invoice': 'int',
     }
 
@@ -27,6 +28,7 @@ class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def transaction_invoice(self):
         """Gets the transaction_invoice of this TransactionInvoiceCommentCreate.
@@ -51,6 +53,7 @@ class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
             raise ValueError("Invalid value for `transaction_invoice`, must not be `None`")
 
         self._transaction_invoice = transaction_invoice
+    
 
     def to_dict(self):
         result = {}

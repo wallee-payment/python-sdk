@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class ChargeAttempt(TransactionAwareEntity):
 
     swagger_types = {
+    
         'charge': 'Charge',
         'connector_configuration': 'PaymentConnectorConfiguration',
         'created_on': 'datetime',
@@ -32,27 +33,7 @@ class ChargeAttempt(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge': 'charge',
-        'connector_configuration': 'connectorConfiguration',
-        'created_on': 'createdOn',
-        'environment': 'environment',
-        'failed_on': 'failedOn',
-        'failure_reason': 'failureReason',
-        'initializing_token_version': 'initializingTokenVersion',
-        'invocation': 'invocation',
-        'labels': 'labels',
-        'language': 'language',
-        'next_update_on': 'nextUpdateOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'redirection_url': 'redirectionUrl',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'succeeded_on': 'succeededOn',
-        'time_zone': 'timeZone',
-        'timeout_on': 'timeoutOn',
-        'token_version': 'tokenVersion',
-        'user_failure_message': 'userFailureMessage',
-        'version': 'version',
+        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
@@ -102,11 +83,11 @@ class ChargeAttempt(TransactionAwareEntity):
         self.token_version = kwargs.get('token_version', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def charge(self):
         """Gets the charge of this ChargeAttempt.
@@ -129,7 +110,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._charge = charge
-
+    
     @property
     def connector_configuration(self):
         """Gets the connector_configuration of this ChargeAttempt.
@@ -152,7 +133,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._connector_configuration = connector_configuration
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this ChargeAttempt.
@@ -175,7 +156,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def environment(self):
         """Gets the environment of this ChargeAttempt.
@@ -198,7 +179,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._environment = environment
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this ChargeAttempt.
@@ -221,7 +202,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this ChargeAttempt.
@@ -244,7 +225,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def initializing_token_version(self):
         """Gets the initializing_token_version of this ChargeAttempt.
@@ -267,7 +248,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._initializing_token_version = initializing_token_version
-
+    
     @property
     def invocation(self):
         """Gets the invocation of this ChargeAttempt.
@@ -290,7 +271,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._invocation = invocation
-
+    
     @property
     def labels(self):
         """Gets the labels of this ChargeAttempt.
@@ -313,7 +294,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this ChargeAttempt.
@@ -336,7 +317,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def next_update_on(self):
         """Gets the next_update_on of this ChargeAttempt.
@@ -359,7 +340,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._next_update_on = next_update_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ChargeAttempt.
@@ -382,7 +363,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def redirection_url(self):
         """Gets the redirection_url of this ChargeAttempt.
@@ -405,7 +386,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._redirection_url = redirection_url
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this ChargeAttempt.
@@ -428,7 +409,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this ChargeAttempt.
@@ -451,7 +432,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def succeeded_on(self):
         """Gets the succeeded_on of this ChargeAttempt.
@@ -474,7 +455,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._succeeded_on = succeeded_on
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this ChargeAttempt.
@@ -497,7 +478,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this ChargeAttempt.
@@ -520,7 +501,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def token_version(self):
         """Gets the token_version of this ChargeAttempt.
@@ -543,7 +524,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._token_version = token_version
-
+    
     @property
     def user_failure_message(self):
         """Gets the user_failure_message of this ChargeAttempt.
@@ -566,7 +547,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._user_failure_message = user_failure_message
-
+    
     @property
     def version(self):
         """Gets the version of this ChargeAttempt.
@@ -589,6 +570,7 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

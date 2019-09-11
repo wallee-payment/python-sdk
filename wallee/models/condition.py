@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Condition(object):
+class Condition:
 
     swagger_types = {
+    
         'condition_type': 'int',
         'id': 'int',
         'linked_space_id': 'int',
@@ -18,13 +19,7 @@ class Condition(object):
     }
 
     attribute_map = {
-        'condition_type': 'conditionType',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'version': 'version',
+        'condition_type': 'conditionType','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class Condition(object):
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def condition_type(self):
         """Gets the condition_type of this Condition.
@@ -73,7 +66,7 @@ class Condition(object):
         """
 
         self._condition_type = condition_type
-
+    
     @property
     def id(self):
         """Gets the id of this Condition.
@@ -96,7 +89,7 @@ class Condition(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Condition.
@@ -119,7 +112,7 @@ class Condition(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this Condition.
@@ -142,7 +135,7 @@ class Condition(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Condition.
@@ -165,7 +158,7 @@ class Condition(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this Condition.
@@ -188,7 +181,7 @@ class Condition(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this Condition.
@@ -211,6 +204,7 @@ class Condition(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

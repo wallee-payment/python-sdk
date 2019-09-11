@@ -8,6 +8,7 @@ from . import SubscriptionUpdate
 class SubscriptionPending(SubscriptionUpdate):
 
     swagger_types = {
+    
         'affiliate': 'int',
         'reference': 'str',
         'subscriber': 'int',
@@ -15,10 +16,7 @@ class SubscriptionPending(SubscriptionUpdate):
     }
 
     attribute_map = {
-        'affiliate': 'affiliate',
-        'reference': 'reference',
-        'subscriber': 'subscriber',
-        'token': 'token',
+        'affiliate': 'affiliate','reference': 'reference','subscriber': 'subscriber','token': 'token',
     }
 
     
@@ -34,11 +32,11 @@ class SubscriptionPending(SubscriptionUpdate):
         self.reference = kwargs.get('reference', None)
         self.subscriber = kwargs.get('subscriber', None)
         self.token = kwargs.get('token', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def affiliate(self):
         """Gets the affiliate of this SubscriptionPending.
@@ -61,7 +59,7 @@ class SubscriptionPending(SubscriptionUpdate):
         """
 
         self._affiliate = affiliate
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionPending.
@@ -84,7 +82,7 @@ class SubscriptionPending(SubscriptionUpdate):
         """
 
         self._reference = reference
-
+    
     @property
     def subscriber(self):
         """Gets the subscriber of this SubscriptionPending.
@@ -107,7 +105,7 @@ class SubscriptionPending(SubscriptionUpdate):
         """
 
         self._subscriber = subscriber
-
+    
     @property
     def token(self):
         """Gets the token of this SubscriptionPending.
@@ -130,6 +128,7 @@ class SubscriptionPending(SubscriptionUpdate):
         """
 
         self._token = token
+    
 
     def to_dict(self):
         result = {}

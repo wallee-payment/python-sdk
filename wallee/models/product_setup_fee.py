@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductSetupFee(object):
+class ProductSetupFee:
 
     swagger_types = {
+    
         'component': 'SubscriptionProductComponent',
         'description': 'DatabaseTranslatedString',
         'id': 'int',
@@ -21,16 +22,7 @@ class ProductSetupFee(object):
     }
 
     attribute_map = {
-        'component': 'component',
-        'description': 'description',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'on_downgrade_credited_amount': 'onDowngradeCreditedAmount',
-        'on_upgrade_credited_amount': 'onUpgradeCreditedAmount',
-        'setup_fee': 'setupFee',
-        'type': 'type',
-        'version': 'version',
+        'component': 'component','description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','on_downgrade_credited_amount': 'onDowngradeCreditedAmount','on_upgrade_credited_amount': 'onUpgradeCreditedAmount','setup_fee': 'setupFee','type': 'type','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class ProductSetupFee(object):
         self.setup_fee = kwargs.get('setup_fee', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def component(self):
         """Gets the component of this ProductSetupFee.
@@ -85,7 +75,7 @@ class ProductSetupFee(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductSetupFee.
@@ -108,7 +98,7 @@ class ProductSetupFee(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this ProductSetupFee.
@@ -131,7 +121,7 @@ class ProductSetupFee(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ProductSetupFee.
@@ -154,7 +144,7 @@ class ProductSetupFee(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this ProductSetupFee.
@@ -177,7 +167,7 @@ class ProductSetupFee(object):
         """
 
         self._name = name
-
+    
     @property
     def on_downgrade_credited_amount(self):
         """Gets the on_downgrade_credited_amount of this ProductSetupFee.
@@ -200,7 +190,7 @@ class ProductSetupFee(object):
         """
 
         self._on_downgrade_credited_amount = on_downgrade_credited_amount
-
+    
     @property
     def on_upgrade_credited_amount(self):
         """Gets the on_upgrade_credited_amount of this ProductSetupFee.
@@ -223,7 +213,7 @@ class ProductSetupFee(object):
         """
 
         self._on_upgrade_credited_amount = on_upgrade_credited_amount
-
+    
     @property
     def setup_fee(self):
         """Gets the setup_fee of this ProductSetupFee.
@@ -246,7 +236,7 @@ class ProductSetupFee(object):
         """
 
         self._setup_fee = setup_fee
-
+    
     @property
     def type(self):
         """Gets the type of this ProductSetupFee.
@@ -269,7 +259,7 @@ class ProductSetupFee(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this ProductSetupFee.
@@ -292,6 +282,7 @@ class ProductSetupFee(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

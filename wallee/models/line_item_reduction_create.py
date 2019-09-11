@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class LineItemReductionCreate(object):
+class LineItemReductionCreate:
 
     swagger_types = {
+    
         'line_item_unique_id': 'str',
         'quantity_reduction': 'float',
         'unit_price_reduction': 'float',
     }
 
     attribute_map = {
-        'line_item_unique_id': 'lineItemUniqueId',
-        'quantity_reduction': 'quantityReduction',
-        'unit_price_reduction': 'unitPriceReduction',
+        'line_item_unique_id': 'lineItemUniqueId','quantity_reduction': 'quantityReduction','unit_price_reduction': 'unitPriceReduction',
     }
 
     
@@ -28,13 +27,14 @@ class LineItemReductionCreate(object):
         self.discriminator = None
         
         self.line_item_unique_id = kwargs.get('line_item_unique_id')
+
         self.quantity_reduction = kwargs.get('quantity_reduction')
+
         self.unit_price_reduction = kwargs.get('unit_price_reduction')
 
         
-        
-        
 
+    
     @property
     def line_item_unique_id(self):
         """Gets the line_item_unique_id of this LineItemReductionCreate.
@@ -59,7 +59,7 @@ class LineItemReductionCreate(object):
             raise ValueError("Invalid value for `line_item_unique_id`, must not be `None`")
 
         self._line_item_unique_id = line_item_unique_id
-
+    
     @property
     def quantity_reduction(self):
         """Gets the quantity_reduction of this LineItemReductionCreate.
@@ -84,7 +84,7 @@ class LineItemReductionCreate(object):
             raise ValueError("Invalid value for `quantity_reduction`, must not be `None`")
 
         self._quantity_reduction = quantity_reduction
-
+    
     @property
     def unit_price_reduction(self):
         """Gets the unit_price_reduction of this LineItemReductionCreate.
@@ -109,6 +109,7 @@ class LineItemReductionCreate(object):
             raise ValueError("Invalid value for `unit_price_reduction`, must not be `None`")
 
         self._unit_price_reduction = unit_price_reduction
+    
 
     def to_dict(self):
         result = {}

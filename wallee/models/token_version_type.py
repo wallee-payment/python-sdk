@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TokenVersionType(object):
+class TokenVersionType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'feature': 'Feature',
         'id': 'int',
@@ -15,10 +16,7 @@ class TokenVersionType(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'feature': 'feature',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','feature': 'feature','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class TokenVersionType(object):
         self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this TokenVersionType.
@@ -61,7 +57,7 @@ class TokenVersionType(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this TokenVersionType.
@@ -84,7 +80,7 @@ class TokenVersionType(object):
         """
 
         self._feature = feature
-
+    
     @property
     def id(self):
         """Gets the id of this TokenVersionType.
@@ -107,7 +103,7 @@ class TokenVersionType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this TokenVersionType.
@@ -130,6 +126,7 @@ class TokenVersionType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

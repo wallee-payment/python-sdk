@@ -38,7 +38,7 @@ class RESTResponse(io.IOBase):
         return self.urllib3_response.getheader(name, default)
 
 
-class RESTClientObject(object):
+class RESTClientObject:
 
     def __init__(self, configuration, pools_size=4, maxsize=None):
         # urllib3.PoolManager will pass all kw parameters to connectionpool

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RestLanguage(object):
+class RestLanguage:
 
     swagger_types = {
+    
         'country_code': 'str',
         'ietf_code': 'str',
         'iso2_code': 'str',
@@ -17,12 +18,7 @@ class RestLanguage(object):
     }
 
     attribute_map = {
-        'country_code': 'countryCode',
-        'ietf_code': 'ietfCode',
-        'iso2_code': 'iso2Code',
-        'iso3_code': 'iso3Code',
-        'plural_expression': 'pluralExpression',
-        'primary_of_group': 'primaryOfGroup',
+        'country_code': 'countryCode','ietf_code': 'ietfCode','iso2_code': 'iso2Code','iso3_code': 'iso3Code','plural_expression': 'pluralExpression','primary_of_group': 'primaryOfGroup',
     }
 
     
@@ -42,11 +38,9 @@ class RestLanguage(object):
         self.iso3_code = kwargs.get('iso3_code', None)
         self.plural_expression = kwargs.get('plural_expression', None)
         self.primary_of_group = kwargs.get('primary_of_group', None)
-
-        
-        
         
 
+    
     @property
     def country_code(self):
         """Gets the country_code of this RestLanguage.
@@ -69,7 +63,7 @@ class RestLanguage(object):
         """
 
         self._country_code = country_code
-
+    
     @property
     def ietf_code(self):
         """Gets the ietf_code of this RestLanguage.
@@ -92,7 +86,7 @@ class RestLanguage(object):
         """
 
         self._ietf_code = ietf_code
-
+    
     @property
     def iso2_code(self):
         """Gets the iso2_code of this RestLanguage.
@@ -115,7 +109,7 @@ class RestLanguage(object):
         """
 
         self._iso2_code = iso2_code
-
+    
     @property
     def iso3_code(self):
         """Gets the iso3_code of this RestLanguage.
@@ -138,7 +132,7 @@ class RestLanguage(object):
         """
 
         self._iso3_code = iso3_code
-
+    
     @property
     def plural_expression(self):
         """Gets the plural_expression of this RestLanguage.
@@ -161,7 +155,7 @@ class RestLanguage(object):
         """
 
         self._plural_expression = plural_expression
-
+    
     @property
     def primary_of_group(self):
         """Gets the primary_of_group of this RestLanguage.
@@ -184,6 +178,7 @@ class RestLanguage(object):
         """
 
         self._primary_of_group = primary_of_group
+    
 
     def to_dict(self):
         result = {}

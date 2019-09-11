@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class DocumentTemplateTypeGroup(object):
+class DocumentTemplateTypeGroup:
 
     swagger_types = {
+    
         'id': 'int',
         'title': 'dict(str, str)',
     }
 
     attribute_map = {
-        'id': 'id',
-        'title': 'title',
+        'id': 'id','title': 'title',
     }
 
     
@@ -26,11 +26,9 @@ class DocumentTemplateTypeGroup(object):
         
         self.id = kwargs.get('id', None)
         self.title = kwargs.get('title', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this DocumentTemplateTypeGroup.
@@ -53,7 +51,7 @@ class DocumentTemplateTypeGroup(object):
         """
 
         self._id = id
-
+    
     @property
     def title(self):
         """Gets the title of this DocumentTemplateTypeGroup.
@@ -76,6 +74,7 @@ class DocumentTemplateTypeGroup(object):
         """
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

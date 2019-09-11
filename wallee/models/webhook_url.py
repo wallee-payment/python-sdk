@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class WebhookUrl(object):
+class WebhookUrl:
 
     swagger_types = {
+    
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -18,13 +19,7 @@ class WebhookUrl(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'url': 'url',
-        'version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','url': 'url','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class WebhookUrl(object):
         self.state = kwargs.get('state', None)
         self.url = kwargs.get('url', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this WebhookUrl.
@@ -73,7 +66,7 @@ class WebhookUrl(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this WebhookUrl.
@@ -96,7 +89,7 @@ class WebhookUrl(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this WebhookUrl.
@@ -119,7 +112,7 @@ class WebhookUrl(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this WebhookUrl.
@@ -142,7 +135,7 @@ class WebhookUrl(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this WebhookUrl.
@@ -165,7 +158,7 @@ class WebhookUrl(object):
         """
 
         self._state = state
-
+    
     @property
     def url(self):
         """Gets the url of this WebhookUrl.
@@ -188,7 +181,7 @@ class WebhookUrl(object):
         """
 
         self._url = url
-
+    
     @property
     def version(self):
         """Gets the version of this WebhookUrl.
@@ -211,6 +204,7 @@ class WebhookUrl(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

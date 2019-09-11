@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 1.0.0
+    OpenAPI spec version: 1.0.1
     
 """
 
@@ -31,7 +31,7 @@ import wallee.models
 from wallee import rest
 
 
-class ApiClient(object):
+class ApiClient:
 
     PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
     NATIVE_TYPES_MAPPING = {
@@ -59,7 +59,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/1.0.0/python'
+        self.user_agent = 'wallee/1.0.1/python'
 
     def __del__(self):
         if self._pool is not None:

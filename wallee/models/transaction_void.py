@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class TransactionVoid(TransactionAwareEntity):
 
     swagger_types = {
+    
         'created_by': 'int',
         'created_on': 'datetime',
         'failed_on': 'datetime',
@@ -27,22 +28,7 @@ class TransactionVoid(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'failed_on': 'failedOn',
-        'failure_reason': 'failureReason',
-        'labels': 'labels',
-        'language': 'language',
-        'mode': 'mode',
-        'next_update_on': 'nextUpdateOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processor_reference': 'processorReference',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'succeeded_on': 'succeededOn',
-        'timeout_on': 'timeoutOn',
-        'transaction': 'transaction',
-        'version': 'version',
+        'created_by': 'createdBy','created_on': 'createdOn','failed_on': 'failedOn','failure_reason': 'failureReason','labels': 'labels','language': 'language','mode': 'mode','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processor_reference': 'processorReference','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','timeout_on': 'timeoutOn','transaction': 'transaction','version': 'version',
     }
 
     
@@ -82,11 +68,11 @@ class TransactionVoid(TransactionAwareEntity):
         self.timeout_on = kwargs.get('timeout_on', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def created_by(self):
         """Gets the created_by of this TransactionVoid.
@@ -109,7 +95,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this TransactionVoid.
@@ -132,7 +118,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this TransactionVoid.
@@ -155,7 +141,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this TransactionVoid.
@@ -178,7 +164,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def labels(self):
         """Gets the labels of this TransactionVoid.
@@ -201,7 +187,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this TransactionVoid.
@@ -224,7 +210,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def mode(self):
         """Gets the mode of this TransactionVoid.
@@ -247,7 +233,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._mode = mode
-
+    
     @property
     def next_update_on(self):
         """Gets the next_update_on of this TransactionVoid.
@@ -270,7 +256,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._next_update_on = next_update_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionVoid.
@@ -293,7 +279,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processor_reference(self):
         """Gets the processor_reference of this TransactionVoid.
@@ -316,7 +302,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._processor_reference = processor_reference
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this TransactionVoid.
@@ -339,7 +325,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this TransactionVoid.
@@ -362,7 +348,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def succeeded_on(self):
         """Gets the succeeded_on of this TransactionVoid.
@@ -385,7 +371,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._succeeded_on = succeeded_on
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this TransactionVoid.
@@ -408,7 +394,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this TransactionVoid.
@@ -431,7 +417,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def version(self):
         """Gets the version of this TransactionVoid.
@@ -454,6 +440,7 @@ class TransactionVoid(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

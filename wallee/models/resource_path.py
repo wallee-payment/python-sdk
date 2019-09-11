@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ResourcePath(object):
+class ResourcePath:
 
     swagger_types = {
+    
         'id': 'int',
         'linked_space_id': 'int',
         'path': 'str',
@@ -18,13 +19,7 @@ class ResourcePath(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'path': 'path',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','path': 'path','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class ResourcePath(object):
         self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ResourcePath.
@@ -73,7 +66,7 @@ class ResourcePath(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ResourcePath.
@@ -96,7 +89,7 @@ class ResourcePath(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def path(self):
         """Gets the path of this ResourcePath.
@@ -119,7 +112,7 @@ class ResourcePath(object):
         """
 
         self._path = path
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ResourcePath.
@@ -142,7 +135,7 @@ class ResourcePath(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this ResourcePath.
@@ -165,7 +158,7 @@ class ResourcePath(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this ResourcePath.
@@ -188,7 +181,7 @@ class ResourcePath(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this ResourcePath.
@@ -211,6 +204,7 @@ class ResourcePath(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

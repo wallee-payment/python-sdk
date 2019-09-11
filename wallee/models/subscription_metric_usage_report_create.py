@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionMetricUsageReportCreate(object):
+class SubscriptionMetricUsageReportCreate:
 
     swagger_types = {
+    
         'consumed_units': 'float',
         'description': 'str',
         'external_id': 'str',
@@ -16,11 +17,7 @@ class SubscriptionMetricUsageReportCreate(object):
     }
 
     attribute_map = {
-        'consumed_units': 'consumedUnits',
-        'description': 'description',
-        'external_id': 'externalId',
-        'metric': 'metric',
-        'subscription': 'subscription',
+        'consumed_units': 'consumedUnits','description': 'description','external_id': 'externalId','metric': 'metric','subscription': 'subscription',
     }
 
     
@@ -34,15 +31,17 @@ class SubscriptionMetricUsageReportCreate(object):
         self.discriminator = None
         
         self.consumed_units = kwargs.get('consumed_units')
+
         self.description = kwargs.get('description', None)
         self.external_id = kwargs.get('external_id')
+
         self.metric = kwargs.get('metric')
+
         self.subscription = kwargs.get('subscription')
 
         
-        
-        
 
+    
     @property
     def consumed_units(self):
         """Gets the consumed_units of this SubscriptionMetricUsageReportCreate.
@@ -67,7 +66,7 @@ class SubscriptionMetricUsageReportCreate(object):
             raise ValueError("Invalid value for `consumed_units`, must not be `None`")
 
         self._consumed_units = consumed_units
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionMetricUsageReportCreate.
@@ -90,7 +89,7 @@ class SubscriptionMetricUsageReportCreate(object):
         """
 
         self._description = description
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionMetricUsageReportCreate.
@@ -115,7 +114,7 @@ class SubscriptionMetricUsageReportCreate(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def metric(self):
         """Gets the metric of this SubscriptionMetricUsageReportCreate.
@@ -140,7 +139,7 @@ class SubscriptionMetricUsageReportCreate(object):
             raise ValueError("Invalid value for `metric`, must not be `None`")
 
         self._metric = metric
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionMetricUsageReportCreate.
@@ -165,6 +164,7 @@ class SubscriptionMetricUsageReportCreate(object):
             raise ValueError("Invalid value for `subscription`, must not be `None`")
 
         self._subscription = subscription
+    
 
     def to_dict(self):
         result = {}

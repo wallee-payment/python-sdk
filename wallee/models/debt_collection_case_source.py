@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectionCaseSource(object):
+class DebtCollectionCaseSource:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'forced_preparing_state': 'bool',
         'id': 'int',
@@ -15,10 +16,7 @@ class DebtCollectionCaseSource(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'forced_preparing_state': 'forcedPreparingState',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','forced_preparing_state': 'forcedPreparingState','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class DebtCollectionCaseSource(object):
         self.forced_preparing_state = kwargs.get('forced_preparing_state', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this DebtCollectionCaseSource.
@@ -61,7 +57,7 @@ class DebtCollectionCaseSource(object):
         """
 
         self._description = description
-
+    
     @property
     def forced_preparing_state(self):
         """Gets the forced_preparing_state of this DebtCollectionCaseSource.
@@ -84,7 +80,7 @@ class DebtCollectionCaseSource(object):
         """
 
         self._forced_preparing_state = forced_preparing_state
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectionCaseSource.
@@ -107,7 +103,7 @@ class DebtCollectionCaseSource(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this DebtCollectionCaseSource.
@@ -130,6 +126,7 @@ class DebtCollectionCaseSource(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

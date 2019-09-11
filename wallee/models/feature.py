@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Feature(object):
+class Feature:
 
     swagger_types = {
+    
         'beta': 'bool',
         'description': 'dict(str, str)',
         'id': 'int',
@@ -19,14 +20,7 @@ class Feature(object):
     }
 
     attribute_map = {
-        'beta': 'beta',
-        'description': 'description',
-        'id': 'id',
-        'logo_path': 'logoPath',
-        'name': 'name',
-        'required_features': 'requiredFeatures',
-        'sort_order': 'sortOrder',
-        'visible': 'visible',
+        'beta': 'beta','description': 'description','id': 'id','logo_path': 'logoPath','name': 'name','required_features': 'requiredFeatures','sort_order': 'sortOrder','visible': 'visible',
     }
 
     
@@ -50,11 +44,9 @@ class Feature(object):
         self.required_features = kwargs.get('required_features', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.visible = kwargs.get('visible', None)
-
-        
-        
         
 
+    
     @property
     def beta(self):
         """Gets the beta of this Feature.
@@ -77,7 +69,7 @@ class Feature(object):
         """
 
         self._beta = beta
-
+    
     @property
     def description(self):
         """Gets the description of this Feature.
@@ -100,7 +92,7 @@ class Feature(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this Feature.
@@ -123,7 +115,7 @@ class Feature(object):
         """
 
         self._id = id
-
+    
     @property
     def logo_path(self):
         """Gets the logo_path of this Feature.
@@ -146,7 +138,7 @@ class Feature(object):
         """
 
         self._logo_path = logo_path
-
+    
     @property
     def name(self):
         """Gets the name of this Feature.
@@ -169,7 +161,7 @@ class Feature(object):
         """
 
         self._name = name
-
+    
     @property
     def required_features(self):
         """Gets the required_features of this Feature.
@@ -192,7 +184,7 @@ class Feature(object):
         """
 
         self._required_features = required_features
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this Feature.
@@ -215,7 +207,7 @@ class Feature(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def visible(self):
         """Gets the visible of this Feature.
@@ -238,6 +230,7 @@ class Feature(object):
         """
 
         self._visible = visible
+    
 
     def to_dict(self):
         result = {}

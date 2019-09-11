@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ChargeFlowLevelConfiguration(object):
+class ChargeFlowLevelConfiguration:
 
     swagger_types = {
+    
         'flow': 'ChargeFlow',
         'id': 'int',
         'linked_space_id': 'int',
@@ -21,16 +22,7 @@ class ChargeFlowLevelConfiguration(object):
     }
 
     attribute_map = {
-        'flow': 'flow',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'period': 'period',
-        'planned_purge_date': 'plannedPurgeDate',
-        'priority': 'priority',
-        'state': 'state',
-        'type': 'type',
-        'version': 'version',
+        'flow': 'flow','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','period': 'period','planned_purge_date': 'plannedPurgeDate','priority': 'priority','state': 'state','type': 'type','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class ChargeFlowLevelConfiguration(object):
         self.state = kwargs.get('state', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def flow(self):
         """Gets the flow of this ChargeFlowLevelConfiguration.
@@ -85,7 +75,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._flow = flow
-
+    
     @property
     def id(self):
         """Gets the id of this ChargeFlowLevelConfiguration.
@@ -108,7 +98,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ChargeFlowLevelConfiguration.
@@ -131,7 +121,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this ChargeFlowLevelConfiguration.
@@ -154,7 +144,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def period(self):
         """Gets the period of this ChargeFlowLevelConfiguration.
@@ -177,7 +167,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._period = period
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ChargeFlowLevelConfiguration.
@@ -200,7 +190,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def priority(self):
         """Gets the priority of this ChargeFlowLevelConfiguration.
@@ -223,7 +213,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._priority = priority
-
+    
     @property
     def state(self):
         """Gets the state of this ChargeFlowLevelConfiguration.
@@ -246,7 +236,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def type(self):
         """Gets the type of this ChargeFlowLevelConfiguration.
@@ -269,7 +259,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this ChargeFlowLevelConfiguration.
@@ -292,6 +282,7 @@ class ChargeFlowLevelConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

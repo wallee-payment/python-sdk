@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class LineItemAttributeCreate(object):
+class LineItemAttributeCreate:
 
     swagger_types = {
+    
         'label': 'str',
         'value': 'str',
     }
 
     attribute_map = {
-        'label': 'label',
-        'value': 'value',
+        'label': 'label','value': 'value',
     }
 
     
@@ -25,12 +25,12 @@ class LineItemAttributeCreate(object):
         self.discriminator = None
         
         self.label = kwargs.get('label')
+
         self.value = kwargs.get('value')
 
         
-        
-        
 
+    
     @property
     def label(self):
         """Gets the label of this LineItemAttributeCreate.
@@ -55,7 +55,7 @@ class LineItemAttributeCreate(object):
             raise ValueError("Invalid value for `label`, must not be `None`")
 
         self._label = label
-
+    
     @property
     def value(self):
         """Gets the value of this LineItemAttributeCreate.
@@ -80,6 +80,7 @@ class LineItemAttributeCreate(object):
             raise ValueError("Invalid value for `value`, must not be `None`")
 
         self._value = value
+    
 
     def to_dict(self):
         result = {}

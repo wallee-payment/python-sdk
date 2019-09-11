@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class SubscriptionProductVersionRetirementCreate(object):
+class SubscriptionProductVersionRetirementCreate:
 
     swagger_types = {
+    
         'product_version': 'int',
         'respect_terminiation_periods_enabled': 'bool',
         'target_product': 'int',
     }
 
     attribute_map = {
-        'product_version': 'productVersion',
-        'respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled',
-        'target_product': 'targetProduct',
+        'product_version': 'productVersion','respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled','target_product': 'targetProduct',
     }
 
     
@@ -28,13 +27,12 @@ class SubscriptionProductVersionRetirementCreate(object):
         self.discriminator = None
         
         self.product_version = kwargs.get('product_version')
+
         self.respect_terminiation_periods_enabled = kwargs.get('respect_terminiation_periods_enabled', None)
         self.target_product = kwargs.get('target_product', None)
-
-        
-        
         
 
+    
     @property
     def product_version(self):
         """Gets the product_version of this SubscriptionProductVersionRetirementCreate.
@@ -59,7 +57,7 @@ class SubscriptionProductVersionRetirementCreate(object):
             raise ValueError("Invalid value for `product_version`, must not be `None`")
 
         self._product_version = product_version
-
+    
     @property
     def respect_terminiation_periods_enabled(self):
         """Gets the respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirementCreate.
@@ -82,7 +80,7 @@ class SubscriptionProductVersionRetirementCreate(object):
         """
 
         self._respect_terminiation_periods_enabled = respect_terminiation_periods_enabled
-
+    
     @property
     def target_product(self):
         """Gets the target_product of this SubscriptionProductVersionRetirementCreate.
@@ -105,6 +103,7 @@ class SubscriptionProductVersionRetirementCreate(object):
         """
 
         self._target_product = target_product
+    
 
     def to_dict(self):
         result = {}

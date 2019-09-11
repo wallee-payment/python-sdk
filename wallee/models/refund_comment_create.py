@@ -8,6 +8,7 @@ from . import AbstractRefundCommentActive
 class RefundCommentCreate(AbstractRefundCommentActive):
 
     swagger_types = {
+    
         'refund': 'int',
     }
 
@@ -27,6 +28,7 @@ class RefundCommentCreate(AbstractRefundCommentActive):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def refund(self):
         """Gets the refund of this RefundCommentCreate.
@@ -51,6 +53,7 @@ class RefundCommentCreate(AbstractRefundCommentActive):
             raise ValueError("Invalid value for `refund`, must not be `None`")
 
         self._refund = refund
+    
 
     def to_dict(self):
         result = {}

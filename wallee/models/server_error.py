@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class ServerError(object):
+class ServerError:
 
     swagger_types = {
+    
         '_date': 'str',
         'id': 'str',
         'message': 'str',
     }
 
     attribute_map = {
-        '_date': 'date',
-        'id': 'id',
-        'message': 'message',
+        '_date': 'date','id': 'id','message': 'message',
     }
 
     
@@ -30,11 +29,9 @@ class ServerError(object):
         self._date = kwargs.get('_date', None)
         self.id = kwargs.get('id', None)
         self.message = kwargs.get('message', None)
-
-        
-        
         
 
+    
     @property
     def _date(self):
         """Gets the _date of this ServerError.
@@ -57,7 +54,7 @@ class ServerError(object):
         """
 
         self.__date = _date
-
+    
     @property
     def id(self):
         """Gets the id of this ServerError.
@@ -80,7 +77,7 @@ class ServerError(object):
         """
 
         self._id = id
-
+    
     @property
     def message(self):
         """Gets the message of this ServerError.
@@ -103,6 +100,7 @@ class ServerError(object):
         """
 
         self._message = message
+    
 
     def to_dict(self):
         result = {}

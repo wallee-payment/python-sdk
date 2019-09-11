@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductComponent(object):
+class SubscriptionProductComponent:
 
     swagger_types = {
+    
         'component_change_weight': 'int',
         'component_group': 'SubscriptionProductComponentGroup',
         'default_component': 'bool',
@@ -22,17 +23,7 @@ class SubscriptionProductComponent(object):
     }
 
     attribute_map = {
-        'component_change_weight': 'componentChangeWeight',
-        'component_group': 'componentGroup',
-        'default_component': 'defaultComponent',
-        'description': 'description',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'reference': 'reference',
-        'sort_order': 'sortOrder',
-        'tax_class': 'taxClass',
-        'version': 'version',
+        'component_change_weight': 'componentChangeWeight','component_group': 'componentGroup','default_component': 'defaultComponent','description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','reference': 'reference','sort_order': 'sortOrder','tax_class': 'taxClass','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class SubscriptionProductComponent(object):
         self.sort_order = kwargs.get('sort_order', None)
         self.tax_class = kwargs.get('tax_class', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def component_change_weight(self):
         """Gets the component_change_weight of this SubscriptionProductComponent.
@@ -89,7 +78,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._component_change_weight = component_change_weight
-
+    
     @property
     def component_group(self):
         """Gets the component_group of this SubscriptionProductComponent.
@@ -112,7 +101,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._component_group = component_group
-
+    
     @property
     def default_component(self):
         """Gets the default_component of this SubscriptionProductComponent.
@@ -135,7 +124,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._default_component = default_component
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionProductComponent.
@@ -158,7 +147,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductComponent.
@@ -181,7 +170,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionProductComponent.
@@ -204,7 +193,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductComponent.
@@ -227,7 +216,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._name = name
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionProductComponent.
@@ -250,7 +239,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._reference = reference
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponent.
@@ -273,7 +262,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def tax_class(self):
         """Gets the tax_class of this SubscriptionProductComponent.
@@ -296,7 +285,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._tax_class = tax_class
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductComponent.
@@ -319,6 +308,7 @@ class SubscriptionProductComponent(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

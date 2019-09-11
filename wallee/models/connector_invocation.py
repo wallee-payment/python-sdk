@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class ConnectorInvocation(TransactionAwareEntity):
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'planned_purge_date': 'datetime',
         'stage': 'ConnectorInvocationStage',
@@ -17,12 +18,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'stage': 'stage',
-        'time_took_in_milliseconds': 'timeTookInMilliseconds',
-        'transaction': 'transaction',
-        'version': 'version',
+        'created_on': 'createdOn','planned_purge_date': 'plannedPurgeDate','stage': 'stage','time_took_in_milliseconds': 'timeTookInMilliseconds','transaction': 'transaction','version': 'version',
     }
 
     
@@ -42,11 +38,11 @@ class ConnectorInvocation(TransactionAwareEntity):
         self.time_took_in_milliseconds = kwargs.get('time_took_in_milliseconds', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this ConnectorInvocation.
@@ -69,7 +65,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ConnectorInvocation.
@@ -92,7 +88,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def stage(self):
         """Gets the stage of this ConnectorInvocation.
@@ -115,7 +111,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._stage = stage
-
+    
     @property
     def time_took_in_milliseconds(self):
         """Gets the time_took_in_milliseconds of this ConnectorInvocation.
@@ -138,7 +134,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._time_took_in_milliseconds = time_took_in_milliseconds
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this ConnectorInvocation.
@@ -161,7 +157,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def version(self):
         """Gets the version of this ConnectorInvocation.
@@ -184,6 +180,7 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

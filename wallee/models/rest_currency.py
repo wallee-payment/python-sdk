@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class RestCurrency(object):
+class RestCurrency:
 
     swagger_types = {
+    
         'currency_code': 'str',
         'fraction_digits': 'int',
         'numeric_code': 'int',
     }
 
     attribute_map = {
-        'currency_code': 'currencyCode',
-        'fraction_digits': 'fractionDigits',
-        'numeric_code': 'numericCode',
+        'currency_code': 'currencyCode','fraction_digits': 'fractionDigits','numeric_code': 'numericCode',
     }
 
     
@@ -30,11 +29,9 @@ class RestCurrency(object):
         self.currency_code = kwargs.get('currency_code', None)
         self.fraction_digits = kwargs.get('fraction_digits', None)
         self.numeric_code = kwargs.get('numeric_code', None)
-
-        
-        
         
 
+    
     @property
     def currency_code(self):
         """Gets the currency_code of this RestCurrency.
@@ -57,7 +54,7 @@ class RestCurrency(object):
         """
 
         self._currency_code = currency_code
-
+    
     @property
     def fraction_digits(self):
         """Gets the fraction_digits of this RestCurrency.
@@ -80,7 +77,7 @@ class RestCurrency(object):
         """
 
         self._fraction_digits = fraction_digits
-
+    
     @property
     def numeric_code(self):
         """Gets the numeric_code of this RestCurrency.
@@ -103,6 +100,7 @@ class RestCurrency(object):
         """
 
         self._numeric_code = numeric_code
+    
 
     def to_dict(self):
         result = {}

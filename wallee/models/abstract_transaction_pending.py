@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractTransactionPending(object):
+class AbstractTransactionPending:
 
     swagger_types = {
+    
         'allowed_payment_method_brands': 'list[PaymentMethodBrand]',
         'allowed_payment_method_configurations': 'list[int]',
         'billing_address': 'AddressCreate',
@@ -25,28 +26,11 @@ class AbstractTransactionPending(object):
         'success_url': 'str',
         'time_zone': 'str',
         'token': 'int',
-        'tokenization_mode': 'TokenizationnMode',
+        'tokenization_mode': 'TokenizationMode',
     }
 
     attribute_map = {
-        'allowed_payment_method_brands': 'allowedPaymentMethodBrands',
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'billing_address': 'billingAddress',
-        'currency': 'currency',
-        'customer_email_address': 'customerEmailAddress',
-        'customer_id': 'customerId',
-        'failed_url': 'failedUrl',
-        'invoice_merchant_reference': 'invoiceMerchantReference',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'merchant_reference': 'merchantReference',
-        'meta_data': 'metaData',
-        'shipping_address': 'shippingAddress',
-        'shipping_method': 'shippingMethod',
-        'success_url': 'successUrl',
-        'time_zone': 'timeZone',
-        'token': 'token',
-        'tokenization_mode': 'tokenizationMode',
+        'allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','billing_address': 'billingAddress','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','failed_url': 'failedUrl','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','meta_data': 'metaData','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode',
     }
 
     
@@ -90,11 +74,9 @@ class AbstractTransactionPending(object):
         self.time_zone = kwargs.get('time_zone', None)
         self.token = kwargs.get('token', None)
         self.tokenization_mode = kwargs.get('tokenization_mode', None)
-
-        
-        
         
 
+    
     @property
     def allowed_payment_method_brands(self):
         """Gets the allowed_payment_method_brands of this AbstractTransactionPending.
@@ -117,7 +99,7 @@ class AbstractTransactionPending(object):
         """
 
         self._allowed_payment_method_brands = allowed_payment_method_brands
-
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this AbstractTransactionPending.
@@ -140,7 +122,7 @@ class AbstractTransactionPending(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this AbstractTransactionPending.
@@ -163,7 +145,7 @@ class AbstractTransactionPending(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def currency(self):
         """Gets the currency of this AbstractTransactionPending.
@@ -186,7 +168,7 @@ class AbstractTransactionPending(object):
         """
 
         self._currency = currency
-
+    
     @property
     def customer_email_address(self):
         """Gets the customer_email_address of this AbstractTransactionPending.
@@ -209,7 +191,7 @@ class AbstractTransactionPending(object):
         """
 
         self._customer_email_address = customer_email_address
-
+    
     @property
     def customer_id(self):
         """Gets the customer_id of this AbstractTransactionPending.
@@ -232,7 +214,7 @@ class AbstractTransactionPending(object):
         """
 
         self._customer_id = customer_id
-
+    
     @property
     def failed_url(self):
         """Gets the failed_url of this AbstractTransactionPending.
@@ -255,7 +237,7 @@ class AbstractTransactionPending(object):
         """
 
         self._failed_url = failed_url
-
+    
     @property
     def invoice_merchant_reference(self):
         """Gets the invoice_merchant_reference of this AbstractTransactionPending.
@@ -278,7 +260,7 @@ class AbstractTransactionPending(object):
         """
 
         self._invoice_merchant_reference = invoice_merchant_reference
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractTransactionPending.
@@ -301,7 +283,7 @@ class AbstractTransactionPending(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this AbstractTransactionPending.
@@ -324,7 +306,7 @@ class AbstractTransactionPending(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this AbstractTransactionPending.
@@ -347,7 +329,7 @@ class AbstractTransactionPending(object):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this AbstractTransactionPending.
@@ -370,7 +352,7 @@ class AbstractTransactionPending(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this AbstractTransactionPending.
@@ -393,7 +375,7 @@ class AbstractTransactionPending(object):
         """
 
         self._shipping_address = shipping_address
-
+    
     @property
     def shipping_method(self):
         """Gets the shipping_method of this AbstractTransactionPending.
@@ -416,7 +398,7 @@ class AbstractTransactionPending(object):
         """
 
         self._shipping_method = shipping_method
-
+    
     @property
     def success_url(self):
         """Gets the success_url of this AbstractTransactionPending.
@@ -439,7 +421,7 @@ class AbstractTransactionPending(object):
         """
 
         self._success_url = success_url
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this AbstractTransactionPending.
@@ -462,7 +444,7 @@ class AbstractTransactionPending(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def token(self):
         """Gets the token of this AbstractTransactionPending.
@@ -485,7 +467,7 @@ class AbstractTransactionPending(object):
         """
 
         self._token = token
-
+    
     @property
     def tokenization_mode(self):
         """Gets the tokenization_mode of this AbstractTransactionPending.
@@ -493,7 +475,7 @@ class AbstractTransactionPending(object):
             The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
 
         :return: The tokenization_mode of this AbstractTransactionPending.
-        :rtype: TokenizationnMode
+        :rtype: TokenizationMode
         """
         return self._tokenization_mode
 
@@ -504,10 +486,11 @@ class AbstractTransactionPending(object):
             The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
 
         :param tokenization_mode: The tokenization_mode of this AbstractTransactionPending.
-        :type: TokenizationnMode
+        :type: TokenizationMode
         """
 
         self._tokenization_mode = tokenization_mode
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Token(object):
+class Token:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'customer_email_address': 'str',
         'customer_id': 'str',
@@ -24,19 +25,7 @@ class Token(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'customer_email_address': 'customerEmailAddress',
-        'customer_id': 'customerId',
-        'enabled_for_one_click_payment': 'enabledForOneClickPayment',
-        'external_id': 'externalId',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'time_zone': 'timeZone',
-        'token_reference': 'tokenReference',
-        'version': 'version',
+        'created_on': 'createdOn','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','enabled_for_one_click_payment': 'enabledForOneClickPayment','external_id': 'externalId','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','state': 'state','time_zone': 'timeZone','token_reference': 'tokenReference','version': 'version',
     }
 
     
@@ -70,11 +59,9 @@ class Token(object):
         self.time_zone = kwargs.get('time_zone', None)
         self.token_reference = kwargs.get('token_reference', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this Token.
@@ -97,7 +84,7 @@ class Token(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def customer_email_address(self):
         """Gets the customer_email_address of this Token.
@@ -120,7 +107,7 @@ class Token(object):
         """
 
         self._customer_email_address = customer_email_address
-
+    
     @property
     def customer_id(self):
         """Gets the customer_id of this Token.
@@ -143,7 +130,7 @@ class Token(object):
         """
 
         self._customer_id = customer_id
-
+    
     @property
     def enabled_for_one_click_payment(self):
         """Gets the enabled_for_one_click_payment of this Token.
@@ -166,7 +153,7 @@ class Token(object):
         """
 
         self._enabled_for_one_click_payment = enabled_for_one_click_payment
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this Token.
@@ -189,7 +176,7 @@ class Token(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this Token.
@@ -212,7 +199,7 @@ class Token(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this Token.
@@ -235,7 +222,7 @@ class Token(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Token.
@@ -258,7 +245,7 @@ class Token(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Token.
@@ -281,7 +268,7 @@ class Token(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this Token.
@@ -304,7 +291,7 @@ class Token(object):
         """
 
         self._state = state
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this Token.
@@ -327,7 +314,7 @@ class Token(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def token_reference(self):
         """Gets the token_reference of this Token.
@@ -350,7 +337,7 @@ class Token(object):
         """
 
         self._token_reference = token_reference
-
+    
     @property
     def version(self):
         """Gets the version of this Token.
@@ -373,6 +360,7 @@ class Token(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

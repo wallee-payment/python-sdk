@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TransactionGroup(object):
+class TransactionGroup:
 
     swagger_types = {
+    
         'begin_date': 'datetime',
         'customer_id': 'str',
         'end_date': 'datetime',
@@ -19,14 +20,7 @@ class TransactionGroup(object):
     }
 
     attribute_map = {
-        'begin_date': 'beginDate',
-        'customer_id': 'customerId',
-        'end_date': 'endDate',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'version': 'version',
+        'begin_date': 'beginDate','customer_id': 'customerId','end_date': 'endDate','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
@@ -50,11 +44,9 @@ class TransactionGroup(object):
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def begin_date(self):
         """Gets the begin_date of this TransactionGroup.
@@ -77,7 +69,7 @@ class TransactionGroup(object):
         """
 
         self._begin_date = begin_date
-
+    
     @property
     def customer_id(self):
         """Gets the customer_id of this TransactionGroup.
@@ -100,7 +92,7 @@ class TransactionGroup(object):
         """
 
         self._customer_id = customer_id
-
+    
     @property
     def end_date(self):
         """Gets the end_date of this TransactionGroup.
@@ -123,7 +115,7 @@ class TransactionGroup(object):
         """
 
         self._end_date = end_date
-
+    
     @property
     def id(self):
         """Gets the id of this TransactionGroup.
@@ -146,7 +138,7 @@ class TransactionGroup(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this TransactionGroup.
@@ -169,7 +161,7 @@ class TransactionGroup(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionGroup.
@@ -192,7 +184,7 @@ class TransactionGroup(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this TransactionGroup.
@@ -215,7 +207,7 @@ class TransactionGroup(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this TransactionGroup.
@@ -238,6 +230,7 @@ class TransactionGroup(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

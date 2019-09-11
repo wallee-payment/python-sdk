@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractWebhookListenerUpdate(object):
+class AbstractWebhookListenerUpdate:
 
     swagger_types = {
+    
         'entity_states': 'list[str]',
         'name': 'str',
         'notify_every_change': 'bool',
@@ -15,10 +16,7 @@ class AbstractWebhookListenerUpdate(object):
     }
 
     attribute_map = {
-        'entity_states': 'entityStates',
-        'name': 'name',
-        'notify_every_change': 'notifyEveryChange',
-        'state': 'state',
+        'entity_states': 'entityStates','name': 'name','notify_every_change': 'notifyEveryChange','state': 'state',
     }
 
     
@@ -34,11 +32,9 @@ class AbstractWebhookListenerUpdate(object):
         self.name = kwargs.get('name', None)
         self.notify_every_change = kwargs.get('notify_every_change', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def entity_states(self):
         """Gets the entity_states of this AbstractWebhookListenerUpdate.
@@ -61,7 +57,7 @@ class AbstractWebhookListenerUpdate(object):
         """
 
         self._entity_states = entity_states
-
+    
     @property
     def name(self):
         """Gets the name of this AbstractWebhookListenerUpdate.
@@ -84,7 +80,7 @@ class AbstractWebhookListenerUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def notify_every_change(self):
         """Gets the notify_every_change of this AbstractWebhookListenerUpdate.
@@ -107,7 +103,7 @@ class AbstractWebhookListenerUpdate(object):
         """
 
         self._notify_every_change = notify_every_change
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractWebhookListenerUpdate.
@@ -130,6 +126,7 @@ class AbstractWebhookListenerUpdate(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

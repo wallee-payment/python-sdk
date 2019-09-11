@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentProcessorConfiguration(object):
+class PaymentProcessorConfiguration:
 
     swagger_types = {
+    
         'contract_id': 'int',
         'id': 'int',
         'linked_space_id': 'int',
@@ -19,14 +20,7 @@ class PaymentProcessorConfiguration(object):
     }
 
     attribute_map = {
-        'contract_id': 'contractId',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processor': 'processor',
-        'state': 'state',
-        'version': 'version',
+        'contract_id': 'contractId','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','processor': 'processor','state': 'state','version': 'version',
     }
 
     
@@ -50,11 +44,9 @@ class PaymentProcessorConfiguration(object):
         self.processor = kwargs.get('processor', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def contract_id(self):
         """Gets the contract_id of this PaymentProcessorConfiguration.
@@ -77,7 +69,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._contract_id = contract_id
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentProcessorConfiguration.
@@ -100,7 +92,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentProcessorConfiguration.
@@ -123,7 +115,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentProcessorConfiguration.
@@ -146,7 +138,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentProcessorConfiguration.
@@ -169,7 +161,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processor(self):
         """Gets the processor of this PaymentProcessorConfiguration.
@@ -192,7 +184,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._processor = processor
-
+    
     @property
     def state(self):
         """Gets the state of this PaymentProcessorConfiguration.
@@ -215,7 +207,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentProcessorConfiguration.
@@ -238,6 +230,7 @@ class PaymentProcessorConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

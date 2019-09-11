@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionPeriodBill(object):
+class SubscriptionPeriodBill:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'effective_period_end_date': 'datetime',
         'id': 'int',
@@ -22,17 +23,7 @@ class SubscriptionPeriodBill(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'effective_period_end_date': 'effectivePeriodEndDate',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'period_start_date': 'periodStartDate',
-        'planned_period_end_date': 'plannedPeriodEndDate',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'subscription_version': 'subscriptionVersion',
-        'version': 'version',
+        'created_on': 'createdOn','effective_period_end_date': 'effectivePeriodEndDate','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','period_start_date': 'periodStartDate','planned_period_end_date': 'plannedPeriodEndDate','planned_purge_date': 'plannedPurgeDate','state': 'state','subscription_version': 'subscriptionVersion','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class SubscriptionPeriodBill(object):
         self.state = kwargs.get('state', None)
         self.subscription_version = kwargs.get('subscription_version', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionPeriodBill.
@@ -89,7 +78,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def effective_period_end_date(self):
         """Gets the effective_period_end_date of this SubscriptionPeriodBill.
@@ -112,7 +101,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._effective_period_end_date = effective_period_end_date
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionPeriodBill.
@@ -135,7 +124,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionPeriodBill.
@@ -158,7 +147,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionPeriodBill.
@@ -181,7 +170,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def period_start_date(self):
         """Gets the period_start_date of this SubscriptionPeriodBill.
@@ -204,7 +193,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._period_start_date = period_start_date
-
+    
     @property
     def planned_period_end_date(self):
         """Gets the planned_period_end_date of this SubscriptionPeriodBill.
@@ -227,7 +216,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._planned_period_end_date = planned_period_end_date
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionPeriodBill.
@@ -250,7 +239,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionPeriodBill.
@@ -273,7 +262,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._state = state
-
+    
     @property
     def subscription_version(self):
         """Gets the subscription_version of this SubscriptionPeriodBill.
@@ -296,7 +285,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._subscription_version = subscription_version
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionPeriodBill.
@@ -319,6 +308,7 @@ class SubscriptionPeriodBill(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

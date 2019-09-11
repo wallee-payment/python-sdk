@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class PersistableCurrencyAmountUpdate(object):
+class PersistableCurrencyAmountUpdate:
 
     swagger_types = {
+    
         'amount': 'float',
         'currency': 'str',
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'currency': 'currency',
+        'amount': 'amount','currency': 'currency',
     }
 
     
@@ -26,11 +26,9 @@ class PersistableCurrencyAmountUpdate(object):
         
         self.amount = kwargs.get('amount', None)
         self.currency = kwargs.get('currency', None)
-
-        
-        
         
 
+    
     @property
     def amount(self):
         """Gets the amount of this PersistableCurrencyAmountUpdate.
@@ -53,7 +51,7 @@ class PersistableCurrencyAmountUpdate(object):
         """
 
         self._amount = amount
-
+    
     @property
     def currency(self):
         """Gets the currency of this PersistableCurrencyAmountUpdate.
@@ -76,6 +74,7 @@ class PersistableCurrencyAmountUpdate(object):
         """
 
         self._currency = currency
+    
 
     def to_dict(self):
         result = {}

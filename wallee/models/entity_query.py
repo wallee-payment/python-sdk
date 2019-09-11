@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class EntityQuery(object):
+class EntityQuery:
 
     swagger_types = {
+    
         'filter': 'EntityQueryFilter',
         'language': 'str',
         'number_of_entities': 'int',
@@ -16,11 +17,7 @@ class EntityQuery(object):
     }
 
     attribute_map = {
-        'filter': 'filter',
-        'language': 'language',
-        'number_of_entities': 'numberOfEntities',
-        'order_bys': 'orderBys',
-        'starting_entity': 'startingEntity',
+        'filter': 'filter','language': 'language','number_of_entities': 'numberOfEntities','order_bys': 'orderBys','starting_entity': 'startingEntity',
     }
 
     
@@ -38,11 +35,9 @@ class EntityQuery(object):
         self.number_of_entities = kwargs.get('number_of_entities', None)
         self.order_bys = kwargs.get('order_bys', None)
         self.starting_entity = kwargs.get('starting_entity', None)
-
-        
-        
         
 
+    
     @property
     def filter(self):
         """Gets the filter of this EntityQuery.
@@ -65,7 +60,7 @@ class EntityQuery(object):
         """
 
         self._filter = filter
-
+    
     @property
     def language(self):
         """Gets the language of this EntityQuery.
@@ -88,7 +83,7 @@ class EntityQuery(object):
         """
 
         self._language = language
-
+    
     @property
     def number_of_entities(self):
         """Gets the number_of_entities of this EntityQuery.
@@ -111,7 +106,7 @@ class EntityQuery(object):
         """
 
         self._number_of_entities = number_of_entities
-
+    
     @property
     def order_bys(self):
         """Gets the order_bys of this EntityQuery.
@@ -134,7 +129,7 @@ class EntityQuery(object):
         """
 
         self._order_bys = order_bys
-
+    
     @property
     def starting_entity(self):
         """Gets the starting_entity of this EntityQuery.
@@ -157,6 +152,7 @@ class EntityQuery(object):
         """
 
         self._starting_entity = starting_entity
+    
 
     def to_dict(self):
         result = {}

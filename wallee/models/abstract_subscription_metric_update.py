@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class AbstractSubscriptionMetricUpdate(object):
+class AbstractSubscriptionMetricUpdate:
 
     swagger_types = {
+    
         'description': 'DatabaseTranslatedStringCreate',
         'name': 'DatabaseTranslatedStringCreate',
     }
 
     attribute_map = {
-        'description': 'description',
-        'name': 'name',
+        'description': 'description','name': 'name',
     }
 
     
@@ -26,11 +26,9 @@ class AbstractSubscriptionMetricUpdate(object):
         
         self.description = kwargs.get('description', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this AbstractSubscriptionMetricUpdate.
@@ -53,7 +51,7 @@ class AbstractSubscriptionMetricUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def name(self):
         """Gets the name of this AbstractSubscriptionMetricUpdate.
@@ -76,6 +74,7 @@ class AbstractSubscriptionMetricUpdate(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

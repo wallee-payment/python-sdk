@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class AbstractApplicationUserUpdate(object):
+class AbstractApplicationUserUpdate:
 
     swagger_types = {
+    
         'name': 'str',
         'request_limit': 'int',
         'state': 'CreationEntityState',
     }
 
     attribute_map = {
-        'name': 'name',
-        'request_limit': 'requestLimit',
-        'state': 'state',
+        'name': 'name','request_limit': 'requestLimit','state': 'state',
     }
 
     
@@ -30,11 +29,9 @@ class AbstractApplicationUserUpdate(object):
         self.name = kwargs.get('name', None)
         self.request_limit = kwargs.get('request_limit', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def name(self):
         """Gets the name of this AbstractApplicationUserUpdate.
@@ -57,7 +54,7 @@ class AbstractApplicationUserUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def request_limit(self):
         """Gets the request_limit of this AbstractApplicationUserUpdate.
@@ -80,7 +77,7 @@ class AbstractApplicationUserUpdate(object):
         """
 
         self._request_limit = request_limit
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractApplicationUserUpdate.
@@ -103,6 +100,7 @@ class AbstractApplicationUserUpdate(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

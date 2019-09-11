@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriberUpdate(object):
+class SubscriberUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'additional_allowed_payment_method_configurations': 'list[int]',
@@ -22,17 +23,7 @@ class SubscriberUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations',
-        'billing_address': 'billingAddress',
-        'description': 'description',
-        'disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations',
-        'email_address': 'emailAddress',
-        'language': 'language',
-        'meta_data': 'metaData',
-        'reference': 'reference',
-        'shipping_address': 'shippingAddress',
+        'id': 'id','version': 'version','additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations','billing_address': 'billingAddress','description': 'description','disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations','email_address': 'emailAddress','language': 'language','meta_data': 'metaData','reference': 'reference','shipping_address': 'shippingAddress',
     }
 
     
@@ -52,7 +43,9 @@ class SubscriberUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.additional_allowed_payment_method_configurations = kwargs.get('additional_allowed_payment_method_configurations', None)
         self.billing_address = kwargs.get('billing_address', None)
         self.description = kwargs.get('description', None)
@@ -62,11 +55,9 @@ class SubscriberUpdate(object):
         self.meta_data = kwargs.get('meta_data', None)
         self.reference = kwargs.get('reference', None)
         self.shipping_address = kwargs.get('shipping_address', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriberUpdate.
@@ -91,7 +82,7 @@ class SubscriberUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriberUpdate.
@@ -116,7 +107,7 @@ class SubscriberUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def additional_allowed_payment_method_configurations(self):
         """Gets the additional_allowed_payment_method_configurations of this SubscriberUpdate.
@@ -139,7 +130,7 @@ class SubscriberUpdate(object):
         """
 
         self._additional_allowed_payment_method_configurations = additional_allowed_payment_method_configurations
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this SubscriberUpdate.
@@ -162,7 +153,7 @@ class SubscriberUpdate(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriberUpdate.
@@ -185,7 +176,7 @@ class SubscriberUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def disallowed_payment_method_configurations(self):
         """Gets the disallowed_payment_method_configurations of this SubscriberUpdate.
@@ -208,7 +199,7 @@ class SubscriberUpdate(object):
         """
 
         self._disallowed_payment_method_configurations = disallowed_payment_method_configurations
-
+    
     @property
     def email_address(self):
         """Gets the email_address of this SubscriberUpdate.
@@ -231,7 +222,7 @@ class SubscriberUpdate(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriberUpdate.
@@ -254,7 +245,7 @@ class SubscriberUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this SubscriberUpdate.
@@ -277,7 +268,7 @@ class SubscriberUpdate(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriberUpdate.
@@ -300,7 +291,7 @@ class SubscriberUpdate(object):
         """
 
         self._reference = reference
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this SubscriberUpdate.
@@ -323,6 +314,7 @@ class SubscriberUpdate(object):
         """
 
         self._shipping_address = shipping_address
+    
 
     def to_dict(self):
         result = {}

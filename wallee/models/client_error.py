@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ClientError(object):
+class ClientError:
 
     swagger_types = {
+    
         '_date': 'str',
         'default_message': 'str',
         'id': 'str',
@@ -16,11 +17,7 @@ class ClientError(object):
     }
 
     attribute_map = {
-        '_date': 'date',
-        'default_message': 'defaultMessage',
-        'id': 'id',
-        'message': 'message',
-        'type': 'type',
+        '_date': 'date','default_message': 'defaultMessage','id': 'id','message': 'message','type': 'type',
     }
 
     
@@ -38,11 +35,9 @@ class ClientError(object):
         self.id = kwargs.get('id', None)
         self.message = kwargs.get('message', None)
         self.type = kwargs.get('type', None)
-
-        
-        
         
 
+    
     @property
     def _date(self):
         """Gets the _date of this ClientError.
@@ -65,7 +60,7 @@ class ClientError(object):
         """
 
         self.__date = _date
-
+    
     @property
     def default_message(self):
         """Gets the default_message of this ClientError.
@@ -88,7 +83,7 @@ class ClientError(object):
         """
 
         self._default_message = default_message
-
+    
     @property
     def id(self):
         """Gets the id of this ClientError.
@@ -111,7 +106,7 @@ class ClientError(object):
         """
 
         self._id = id
-
+    
     @property
     def message(self):
         """Gets the message of this ClientError.
@@ -134,7 +129,7 @@ class ClientError(object):
         """
 
         self._message = message
-
+    
     @property
     def type(self):
         """Gets the type of this ClientError.
@@ -157,6 +152,7 @@ class ClientError(object):
         """
 
         self._type = type
+    
 
     def to_dict(self):
         result = {}

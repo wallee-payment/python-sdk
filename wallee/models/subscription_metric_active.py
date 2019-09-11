@@ -8,18 +8,23 @@ from . import SubscriptionMetricUpdate
 class SubscriptionMetricActive(SubscriptionMetricUpdate):
 
     swagger_types = {
+    
     }
 
     attribute_map = {
+        
     }
 
     
-    def __init__(self):
+
+    def __init__(self, **kwargs):
         self.discriminator = None
         
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
+
+    
 
     def to_dict(self):
         result = {}

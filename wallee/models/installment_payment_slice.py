@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class InstallmentPaymentSlice(TransactionAwareEntity):
 
     swagger_types = {
+    
         'charge_on': 'datetime',
         'created_on': 'datetime',
         'installment_payment': 'InstallmentPayment',
@@ -19,14 +20,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge_on': 'chargeOn',
-        'created_on': 'createdOn',
-        'installment_payment': 'installmentPayment',
-        'line_items': 'lineItems',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'transaction': 'transaction',
-        'version': 'version',
+        'charge_on': 'chargeOn','created_on': 'createdOn','installment_payment': 'installmentPayment','line_items': 'lineItems','planned_purge_date': 'plannedPurgeDate','state': 'state','transaction': 'transaction','version': 'version',
     }
 
     
@@ -50,11 +44,11 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         self.state = kwargs.get('state', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def charge_on(self):
         """Gets the charge_on of this InstallmentPaymentSlice.
@@ -77,7 +71,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._charge_on = charge_on
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this InstallmentPaymentSlice.
@@ -100,7 +94,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def installment_payment(self):
         """Gets the installment_payment of this InstallmentPaymentSlice.
@@ -123,7 +117,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._installment_payment = installment_payment
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this InstallmentPaymentSlice.
@@ -146,7 +140,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._line_items = line_items
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this InstallmentPaymentSlice.
@@ -169,7 +163,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this InstallmentPaymentSlice.
@@ -192,7 +186,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this InstallmentPaymentSlice.
@@ -215,7 +209,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def version(self):
         """Gets the version of this InstallmentPaymentSlice.
@@ -238,6 +232,7 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

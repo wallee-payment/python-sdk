@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class DatabaseTranslatedString(object):
+class DatabaseTranslatedString:
 
     swagger_types = {
+    
         'available_languages': 'list[str]',
         'display_name': 'str',
         'items': 'list[DatabaseTranslatedStringItem]',
     }
 
     attribute_map = {
-        'available_languages': 'availableLanguages',
-        'display_name': 'displayName',
-        'items': 'items',
+        'available_languages': 'availableLanguages','display_name': 'displayName','items': 'items',
     }
 
     
@@ -30,11 +29,9 @@ class DatabaseTranslatedString(object):
         self.available_languages = kwargs.get('available_languages', None)
         self.display_name = kwargs.get('display_name', None)
         self.items = kwargs.get('items', None)
-
-        
-        
         
 
+    
     @property
     def available_languages(self):
         """Gets the available_languages of this DatabaseTranslatedString.
@@ -57,7 +54,7 @@ class DatabaseTranslatedString(object):
         """
 
         self._available_languages = available_languages
-
+    
     @property
     def display_name(self):
         """Gets the display_name of this DatabaseTranslatedString.
@@ -80,7 +77,7 @@ class DatabaseTranslatedString(object):
         """
 
         self._display_name = display_name
-
+    
     @property
     def items(self):
         """Gets the items of this DatabaseTranslatedString.
@@ -103,6 +100,7 @@ class DatabaseTranslatedString(object):
         """
 
         self._items = items
+    
 
     def to_dict(self):
         result = {}

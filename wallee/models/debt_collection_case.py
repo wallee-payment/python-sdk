@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectionCase(object):
+class DebtCollectionCase:
 
     swagger_types = {
+    
         'amount': 'float',
         'billing_address': 'Address',
         'closed_on': 'datetime',
@@ -42,37 +43,7 @@ class DebtCollectionCase(object):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'billing_address': 'billingAddress',
-        'closed_on': 'closedOn',
-        'collector_configuration': 'collectorConfiguration',
-        'contract_date': 'contractDate',
-        'created_on': 'createdOn',
-        'creator': 'creator',
-        'currency': 'currency',
-        'due_date': 'dueDate',
-        'environment': 'environment',
-        'external_id': 'externalId',
-        'failed_on': 'failedOn',
-        'failure_reason': 'failureReason',
-        'id': 'id',
-        'labels': 'labels',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'linked_space_id': 'linkedSpaceId',
-        'next_attempt_on': 'nextAttemptOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processing_started_on': 'processingStartedOn',
-        'processing_timeout_on': 'processingTimeoutOn',
-        'reference': 'reference',
-        'review_started_on': 'reviewStartedOn',
-        'reviewed_on': 'reviewedOn',
-        'reviewer': 'reviewer',
-        'source': 'source',
-        'source_entity_id': 'sourceEntityId',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'version': 'version',
+        'amount': 'amount','billing_address': 'billingAddress','closed_on': 'closedOn','collector_configuration': 'collectorConfiguration','contract_date': 'contractDate','created_on': 'createdOn','creator': 'creator','currency': 'currency','due_date': 'dueDate','environment': 'environment','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','next_attempt_on': 'nextAttemptOn','planned_purge_date': 'plannedPurgeDate','processing_started_on': 'processingStartedOn','processing_timeout_on': 'processingTimeoutOn','reference': 'reference','review_started_on': 'reviewStartedOn','reviewed_on': 'reviewedOn','reviewer': 'reviewer','source': 'source','source_entity_id': 'sourceEntityId','space_view_id': 'spaceViewId','state': 'state','version': 'version',
     }
 
     
@@ -142,11 +113,9 @@ class DebtCollectionCase(object):
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def amount(self):
         """Gets the amount of this DebtCollectionCase.
@@ -169,7 +138,7 @@ class DebtCollectionCase(object):
         """
 
         self._amount = amount
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this DebtCollectionCase.
@@ -192,7 +161,7 @@ class DebtCollectionCase(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def closed_on(self):
         """Gets the closed_on of this DebtCollectionCase.
@@ -215,7 +184,7 @@ class DebtCollectionCase(object):
         """
 
         self._closed_on = closed_on
-
+    
     @property
     def collector_configuration(self):
         """Gets the collector_configuration of this DebtCollectionCase.
@@ -238,7 +207,7 @@ class DebtCollectionCase(object):
         """
 
         self._collector_configuration = collector_configuration
-
+    
     @property
     def contract_date(self):
         """Gets the contract_date of this DebtCollectionCase.
@@ -261,7 +230,7 @@ class DebtCollectionCase(object):
         """
 
         self._contract_date = contract_date
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this DebtCollectionCase.
@@ -284,7 +253,7 @@ class DebtCollectionCase(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def creator(self):
         """Gets the creator of this DebtCollectionCase.
@@ -307,7 +276,7 @@ class DebtCollectionCase(object):
         """
 
         self._creator = creator
-
+    
     @property
     def currency(self):
         """Gets the currency of this DebtCollectionCase.
@@ -330,7 +299,7 @@ class DebtCollectionCase(object):
         """
 
         self._currency = currency
-
+    
     @property
     def due_date(self):
         """Gets the due_date of this DebtCollectionCase.
@@ -353,7 +322,7 @@ class DebtCollectionCase(object):
         """
 
         self._due_date = due_date
-
+    
     @property
     def environment(self):
         """Gets the environment of this DebtCollectionCase.
@@ -376,7 +345,7 @@ class DebtCollectionCase(object):
         """
 
         self._environment = environment
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this DebtCollectionCase.
@@ -399,7 +368,7 @@ class DebtCollectionCase(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this DebtCollectionCase.
@@ -422,7 +391,7 @@ class DebtCollectionCase(object):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this DebtCollectionCase.
@@ -445,7 +414,7 @@ class DebtCollectionCase(object):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectionCase.
@@ -468,7 +437,7 @@ class DebtCollectionCase(object):
         """
 
         self._id = id
-
+    
     @property
     def labels(self):
         """Gets the labels of this DebtCollectionCase.
@@ -491,7 +460,7 @@ class DebtCollectionCase(object):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this DebtCollectionCase.
@@ -514,7 +483,7 @@ class DebtCollectionCase(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this DebtCollectionCase.
@@ -537,7 +506,7 @@ class DebtCollectionCase(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DebtCollectionCase.
@@ -560,7 +529,7 @@ class DebtCollectionCase(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def next_attempt_on(self):
         """Gets the next_attempt_on of this DebtCollectionCase.
@@ -583,7 +552,7 @@ class DebtCollectionCase(object):
         """
 
         self._next_attempt_on = next_attempt_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DebtCollectionCase.
@@ -606,7 +575,7 @@ class DebtCollectionCase(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processing_started_on(self):
         """Gets the processing_started_on of this DebtCollectionCase.
@@ -629,7 +598,7 @@ class DebtCollectionCase(object):
         """
 
         self._processing_started_on = processing_started_on
-
+    
     @property
     def processing_timeout_on(self):
         """Gets the processing_timeout_on of this DebtCollectionCase.
@@ -652,7 +621,7 @@ class DebtCollectionCase(object):
         """
 
         self._processing_timeout_on = processing_timeout_on
-
+    
     @property
     def reference(self):
         """Gets the reference of this DebtCollectionCase.
@@ -675,7 +644,7 @@ class DebtCollectionCase(object):
         """
 
         self._reference = reference
-
+    
     @property
     def review_started_on(self):
         """Gets the review_started_on of this DebtCollectionCase.
@@ -698,7 +667,7 @@ class DebtCollectionCase(object):
         """
 
         self._review_started_on = review_started_on
-
+    
     @property
     def reviewed_on(self):
         """Gets the reviewed_on of this DebtCollectionCase.
@@ -721,7 +690,7 @@ class DebtCollectionCase(object):
         """
 
         self._reviewed_on = reviewed_on
-
+    
     @property
     def reviewer(self):
         """Gets the reviewer of this DebtCollectionCase.
@@ -744,7 +713,7 @@ class DebtCollectionCase(object):
         """
 
         self._reviewer = reviewer
-
+    
     @property
     def source(self):
         """Gets the source of this DebtCollectionCase.
@@ -767,7 +736,7 @@ class DebtCollectionCase(object):
         """
 
         self._source = source
-
+    
     @property
     def source_entity_id(self):
         """Gets the source_entity_id of this DebtCollectionCase.
@@ -790,7 +759,7 @@ class DebtCollectionCase(object):
         """
 
         self._source_entity_id = source_entity_id
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this DebtCollectionCase.
@@ -813,7 +782,7 @@ class DebtCollectionCase(object):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this DebtCollectionCase.
@@ -836,7 +805,7 @@ class DebtCollectionCase(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this DebtCollectionCase.
@@ -859,6 +828,7 @@ class DebtCollectionCase(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

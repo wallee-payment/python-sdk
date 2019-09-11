@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ManualTask(object):
+class ManualTask:
 
     swagger_types = {
+    
         'actions': 'list[int]',
         'context_entity_id': 'int',
         'created_on': 'datetime',
@@ -21,16 +22,7 @@ class ManualTask(object):
     }
 
     attribute_map = {
-        'actions': 'actions',
-        'context_entity_id': 'contextEntityId',
-        'created_on': 'createdOn',
-        'expires_on': 'expiresOn',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'type': 'type',
+        'actions': 'actions','context_entity_id': 'contextEntityId','created_on': 'createdOn','expires_on': 'expiresOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','type': 'type',
     }
 
     
@@ -58,11 +50,9 @@ class ManualTask(object):
         self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.type = kwargs.get('type', None)
-
-        
-        
         
 
+    
     @property
     def actions(self):
         """Gets the actions of this ManualTask.
@@ -85,7 +75,7 @@ class ManualTask(object):
         """
 
         self._actions = actions
-
+    
     @property
     def context_entity_id(self):
         """Gets the context_entity_id of this ManualTask.
@@ -108,7 +98,7 @@ class ManualTask(object):
         """
 
         self._context_entity_id = context_entity_id
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this ManualTask.
@@ -131,7 +121,7 @@ class ManualTask(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def expires_on(self):
         """Gets the expires_on of this ManualTask.
@@ -154,7 +144,7 @@ class ManualTask(object):
         """
 
         self._expires_on = expires_on
-
+    
     @property
     def id(self):
         """Gets the id of this ManualTask.
@@ -177,7 +167,7 @@ class ManualTask(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ManualTask.
@@ -200,7 +190,7 @@ class ManualTask(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ManualTask.
@@ -223,7 +213,7 @@ class ManualTask(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this ManualTask.
@@ -246,7 +236,7 @@ class ManualTask(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this ManualTask.
@@ -269,7 +259,7 @@ class ManualTask(object):
         """
 
         self._state = state
-
+    
     @property
     def type(self):
         """Gets the type of this ManualTask.
@@ -292,6 +282,7 @@ class ManualTask(object):
         """
 
         self._type = type
+    
 
     def to_dict(self):
         result = {}

@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class CompletionLineItemCreate(object):
+class CompletionLineItemCreate:
 
     swagger_types = {
+    
         'amount': 'float',
         'quantity': 'float',
         'unique_id': 'str',
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'quantity': 'quantity',
-        'unique_id': 'uniqueId',
+        'amount': 'amount','quantity': 'quantity','unique_id': 'uniqueId',
     }
 
     
@@ -28,13 +27,14 @@ class CompletionLineItemCreate(object):
         self.discriminator = None
         
         self.amount = kwargs.get('amount')
+
         self.quantity = kwargs.get('quantity')
+
         self.unique_id = kwargs.get('unique_id')
 
         
-        
-        
 
+    
     @property
     def amount(self):
         """Gets the amount of this CompletionLineItemCreate.
@@ -59,7 +59,7 @@ class CompletionLineItemCreate(object):
             raise ValueError("Invalid value for `amount`, must not be `None`")
 
         self._amount = amount
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this CompletionLineItemCreate.
@@ -84,7 +84,7 @@ class CompletionLineItemCreate(object):
             raise ValueError("Invalid value for `quantity`, must not be `None`")
 
         self._quantity = quantity
-
+    
     @property
     def unique_id(self):
         """Gets the unique_id of this CompletionLineItemCreate.
@@ -109,6 +109,7 @@ class CompletionLineItemCreate(object):
             raise ValueError("Invalid value for `unique_id`, must not be `None`")
 
         self._unique_id = unique_id
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionVersion(object):
+class SubscriptionVersion:
 
     swagger_types = {
+    
         'activated_on': 'datetime',
         'billing_currency': 'str',
         'created_on': 'datetime',
@@ -29,24 +30,7 @@ class SubscriptionVersion(object):
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn',
-        'billing_currency': 'billingCurrency',
-        'created_on': 'createdOn',
-        'expected_last_period_end': 'expectedLastPeriodEnd',
-        'failed_on': 'failedOn',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'planned_termination_date': 'plannedTerminationDate',
-        'product_version': 'productVersion',
-        'selected_components': 'selectedComponents',
-        'state': 'state',
-        'subscription': 'subscription',
-        'terminated_on': 'terminatedOn',
-        'terminating_on': 'terminatingOn',
-        'termination_issued_on': 'terminationIssuedOn',
-        'version': 'version',
+        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','selected_components': 'selectedComponents','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
     }
 
     
@@ -90,11 +74,9 @@ class SubscriptionVersion(object):
         self.terminating_on = kwargs.get('terminating_on', None)
         self.termination_issued_on = kwargs.get('termination_issued_on', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def activated_on(self):
         """Gets the activated_on of this SubscriptionVersion.
@@ -117,7 +99,7 @@ class SubscriptionVersion(object):
         """
 
         self._activated_on = activated_on
-
+    
     @property
     def billing_currency(self):
         """Gets the billing_currency of this SubscriptionVersion.
@@ -140,7 +122,7 @@ class SubscriptionVersion(object):
         """
 
         self._billing_currency = billing_currency
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionVersion.
@@ -163,7 +145,7 @@ class SubscriptionVersion(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def expected_last_period_end(self):
         """Gets the expected_last_period_end of this SubscriptionVersion.
@@ -186,7 +168,7 @@ class SubscriptionVersion(object):
         """
 
         self._expected_last_period_end = expected_last_period_end
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this SubscriptionVersion.
@@ -209,7 +191,7 @@ class SubscriptionVersion(object):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionVersion.
@@ -232,7 +214,7 @@ class SubscriptionVersion(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionVersion.
@@ -255,7 +237,7 @@ class SubscriptionVersion(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionVersion.
@@ -278,7 +260,7 @@ class SubscriptionVersion(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionVersion.
@@ -301,7 +283,7 @@ class SubscriptionVersion(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def planned_termination_date(self):
         """Gets the planned_termination_date of this SubscriptionVersion.
@@ -324,7 +306,7 @@ class SubscriptionVersion(object):
         """
 
         self._planned_termination_date = planned_termination_date
-
+    
     @property
     def product_version(self):
         """Gets the product_version of this SubscriptionVersion.
@@ -347,7 +329,7 @@ class SubscriptionVersion(object):
         """
 
         self._product_version = product_version
-
+    
     @property
     def selected_components(self):
         """Gets the selected_components of this SubscriptionVersion.
@@ -370,7 +352,7 @@ class SubscriptionVersion(object):
         """
 
         self._selected_components = selected_components
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionVersion.
@@ -393,7 +375,7 @@ class SubscriptionVersion(object):
         """
 
         self._state = state
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionVersion.
@@ -416,7 +398,7 @@ class SubscriptionVersion(object):
         """
 
         self._subscription = subscription
-
+    
     @property
     def terminated_on(self):
         """Gets the terminated_on of this SubscriptionVersion.
@@ -439,7 +421,7 @@ class SubscriptionVersion(object):
         """
 
         self._terminated_on = terminated_on
-
+    
     @property
     def terminating_on(self):
         """Gets the terminating_on of this SubscriptionVersion.
@@ -462,7 +444,7 @@ class SubscriptionVersion(object):
         """
 
         self._terminating_on = terminating_on
-
+    
     @property
     def termination_issued_on(self):
         """Gets the termination_issued_on of this SubscriptionVersion.
@@ -485,7 +467,7 @@ class SubscriptionVersion(object):
         """
 
         self._termination_issued_on = termination_issued_on
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionVersion.
@@ -508,6 +490,7 @@ class SubscriptionVersion(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

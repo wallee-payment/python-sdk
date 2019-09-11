@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TwoFactorAuthenticationType(object):
+class TwoFactorAuthenticationType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'feature': 'int',
         'icon': 'str',
@@ -16,11 +17,7 @@ class TwoFactorAuthenticationType(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'feature': 'feature',
-        'icon': 'icon',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','feature': 'feature','icon': 'icon','id': 'id','name': 'name',
     }
 
     
@@ -38,11 +35,9 @@ class TwoFactorAuthenticationType(object):
         self.icon = kwargs.get('icon', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this TwoFactorAuthenticationType.
@@ -65,7 +60,7 @@ class TwoFactorAuthenticationType(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this TwoFactorAuthenticationType.
@@ -88,7 +83,7 @@ class TwoFactorAuthenticationType(object):
         """
 
         self._feature = feature
-
+    
     @property
     def icon(self):
         """Gets the icon of this TwoFactorAuthenticationType.
@@ -111,7 +106,7 @@ class TwoFactorAuthenticationType(object):
         """
 
         self._icon = icon
-
+    
     @property
     def id(self):
         """Gets the id of this TwoFactorAuthenticationType.
@@ -134,7 +129,7 @@ class TwoFactorAuthenticationType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this TwoFactorAuthenticationType.
@@ -157,6 +152,7 @@ class TwoFactorAuthenticationType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

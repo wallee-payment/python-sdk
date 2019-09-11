@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionMetricUsageReport(object):
+class SubscriptionMetricUsageReport:
 
     swagger_types = {
+    
         'consumed_units': 'float',
         'created_by_user_id': 'int',
         'created_on': 'datetime',
@@ -22,17 +23,7 @@ class SubscriptionMetricUsageReport(object):
     }
 
     attribute_map = {
-        'consumed_units': 'consumedUnits',
-        'created_by_user_id': 'createdByUserId',
-        'created_on': 'createdOn',
-        'description': 'description',
-        'external_id': 'externalId',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'metric': 'metric',
-        'planned_purge_date': 'plannedPurgeDate',
-        'subscription': 'subscription',
-        'version': 'version',
+        'consumed_units': 'consumedUnits','created_by_user_id': 'createdByUserId','created_on': 'createdOn','description': 'description','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','metric': 'metric','planned_purge_date': 'plannedPurgeDate','subscription': 'subscription','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class SubscriptionMetricUsageReport(object):
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.subscription = kwargs.get('subscription', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def consumed_units(self):
         """Gets the consumed_units of this SubscriptionMetricUsageReport.
@@ -89,7 +78,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._consumed_units = consumed_units
-
+    
     @property
     def created_by_user_id(self):
         """Gets the created_by_user_id of this SubscriptionMetricUsageReport.
@@ -112,7 +101,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._created_by_user_id = created_by_user_id
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionMetricUsageReport.
@@ -135,7 +124,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionMetricUsageReport.
@@ -158,7 +147,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._description = description
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionMetricUsageReport.
@@ -181,7 +170,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionMetricUsageReport.
@@ -204,7 +193,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionMetricUsageReport.
@@ -227,7 +216,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def metric(self):
         """Gets the metric of this SubscriptionMetricUsageReport.
@@ -250,7 +239,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._metric = metric
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionMetricUsageReport.
@@ -273,7 +262,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionMetricUsageReport.
@@ -296,7 +285,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._subscription = subscription
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionMetricUsageReport.
@@ -319,6 +308,7 @@ class SubscriptionMetricUsageReport(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

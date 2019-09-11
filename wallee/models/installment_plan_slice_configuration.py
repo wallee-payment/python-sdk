@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class InstallmentPlanSliceConfiguration(object):
+class InstallmentPlanSliceConfiguration:
 
     swagger_types = {
+    
         'id': 'int',
         'line_item_title': 'DatabaseTranslatedString',
         'linked_space_id': 'int',
@@ -21,16 +22,7 @@ class InstallmentPlanSliceConfiguration(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'line_item_title': 'lineItemTitle',
-        'linked_space_id': 'linkedSpaceId',
-        'period': 'period',
-        'plan': 'plan',
-        'planned_purge_date': 'plannedPurgeDate',
-        'priority': 'priority',
-        'proportion': 'proportion',
-        'state': 'state',
-        'version': 'version',
+        'id': 'id','line_item_title': 'lineItemTitle','linked_space_id': 'linkedSpaceId','period': 'period','plan': 'plan','planned_purge_date': 'plannedPurgeDate','priority': 'priority','proportion': 'proportion','state': 'state','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class InstallmentPlanSliceConfiguration(object):
         self.proportion = kwargs.get('proportion', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this InstallmentPlanSliceConfiguration.
@@ -85,7 +75,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def line_item_title(self):
         """Gets the line_item_title of this InstallmentPlanSliceConfiguration.
@@ -108,7 +98,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._line_item_title = line_item_title
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this InstallmentPlanSliceConfiguration.
@@ -131,7 +121,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def period(self):
         """Gets the period of this InstallmentPlanSliceConfiguration.
@@ -154,7 +144,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._period = period
-
+    
     @property
     def plan(self):
         """Gets the plan of this InstallmentPlanSliceConfiguration.
@@ -177,7 +167,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._plan = plan
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this InstallmentPlanSliceConfiguration.
@@ -200,7 +190,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def priority(self):
         """Gets the priority of this InstallmentPlanSliceConfiguration.
@@ -223,7 +213,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._priority = priority
-
+    
     @property
     def proportion(self):
         """Gets the proportion of this InstallmentPlanSliceConfiguration.
@@ -246,7 +236,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._proportion = proportion
-
+    
     @property
     def state(self):
         """Gets the state of this InstallmentPlanSliceConfiguration.
@@ -269,7 +259,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this InstallmentPlanSliceConfiguration.
@@ -292,6 +282,7 @@ class InstallmentPlanSliceConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

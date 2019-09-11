@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class AbstractWebhookUrlUpdate(object):
+class AbstractWebhookUrlUpdate:
 
     swagger_types = {
+    
         'name': 'str',
         'state': 'CreationEntityState',
         'url': 'str',
     }
 
     attribute_map = {
-        'name': 'name',
-        'state': 'state',
-        'url': 'url',
+        'name': 'name','state': 'state','url': 'url',
     }
 
     
@@ -30,11 +29,9 @@ class AbstractWebhookUrlUpdate(object):
         self.name = kwargs.get('name', None)
         self.state = kwargs.get('state', None)
         self.url = kwargs.get('url', None)
-
-        
-        
         
 
+    
     @property
     def name(self):
         """Gets the name of this AbstractWebhookUrlUpdate.
@@ -57,7 +54,7 @@ class AbstractWebhookUrlUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractWebhookUrlUpdate.
@@ -80,7 +77,7 @@ class AbstractWebhookUrlUpdate(object):
         """
 
         self._state = state
-
+    
     @property
     def url(self):
         """Gets the url of this AbstractWebhookUrlUpdate.
@@ -103,6 +100,7 @@ class AbstractWebhookUrlUpdate(object):
         """
 
         self._url = url
+    
 
     def to_dict(self):
         result = {}

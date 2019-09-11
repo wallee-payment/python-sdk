@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ChargeFlow(object):
+class ChargeFlow:
 
     swagger_types = {
+    
         'conditions': 'list[int]',
         'id': 'int',
         'linked_space_id': 'int',
@@ -19,14 +20,7 @@ class ChargeFlow(object):
     }
 
     attribute_map = {
-        'conditions': 'conditions',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'priority': 'priority',
-        'state': 'state',
-        'version': 'version',
+        'conditions': 'conditions','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','priority': 'priority','state': 'state','version': 'version',
     }
 
     
@@ -50,11 +44,9 @@ class ChargeFlow(object):
         self.priority = kwargs.get('priority', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def conditions(self):
         """Gets the conditions of this ChargeFlow.
@@ -77,7 +69,7 @@ class ChargeFlow(object):
         """
 
         self._conditions = conditions
-
+    
     @property
     def id(self):
         """Gets the id of this ChargeFlow.
@@ -100,7 +92,7 @@ class ChargeFlow(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ChargeFlow.
@@ -123,7 +115,7 @@ class ChargeFlow(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this ChargeFlow.
@@ -146,7 +138,7 @@ class ChargeFlow(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ChargeFlow.
@@ -169,7 +161,7 @@ class ChargeFlow(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def priority(self):
         """Gets the priority of this ChargeFlow.
@@ -192,7 +184,7 @@ class ChargeFlow(object):
         """
 
         self._priority = priority
-
+    
     @property
     def state(self):
         """Gets the state of this ChargeFlow.
@@ -215,7 +207,7 @@ class ChargeFlow(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this ChargeFlow.
@@ -238,6 +230,7 @@ class ChargeFlow(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

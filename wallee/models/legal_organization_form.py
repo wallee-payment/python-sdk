@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class LegalOrganizationForm(object):
+class LegalOrganizationForm:
 
     swagger_types = {
+    
         'country': 'str',
         'description': 'list[LocalizedString]',
         'english_description': 'str',
@@ -16,11 +17,7 @@ class LegalOrganizationForm(object):
     }
 
     attribute_map = {
-        'country': 'country',
-        'description': 'description',
-        'english_description': 'englishDescription',
-        'id': 'id',
-        'shortcut': 'shortcut',
+        'country': 'country','description': 'description','english_description': 'englishDescription','id': 'id','shortcut': 'shortcut',
     }
 
     
@@ -38,11 +35,9 @@ class LegalOrganizationForm(object):
         self.english_description = kwargs.get('english_description', None)
         self.id = kwargs.get('id', None)
         self.shortcut = kwargs.get('shortcut', None)
-
-        
-        
         
 
+    
     @property
     def country(self):
         """Gets the country of this LegalOrganizationForm.
@@ -65,7 +60,7 @@ class LegalOrganizationForm(object):
         """
 
         self._country = country
-
+    
     @property
     def description(self):
         """Gets the description of this LegalOrganizationForm.
@@ -88,7 +83,7 @@ class LegalOrganizationForm(object):
         """
 
         self._description = description
-
+    
     @property
     def english_description(self):
         """Gets the english_description of this LegalOrganizationForm.
@@ -111,7 +106,7 @@ class LegalOrganizationForm(object):
         """
 
         self._english_description = english_description
-
+    
     @property
     def id(self):
         """Gets the id of this LegalOrganizationForm.
@@ -134,7 +129,7 @@ class LegalOrganizationForm(object):
         """
 
         self._id = id
-
+    
     @property
     def shortcut(self):
         """Gets the shortcut of this LegalOrganizationForm.
@@ -157,6 +152,7 @@ class LegalOrganizationForm(object):
         """
 
         self._shortcut = shortcut
+    
 
     def to_dict(self):
         result = {}

@@ -8,13 +8,13 @@ from . import AbstractAccountUpdate
 class AccountCreate(AbstractAccountUpdate):
 
     swagger_types = {
+    
         'parent_account': 'int',
         'scope': 'int',
     }
 
     attribute_map = {
-        'parent_account': 'parentAccount',
-        'scope': 'scope',
+        'parent_account': 'parentAccount','scope': 'scope',
     }
 
     
@@ -31,6 +31,7 @@ class AccountCreate(AbstractAccountUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def parent_account(self):
         """Gets the parent_account of this AccountCreate.
@@ -53,7 +54,7 @@ class AccountCreate(AbstractAccountUpdate):
         """
 
         self._parent_account = parent_account
-
+    
     @property
     def scope(self):
         """Gets the scope of this AccountCreate.
@@ -78,6 +79,7 @@ class AccountCreate(AbstractAccountUpdate):
             raise ValueError("Invalid value for `scope`, must not be `None`")
 
         self._scope = scope
+    
 
     def to_dict(self):
         result = {}

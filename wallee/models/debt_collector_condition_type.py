@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class DebtCollectorConditionType(object):
+class DebtCollectorConditionType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'id': 'int',
         'name': 'dict(str, str)',
     }
 
     attribute_map = {
-        'description': 'description',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','id': 'id','name': 'name',
     }
 
     
@@ -30,11 +29,9 @@ class DebtCollectorConditionType(object):
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this DebtCollectorConditionType.
@@ -57,7 +54,7 @@ class DebtCollectorConditionType(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectorConditionType.
@@ -80,7 +77,7 @@ class DebtCollectorConditionType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this DebtCollectorConditionType.
@@ -103,6 +100,7 @@ class DebtCollectorConditionType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionCreateRequest(object):
+class SubscriptionCreateRequest:
 
     swagger_types = {
+    
         'currency': 'str',
         'product': 'int',
         'selected_components': 'list[SubscriptionProductComponentReference]',
@@ -15,10 +16,7 @@ class SubscriptionCreateRequest(object):
     }
 
     attribute_map = {
-        'currency': 'currency',
-        'product': 'product',
-        'selected_components': 'selectedComponents',
-        'subscription': 'subscription',
+        'currency': 'currency','product': 'product','selected_components': 'selectedComponents','subscription': 'subscription',
     }
 
     
@@ -31,14 +29,15 @@ class SubscriptionCreateRequest(object):
         self.discriminator = None
         
         self.currency = kwargs.get('currency')
+
         self.product = kwargs.get('product')
+
         self.selected_components = kwargs.get('selected_components', None)
         self.subscription = kwargs.get('subscription')
 
         
-        
-        
 
+    
     @property
     def currency(self):
         """Gets the currency of this SubscriptionCreateRequest.
@@ -63,7 +62,7 @@ class SubscriptionCreateRequest(object):
             raise ValueError("Invalid value for `currency`, must not be `None`")
 
         self._currency = currency
-
+    
     @property
     def product(self):
         """Gets the product of this SubscriptionCreateRequest.
@@ -88,7 +87,7 @@ class SubscriptionCreateRequest(object):
             raise ValueError("Invalid value for `product`, must not be `None`")
 
         self._product = product
-
+    
     @property
     def selected_components(self):
         """Gets the selected_components of this SubscriptionCreateRequest.
@@ -111,7 +110,7 @@ class SubscriptionCreateRequest(object):
         """
 
         self._selected_components = selected_components
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionCreateRequest.
@@ -136,6 +135,7 @@ class SubscriptionCreateRequest(object):
             raise ValueError("Invalid value for `subscription`, must not be `None`")
 
         self._subscription = subscription
+    
 
     def to_dict(self):
         result = {}

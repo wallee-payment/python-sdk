@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Refund(object):
+class Refund:
 
     swagger_types = {
+    
         'amount': 'float',
         'base_line_items': 'list[LineItem]',
         'completion': 'int',
@@ -41,36 +42,7 @@ class Refund(object):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'base_line_items': 'baseLineItems',
-        'completion': 'completion',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'environment': 'environment',
-        'external_id': 'externalId',
-        'failed_on': 'failedOn',
-        'failure_reason': 'failureReason',
-        'id': 'id',
-        'labels': 'labels',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'linked_space_id': 'linkedSpaceId',
-        'merchant_reference': 'merchantReference',
-        'next_update_on': 'nextUpdateOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processing_on': 'processingOn',
-        'processor_reference': 'processorReference',
-        'reduced_line_items': 'reducedLineItems',
-        'reductions': 'reductions',
-        'state': 'state',
-        'succeeded_on': 'succeededOn',
-        'taxes': 'taxes',
-        'time_zone': 'timeZone',
-        'timeout_on': 'timeoutOn',
-        'transaction': 'transaction',
-        'type': 'type',
-        'updated_invoice': 'updatedInvoice',
-        'version': 'version',
+        'amount': 'amount','base_line_items': 'baseLineItems','completion': 'completion','created_by': 'createdBy','created_on': 'createdOn','environment': 'environment','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','reduced_line_items': 'reducedLineItems','reductions': 'reductions','state': 'state','succeeded_on': 'succeededOn','taxes': 'taxes','time_zone': 'timeZone','timeout_on': 'timeoutOn','transaction': 'transaction','type': 'type','updated_invoice': 'updatedInvoice','version': 'version',
     }
 
     
@@ -138,11 +110,9 @@ class Refund(object):
         self.type = kwargs.get('type', None)
         self.updated_invoice = kwargs.get('updated_invoice', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def amount(self):
         """Gets the amount of this Refund.
@@ -165,7 +135,7 @@ class Refund(object):
         """
 
         self._amount = amount
-
+    
     @property
     def base_line_items(self):
         """Gets the base_line_items of this Refund.
@@ -188,7 +158,7 @@ class Refund(object):
         """
 
         self._base_line_items = base_line_items
-
+    
     @property
     def completion(self):
         """Gets the completion of this Refund.
@@ -211,7 +181,7 @@ class Refund(object):
         """
 
         self._completion = completion
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this Refund.
@@ -234,7 +204,7 @@ class Refund(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this Refund.
@@ -257,7 +227,7 @@ class Refund(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def environment(self):
         """Gets the environment of this Refund.
@@ -280,7 +250,7 @@ class Refund(object):
         """
 
         self._environment = environment
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this Refund.
@@ -303,7 +273,7 @@ class Refund(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this Refund.
@@ -326,7 +296,7 @@ class Refund(object):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this Refund.
@@ -349,7 +319,7 @@ class Refund(object):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def id(self):
         """Gets the id of this Refund.
@@ -372,7 +342,7 @@ class Refund(object):
         """
 
         self._id = id
-
+    
     @property
     def labels(self):
         """Gets the labels of this Refund.
@@ -395,7 +365,7 @@ class Refund(object):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this Refund.
@@ -418,7 +388,7 @@ class Refund(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this Refund.
@@ -441,7 +411,7 @@ class Refund(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Refund.
@@ -464,7 +434,7 @@ class Refund(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this Refund.
@@ -487,7 +457,7 @@ class Refund(object):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def next_update_on(self):
         """Gets the next_update_on of this Refund.
@@ -510,7 +480,7 @@ class Refund(object):
         """
 
         self._next_update_on = next_update_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Refund.
@@ -533,7 +503,7 @@ class Refund(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processing_on(self):
         """Gets the processing_on of this Refund.
@@ -556,7 +526,7 @@ class Refund(object):
         """
 
         self._processing_on = processing_on
-
+    
     @property
     def processor_reference(self):
         """Gets the processor_reference of this Refund.
@@ -579,7 +549,7 @@ class Refund(object):
         """
 
         self._processor_reference = processor_reference
-
+    
     @property
     def reduced_line_items(self):
         """Gets the reduced_line_items of this Refund.
@@ -602,7 +572,7 @@ class Refund(object):
         """
 
         self._reduced_line_items = reduced_line_items
-
+    
     @property
     def reductions(self):
         """Gets the reductions of this Refund.
@@ -625,7 +595,7 @@ class Refund(object):
         """
 
         self._reductions = reductions
-
+    
     @property
     def state(self):
         """Gets the state of this Refund.
@@ -648,7 +618,7 @@ class Refund(object):
         """
 
         self._state = state
-
+    
     @property
     def succeeded_on(self):
         """Gets the succeeded_on of this Refund.
@@ -671,7 +641,7 @@ class Refund(object):
         """
 
         self._succeeded_on = succeeded_on
-
+    
     @property
     def taxes(self):
         """Gets the taxes of this Refund.
@@ -694,7 +664,7 @@ class Refund(object):
         """
 
         self._taxes = taxes
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this Refund.
@@ -717,7 +687,7 @@ class Refund(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this Refund.
@@ -740,7 +710,7 @@ class Refund(object):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this Refund.
@@ -763,7 +733,7 @@ class Refund(object):
         """
 
         self._transaction = transaction
-
+    
     @property
     def type(self):
         """Gets the type of this Refund.
@@ -786,7 +756,7 @@ class Refund(object):
         """
 
         self._type = type
-
+    
     @property
     def updated_invoice(self):
         """Gets the updated_invoice of this Refund.
@@ -809,7 +779,7 @@ class Refund(object):
         """
 
         self._updated_invoice = updated_invoice
-
+    
     @property
     def version(self):
         """Gets the version of this Refund.
@@ -832,6 +802,7 @@ class Refund(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

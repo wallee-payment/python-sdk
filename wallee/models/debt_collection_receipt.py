@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectionReceipt(object):
+class DebtCollectionReceipt:
 
     swagger_types = {
+    
         'amount': 'float',
         'created_by': 'int',
         'created_on': 'datetime',
@@ -21,16 +22,7 @@ class DebtCollectionReceipt(object):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'debt_collection_case': 'debtCollectionCase',
-        'external_id': 'externalId',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'source': 'source',
-        'version': 'version',
+        'amount': 'amount','created_by': 'createdBy','created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','source': 'source','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class DebtCollectionReceipt(object):
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.source = kwargs.get('source', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def amount(self):
         """Gets the amount of this DebtCollectionReceipt.
@@ -85,7 +75,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._amount = amount
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this DebtCollectionReceipt.
@@ -108,7 +98,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this DebtCollectionReceipt.
@@ -131,7 +121,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def debt_collection_case(self):
         """Gets the debt_collection_case of this DebtCollectionReceipt.
@@ -154,7 +144,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._debt_collection_case = debt_collection_case
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this DebtCollectionReceipt.
@@ -177,7 +167,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectionReceipt.
@@ -200,7 +190,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DebtCollectionReceipt.
@@ -223,7 +213,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DebtCollectionReceipt.
@@ -246,7 +236,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def source(self):
         """Gets the source of this DebtCollectionReceipt.
@@ -269,7 +259,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._source = source
-
+    
     @property
     def version(self):
         """Gets the version of this DebtCollectionReceipt.
@@ -292,6 +282,7 @@ class DebtCollectionReceipt(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Subscriber(object):
+class Subscriber:
 
     swagger_types = {
+    
         'additional_allowed_payment_method_configurations': 'list[int]',
         'billing_address': 'Address',
         'description': 'str',
@@ -26,21 +27,7 @@ class Subscriber(object):
     }
 
     attribute_map = {
-        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations',
-        'billing_address': 'billingAddress',
-        'description': 'description',
-        'disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations',
-        'email_address': 'emailAddress',
-        'external_id': 'externalId',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'meta_data': 'metaData',
-        'planned_purge_date': 'plannedPurgeDate',
-        'reference': 'reference',
-        'shipping_address': 'shippingAddress',
-        'state': 'state',
-        'version': 'version',
+        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations','billing_address': 'billingAddress','description': 'description','disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations','email_address': 'emailAddress','external_id': 'externalId','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','meta_data': 'metaData','planned_purge_date': 'plannedPurgeDate','reference': 'reference','shipping_address': 'shippingAddress','state': 'state','version': 'version',
     }
 
     
@@ -78,11 +65,9 @@ class Subscriber(object):
         self.shipping_address = kwargs.get('shipping_address', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def additional_allowed_payment_method_configurations(self):
         """Gets the additional_allowed_payment_method_configurations of this Subscriber.
@@ -105,7 +90,7 @@ class Subscriber(object):
         """
 
         self._additional_allowed_payment_method_configurations = additional_allowed_payment_method_configurations
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this Subscriber.
@@ -128,7 +113,7 @@ class Subscriber(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def description(self):
         """Gets the description of this Subscriber.
@@ -151,7 +136,7 @@ class Subscriber(object):
         """
 
         self._description = description
-
+    
     @property
     def disallowed_payment_method_configurations(self):
         """Gets the disallowed_payment_method_configurations of this Subscriber.
@@ -174,7 +159,7 @@ class Subscriber(object):
         """
 
         self._disallowed_payment_method_configurations = disallowed_payment_method_configurations
-
+    
     @property
     def email_address(self):
         """Gets the email_address of this Subscriber.
@@ -197,7 +182,7 @@ class Subscriber(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this Subscriber.
@@ -220,7 +205,7 @@ class Subscriber(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this Subscriber.
@@ -243,7 +228,7 @@ class Subscriber(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this Subscriber.
@@ -266,7 +251,7 @@ class Subscriber(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Subscriber.
@@ -289,7 +274,7 @@ class Subscriber(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this Subscriber.
@@ -312,7 +297,7 @@ class Subscriber(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Subscriber.
@@ -335,7 +320,7 @@ class Subscriber(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def reference(self):
         """Gets the reference of this Subscriber.
@@ -358,7 +343,7 @@ class Subscriber(object):
         """
 
         self._reference = reference
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this Subscriber.
@@ -381,7 +366,7 @@ class Subscriber(object):
         """
 
         self._shipping_address = shipping_address
-
+    
     @property
     def state(self):
         """Gets the state of this Subscriber.
@@ -404,7 +389,7 @@ class Subscriber(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this Subscriber.
@@ -427,6 +412,7 @@ class Subscriber(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

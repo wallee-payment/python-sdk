@@ -8,24 +8,20 @@ from . import User
 class ApplicationUser(User):
 
     swagger_types = {
+    
         'name': 'str',
         'primary_account': 'Account',
         'request_limit': 'int',
-        'scope': 'Scope',
     }
 
     attribute_map = {
-        'name': 'name',
-        'primary_account': 'primaryAccount',
-        'request_limit': 'requestLimit',
-        'scope': 'scope',
+        'name': 'name','primary_account': 'primaryAccount','request_limit': 'requestLimit',
     }
 
     
     _name = None
     _primary_account = None
     _request_limit = None
-    _scope = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -33,12 +29,11 @@ class ApplicationUser(User):
         self.name = kwargs.get('name', None)
         self.primary_account = kwargs.get('primary_account', None)
         self.request_limit = kwargs.get('request_limit', None)
-        self.scope = kwargs.get('scope', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def name(self):
         """Gets the name of this ApplicationUser.
@@ -61,7 +56,7 @@ class ApplicationUser(User):
         """
 
         self._name = name
-
+    
     @property
     def primary_account(self):
         """Gets the primary_account of this ApplicationUser.
@@ -84,7 +79,7 @@ class ApplicationUser(User):
         """
 
         self._primary_account = primary_account
-
+    
     @property
     def request_limit(self):
         """Gets the request_limit of this ApplicationUser.
@@ -107,29 +102,7 @@ class ApplicationUser(User):
         """
 
         self._request_limit = request_limit
-
-    @property
-    def scope(self):
-        """Gets the scope of this ApplicationUser.
-
-            The scope to which the user belongs to.
-
-        :return: The scope of this ApplicationUser.
-        :rtype: Scope
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, scope):
-        """Sets the scope of this ApplicationUser.
-
-            The scope to which the user belongs to.
-
-        :param scope: The scope of this ApplicationUser.
-        :type: Scope
-        """
-
-        self._scope = scope
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Permission(object):
+class Permission:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'feature': 'int',
         'group': 'bool',
@@ -21,16 +22,7 @@ class Permission(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'feature': 'feature',
-        'group': 'group',
-        'id': 'id',
-        'leaf': 'leaf',
-        'name': 'name',
-        'parent': 'parent',
-        'path_to_root': 'pathToRoot',
-        'title': 'title',
-        'two_factor_required': 'twoFactorRequired',
+        'description': 'description','feature': 'feature','group': 'group','id': 'id','leaf': 'leaf','name': 'name','parent': 'parent','path_to_root': 'pathToRoot','title': 'title','two_factor_required': 'twoFactorRequired',
     }
 
     
@@ -58,11 +50,9 @@ class Permission(object):
         self.path_to_root = kwargs.get('path_to_root', None)
         self.title = kwargs.get('title', None)
         self.two_factor_required = kwargs.get('two_factor_required', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this Permission.
@@ -85,7 +75,7 @@ class Permission(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this Permission.
@@ -108,7 +98,7 @@ class Permission(object):
         """
 
         self._feature = feature
-
+    
     @property
     def group(self):
         """Gets the group of this Permission.
@@ -131,7 +121,7 @@ class Permission(object):
         """
 
         self._group = group
-
+    
     @property
     def id(self):
         """Gets the id of this Permission.
@@ -154,7 +144,7 @@ class Permission(object):
         """
 
         self._id = id
-
+    
     @property
     def leaf(self):
         """Gets the leaf of this Permission.
@@ -177,7 +167,7 @@ class Permission(object):
         """
 
         self._leaf = leaf
-
+    
     @property
     def name(self):
         """Gets the name of this Permission.
@@ -200,7 +190,7 @@ class Permission(object):
         """
 
         self._name = name
-
+    
     @property
     def parent(self):
         """Gets the parent of this Permission.
@@ -223,7 +213,7 @@ class Permission(object):
         """
 
         self._parent = parent
-
+    
     @property
     def path_to_root(self):
         """Gets the path_to_root of this Permission.
@@ -246,7 +236,7 @@ class Permission(object):
         """
 
         self._path_to_root = path_to_root
-
+    
     @property
     def title(self):
         """Gets the title of this Permission.
@@ -269,7 +259,7 @@ class Permission(object):
         """
 
         self._title = title
-
+    
     @property
     def two_factor_required(self):
         """Gets the two_factor_required of this Permission.
@@ -292,6 +282,7 @@ class Permission(object):
         """
 
         self._two_factor_required = two_factor_required
+    
 
     def to_dict(self):
         result = {}

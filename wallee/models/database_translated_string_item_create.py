@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class DatabaseTranslatedStringItemCreate(object):
+class DatabaseTranslatedStringItemCreate:
 
     swagger_types = {
+    
         'language': 'str',
         'translation': 'str',
     }
 
     attribute_map = {
-        'language': 'language',
-        'translation': 'translation',
+        'language': 'language','translation': 'translation',
     }
 
     
@@ -25,12 +25,11 @@ class DatabaseTranslatedStringItemCreate(object):
         self.discriminator = None
         
         self.language = kwargs.get('language')
+
         self.translation = kwargs.get('translation', None)
-
-        
-        
         
 
+    
     @property
     def language(self):
         """Gets the language of this DatabaseTranslatedStringItemCreate.
@@ -55,7 +54,7 @@ class DatabaseTranslatedStringItemCreate(object):
             raise ValueError("Invalid value for `language`, must not be `None`")
 
         self._language = language
-
+    
     @property
     def translation(self):
         """Gets the translation of this DatabaseTranslatedStringItemCreate.
@@ -78,6 +77,7 @@ class DatabaseTranslatedStringItemCreate(object):
         """
 
         self._translation = translation
+    
 
     def to_dict(self):
         result = {}

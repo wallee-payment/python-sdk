@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionUpdate(object):
+class SubscriptionUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'description': 'str',
@@ -15,10 +16,7 @@ class SubscriptionUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'description': 'description',
-        'planned_termination_date': 'plannedTerminationDate',
+        'id': 'id','version': 'version','description': 'description','planned_termination_date': 'plannedTerminationDate',
     }
 
     
@@ -31,14 +29,14 @@ class SubscriptionUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.description = kwargs.get('description', None)
         self.planned_termination_date = kwargs.get('planned_termination_date', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionUpdate.
@@ -63,7 +61,7 @@ class SubscriptionUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionUpdate.
@@ -88,7 +86,7 @@ class SubscriptionUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionUpdate.
@@ -111,7 +109,7 @@ class SubscriptionUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def planned_termination_date(self):
         """Gets the planned_termination_date of this SubscriptionUpdate.
@@ -134,6 +132,7 @@ class SubscriptionUpdate(object):
         """
 
         self._planned_termination_date = planned_termination_date
+    
 
     def to_dict(self):
         result = {}

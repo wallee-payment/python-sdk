@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductComponentGroup(object):
+class SubscriptionProductComponentGroup:
 
     swagger_types = {
+    
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'DatabaseTranslatedString',
@@ -18,13 +19,7 @@ class SubscriptionProductComponentGroup(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'optional': 'optional',
-        'product_version': 'productVersion',
-        'sort_order': 'sortOrder',
-        'version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','optional': 'optional','product_version': 'productVersion','sort_order': 'sortOrder','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class SubscriptionProductComponentGroup(object):
         self.product_version = kwargs.get('product_version', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductComponentGroup.
@@ -73,7 +66,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionProductComponentGroup.
@@ -96,7 +89,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductComponentGroup.
@@ -119,7 +112,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._name = name
-
+    
     @property
     def optional(self):
         """Gets the optional of this SubscriptionProductComponentGroup.
@@ -142,7 +135,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._optional = optional
-
+    
     @property
     def product_version(self):
         """Gets the product_version of this SubscriptionProductComponentGroup.
@@ -165,7 +158,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._product_version = product_version
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponentGroup.
@@ -188,7 +181,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductComponentGroup.
@@ -211,6 +204,7 @@ class SubscriptionProductComponentGroup(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

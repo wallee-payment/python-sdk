@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionAffiliateUpdate(object):
+class SubscriptionAffiliateUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'language': 'str',
@@ -17,12 +18,7 @@ class SubscriptionAffiliateUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'language': 'language',
-        'meta_data': 'metaData',
-        'name': 'name',
-        'state': 'state',
+        'id': 'id','version': 'version','language': 'language','meta_data': 'metaData','name': 'name','state': 'state',
     }
 
     
@@ -37,16 +33,16 @@ class SubscriptionAffiliateUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.language = kwargs.get('language', None)
         self.meta_data = kwargs.get('meta_data', None)
         self.name = kwargs.get('name', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionAffiliateUpdate.
@@ -71,7 +67,7 @@ class SubscriptionAffiliateUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionAffiliateUpdate.
@@ -96,7 +92,7 @@ class SubscriptionAffiliateUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionAffiliateUpdate.
@@ -119,7 +115,7 @@ class SubscriptionAffiliateUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this SubscriptionAffiliateUpdate.
@@ -142,7 +138,7 @@ class SubscriptionAffiliateUpdate(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionAffiliateUpdate.
@@ -165,7 +161,7 @@ class SubscriptionAffiliateUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionAffiliateUpdate.
@@ -188,6 +184,7 @@ class SubscriptionAffiliateUpdate(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

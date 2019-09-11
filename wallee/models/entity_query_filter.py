@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class EntityQueryFilter(object):
+class EntityQueryFilter:
 
     swagger_types = {
+    
         'children': 'list[EntityQueryFilter]',
         'field_name': 'str',
         'operator': 'CriteriaOperator',
@@ -16,11 +17,7 @@ class EntityQueryFilter(object):
     }
 
     attribute_map = {
-        'children': 'children',
-        'field_name': 'fieldName',
-        'operator': 'operator',
-        'type': 'type',
-        'value': 'value',
+        'children': 'children','field_name': 'fieldName','operator': 'operator','type': 'type','value': 'value',
     }
 
     
@@ -37,12 +34,11 @@ class EntityQueryFilter(object):
         self.field_name = kwargs.get('field_name', None)
         self.operator = kwargs.get('operator', None)
         self.type = kwargs.get('type')
+
         self.value = kwargs.get('value', None)
-
-        
-        
         
 
+    
     @property
     def children(self):
         """Gets the children of this EntityQueryFilter.
@@ -65,7 +61,7 @@ class EntityQueryFilter(object):
         """
 
         self._children = children
-
+    
     @property
     def field_name(self):
         """Gets the field_name of this EntityQueryFilter.
@@ -88,7 +84,7 @@ class EntityQueryFilter(object):
         """
 
         self._field_name = field_name
-
+    
     @property
     def operator(self):
         """Gets the operator of this EntityQueryFilter.
@@ -111,7 +107,7 @@ class EntityQueryFilter(object):
         """
 
         self._operator = operator
-
+    
     @property
     def type(self):
         """Gets the type of this EntityQueryFilter.
@@ -136,7 +132,7 @@ class EntityQueryFilter(object):
             raise ValueError("Invalid value for `type`, must not be `None`")
 
         self._type = type
-
+    
     @property
     def value(self):
         """Gets the value of this EntityQueryFilter.
@@ -159,6 +155,7 @@ class EntityQueryFilter(object):
         """
 
         self._value = value
+    
 
     def to_dict(self):
         result = {}

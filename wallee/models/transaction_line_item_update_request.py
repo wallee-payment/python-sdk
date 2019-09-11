@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class TransactionLineItemUpdateRequest(object):
+class TransactionLineItemUpdateRequest:
 
     swagger_types = {
+    
         'new_line_items': 'list[LineItemCreate]',
         'transaction_id': 'int',
     }
 
     attribute_map = {
-        'new_line_items': 'newLineItems',
-        'transaction_id': 'transactionId',
+        'new_line_items': 'newLineItems','transaction_id': 'transactionId',
     }
 
     
@@ -28,9 +28,8 @@ class TransactionLineItemUpdateRequest(object):
         self.transaction_id = kwargs.get('transaction_id')
 
         
-        
-        
 
+    
     @property
     def new_line_items(self):
         """Gets the new_line_items of this TransactionLineItemUpdateRequest.
@@ -53,7 +52,7 @@ class TransactionLineItemUpdateRequest(object):
         """
 
         self._new_line_items = new_line_items
-
+    
     @property
     def transaction_id(self):
         """Gets the transaction_id of this TransactionLineItemUpdateRequest.
@@ -78,6 +77,7 @@ class TransactionLineItemUpdateRequest(object):
             raise ValueError("Invalid value for `transaction_id`, must not be `None`")
 
         self._transaction_id = transaction_id
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class UserSpaceRole(object):
+class UserSpaceRole:
 
     swagger_types = {
+    
         'id': 'int',
         'role': 'int',
         'space': 'int',
@@ -16,11 +17,7 @@ class UserSpaceRole(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'role': 'role',
-        'space': 'space',
-        'user': 'user',
-        'version': 'version',
+        'id': 'id','role': 'role','space': 'space','user': 'user','version': 'version',
     }
 
     
@@ -38,11 +35,9 @@ class UserSpaceRole(object):
         self.space = kwargs.get('space', None)
         self.user = kwargs.get('user', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this UserSpaceRole.
@@ -65,7 +60,7 @@ class UserSpaceRole(object):
         """
 
         self._id = id
-
+    
     @property
     def role(self):
         """Gets the role of this UserSpaceRole.
@@ -88,7 +83,7 @@ class UserSpaceRole(object):
         """
 
         self._role = role
-
+    
     @property
     def space(self):
         """Gets the space of this UserSpaceRole.
@@ -111,7 +106,7 @@ class UserSpaceRole(object):
         """
 
         self._space = space
-
+    
     @property
     def user(self):
         """Gets the user of this UserSpaceRole.
@@ -134,7 +129,7 @@ class UserSpaceRole(object):
         """
 
         self._user = user
-
+    
     @property
     def version(self):
         """Gets the version of this UserSpaceRole.
@@ -157,6 +152,7 @@ class UserSpaceRole(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

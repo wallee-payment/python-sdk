@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionChangeRequest(object):
+class SubscriptionChangeRequest:
 
     swagger_types = {
+    
         'currency': 'str',
         'product': 'int',
         'respect_termination_period': 'bool',
@@ -16,11 +17,7 @@ class SubscriptionChangeRequest(object):
     }
 
     attribute_map = {
-        'currency': 'currency',
-        'product': 'product',
-        'respect_termination_period': 'respectTerminationPeriod',
-        'selected_components': 'selectedComponents',
-        'subscription': 'subscription',
+        'currency': 'currency','product': 'product','respect_termination_period': 'respectTerminationPeriod','selected_components': 'selectedComponents','subscription': 'subscription',
     }
 
     
@@ -34,15 +31,16 @@ class SubscriptionChangeRequest(object):
         self.discriminator = None
         
         self.currency = kwargs.get('currency')
+
         self.product = kwargs.get('product')
+
         self.respect_termination_period = kwargs.get('respect_termination_period', None)
         self.selected_components = kwargs.get('selected_components', None)
         self.subscription = kwargs.get('subscription')
 
         
-        
-        
 
+    
     @property
     def currency(self):
         """Gets the currency of this SubscriptionChangeRequest.
@@ -67,7 +65,7 @@ class SubscriptionChangeRequest(object):
             raise ValueError("Invalid value for `currency`, must not be `None`")
 
         self._currency = currency
-
+    
     @property
     def product(self):
         """Gets the product of this SubscriptionChangeRequest.
@@ -92,7 +90,7 @@ class SubscriptionChangeRequest(object):
             raise ValueError("Invalid value for `product`, must not be `None`")
 
         self._product = product
-
+    
     @property
     def respect_termination_period(self):
         """Gets the respect_termination_period of this SubscriptionChangeRequest.
@@ -115,7 +113,7 @@ class SubscriptionChangeRequest(object):
         """
 
         self._respect_termination_period = respect_termination_period
-
+    
     @property
     def selected_components(self):
         """Gets the selected_components of this SubscriptionChangeRequest.
@@ -138,7 +136,7 @@ class SubscriptionChangeRequest(object):
         """
 
         self._selected_components = selected_components
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionChangeRequest.
@@ -163,6 +161,7 @@ class SubscriptionChangeRequest(object):
             raise ValueError("Invalid value for `subscription`, must not be `None`")
 
         self._subscription = subscription
+    
 
     def to_dict(self):
         result = {}

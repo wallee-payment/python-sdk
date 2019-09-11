@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductPeriodFeeUpdate(object):
+class ProductPeriodFeeUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'component': 'int',
@@ -19,14 +20,7 @@ class ProductPeriodFeeUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'component': 'component',
-        'description': 'description',
-        'ledger_entry_title': 'ledgerEntryTitle',
-        'name': 'name',
-        'number_of_free_trial_periods': 'numberOfFreeTrialPeriods',
-        'period_fee': 'periodFee',
+        'id': 'id','version': 'version','component': 'component','description': 'description','ledger_entry_title': 'ledgerEntryTitle','name': 'name','number_of_free_trial_periods': 'numberOfFreeTrialPeriods','period_fee': 'periodFee',
     }
 
     
@@ -43,18 +37,18 @@ class ProductPeriodFeeUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.component = kwargs.get('component', None)
         self.description = kwargs.get('description', None)
         self.ledger_entry_title = kwargs.get('ledger_entry_title', None)
         self.name = kwargs.get('name', None)
         self.number_of_free_trial_periods = kwargs.get('number_of_free_trial_periods', None)
         self.period_fee = kwargs.get('period_fee', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ProductPeriodFeeUpdate.
@@ -79,7 +73,7 @@ class ProductPeriodFeeUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this ProductPeriodFeeUpdate.
@@ -104,7 +98,7 @@ class ProductPeriodFeeUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def component(self):
         """Gets the component of this ProductPeriodFeeUpdate.
@@ -127,7 +121,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductPeriodFeeUpdate.
@@ -150,7 +144,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def ledger_entry_title(self):
         """Gets the ledger_entry_title of this ProductPeriodFeeUpdate.
@@ -173,7 +167,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._ledger_entry_title = ledger_entry_title
-
+    
     @property
     def name(self):
         """Gets the name of this ProductPeriodFeeUpdate.
@@ -196,7 +190,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def number_of_free_trial_periods(self):
         """Gets the number_of_free_trial_periods of this ProductPeriodFeeUpdate.
@@ -219,7 +213,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._number_of_free_trial_periods = number_of_free_trial_periods
-
+    
     @property
     def period_fee(self):
         """Gets the period_fee of this ProductPeriodFeeUpdate.
@@ -242,6 +236,7 @@ class ProductPeriodFeeUpdate(object):
         """
 
         self._period_fee = period_fee
+    
 
     def to_dict(self):
         result = {}

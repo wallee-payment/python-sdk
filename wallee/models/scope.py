@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Scope(object):
+class Scope:
 
     swagger_types = {
+    
         'domain_name': 'str',
         'features': 'list[Feature]',
         'id': 'int',
@@ -22,17 +23,7 @@ class Scope(object):
     }
 
     attribute_map = {
-        'domain_name': 'domainName',
-        'features': 'features',
-        'id': 'id',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'port': 'port',
-        'ssl_active': 'sslActive',
-        'state': 'state',
-        'themes': 'themes',
-        'url': 'url',
-        'version': 'version',
+        'domain_name': 'domainName','features': 'features','id': 'id','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class Scope(object):
         self.themes = kwargs.get('themes', None)
         self.url = kwargs.get('url', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def domain_name(self):
         """Gets the domain_name of this Scope.
@@ -89,7 +78,7 @@ class Scope(object):
         """
 
         self._domain_name = domain_name
-
+    
     @property
     def features(self):
         """Gets the features of this Scope.
@@ -112,7 +101,7 @@ class Scope(object):
         """
 
         self._features = features
-
+    
     @property
     def id(self):
         """Gets the id of this Scope.
@@ -135,7 +124,7 @@ class Scope(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this Scope.
@@ -158,7 +147,7 @@ class Scope(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Scope.
@@ -181,7 +170,7 @@ class Scope(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def port(self):
         """Gets the port of this Scope.
@@ -204,7 +193,7 @@ class Scope(object):
         """
 
         self._port = port
-
+    
     @property
     def ssl_active(self):
         """Gets the ssl_active of this Scope.
@@ -227,7 +216,7 @@ class Scope(object):
         """
 
         self._ssl_active = ssl_active
-
+    
     @property
     def state(self):
         """Gets the state of this Scope.
@@ -250,7 +239,7 @@ class Scope(object):
         """
 
         self._state = state
-
+    
     @property
     def themes(self):
         """Gets the themes of this Scope.
@@ -273,7 +262,7 @@ class Scope(object):
         """
 
         self._themes = themes
-
+    
     @property
     def url(self):
         """Gets the url of this Scope.
@@ -296,7 +285,7 @@ class Scope(object):
         """
 
         self._url = url
-
+    
     @property
     def version(self):
         """Gets the version of this Scope.
@@ -319,6 +308,7 @@ class Scope(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

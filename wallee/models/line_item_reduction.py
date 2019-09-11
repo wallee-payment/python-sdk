@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class LineItemReduction(object):
+class LineItemReduction:
 
     swagger_types = {
+    
         'line_item_unique_id': 'str',
         'quantity_reduction': 'float',
         'unit_price_reduction': 'float',
     }
 
     attribute_map = {
-        'line_item_unique_id': 'lineItemUniqueId',
-        'quantity_reduction': 'quantityReduction',
-        'unit_price_reduction': 'unitPriceReduction',
+        'line_item_unique_id': 'lineItemUniqueId','quantity_reduction': 'quantityReduction','unit_price_reduction': 'unitPriceReduction',
     }
 
     
@@ -30,11 +29,9 @@ class LineItemReduction(object):
         self.line_item_unique_id = kwargs.get('line_item_unique_id', None)
         self.quantity_reduction = kwargs.get('quantity_reduction', None)
         self.unit_price_reduction = kwargs.get('unit_price_reduction', None)
-
-        
-        
         
 
+    
     @property
     def line_item_unique_id(self):
         """Gets the line_item_unique_id of this LineItemReduction.
@@ -57,7 +54,7 @@ class LineItemReduction(object):
         """
 
         self._line_item_unique_id = line_item_unique_id
-
+    
     @property
     def quantity_reduction(self):
         """Gets the quantity_reduction of this LineItemReduction.
@@ -80,7 +77,7 @@ class LineItemReduction(object):
         """
 
         self._quantity_reduction = quantity_reduction
-
+    
     @property
     def unit_price_reduction(self):
         """Gets the unit_price_reduction of this LineItemReduction.
@@ -103,6 +100,7 @@ class LineItemReduction(object):
         """
 
         self._unit_price_reduction = unit_price_reduction
+    
 
     def to_dict(self):
         result = {}

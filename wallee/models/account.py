@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Account(object):
+class Account:
 
     swagger_types = {
+    
         'active': 'bool',
         'active_or_restricted_active': 'bool',
         'id': 'int',
@@ -23,18 +24,7 @@ class Account(object):
     }
 
     attribute_map = {
-        'active': 'active',
-        'active_or_restricted_active': 'activeOrRestrictedActive',
-        'id': 'id',
-        'name': 'name',
-        'parent_account': 'parentAccount',
-        'planned_purge_date': 'plannedPurgeDate',
-        'restricted_active': 'restrictedActive',
-        'scope': 'scope',
-        'state': 'state',
-        'subaccount_limit': 'subaccountLimit',
-        'type': 'type',
-        'version': 'version',
+        'active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','id': 'id','name': 'name','parent_account': 'parentAccount','planned_purge_date': 'plannedPurgeDate','restricted_active': 'restrictedActive','scope': 'scope','state': 'state','subaccount_limit': 'subaccountLimit','type': 'type','version': 'version',
     }
 
     
@@ -66,11 +56,9 @@ class Account(object):
         self.subaccount_limit = kwargs.get('subaccount_limit', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def active(self):
         """Gets the active of this Account.
@@ -93,7 +81,7 @@ class Account(object):
         """
 
         self._active = active
-
+    
     @property
     def active_or_restricted_active(self):
         """Gets the active_or_restricted_active of this Account.
@@ -116,7 +104,7 @@ class Account(object):
         """
 
         self._active_or_restricted_active = active_or_restricted_active
-
+    
     @property
     def id(self):
         """Gets the id of this Account.
@@ -139,7 +127,7 @@ class Account(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this Account.
@@ -162,7 +150,7 @@ class Account(object):
         """
 
         self._name = name
-
+    
     @property
     def parent_account(self):
         """Gets the parent_account of this Account.
@@ -185,7 +173,7 @@ class Account(object):
         """
 
         self._parent_account = parent_account
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Account.
@@ -208,7 +196,7 @@ class Account(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def restricted_active(self):
         """Gets the restricted_active of this Account.
@@ -231,7 +219,7 @@ class Account(object):
         """
 
         self._restricted_active = restricted_active
-
+    
     @property
     def scope(self):
         """Gets the scope of this Account.
@@ -254,7 +242,7 @@ class Account(object):
         """
 
         self._scope = scope
-
+    
     @property
     def state(self):
         """Gets the state of this Account.
@@ -277,7 +265,7 @@ class Account(object):
         """
 
         self._state = state
-
+    
     @property
     def subaccount_limit(self):
         """Gets the subaccount_limit of this Account.
@@ -300,7 +288,7 @@ class Account(object):
         """
 
         self._subaccount_limit = subaccount_limit
-
+    
     @property
     def type(self):
         """Gets the type of this Account.
@@ -323,7 +311,7 @@ class Account(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this Account.
@@ -346,6 +334,7 @@ class Account(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

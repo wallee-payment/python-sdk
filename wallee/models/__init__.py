@@ -208,7 +208,7 @@ from .token import Token
 from .token_version import TokenVersion
 from .token_version_state import TokenVersionState
 from .token_version_type import TokenVersionType
-from .tokenizationn_mode import TokenizationnMode
+from .tokenization_mode import TokenizationMode
 from .transaction import Transaction
 from .transaction_aware_entity import TransactionAwareEntity
 from .transaction_comment import TransactionComment

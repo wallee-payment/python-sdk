@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class Charge(TransactionAwareEntity):
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'failure_reason': 'FailureReason',
         'language': 'str',
@@ -23,18 +24,7 @@ class Charge(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'failure_reason': 'failureReason',
-        'language': 'language',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'time_zone': 'timeZone',
-        'timeout_on': 'timeoutOn',
-        'transaction': 'transaction',
-        'type': 'type',
-        'user_failure_message': 'userFailureMessage',
-        'version': 'version',
+        'created_on': 'createdOn','failure_reason': 'failureReason','language': 'language','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','time_zone': 'timeZone','timeout_on': 'timeoutOn','transaction': 'transaction','type': 'type','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
@@ -66,11 +56,11 @@ class Charge(TransactionAwareEntity):
         self.type = kwargs.get('type', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this Charge.
@@ -93,7 +83,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this Charge.
@@ -116,7 +106,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def language(self):
         """Gets the language of this Charge.
@@ -139,7 +129,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Charge.
@@ -162,7 +152,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this Charge.
@@ -185,7 +175,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this Charge.
@@ -208,7 +198,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this Charge.
@@ -231,7 +221,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this Charge.
@@ -254,7 +244,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this Charge.
@@ -277,7 +267,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def type(self):
         """Gets the type of this Charge.
@@ -300,7 +290,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._type = type
-
+    
     @property
     def user_failure_message(self):
         """Gets the user_failure_message of this Charge.
@@ -323,7 +313,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._user_failure_message = user_failure_message
-
+    
     @property
     def version(self):
         """Gets the version of this Charge.
@@ -346,6 +336,7 @@ class Charge(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

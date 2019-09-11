@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class UnencryptedCardData(object):
+class UnencryptedCardData:
 
     swagger_types = {
+    
         'card_holder_name': 'str',
         'card_verification_code': 'str',
         'expiry_date': 'str',
@@ -15,10 +16,7 @@ class UnencryptedCardData(object):
     }
 
     attribute_map = {
-        'card_holder_name': 'cardHolderName',
-        'card_verification_code': 'cardVerificationCode',
-        'expiry_date': 'expiryDate',
-        'primary_account_number': 'primaryAccountNumber',
+        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','expiry_date': 'expiryDate','primary_account_number': 'primaryAccountNumber',
     }
 
     
@@ -34,11 +32,9 @@ class UnencryptedCardData(object):
         self.card_verification_code = kwargs.get('card_verification_code', None)
         self.expiry_date = kwargs.get('expiry_date', None)
         self.primary_account_number = kwargs.get('primary_account_number', None)
-
-        
-        
         
 
+    
     @property
     def card_holder_name(self):
         """Gets the card_holder_name of this UnencryptedCardData.
@@ -61,7 +57,7 @@ class UnencryptedCardData(object):
         """
 
         self._card_holder_name = card_holder_name
-
+    
     @property
     def card_verification_code(self):
         """Gets the card_verification_code of this UnencryptedCardData.
@@ -84,7 +80,7 @@ class UnencryptedCardData(object):
         """
 
         self._card_verification_code = card_verification_code
-
+    
     @property
     def expiry_date(self):
         """Gets the expiry_date of this UnencryptedCardData.
@@ -107,7 +103,7 @@ class UnencryptedCardData(object):
         """
 
         self._expiry_date = expiry_date
-
+    
     @property
     def primary_account_number(self):
         """Gets the primary_account_number of this UnencryptedCardData.
@@ -130,6 +126,7 @@ class UnencryptedCardData(object):
         """
 
         self._primary_account_number = primary_account_number
+    
 
     def to_dict(self):
         result = {}

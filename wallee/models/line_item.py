@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class LineItem(object):
+class LineItem:
 
     swagger_types = {
+    
         'aggregated_tax_rate': 'float',
         'amount_excluding_tax': 'float',
         'amount_including_tax': 'float',
@@ -32,27 +33,7 @@ class LineItem(object):
     }
 
     attribute_map = {
-        'aggregated_tax_rate': 'aggregatedTaxRate',
-        'amount_excluding_tax': 'amountExcludingTax',
-        'amount_including_tax': 'amountIncludingTax',
-        'attributes': 'attributes',
-        'discount_excluding_tax': 'discountExcludingTax',
-        'discount_including_tax': 'discountIncludingTax',
-        'name': 'name',
-        'quantity': 'quantity',
-        'shipping_required': 'shippingRequired',
-        'sku': 'sku',
-        'tax_amount': 'taxAmount',
-        'tax_amount_per_unit': 'taxAmountPerUnit',
-        'taxes': 'taxes',
-        'type': 'type',
-        'undiscounted_amount_excluding_tax': 'undiscountedAmountExcludingTax',
-        'undiscounted_amount_including_tax': 'undiscountedAmountIncludingTax',
-        'undiscounted_unit_price_excluding_tax': 'undiscountedUnitPriceExcludingTax',
-        'undiscounted_unit_price_including_tax': 'undiscountedUnitPriceIncludingTax',
-        'unique_id': 'uniqueId',
-        'unit_price_excluding_tax': 'unitPriceExcludingTax',
-        'unit_price_including_tax': 'unitPriceIncludingTax',
+        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','attributes': 'attributes','discount_excluding_tax': 'discountExcludingTax','discount_including_tax': 'discountIncludingTax','name': 'name','quantity': 'quantity','shipping_required': 'shippingRequired','sku': 'sku','tax_amount': 'taxAmount','tax_amount_per_unit': 'taxAmountPerUnit','taxes': 'taxes','type': 'type','undiscounted_amount_excluding_tax': 'undiscountedAmountExcludingTax','undiscounted_amount_including_tax': 'undiscountedAmountIncludingTax','undiscounted_unit_price_excluding_tax': 'undiscountedUnitPriceExcludingTax','undiscounted_unit_price_including_tax': 'undiscountedUnitPriceIncludingTax','unique_id': 'uniqueId','unit_price_excluding_tax': 'unitPriceExcludingTax','unit_price_including_tax': 'unitPriceIncludingTax',
     }
 
     
@@ -102,11 +83,9 @@ class LineItem(object):
         self.unique_id = kwargs.get('unique_id', None)
         self.unit_price_excluding_tax = kwargs.get('unit_price_excluding_tax', None)
         self.unit_price_including_tax = kwargs.get('unit_price_including_tax', None)
-
-        
-        
         
 
+    
     @property
     def aggregated_tax_rate(self):
         """Gets the aggregated_tax_rate of this LineItem.
@@ -129,7 +108,7 @@ class LineItem(object):
         """
 
         self._aggregated_tax_rate = aggregated_tax_rate
-
+    
     @property
     def amount_excluding_tax(self):
         """Gets the amount_excluding_tax of this LineItem.
@@ -152,7 +131,7 @@ class LineItem(object):
         """
 
         self._amount_excluding_tax = amount_excluding_tax
-
+    
     @property
     def amount_including_tax(self):
         """Gets the amount_including_tax of this LineItem.
@@ -175,7 +154,7 @@ class LineItem(object):
         """
 
         self._amount_including_tax = amount_including_tax
-
+    
     @property
     def attributes(self):
         """Gets the attributes of this LineItem.
@@ -198,7 +177,7 @@ class LineItem(object):
         """
 
         self._attributes = attributes
-
+    
     @property
     def discount_excluding_tax(self):
         """Gets the discount_excluding_tax of this LineItem.
@@ -221,7 +200,7 @@ class LineItem(object):
         """
 
         self._discount_excluding_tax = discount_excluding_tax
-
+    
     @property
     def discount_including_tax(self):
         """Gets the discount_including_tax of this LineItem.
@@ -244,7 +223,7 @@ class LineItem(object):
         """
 
         self._discount_including_tax = discount_including_tax
-
+    
     @property
     def name(self):
         """Gets the name of this LineItem.
@@ -267,7 +246,7 @@ class LineItem(object):
         """
 
         self._name = name
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this LineItem.
@@ -290,7 +269,7 @@ class LineItem(object):
         """
 
         self._quantity = quantity
-
+    
     @property
     def shipping_required(self):
         """Gets the shipping_required of this LineItem.
@@ -313,7 +292,7 @@ class LineItem(object):
         """
 
         self._shipping_required = shipping_required
-
+    
     @property
     def sku(self):
         """Gets the sku of this LineItem.
@@ -336,7 +315,7 @@ class LineItem(object):
         """
 
         self._sku = sku
-
+    
     @property
     def tax_amount(self):
         """Gets the tax_amount of this LineItem.
@@ -359,7 +338,7 @@ class LineItem(object):
         """
 
         self._tax_amount = tax_amount
-
+    
     @property
     def tax_amount_per_unit(self):
         """Gets the tax_amount_per_unit of this LineItem.
@@ -382,7 +361,7 @@ class LineItem(object):
         """
 
         self._tax_amount_per_unit = tax_amount_per_unit
-
+    
     @property
     def taxes(self):
         """Gets the taxes of this LineItem.
@@ -405,7 +384,7 @@ class LineItem(object):
         """
 
         self._taxes = taxes
-
+    
     @property
     def type(self):
         """Gets the type of this LineItem.
@@ -428,7 +407,7 @@ class LineItem(object):
         """
 
         self._type = type
-
+    
     @property
     def undiscounted_amount_excluding_tax(self):
         """Gets the undiscounted_amount_excluding_tax of this LineItem.
@@ -451,7 +430,7 @@ class LineItem(object):
         """
 
         self._undiscounted_amount_excluding_tax = undiscounted_amount_excluding_tax
-
+    
     @property
     def undiscounted_amount_including_tax(self):
         """Gets the undiscounted_amount_including_tax of this LineItem.
@@ -474,7 +453,7 @@ class LineItem(object):
         """
 
         self._undiscounted_amount_including_tax = undiscounted_amount_including_tax
-
+    
     @property
     def undiscounted_unit_price_excluding_tax(self):
         """Gets the undiscounted_unit_price_excluding_tax of this LineItem.
@@ -497,7 +476,7 @@ class LineItem(object):
         """
 
         self._undiscounted_unit_price_excluding_tax = undiscounted_unit_price_excluding_tax
-
+    
     @property
     def undiscounted_unit_price_including_tax(self):
         """Gets the undiscounted_unit_price_including_tax of this LineItem.
@@ -520,7 +499,7 @@ class LineItem(object):
         """
 
         self._undiscounted_unit_price_including_tax = undiscounted_unit_price_including_tax
-
+    
     @property
     def unique_id(self):
         """Gets the unique_id of this LineItem.
@@ -543,7 +522,7 @@ class LineItem(object):
         """
 
         self._unique_id = unique_id
-
+    
     @property
     def unit_price_excluding_tax(self):
         """Gets the unit_price_excluding_tax of this LineItem.
@@ -566,7 +545,7 @@ class LineItem(object):
         """
 
         self._unit_price_excluding_tax = unit_price_excluding_tax
-
+    
     @property
     def unit_price_including_tax(self):
         """Gets the unit_price_including_tax of this LineItem.
@@ -589,6 +568,7 @@ class LineItem(object):
         """
 
         self._unit_price_including_tax = unit_price_including_tax
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductComponentGroupUpdate(object):
+class SubscriptionProductComponentGroupUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'name': 'DatabaseTranslatedStringCreate',
@@ -17,12 +18,7 @@ class SubscriptionProductComponentGroupUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'name': 'name',
-        'optional': 'optional',
-        'product_version': 'productVersion',
-        'sort_order': 'sortOrder',
+        'id': 'id','version': 'version','name': 'name','optional': 'optional','product_version': 'productVersion','sort_order': 'sortOrder',
     }
 
     
@@ -37,16 +33,16 @@ class SubscriptionProductComponentGroupUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.name = kwargs.get('name', None)
         self.optional = kwargs.get('optional', None)
         self.product_version = kwargs.get('product_version', None)
         self.sort_order = kwargs.get('sort_order', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductComponentGroupUpdate.
@@ -71,7 +67,7 @@ class SubscriptionProductComponentGroupUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductComponentGroupUpdate.
@@ -96,7 +92,7 @@ class SubscriptionProductComponentGroupUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductComponentGroupUpdate.
@@ -119,7 +115,7 @@ class SubscriptionProductComponentGroupUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def optional(self):
         """Gets the optional of this SubscriptionProductComponentGroupUpdate.
@@ -142,7 +138,7 @@ class SubscriptionProductComponentGroupUpdate(object):
         """
 
         self._optional = optional
-
+    
     @property
     def product_version(self):
         """Gets the product_version of this SubscriptionProductComponentGroupUpdate.
@@ -165,7 +161,7 @@ class SubscriptionProductComponentGroupUpdate(object):
         """
 
         self._product_version = product_version
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponentGroupUpdate.
@@ -188,6 +184,7 @@ class SubscriptionProductComponentGroupUpdate(object):
         """
 
         self._sort_order = sort_order
+    
 
     def to_dict(self):
         result = {}

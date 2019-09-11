@@ -8,13 +8,13 @@ from . import AbstractWebhookUrlUpdate
 class WebhookUrlUpdate(AbstractWebhookUrlUpdate):
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
+        'id': 'id','version': 'version',
     }
 
     
@@ -25,12 +25,14 @@ class WebhookUrlUpdate(AbstractWebhookUrlUpdate):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
 
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def id(self):
         """Gets the id of this WebhookUrlUpdate.
@@ -55,7 +57,7 @@ class WebhookUrlUpdate(AbstractWebhookUrlUpdate):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this WebhookUrlUpdate.
@@ -80,6 +82,7 @@ class WebhookUrlUpdate(AbstractWebhookUrlUpdate):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

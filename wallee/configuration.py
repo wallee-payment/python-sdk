@@ -1,15 +1,5 @@
 # coding: utf-8
 
-"""
-    wallee
-
-    Python SDK
-
-    OpenAPI spec version: 1.0.0
-    
-"""
-
-
 from __future__ import absolute_import
 
 import copy
@@ -22,7 +12,7 @@ import six
 from six.moves import http_client as httplib
 
 
-class Configuration(object):
+class Configuration:
 
     _default = None
 
@@ -255,6 +245,6 @@ class Configuration(object):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 1.0.0\n"\
-               "SDK Package Version: 1.0.0".\
+               "Version of the API: 1.0.1\n"\
+               "SDK Package Version: 1.0.1".\
                format(env=sys.platform, pyversion=sys.version)

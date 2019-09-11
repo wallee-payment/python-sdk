@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Address(object):
+class Address:
 
     swagger_types = {
+    
         'city': 'str',
         'commercial_register_number': 'str',
         'country': 'str',
@@ -31,26 +32,7 @@ class Address(object):
     }
 
     attribute_map = {
-        'city': 'city',
-        'commercial_register_number': 'commercialRegisterNumber',
-        'country': 'country',
-        'date_of_birth': 'dateOfBirth',
-        'dependent_locality': 'dependentLocality',
-        'email_address': 'emailAddress',
-        'family_name': 'familyName',
-        'gender': 'gender',
-        'given_name': 'givenName',
-        'legal_organization_form': 'legalOrganizationForm',
-        'mobile_phone_number': 'mobilePhoneNumber',
-        'organization_name': 'organizationName',
-        'phone_number': 'phoneNumber',
-        'post_code': 'postCode',
-        'postal_state': 'postalState',
-        'sales_tax_number': 'salesTaxNumber',
-        'salutation': 'salutation',
-        'social_security_number': 'socialSecurityNumber',
-        'sorting_code': 'sortingCode',
-        'street': 'street',
+        'city': 'city','commercial_register_number': 'commercialRegisterNumber','country': 'country','date_of_birth': 'dateOfBirth','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','gender': 'gender','given_name': 'givenName','legal_organization_form': 'legalOrganizationForm','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','post_code': 'postCode','postal_state': 'postalState','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','social_security_number': 'socialSecurityNumber','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -98,11 +80,9 @@ class Address(object):
         self.social_security_number = kwargs.get('social_security_number', None)
         self.sorting_code = kwargs.get('sorting_code', None)
         self.street = kwargs.get('street', None)
-
-        
-        
         
 
+    
     @property
     def city(self):
         """Gets the city of this Address.
@@ -125,7 +105,7 @@ class Address(object):
         """
 
         self._city = city
-
+    
     @property
     def commercial_register_number(self):
         """Gets the commercial_register_number of this Address.
@@ -148,7 +128,7 @@ class Address(object):
         """
 
         self._commercial_register_number = commercial_register_number
-
+    
     @property
     def country(self):
         """Gets the country of this Address.
@@ -171,7 +151,7 @@ class Address(object):
         """
 
         self._country = country
-
+    
     @property
     def date_of_birth(self):
         """Gets the date_of_birth of this Address.
@@ -194,7 +174,7 @@ class Address(object):
         """
 
         self._date_of_birth = date_of_birth
-
+    
     @property
     def dependent_locality(self):
         """Gets the dependent_locality of this Address.
@@ -217,7 +197,7 @@ class Address(object):
         """
 
         self._dependent_locality = dependent_locality
-
+    
     @property
     def email_address(self):
         """Gets the email_address of this Address.
@@ -240,7 +220,7 @@ class Address(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def family_name(self):
         """Gets the family_name of this Address.
@@ -263,7 +243,7 @@ class Address(object):
         """
 
         self._family_name = family_name
-
+    
     @property
     def gender(self):
         """Gets the gender of this Address.
@@ -286,7 +266,7 @@ class Address(object):
         """
 
         self._gender = gender
-
+    
     @property
     def given_name(self):
         """Gets the given_name of this Address.
@@ -309,7 +289,7 @@ class Address(object):
         """
 
         self._given_name = given_name
-
+    
     @property
     def legal_organization_form(self):
         """Gets the legal_organization_form of this Address.
@@ -332,7 +312,7 @@ class Address(object):
         """
 
         self._legal_organization_form = legal_organization_form
-
+    
     @property
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this Address.
@@ -355,7 +335,7 @@ class Address(object):
         """
 
         self._mobile_phone_number = mobile_phone_number
-
+    
     @property
     def organization_name(self):
         """Gets the organization_name of this Address.
@@ -378,7 +358,7 @@ class Address(object):
         """
 
         self._organization_name = organization_name
-
+    
     @property
     def phone_number(self):
         """Gets the phone_number of this Address.
@@ -401,7 +381,7 @@ class Address(object):
         """
 
         self._phone_number = phone_number
-
+    
     @property
     def post_code(self):
         """Gets the post_code of this Address.
@@ -424,7 +404,7 @@ class Address(object):
         """
 
         self._post_code = post_code
-
+    
     @property
     def postal_state(self):
         """Gets the postal_state of this Address.
@@ -447,7 +427,7 @@ class Address(object):
         """
 
         self._postal_state = postal_state
-
+    
     @property
     def sales_tax_number(self):
         """Gets the sales_tax_number of this Address.
@@ -470,7 +450,7 @@ class Address(object):
         """
 
         self._sales_tax_number = sales_tax_number
-
+    
     @property
     def salutation(self):
         """Gets the salutation of this Address.
@@ -493,7 +473,7 @@ class Address(object):
         """
 
         self._salutation = salutation
-
+    
     @property
     def social_security_number(self):
         """Gets the social_security_number of this Address.
@@ -516,7 +496,7 @@ class Address(object):
         """
 
         self._social_security_number = social_security_number
-
+    
     @property
     def sorting_code(self):
         """Gets the sorting_code of this Address.
@@ -539,7 +519,7 @@ class Address(object):
         """
 
         self._sorting_code = sorting_code
-
+    
     @property
     def street(self):
         """Gets the street of this Address.
@@ -562,6 +542,7 @@ class Address(object):
         """
 
         self._street = street
+    
 
     def to_dict(self):
         result = {}

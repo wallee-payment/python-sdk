@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class LineItemCreate(object):
+class LineItemCreate:
 
     swagger_types = {
+    
         'amount_including_tax': 'float',
         'attributes': 'dict(str, LineItemAttributeCreate)',
         'discount_including_tax': 'float',
@@ -21,16 +22,7 @@ class LineItemCreate(object):
     }
 
     attribute_map = {
-        'amount_including_tax': 'amountIncludingTax',
-        'attributes': 'attributes',
-        'discount_including_tax': 'discountIncludingTax',
-        'name': 'name',
-        'quantity': 'quantity',
-        'shipping_required': 'shippingRequired',
-        'sku': 'sku',
-        'taxes': 'taxes',
-        'type': 'type',
-        'unique_id': 'uniqueId',
+        'amount_including_tax': 'amountIncludingTax','attributes': 'attributes','discount_including_tax': 'discountIncludingTax','name': 'name','quantity': 'quantity','shipping_required': 'shippingRequired','sku': 'sku','taxes': 'taxes','type': 'type','unique_id': 'uniqueId',
     }
 
     
@@ -49,20 +41,23 @@ class LineItemCreate(object):
         self.discriminator = None
         
         self.amount_including_tax = kwargs.get('amount_including_tax')
+
         self.attributes = kwargs.get('attributes', None)
         self.discount_including_tax = kwargs.get('discount_including_tax', None)
         self.name = kwargs.get('name')
+
         self.quantity = kwargs.get('quantity')
+
         self.shipping_required = kwargs.get('shipping_required', None)
         self.sku = kwargs.get('sku', None)
         self.taxes = kwargs.get('taxes', None)
         self.type = kwargs.get('type')
+
         self.unique_id = kwargs.get('unique_id')
 
         
-        
-        
 
+    
     @property
     def amount_including_tax(self):
         """Gets the amount_including_tax of this LineItemCreate.
@@ -87,7 +82,7 @@ class LineItemCreate(object):
             raise ValueError("Invalid value for `amount_including_tax`, must not be `None`")
 
         self._amount_including_tax = amount_including_tax
-
+    
     @property
     def attributes(self):
         """Gets the attributes of this LineItemCreate.
@@ -110,7 +105,7 @@ class LineItemCreate(object):
         """
 
         self._attributes = attributes
-
+    
     @property
     def discount_including_tax(self):
         """Gets the discount_including_tax of this LineItemCreate.
@@ -133,7 +128,7 @@ class LineItemCreate(object):
         """
 
         self._discount_including_tax = discount_including_tax
-
+    
     @property
     def name(self):
         """Gets the name of this LineItemCreate.
@@ -158,7 +153,7 @@ class LineItemCreate(object):
             raise ValueError("Invalid value for `name`, must not be `None`")
 
         self._name = name
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this LineItemCreate.
@@ -183,7 +178,7 @@ class LineItemCreate(object):
             raise ValueError("Invalid value for `quantity`, must not be `None`")
 
         self._quantity = quantity
-
+    
     @property
     def shipping_required(self):
         """Gets the shipping_required of this LineItemCreate.
@@ -206,7 +201,7 @@ class LineItemCreate(object):
         """
 
         self._shipping_required = shipping_required
-
+    
     @property
     def sku(self):
         """Gets the sku of this LineItemCreate.
@@ -229,7 +224,7 @@ class LineItemCreate(object):
         """
 
         self._sku = sku
-
+    
     @property
     def taxes(self):
         """Gets the taxes of this LineItemCreate.
@@ -252,7 +247,7 @@ class LineItemCreate(object):
         """
 
         self._taxes = taxes
-
+    
     @property
     def type(self):
         """Gets the type of this LineItemCreate.
@@ -277,7 +272,7 @@ class LineItemCreate(object):
             raise ValueError("Invalid value for `type`, must not be `None`")
 
         self._type = type
-
+    
     @property
     def unique_id(self):
         """Gets the unique_id of this LineItemCreate.
@@ -302,6 +297,7 @@ class LineItemCreate(object):
             raise ValueError("Invalid value for `unique_id`, must not be `None`")
 
         self._unique_id = unique_id
+    
 
     def to_dict(self):
         result = {}

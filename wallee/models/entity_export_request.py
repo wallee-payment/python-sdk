@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class EntityExportRequest(object):
+class EntityExportRequest:
 
     swagger_types = {
+    
         'properties': 'list[str]',
         'query': 'EntityQuery',
     }
 
     attribute_map = {
-        'properties': 'properties',
-        'query': 'query',
+        'properties': 'properties','query': 'query',
     }
 
     
@@ -25,12 +25,11 @@ class EntityExportRequest(object):
         self.discriminator = None
         
         self.properties = kwargs.get('properties')
+
         self.query = kwargs.get('query', None)
-
-        
-        
         
 
+    
     @property
     def properties(self):
         """Gets the properties of this EntityExportRequest.
@@ -55,7 +54,7 @@ class EntityExportRequest(object):
             raise ValueError("Invalid value for `properties`, must not be `None`")
 
         self._properties = properties
-
+    
     @property
     def query(self):
         """Gets the query of this EntityExportRequest.
@@ -78,6 +77,7 @@ class EntityExportRequest(object):
         """
 
         self._query = query
+    
 
     def to_dict(self):
         result = {}

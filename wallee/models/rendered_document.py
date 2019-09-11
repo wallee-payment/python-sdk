@@ -5,20 +5,18 @@ from enum import Enum
 
 
 
-class RenderedDocument(object):
+class RenderedDocument:
 
     swagger_types = {
-        'data': 'str',
+    
+        'data': 'list[str]',
         'document_template_type': 'int',
         'mime_type': 'str',
         'title': 'str',
     }
 
     attribute_map = {
-        'data': 'data',
-        'document_template_type': 'documentTemplateType',
-        'mime_type': 'mimeType',
-        'title': 'title',
+        'data': 'data','document_template_type': 'documentTemplateType','mime_type': 'mimeType','title': 'title',
     }
 
     
@@ -34,11 +32,9 @@ class RenderedDocument(object):
         self.document_template_type = kwargs.get('document_template_type', None)
         self.mime_type = kwargs.get('mime_type', None)
         self.title = kwargs.get('title', None)
-
-        
-        
         
 
+    
     @property
     def data(self):
         """Gets the data of this RenderedDocument.
@@ -46,7 +42,7 @@ class RenderedDocument(object):
             
 
         :return: The data of this RenderedDocument.
-        :rtype: str
+        :rtype: list[str]
         """
         return self._data
 
@@ -57,11 +53,11 @@ class RenderedDocument(object):
             
 
         :param data: The data of this RenderedDocument.
-        :type: str
+        :type: list[str]
         """
 
         self._data = data
-
+    
     @property
     def document_template_type(self):
         """Gets the document_template_type of this RenderedDocument.
@@ -84,7 +80,7 @@ class RenderedDocument(object):
         """
 
         self._document_template_type = document_template_type
-
+    
     @property
     def mime_type(self):
         """Gets the mime_type of this RenderedDocument.
@@ -107,7 +103,7 @@ class RenderedDocument(object):
         """
 
         self._mime_type = mime_type
-
+    
     @property
     def title(self):
         """Gets the title of this RenderedDocument.
@@ -130,6 +126,7 @@ class RenderedDocument(object):
         """
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RestCountry(object):
+class RestCountry:
 
     swagger_types = {
+    
         'iso_code2_letter': 'str',
         'iso_code3_letter': 'str',
         'address_format': 'RestAddressFormat',
@@ -17,12 +18,7 @@ class RestCountry(object):
     }
 
     attribute_map = {
-        'iso_code2_letter': 'ISOCode2Letter',
-        'iso_code3_letter': 'ISOCode3Letter',
-        'address_format': 'addressFormat',
-        'name': 'name',
-        'numeric_code': 'numericCode',
-        'state_codes': 'stateCodes',
+        'iso_code2_letter': 'ISOCode2Letter','iso_code3_letter': 'ISOCode3Letter','address_format': 'addressFormat','name': 'name','numeric_code': 'numericCode','state_codes': 'stateCodes',
     }
 
     
@@ -42,11 +38,9 @@ class RestCountry(object):
         self.name = kwargs.get('name', None)
         self.numeric_code = kwargs.get('numeric_code', None)
         self.state_codes = kwargs.get('state_codes', None)
-
-        
-        
         
 
+    
     @property
     def iso_code2_letter(self):
         """Gets the iso_code2_letter of this RestCountry.
@@ -69,7 +63,7 @@ class RestCountry(object):
         """
 
         self._iso_code2_letter = iso_code2_letter
-
+    
     @property
     def iso_code3_letter(self):
         """Gets the iso_code3_letter of this RestCountry.
@@ -92,7 +86,7 @@ class RestCountry(object):
         """
 
         self._iso_code3_letter = iso_code3_letter
-
+    
     @property
     def address_format(self):
         """Gets the address_format of this RestCountry.
@@ -115,7 +109,7 @@ class RestCountry(object):
         """
 
         self._address_format = address_format
-
+    
     @property
     def name(self):
         """Gets the name of this RestCountry.
@@ -138,7 +132,7 @@ class RestCountry(object):
         """
 
         self._name = name
-
+    
     @property
     def numeric_code(self):
         """Gets the numeric_code of this RestCountry.
@@ -161,7 +155,7 @@ class RestCountry(object):
         """
 
         self._numeric_code = numeric_code
-
+    
     @property
     def state_codes(self):
         """Gets the state_codes of this RestCountry.
@@ -184,6 +178,7 @@ class RestCountry(object):
         """
 
         self._state_codes = state_codes
+    
 
     def to_dict(self):
         result = {}

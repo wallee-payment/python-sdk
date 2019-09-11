@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Transaction(object):
+class Transaction:
 
     swagger_types = {
+    
         'accept_header': 'str',
         'accept_language_header': 'str',
         'allowed_payment_method_brands': 'list[PaymentMethodBrand]',
@@ -60,7 +61,7 @@ class Transaction(object):
         'success_url': 'str',
         'time_zone': 'str',
         'token': 'Token',
-        'tokenization_mode': 'TokenizationnMode',
+        'tokenization_mode': 'TokenizationMode',
         'user_agent_header': 'str',
         'user_failure_message': 'str',
         'user_interface_type': 'TransactionUserInterfaceType',
@@ -68,63 +69,7 @@ class Transaction(object):
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader',
-        'accept_language_header': 'acceptLanguageHeader',
-        'allowed_payment_method_brands': 'allowedPaymentMethodBrands',
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'authorization_amount': 'authorizationAmount',
-        'authorization_environment': 'authorizationEnvironment',
-        'authorization_timeout_on': 'authorizationTimeoutOn',
-        'authorized_on': 'authorizedOn',
-        'auto_confirmation_enabled': 'autoConfirmationEnabled',
-        'billing_address': 'billingAddress',
-        'charge_retry_enabled': 'chargeRetryEnabled',
-        'completed_amount': 'completedAmount',
-        'completed_on': 'completedOn',
-        'completion_timeout_on': 'completionTimeoutOn',
-        'confirmed_by': 'confirmedBy',
-        'confirmed_on': 'confirmedOn',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'currency': 'currency',
-        'customer_email_address': 'customerEmailAddress',
-        'customer_id': 'customerId',
-        'customers_presence': 'customersPresence',
-        'delivery_decision_made_on': 'deliveryDecisionMadeOn',
-        'device_session_identifier': 'deviceSessionIdentifier',
-        'end_of_life': 'endOfLife',
-        'environment': 'environment',
-        'environment_selection_strategy': 'environmentSelectionStrategy',
-        'failed_on': 'failedOn',
-        'failed_url': 'failedUrl',
-        'failure_reason': 'failureReason',
-        'group': 'group',
-        'id': 'id',
-        'internet_protocol_address': 'internetProtocolAddress',
-        'internet_protocol_address_country': 'internetProtocolAddressCountry',
-        'invoice_merchant_reference': 'invoiceMerchantReference',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'linked_space_id': 'linkedSpaceId',
-        'merchant_reference': 'merchantReference',
-        'meta_data': 'metaData',
-        'parent': 'parent',
-        'payment_connector_configuration': 'paymentConnectorConfiguration',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processing_on': 'processingOn',
-        'refunded_amount': 'refundedAmount',
-        'shipping_address': 'shippingAddress',
-        'shipping_method': 'shippingMethod',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'success_url': 'successUrl',
-        'time_zone': 'timeZone',
-        'token': 'token',
-        'tokenization_mode': 'tokenizationMode',
-        'user_agent_header': 'userAgentHeader',
-        'user_failure_message': 'userFailureMessage',
-        'user_interface_type': 'userInterfaceType',
-        'version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
     }
 
     
@@ -246,11 +191,9 @@ class Transaction(object):
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.user_interface_type = kwargs.get('user_interface_type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def accept_header(self):
         """Gets the accept_header of this Transaction.
@@ -273,7 +216,7 @@ class Transaction(object):
         """
 
         self._accept_header = accept_header
-
+    
     @property
     def accept_language_header(self):
         """Gets the accept_language_header of this Transaction.
@@ -296,7 +239,7 @@ class Transaction(object):
         """
 
         self._accept_language_header = accept_language_header
-
+    
     @property
     def allowed_payment_method_brands(self):
         """Gets the allowed_payment_method_brands of this Transaction.
@@ -319,7 +262,7 @@ class Transaction(object):
         """
 
         self._allowed_payment_method_brands = allowed_payment_method_brands
-
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this Transaction.
@@ -342,7 +285,7 @@ class Transaction(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def authorization_amount(self):
         """Gets the authorization_amount of this Transaction.
@@ -365,7 +308,7 @@ class Transaction(object):
         """
 
         self._authorization_amount = authorization_amount
-
+    
     @property
     def authorization_environment(self):
         """Gets the authorization_environment of this Transaction.
@@ -388,7 +331,7 @@ class Transaction(object):
         """
 
         self._authorization_environment = authorization_environment
-
+    
     @property
     def authorization_timeout_on(self):
         """Gets the authorization_timeout_on of this Transaction.
@@ -411,7 +354,7 @@ class Transaction(object):
         """
 
         self._authorization_timeout_on = authorization_timeout_on
-
+    
     @property
     def authorized_on(self):
         """Gets the authorized_on of this Transaction.
@@ -434,7 +377,7 @@ class Transaction(object):
         """
 
         self._authorized_on = authorized_on
-
+    
     @property
     def auto_confirmation_enabled(self):
         """Gets the auto_confirmation_enabled of this Transaction.
@@ -457,7 +400,7 @@ class Transaction(object):
         """
 
         self._auto_confirmation_enabled = auto_confirmation_enabled
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this Transaction.
@@ -480,7 +423,7 @@ class Transaction(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def charge_retry_enabled(self):
         """Gets the charge_retry_enabled of this Transaction.
@@ -503,7 +446,7 @@ class Transaction(object):
         """
 
         self._charge_retry_enabled = charge_retry_enabled
-
+    
     @property
     def completed_amount(self):
         """Gets the completed_amount of this Transaction.
@@ -526,7 +469,7 @@ class Transaction(object):
         """
 
         self._completed_amount = completed_amount
-
+    
     @property
     def completed_on(self):
         """Gets the completed_on of this Transaction.
@@ -549,7 +492,7 @@ class Transaction(object):
         """
 
         self._completed_on = completed_on
-
+    
     @property
     def completion_timeout_on(self):
         """Gets the completion_timeout_on of this Transaction.
@@ -572,7 +515,7 @@ class Transaction(object):
         """
 
         self._completion_timeout_on = completion_timeout_on
-
+    
     @property
     def confirmed_by(self):
         """Gets the confirmed_by of this Transaction.
@@ -595,7 +538,7 @@ class Transaction(object):
         """
 
         self._confirmed_by = confirmed_by
-
+    
     @property
     def confirmed_on(self):
         """Gets the confirmed_on of this Transaction.
@@ -618,7 +561,7 @@ class Transaction(object):
         """
 
         self._confirmed_on = confirmed_on
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this Transaction.
@@ -641,7 +584,7 @@ class Transaction(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this Transaction.
@@ -664,7 +607,7 @@ class Transaction(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def currency(self):
         """Gets the currency of this Transaction.
@@ -687,7 +630,7 @@ class Transaction(object):
         """
 
         self._currency = currency
-
+    
     @property
     def customer_email_address(self):
         """Gets the customer_email_address of this Transaction.
@@ -710,7 +653,7 @@ class Transaction(object):
         """
 
         self._customer_email_address = customer_email_address
-
+    
     @property
     def customer_id(self):
         """Gets the customer_id of this Transaction.
@@ -733,7 +676,7 @@ class Transaction(object):
         """
 
         self._customer_id = customer_id
-
+    
     @property
     def customers_presence(self):
         """Gets the customers_presence of this Transaction.
@@ -756,7 +699,7 @@ class Transaction(object):
         """
 
         self._customers_presence = customers_presence
-
+    
     @property
     def delivery_decision_made_on(self):
         """Gets the delivery_decision_made_on of this Transaction.
@@ -779,7 +722,7 @@ class Transaction(object):
         """
 
         self._delivery_decision_made_on = delivery_decision_made_on
-
+    
     @property
     def device_session_identifier(self):
         """Gets the device_session_identifier of this Transaction.
@@ -802,7 +745,7 @@ class Transaction(object):
         """
 
         self._device_session_identifier = device_session_identifier
-
+    
     @property
     def end_of_life(self):
         """Gets the end_of_life of this Transaction.
@@ -825,7 +768,7 @@ class Transaction(object):
         """
 
         self._end_of_life = end_of_life
-
+    
     @property
     def environment(self):
         """Gets the environment of this Transaction.
@@ -848,7 +791,7 @@ class Transaction(object):
         """
 
         self._environment = environment
-
+    
     @property
     def environment_selection_strategy(self):
         """Gets the environment_selection_strategy of this Transaction.
@@ -871,7 +814,7 @@ class Transaction(object):
         """
 
         self._environment_selection_strategy = environment_selection_strategy
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this Transaction.
@@ -894,7 +837,7 @@ class Transaction(object):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failed_url(self):
         """Gets the failed_url of this Transaction.
@@ -917,7 +860,7 @@ class Transaction(object):
         """
 
         self._failed_url = failed_url
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this Transaction.
@@ -940,7 +883,7 @@ class Transaction(object):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def group(self):
         """Gets the group of this Transaction.
@@ -963,7 +906,7 @@ class Transaction(object):
         """
 
         self._group = group
-
+    
     @property
     def id(self):
         """Gets the id of this Transaction.
@@ -986,7 +929,7 @@ class Transaction(object):
         """
 
         self._id = id
-
+    
     @property
     def internet_protocol_address(self):
         """Gets the internet_protocol_address of this Transaction.
@@ -1009,7 +952,7 @@ class Transaction(object):
         """
 
         self._internet_protocol_address = internet_protocol_address
-
+    
     @property
     def internet_protocol_address_country(self):
         """Gets the internet_protocol_address_country of this Transaction.
@@ -1032,7 +975,7 @@ class Transaction(object):
         """
 
         self._internet_protocol_address_country = internet_protocol_address_country
-
+    
     @property
     def invoice_merchant_reference(self):
         """Gets the invoice_merchant_reference of this Transaction.
@@ -1055,7 +998,7 @@ class Transaction(object):
         """
 
         self._invoice_merchant_reference = invoice_merchant_reference
-
+    
     @property
     def language(self):
         """Gets the language of this Transaction.
@@ -1078,7 +1021,7 @@ class Transaction(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this Transaction.
@@ -1101,7 +1044,7 @@ class Transaction(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Transaction.
@@ -1124,7 +1067,7 @@ class Transaction(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this Transaction.
@@ -1147,7 +1090,7 @@ class Transaction(object):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this Transaction.
@@ -1170,7 +1113,7 @@ class Transaction(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def parent(self):
         """Gets the parent of this Transaction.
@@ -1193,7 +1136,7 @@ class Transaction(object):
         """
 
         self._parent = parent
-
+    
     @property
     def payment_connector_configuration(self):
         """Gets the payment_connector_configuration of this Transaction.
@@ -1216,7 +1159,7 @@ class Transaction(object):
         """
 
         self._payment_connector_configuration = payment_connector_configuration
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Transaction.
@@ -1239,7 +1182,7 @@ class Transaction(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processing_on(self):
         """Gets the processing_on of this Transaction.
@@ -1262,7 +1205,7 @@ class Transaction(object):
         """
 
         self._processing_on = processing_on
-
+    
     @property
     def refunded_amount(self):
         """Gets the refunded_amount of this Transaction.
@@ -1285,7 +1228,7 @@ class Transaction(object):
         """
 
         self._refunded_amount = refunded_amount
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this Transaction.
@@ -1308,7 +1251,7 @@ class Transaction(object):
         """
 
         self._shipping_address = shipping_address
-
+    
     @property
     def shipping_method(self):
         """Gets the shipping_method of this Transaction.
@@ -1331,7 +1274,7 @@ class Transaction(object):
         """
 
         self._shipping_method = shipping_method
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this Transaction.
@@ -1354,7 +1297,7 @@ class Transaction(object):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this Transaction.
@@ -1377,7 +1320,7 @@ class Transaction(object):
         """
 
         self._state = state
-
+    
     @property
     def success_url(self):
         """Gets the success_url of this Transaction.
@@ -1400,7 +1343,7 @@ class Transaction(object):
         """
 
         self._success_url = success_url
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this Transaction.
@@ -1423,7 +1366,7 @@ class Transaction(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def token(self):
         """Gets the token of this Transaction.
@@ -1446,7 +1389,7 @@ class Transaction(object):
         """
 
         self._token = token
-
+    
     @property
     def tokenization_mode(self):
         """Gets the tokenization_mode of this Transaction.
@@ -1454,7 +1397,7 @@ class Transaction(object):
             The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
 
         :return: The tokenization_mode of this Transaction.
-        :rtype: TokenizationnMode
+        :rtype: TokenizationMode
         """
         return self._tokenization_mode
 
@@ -1465,11 +1408,11 @@ class Transaction(object):
             The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
 
         :param tokenization_mode: The tokenization_mode of this Transaction.
-        :type: TokenizationnMode
+        :type: TokenizationMode
         """
 
         self._tokenization_mode = tokenization_mode
-
+    
     @property
     def user_agent_header(self):
         """Gets the user_agent_header of this Transaction.
@@ -1492,7 +1435,7 @@ class Transaction(object):
         """
 
         self._user_agent_header = user_agent_header
-
+    
     @property
     def user_failure_message(self):
         """Gets the user_failure_message of this Transaction.
@@ -1515,7 +1458,7 @@ class Transaction(object):
         """
 
         self._user_failure_message = user_failure_message
-
+    
     @property
     def user_interface_type(self):
         """Gets the user_interface_type of this Transaction.
@@ -1538,7 +1481,7 @@ class Transaction(object):
         """
 
         self._user_interface_type = user_interface_type
-
+    
     @property
     def version(self):
         """Gets the version of this Transaction.
@@ -1561,6 +1504,7 @@ class Transaction(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

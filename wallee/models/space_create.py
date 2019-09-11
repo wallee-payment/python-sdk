@@ -8,6 +8,7 @@ from . import AbstractSpaceUpdate
 class SpaceCreate(AbstractSpaceUpdate):
 
     swagger_types = {
+    
         'account': 'int',
     }
 
@@ -27,6 +28,7 @@ class SpaceCreate(AbstractSpaceUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def account(self):
         """Gets the account of this SpaceCreate.
@@ -51,6 +53,7 @@ class SpaceCreate(AbstractSpaceUpdate):
             raise ValueError("Invalid value for `account`, must not be `None`")
 
         self._account = account
+    
 
     def to_dict(self):
         result = {}

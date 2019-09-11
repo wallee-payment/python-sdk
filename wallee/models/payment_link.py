@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentLink(object):
+class PaymentLink:
 
     swagger_types = {
+    
         'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
         'applied_space_view': 'int',
         'available_from': 'datetime',
@@ -30,25 +31,7 @@ class PaymentLink(object):
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'applied_space_view': 'appliedSpaceView',
-        'available_from': 'availableFrom',
-        'available_until': 'availableUntil',
-        'billing_address_required': 'billingAddressRequired',
-        'currency': 'currency',
-        'external_id': 'externalId',
-        'id': 'id',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'linked_space_id': 'linkedSpaceId',
-        'maximal_number_of_transactions': 'maximalNumberOfTransactions',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'protection_mode': 'protectionMode',
-        'shipping_address_required': 'shippingAddressRequired',
-        'state': 'state',
-        'url': 'url',
-        'version': 'version',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_required': 'billingAddressRequired','currency': 'currency','external_id': 'externalId','id': 'id','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','planned_purge_date': 'plannedPurgeDate','protection_mode': 'protectionMode','shipping_address_required': 'shippingAddressRequired','state': 'state','url': 'url','version': 'version',
     }
 
     
@@ -94,11 +77,9 @@ class PaymentLink(object):
         self.state = kwargs.get('state', None)
         self.url = kwargs.get('url', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this PaymentLink.
@@ -121,7 +102,7 @@ class PaymentLink(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def applied_space_view(self):
         """Gets the applied_space_view of this PaymentLink.
@@ -144,7 +125,7 @@ class PaymentLink(object):
         """
 
         self._applied_space_view = applied_space_view
-
+    
     @property
     def available_from(self):
         """Gets the available_from of this PaymentLink.
@@ -167,7 +148,7 @@ class PaymentLink(object):
         """
 
         self._available_from = available_from
-
+    
     @property
     def available_until(self):
         """Gets the available_until of this PaymentLink.
@@ -190,7 +171,7 @@ class PaymentLink(object):
         """
 
         self._available_until = available_until
-
+    
     @property
     def billing_address_required(self):
         """Gets the billing_address_required of this PaymentLink.
@@ -213,7 +194,7 @@ class PaymentLink(object):
         """
 
         self._billing_address_required = billing_address_required
-
+    
     @property
     def currency(self):
         """Gets the currency of this PaymentLink.
@@ -236,7 +217,7 @@ class PaymentLink(object):
         """
 
         self._currency = currency
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this PaymentLink.
@@ -259,7 +240,7 @@ class PaymentLink(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentLink.
@@ -282,7 +263,7 @@ class PaymentLink(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this PaymentLink.
@@ -305,7 +286,7 @@ class PaymentLink(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this PaymentLink.
@@ -328,7 +309,7 @@ class PaymentLink(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentLink.
@@ -351,7 +332,7 @@ class PaymentLink(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def maximal_number_of_transactions(self):
         """Gets the maximal_number_of_transactions of this PaymentLink.
@@ -374,7 +355,7 @@ class PaymentLink(object):
         """
 
         self._maximal_number_of_transactions = maximal_number_of_transactions
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentLink.
@@ -397,7 +378,7 @@ class PaymentLink(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentLink.
@@ -420,7 +401,7 @@ class PaymentLink(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def protection_mode(self):
         """Gets the protection_mode of this PaymentLink.
@@ -443,7 +424,7 @@ class PaymentLink(object):
         """
 
         self._protection_mode = protection_mode
-
+    
     @property
     def shipping_address_required(self):
         """Gets the shipping_address_required of this PaymentLink.
@@ -466,7 +447,7 @@ class PaymentLink(object):
         """
 
         self._shipping_address_required = shipping_address_required
-
+    
     @property
     def state(self):
         """Gets the state of this PaymentLink.
@@ -489,7 +470,7 @@ class PaymentLink(object):
         """
 
         self._state = state
-
+    
     @property
     def url(self):
         """Gets the url of this PaymentLink.
@@ -512,7 +493,7 @@ class PaymentLink(object):
         """
 
         self._url = url
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentLink.
@@ -535,6 +516,7 @@ class PaymentLink(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

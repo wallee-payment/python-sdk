@@ -8,6 +8,7 @@ from . import SubscriberUpdate
 class SubscriberActive(SubscriberUpdate):
 
     swagger_types = {
+    
         'state': 'CreationEntityState',
     }
 
@@ -22,11 +23,11 @@ class SubscriberActive(SubscriberUpdate):
         self.discriminator = None
         
         self.state = kwargs.get('state', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def state(self):
         """Gets the state of this SubscriberActive.
@@ -49,6 +50,7 @@ class SubscriberActive(SubscriberUpdate):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

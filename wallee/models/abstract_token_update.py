@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractTokenUpdate(object):
+class AbstractTokenUpdate:
 
     swagger_types = {
+    
         'customer_email_address': 'str',
         'customer_id': 'str',
         'enabled_for_one_click_payment': 'bool',
@@ -17,12 +18,7 @@ class AbstractTokenUpdate(object):
     }
 
     attribute_map = {
-        'customer_email_address': 'customerEmailAddress',
-        'customer_id': 'customerId',
-        'enabled_for_one_click_payment': 'enabledForOneClickPayment',
-        'language': 'language',
-        'time_zone': 'timeZone',
-        'token_reference': 'tokenReference',
+        'customer_email_address': 'customerEmailAddress','customer_id': 'customerId','enabled_for_one_click_payment': 'enabledForOneClickPayment','language': 'language','time_zone': 'timeZone','token_reference': 'tokenReference',
     }
 
     
@@ -42,11 +38,9 @@ class AbstractTokenUpdate(object):
         self.language = kwargs.get('language', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.token_reference = kwargs.get('token_reference', None)
-
-        
-        
         
 
+    
     @property
     def customer_email_address(self):
         """Gets the customer_email_address of this AbstractTokenUpdate.
@@ -69,7 +63,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._customer_email_address = customer_email_address
-
+    
     @property
     def customer_id(self):
         """Gets the customer_id of this AbstractTokenUpdate.
@@ -92,7 +86,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._customer_id = customer_id
-
+    
     @property
     def enabled_for_one_click_payment(self):
         """Gets the enabled_for_one_click_payment of this AbstractTokenUpdate.
@@ -115,7 +109,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._enabled_for_one_click_payment = enabled_for_one_click_payment
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractTokenUpdate.
@@ -138,7 +132,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this AbstractTokenUpdate.
@@ -161,7 +155,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def token_reference(self):
         """Gets the token_reference of this AbstractTokenUpdate.
@@ -184,6 +178,7 @@ class AbstractTokenUpdate(object):
         """
 
         self._token_reference = token_reference
+    
 
     def to_dict(self):
         result = {}

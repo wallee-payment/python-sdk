@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ManualTaskType(object):
+class ManualTaskType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'features': 'list[int]',
         'id': 'int',
@@ -15,10 +16,7 @@ class ManualTaskType(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'features': 'features',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','features': 'features','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class ManualTaskType(object):
         self.features = kwargs.get('features', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this ManualTaskType.
@@ -61,7 +57,7 @@ class ManualTaskType(object):
         """
 
         self._description = description
-
+    
     @property
     def features(self):
         """Gets the features of this ManualTaskType.
@@ -84,7 +80,7 @@ class ManualTaskType(object):
         """
 
         self._features = features
-
+    
     @property
     def id(self):
         """Gets the id of this ManualTaskType.
@@ -107,7 +103,7 @@ class ManualTaskType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this ManualTaskType.
@@ -130,6 +126,7 @@ class ManualTaskType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

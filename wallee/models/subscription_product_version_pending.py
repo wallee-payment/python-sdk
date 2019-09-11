@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductVersionPending(object):
+class SubscriptionProductVersionPending:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'billing_cycle': 'str',
@@ -22,17 +23,7 @@ class SubscriptionProductVersionPending(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'billing_cycle': 'billingCycle',
-        'comment': 'comment',
-        'default_currency': 'defaultCurrency',
-        'enabled_currencies': 'enabledCurrencies',
-        'minimal_number_of_periods': 'minimalNumberOfPeriods',
-        'name': 'name',
-        'number_of_notice_periods': 'numberOfNoticePeriods',
-        'product': 'product',
-        'state': 'state',
+        'id': 'id','version': 'version','billing_cycle': 'billingCycle','comment': 'comment','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','product': 'product','state': 'state',
     }
 
     
@@ -52,7 +43,9 @@ class SubscriptionProductVersionPending(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.billing_cycle = kwargs.get('billing_cycle', None)
         self.comment = kwargs.get('comment', None)
         self.default_currency = kwargs.get('default_currency', None)
@@ -62,11 +55,9 @@ class SubscriptionProductVersionPending(object):
         self.number_of_notice_periods = kwargs.get('number_of_notice_periods', None)
         self.product = kwargs.get('product', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductVersionPending.
@@ -91,7 +82,7 @@ class SubscriptionProductVersionPending(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductVersionPending.
@@ -116,7 +107,7 @@ class SubscriptionProductVersionPending(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def billing_cycle(self):
         """Gets the billing_cycle of this SubscriptionProductVersionPending.
@@ -139,7 +130,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._billing_cycle = billing_cycle
-
+    
     @property
     def comment(self):
         """Gets the comment of this SubscriptionProductVersionPending.
@@ -162,7 +153,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._comment = comment
-
+    
     @property
     def default_currency(self):
         """Gets the default_currency of this SubscriptionProductVersionPending.
@@ -185,7 +176,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._default_currency = default_currency
-
+    
     @property
     def enabled_currencies(self):
         """Gets the enabled_currencies of this SubscriptionProductVersionPending.
@@ -208,7 +199,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._enabled_currencies = enabled_currencies
-
+    
     @property
     def minimal_number_of_periods(self):
         """Gets the minimal_number_of_periods of this SubscriptionProductVersionPending.
@@ -231,7 +222,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._minimal_number_of_periods = minimal_number_of_periods
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductVersionPending.
@@ -254,7 +245,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._name = name
-
+    
     @property
     def number_of_notice_periods(self):
         """Gets the number_of_notice_periods of this SubscriptionProductVersionPending.
@@ -277,7 +268,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._number_of_notice_periods = number_of_notice_periods
-
+    
     @property
     def product(self):
         """Gets the product of this SubscriptionProductVersionPending.
@@ -300,7 +291,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._product = product
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionProductVersionPending.
@@ -323,6 +314,7 @@ class SubscriptionProductVersionPending(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

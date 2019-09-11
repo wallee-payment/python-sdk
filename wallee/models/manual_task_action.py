@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ManualTaskAction(object):
+class ManualTaskAction:
 
     swagger_types = {
+    
         'id': 'int',
         'label': 'dict(str, str)',
         'style': 'ManualTaskActionStyle',
@@ -15,10 +16,7 @@ class ManualTaskAction(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'label': 'label',
-        'style': 'style',
-        'task_type': 'taskType',
+        'id': 'id','label': 'label','style': 'style','task_type': 'taskType',
     }
 
     
@@ -34,11 +32,9 @@ class ManualTaskAction(object):
         self.label = kwargs.get('label', None)
         self.style = kwargs.get('style', None)
         self.task_type = kwargs.get('task_type', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ManualTaskAction.
@@ -61,7 +57,7 @@ class ManualTaskAction(object):
         """
 
         self._id = id
-
+    
     @property
     def label(self):
         """Gets the label of this ManualTaskAction.
@@ -84,7 +80,7 @@ class ManualTaskAction(object):
         """
 
         self._label = label
-
+    
     @property
     def style(self):
         """Gets the style of this ManualTaskAction.
@@ -107,7 +103,7 @@ class ManualTaskAction(object):
         """
 
         self._style = style
-
+    
     @property
     def task_type(self):
         """Gets the task_type of this ManualTaskAction.
@@ -130,6 +126,7 @@ class ManualTaskAction(object):
         """
 
         self._task_type = task_type
+    
 
     def to_dict(self):
         result = {}

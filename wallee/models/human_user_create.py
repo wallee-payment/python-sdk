@@ -8,6 +8,7 @@ from . import AbstractHumanUserUpdate
 class HumanUserCreate(AbstractHumanUserUpdate):
 
     swagger_types = {
+    
         'primary_account': 'int',
     }
 
@@ -22,11 +23,11 @@ class HumanUserCreate(AbstractHumanUserUpdate):
         self.discriminator = None
         
         self.primary_account = kwargs.get('primary_account', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def primary_account(self):
         """Gets the primary_account of this HumanUserCreate.
@@ -49,6 +50,7 @@ class HumanUserCreate(AbstractHumanUserUpdate):
         """
 
         self._primary_account = primary_account
+    
 
     def to_dict(self):
         result = {}

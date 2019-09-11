@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class HumanUser(object):
+class HumanUser:
 
     swagger_types = {
+    
         'email_address': 'str',
         'email_address_verified': 'bool',
         'firstname': 'str',
@@ -23,18 +24,7 @@ class HumanUser(object):
     }
 
     attribute_map = {
-        'email_address': 'emailAddress',
-        'email_address_verified': 'emailAddressVerified',
-        'firstname': 'firstname',
-        'language': 'language',
-        'lastname': 'lastname',
-        'mobile_phone_number': 'mobilePhoneNumber',
-        'mobile_phone_verified': 'mobilePhoneVerified',
-        'primary_account': 'primaryAccount',
-        'scope': 'scope',
-        'time_zone': 'timeZone',
-        'two_factor_enabled': 'twoFactorEnabled',
-        'two_factor_type': 'twoFactorType',
+        'email_address': 'emailAddress','email_address_verified': 'emailAddressVerified','firstname': 'firstname','language': 'language','lastname': 'lastname','mobile_phone_number': 'mobilePhoneNumber','mobile_phone_verified': 'mobilePhoneVerified','primary_account': 'primaryAccount','scope': 'scope','time_zone': 'timeZone','two_factor_enabled': 'twoFactorEnabled','two_factor_type': 'twoFactorType',
     }
 
     
@@ -66,11 +56,9 @@ class HumanUser(object):
         self.time_zone = kwargs.get('time_zone', None)
         self.two_factor_enabled = kwargs.get('two_factor_enabled', None)
         self.two_factor_type = kwargs.get('two_factor_type', None)
-
-        
-        
         
 
+    
     @property
     def email_address(self):
         """Gets the email_address of this HumanUser.
@@ -93,7 +81,7 @@ class HumanUser(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def email_address_verified(self):
         """Gets the email_address_verified of this HumanUser.
@@ -116,7 +104,7 @@ class HumanUser(object):
         """
 
         self._email_address_verified = email_address_verified
-
+    
     @property
     def firstname(self):
         """Gets the firstname of this HumanUser.
@@ -139,7 +127,7 @@ class HumanUser(object):
         """
 
         self._firstname = firstname
-
+    
     @property
     def language(self):
         """Gets the language of this HumanUser.
@@ -162,7 +150,7 @@ class HumanUser(object):
         """
 
         self._language = language
-
+    
     @property
     def lastname(self):
         """Gets the lastname of this HumanUser.
@@ -185,7 +173,7 @@ class HumanUser(object):
         """
 
         self._lastname = lastname
-
+    
     @property
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this HumanUser.
@@ -208,7 +196,7 @@ class HumanUser(object):
         """
 
         self._mobile_phone_number = mobile_phone_number
-
+    
     @property
     def mobile_phone_verified(self):
         """Gets the mobile_phone_verified of this HumanUser.
@@ -231,7 +219,7 @@ class HumanUser(object):
         """
 
         self._mobile_phone_verified = mobile_phone_verified
-
+    
     @property
     def primary_account(self):
         """Gets the primary_account of this HumanUser.
@@ -254,7 +242,7 @@ class HumanUser(object):
         """
 
         self._primary_account = primary_account
-
+    
     @property
     def scope(self):
         """Gets the scope of this HumanUser.
@@ -277,7 +265,7 @@ class HumanUser(object):
         """
 
         self._scope = scope
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this HumanUser.
@@ -300,7 +288,7 @@ class HumanUser(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def two_factor_enabled(self):
         """Gets the two_factor_enabled of this HumanUser.
@@ -323,7 +311,7 @@ class HumanUser(object):
         """
 
         self._two_factor_enabled = two_factor_enabled
-
+    
     @property
     def two_factor_type(self):
         """Gets the two_factor_type of this HumanUser.
@@ -346,6 +334,7 @@ class HumanUser(object):
         """
 
         self._two_factor_type = two_factor_type
+    
 
     def to_dict(self):
         result = {}

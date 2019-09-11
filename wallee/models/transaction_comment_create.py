@@ -8,6 +8,7 @@ from . import AbstractTransactionCommentActive
 class TransactionCommentCreate(AbstractTransactionCommentActive):
 
     swagger_types = {
+    
         'transaction': 'int',
     }
 
@@ -27,6 +28,7 @@ class TransactionCommentCreate(AbstractTransactionCommentActive):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def transaction(self):
         """Gets the transaction of this TransactionCommentCreate.
@@ -51,6 +53,7 @@ class TransactionCommentCreate(AbstractTransactionCommentActive):
             raise ValueError("Invalid value for `transaction`, must not be `None`")
 
         self._transaction = transaction
+    
 
     def to_dict(self):
         result = {}

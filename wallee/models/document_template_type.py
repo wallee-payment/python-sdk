@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DocumentTemplateType(object):
+class DocumentTemplateType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'feature': 'int',
         'group': 'DocumentTemplateTypeGroup',
@@ -16,11 +17,7 @@ class DocumentTemplateType(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'feature': 'feature',
-        'group': 'group',
-        'id': 'id',
-        'title': 'title',
+        'description': 'description','feature': 'feature','group': 'group','id': 'id','title': 'title',
     }
 
     
@@ -38,11 +35,9 @@ class DocumentTemplateType(object):
         self.group = kwargs.get('group', None)
         self.id = kwargs.get('id', None)
         self.title = kwargs.get('title', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this DocumentTemplateType.
@@ -65,7 +60,7 @@ class DocumentTemplateType(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this DocumentTemplateType.
@@ -88,7 +83,7 @@ class DocumentTemplateType(object):
         """
 
         self._feature = feature
-
+    
     @property
     def group(self):
         """Gets the group of this DocumentTemplateType.
@@ -111,7 +106,7 @@ class DocumentTemplateType(object):
         """
 
         self._group = group
-
+    
     @property
     def id(self):
         """Gets the id of this DocumentTemplateType.
@@ -134,7 +129,7 @@ class DocumentTemplateType(object):
         """
 
         self._id = id
-
+    
     @property
     def title(self):
         """Gets the title of this DocumentTemplateType.
@@ -157,6 +152,7 @@ class DocumentTemplateType(object):
         """
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

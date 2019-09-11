@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentProcessor(object):
+class PaymentProcessor:
 
     swagger_types = {
+    
         'company_name': 'dict(str, str)',
         'description': 'dict(str, str)',
         'feature': 'int',
@@ -19,14 +20,7 @@ class PaymentProcessor(object):
     }
 
     attribute_map = {
-        'company_name': 'companyName',
-        'description': 'description',
-        'feature': 'feature',
-        'headquarters_location': 'headquartersLocation',
-        'id': 'id',
-        'logo_path': 'logoPath',
-        'name': 'name',
-        'product_name': 'productName',
+        'company_name': 'companyName','description': 'description','feature': 'feature','headquarters_location': 'headquartersLocation','id': 'id','logo_path': 'logoPath','name': 'name','product_name': 'productName',
     }
 
     
@@ -50,11 +44,9 @@ class PaymentProcessor(object):
         self.logo_path = kwargs.get('logo_path', None)
         self.name = kwargs.get('name', None)
         self.product_name = kwargs.get('product_name', None)
-
-        
-        
         
 
+    
     @property
     def company_name(self):
         """Gets the company_name of this PaymentProcessor.
@@ -77,7 +69,7 @@ class PaymentProcessor(object):
         """
 
         self._company_name = company_name
-
+    
     @property
     def description(self):
         """Gets the description of this PaymentProcessor.
@@ -100,7 +92,7 @@ class PaymentProcessor(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this PaymentProcessor.
@@ -123,7 +115,7 @@ class PaymentProcessor(object):
         """
 
         self._feature = feature
-
+    
     @property
     def headquarters_location(self):
         """Gets the headquarters_location of this PaymentProcessor.
@@ -146,7 +138,7 @@ class PaymentProcessor(object):
         """
 
         self._headquarters_location = headquarters_location
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentProcessor.
@@ -169,7 +161,7 @@ class PaymentProcessor(object):
         """
 
         self._id = id
-
+    
     @property
     def logo_path(self):
         """Gets the logo_path of this PaymentProcessor.
@@ -192,7 +184,7 @@ class PaymentProcessor(object):
         """
 
         self._logo_path = logo_path
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentProcessor.
@@ -215,7 +207,7 @@ class PaymentProcessor(object):
         """
 
         self._name = name
-
+    
     @property
     def product_name(self):
         """Gets the product_name of this PaymentProcessor.
@@ -238,6 +230,7 @@ class PaymentProcessor(object):
         """
 
         self._product_name = product_name
+    
 
     def to_dict(self):
         result = {}

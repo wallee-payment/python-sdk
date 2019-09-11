@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class InstallmentCalculatedSlice(object):
+class InstallmentCalculatedSlice:
 
     swagger_types = {
+    
         'amount_including_tax': 'float',
         'due_on': 'datetime',
         'line_items': 'list[LineItem]',
     }
 
     attribute_map = {
-        'amount_including_tax': 'amountIncludingTax',
-        'due_on': 'dueOn',
-        'line_items': 'lineItems',
+        'amount_including_tax': 'amountIncludingTax','due_on': 'dueOn','line_items': 'lineItems',
     }
 
     
@@ -30,11 +29,9 @@ class InstallmentCalculatedSlice(object):
         self.amount_including_tax = kwargs.get('amount_including_tax', None)
         self.due_on = kwargs.get('due_on', None)
         self.line_items = kwargs.get('line_items', None)
-
-        
-        
         
 
+    
     @property
     def amount_including_tax(self):
         """Gets the amount_including_tax of this InstallmentCalculatedSlice.
@@ -57,7 +54,7 @@ class InstallmentCalculatedSlice(object):
         """
 
         self._amount_including_tax = amount_including_tax
-
+    
     @property
     def due_on(self):
         """Gets the due_on of this InstallmentCalculatedSlice.
@@ -80,7 +77,7 @@ class InstallmentCalculatedSlice(object):
         """
 
         self._due_on = due_on
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this InstallmentCalculatedSlice.
@@ -103,6 +100,7 @@ class InstallmentCalculatedSlice(object):
         """
 
         self._line_items = line_items
+    
 
     def to_dict(self):
         result = {}

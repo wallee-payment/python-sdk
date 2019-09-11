@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class TransactionAwareEntity(object):
+class TransactionAwareEntity:
 
     swagger_types = {
+    
         'id': 'int',
         'linked_space_id': 'int',
         'linked_transaction': 'int',
     }
 
     attribute_map = {
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'linked_transaction': 'linkedTransaction',
+        'id': 'id','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction',
     }
 
     
@@ -30,11 +29,9 @@ class TransactionAwareEntity(object):
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.linked_transaction = kwargs.get('linked_transaction', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this TransactionAwareEntity.
@@ -57,7 +54,7 @@ class TransactionAwareEntity(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this TransactionAwareEntity.
@@ -80,7 +77,7 @@ class TransactionAwareEntity(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def linked_transaction(self):
         """Gets the linked_transaction of this TransactionAwareEntity.
@@ -103,6 +100,7 @@ class TransactionAwareEntity(object):
         """
 
         self._linked_transaction = linked_transaction
+    
 
     def to_dict(self):
         result = {}

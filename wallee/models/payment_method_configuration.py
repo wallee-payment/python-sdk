@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentMethodConfiguration(object):
+class PaymentMethodConfiguration:
 
     swagger_types = {
+    
         'data_collection_type': 'DataCollectionType',
         'description': 'DatabaseTranslatedString',
         'id': 'int',
@@ -28,23 +29,7 @@ class PaymentMethodConfiguration(object):
     }
 
     attribute_map = {
-        'data_collection_type': 'dataCollectionType',
-        'description': 'description',
-        'id': 'id',
-        'image_resource_path': 'imageResourcePath',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'one_click_payment_mode': 'oneClickPaymentMode',
-        'payment_method': 'paymentMethod',
-        'planned_purge_date': 'plannedPurgeDate',
-        'resolved_description': 'resolvedDescription',
-        'resolved_image_url': 'resolvedImageUrl',
-        'resolved_title': 'resolvedTitle',
-        'sort_order': 'sortOrder',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'title': 'title',
-        'version': 'version',
+        'data_collection_type': 'dataCollectionType','description': 'description','id': 'id','image_resource_path': 'imageResourcePath','linked_space_id': 'linkedSpaceId','name': 'name','one_click_payment_mode': 'oneClickPaymentMode','payment_method': 'paymentMethod','planned_purge_date': 'plannedPurgeDate','resolved_description': 'resolvedDescription','resolved_image_url': 'resolvedImageUrl','resolved_title': 'resolvedTitle','sort_order': 'sortOrder','space_id': 'spaceId','state': 'state','title': 'title','version': 'version',
     }
 
     
@@ -86,11 +71,9 @@ class PaymentMethodConfiguration(object):
         self.state = kwargs.get('state', None)
         self.title = kwargs.get('title', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def data_collection_type(self):
         """Gets the data_collection_type of this PaymentMethodConfiguration.
@@ -113,7 +96,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._data_collection_type = data_collection_type
-
+    
     @property
     def description(self):
         """Gets the description of this PaymentMethodConfiguration.
@@ -136,7 +119,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentMethodConfiguration.
@@ -159,7 +142,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def image_resource_path(self):
         """Gets the image_resource_path of this PaymentMethodConfiguration.
@@ -182,7 +165,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._image_resource_path = image_resource_path
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentMethodConfiguration.
@@ -205,7 +188,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentMethodConfiguration.
@@ -228,7 +211,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def one_click_payment_mode(self):
         """Gets the one_click_payment_mode of this PaymentMethodConfiguration.
@@ -251,7 +234,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._one_click_payment_mode = one_click_payment_mode
-
+    
     @property
     def payment_method(self):
         """Gets the payment_method of this PaymentMethodConfiguration.
@@ -274,7 +257,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._payment_method = payment_method
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentMethodConfiguration.
@@ -297,7 +280,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def resolved_description(self):
         """Gets the resolved_description of this PaymentMethodConfiguration.
@@ -320,7 +303,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._resolved_description = resolved_description
-
+    
     @property
     def resolved_image_url(self):
         """Gets the resolved_image_url of this PaymentMethodConfiguration.
@@ -343,7 +326,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._resolved_image_url = resolved_image_url
-
+    
     @property
     def resolved_title(self):
         """Gets the resolved_title of this PaymentMethodConfiguration.
@@ -366,7 +349,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._resolved_title = resolved_title
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this PaymentMethodConfiguration.
@@ -389,7 +372,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this PaymentMethodConfiguration.
@@ -412,7 +395,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this PaymentMethodConfiguration.
@@ -435,7 +418,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def title(self):
         """Gets the title of this PaymentMethodConfiguration.
@@ -458,7 +441,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._title = title
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentMethodConfiguration.
@@ -481,6 +464,7 @@ class PaymentMethodConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductPeriodFee(object):
+class ProductPeriodFee:
 
     swagger_types = {
+    
         'component': 'SubscriptionProductComponent',
         'description': 'DatabaseTranslatedString',
         'id': 'int',
@@ -21,16 +22,7 @@ class ProductPeriodFee(object):
     }
 
     attribute_map = {
-        'component': 'component',
-        'description': 'description',
-        'id': 'id',
-        'ledger_entry_title': 'ledgerEntryTitle',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'number_of_free_trial_periods': 'numberOfFreeTrialPeriods',
-        'period_fee': 'periodFee',
-        'type': 'type',
-        'version': 'version',
+        'component': 'component','description': 'description','id': 'id','ledger_entry_title': 'ledgerEntryTitle','linked_space_id': 'linkedSpaceId','name': 'name','number_of_free_trial_periods': 'numberOfFreeTrialPeriods','period_fee': 'periodFee','type': 'type','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class ProductPeriodFee(object):
         self.period_fee = kwargs.get('period_fee', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def component(self):
         """Gets the component of this ProductPeriodFee.
@@ -85,7 +75,7 @@ class ProductPeriodFee(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductPeriodFee.
@@ -108,7 +98,7 @@ class ProductPeriodFee(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this ProductPeriodFee.
@@ -131,7 +121,7 @@ class ProductPeriodFee(object):
         """
 
         self._id = id
-
+    
     @property
     def ledger_entry_title(self):
         """Gets the ledger_entry_title of this ProductPeriodFee.
@@ -154,7 +144,7 @@ class ProductPeriodFee(object):
         """
 
         self._ledger_entry_title = ledger_entry_title
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ProductPeriodFee.
@@ -177,7 +167,7 @@ class ProductPeriodFee(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this ProductPeriodFee.
@@ -200,7 +190,7 @@ class ProductPeriodFee(object):
         """
 
         self._name = name
-
+    
     @property
     def number_of_free_trial_periods(self):
         """Gets the number_of_free_trial_periods of this ProductPeriodFee.
@@ -223,7 +213,7 @@ class ProductPeriodFee(object):
         """
 
         self._number_of_free_trial_periods = number_of_free_trial_periods
-
+    
     @property
     def period_fee(self):
         """Gets the period_fee of this ProductPeriodFee.
@@ -246,7 +236,7 @@ class ProductPeriodFee(object):
         """
 
         self._period_fee = period_fee
-
+    
     @property
     def type(self):
         """Gets the type of this ProductPeriodFee.
@@ -269,7 +259,7 @@ class ProductPeriodFee(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this ProductPeriodFee.
@@ -292,6 +282,7 @@ class ProductPeriodFee(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

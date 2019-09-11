@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class ChargeFlowLevel(TransactionAwareEntity):
 
     swagger_types = {
+    
         'asynchronous_charge': 'int',
         'configuration': 'ChargeFlowLevelConfiguration',
         'created_on': 'datetime',
@@ -21,16 +22,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'asynchronous_charge': 'asynchronousCharge',
-        'configuration': 'configuration',
-        'created_on': 'createdOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'synchronous_charge': 'synchronousCharge',
-        'timeout_on': 'timeoutOn',
-        'token_charge': 'tokenCharge',
-        'transaction': 'transaction',
-        'version': 'version',
+        'asynchronous_charge': 'asynchronousCharge','configuration': 'configuration','created_on': 'createdOn','planned_purge_date': 'plannedPurgeDate','state': 'state','synchronous_charge': 'synchronousCharge','timeout_on': 'timeoutOn','token_charge': 'tokenCharge','transaction': 'transaction','version': 'version',
     }
 
     
@@ -58,11 +50,11 @@ class ChargeFlowLevel(TransactionAwareEntity):
         self.token_charge = kwargs.get('token_charge', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def asynchronous_charge(self):
         """Gets the asynchronous_charge of this ChargeFlowLevel.
@@ -85,7 +77,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._asynchronous_charge = asynchronous_charge
-
+    
     @property
     def configuration(self):
         """Gets the configuration of this ChargeFlowLevel.
@@ -108,7 +100,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._configuration = configuration
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this ChargeFlowLevel.
@@ -131,7 +123,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ChargeFlowLevel.
@@ -154,7 +146,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this ChargeFlowLevel.
@@ -177,7 +169,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def synchronous_charge(self):
         """Gets the synchronous_charge of this ChargeFlowLevel.
@@ -200,7 +192,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._synchronous_charge = synchronous_charge
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this ChargeFlowLevel.
@@ -223,7 +215,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def token_charge(self):
         """Gets the token_charge of this ChargeFlowLevel.
@@ -246,7 +238,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._token_charge = token_charge
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this ChargeFlowLevel.
@@ -269,7 +261,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def version(self):
         """Gets the version of this ChargeFlowLevel.
@@ -292,6 +284,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

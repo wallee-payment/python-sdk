@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractDebtCollectionCaseUpdate(object):
+class AbstractDebtCollectionCaseUpdate:
 
     swagger_types = {
+    
         'billing_address': 'AddressCreate',
         'contract_date': 'datetime',
         'currency': 'str',
@@ -19,14 +20,7 @@ class AbstractDebtCollectionCaseUpdate(object):
     }
 
     attribute_map = {
-        'billing_address': 'billingAddress',
-        'contract_date': 'contractDate',
-        'currency': 'currency',
-        'due_date': 'dueDate',
-        'environment': 'environment',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'space_view_id': 'spaceViewId',
+        'billing_address': 'billingAddress','contract_date': 'contractDate','currency': 'currency','due_date': 'dueDate','environment': 'environment','language': 'language','line_items': 'lineItems','space_view_id': 'spaceViewId',
     }
 
     
@@ -50,11 +44,9 @@ class AbstractDebtCollectionCaseUpdate(object):
         self.language = kwargs.get('language', None)
         self.line_items = kwargs.get('line_items', None)
         self.space_view_id = kwargs.get('space_view_id', None)
-
-        
-        
         
 
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this AbstractDebtCollectionCaseUpdate.
@@ -77,7 +69,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def contract_date(self):
         """Gets the contract_date of this AbstractDebtCollectionCaseUpdate.
@@ -100,7 +92,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._contract_date = contract_date
-
+    
     @property
     def currency(self):
         """Gets the currency of this AbstractDebtCollectionCaseUpdate.
@@ -123,7 +115,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._currency = currency
-
+    
     @property
     def due_date(self):
         """Gets the due_date of this AbstractDebtCollectionCaseUpdate.
@@ -146,7 +138,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._due_date = due_date
-
+    
     @property
     def environment(self):
         """Gets the environment of this AbstractDebtCollectionCaseUpdate.
@@ -169,7 +161,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._environment = environment
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractDebtCollectionCaseUpdate.
@@ -192,7 +184,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this AbstractDebtCollectionCaseUpdate.
@@ -215,7 +207,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this AbstractDebtCollectionCaseUpdate.
@@ -238,6 +230,7 @@ class AbstractDebtCollectionCaseUpdate(object):
         """
 
         self._space_view_id = space_view_id
+    
 
     def to_dict(self):
         result = {}

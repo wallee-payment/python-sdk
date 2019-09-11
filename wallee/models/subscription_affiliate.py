@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionAffiliate(object):
+class SubscriptionAffiliate:
 
     swagger_types = {
+    
         'external_id': 'str',
         'id': 'int',
         'language': 'str',
@@ -21,16 +22,7 @@ class SubscriptionAffiliate(object):
     }
 
     attribute_map = {
-        'external_id': 'externalId',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'meta_data': 'metaData',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'reference': 'reference',
-        'state': 'state',
-        'version': 'version',
+        'external_id': 'externalId','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','meta_data': 'metaData','name': 'name','planned_purge_date': 'plannedPurgeDate','reference': 'reference','state': 'state','version': 'version',
     }
 
     
@@ -58,11 +50,9 @@ class SubscriptionAffiliate(object):
         self.reference = kwargs.get('reference', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionAffiliate.
@@ -85,7 +75,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionAffiliate.
@@ -108,7 +98,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionAffiliate.
@@ -131,7 +121,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionAffiliate.
@@ -154,7 +144,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this SubscriptionAffiliate.
@@ -177,7 +167,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionAffiliate.
@@ -200,7 +190,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionAffiliate.
@@ -223,7 +213,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionAffiliate.
@@ -246,7 +236,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._reference = reference
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionAffiliate.
@@ -269,7 +259,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionAffiliate.
@@ -292,6 +282,7 @@ class SubscriptionAffiliate(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

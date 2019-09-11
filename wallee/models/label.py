@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Label(object):
+class Label:
 
     swagger_types = {
+    
         'content': 'object',
         'content_as_string': 'str',
         'descriptor': 'LabelDescriptor',
@@ -16,11 +17,7 @@ class Label(object):
     }
 
     attribute_map = {
-        'content': 'content',
-        'content_as_string': 'contentAsString',
-        'descriptor': 'descriptor',
-        'id': 'id',
-        'version': 'version',
+        'content': 'content','content_as_string': 'contentAsString','descriptor': 'descriptor','id': 'id','version': 'version',
     }
 
     
@@ -38,11 +35,9 @@ class Label(object):
         self.descriptor = kwargs.get('descriptor', None)
         self.id = kwargs.get('id', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def content(self):
         """Gets the content of this Label.
@@ -65,7 +60,7 @@ class Label(object):
         """
 
         self._content = content
-
+    
     @property
     def content_as_string(self):
         """Gets the content_as_string of this Label.
@@ -88,7 +83,7 @@ class Label(object):
         """
 
         self._content_as_string = content_as_string
-
+    
     @property
     def descriptor(self):
         """Gets the descriptor of this Label.
@@ -111,7 +106,7 @@ class Label(object):
         """
 
         self._descriptor = descriptor
-
+    
     @property
     def id(self):
         """Gets the id of this Label.
@@ -134,7 +129,7 @@ class Label(object):
         """
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this Label.
@@ -157,6 +152,7 @@ class Label(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

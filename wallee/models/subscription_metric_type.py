@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionMetricType(object):
+class SubscriptionMetricType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'feature': 'Feature',
         'id': 'int',
@@ -15,10 +16,7 @@ class SubscriptionMetricType(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'feature': 'feature',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','feature': 'feature','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class SubscriptionMetricType(object):
         self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionMetricType.
@@ -61,7 +57,7 @@ class SubscriptionMetricType(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this SubscriptionMetricType.
@@ -84,7 +80,7 @@ class SubscriptionMetricType(object):
         """
 
         self._feature = feature
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionMetricType.
@@ -107,7 +103,7 @@ class SubscriptionMetricType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionMetricType.
@@ -130,6 +126,7 @@ class SubscriptionMetricType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

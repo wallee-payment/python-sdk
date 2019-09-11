@@ -8,33 +8,30 @@ from . import AbstractSubscriptionAffiliateUpdate
 class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
 
     swagger_types = {
+    
         'external_id': 'str',
         'reference': 'str',
-        'state': 'CreationEntityState',
     }
 
     attribute_map = {
-        'external_id': 'externalId',
-        'reference': 'reference',
-        'state': 'state',
+        'external_id': 'externalId','reference': 'reference',
     }
 
     
     _external_id = None
     _reference = None
-    _state = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.external_id = kwargs.get('external_id')
-        self.reference = kwargs.get('reference', None)
-        self.state = kwargs.get('state', None)
 
+        self.reference = kwargs.get('reference', None)
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionAffiliateCreate.
@@ -59,7 +56,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionAffiliateCreate.
@@ -82,29 +79,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
         """
 
         self._reference = reference
-
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionAffiliateCreate.
-
-            
-
-        :return: The state of this SubscriptionAffiliateCreate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionAffiliateCreate.
-
-            
-
-        :param state: The state of this SubscriptionAffiliateCreate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
+    
 
     def to_dict(self):
         result = {}

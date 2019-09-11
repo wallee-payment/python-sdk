@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RestCountryState(object):
+class RestCountryState:
 
     swagger_types = {
+    
         'code': 'str',
         'country_code': 'str',
         'id': 'str',
@@ -15,10 +16,7 @@ class RestCountryState(object):
     }
 
     attribute_map = {
-        'code': 'code',
-        'country_code': 'countryCode',
-        'id': 'id',
-        'name': 'name',
+        'code': 'code','country_code': 'countryCode','id': 'id','name': 'name',
     }
 
     
@@ -34,11 +32,9 @@ class RestCountryState(object):
         self.country_code = kwargs.get('country_code', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def code(self):
         """Gets the code of this RestCountryState.
@@ -61,7 +57,7 @@ class RestCountryState(object):
         """
 
         self._code = code
-
+    
     @property
     def country_code(self):
         """Gets the country_code of this RestCountryState.
@@ -84,7 +80,7 @@ class RestCountryState(object):
         """
 
         self._country_code = country_code
-
+    
     @property
     def id(self):
         """Gets the id of this RestCountryState.
@@ -107,7 +103,7 @@ class RestCountryState(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this RestCountryState.
@@ -130,6 +126,7 @@ class RestCountryState(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

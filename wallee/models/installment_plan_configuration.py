@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class InstallmentPlanConfiguration(object):
+class InstallmentPlanConfiguration:
 
     swagger_types = {
+    
         'base_currency': 'str',
         'conditions': 'list[int]',
         'id': 'int',
@@ -28,23 +29,7 @@ class InstallmentPlanConfiguration(object):
     }
 
     attribute_map = {
-        'base_currency': 'baseCurrency',
-        'conditions': 'conditions',
-        'id': 'id',
-        'installment_fee': 'installmentFee',
-        'interest_rate': 'interestRate',
-        'linked_space_id': 'linkedSpaceId',
-        'minimal_amount': 'minimalAmount',
-        'name': 'name',
-        'payment_method_configurations': 'paymentMethodConfigurations',
-        'planned_purge_date': 'plannedPurgeDate',
-        'sort_order': 'sortOrder',
-        'space_reference': 'spaceReference',
-        'state': 'state',
-        'tax_class': 'taxClass',
-        'terms_and_conditions': 'termsAndConditions',
-        'title': 'title',
-        'version': 'version',
+        'base_currency': 'baseCurrency','conditions': 'conditions','id': 'id','installment_fee': 'installmentFee','interest_rate': 'interestRate','linked_space_id': 'linkedSpaceId','minimal_amount': 'minimalAmount','name': 'name','payment_method_configurations': 'paymentMethodConfigurations','planned_purge_date': 'plannedPurgeDate','sort_order': 'sortOrder','space_reference': 'spaceReference','state': 'state','tax_class': 'taxClass','terms_and_conditions': 'termsAndConditions','title': 'title','version': 'version',
     }
 
     
@@ -86,11 +71,9 @@ class InstallmentPlanConfiguration(object):
         self.terms_and_conditions = kwargs.get('terms_and_conditions', None)
         self.title = kwargs.get('title', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def base_currency(self):
         """Gets the base_currency of this InstallmentPlanConfiguration.
@@ -113,7 +96,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._base_currency = base_currency
-
+    
     @property
     def conditions(self):
         """Gets the conditions of this InstallmentPlanConfiguration.
@@ -136,7 +119,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._conditions = conditions
-
+    
     @property
     def id(self):
         """Gets the id of this InstallmentPlanConfiguration.
@@ -159,7 +142,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def installment_fee(self):
         """Gets the installment_fee of this InstallmentPlanConfiguration.
@@ -182,7 +165,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._installment_fee = installment_fee
-
+    
     @property
     def interest_rate(self):
         """Gets the interest_rate of this InstallmentPlanConfiguration.
@@ -205,7 +188,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._interest_rate = interest_rate
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this InstallmentPlanConfiguration.
@@ -228,7 +211,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def minimal_amount(self):
         """Gets the minimal_amount of this InstallmentPlanConfiguration.
@@ -251,7 +234,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._minimal_amount = minimal_amount
-
+    
     @property
     def name(self):
         """Gets the name of this InstallmentPlanConfiguration.
@@ -274,7 +257,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def payment_method_configurations(self):
         """Gets the payment_method_configurations of this InstallmentPlanConfiguration.
@@ -297,7 +280,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._payment_method_configurations = payment_method_configurations
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this InstallmentPlanConfiguration.
@@ -320,7 +303,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this InstallmentPlanConfiguration.
@@ -343,7 +326,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def space_reference(self):
         """Gets the space_reference of this InstallmentPlanConfiguration.
@@ -366,7 +349,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._space_reference = space_reference
-
+    
     @property
     def state(self):
         """Gets the state of this InstallmentPlanConfiguration.
@@ -389,7 +372,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def tax_class(self):
         """Gets the tax_class of this InstallmentPlanConfiguration.
@@ -412,7 +395,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._tax_class = tax_class
-
+    
     @property
     def terms_and_conditions(self):
         """Gets the terms_and_conditions of this InstallmentPlanConfiguration.
@@ -435,7 +418,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._terms_and_conditions = terms_and_conditions
-
+    
     @property
     def title(self):
         """Gets the title of this InstallmentPlanConfiguration.
@@ -458,7 +441,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._title = title
-
+    
     @property
     def version(self):
         """Gets the version of this InstallmentPlanConfiguration.
@@ -481,6 +464,7 @@ class InstallmentPlanConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DatabaseTranslatedStringCreate(object):
+class DatabaseTranslatedStringCreate:
 
     swagger_types = {
+    
         'items': 'list[DatabaseTranslatedStringItemCreate]',
     }
 
@@ -22,11 +23,9 @@ class DatabaseTranslatedStringCreate(object):
         self.discriminator = None
         
         self.items = kwargs.get('items', None)
-
-        
-        
         
 
+    
     @property
     def items(self):
         """Gets the items of this DatabaseTranslatedStringCreate.
@@ -49,6 +48,7 @@ class DatabaseTranslatedStringCreate(object):
         """
 
         self._items = items
+    
 
     def to_dict(self):
         result = {}

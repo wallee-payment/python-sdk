@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class EntityQueryOrderBy(object):
+class EntityQueryOrderBy:
 
     swagger_types = {
+    
         'field_name': 'str',
         'sorting': 'EntityQueryOrderByType',
     }
 
     attribute_map = {
-        'field_name': 'fieldName',
-        'sorting': 'sorting',
+        'field_name': 'fieldName','sorting': 'sorting',
     }
 
     
@@ -25,12 +25,12 @@ class EntityQueryOrderBy(object):
         self.discriminator = None
         
         self.field_name = kwargs.get('field_name')
+
         self.sorting = kwargs.get('sorting')
 
         
-        
-        
 
+    
     @property
     def field_name(self):
         """Gets the field_name of this EntityQueryOrderBy.
@@ -55,7 +55,7 @@ class EntityQueryOrderBy(object):
             raise ValueError("Invalid value for `field_name`, must not be `None`")
 
         self._field_name = field_name
-
+    
     @property
     def sorting(self):
         """Gets the sorting of this EntityQueryOrderBy.
@@ -80,6 +80,7 @@ class EntityQueryOrderBy(object):
             raise ValueError("Invalid value for `sorting`, must not be `None`")
 
         self._sorting = sorting
+    
 
     def to_dict(self):
         result = {}

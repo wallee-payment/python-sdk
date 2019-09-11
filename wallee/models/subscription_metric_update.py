@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionMetricUpdate(object):
+class SubscriptionMetricUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'description': 'DatabaseTranslatedStringCreate',
@@ -15,10 +16,7 @@ class SubscriptionMetricUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'description': 'description',
-        'name': 'name',
+        'id': 'id','version': 'version','description': 'description','name': 'name',
     }
 
     
@@ -31,14 +29,14 @@ class SubscriptionMetricUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.description = kwargs.get('description', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionMetricUpdate.
@@ -63,7 +61,7 @@ class SubscriptionMetricUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionMetricUpdate.
@@ -88,7 +86,7 @@ class SubscriptionMetricUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionMetricUpdate.
@@ -111,7 +109,7 @@ class SubscriptionMetricUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionMetricUpdate.
@@ -134,6 +132,7 @@ class SubscriptionMetricUpdate(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

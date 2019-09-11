@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class TransactionLineItemVersion(TransactionAwareEntity):
 
     swagger_types = {
+    
         'amount': 'float',
         'created_by': 'int',
         'created_on': 'datetime',
@@ -21,16 +22,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_view_id': 'spaceViewId',
-        'tax_amount': 'taxAmount',
-        'transaction': 'transaction',
-        'version': 'version',
+        'amount': 'amount','created_by': 'createdBy','created_on': 'createdOn','language': 'language','line_items': 'lineItems','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','tax_amount': 'taxAmount','transaction': 'transaction','version': 'version',
     }
 
     
@@ -58,11 +50,11 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         self.tax_amount = kwargs.get('tax_amount', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def amount(self):
         """Gets the amount of this TransactionLineItemVersion.
@@ -85,7 +77,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._amount = amount
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this TransactionLineItemVersion.
@@ -108,7 +100,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this TransactionLineItemVersion.
@@ -131,7 +123,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def language(self):
         """Gets the language of this TransactionLineItemVersion.
@@ -154,7 +146,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this TransactionLineItemVersion.
@@ -177,7 +169,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._line_items = line_items
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionLineItemVersion.
@@ -200,7 +192,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this TransactionLineItemVersion.
@@ -223,7 +215,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def tax_amount(self):
         """Gets the tax_amount of this TransactionLineItemVersion.
@@ -246,7 +238,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._tax_amount = tax_amount
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this TransactionLineItemVersion.
@@ -269,7 +261,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._transaction = transaction
-
+    
     @property
     def version(self):
         """Gets the version of this TransactionLineItemVersion.
@@ -292,6 +284,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractSubscriptionAffiliateUpdate(object):
+class AbstractSubscriptionAffiliateUpdate:
 
     swagger_types = {
+    
         'language': 'str',
         'meta_data': 'dict(str, str)',
         'name': 'str',
@@ -15,10 +16,7 @@ class AbstractSubscriptionAffiliateUpdate(object):
     }
 
     attribute_map = {
-        'language': 'language',
-        'meta_data': 'metaData',
-        'name': 'name',
-        'state': 'state',
+        'language': 'language','meta_data': 'metaData','name': 'name','state': 'state',
     }
 
     
@@ -34,11 +32,9 @@ class AbstractSubscriptionAffiliateUpdate(object):
         self.meta_data = kwargs.get('meta_data', None)
         self.name = kwargs.get('name', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def language(self):
         """Gets the language of this AbstractSubscriptionAffiliateUpdate.
@@ -61,7 +57,7 @@ class AbstractSubscriptionAffiliateUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this AbstractSubscriptionAffiliateUpdate.
@@ -84,7 +80,7 @@ class AbstractSubscriptionAffiliateUpdate(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def name(self):
         """Gets the name of this AbstractSubscriptionAffiliateUpdate.
@@ -107,7 +103,7 @@ class AbstractSubscriptionAffiliateUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractSubscriptionAffiliateUpdate.
@@ -130,6 +126,7 @@ class AbstractSubscriptionAffiliateUpdate(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

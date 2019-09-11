@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class AbstractAccountUpdate(object):
+class AbstractAccountUpdate:
 
     swagger_types = {
+    
         'name': 'str',
         'subaccount_limit': 'int',
     }
 
     attribute_map = {
-        'name': 'name',
-        'subaccount_limit': 'subaccountLimit',
+        'name': 'name','subaccount_limit': 'subaccountLimit',
     }
 
     
@@ -26,11 +26,9 @@ class AbstractAccountUpdate(object):
         
         self.name = kwargs.get('name', None)
         self.subaccount_limit = kwargs.get('subaccount_limit', None)
-
-        
-        
         
 
+    
     @property
     def name(self):
         """Gets the name of this AbstractAccountUpdate.
@@ -53,7 +51,7 @@ class AbstractAccountUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def subaccount_limit(self):
         """Gets the subaccount_limit of this AbstractAccountUpdate.
@@ -76,6 +74,7 @@ class AbstractAccountUpdate(object):
         """
 
         self._subaccount_limit = subaccount_limit
+    
 
     def to_dict(self):
         result = {}

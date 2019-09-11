@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectorCondition(object):
+class DebtCollectorCondition:
 
     swagger_types = {
+    
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -18,13 +19,7 @@ class DebtCollectorCondition(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'type': 'type',
-        'version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class DebtCollectorCondition(object):
         self.state = kwargs.get('state', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectorCondition.
@@ -73,7 +66,7 @@ class DebtCollectorCondition(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DebtCollectorCondition.
@@ -96,7 +89,7 @@ class DebtCollectorCondition(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this DebtCollectorCondition.
@@ -119,7 +112,7 @@ class DebtCollectorCondition(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DebtCollectorCondition.
@@ -142,7 +135,7 @@ class DebtCollectorCondition(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this DebtCollectorCondition.
@@ -165,7 +158,7 @@ class DebtCollectorCondition(object):
         """
 
         self._state = state
-
+    
     @property
     def type(self):
         """Gets the type of this DebtCollectorCondition.
@@ -188,7 +181,7 @@ class DebtCollectorCondition(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this DebtCollectorCondition.
@@ -211,6 +204,7 @@ class DebtCollectorCondition(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

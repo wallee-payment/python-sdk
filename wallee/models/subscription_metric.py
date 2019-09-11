@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionMetric(object):
+class SubscriptionMetric:
 
     swagger_types = {
+    
         'description': 'DatabaseTranslatedString',
         'id': 'int',
         'linked_space_id': 'int',
@@ -19,14 +20,7 @@ class SubscriptionMetric(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'type': 'type',
-        'version': 'version',
+        'description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
@@ -50,11 +44,9 @@ class SubscriptionMetric(object):
         self.state = kwargs.get('state', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionMetric.
@@ -77,7 +69,7 @@ class SubscriptionMetric(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionMetric.
@@ -100,7 +92,7 @@ class SubscriptionMetric(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionMetric.
@@ -123,7 +115,7 @@ class SubscriptionMetric(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionMetric.
@@ -146,7 +138,7 @@ class SubscriptionMetric(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionMetric.
@@ -169,7 +161,7 @@ class SubscriptionMetric(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionMetric.
@@ -192,7 +184,7 @@ class SubscriptionMetric(object):
         """
 
         self._state = state
-
+    
     @property
     def type(self):
         """Gets the type of this SubscriptionMetric.
@@ -215,7 +207,7 @@ class SubscriptionMetric(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionMetric.
@@ -238,6 +230,7 @@ class SubscriptionMetric(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

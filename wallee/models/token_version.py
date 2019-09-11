@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TokenVersion(object):
+class TokenVersion:
 
     swagger_types = {
+    
         'activated_on': 'datetime',
         'billing_address': 'Address',
         'created_on': 'datetime',
@@ -32,27 +33,7 @@ class TokenVersion(object):
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn',
-        'billing_address': 'billingAddress',
-        'created_on': 'createdOn',
-        'environment': 'environment',
-        'expires_on': 'expiresOn',
-        'id': 'id',
-        'labels': 'labels',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'obsoleted_on': 'obsoletedOn',
-        'payment_connector_configuration': 'paymentConnectorConfiguration',
-        'payment_method': 'paymentMethod',
-        'payment_method_brand': 'paymentMethodBrand',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processor_token': 'processorToken',
-        'shipping_address': 'shippingAddress',
-        'state': 'state',
-        'token': 'token',
-        'type': 'type',
-        'version': 'version',
+        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
     }
 
     
@@ -102,11 +83,9 @@ class TokenVersion(object):
         self.token = kwargs.get('token', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def activated_on(self):
         """Gets the activated_on of this TokenVersion.
@@ -129,7 +108,7 @@ class TokenVersion(object):
         """
 
         self._activated_on = activated_on
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this TokenVersion.
@@ -152,7 +131,7 @@ class TokenVersion(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this TokenVersion.
@@ -175,7 +154,7 @@ class TokenVersion(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def environment(self):
         """Gets the environment of this TokenVersion.
@@ -198,7 +177,7 @@ class TokenVersion(object):
         """
 
         self._environment = environment
-
+    
     @property
     def expires_on(self):
         """Gets the expires_on of this TokenVersion.
@@ -221,7 +200,7 @@ class TokenVersion(object):
         """
 
         self._expires_on = expires_on
-
+    
     @property
     def id(self):
         """Gets the id of this TokenVersion.
@@ -244,7 +223,7 @@ class TokenVersion(object):
         """
 
         self._id = id
-
+    
     @property
     def labels(self):
         """Gets the labels of this TokenVersion.
@@ -267,7 +246,7 @@ class TokenVersion(object):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this TokenVersion.
@@ -290,7 +269,7 @@ class TokenVersion(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this TokenVersion.
@@ -313,7 +292,7 @@ class TokenVersion(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this TokenVersion.
@@ -336,7 +315,7 @@ class TokenVersion(object):
         """
 
         self._name = name
-
+    
     @property
     def obsoleted_on(self):
         """Gets the obsoleted_on of this TokenVersion.
@@ -359,7 +338,7 @@ class TokenVersion(object):
         """
 
         self._obsoleted_on = obsoleted_on
-
+    
     @property
     def payment_connector_configuration(self):
         """Gets the payment_connector_configuration of this TokenVersion.
@@ -382,7 +361,7 @@ class TokenVersion(object):
         """
 
         self._payment_connector_configuration = payment_connector_configuration
-
+    
     @property
     def payment_method(self):
         """Gets the payment_method of this TokenVersion.
@@ -405,7 +384,7 @@ class TokenVersion(object):
         """
 
         self._payment_method = payment_method
-
+    
     @property
     def payment_method_brand(self):
         """Gets the payment_method_brand of this TokenVersion.
@@ -428,7 +407,7 @@ class TokenVersion(object):
         """
 
         self._payment_method_brand = payment_method_brand
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TokenVersion.
@@ -451,7 +430,7 @@ class TokenVersion(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processor_token(self):
         """Gets the processor_token of this TokenVersion.
@@ -474,7 +453,7 @@ class TokenVersion(object):
         """
 
         self._processor_token = processor_token
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this TokenVersion.
@@ -497,7 +476,7 @@ class TokenVersion(object):
         """
 
         self._shipping_address = shipping_address
-
+    
     @property
     def state(self):
         """Gets the state of this TokenVersion.
@@ -520,7 +499,7 @@ class TokenVersion(object):
         """
 
         self._state = state
-
+    
     @property
     def token(self):
         """Gets the token of this TokenVersion.
@@ -543,7 +522,7 @@ class TokenVersion(object):
         """
 
         self._token = token
-
+    
     @property
     def type(self):
         """Gets the type of this TokenVersion.
@@ -566,7 +545,7 @@ class TokenVersion(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this TokenVersion.
@@ -589,6 +568,7 @@ class TokenVersion(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

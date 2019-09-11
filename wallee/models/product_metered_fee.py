@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductMeteredFee(object):
+class ProductMeteredFee:
 
     swagger_types = {
+    
         'component': 'SubscriptionProductComponent',
         'description': 'DatabaseTranslatedString',
         'id': 'int',
@@ -20,15 +21,7 @@ class ProductMeteredFee(object):
     }
 
     attribute_map = {
-        'component': 'component',
-        'description': 'description',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'metric': 'metric',
-        'name': 'name',
-        'tier_pricing': 'tierPricing',
-        'type': 'type',
-        'version': 'version',
+        'component': 'component','description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','metric': 'metric','name': 'name','tier_pricing': 'tierPricing','type': 'type','version': 'version',
     }
 
     
@@ -54,11 +47,9 @@ class ProductMeteredFee(object):
         self.tier_pricing = kwargs.get('tier_pricing', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def component(self):
         """Gets the component of this ProductMeteredFee.
@@ -81,7 +72,7 @@ class ProductMeteredFee(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductMeteredFee.
@@ -104,7 +95,7 @@ class ProductMeteredFee(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this ProductMeteredFee.
@@ -127,7 +118,7 @@ class ProductMeteredFee(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this ProductMeteredFee.
@@ -150,7 +141,7 @@ class ProductMeteredFee(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def metric(self):
         """Gets the metric of this ProductMeteredFee.
@@ -173,7 +164,7 @@ class ProductMeteredFee(object):
         """
 
         self._metric = metric
-
+    
     @property
     def name(self):
         """Gets the name of this ProductMeteredFee.
@@ -196,7 +187,7 @@ class ProductMeteredFee(object):
         """
 
         self._name = name
-
+    
     @property
     def tier_pricing(self):
         """Gets the tier_pricing of this ProductMeteredFee.
@@ -219,7 +210,7 @@ class ProductMeteredFee(object):
         """
 
         self._tier_pricing = tier_pricing
-
+    
     @property
     def type(self):
         """Gets the type of this ProductMeteredFee.
@@ -242,7 +233,7 @@ class ProductMeteredFee(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this ProductMeteredFee.
@@ -265,6 +256,7 @@ class ProductMeteredFee(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

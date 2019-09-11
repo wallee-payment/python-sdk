@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class CompletionLineItem(object):
+class CompletionLineItem:
 
     swagger_types = {
+    
         'amount': 'float',
         'quantity': 'float',
         'unique_id': 'str',
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'quantity': 'quantity',
-        'unique_id': 'uniqueId',
+        'amount': 'amount','quantity': 'quantity','unique_id': 'uniqueId',
     }
 
     
@@ -30,11 +29,9 @@ class CompletionLineItem(object):
         self.amount = kwargs.get('amount', None)
         self.quantity = kwargs.get('quantity', None)
         self.unique_id = kwargs.get('unique_id', None)
-
-        
-        
         
 
+    
     @property
     def amount(self):
         """Gets the amount of this CompletionLineItem.
@@ -57,7 +54,7 @@ class CompletionLineItem(object):
         """
 
         self._amount = amount
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this CompletionLineItem.
@@ -80,7 +77,7 @@ class CompletionLineItem(object):
         """
 
         self._quantity = quantity
-
+    
     @property
     def unique_id(self):
         """Gets the unique_id of this CompletionLineItem.
@@ -103,6 +100,7 @@ class CompletionLineItem(object):
         """
 
         self._unique_id = unique_id
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class TransactionCompletionRequest(object):
+class TransactionCompletionRequest:
 
     swagger_types = {
+    
         'external_id': 'str',
         'last_completion': 'bool',
         'line_items': 'list[CompletionLineItemCreate]',
@@ -15,10 +16,7 @@ class TransactionCompletionRequest(object):
     }
 
     attribute_map = {
-        'external_id': 'externalId',
-        'last_completion': 'lastCompletion',
-        'line_items': 'lineItems',
-        'transaction_id': 'transactionId',
+        'external_id': 'externalId','last_completion': 'lastCompletion','line_items': 'lineItems','transaction_id': 'transactionId',
     }
 
     
@@ -31,14 +29,15 @@ class TransactionCompletionRequest(object):
         self.discriminator = None
         
         self.external_id = kwargs.get('external_id')
+
         self.last_completion = kwargs.get('last_completion')
+
         self.line_items = kwargs.get('line_items', None)
         self.transaction_id = kwargs.get('transaction_id')
 
         
-        
-        
 
+    
     @property
     def external_id(self):
         """Gets the external_id of this TransactionCompletionRequest.
@@ -63,7 +62,7 @@ class TransactionCompletionRequest(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def last_completion(self):
         """Gets the last_completion of this TransactionCompletionRequest.
@@ -88,7 +87,7 @@ class TransactionCompletionRequest(object):
             raise ValueError("Invalid value for `last_completion`, must not be `None`")
 
         self._last_completion = last_completion
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this TransactionCompletionRequest.
@@ -111,7 +110,7 @@ class TransactionCompletionRequest(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def transaction_id(self):
         """Gets the transaction_id of this TransactionCompletionRequest.
@@ -136,6 +135,7 @@ class TransactionCompletionRequest(object):
             raise ValueError("Invalid value for `transaction_id`, must not be `None`")
 
         self._transaction_id = transaction_id
+    
 
     def to_dict(self):
         result = {}

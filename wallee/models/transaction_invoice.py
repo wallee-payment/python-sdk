@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class TransactionInvoice(TransactionAwareEntity):
 
     swagger_types = {
+    
         'amount': 'float',
         'billing_address': 'Address',
         'completion': 'TransactionCompletion',
@@ -30,25 +31,7 @@ class TransactionInvoice(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'billing_address': 'billingAddress',
-        'completion': 'completion',
-        'created_on': 'createdOn',
-        'derecognized_on': 'derecognizedOn',
-        'due_on': 'dueOn',
-        'environment': 'environment',
-        'external_id': 'externalId',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'merchant_reference': 'merchantReference',
-        'outstanding_amount': 'outstandingAmount',
-        'paid_on': 'paidOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'tax_amount': 'taxAmount',
-        'time_zone': 'timeZone',
-        'version': 'version',
+        'amount': 'amount','billing_address': 'billingAddress','completion': 'completion','created_on': 'createdOn','derecognized_on': 'derecognizedOn','due_on': 'dueOn','environment': 'environment','external_id': 'externalId','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','outstanding_amount': 'outstandingAmount','paid_on': 'paidOn','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','tax_amount': 'taxAmount','time_zone': 'timeZone','version': 'version',
     }
 
     
@@ -94,11 +77,11 @@ class TransactionInvoice(TransactionAwareEntity):
         self.tax_amount = kwargs.get('tax_amount', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def amount(self):
         """Gets the amount of this TransactionInvoice.
@@ -121,7 +104,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._amount = amount
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this TransactionInvoice.
@@ -144,7 +127,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def completion(self):
         """Gets the completion of this TransactionInvoice.
@@ -167,7 +150,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._completion = completion
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this TransactionInvoice.
@@ -190,7 +173,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def derecognized_on(self):
         """Gets the derecognized_on of this TransactionInvoice.
@@ -213,7 +196,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._derecognized_on = derecognized_on
-
+    
     @property
     def due_on(self):
         """Gets the due_on of this TransactionInvoice.
@@ -236,7 +219,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._due_on = due_on
-
+    
     @property
     def environment(self):
         """Gets the environment of this TransactionInvoice.
@@ -259,7 +242,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._environment = environment
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this TransactionInvoice.
@@ -282,7 +265,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._external_id = external_id
-
+    
     @property
     def language(self):
         """Gets the language of this TransactionInvoice.
@@ -305,7 +288,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this TransactionInvoice.
@@ -328,7 +311,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._line_items = line_items
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this TransactionInvoice.
@@ -351,7 +334,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def outstanding_amount(self):
         """Gets the outstanding_amount of this TransactionInvoice.
@@ -374,7 +357,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._outstanding_amount = outstanding_amount
-
+    
     @property
     def paid_on(self):
         """Gets the paid_on of this TransactionInvoice.
@@ -397,7 +380,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._paid_on = paid_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionInvoice.
@@ -420,7 +403,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this TransactionInvoice.
@@ -443,7 +426,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this TransactionInvoice.
@@ -466,7 +449,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def tax_amount(self):
         """Gets the tax_amount of this TransactionInvoice.
@@ -489,7 +472,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._tax_amount = tax_amount
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this TransactionInvoice.
@@ -512,7 +495,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def version(self):
         """Gets the version of this TransactionInvoice.
@@ -535,6 +518,7 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

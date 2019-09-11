@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionSuspension(object):
+class SubscriptionSuspension:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'effective_end_date': 'datetime',
         'end_action': 'SubscriptionSuspensionAction',
@@ -25,20 +26,7 @@ class SubscriptionSuspension(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'effective_end_date': 'effectiveEndDate',
-        'end_action': 'endAction',
-        'id': 'id',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'note': 'note',
-        'period_bill': 'periodBill',
-        'planned_end_date': 'plannedEndDate',
-        'planned_purge_date': 'plannedPurgeDate',
-        'reason': 'reason',
-        'state': 'state',
-        'subscription': 'subscription',
-        'version': 'version',
+        'created_on': 'createdOn','effective_end_date': 'effectiveEndDate','end_action': 'endAction','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','note': 'note','period_bill': 'periodBill','planned_end_date': 'plannedEndDate','planned_purge_date': 'plannedPurgeDate','reason': 'reason','state': 'state','subscription': 'subscription','version': 'version',
     }
 
     
@@ -74,11 +62,9 @@ class SubscriptionSuspension(object):
         self.state = kwargs.get('state', None)
         self.subscription = kwargs.get('subscription', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionSuspension.
@@ -101,7 +87,7 @@ class SubscriptionSuspension(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def effective_end_date(self):
         """Gets the effective_end_date of this SubscriptionSuspension.
@@ -124,7 +110,7 @@ class SubscriptionSuspension(object):
         """
 
         self._effective_end_date = effective_end_date
-
+    
     @property
     def end_action(self):
         """Gets the end_action of this SubscriptionSuspension.
@@ -147,7 +133,7 @@ class SubscriptionSuspension(object):
         """
 
         self._end_action = end_action
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionSuspension.
@@ -170,7 +156,7 @@ class SubscriptionSuspension(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionSuspension.
@@ -193,7 +179,7 @@ class SubscriptionSuspension(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionSuspension.
@@ -216,7 +202,7 @@ class SubscriptionSuspension(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def note(self):
         """Gets the note of this SubscriptionSuspension.
@@ -239,7 +225,7 @@ class SubscriptionSuspension(object):
         """
 
         self._note = note
-
+    
     @property
     def period_bill(self):
         """Gets the period_bill of this SubscriptionSuspension.
@@ -262,7 +248,7 @@ class SubscriptionSuspension(object):
         """
 
         self._period_bill = period_bill
-
+    
     @property
     def planned_end_date(self):
         """Gets the planned_end_date of this SubscriptionSuspension.
@@ -285,7 +271,7 @@ class SubscriptionSuspension(object):
         """
 
         self._planned_end_date = planned_end_date
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionSuspension.
@@ -308,7 +294,7 @@ class SubscriptionSuspension(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def reason(self):
         """Gets the reason of this SubscriptionSuspension.
@@ -331,7 +317,7 @@ class SubscriptionSuspension(object):
         """
 
         self._reason = reason
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionSuspension.
@@ -354,7 +340,7 @@ class SubscriptionSuspension(object):
         """
 
         self._state = state
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionSuspension.
@@ -377,7 +363,7 @@ class SubscriptionSuspension(object):
         """
 
         self._subscription = subscription
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionSuspension.
@@ -400,6 +386,7 @@ class SubscriptionSuspension(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

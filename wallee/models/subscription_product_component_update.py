@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductComponentUpdate(object):
+class SubscriptionProductComponentUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'component_change_weight': 'int',
@@ -21,16 +22,7 @@ class SubscriptionProductComponentUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'component_change_weight': 'componentChangeWeight',
-        'component_group': 'componentGroup',
-        'default_component': 'defaultComponent',
-        'description': 'description',
-        'name': 'name',
-        'reference': 'reference',
-        'sort_order': 'sortOrder',
-        'tax_class': 'taxClass',
+        'id': 'id','version': 'version','component_change_weight': 'componentChangeWeight','component_group': 'componentGroup','default_component': 'defaultComponent','description': 'description','name': 'name','reference': 'reference','sort_order': 'sortOrder','tax_class': 'taxClass',
     }
 
     
@@ -49,7 +41,9 @@ class SubscriptionProductComponentUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.component_change_weight = kwargs.get('component_change_weight', None)
         self.component_group = kwargs.get('component_group', None)
         self.default_component = kwargs.get('default_component', None)
@@ -58,11 +52,9 @@ class SubscriptionProductComponentUpdate(object):
         self.reference = kwargs.get('reference', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.tax_class = kwargs.get('tax_class', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductComponentUpdate.
@@ -87,7 +79,7 @@ class SubscriptionProductComponentUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductComponentUpdate.
@@ -112,7 +104,7 @@ class SubscriptionProductComponentUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def component_change_weight(self):
         """Gets the component_change_weight of this SubscriptionProductComponentUpdate.
@@ -135,7 +127,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._component_change_weight = component_change_weight
-
+    
     @property
     def component_group(self):
         """Gets the component_group of this SubscriptionProductComponentUpdate.
@@ -158,7 +150,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._component_group = component_group
-
+    
     @property
     def default_component(self):
         """Gets the default_component of this SubscriptionProductComponentUpdate.
@@ -181,7 +173,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._default_component = default_component
-
+    
     @property
     def description(self):
         """Gets the description of this SubscriptionProductComponentUpdate.
@@ -204,7 +196,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductComponentUpdate.
@@ -227,7 +219,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionProductComponentUpdate.
@@ -250,7 +242,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._reference = reference
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponentUpdate.
@@ -273,7 +265,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def tax_class(self):
         """Gets the tax_class of this SubscriptionProductComponentUpdate.
@@ -296,6 +288,7 @@ class SubscriptionProductComponentUpdate(object):
         """
 
         self._tax_class = tax_class
+    
 
     def to_dict(self):
         result = {}

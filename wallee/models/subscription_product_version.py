@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductVersion(object):
+class SubscriptionProductVersion:
 
     swagger_types = {
+    
         'activated_on': 'datetime',
         'billing_cycle': 'str',
         'comment': 'str',
@@ -31,26 +32,7 @@ class SubscriptionProductVersion(object):
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn',
-        'billing_cycle': 'billingCycle',
-        'comment': 'comment',
-        'created_on': 'createdOn',
-        'default_currency': 'defaultCurrency',
-        'enabled_currencies': 'enabledCurrencies',
-        'id': 'id',
-        'increment_number': 'incrementNumber',
-        'linked_space_id': 'linkedSpaceId',
-        'minimal_number_of_periods': 'minimalNumberOfPeriods',
-        'name': 'name',
-        'number_of_notice_periods': 'numberOfNoticePeriods',
-        'obsoleted_on': 'obsoletedOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'product': 'product',
-        'reference': 'reference',
-        'retiring_finished_on': 'retiringFinishedOn',
-        'retiring_started_on': 'retiringStartedOn',
-        'state': 'state',
-        'version': 'version',
+        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','version': 'version',
     }
 
     
@@ -98,11 +80,9 @@ class SubscriptionProductVersion(object):
         self.retiring_started_on = kwargs.get('retiring_started_on', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def activated_on(self):
         """Gets the activated_on of this SubscriptionProductVersion.
@@ -125,7 +105,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._activated_on = activated_on
-
+    
     @property
     def billing_cycle(self):
         """Gets the billing_cycle of this SubscriptionProductVersion.
@@ -148,7 +128,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._billing_cycle = billing_cycle
-
+    
     @property
     def comment(self):
         """Gets the comment of this SubscriptionProductVersion.
@@ -171,7 +151,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._comment = comment
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionProductVersion.
@@ -194,7 +174,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def default_currency(self):
         """Gets the default_currency of this SubscriptionProductVersion.
@@ -217,7 +197,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._default_currency = default_currency
-
+    
     @property
     def enabled_currencies(self):
         """Gets the enabled_currencies of this SubscriptionProductVersion.
@@ -240,7 +220,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._enabled_currencies = enabled_currencies
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductVersion.
@@ -263,7 +243,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._id = id
-
+    
     @property
     def increment_number(self):
         """Gets the increment_number of this SubscriptionProductVersion.
@@ -286,7 +266,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._increment_number = increment_number
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionProductVersion.
@@ -309,7 +289,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def minimal_number_of_periods(self):
         """Gets the minimal_number_of_periods of this SubscriptionProductVersion.
@@ -332,7 +312,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._minimal_number_of_periods = minimal_number_of_periods
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProductVersion.
@@ -355,7 +335,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._name = name
-
+    
     @property
     def number_of_notice_periods(self):
         """Gets the number_of_notice_periods of this SubscriptionProductVersion.
@@ -378,7 +358,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._number_of_notice_periods = number_of_notice_periods
-
+    
     @property
     def obsoleted_on(self):
         """Gets the obsoleted_on of this SubscriptionProductVersion.
@@ -401,7 +381,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._obsoleted_on = obsoleted_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionProductVersion.
@@ -424,7 +404,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def product(self):
         """Gets the product of this SubscriptionProductVersion.
@@ -447,7 +427,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._product = product
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionProductVersion.
@@ -470,7 +450,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._reference = reference
-
+    
     @property
     def retiring_finished_on(self):
         """Gets the retiring_finished_on of this SubscriptionProductVersion.
@@ -493,7 +473,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._retiring_finished_on = retiring_finished_on
-
+    
     @property
     def retiring_started_on(self):
         """Gets the retiring_started_on of this SubscriptionProductVersion.
@@ -516,7 +496,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._retiring_started_on = retiring_started_on
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionProductVersion.
@@ -539,7 +519,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductVersion.
@@ -562,6 +542,7 @@ class SubscriptionProductVersion(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

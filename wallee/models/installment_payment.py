@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class InstallmentPayment(object):
+class InstallmentPayment:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'id': 'int',
         'initial_transaction': 'Transaction',
@@ -20,15 +21,7 @@ class InstallmentPayment(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'id': 'id',
-        'initial_transaction': 'initialTransaction',
-        'line_items': 'lineItems',
-        'linked_space_id': 'linkedSpaceId',
-        'plan_configuration': 'planConfiguration',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'version': 'version',
+        'created_on': 'createdOn','id': 'id','initial_transaction': 'initialTransaction','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','plan_configuration': 'planConfiguration','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
@@ -54,11 +47,9 @@ class InstallmentPayment(object):
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this InstallmentPayment.
@@ -81,7 +72,7 @@ class InstallmentPayment(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def id(self):
         """Gets the id of this InstallmentPayment.
@@ -104,7 +95,7 @@ class InstallmentPayment(object):
         """
 
         self._id = id
-
+    
     @property
     def initial_transaction(self):
         """Gets the initial_transaction of this InstallmentPayment.
@@ -127,7 +118,7 @@ class InstallmentPayment(object):
         """
 
         self._initial_transaction = initial_transaction
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this InstallmentPayment.
@@ -150,7 +141,7 @@ class InstallmentPayment(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this InstallmentPayment.
@@ -173,7 +164,7 @@ class InstallmentPayment(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def plan_configuration(self):
         """Gets the plan_configuration of this InstallmentPayment.
@@ -196,7 +187,7 @@ class InstallmentPayment(object):
         """
 
         self._plan_configuration = plan_configuration
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this InstallmentPayment.
@@ -219,7 +210,7 @@ class InstallmentPayment(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this InstallmentPayment.
@@ -242,7 +233,7 @@ class InstallmentPayment(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this InstallmentPayment.
@@ -265,6 +256,7 @@ class InstallmentPayment(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class FailureReason(object):
+class FailureReason:
 
     swagger_types = {
+    
         'category': 'FailureCategory',
         'description': 'dict(str, str)',
         'features': 'list[int]',
@@ -16,11 +17,7 @@ class FailureReason(object):
     }
 
     attribute_map = {
-        'category': 'category',
-        'description': 'description',
-        'features': 'features',
-        'id': 'id',
-        'name': 'name',
+        'category': 'category','description': 'description','features': 'features','id': 'id','name': 'name',
     }
 
     
@@ -38,11 +35,9 @@ class FailureReason(object):
         self.features = kwargs.get('features', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def category(self):
         """Gets the category of this FailureReason.
@@ -65,7 +60,7 @@ class FailureReason(object):
         """
 
         self._category = category
-
+    
     @property
     def description(self):
         """Gets the description of this FailureReason.
@@ -88,7 +83,7 @@ class FailureReason(object):
         """
 
         self._description = description
-
+    
     @property
     def features(self):
         """Gets the features of this FailureReason.
@@ -111,7 +106,7 @@ class FailureReason(object):
         """
 
         self._features = features
-
+    
     @property
     def id(self):
         """Gets the id of this FailureReason.
@@ -134,7 +129,7 @@ class FailureReason(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this FailureReason.
@@ -157,6 +152,7 @@ class FailureReason(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

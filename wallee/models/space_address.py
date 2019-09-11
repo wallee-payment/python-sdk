@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SpaceAddress(object):
+class SpaceAddress:
 
     swagger_types = {
+    
         'city': 'str',
         'country': 'str',
         'dependent_locality': 'str',
@@ -24,19 +25,7 @@ class SpaceAddress(object):
     }
 
     attribute_map = {
-        'city': 'city',
-        'country': 'country',
-        'dependent_locality': 'dependentLocality',
-        'email_address': 'emailAddress',
-        'family_name': 'familyName',
-        'given_name': 'givenName',
-        'organization_name': 'organizationName',
-        'post_code': 'postCode',
-        'postal_state': 'postalState',
-        'sales_tax_number': 'salesTaxNumber',
-        'salutation': 'salutation',
-        'sorting_code': 'sortingCode',
-        'street': 'street',
+        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','organization_name': 'organizationName','post_code': 'postCode','postal_state': 'postalState','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -70,11 +59,9 @@ class SpaceAddress(object):
         self.salutation = kwargs.get('salutation', None)
         self.sorting_code = kwargs.get('sorting_code', None)
         self.street = kwargs.get('street', None)
-
-        
-        
         
 
+    
     @property
     def city(self):
         """Gets the city of this SpaceAddress.
@@ -97,7 +84,7 @@ class SpaceAddress(object):
         """
 
         self._city = city
-
+    
     @property
     def country(self):
         """Gets the country of this SpaceAddress.
@@ -120,7 +107,7 @@ class SpaceAddress(object):
         """
 
         self._country = country
-
+    
     @property
     def dependent_locality(self):
         """Gets the dependent_locality of this SpaceAddress.
@@ -143,7 +130,7 @@ class SpaceAddress(object):
         """
 
         self._dependent_locality = dependent_locality
-
+    
     @property
     def email_address(self):
         """Gets the email_address of this SpaceAddress.
@@ -166,7 +153,7 @@ class SpaceAddress(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def family_name(self):
         """Gets the family_name of this SpaceAddress.
@@ -189,7 +176,7 @@ class SpaceAddress(object):
         """
 
         self._family_name = family_name
-
+    
     @property
     def given_name(self):
         """Gets the given_name of this SpaceAddress.
@@ -212,7 +199,7 @@ class SpaceAddress(object):
         """
 
         self._given_name = given_name
-
+    
     @property
     def organization_name(self):
         """Gets the organization_name of this SpaceAddress.
@@ -235,7 +222,7 @@ class SpaceAddress(object):
         """
 
         self._organization_name = organization_name
-
+    
     @property
     def post_code(self):
         """Gets the post_code of this SpaceAddress.
@@ -258,7 +245,7 @@ class SpaceAddress(object):
         """
 
         self._post_code = post_code
-
+    
     @property
     def postal_state(self):
         """Gets the postal_state of this SpaceAddress.
@@ -281,7 +268,7 @@ class SpaceAddress(object):
         """
 
         self._postal_state = postal_state
-
+    
     @property
     def sales_tax_number(self):
         """Gets the sales_tax_number of this SpaceAddress.
@@ -304,7 +291,7 @@ class SpaceAddress(object):
         """
 
         self._sales_tax_number = sales_tax_number
-
+    
     @property
     def salutation(self):
         """Gets the salutation of this SpaceAddress.
@@ -327,7 +314,7 @@ class SpaceAddress(object):
         """
 
         self._salutation = salutation
-
+    
     @property
     def sorting_code(self):
         """Gets the sorting_code of this SpaceAddress.
@@ -350,7 +337,7 @@ class SpaceAddress(object):
         """
 
         self._sorting_code = sorting_code
-
+    
     @property
     def street(self):
         """Gets the street of this SpaceAddress.
@@ -373,6 +360,7 @@ class SpaceAddress(object):
         """
 
         self._street = street
+    
 
     def to_dict(self):
         result = {}

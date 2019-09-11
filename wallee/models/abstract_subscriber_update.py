@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractSubscriberUpdate(object):
+class AbstractSubscriberUpdate:
 
     swagger_types = {
+    
         'additional_allowed_payment_method_configurations': 'list[int]',
         'billing_address': 'AddressCreate',
         'description': 'str',
@@ -20,15 +21,7 @@ class AbstractSubscriberUpdate(object):
     }
 
     attribute_map = {
-        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations',
-        'billing_address': 'billingAddress',
-        'description': 'description',
-        'disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations',
-        'email_address': 'emailAddress',
-        'language': 'language',
-        'meta_data': 'metaData',
-        'reference': 'reference',
-        'shipping_address': 'shippingAddress',
+        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations','billing_address': 'billingAddress','description': 'description','disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations','email_address': 'emailAddress','language': 'language','meta_data': 'metaData','reference': 'reference','shipping_address': 'shippingAddress',
     }
 
     
@@ -54,11 +47,9 @@ class AbstractSubscriberUpdate(object):
         self.meta_data = kwargs.get('meta_data', None)
         self.reference = kwargs.get('reference', None)
         self.shipping_address = kwargs.get('shipping_address', None)
-
-        
-        
         
 
+    
     @property
     def additional_allowed_payment_method_configurations(self):
         """Gets the additional_allowed_payment_method_configurations of this AbstractSubscriberUpdate.
@@ -81,7 +72,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._additional_allowed_payment_method_configurations = additional_allowed_payment_method_configurations
-
+    
     @property
     def billing_address(self):
         """Gets the billing_address of this AbstractSubscriberUpdate.
@@ -104,7 +95,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._billing_address = billing_address
-
+    
     @property
     def description(self):
         """Gets the description of this AbstractSubscriberUpdate.
@@ -127,7 +118,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def disallowed_payment_method_configurations(self):
         """Gets the disallowed_payment_method_configurations of this AbstractSubscriberUpdate.
@@ -150,7 +141,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._disallowed_payment_method_configurations = disallowed_payment_method_configurations
-
+    
     @property
     def email_address(self):
         """Gets the email_address of this AbstractSubscriberUpdate.
@@ -173,7 +164,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractSubscriberUpdate.
@@ -196,7 +187,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def meta_data(self):
         """Gets the meta_data of this AbstractSubscriberUpdate.
@@ -219,7 +210,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._meta_data = meta_data
-
+    
     @property
     def reference(self):
         """Gets the reference of this AbstractSubscriberUpdate.
@@ -242,7 +233,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._reference = reference
-
+    
     @property
     def shipping_address(self):
         """Gets the shipping_address of this AbstractSubscriberUpdate.
@@ -265,6 +256,7 @@ class AbstractSubscriberUpdate(object):
         """
 
         self._shipping_address = shipping_address
+    
 
     def to_dict(self):
         result = {}

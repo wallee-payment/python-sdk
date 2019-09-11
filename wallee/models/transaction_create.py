@@ -8,65 +8,44 @@ from . import AbstractTransactionPending
 class TransactionCreate(AbstractTransactionPending):
 
     swagger_types = {
+    
         'auto_confirmation_enabled': 'bool',
-        'billing_address': 'AddressCreate',
         'charge_retry_enabled': 'bool',
         'customers_presence': 'CustomersPresence',
         'device_session_identifier': 'str',
         'environment': 'Environment',
         'environment_selection_strategy': 'TransactionEnvironmentSelectionStrategy',
-        'line_items': 'list[LineItemCreate]',
-        'shipping_address': 'AddressCreate',
         'space_view_id': 'int',
-        'token': 'int',
     }
 
     attribute_map = {
-        'auto_confirmation_enabled': 'autoConfirmationEnabled',
-        'billing_address': 'billingAddress',
-        'charge_retry_enabled': 'chargeRetryEnabled',
-        'customers_presence': 'customersPresence',
-        'device_session_identifier': 'deviceSessionIdentifier',
-        'environment': 'environment',
-        'environment_selection_strategy': 'environmentSelectionStrategy',
-        'line_items': 'lineItems',
-        'shipping_address': 'shippingAddress',
-        'space_view_id': 'spaceViewId',
-        'token': 'token',
+        'auto_confirmation_enabled': 'autoConfirmationEnabled','charge_retry_enabled': 'chargeRetryEnabled','customers_presence': 'customersPresence','device_session_identifier': 'deviceSessionIdentifier','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','space_view_id': 'spaceViewId',
     }
 
     
     _auto_confirmation_enabled = None
-    _billing_address = None
     _charge_retry_enabled = None
     _customers_presence = None
     _device_session_identifier = None
     _environment = None
     _environment_selection_strategy = None
-    _line_items = None
-    _shipping_address = None
     _space_view_id = None
-    _token = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.auto_confirmation_enabled = kwargs.get('auto_confirmation_enabled', None)
-        self.billing_address = kwargs.get('billing_address', None)
         self.charge_retry_enabled = kwargs.get('charge_retry_enabled', None)
         self.customers_presence = kwargs.get('customers_presence', None)
         self.device_session_identifier = kwargs.get('device_session_identifier', None)
         self.environment = kwargs.get('environment', None)
         self.environment_selection_strategy = kwargs.get('environment_selection_strategy', None)
-        self.line_items = kwargs.get('line_items')
-        self.shipping_address = kwargs.get('shipping_address', None)
         self.space_view_id = kwargs.get('space_view_id', None)
-        self.token = kwargs.get('token', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def auto_confirmation_enabled(self):
         """Gets the auto_confirmation_enabled of this TransactionCreate.
@@ -89,30 +68,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._auto_confirmation_enabled = auto_confirmation_enabled
-
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this TransactionCreate.
-
-            
-
-        :return: The billing_address of this TransactionCreate.
-        :rtype: AddressCreate
-        """
-        return self._billing_address
-
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this TransactionCreate.
-
-            
-
-        :param billing_address: The billing_address of this TransactionCreate.
-        :type: AddressCreate
-        """
-
-        self._billing_address = billing_address
-
+    
     @property
     def charge_retry_enabled(self):
         """Gets the charge_retry_enabled of this TransactionCreate.
@@ -135,7 +91,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._charge_retry_enabled = charge_retry_enabled
-
+    
     @property
     def customers_presence(self):
         """Gets the customers_presence of this TransactionCreate.
@@ -158,7 +114,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._customers_presence = customers_presence
-
+    
     @property
     def device_session_identifier(self):
         """Gets the device_session_identifier of this TransactionCreate.
@@ -181,7 +137,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._device_session_identifier = device_session_identifier
-
+    
     @property
     def environment(self):
         """Gets the environment of this TransactionCreate.
@@ -204,7 +160,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._environment = environment
-
+    
     @property
     def environment_selection_strategy(self):
         """Gets the environment_selection_strategy of this TransactionCreate.
@@ -227,55 +183,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._environment_selection_strategy = environment_selection_strategy
-
-    @property
-    def line_items(self):
-        """Gets the line_items of this TransactionCreate.
-
-            
-
-        :return: The line_items of this TransactionCreate.
-        :rtype: list[LineItemCreate]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this TransactionCreate.
-
-            
-
-        :param line_items: The line_items of this TransactionCreate.
-        :type: list[LineItemCreate]
-        """
-        if line_items is None:
-            raise ValueError("Invalid value for `line_items`, must not be `None`")
-
-        self._line_items = line_items
-
-    @property
-    def shipping_address(self):
-        """Gets the shipping_address of this TransactionCreate.
-
-            
-
-        :return: The shipping_address of this TransactionCreate.
-        :rtype: AddressCreate
-        """
-        return self._shipping_address
-
-    @shipping_address.setter
-    def shipping_address(self, shipping_address):
-        """Sets the shipping_address of this TransactionCreate.
-
-            
-
-        :param shipping_address: The shipping_address of this TransactionCreate.
-        :type: AddressCreate
-        """
-
-        self._shipping_address = shipping_address
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this TransactionCreate.
@@ -298,29 +206,7 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._space_view_id = space_view_id
-
-    @property
-    def token(self):
-        """Gets the token of this TransactionCreate.
-
-            
-
-        :return: The token of this TransactionCreate.
-        :rtype: int
-        """
-        return self._token
-
-    @token.setter
-    def token(self, token):
-        """Sets the token of this TransactionCreate.
-
-            
-
-        :param token: The token of this TransactionCreate.
-        :type: int
-        """
-
-        self._token = token
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractSpaceUpdate(object):
+class AbstractSpaceUpdate:
 
     swagger_types = {
+    
         'name': 'str',
         'postal_address': 'SpaceAddressCreate',
         'primary_currency': 'str',
@@ -18,13 +19,7 @@ class AbstractSpaceUpdate(object):
     }
 
     attribute_map = {
-        'name': 'name',
-        'postal_address': 'postalAddress',
-        'primary_currency': 'primaryCurrency',
-        'request_limit': 'requestLimit',
-        'state': 'state',
-        'technical_contact_addresses': 'technicalContactAddresses',
-        'time_zone': 'timeZone',
+        'name': 'name','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone',
     }
 
     
@@ -46,11 +41,9 @@ class AbstractSpaceUpdate(object):
         self.state = kwargs.get('state', None)
         self.technical_contact_addresses = kwargs.get('technical_contact_addresses', None)
         self.time_zone = kwargs.get('time_zone', None)
-
-        
-        
         
 
+    
     @property
     def name(self):
         """Gets the name of this AbstractSpaceUpdate.
@@ -73,7 +66,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def postal_address(self):
         """Gets the postal_address of this AbstractSpaceUpdate.
@@ -96,7 +89,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._postal_address = postal_address
-
+    
     @property
     def primary_currency(self):
         """Gets the primary_currency of this AbstractSpaceUpdate.
@@ -119,7 +112,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._primary_currency = primary_currency
-
+    
     @property
     def request_limit(self):
         """Gets the request_limit of this AbstractSpaceUpdate.
@@ -142,7 +135,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._request_limit = request_limit
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractSpaceUpdate.
@@ -165,7 +158,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._state = state
-
+    
     @property
     def technical_contact_addresses(self):
         """Gets the technical_contact_addresses of this AbstractSpaceUpdate.
@@ -188,7 +181,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._technical_contact_addresses = technical_contact_addresses
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this AbstractSpaceUpdate.
@@ -211,6 +204,7 @@ class AbstractSpaceUpdate(object):
         """
 
         self._time_zone = time_zone
+    
 
     def to_dict(self):
         result = {}

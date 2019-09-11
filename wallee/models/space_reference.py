@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SpaceReference(object):
+class SpaceReference:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'id': 'int',
         'linked_space_id': 'int',
@@ -18,13 +19,7 @@ class SpaceReference(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'version': 'version',
+        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class SpaceReference(object):
         self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this SpaceReference.
@@ -73,7 +66,7 @@ class SpaceReference(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def id(self):
         """Gets the id of this SpaceReference.
@@ -96,7 +89,7 @@ class SpaceReference(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SpaceReference.
@@ -119,7 +112,7 @@ class SpaceReference(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SpaceReference.
@@ -142,7 +135,7 @@ class SpaceReference(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this SpaceReference.
@@ -165,7 +158,7 @@ class SpaceReference(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this SpaceReference.
@@ -188,7 +181,7 @@ class SpaceReference(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this SpaceReference.
@@ -211,6 +204,7 @@ class SpaceReference(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

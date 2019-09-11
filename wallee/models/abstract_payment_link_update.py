@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractPaymentLinkUpdate(object):
+class AbstractPaymentLinkUpdate:
 
     swagger_types = {
+    
         'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
         'applied_space_view': 'int',
         'available_from': 'datetime',
@@ -22,17 +23,7 @@ class AbstractPaymentLinkUpdate(object):
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'applied_space_view': 'appliedSpaceView',
-        'available_from': 'availableFrom',
-        'available_until': 'availableUntil',
-        'billing_address_required': 'billingAddressRequired',
-        'currency': 'currency',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'maximal_number_of_transactions': 'maximalNumberOfTransactions',
-        'name': 'name',
-        'shipping_address_required': 'shippingAddressRequired',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_required': 'billingAddressRequired','currency': 'currency','language': 'language','line_items': 'lineItems','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','shipping_address_required': 'shippingAddressRequired',
     }
 
     
@@ -62,11 +53,9 @@ class AbstractPaymentLinkUpdate(object):
         self.maximal_number_of_transactions = kwargs.get('maximal_number_of_transactions', None)
         self.name = kwargs.get('name', None)
         self.shipping_address_required = kwargs.get('shipping_address_required', None)
-
-        
-        
         
 
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this AbstractPaymentLinkUpdate.
@@ -89,7 +78,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def applied_space_view(self):
         """Gets the applied_space_view of this AbstractPaymentLinkUpdate.
@@ -112,7 +101,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._applied_space_view = applied_space_view
-
+    
     @property
     def available_from(self):
         """Gets the available_from of this AbstractPaymentLinkUpdate.
@@ -135,7 +124,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._available_from = available_from
-
+    
     @property
     def available_until(self):
         """Gets the available_until of this AbstractPaymentLinkUpdate.
@@ -158,7 +147,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._available_until = available_until
-
+    
     @property
     def billing_address_required(self):
         """Gets the billing_address_required of this AbstractPaymentLinkUpdate.
@@ -181,7 +170,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._billing_address_required = billing_address_required
-
+    
     @property
     def currency(self):
         """Gets the currency of this AbstractPaymentLinkUpdate.
@@ -204,7 +193,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._currency = currency
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractPaymentLinkUpdate.
@@ -227,7 +216,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this AbstractPaymentLinkUpdate.
@@ -250,7 +239,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def maximal_number_of_transactions(self):
         """Gets the maximal_number_of_transactions of this AbstractPaymentLinkUpdate.
@@ -273,7 +262,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._maximal_number_of_transactions = maximal_number_of_transactions
-
+    
     @property
     def name(self):
         """Gets the name of this AbstractPaymentLinkUpdate.
@@ -296,7 +285,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def shipping_address_required(self):
         """Gets the shipping_address_required of this AbstractPaymentLinkUpdate.
@@ -319,6 +308,7 @@ class AbstractPaymentLinkUpdate(object):
         """
 
         self._shipping_address_required = shipping_address_required
+    
 
     def to_dict(self):
         result = {}

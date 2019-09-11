@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class TenantDatabase(object):
+class TenantDatabase:
 
     swagger_types = {
+    
         'id': 'int',
         'name': 'str',
         'version': 'int',
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'version': 'version',
+        'id': 'id','name': 'name','version': 'version',
     }
 
     
@@ -30,11 +29,9 @@ class TenantDatabase(object):
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this TenantDatabase.
@@ -57,7 +54,7 @@ class TenantDatabase(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this TenantDatabase.
@@ -80,7 +77,7 @@ class TenantDatabase(object):
         """
 
         self._name = name
-
+    
     @property
     def version(self):
         """Gets the version of this TenantDatabase.
@@ -103,6 +100,7 @@ class TenantDatabase(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

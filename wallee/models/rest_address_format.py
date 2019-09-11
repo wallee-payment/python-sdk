@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RestAddressFormat(object):
+class RestAddressFormat:
 
     swagger_types = {
+    
         'post_code_examples': 'list[str]',
         'post_code_regex': 'str',
         'required_fields': 'list[RestAddressFormatField]',
@@ -15,10 +16,7 @@ class RestAddressFormat(object):
     }
 
     attribute_map = {
-        'post_code_examples': 'postCodeExamples',
-        'post_code_regex': 'postCodeRegex',
-        'required_fields': 'requiredFields',
-        'used_fields': 'usedFields',
+        'post_code_examples': 'postCodeExamples','post_code_regex': 'postCodeRegex','required_fields': 'requiredFields','used_fields': 'usedFields',
     }
 
     
@@ -34,11 +32,9 @@ class RestAddressFormat(object):
         self.post_code_regex = kwargs.get('post_code_regex', None)
         self.required_fields = kwargs.get('required_fields', None)
         self.used_fields = kwargs.get('used_fields', None)
-
-        
-        
         
 
+    
     @property
     def post_code_examples(self):
         """Gets the post_code_examples of this RestAddressFormat.
@@ -61,7 +57,7 @@ class RestAddressFormat(object):
         """
 
         self._post_code_examples = post_code_examples
-
+    
     @property
     def post_code_regex(self):
         """Gets the post_code_regex of this RestAddressFormat.
@@ -84,7 +80,7 @@ class RestAddressFormat(object):
         """
 
         self._post_code_regex = post_code_regex
-
+    
     @property
     def required_fields(self):
         """Gets the required_fields of this RestAddressFormat.
@@ -107,7 +103,7 @@ class RestAddressFormat(object):
         """
 
         self._required_fields = required_fields
-
+    
     @property
     def used_fields(self):
         """Gets the used_fields of this RestAddressFormat.
@@ -130,6 +126,7 @@ class RestAddressFormat(object):
         """
 
         self._used_fields = used_fields
+    
 
     def to_dict(self):
         result = {}

@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class SubscriptionProductRetirementCreate(object):
+class SubscriptionProductRetirementCreate:
 
     swagger_types = {
+    
         'product': 'int',
         'respect_terminiation_periods_enabled': 'bool',
         'target_product': 'int',
     }
 
     attribute_map = {
-        'product': 'product',
-        'respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled',
-        'target_product': 'targetProduct',
+        'product': 'product','respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled','target_product': 'targetProduct',
     }
 
     
@@ -28,13 +27,12 @@ class SubscriptionProductRetirementCreate(object):
         self.discriminator = None
         
         self.product = kwargs.get('product')
+
         self.respect_terminiation_periods_enabled = kwargs.get('respect_terminiation_periods_enabled', None)
         self.target_product = kwargs.get('target_product', None)
-
-        
-        
         
 
+    
     @property
     def product(self):
         """Gets the product of this SubscriptionProductRetirementCreate.
@@ -59,7 +57,7 @@ class SubscriptionProductRetirementCreate(object):
             raise ValueError("Invalid value for `product`, must not be `None`")
 
         self._product = product
-
+    
     @property
     def respect_terminiation_periods_enabled(self):
         """Gets the respect_terminiation_periods_enabled of this SubscriptionProductRetirementCreate.
@@ -82,7 +80,7 @@ class SubscriptionProductRetirementCreate(object):
         """
 
         self._respect_terminiation_periods_enabled = respect_terminiation_periods_enabled
-
+    
     @property
     def target_product(self):
         """Gets the target_product of this SubscriptionProductRetirementCreate.
@@ -105,6 +103,7 @@ class SubscriptionProductRetirementCreate(object):
         """
 
         self._target_product = target_product
+    
 
     def to_dict(self):
         result = {}

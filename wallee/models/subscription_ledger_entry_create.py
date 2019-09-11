@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionLedgerEntryCreate(object):
+class SubscriptionLedgerEntryCreate:
 
     swagger_types = {
+    
         'amount_including_tax': 'float',
         'external_id': 'str',
         'quantity': 'float',
@@ -17,12 +18,7 @@ class SubscriptionLedgerEntryCreate(object):
     }
 
     attribute_map = {
-        'amount_including_tax': 'amountIncludingTax',
-        'external_id': 'externalId',
-        'quantity': 'quantity',
-        'subscription_version': 'subscriptionVersion',
-        'taxes': 'taxes',
-        'title': 'title',
+        'amount_including_tax': 'amountIncludingTax','external_id': 'externalId','quantity': 'quantity','subscription_version': 'subscriptionVersion','taxes': 'taxes','title': 'title',
     }
 
     
@@ -37,16 +33,19 @@ class SubscriptionLedgerEntryCreate(object):
         self.discriminator = None
         
         self.amount_including_tax = kwargs.get('amount_including_tax')
+
         self.external_id = kwargs.get('external_id')
+
         self.quantity = kwargs.get('quantity')
+
         self.subscription_version = kwargs.get('subscription_version')
+
         self.taxes = kwargs.get('taxes', None)
         self.title = kwargs.get('title')
 
         
-        
-        
 
+    
     @property
     def amount_including_tax(self):
         """Gets the amount_including_tax of this SubscriptionLedgerEntryCreate.
@@ -71,7 +70,7 @@ class SubscriptionLedgerEntryCreate(object):
             raise ValueError("Invalid value for `amount_including_tax`, must not be `None`")
 
         self._amount_including_tax = amount_including_tax
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionLedgerEntryCreate.
@@ -96,7 +95,7 @@ class SubscriptionLedgerEntryCreate(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this SubscriptionLedgerEntryCreate.
@@ -121,7 +120,7 @@ class SubscriptionLedgerEntryCreate(object):
             raise ValueError("Invalid value for `quantity`, must not be `None`")
 
         self._quantity = quantity
-
+    
     @property
     def subscription_version(self):
         """Gets the subscription_version of this SubscriptionLedgerEntryCreate.
@@ -146,7 +145,7 @@ class SubscriptionLedgerEntryCreate(object):
             raise ValueError("Invalid value for `subscription_version`, must not be `None`")
 
         self._subscription_version = subscription_version
-
+    
     @property
     def taxes(self):
         """Gets the taxes of this SubscriptionLedgerEntryCreate.
@@ -169,7 +168,7 @@ class SubscriptionLedgerEntryCreate(object):
         """
 
         self._taxes = taxes
-
+    
     @property
     def title(self):
         """Gets the title of this SubscriptionLedgerEntryCreate.
@@ -194,6 +193,7 @@ class SubscriptionLedgerEntryCreate(object):
             raise ValueError("Invalid value for `title`, must not be `None`")
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

@@ -8,7 +8,7 @@ import six
 from wallee.api_client import ApiClient
 
 
-class TransactionService(object):
+class TransactionServiceApi:
 
     def __init__(self, api_client=None):
         if api_client is None:
@@ -1544,42 +1544,42 @@ class TransactionService(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def process_one_click_token_with_credentials(self, credentials, token_id, **kwargs):
+    def process_one_click_token_and_redirect_with_credentials(self, credentials, token_id, **kwargs):
         """Process One-Click Token with Credentials
 
-        This operation assigns the given token to the transaction and process it.
+        This operation assigns the given token to the transaction and process it. This method will return an URL where the customer has to be redirect to complete the transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.process_one_click_token_with_credentials(credentials, token_id, async_req=True)
+        >>> thread = api.process_one_click_token_and_redirect_with_credentials(credentials, token_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str credentials: The credentials identifies the transaction and contains the security details which grants the access this operation. (required)
         :param int token_id: The token ID is used to load the corresponding token and to process the transaction with it. (required)
-        :return: Transaction
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.process_one_click_token_with_credentials_with_http_info(credentials, token_id, **kwargs)
+            return self.process_one_click_token_and_redirect_with_credentials_with_http_info(credentials, token_id, **kwargs)
         else:
-            (data) = self.process_one_click_token_with_credentials_with_http_info(credentials, token_id, **kwargs)
+            (data) = self.process_one_click_token_and_redirect_with_credentials_with_http_info(credentials, token_id, **kwargs)
             return data
 
-    def process_one_click_token_with_credentials_with_http_info(self, credentials, token_id, **kwargs):
+    def process_one_click_token_and_redirect_with_credentials_with_http_info(self, credentials, token_id, **kwargs):
         """Process One-Click Token with Credentials
 
-        This operation assigns the given token to the transaction and process it.
+        This operation assigns the given token to the transaction and process it. This method will return an URL where the customer has to be redirect to complete the transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.process_one_click_token_with_credentials_with_http_info(credentials, token_id, async_req=True)
+        >>> thread = api.process_one_click_token_and_redirect_with_credentials_with_http_info(credentials, token_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str credentials: The credentials identifies the transaction and contains the security details which grants the access this operation. (required)
         :param int token_id: The token ID is used to load the corresponding token and to process the transaction with it. (required)
-        :return: Transaction
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1595,18 +1595,18 @@ class TransactionService(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method process_one_click_token_with_credentials" % key
+                    " to method process_one_click_token_and_redirect_with_credentials" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'credentials' is set
         if ('credentials' not in params or
                 params['credentials'] is None):
-            raise ValueError("Missing the required parameter `credentials` when calling `process_one_click_token_with_credentials`")
+            raise ValueError("Missing the required parameter `credentials` when calling `process_one_click_token_and_redirect_with_credentials`")
         # verify the required parameter 'token_id' is set
         if ('token_id' not in params or
                 params['token_id'] is None):
-            raise ValueError("Missing the required parameter `token_id` when calling `process_one_click_token_with_credentials`")
+            raise ValueError("Missing the required parameter `token_id` when calling `process_one_click_token_and_redirect_with_credentials`")
 
         collection_formats = {}
 
@@ -1628,14 +1628,14 @@ class TransactionService(object):
         auth_settings = []
 
         return self.api_client.call_api(
-            '/transaction/processOneClickTokenWithCredentials', 'POST',
+            '/transaction/processOneClickTokenAndRedirectWithCredentials', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Transaction',
+            response_type='str',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

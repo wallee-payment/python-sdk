@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class TransactionCompletion(TransactionAwareEntity):
 
     swagger_types = {
+    
         'amount': 'float',
         'base_line_items': 'list[LineItem]',
         'created_by': 'int',
@@ -37,32 +38,7 @@ class TransactionCompletion(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount',
-        'base_line_items': 'baseLineItems',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'external_id': 'externalId',
-        'failed_on': 'failedOn',
-        'failure_reason': 'failureReason',
-        'labels': 'labels',
-        'language': 'language',
-        'last_completion': 'lastCompletion',
-        'line_item_version': 'lineItemVersion',
-        'line_items': 'lineItems',
-        'mode': 'mode',
-        'next_update_on': 'nextUpdateOn',
-        'payment_information': 'paymentInformation',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processing_on': 'processingOn',
-        'processor_reference': 'processorReference',
-        'remaining_line_items': 'remainingLineItems',
-        'space_view_id': 'spaceViewId',
-        'state': 'state',
-        'succeeded_on': 'succeededOn',
-        'tax_amount': 'taxAmount',
-        'time_zone': 'timeZone',
-        'timeout_on': 'timeoutOn',
-        'version': 'version',
+        'amount': 'amount','base_line_items': 'baseLineItems','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','labels': 'labels','language': 'language','last_completion': 'lastCompletion','line_item_version': 'lineItemVersion','line_items': 'lineItems','mode': 'mode','next_update_on': 'nextUpdateOn','payment_information': 'paymentInformation','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','remaining_line_items': 'remainingLineItems','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','time_zone': 'timeZone','timeout_on': 'timeoutOn','version': 'version',
     }
 
     
@@ -122,11 +98,11 @@ class TransactionCompletion(TransactionAwareEntity):
         self.time_zone = kwargs.get('time_zone', None)
         self.timeout_on = kwargs.get('timeout_on', None)
         self.version = kwargs.get('version', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def amount(self):
         """Gets the amount of this TransactionCompletion.
@@ -149,7 +125,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._amount = amount
-
+    
     @property
     def base_line_items(self):
         """Gets the base_line_items of this TransactionCompletion.
@@ -172,7 +148,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._base_line_items = base_line_items
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this TransactionCompletion.
@@ -195,7 +171,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this TransactionCompletion.
@@ -218,7 +194,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this TransactionCompletion.
@@ -241,7 +217,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._external_id = external_id
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this TransactionCompletion.
@@ -264,7 +240,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failure_reason(self):
         """Gets the failure_reason of this TransactionCompletion.
@@ -287,7 +263,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._failure_reason = failure_reason
-
+    
     @property
     def labels(self):
         """Gets the labels of this TransactionCompletion.
@@ -310,7 +286,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._labels = labels
-
+    
     @property
     def language(self):
         """Gets the language of this TransactionCompletion.
@@ -333,7 +309,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._language = language
-
+    
     @property
     def last_completion(self):
         """Gets the last_completion of this TransactionCompletion.
@@ -356,7 +332,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._last_completion = last_completion
-
+    
     @property
     def line_item_version(self):
         """Gets the line_item_version of this TransactionCompletion.
@@ -379,7 +355,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._line_item_version = line_item_version
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this TransactionCompletion.
@@ -402,7 +378,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._line_items = line_items
-
+    
     @property
     def mode(self):
         """Gets the mode of this TransactionCompletion.
@@ -425,7 +401,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._mode = mode
-
+    
     @property
     def next_update_on(self):
         """Gets the next_update_on of this TransactionCompletion.
@@ -448,7 +424,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._next_update_on = next_update_on
-
+    
     @property
     def payment_information(self):
         """Gets the payment_information of this TransactionCompletion.
@@ -471,7 +447,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._payment_information = payment_information
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionCompletion.
@@ -494,7 +470,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processing_on(self):
         """Gets the processing_on of this TransactionCompletion.
@@ -517,7 +493,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._processing_on = processing_on
-
+    
     @property
     def processor_reference(self):
         """Gets the processor_reference of this TransactionCompletion.
@@ -540,7 +516,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._processor_reference = processor_reference
-
+    
     @property
     def remaining_line_items(self):
         """Gets the remaining_line_items of this TransactionCompletion.
@@ -563,7 +539,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._remaining_line_items = remaining_line_items
-
+    
     @property
     def space_view_id(self):
         """Gets the space_view_id of this TransactionCompletion.
@@ -586,7 +562,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._space_view_id = space_view_id
-
+    
     @property
     def state(self):
         """Gets the state of this TransactionCompletion.
@@ -609,7 +585,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def succeeded_on(self):
         """Gets the succeeded_on of this TransactionCompletion.
@@ -632,7 +608,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._succeeded_on = succeeded_on
-
+    
     @property
     def tax_amount(self):
         """Gets the tax_amount of this TransactionCompletion.
@@ -655,7 +631,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._tax_amount = tax_amount
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this TransactionCompletion.
@@ -678,7 +654,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this TransactionCompletion.
@@ -701,7 +677,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def version(self):
         """Gets the version of this TransactionCompletion.
@@ -724,6 +700,7 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

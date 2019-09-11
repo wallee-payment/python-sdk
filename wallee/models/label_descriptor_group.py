@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class LabelDescriptorGroup(object):
+class LabelDescriptorGroup:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'id': 'int',
         'name': 'dict(str, str)',
@@ -15,10 +16,7 @@ class LabelDescriptorGroup(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'id': 'id',
-        'name': 'name',
-        'weight': 'weight',
+        'description': 'description','id': 'id','name': 'name','weight': 'weight',
     }
 
     
@@ -34,11 +32,9 @@ class LabelDescriptorGroup(object):
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.weight = kwargs.get('weight', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this LabelDescriptorGroup.
@@ -61,7 +57,7 @@ class LabelDescriptorGroup(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this LabelDescriptorGroup.
@@ -84,7 +80,7 @@ class LabelDescriptorGroup(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this LabelDescriptorGroup.
@@ -107,7 +103,7 @@ class LabelDescriptorGroup(object):
         """
 
         self._name = name
-
+    
     @property
     def weight(self):
         """Gets the weight of this LabelDescriptorGroup.
@@ -130,6 +126,7 @@ class LabelDescriptorGroup(object):
         """
 
         self._weight = weight
+    
 
     def to_dict(self):
         result = {}

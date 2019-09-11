@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class LabelDescriptorType(object):
+class LabelDescriptorType:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'id': 'int',
         'name': 'dict(str, str)',
     }
 
     attribute_map = {
-        'description': 'description',
-        'id': 'id',
-        'name': 'name',
+        'description': 'description','id': 'id','name': 'name',
     }
 
     
@@ -30,11 +29,9 @@ class LabelDescriptorType(object):
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this LabelDescriptorType.
@@ -57,7 +54,7 @@ class LabelDescriptorType(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this LabelDescriptorType.
@@ -80,7 +77,7 @@ class LabelDescriptorType(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this LabelDescriptorType.
@@ -103,6 +100,7 @@ class LabelDescriptorType(object):
         """
 
         self._name = name
+    
 
     def to_dict(self):
         result = {}

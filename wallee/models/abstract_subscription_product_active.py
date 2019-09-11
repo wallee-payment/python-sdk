@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractSubscriptionProductActive(object):
+class AbstractSubscriptionProductActive:
 
     swagger_types = {
+    
         'allowed_payment_method_configurations': 'list[int]',
         'failed_payment_suspension_period': 'str',
         'name': 'str',
@@ -16,11 +17,7 @@ class AbstractSubscriptionProductActive(object):
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'failed_payment_suspension_period': 'failedPaymentSuspensionPeriod',
-        'name': 'name',
-        'sort_order': 'sortOrder',
-        'state': 'state',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','name': 'name','sort_order': 'sortOrder','state': 'state',
     }
 
     
@@ -38,11 +35,9 @@ class AbstractSubscriptionProductActive(object):
         self.name = kwargs.get('name', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.state = kwargs.get('state', None)
-
-        
-        
         
 
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
@@ -65,7 +60,7 @@ class AbstractSubscriptionProductActive(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def failed_payment_suspension_period(self):
         """Gets the failed_payment_suspension_period of this AbstractSubscriptionProductActive.
@@ -88,7 +83,7 @@ class AbstractSubscriptionProductActive(object):
         """
 
         self._failed_payment_suspension_period = failed_payment_suspension_period
-
+    
     @property
     def name(self):
         """Gets the name of this AbstractSubscriptionProductActive.
@@ -111,7 +106,7 @@ class AbstractSubscriptionProductActive(object):
         """
 
         self._name = name
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this AbstractSubscriptionProductActive.
@@ -134,7 +129,7 @@ class AbstractSubscriptionProductActive(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractSubscriptionProductActive.
@@ -157,6 +152,7 @@ class AbstractSubscriptionProductActive(object):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

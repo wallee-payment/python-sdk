@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class PaymentConnectorFeature(object):
+class PaymentConnectorFeature:
 
     swagger_types = {
+    
         'display_name': 'str',
         'feature': 'Feature',
         'id': 'int',
     }
 
     attribute_map = {
-        'display_name': 'displayName',
-        'feature': 'feature',
-        'id': 'id',
+        'display_name': 'displayName','feature': 'feature','id': 'id',
     }
 
     
@@ -30,11 +29,9 @@ class PaymentConnectorFeature(object):
         self.display_name = kwargs.get('display_name', None)
         self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
-
-        
-        
         
 
+    
     @property
     def display_name(self):
         """Gets the display_name of this PaymentConnectorFeature.
@@ -57,7 +54,7 @@ class PaymentConnectorFeature(object):
         """
 
         self._display_name = display_name
-
+    
     @property
     def feature(self):
         """Gets the feature of this PaymentConnectorFeature.
@@ -80,7 +77,7 @@ class PaymentConnectorFeature(object):
         """
 
         self._feature = feature
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentConnectorFeature.
@@ -103,6 +100,7 @@ class PaymentConnectorFeature(object):
         """
 
         self._id = id
+    
 
     def to_dict(self):
         result = {}

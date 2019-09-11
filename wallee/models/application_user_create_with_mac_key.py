@@ -8,6 +8,7 @@ from . import ApplicationUser
 class ApplicationUserCreateWithMacKey(ApplicationUser):
 
     swagger_types = {
+    
         'mac_key': 'str',
     }
 
@@ -22,11 +23,11 @@ class ApplicationUserCreateWithMacKey(ApplicationUser):
         self.discriminator = None
         
         self.mac_key = kwargs.get('mac_key', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def mac_key(self):
         """Gets the mac_key of this ApplicationUserCreateWithMacKey.
@@ -49,6 +50,7 @@ class ApplicationUserCreateWithMacKey(ApplicationUser):
         """
 
         self._mac_key = mac_key
+    
 
     def to_dict(self):
         result = {}

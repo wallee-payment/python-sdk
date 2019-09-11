@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProduct(object):
+class SubscriptionProduct:
 
     swagger_types = {
+    
         'allowed_payment_method_configurations': 'list[int]',
         'failed_payment_suspension_period': 'str',
         'id': 'int',
@@ -22,17 +23,7 @@ class SubscriptionProduct(object):
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'failed_payment_suspension_period': 'failedPaymentSuspensionPeriod',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'reference': 'reference',
-        'sort_order': 'sortOrder',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'version': 'version',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','reference': 'reference','sort_order': 'sortOrder','space_id': 'spaceId','state': 'state','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class SubscriptionProduct(object):
         self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this SubscriptionProduct.
@@ -89,7 +78,7 @@ class SubscriptionProduct(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def failed_payment_suspension_period(self):
         """Gets the failed_payment_suspension_period of this SubscriptionProduct.
@@ -112,7 +101,7 @@ class SubscriptionProduct(object):
         """
 
         self._failed_payment_suspension_period = failed_payment_suspension_period
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProduct.
@@ -135,7 +124,7 @@ class SubscriptionProduct(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionProduct.
@@ -158,7 +147,7 @@ class SubscriptionProduct(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this SubscriptionProduct.
@@ -181,7 +170,7 @@ class SubscriptionProduct(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionProduct.
@@ -204,7 +193,7 @@ class SubscriptionProduct(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionProduct.
@@ -227,7 +216,7 @@ class SubscriptionProduct(object):
         """
 
         self._reference = reference
-
+    
     @property
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProduct.
@@ -250,7 +239,7 @@ class SubscriptionProduct(object):
         """
 
         self._sort_order = sort_order
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this SubscriptionProduct.
@@ -273,7 +262,7 @@ class SubscriptionProduct(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionProduct.
@@ -296,7 +285,7 @@ class SubscriptionProduct(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProduct.
@@ -319,6 +308,7 @@ class SubscriptionProduct(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

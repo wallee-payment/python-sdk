@@ -5,18 +5,17 @@ from enum import Enum
 
 
 
-class WebhookListenerEntity(object):
+class WebhookListenerEntity:
 
     swagger_types = {
+    
         'id': 'int',
         'name': 'dict(str, str)',
         'technical_name': 'str',
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'technical_name': 'technicalName',
+        'id': 'id','name': 'name','technical_name': 'technicalName',
     }
 
     
@@ -30,11 +29,9 @@ class WebhookListenerEntity(object):
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.technical_name = kwargs.get('technical_name', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this WebhookListenerEntity.
@@ -57,7 +54,7 @@ class WebhookListenerEntity(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this WebhookListenerEntity.
@@ -80,7 +77,7 @@ class WebhookListenerEntity(object):
         """
 
         self._name = name
-
+    
     @property
     def technical_name(self):
         """Gets the technical_name of this WebhookListenerEntity.
@@ -103,6 +100,7 @@ class WebhookListenerEntity(object):
         """
 
         self._technical_name = technical_name
+    
 
     def to_dict(self):
         result = {}

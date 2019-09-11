@@ -8,15 +8,14 @@ from . import AbstractPaymentLinkUpdate
 class PaymentLinkCreate(AbstractPaymentLinkUpdate):
 
     swagger_types = {
+    
         'state': 'CreationEntityState',
         'external_id': 'str',
         'protection_mode': 'PaymentLinkProtectionMode',
     }
 
     attribute_map = {
-        'state': 'state',
-        'external_id': 'externalId',
-        'protection_mode': 'protectionMode',
+        'state': 'state','external_id': 'externalId','protection_mode': 'protectionMode',
     }
 
     
@@ -29,12 +28,13 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
         
         self.state = kwargs.get('state', None)
         self.external_id = kwargs.get('external_id')
-        self.protection_mode = kwargs.get('protection_mode', None)
 
+        self.protection_mode = kwargs.get('protection_mode', None)
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def state(self):
         """Gets the state of this PaymentLinkCreate.
@@ -57,7 +57,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
         """
 
         self._state = state
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this PaymentLinkCreate.
@@ -82,7 +82,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def protection_mode(self):
         """Gets the protection_mode of this PaymentLinkCreate.
@@ -105,6 +105,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
         """
 
         self._protection_mode = protection_mode
+    
 
     def to_dict(self):
         result = {}

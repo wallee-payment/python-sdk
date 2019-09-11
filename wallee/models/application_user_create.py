@@ -8,6 +8,7 @@ from . import AbstractApplicationUserUpdate
 class ApplicationUserCreate(AbstractApplicationUserUpdate):
 
     swagger_types = {
+    
         'primary_account': 'int',
     }
 
@@ -27,6 +28,7 @@ class ApplicationUserCreate(AbstractApplicationUserUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def primary_account(self):
         """Gets the primary_account of this ApplicationUserCreate.
@@ -51,6 +53,7 @@ class ApplicationUserCreate(AbstractApplicationUserUpdate):
             raise ValueError("Invalid value for `primary_account`, must not be `None`")
 
         self._primary_account = primary_account
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductSetupFeeUpdate(object):
+class ProductSetupFeeUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'component': 'int',
@@ -19,14 +20,7 @@ class ProductSetupFeeUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'component': 'component',
-        'description': 'description',
-        'name': 'name',
-        'on_downgrade_credited_amount': 'onDowngradeCreditedAmount',
-        'on_upgrade_credited_amount': 'onUpgradeCreditedAmount',
-        'setup_fee': 'setupFee',
+        'id': 'id','version': 'version','component': 'component','description': 'description','name': 'name','on_downgrade_credited_amount': 'onDowngradeCreditedAmount','on_upgrade_credited_amount': 'onUpgradeCreditedAmount','setup_fee': 'setupFee',
     }
 
     
@@ -43,18 +37,18 @@ class ProductSetupFeeUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.component = kwargs.get('component', None)
         self.description = kwargs.get('description', None)
         self.name = kwargs.get('name', None)
         self.on_downgrade_credited_amount = kwargs.get('on_downgrade_credited_amount', None)
         self.on_upgrade_credited_amount = kwargs.get('on_upgrade_credited_amount', None)
         self.setup_fee = kwargs.get('setup_fee', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this ProductSetupFeeUpdate.
@@ -79,7 +73,7 @@ class ProductSetupFeeUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this ProductSetupFeeUpdate.
@@ -104,7 +98,7 @@ class ProductSetupFeeUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def component(self):
         """Gets the component of this ProductSetupFeeUpdate.
@@ -127,7 +121,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._component = component
-
+    
     @property
     def description(self):
         """Gets the description of this ProductSetupFeeUpdate.
@@ -150,7 +144,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._description = description
-
+    
     @property
     def name(self):
         """Gets the name of this ProductSetupFeeUpdate.
@@ -173,7 +167,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def on_downgrade_credited_amount(self):
         """Gets the on_downgrade_credited_amount of this ProductSetupFeeUpdate.
@@ -196,7 +190,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._on_downgrade_credited_amount = on_downgrade_credited_amount
-
+    
     @property
     def on_upgrade_credited_amount(self):
         """Gets the on_upgrade_credited_amount of this ProductSetupFeeUpdate.
@@ -219,7 +213,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._on_upgrade_credited_amount = on_upgrade_credited_amount
-
+    
     @property
     def setup_fee(self):
         """Gets the setup_fee of this ProductSetupFeeUpdate.
@@ -242,6 +236,7 @@ class ProductSetupFeeUpdate(object):
         """
 
         self._setup_fee = setup_fee
+    
 
     def to_dict(self):
         result = {}

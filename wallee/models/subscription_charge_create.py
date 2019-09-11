@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionChargeCreate(object):
+class SubscriptionChargeCreate:
 
     swagger_types = {
+    
         'external_id': 'str',
         'failed_url': 'str',
         'planned_execution_date': 'datetime',
@@ -18,13 +19,7 @@ class SubscriptionChargeCreate(object):
     }
 
     attribute_map = {
-        'external_id': 'externalId',
-        'failed_url': 'failedUrl',
-        'planned_execution_date': 'plannedExecutionDate',
-        'processing_type': 'processingType',
-        'reference': 'reference',
-        'subscription': 'subscription',
-        'success_url': 'successUrl',
+        'external_id': 'externalId','failed_url': 'failedUrl','planned_execution_date': 'plannedExecutionDate','processing_type': 'processingType','reference': 'reference','subscription': 'subscription','success_url': 'successUrl',
     }
 
     
@@ -40,17 +35,18 @@ class SubscriptionChargeCreate(object):
         self.discriminator = None
         
         self.external_id = kwargs.get('external_id')
+
         self.failed_url = kwargs.get('failed_url', None)
         self.planned_execution_date = kwargs.get('planned_execution_date', None)
         self.processing_type = kwargs.get('processing_type')
+
         self.reference = kwargs.get('reference', None)
         self.subscription = kwargs.get('subscription')
+
         self.success_url = kwargs.get('success_url', None)
-
-        
-        
         
 
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionChargeCreate.
@@ -75,7 +71,7 @@ class SubscriptionChargeCreate(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def failed_url(self):
         """Gets the failed_url of this SubscriptionChargeCreate.
@@ -98,7 +94,7 @@ class SubscriptionChargeCreate(object):
         """
 
         self._failed_url = failed_url
-
+    
     @property
     def planned_execution_date(self):
         """Gets the planned_execution_date of this SubscriptionChargeCreate.
@@ -121,7 +117,7 @@ class SubscriptionChargeCreate(object):
         """
 
         self._planned_execution_date = planned_execution_date
-
+    
     @property
     def processing_type(self):
         """Gets the processing_type of this SubscriptionChargeCreate.
@@ -146,7 +142,7 @@ class SubscriptionChargeCreate(object):
             raise ValueError("Invalid value for `processing_type`, must not be `None`")
 
         self._processing_type = processing_type
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionChargeCreate.
@@ -169,7 +165,7 @@ class SubscriptionChargeCreate(object):
         """
 
         self._reference = reference
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionChargeCreate.
@@ -194,7 +190,7 @@ class SubscriptionChargeCreate(object):
             raise ValueError("Invalid value for `subscription`, must not be `None`")
 
         self._subscription = subscription
-
+    
     @property
     def success_url(self):
         """Gets the success_url of this SubscriptionChargeCreate.
@@ -217,6 +213,7 @@ class SubscriptionChargeCreate(object):
         """
 
         self._success_url = success_url
+    
 
     def to_dict(self):
         result = {}

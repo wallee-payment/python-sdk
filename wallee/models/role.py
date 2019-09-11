@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Role(object):
+class Role:
 
     swagger_types = {
+    
         'account': 'Account',
         'id': 'int',
         'name': 'DatabaseTranslatedString',
@@ -19,14 +20,7 @@ class Role(object):
     }
 
     attribute_map = {
-        'account': 'account',
-        'id': 'id',
-        'name': 'name',
-        'permissions': 'permissions',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'two_factor_required': 'twoFactorRequired',
-        'version': 'version',
+        'account': 'account','id': 'id','name': 'name','permissions': 'permissions','planned_purge_date': 'plannedPurgeDate','state': 'state','two_factor_required': 'twoFactorRequired','version': 'version',
     }
 
     
@@ -50,11 +44,9 @@ class Role(object):
         self.state = kwargs.get('state', None)
         self.two_factor_required = kwargs.get('two_factor_required', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def account(self):
         """Gets the account of this Role.
@@ -77,7 +69,7 @@ class Role(object):
         """
 
         self._account = account
-
+    
     @property
     def id(self):
         """Gets the id of this Role.
@@ -100,7 +92,7 @@ class Role(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this Role.
@@ -123,7 +115,7 @@ class Role(object):
         """
 
         self._name = name
-
+    
     @property
     def permissions(self):
         """Gets the permissions of this Role.
@@ -146,7 +138,7 @@ class Role(object):
         """
 
         self._permissions = permissions
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Role.
@@ -169,7 +161,7 @@ class Role(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this Role.
@@ -192,7 +184,7 @@ class Role(object):
         """
 
         self._state = state
-
+    
     @property
     def two_factor_required(self):
         """Gets the two_factor_required of this Role.
@@ -215,7 +207,7 @@ class Role(object):
         """
 
         self._two_factor_required = two_factor_required
-
+    
     @property
     def version(self):
         """Gets the version of this Role.
@@ -238,6 +230,7 @@ class Role(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

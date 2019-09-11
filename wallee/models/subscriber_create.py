@@ -8,13 +8,13 @@ from . import AbstractSubscriberUpdate
 class SubscriberCreate(AbstractSubscriberUpdate):
 
     swagger_types = {
+    
         'state': 'CreationEntityState',
         'external_id': 'str',
     }
 
     attribute_map = {
-        'state': 'state',
-        'external_id': 'externalId',
+        'state': 'state','external_id': 'externalId',
     }
 
     
@@ -31,6 +31,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def state(self):
         """Gets the state of this SubscriberCreate.
@@ -53,7 +54,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
         """
 
         self._state = state
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriberCreate.
@@ -78,6 +79,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
+    
 
     def to_dict(self):
         result = {}

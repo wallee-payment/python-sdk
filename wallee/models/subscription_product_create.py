@@ -8,6 +8,7 @@ from . import AbstractSubscriptionProductActive
 class SubscriptionProductCreate(AbstractSubscriptionProductActive):
 
     swagger_types = {
+    
         'reference': 'str',
     }
 
@@ -27,6 +28,7 @@ class SubscriptionProductCreate(AbstractSubscriptionProductActive):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionProductCreate.
@@ -51,6 +53,7 @@ class SubscriptionProductCreate(AbstractSubscriptionProductActive):
             raise ValueError("Invalid value for `reference`, must not be `None`")
 
         self._reference = reference
+    
 
     def to_dict(self):
         result = {}

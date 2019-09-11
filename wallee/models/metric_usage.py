@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class MetricUsage(object):
+class MetricUsage:
 
     swagger_types = {
+    
         'consumed_units': 'float',
         'metric_description': 'dict(str, str)',
         'metric_id': 'int',
@@ -15,10 +16,7 @@ class MetricUsage(object):
     }
 
     attribute_map = {
-        'consumed_units': 'consumedUnits',
-        'metric_description': 'metricDescription',
-        'metric_id': 'metricId',
-        'metric_name': 'metricName',
+        'consumed_units': 'consumedUnits','metric_description': 'metricDescription','metric_id': 'metricId','metric_name': 'metricName',
     }
 
     
@@ -34,11 +32,9 @@ class MetricUsage(object):
         self.metric_description = kwargs.get('metric_description', None)
         self.metric_id = kwargs.get('metric_id', None)
         self.metric_name = kwargs.get('metric_name', None)
-
-        
-        
         
 
+    
     @property
     def consumed_units(self):
         """Gets the consumed_units of this MetricUsage.
@@ -61,7 +57,7 @@ class MetricUsage(object):
         """
 
         self._consumed_units = consumed_units
-
+    
     @property
     def metric_description(self):
         """Gets the metric_description of this MetricUsage.
@@ -84,7 +80,7 @@ class MetricUsage(object):
         """
 
         self._metric_description = metric_description
-
+    
     @property
     def metric_id(self):
         """Gets the metric_id of this MetricUsage.
@@ -107,7 +103,7 @@ class MetricUsage(object):
         """
 
         self._metric_id = metric_id
-
+    
     @property
     def metric_name(self):
         """Gets the metric_name of this MetricUsage.
@@ -130,6 +126,7 @@ class MetricUsage(object):
         """
 
         self._metric_name = metric_name
+    
 
     def to_dict(self):
         result = {}

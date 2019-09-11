@@ -1,60 +1,72 @@
 [![Build Status](https://travis-ci.org/wallee-payment/python-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/python-sdk)
 
-# wallee
-Python SDK
+# wallee Python Library
 
-## Requirements.
+[![Build Status](https://travis-ci.org/wallee-payment/python-sdk.svg)](https://travis-ci.org/wallee-payment/python-sdk)
 
-Python 3.2+
+The wallee Python library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, subscriptions.
 
 ## Documentation
 
-[https://app-wallee.com/doc/api/web-service](https://app-wallee.com/doc/api/web-service)
+[wallee Web Service API](https://app-wallee.com/doc/api/web-service)
 
-## Installation & Usage
-### pip install
+## Requirements
 
-You can install directly from Github
+- Python 3.4+
+
+## Installation
+
+### pip install (recommended)
+```sh
+pip install --upgrade wallee
+```
+
+### pip install from source via github
 
 ```sh
-pip install git@github.com:wallee-payment/python-sdk.git
+pip install git+http://github.com/wallee-payment/python-sdk.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git@github.com:wallee-payment/python-sdk.git` )
+(you may need to run `pip` with root permission: `sudo pip install git+http://github.com/wallee-payment/python-sdk.git` )
 
-Then import the package:
-```python
-import wallee 
-```
-
-### Setuptools
+### install from source via Setuptools
 
 Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 
 ```sh
-cd to/package/directory
 python setup.py install
 ```
 (or `sudo python setup.py install` to install the package for all users)
 
-Then import the package:
+## Usage
+The library needs to be configured with your account's space id, user id, and secret key which are available in your [wallee
+account dashboard](https://app-wallee.com/account/select). Set `space_id`, `user_id`, and `api_secret` to their values:
+
+### Configuring a Client
+
 ```python
-import wallee
+from wallee import Configuration, ApiClient
+
+space_id = 405
+
+api_client = ApiClient(configuration=Configuration(
+    user_id=512,
+    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+))
+
 ```
 
-## Getting Started
-
-Please follow the installation procedure and then run the following:
+To get stated with sending transactions you can review the example below:
 
 ```python
 from wallee import Configuration, ApiClient
 from wallee.api import TransactionService
 from wallee.models import LineItem, LineItemType, TransactionCreate
 
-# Configure the client
 space_id = 405
+
 api_client = ApiClient(configuration=Configuration(
-    user_id=512, # change this to your application, user's user_id
-    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=' # change this to your application user's key
+    user_id=512,
+    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
 ))
 
 transaction_service = TransactionService(api_client=api_client)
@@ -87,3 +99,7 @@ print(redirect_url)
 transaction_read = transaction_service.read(space_id=space_id, id=transaction_create.id)
 print(transaction_read.state)
 ```
+
+## License
+
+Please see the [license file](LICENSE) for more information.

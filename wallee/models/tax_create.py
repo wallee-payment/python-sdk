@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class TaxCreate(object):
+class TaxCreate:
 
     swagger_types = {
+    
         'rate': 'float',
         'title': 'str',
     }
 
     attribute_map = {
-        'rate': 'rate',
-        'title': 'title',
+        'rate': 'rate','title': 'title',
     }
 
     
@@ -25,12 +25,12 @@ class TaxCreate(object):
         self.discriminator = None
         
         self.rate = kwargs.get('rate')
+
         self.title = kwargs.get('title')
 
         
-        
-        
 
+    
     @property
     def rate(self):
         """Gets the rate of this TaxCreate.
@@ -55,7 +55,7 @@ class TaxCreate(object):
             raise ValueError("Invalid value for `rate`, must not be `None`")
 
         self._rate = rate
-
+    
     @property
     def title(self):
         """Gets the title of this TaxCreate.
@@ -80,6 +80,7 @@ class TaxCreate(object):
             raise ValueError("Invalid value for `title`, must not be `None`")
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionCharge(object):
+class SubscriptionCharge:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'discarded_by': 'int',
         'discarded_on': 'datetime',
@@ -32,27 +33,7 @@ class SubscriptionCharge(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'discarded_by': 'discardedBy',
-        'discarded_on': 'discardedOn',
-        'external_id': 'externalId',
-        'failed_on': 'failedOn',
-        'failed_url': 'failedUrl',
-        'id': 'id',
-        'language': 'language',
-        'ledger_entries': 'ledgerEntries',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_execution_date': 'plannedExecutionDate',
-        'planned_purge_date': 'plannedPurgeDate',
-        'processing_type': 'processingType',
-        'reference': 'reference',
-        'state': 'state',
-        'subscription': 'subscription',
-        'succeed_on': 'succeedOn',
-        'success_url': 'successUrl',
-        'transaction': 'transaction',
-        'type': 'type',
-        'version': 'version',
+        'created_on': 'createdOn','discarded_by': 'discardedBy','discarded_on': 'discardedOn','external_id': 'externalId','failed_on': 'failedOn','failed_url': 'failedUrl','id': 'id','language': 'language','ledger_entries': 'ledgerEntries','linked_space_id': 'linkedSpaceId','planned_execution_date': 'plannedExecutionDate','planned_purge_date': 'plannedPurgeDate','processing_type': 'processingType','reference': 'reference','state': 'state','subscription': 'subscription','succeed_on': 'succeedOn','success_url': 'successUrl','transaction': 'transaction','type': 'type','version': 'version',
     }
 
     
@@ -102,11 +83,9 @@ class SubscriptionCharge(object):
         self.transaction = kwargs.get('transaction', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionCharge.
@@ -129,7 +108,7 @@ class SubscriptionCharge(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def discarded_by(self):
         """Gets the discarded_by of this SubscriptionCharge.
@@ -152,7 +131,7 @@ class SubscriptionCharge(object):
         """
 
         self._discarded_by = discarded_by
-
+    
     @property
     def discarded_on(self):
         """Gets the discarded_on of this SubscriptionCharge.
@@ -175,7 +154,7 @@ class SubscriptionCharge(object):
         """
 
         self._discarded_on = discarded_on
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionCharge.
@@ -198,7 +177,7 @@ class SubscriptionCharge(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def failed_on(self):
         """Gets the failed_on of this SubscriptionCharge.
@@ -221,7 +200,7 @@ class SubscriptionCharge(object):
         """
 
         self._failed_on = failed_on
-
+    
     @property
     def failed_url(self):
         """Gets the failed_url of this SubscriptionCharge.
@@ -244,7 +223,7 @@ class SubscriptionCharge(object):
         """
 
         self._failed_url = failed_url
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionCharge.
@@ -267,7 +246,7 @@ class SubscriptionCharge(object):
         """
 
         self._id = id
-
+    
     @property
     def language(self):
         """Gets the language of this SubscriptionCharge.
@@ -290,7 +269,7 @@ class SubscriptionCharge(object):
         """
 
         self._language = language
-
+    
     @property
     def ledger_entries(self):
         """Gets the ledger_entries of this SubscriptionCharge.
@@ -313,7 +292,7 @@ class SubscriptionCharge(object):
         """
 
         self._ledger_entries = ledger_entries
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionCharge.
@@ -336,7 +315,7 @@ class SubscriptionCharge(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_execution_date(self):
         """Gets the planned_execution_date of this SubscriptionCharge.
@@ -359,7 +338,7 @@ class SubscriptionCharge(object):
         """
 
         self._planned_execution_date = planned_execution_date
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionCharge.
@@ -382,7 +361,7 @@ class SubscriptionCharge(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def processing_type(self):
         """Gets the processing_type of this SubscriptionCharge.
@@ -405,7 +384,7 @@ class SubscriptionCharge(object):
         """
 
         self._processing_type = processing_type
-
+    
     @property
     def reference(self):
         """Gets the reference of this SubscriptionCharge.
@@ -428,7 +407,7 @@ class SubscriptionCharge(object):
         """
 
         self._reference = reference
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionCharge.
@@ -451,7 +430,7 @@ class SubscriptionCharge(object):
         """
 
         self._state = state
-
+    
     @property
     def subscription(self):
         """Gets the subscription of this SubscriptionCharge.
@@ -474,7 +453,7 @@ class SubscriptionCharge(object):
         """
 
         self._subscription = subscription
-
+    
     @property
     def succeed_on(self):
         """Gets the succeed_on of this SubscriptionCharge.
@@ -497,7 +476,7 @@ class SubscriptionCharge(object):
         """
 
         self._succeed_on = succeed_on
-
+    
     @property
     def success_url(self):
         """Gets the success_url of this SubscriptionCharge.
@@ -520,7 +499,7 @@ class SubscriptionCharge(object):
         """
 
         self._success_url = success_url
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this SubscriptionCharge.
@@ -543,7 +522,7 @@ class SubscriptionCharge(object):
         """
 
         self._transaction = transaction
-
+    
     @property
     def type(self):
         """Gets the type of this SubscriptionCharge.
@@ -566,7 +545,7 @@ class SubscriptionCharge(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionCharge.
@@ -589,6 +568,7 @@ class SubscriptionCharge(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

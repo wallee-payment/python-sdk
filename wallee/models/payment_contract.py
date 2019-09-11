@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentContract(object):
+class PaymentContract:
 
     swagger_types = {
+    
         'account': 'Account',
         'activated_on': 'datetime',
         'contract_identifier': 'str',
@@ -26,21 +27,7 @@ class PaymentContract(object):
     }
 
     attribute_map = {
-        'account': 'account',
-        'activated_on': 'activatedOn',
-        'contract_identifier': 'contractIdentifier',
-        'contract_type': 'contractType',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'external_id': 'externalId',
-        'id': 'id',
-        'rejected_on': 'rejectedOn',
-        'rejection_reason': 'rejectionReason',
-        'start_terminating_on': 'startTerminatingOn',
-        'state': 'state',
-        'terminated_by': 'terminatedBy',
-        'terminated_on': 'terminatedOn',
-        'version': 'version',
+        'account': 'account','activated_on': 'activatedOn','contract_identifier': 'contractIdentifier','contract_type': 'contractType','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','rejected_on': 'rejectedOn','rejection_reason': 'rejectionReason','start_terminating_on': 'startTerminatingOn','state': 'state','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','version': 'version',
     }
 
     
@@ -78,11 +65,9 @@ class PaymentContract(object):
         self.terminated_by = kwargs.get('terminated_by', None)
         self.terminated_on = kwargs.get('terminated_on', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def account(self):
         """Gets the account of this PaymentContract.
@@ -105,7 +90,7 @@ class PaymentContract(object):
         """
 
         self._account = account
-
+    
     @property
     def activated_on(self):
         """Gets the activated_on of this PaymentContract.
@@ -128,7 +113,7 @@ class PaymentContract(object):
         """
 
         self._activated_on = activated_on
-
+    
     @property
     def contract_identifier(self):
         """Gets the contract_identifier of this PaymentContract.
@@ -151,7 +136,7 @@ class PaymentContract(object):
         """
 
         self._contract_identifier = contract_identifier
-
+    
     @property
     def contract_type(self):
         """Gets the contract_type of this PaymentContract.
@@ -174,7 +159,7 @@ class PaymentContract(object):
         """
 
         self._contract_type = contract_type
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this PaymentContract.
@@ -197,7 +182,7 @@ class PaymentContract(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this PaymentContract.
@@ -220,7 +205,7 @@ class PaymentContract(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this PaymentContract.
@@ -243,7 +228,7 @@ class PaymentContract(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentContract.
@@ -266,7 +251,7 @@ class PaymentContract(object):
         """
 
         self._id = id
-
+    
     @property
     def rejected_on(self):
         """Gets the rejected_on of this PaymentContract.
@@ -289,7 +274,7 @@ class PaymentContract(object):
         """
 
         self._rejected_on = rejected_on
-
+    
     @property
     def rejection_reason(self):
         """Gets the rejection_reason of this PaymentContract.
@@ -312,7 +297,7 @@ class PaymentContract(object):
         """
 
         self._rejection_reason = rejection_reason
-
+    
     @property
     def start_terminating_on(self):
         """Gets the start_terminating_on of this PaymentContract.
@@ -335,7 +320,7 @@ class PaymentContract(object):
         """
 
         self._start_terminating_on = start_terminating_on
-
+    
     @property
     def state(self):
         """Gets the state of this PaymentContract.
@@ -358,7 +343,7 @@ class PaymentContract(object):
         """
 
         self._state = state
-
+    
     @property
     def terminated_by(self):
         """Gets the terminated_by of this PaymentContract.
@@ -381,7 +366,7 @@ class PaymentContract(object):
         """
 
         self._terminated_by = terminated_by
-
+    
     @property
     def terminated_on(self):
         """Gets the terminated_on of this PaymentContract.
@@ -404,7 +389,7 @@ class PaymentContract(object):
         """
 
         self._terminated_on = terminated_on
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentContract.
@@ -427,6 +412,7 @@ class PaymentContract(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

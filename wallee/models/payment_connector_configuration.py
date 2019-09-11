@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentConnectorConfiguration(object):
+class PaymentConnectorConfiguration:
 
     swagger_types = {
+    
         'applicable_for_transaction_processing': 'bool',
         'conditions': 'list[int]',
         'connector': 'int',
@@ -24,19 +25,7 @@ class PaymentConnectorConfiguration(object):
     }
 
     attribute_map = {
-        'applicable_for_transaction_processing': 'applicableForTransactionProcessing',
-        'conditions': 'conditions',
-        'connector': 'connector',
-        'enabled_space_views': 'enabledSpaceViews',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'payment_method_configuration': 'paymentMethodConfiguration',
-        'planned_purge_date': 'plannedPurgeDate',
-        'priority': 'priority',
-        'processor_configuration': 'processorConfiguration',
-        'state': 'state',
-        'version': 'version',
+        'applicable_for_transaction_processing': 'applicableForTransactionProcessing','conditions': 'conditions','connector': 'connector','enabled_space_views': 'enabledSpaceViews','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','payment_method_configuration': 'paymentMethodConfiguration','planned_purge_date': 'plannedPurgeDate','priority': 'priority','processor_configuration': 'processorConfiguration','state': 'state','version': 'version',
     }
 
     
@@ -70,11 +59,9 @@ class PaymentConnectorConfiguration(object):
         self.processor_configuration = kwargs.get('processor_configuration', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def applicable_for_transaction_processing(self):
         """Gets the applicable_for_transaction_processing of this PaymentConnectorConfiguration.
@@ -97,7 +84,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._applicable_for_transaction_processing = applicable_for_transaction_processing
-
+    
     @property
     def conditions(self):
         """Gets the conditions of this PaymentConnectorConfiguration.
@@ -120,7 +107,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._conditions = conditions
-
+    
     @property
     def connector(self):
         """Gets the connector of this PaymentConnectorConfiguration.
@@ -143,7 +130,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._connector = connector
-
+    
     @property
     def enabled_space_views(self):
         """Gets the enabled_space_views of this PaymentConnectorConfiguration.
@@ -166,7 +153,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._enabled_space_views = enabled_space_views
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentConnectorConfiguration.
@@ -189,7 +176,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentConnectorConfiguration.
@@ -212,7 +199,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentConnectorConfiguration.
@@ -235,7 +222,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def payment_method_configuration(self):
         """Gets the payment_method_configuration of this PaymentConnectorConfiguration.
@@ -258,7 +245,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._payment_method_configuration = payment_method_configuration
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentConnectorConfiguration.
@@ -281,7 +268,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def priority(self):
         """Gets the priority of this PaymentConnectorConfiguration.
@@ -304,7 +291,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._priority = priority
-
+    
     @property
     def processor_configuration(self):
         """Gets the processor_configuration of this PaymentConnectorConfiguration.
@@ -327,7 +314,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._processor_configuration = processor_configuration
-
+    
     @property
     def state(self):
         """Gets the state of this PaymentConnectorConfiguration.
@@ -350,7 +337,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentConnectorConfiguration.
@@ -373,6 +360,7 @@ class PaymentConnectorConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

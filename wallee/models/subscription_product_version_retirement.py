@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionProductVersionRetirement(object):
+class SubscriptionProductVersionRetirement:
 
     swagger_types = {
+    
         'created_on': 'datetime',
         'id': 'int',
         'linked_space_id': 'int',
@@ -18,13 +19,7 @@ class SubscriptionProductVersionRetirement(object):
     }
 
     attribute_map = {
-        'created_on': 'createdOn',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'product_version': 'productVersion',
-        'respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled',
-        'target_product': 'targetProduct',
-        'version': 'version',
+        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','product_version': 'productVersion','respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled','target_product': 'targetProduct','version': 'version',
     }
 
     
@@ -46,11 +41,9 @@ class SubscriptionProductVersionRetirement(object):
         self.respect_terminiation_periods_enabled = kwargs.get('respect_terminiation_periods_enabled', None)
         self.target_product = kwargs.get('target_product', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionProductVersionRetirement.
@@ -73,7 +66,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionProductVersionRetirement.
@@ -96,7 +89,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionProductVersionRetirement.
@@ -119,7 +112,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def product_version(self):
         """Gets the product_version of this SubscriptionProductVersionRetirement.
@@ -142,7 +135,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._product_version = product_version
-
+    
     @property
     def respect_terminiation_periods_enabled(self):
         """Gets the respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirement.
@@ -165,7 +158,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._respect_terminiation_periods_enabled = respect_terminiation_periods_enabled
-
+    
     @property
     def target_product(self):
         """Gets the target_product of this SubscriptionProductVersionRetirement.
@@ -188,7 +181,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._target_product = target_product
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionProductVersionRetirement.
@@ -211,6 +204,7 @@ class SubscriptionProductVersionRetirement(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

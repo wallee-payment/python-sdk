@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class Tax(object):
+class Tax:
 
     swagger_types = {
+    
         'rate': 'float',
         'title': 'str',
     }
 
     attribute_map = {
-        'rate': 'rate',
-        'title': 'title',
+        'rate': 'rate','title': 'title',
     }
 
     
@@ -26,11 +26,9 @@ class Tax(object):
         
         self.rate = kwargs.get('rate', None)
         self.title = kwargs.get('title', None)
-
-        
-        
         
 
+    
     @property
     def rate(self):
         """Gets the rate of this Tax.
@@ -53,7 +51,7 @@ class Tax(object):
         """
 
         self._rate = rate
-
+    
     @property
     def title(self):
         """Gets the title of this Tax.
@@ -76,6 +74,7 @@ class Tax(object):
         """
 
         self._title = title
+    
 
     def to_dict(self):
         result = {}

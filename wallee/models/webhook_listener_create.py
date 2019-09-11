@@ -8,15 +8,14 @@ from . import AbstractWebhookListenerUpdate
 class WebhookListenerCreate(AbstractWebhookListenerUpdate):
 
     swagger_types = {
+    
         'entity': 'int',
         'identity': 'int',
         'url': 'int',
     }
 
     attribute_map = {
-        'entity': 'entity',
-        'identity': 'identity',
-        'url': 'url',
+        'entity': 'entity','identity': 'identity','url': 'url',
     }
 
     
@@ -28,6 +27,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
         self.discriminator = None
         
         self.entity = kwargs.get('entity')
+
         self.identity = kwargs.get('identity', None)
         self.url = kwargs.get('url')
 
@@ -35,6 +35,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def entity(self):
         """Gets the entity of this WebhookListenerCreate.
@@ -59,7 +60,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
             raise ValueError("Invalid value for `entity`, must not be `None`")
 
         self._entity = entity
-
+    
     @property
     def identity(self):
         """Gets the identity of this WebhookListenerCreate.
@@ -82,7 +83,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
         """
 
         self._identity = identity
-
+    
     @property
     def url(self):
         """Gets the url of this WebhookListenerCreate.
@@ -107,6 +108,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
             raise ValueError("Invalid value for `url`, must not be `None`")
 
         self._url = url
+    
 
     def to_dict(self):
         result = {}

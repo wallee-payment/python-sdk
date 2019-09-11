@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class RefundCreate(object):
+class RefundCreate:
 
     swagger_types = {
+    
         'completion': 'int',
         'external_id': 'str',
         'merchant_reference': 'str',
@@ -17,12 +18,7 @@ class RefundCreate(object):
     }
 
     attribute_map = {
-        'completion': 'completion',
-        'external_id': 'externalId',
-        'merchant_reference': 'merchantReference',
-        'reductions': 'reductions',
-        'transaction': 'transaction',
-        'type': 'type',
+        'completion': 'completion','external_id': 'externalId','merchant_reference': 'merchantReference','reductions': 'reductions','transaction': 'transaction','type': 'type',
     }
 
     
@@ -38,15 +34,16 @@ class RefundCreate(object):
         
         self.completion = kwargs.get('completion', None)
         self.external_id = kwargs.get('external_id')
+
         self.merchant_reference = kwargs.get('merchant_reference', None)
         self.reductions = kwargs.get('reductions')
+
         self.transaction = kwargs.get('transaction', None)
         self.type = kwargs.get('type')
 
         
-        
-        
 
+    
     @property
     def completion(self):
         """Gets the completion of this RefundCreate.
@@ -69,7 +66,7 @@ class RefundCreate(object):
         """
 
         self._completion = completion
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this RefundCreate.
@@ -94,7 +91,7 @@ class RefundCreate(object):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def merchant_reference(self):
         """Gets the merchant_reference of this RefundCreate.
@@ -117,7 +114,7 @@ class RefundCreate(object):
         """
 
         self._merchant_reference = merchant_reference
-
+    
     @property
     def reductions(self):
         """Gets the reductions of this RefundCreate.
@@ -142,7 +139,7 @@ class RefundCreate(object):
             raise ValueError("Invalid value for `reductions`, must not be `None`")
 
         self._reductions = reductions
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this RefundCreate.
@@ -165,7 +162,7 @@ class RefundCreate(object):
         """
 
         self._transaction = transaction
-
+    
     @property
     def type(self):
         """Gets the type of this RefundCreate.
@@ -190,6 +187,7 @@ class RefundCreate(object):
             raise ValueError("Invalid value for `type`, must not be `None`")
 
         self._type = type
+    
 
     def to_dict(self):
         result = {}

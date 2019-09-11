@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class UserAccountRole(object):
+class UserAccountRole:
 
     swagger_types = {
+    
         'account': 'int',
         'applies_on_sub_account': 'bool',
         'id': 'int',
@@ -17,12 +18,7 @@ class UserAccountRole(object):
     }
 
     attribute_map = {
-        'account': 'account',
-        'applies_on_sub_account': 'appliesOnSubAccount',
-        'id': 'id',
-        'role': 'role',
-        'user': 'user',
-        'version': 'version',
+        'account': 'account','applies_on_sub_account': 'appliesOnSubAccount','id': 'id','role': 'role','user': 'user','version': 'version',
     }
 
     
@@ -42,11 +38,9 @@ class UserAccountRole(object):
         self.role = kwargs.get('role', None)
         self.user = kwargs.get('user', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def account(self):
         """Gets the account of this UserAccountRole.
@@ -69,7 +63,7 @@ class UserAccountRole(object):
         """
 
         self._account = account
-
+    
     @property
     def applies_on_sub_account(self):
         """Gets the applies_on_sub_account of this UserAccountRole.
@@ -92,7 +86,7 @@ class UserAccountRole(object):
         """
 
         self._applies_on_sub_account = applies_on_sub_account
-
+    
     @property
     def id(self):
         """Gets the id of this UserAccountRole.
@@ -115,7 +109,7 @@ class UserAccountRole(object):
         """
 
         self._id = id
-
+    
     @property
     def role(self):
         """Gets the role of this UserAccountRole.
@@ -138,7 +132,7 @@ class UserAccountRole(object):
         """
 
         self._role = role
-
+    
     @property
     def user(self):
         """Gets the user of this UserAccountRole.
@@ -161,7 +155,7 @@ class UserAccountRole(object):
         """
 
         self._user = user
-
+    
     @property
     def version(self):
         """Gets the version of this UserAccountRole.
@@ -184,6 +178,7 @@ class UserAccountRole(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

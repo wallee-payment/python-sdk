@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class ProductMeteredTierFee(object):
+class ProductMeteredTierFee:
 
     swagger_types = {
+    
         'fee': 'list[PersistableCurrencyAmount]',
         'id': 'int',
         'metered_fee': 'ProductMeteredFee',
@@ -16,11 +17,7 @@ class ProductMeteredTierFee(object):
     }
 
     attribute_map = {
-        'fee': 'fee',
-        'id': 'id',
-        'metered_fee': 'meteredFee',
-        'start_range': 'startRange',
-        'version': 'version',
+        'fee': 'fee','id': 'id','metered_fee': 'meteredFee','start_range': 'startRange','version': 'version',
     }
 
     
@@ -38,11 +35,9 @@ class ProductMeteredTierFee(object):
         self.metered_fee = kwargs.get('metered_fee', None)
         self.start_range = kwargs.get('start_range', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def fee(self):
         """Gets the fee of this ProductMeteredTierFee.
@@ -65,7 +60,7 @@ class ProductMeteredTierFee(object):
         """
 
         self._fee = fee
-
+    
     @property
     def id(self):
         """Gets the id of this ProductMeteredTierFee.
@@ -88,7 +83,7 @@ class ProductMeteredTierFee(object):
         """
 
         self._id = id
-
+    
     @property
     def metered_fee(self):
         """Gets the metered_fee of this ProductMeteredTierFee.
@@ -111,7 +106,7 @@ class ProductMeteredTierFee(object):
         """
 
         self._metered_fee = metered_fee
-
+    
     @property
     def start_range(self):
         """Gets the start_range of this ProductMeteredTierFee.
@@ -134,7 +129,7 @@ class ProductMeteredTierFee(object):
         """
 
         self._start_range = start_range
-
+    
     @property
     def version(self):
         """Gets the version of this ProductMeteredTierFee.
@@ -157,6 +152,7 @@ class ProductMeteredTierFee(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

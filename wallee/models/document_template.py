@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DocumentTemplate(object):
+class DocumentTemplate:
 
     swagger_types = {
+    
         'default_template': 'bool',
         'delivery_enabled': 'bool',
         'id': 'int',
@@ -22,17 +23,7 @@ class DocumentTemplate(object):
     }
 
     attribute_map = {
-        'default_template': 'defaultTemplate',
-        'delivery_enabled': 'deliveryEnabled',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'space_id': 'spaceId',
-        'state': 'state',
-        'template_resource': 'templateResource',
-        'type': 'type',
-        'version': 'version',
+        'default_template': 'defaultTemplate','delivery_enabled': 'deliveryEnabled','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','template_resource': 'templateResource','type': 'type','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class DocumentTemplate(object):
         self.template_resource = kwargs.get('template_resource', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def default_template(self):
         """Gets the default_template of this DocumentTemplate.
@@ -89,7 +78,7 @@ class DocumentTemplate(object):
         """
 
         self._default_template = default_template
-
+    
     @property
     def delivery_enabled(self):
         """Gets the delivery_enabled of this DocumentTemplate.
@@ -112,7 +101,7 @@ class DocumentTemplate(object):
         """
 
         self._delivery_enabled = delivery_enabled
-
+    
     @property
     def id(self):
         """Gets the id of this DocumentTemplate.
@@ -135,7 +124,7 @@ class DocumentTemplate(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DocumentTemplate.
@@ -158,7 +147,7 @@ class DocumentTemplate(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this DocumentTemplate.
@@ -181,7 +170,7 @@ class DocumentTemplate(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DocumentTemplate.
@@ -204,7 +193,7 @@ class DocumentTemplate(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def space_id(self):
         """Gets the space_id of this DocumentTemplate.
@@ -227,7 +216,7 @@ class DocumentTemplate(object):
         """
 
         self._space_id = space_id
-
+    
     @property
     def state(self):
         """Gets the state of this DocumentTemplate.
@@ -250,7 +239,7 @@ class DocumentTemplate(object):
         """
 
         self._state = state
-
+    
     @property
     def template_resource(self):
         """Gets the template_resource of this DocumentTemplate.
@@ -273,7 +262,7 @@ class DocumentTemplate(object):
         """
 
         self._template_resource = template_resource
-
+    
     @property
     def type(self):
         """Gets the type of this DocumentTemplate.
@@ -296,7 +285,7 @@ class DocumentTemplate(object):
         """
 
         self._type = type
-
+    
     @property
     def version(self):
         """Gets the version of this DocumentTemplate.
@@ -319,6 +308,7 @@ class DocumentTemplate(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class LabelDescriptor(object):
+class LabelDescriptor:
 
     swagger_types = {
+    
         'category': 'LabelDescriptorCategory',
         'description': 'dict(str, str)',
         'features': 'list[int]',
@@ -19,14 +20,7 @@ class LabelDescriptor(object):
     }
 
     attribute_map = {
-        'category': 'category',
-        'description': 'description',
-        'features': 'features',
-        'group': 'group',
-        'id': 'id',
-        'name': 'name',
-        'type': 'type',
-        'weight': 'weight',
+        'category': 'category','description': 'description','features': 'features','group': 'group','id': 'id','name': 'name','type': 'type','weight': 'weight',
     }
 
     
@@ -50,11 +44,9 @@ class LabelDescriptor(object):
         self.name = kwargs.get('name', None)
         self.type = kwargs.get('type', None)
         self.weight = kwargs.get('weight', None)
-
-        
-        
         
 
+    
     @property
     def category(self):
         """Gets the category of this LabelDescriptor.
@@ -77,7 +69,7 @@ class LabelDescriptor(object):
         """
 
         self._category = category
-
+    
     @property
     def description(self):
         """Gets the description of this LabelDescriptor.
@@ -100,7 +92,7 @@ class LabelDescriptor(object):
         """
 
         self._description = description
-
+    
     @property
     def features(self):
         """Gets the features of this LabelDescriptor.
@@ -123,7 +115,7 @@ class LabelDescriptor(object):
         """
 
         self._features = features
-
+    
     @property
     def group(self):
         """Gets the group of this LabelDescriptor.
@@ -146,7 +138,7 @@ class LabelDescriptor(object):
         """
 
         self._group = group
-
+    
     @property
     def id(self):
         """Gets the id of this LabelDescriptor.
@@ -169,7 +161,7 @@ class LabelDescriptor(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this LabelDescriptor.
@@ -192,7 +184,7 @@ class LabelDescriptor(object):
         """
 
         self._name = name
-
+    
     @property
     def type(self):
         """Gets the type of this LabelDescriptor.
@@ -215,7 +207,7 @@ class LabelDescriptor(object):
         """
 
         self._type = type
-
+    
     @property
     def weight(self):
         """Gets the weight of this LabelDescriptor.
@@ -238,6 +230,7 @@ class LabelDescriptor(object):
         """
 
         self._weight = weight
+    
 
     def to_dict(self):
         result = {}

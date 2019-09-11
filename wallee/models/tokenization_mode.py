@@ -3,7 +3,7 @@ from enum import Enum, unique
 
 
 @unique
-class TokenizationnMode(Enum):
+class TokenizationMode(Enum):
     
     FORCE_UPDATE = "FORCE_UPDATE"
     FORCE_CREATION = "FORCE_CREATION"

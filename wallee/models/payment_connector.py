@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentConnector(object):
+class PaymentConnector:
 
     swagger_types = {
+    
         'data_collection_type': 'DataCollectionType',
         'deprecated': 'bool',
         'deprecation_reason': 'dict(str, str)',
@@ -24,19 +25,7 @@ class PaymentConnector(object):
     }
 
     attribute_map = {
-        'data_collection_type': 'dataCollectionType',
-        'deprecated': 'deprecated',
-        'deprecation_reason': 'deprecationReason',
-        'description': 'description',
-        'feature': 'feature',
-        'id': 'id',
-        'name': 'name',
-        'payment_method': 'paymentMethod',
-        'payment_method_brand': 'paymentMethodBrand',
-        'primary_risk_taker': 'primaryRiskTaker',
-        'processor': 'processor',
-        'supported_customers_presences': 'supportedCustomersPresences',
-        'supported_features': 'supportedFeatures',
+        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','feature': 'feature','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
     }
 
     
@@ -70,11 +59,9 @@ class PaymentConnector(object):
         self.processor = kwargs.get('processor', None)
         self.supported_customers_presences = kwargs.get('supported_customers_presences', None)
         self.supported_features = kwargs.get('supported_features', None)
-
-        
-        
         
 
+    
     @property
     def data_collection_type(self):
         """Gets the data_collection_type of this PaymentConnector.
@@ -97,7 +84,7 @@ class PaymentConnector(object):
         """
 
         self._data_collection_type = data_collection_type
-
+    
     @property
     def deprecated(self):
         """Gets the deprecated of this PaymentConnector.
@@ -120,7 +107,7 @@ class PaymentConnector(object):
         """
 
         self._deprecated = deprecated
-
+    
     @property
     def deprecation_reason(self):
         """Gets the deprecation_reason of this PaymentConnector.
@@ -143,7 +130,7 @@ class PaymentConnector(object):
         """
 
         self._deprecation_reason = deprecation_reason
-
+    
     @property
     def description(self):
         """Gets the description of this PaymentConnector.
@@ -166,7 +153,7 @@ class PaymentConnector(object):
         """
 
         self._description = description
-
+    
     @property
     def feature(self):
         """Gets the feature of this PaymentConnector.
@@ -189,7 +176,7 @@ class PaymentConnector(object):
         """
 
         self._feature = feature
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentConnector.
@@ -212,7 +199,7 @@ class PaymentConnector(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentConnector.
@@ -235,7 +222,7 @@ class PaymentConnector(object):
         """
 
         self._name = name
-
+    
     @property
     def payment_method(self):
         """Gets the payment_method of this PaymentConnector.
@@ -258,7 +245,7 @@ class PaymentConnector(object):
         """
 
         self._payment_method = payment_method
-
+    
     @property
     def payment_method_brand(self):
         """Gets the payment_method_brand of this PaymentConnector.
@@ -281,7 +268,7 @@ class PaymentConnector(object):
         """
 
         self._payment_method_brand = payment_method_brand
-
+    
     @property
     def primary_risk_taker(self):
         """Gets the primary_risk_taker of this PaymentConnector.
@@ -304,7 +291,7 @@ class PaymentConnector(object):
         """
 
         self._primary_risk_taker = primary_risk_taker
-
+    
     @property
     def processor(self):
         """Gets the processor of this PaymentConnector.
@@ -327,7 +314,7 @@ class PaymentConnector(object):
         """
 
         self._processor = processor
-
+    
     @property
     def supported_customers_presences(self):
         """Gets the supported_customers_presences of this PaymentConnector.
@@ -350,7 +337,7 @@ class PaymentConnector(object):
         """
 
         self._supported_customers_presences = supported_customers_presences
-
+    
     @property
     def supported_features(self):
         """Gets the supported_features of this PaymentConnector.
@@ -373,6 +360,7 @@ class PaymentConnector(object):
         """
 
         self._supported_features = supported_features
+    
 
     def to_dict(self):
         result = {}

@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class AbstractHumanUserUpdate(object):
+class AbstractHumanUserUpdate:
 
     swagger_types = {
+    
         'email_address': 'str',
         'firstname': 'str',
         'language': 'str',
@@ -19,14 +20,7 @@ class AbstractHumanUserUpdate(object):
     }
 
     attribute_map = {
-        'email_address': 'emailAddress',
-        'firstname': 'firstname',
-        'language': 'language',
-        'lastname': 'lastname',
-        'mobile_phone_number': 'mobilePhoneNumber',
-        'state': 'state',
-        'time_zone': 'timeZone',
-        'two_factor_enabled': 'twoFactorEnabled',
+        'email_address': 'emailAddress','firstname': 'firstname','language': 'language','lastname': 'lastname','mobile_phone_number': 'mobilePhoneNumber','state': 'state','time_zone': 'timeZone','two_factor_enabled': 'twoFactorEnabled',
     }
 
     
@@ -50,11 +44,9 @@ class AbstractHumanUserUpdate(object):
         self.state = kwargs.get('state', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.two_factor_enabled = kwargs.get('two_factor_enabled', None)
-
-        
-        
         
 
+    
     @property
     def email_address(self):
         """Gets the email_address of this AbstractHumanUserUpdate.
@@ -77,7 +69,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._email_address = email_address
-
+    
     @property
     def firstname(self):
         """Gets the firstname of this AbstractHumanUserUpdate.
@@ -100,7 +92,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._firstname = firstname
-
+    
     @property
     def language(self):
         """Gets the language of this AbstractHumanUserUpdate.
@@ -123,7 +115,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def lastname(self):
         """Gets the lastname of this AbstractHumanUserUpdate.
@@ -146,7 +138,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._lastname = lastname
-
+    
     @property
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this AbstractHumanUserUpdate.
@@ -169,7 +161,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._mobile_phone_number = mobile_phone_number
-
+    
     @property
     def state(self):
         """Gets the state of this AbstractHumanUserUpdate.
@@ -192,7 +184,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._state = state
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this AbstractHumanUserUpdate.
@@ -215,7 +207,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def two_factor_enabled(self):
         """Gets the two_factor_enabled of this AbstractHumanUserUpdate.
@@ -238,6 +230,7 @@ class AbstractHumanUserUpdate(object):
         """
 
         self._two_factor_enabled = two_factor_enabled
+    
 
     def to_dict(self):
         result = {}

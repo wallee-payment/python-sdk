@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class DebtCollectorConfiguration(object):
+class DebtCollectorConfiguration:
 
     swagger_types = {
+    
         'collector': 'int',
         'conditions': 'list[int]',
         'enabled_space_views': 'list[int]',
@@ -22,17 +23,7 @@ class DebtCollectorConfiguration(object):
     }
 
     attribute_map = {
-        'collector': 'collector',
-        'conditions': 'conditions',
-        'enabled_space_views': 'enabledSpaceViews',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'priority': 'priority',
-        'skip_review_enabled': 'skipReviewEnabled',
-        'state': 'state',
-        'version': 'version',
+        'collector': 'collector','conditions': 'conditions','enabled_space_views': 'enabledSpaceViews','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','priority': 'priority','skip_review_enabled': 'skipReviewEnabled','state': 'state','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class DebtCollectorConfiguration(object):
         self.skip_review_enabled = kwargs.get('skip_review_enabled', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def collector(self):
         """Gets the collector of this DebtCollectorConfiguration.
@@ -89,7 +78,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._collector = collector
-
+    
     @property
     def conditions(self):
         """Gets the conditions of this DebtCollectorConfiguration.
@@ -112,7 +101,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._conditions = conditions
-
+    
     @property
     def enabled_space_views(self):
         """Gets the enabled_space_views of this DebtCollectorConfiguration.
@@ -135,7 +124,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._enabled_space_views = enabled_space_views
-
+    
     @property
     def id(self):
         """Gets the id of this DebtCollectorConfiguration.
@@ -158,7 +147,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this DebtCollectorConfiguration.
@@ -181,7 +170,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this DebtCollectorConfiguration.
@@ -204,7 +193,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DebtCollectorConfiguration.
@@ -227,7 +216,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def priority(self):
         """Gets the priority of this DebtCollectorConfiguration.
@@ -250,7 +239,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._priority = priority
-
+    
     @property
     def skip_review_enabled(self):
         """Gets the skip_review_enabled of this DebtCollectorConfiguration.
@@ -273,7 +262,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._skip_review_enabled = skip_review_enabled
-
+    
     @property
     def state(self):
         """Gets the state of this DebtCollectorConfiguration.
@@ -296,7 +285,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._state = state
-
+    
     @property
     def version(self):
         """Gets the version of this DebtCollectorConfiguration.
@@ -319,6 +308,7 @@ class DebtCollectorConfiguration(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

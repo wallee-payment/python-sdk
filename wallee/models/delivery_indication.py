@@ -8,6 +8,7 @@ from . import TransactionAwareEntity
 class DeliveryIndication(TransactionAwareEntity):
 
     swagger_types = {
+    
         'automatic_decision_reason': 'DeliveryIndicationDecisionReason',
         'automatically_decided_on': 'datetime',
         'completion': 'int',
@@ -22,17 +23,7 @@ class DeliveryIndication(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'automatic_decision_reason': 'automaticDecisionReason',
-        'automatically_decided_on': 'automaticallyDecidedOn',
-        'completion': 'completion',
-        'created_on': 'createdOn',
-        'manual_decision_timeout_on': 'manualDecisionTimeoutOn',
-        'manually_decided_by': 'manuallyDecidedBy',
-        'manually_decided_on': 'manuallyDecidedOn',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'timeout_on': 'timeoutOn',
-        'transaction': 'transaction',
+        'automatic_decision_reason': 'automaticDecisionReason','automatically_decided_on': 'automaticallyDecidedOn','completion': 'completion','created_on': 'createdOn','manual_decision_timeout_on': 'manualDecisionTimeoutOn','manually_decided_by': 'manuallyDecidedBy','manually_decided_on': 'manuallyDecidedOn','planned_purge_date': 'plannedPurgeDate','state': 'state','timeout_on': 'timeoutOn','transaction': 'transaction',
     }
 
     
@@ -62,11 +53,11 @@ class DeliveryIndication(TransactionAwareEntity):
         self.state = kwargs.get('state', None)
         self.timeout_on = kwargs.get('timeout_on', None)
         self.transaction = kwargs.get('transaction', None)
-
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def automatic_decision_reason(self):
         """Gets the automatic_decision_reason of this DeliveryIndication.
@@ -89,7 +80,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._automatic_decision_reason = automatic_decision_reason
-
+    
     @property
     def automatically_decided_on(self):
         """Gets the automatically_decided_on of this DeliveryIndication.
@@ -112,7 +103,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._automatically_decided_on = automatically_decided_on
-
+    
     @property
     def completion(self):
         """Gets the completion of this DeliveryIndication.
@@ -135,7 +126,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._completion = completion
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this DeliveryIndication.
@@ -158,7 +149,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._created_on = created_on
-
+    
     @property
     def manual_decision_timeout_on(self):
         """Gets the manual_decision_timeout_on of this DeliveryIndication.
@@ -181,7 +172,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._manual_decision_timeout_on = manual_decision_timeout_on
-
+    
     @property
     def manually_decided_by(self):
         """Gets the manually_decided_by of this DeliveryIndication.
@@ -204,7 +195,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._manually_decided_by = manually_decided_by
-
+    
     @property
     def manually_decided_on(self):
         """Gets the manually_decided_on of this DeliveryIndication.
@@ -227,7 +218,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._manually_decided_on = manually_decided_on
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DeliveryIndication.
@@ -250,7 +241,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this DeliveryIndication.
@@ -273,7 +264,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._state = state
-
+    
     @property
     def timeout_on(self):
         """Gets the timeout_on of this DeliveryIndication.
@@ -296,7 +287,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._timeout_on = timeout_on
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this DeliveryIndication.
@@ -319,6 +310,7 @@ class DeliveryIndication(TransactionAwareEntity):
         """
 
         self._transaction = transaction
+    
 
     def to_dict(self):
         result = {}

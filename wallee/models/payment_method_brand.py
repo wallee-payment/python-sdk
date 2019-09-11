@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentMethodBrand(object):
+class PaymentMethodBrand:
 
     swagger_types = {
+    
         'description': 'dict(str, str)',
         'gray_image_path': 'str',
         'id': 'int',
@@ -17,12 +18,7 @@ class PaymentMethodBrand(object):
     }
 
     attribute_map = {
-        'description': 'description',
-        'gray_image_path': 'grayImagePath',
-        'id': 'id',
-        'image_path': 'imagePath',
-        'name': 'name',
-        'payment_method': 'paymentMethod',
+        'description': 'description','gray_image_path': 'grayImagePath','id': 'id','image_path': 'imagePath','name': 'name','payment_method': 'paymentMethod',
     }
 
     
@@ -42,11 +38,9 @@ class PaymentMethodBrand(object):
         self.image_path = kwargs.get('image_path', None)
         self.name = kwargs.get('name', None)
         self.payment_method = kwargs.get('payment_method', None)
-
-        
-        
         
 
+    
     @property
     def description(self):
         """Gets the description of this PaymentMethodBrand.
@@ -69,7 +63,7 @@ class PaymentMethodBrand(object):
         """
 
         self._description = description
-
+    
     @property
     def gray_image_path(self):
         """Gets the gray_image_path of this PaymentMethodBrand.
@@ -92,7 +86,7 @@ class PaymentMethodBrand(object):
         """
 
         self._gray_image_path = gray_image_path
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentMethodBrand.
@@ -115,7 +109,7 @@ class PaymentMethodBrand(object):
         """
 
         self._id = id
-
+    
     @property
     def image_path(self):
         """Gets the image_path of this PaymentMethodBrand.
@@ -138,7 +132,7 @@ class PaymentMethodBrand(object):
         """
 
         self._image_path = image_path
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentMethodBrand.
@@ -161,7 +155,7 @@ class PaymentMethodBrand(object):
         """
 
         self._name = name
-
+    
     @property
     def payment_method(self):
         """Gets the payment_method of this PaymentMethodBrand.
@@ -184,6 +178,7 @@ class PaymentMethodBrand(object):
         """
 
         self._payment_method = payment_method
+    
 
     def to_dict(self):
         result = {}

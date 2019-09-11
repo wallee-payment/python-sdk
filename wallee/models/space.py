@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Space(object):
+class Space:
 
     swagger_types = {
+    
         'account': 'Account',
         'active': 'bool',
         'active_or_restricted_active': 'bool',
@@ -26,21 +27,7 @@ class Space(object):
     }
 
     attribute_map = {
-        'account': 'account',
-        'active': 'active',
-        'active_or_restricted_active': 'activeOrRestrictedActive',
-        'database': 'database',
-        'id': 'id',
-        'name': 'name',
-        'planned_purge_date': 'plannedPurgeDate',
-        'postal_address': 'postalAddress',
-        'primary_currency': 'primaryCurrency',
-        'request_limit': 'requestLimit',
-        'restricted_active': 'restrictedActive',
-        'state': 'state',
-        'technical_contact_addresses': 'technicalContactAddresses',
-        'time_zone': 'timeZone',
-        'version': 'version',
+        'account': 'account','active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','database': 'database','id': 'id','name': 'name','planned_purge_date': 'plannedPurgeDate','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','restricted_active': 'restrictedActive','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone','version': 'version',
     }
 
     
@@ -78,11 +65,9 @@ class Space(object):
         self.technical_contact_addresses = kwargs.get('technical_contact_addresses', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def account(self):
         """Gets the account of this Space.
@@ -105,7 +90,7 @@ class Space(object):
         """
 
         self._account = account
-
+    
     @property
     def active(self):
         """Gets the active of this Space.
@@ -128,7 +113,7 @@ class Space(object):
         """
 
         self._active = active
-
+    
     @property
     def active_or_restricted_active(self):
         """Gets the active_or_restricted_active of this Space.
@@ -151,7 +136,7 @@ class Space(object):
         """
 
         self._active_or_restricted_active = active_or_restricted_active
-
+    
     @property
     def database(self):
         """Gets the database of this Space.
@@ -174,7 +159,7 @@ class Space(object):
         """
 
         self._database = database
-
+    
     @property
     def id(self):
         """Gets the id of this Space.
@@ -197,7 +182,7 @@ class Space(object):
         """
 
         self._id = id
-
+    
     @property
     def name(self):
         """Gets the name of this Space.
@@ -220,7 +205,7 @@ class Space(object):
         """
 
         self._name = name
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Space.
@@ -243,7 +228,7 @@ class Space(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def postal_address(self):
         """Gets the postal_address of this Space.
@@ -266,7 +251,7 @@ class Space(object):
         """
 
         self._postal_address = postal_address
-
+    
     @property
     def primary_currency(self):
         """Gets the primary_currency of this Space.
@@ -289,7 +274,7 @@ class Space(object):
         """
 
         self._primary_currency = primary_currency
-
+    
     @property
     def request_limit(self):
         """Gets the request_limit of this Space.
@@ -312,7 +297,7 @@ class Space(object):
         """
 
         self._request_limit = request_limit
-
+    
     @property
     def restricted_active(self):
         """Gets the restricted_active of this Space.
@@ -335,7 +320,7 @@ class Space(object):
         """
 
         self._restricted_active = restricted_active
-
+    
     @property
     def state(self):
         """Gets the state of this Space.
@@ -358,7 +343,7 @@ class Space(object):
         """
 
         self._state = state
-
+    
     @property
     def technical_contact_addresses(self):
         """Gets the technical_contact_addresses of this Space.
@@ -381,7 +366,7 @@ class Space(object):
         """
 
         self._technical_contact_addresses = technical_contact_addresses
-
+    
     @property
     def time_zone(self):
         """Gets the time_zone of this Space.
@@ -404,7 +389,7 @@ class Space(object):
         """
 
         self._time_zone = time_zone
-
+    
     @property
     def version(self):
         """Gets the version of this Space.
@@ -427,6 +412,7 @@ class Space(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

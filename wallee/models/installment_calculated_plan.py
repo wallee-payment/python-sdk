@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class InstallmentCalculatedPlan(object):
+class InstallmentCalculatedPlan:
 
     swagger_types = {
+    
         'configuration': 'InstallmentPlanConfiguration',
         'payment_method_configurations': 'list[PaymentMethodConfiguration]',
         'slices': 'list[InstallmentCalculatedSlice]',
@@ -16,11 +17,7 @@ class InstallmentCalculatedPlan(object):
     }
 
     attribute_map = {
-        'configuration': 'configuration',
-        'payment_method_configurations': 'paymentMethodConfigurations',
-        'slices': 'slices',
-        'total_amount': 'totalAmount',
-        'transaction': 'transaction',
+        'configuration': 'configuration','payment_method_configurations': 'paymentMethodConfigurations','slices': 'slices','total_amount': 'totalAmount','transaction': 'transaction',
     }
 
     
@@ -38,11 +35,9 @@ class InstallmentCalculatedPlan(object):
         self.slices = kwargs.get('slices', None)
         self.total_amount = kwargs.get('total_amount', None)
         self.transaction = kwargs.get('transaction', None)
-
-        
-        
         
 
+    
     @property
     def configuration(self):
         """Gets the configuration of this InstallmentCalculatedPlan.
@@ -65,7 +60,7 @@ class InstallmentCalculatedPlan(object):
         """
 
         self._configuration = configuration
-
+    
     @property
     def payment_method_configurations(self):
         """Gets the payment_method_configurations of this InstallmentCalculatedPlan.
@@ -88,7 +83,7 @@ class InstallmentCalculatedPlan(object):
         """
 
         self._payment_method_configurations = payment_method_configurations
-
+    
     @property
     def slices(self):
         """Gets the slices of this InstallmentCalculatedPlan.
@@ -111,7 +106,7 @@ class InstallmentCalculatedPlan(object):
         """
 
         self._slices = slices
-
+    
     @property
     def total_amount(self):
         """Gets the total_amount of this InstallmentCalculatedPlan.
@@ -134,7 +129,7 @@ class InstallmentCalculatedPlan(object):
         """
 
         self._total_amount = total_amount
-
+    
     @property
     def transaction(self):
         """Gets the transaction of this InstallmentCalculatedPlan.
@@ -157,6 +152,7 @@ class InstallmentCalculatedPlan(object):
         """
 
         self._transaction = transaction
+    
 
     def to_dict(self):
         result = {}

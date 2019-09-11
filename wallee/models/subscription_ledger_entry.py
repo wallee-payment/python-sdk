@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class SubscriptionLedgerEntry(object):
+class SubscriptionLedgerEntry:
 
     swagger_types = {
+    
         'aggregated_tax_rate': 'float',
         'amount_excluding_tax': 'float',
         'amount_including_tax': 'float',
@@ -27,22 +28,7 @@ class SubscriptionLedgerEntry(object):
     }
 
     attribute_map = {
-        'aggregated_tax_rate': 'aggregatedTaxRate',
-        'amount_excluding_tax': 'amountExcludingTax',
-        'amount_including_tax': 'amountIncludingTax',
-        'created_by': 'createdBy',
-        'created_on': 'createdOn',
-        'external_id': 'externalId',
-        'id': 'id',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'quantity': 'quantity',
-        'state': 'state',
-        'subscription_version': 'subscriptionVersion',
-        'tax_amount': 'taxAmount',
-        'taxes': 'taxes',
-        'title': 'title',
-        'version': 'version',
+        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','quantity': 'quantity','state': 'state','subscription_version': 'subscriptionVersion','tax_amount': 'taxAmount','taxes': 'taxes','title': 'title','version': 'version',
     }
 
     
@@ -82,11 +68,9 @@ class SubscriptionLedgerEntry(object):
         self.taxes = kwargs.get('taxes', None)
         self.title = kwargs.get('title', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def aggregated_tax_rate(self):
         """Gets the aggregated_tax_rate of this SubscriptionLedgerEntry.
@@ -109,7 +93,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._aggregated_tax_rate = aggregated_tax_rate
-
+    
     @property
     def amount_excluding_tax(self):
         """Gets the amount_excluding_tax of this SubscriptionLedgerEntry.
@@ -132,7 +116,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._amount_excluding_tax = amount_excluding_tax
-
+    
     @property
     def amount_including_tax(self):
         """Gets the amount_including_tax of this SubscriptionLedgerEntry.
@@ -155,7 +139,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._amount_including_tax = amount_including_tax
-
+    
     @property
     def created_by(self):
         """Gets the created_by of this SubscriptionLedgerEntry.
@@ -178,7 +162,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._created_by = created_by
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this SubscriptionLedgerEntry.
@@ -201,7 +185,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def external_id(self):
         """Gets the external_id of this SubscriptionLedgerEntry.
@@ -224,7 +208,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._external_id = external_id
-
+    
     @property
     def id(self):
         """Gets the id of this SubscriptionLedgerEntry.
@@ -247,7 +231,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._id = id
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this SubscriptionLedgerEntry.
@@ -270,7 +254,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this SubscriptionLedgerEntry.
@@ -293,7 +277,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def quantity(self):
         """Gets the quantity of this SubscriptionLedgerEntry.
@@ -316,7 +300,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._quantity = quantity
-
+    
     @property
     def state(self):
         """Gets the state of this SubscriptionLedgerEntry.
@@ -339,7 +323,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._state = state
-
+    
     @property
     def subscription_version(self):
         """Gets the subscription_version of this SubscriptionLedgerEntry.
@@ -362,7 +346,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._subscription_version = subscription_version
-
+    
     @property
     def tax_amount(self):
         """Gets the tax_amount of this SubscriptionLedgerEntry.
@@ -385,7 +369,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._tax_amount = tax_amount
-
+    
     @property
     def taxes(self):
         """Gets the taxes of this SubscriptionLedgerEntry.
@@ -408,7 +392,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._taxes = taxes
-
+    
     @property
     def title(self):
         """Gets the title of this SubscriptionLedgerEntry.
@@ -431,7 +415,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._title = title
-
+    
     @property
     def version(self):
         """Gets the version of this SubscriptionLedgerEntry.
@@ -454,6 +438,7 @@ class SubscriptionLedgerEntry(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

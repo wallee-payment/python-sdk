@@ -8,13 +8,13 @@ from . import AbstractTokenUpdate
 class TokenCreate(AbstractTokenUpdate):
 
     swagger_types = {
+    
         'external_id': 'str',
         'state': 'CreationEntityState',
     }
 
     attribute_map = {
-        'external_id': 'externalId',
-        'state': 'state',
+        'external_id': 'externalId','state': 'state',
     }
 
     
@@ -25,12 +25,13 @@ class TokenCreate(AbstractTokenUpdate):
         self.discriminator = None
         
         self.external_id = kwargs.get('external_id')
-        self.state = kwargs.get('state', None)
 
+        self.state = kwargs.get('state', None)
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
+    
     @property
     def external_id(self):
         """Gets the external_id of this TokenCreate.
@@ -55,7 +56,7 @@ class TokenCreate(AbstractTokenUpdate):
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
-
+    
     @property
     def state(self):
         """Gets the state of this TokenCreate.
@@ -78,6 +79,7 @@ class TokenCreate(AbstractTokenUpdate):
         """
 
         self._state = state
+    
 
     def to_dict(self):
         result = {}

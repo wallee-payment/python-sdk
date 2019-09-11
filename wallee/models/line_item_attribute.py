@@ -5,16 +5,16 @@ from enum import Enum
 
 
 
-class LineItemAttribute(object):
+class LineItemAttribute:
 
     swagger_types = {
+    
         'label': 'str',
         'value': 'str',
     }
 
     attribute_map = {
-        'label': 'label',
-        'value': 'value',
+        'label': 'label','value': 'value',
     }
 
     
@@ -26,11 +26,9 @@ class LineItemAttribute(object):
         
         self.label = kwargs.get('label', None)
         self.value = kwargs.get('value', None)
-
-        
-        
         
 
+    
     @property
     def label(self):
         """Gets the label of this LineItemAttribute.
@@ -53,7 +51,7 @@ class LineItemAttribute(object):
         """
 
         self._label = label
-
+    
     @property
     def value(self):
         """Gets the value of this LineItemAttribute.
@@ -76,6 +74,7 @@ class LineItemAttribute(object):
         """
 
         self._value = value
+    
 
     def to_dict(self):
         result = {}

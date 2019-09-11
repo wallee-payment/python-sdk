@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class Subscription(object):
+class Subscription:
 
     swagger_types = {
+    
         'activated_on': 'datetime',
         'affiliate': 'SubscriptionAffiliate',
         'created_on': 'datetime',
@@ -28,23 +29,7 @@ class Subscription(object):
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn',
-        'affiliate': 'affiliate',
-        'created_on': 'createdOn',
-        'description': 'description',
-        'id': 'id',
-        'initialized_on': 'initializedOn',
-        'language': 'language',
-        'linked_space_id': 'linkedSpaceId',
-        'planned_purge_date': 'plannedPurgeDate',
-        'planned_termination_date': 'plannedTerminationDate',
-        'reference': 'reference',
-        'state': 'state',
-        'subscriber': 'subscriber',
-        'terminated_on': 'terminatedOn',
-        'terminating_on': 'terminatingOn',
-        'token': 'token',
-        'version': 'version',
+        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','token': 'token','version': 'version',
     }
 
     
@@ -86,11 +71,9 @@ class Subscription(object):
         self.terminating_on = kwargs.get('terminating_on', None)
         self.token = kwargs.get('token', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def activated_on(self):
         """Gets the activated_on of this Subscription.
@@ -113,7 +96,7 @@ class Subscription(object):
         """
 
         self._activated_on = activated_on
-
+    
     @property
     def affiliate(self):
         """Gets the affiliate of this Subscription.
@@ -136,7 +119,7 @@ class Subscription(object):
         """
 
         self._affiliate = affiliate
-
+    
     @property
     def created_on(self):
         """Gets the created_on of this Subscription.
@@ -159,7 +142,7 @@ class Subscription(object):
         """
 
         self._created_on = created_on
-
+    
     @property
     def description(self):
         """Gets the description of this Subscription.
@@ -182,7 +165,7 @@ class Subscription(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this Subscription.
@@ -205,7 +188,7 @@ class Subscription(object):
         """
 
         self._id = id
-
+    
     @property
     def initialized_on(self):
         """Gets the initialized_on of this Subscription.
@@ -228,7 +211,7 @@ class Subscription(object):
         """
 
         self._initialized_on = initialized_on
-
+    
     @property
     def language(self):
         """Gets the language of this Subscription.
@@ -251,7 +234,7 @@ class Subscription(object):
         """
 
         self._language = language
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this Subscription.
@@ -274,7 +257,7 @@ class Subscription(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Subscription.
@@ -297,7 +280,7 @@ class Subscription(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def planned_termination_date(self):
         """Gets the planned_termination_date of this Subscription.
@@ -320,7 +303,7 @@ class Subscription(object):
         """
 
         self._planned_termination_date = planned_termination_date
-
+    
     @property
     def reference(self):
         """Gets the reference of this Subscription.
@@ -343,7 +326,7 @@ class Subscription(object):
         """
 
         self._reference = reference
-
+    
     @property
     def state(self):
         """Gets the state of this Subscription.
@@ -366,7 +349,7 @@ class Subscription(object):
         """
 
         self._state = state
-
+    
     @property
     def subscriber(self):
         """Gets the subscriber of this Subscription.
@@ -389,7 +372,7 @@ class Subscription(object):
         """
 
         self._subscriber = subscriber
-
+    
     @property
     def terminated_on(self):
         """Gets the terminated_on of this Subscription.
@@ -412,7 +395,7 @@ class Subscription(object):
         """
 
         self._terminated_on = terminated_on
-
+    
     @property
     def terminating_on(self):
         """Gets the terminating_on of this Subscription.
@@ -435,7 +418,7 @@ class Subscription(object):
         """
 
         self._terminating_on = terminating_on
-
+    
     @property
     def token(self):
         """Gets the token of this Subscription.
@@ -458,7 +441,7 @@ class Subscription(object):
         """
 
         self._token = token
-
+    
     @property
     def version(self):
         """Gets the version of this Subscription.
@@ -481,6 +464,7 @@ class Subscription(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

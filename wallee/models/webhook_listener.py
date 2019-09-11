@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class WebhookListener(object):
+class WebhookListener:
 
     swagger_types = {
+    
         'entity': 'int',
         'entity_states': 'list[str]',
         'id': 'int',
@@ -22,17 +23,7 @@ class WebhookListener(object):
     }
 
     attribute_map = {
-        'entity': 'entity',
-        'entity_states': 'entityStates',
-        'id': 'id',
-        'identity': 'identity',
-        'linked_space_id': 'linkedSpaceId',
-        'name': 'name',
-        'notify_every_change': 'notifyEveryChange',
-        'planned_purge_date': 'plannedPurgeDate',
-        'state': 'state',
-        'url': 'url',
-        'version': 'version',
+        'entity': 'entity','entity_states': 'entityStates','id': 'id','identity': 'identity','linked_space_id': 'linkedSpaceId','name': 'name','notify_every_change': 'notifyEveryChange','planned_purge_date': 'plannedPurgeDate','state': 'state','url': 'url','version': 'version',
     }
 
     
@@ -62,11 +53,9 @@ class WebhookListener(object):
         self.state = kwargs.get('state', None)
         self.url = kwargs.get('url', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def entity(self):
         """Gets the entity of this WebhookListener.
@@ -89,7 +78,7 @@ class WebhookListener(object):
         """
 
         self._entity = entity
-
+    
     @property
     def entity_states(self):
         """Gets the entity_states of this WebhookListener.
@@ -112,7 +101,7 @@ class WebhookListener(object):
         """
 
         self._entity_states = entity_states
-
+    
     @property
     def id(self):
         """Gets the id of this WebhookListener.
@@ -135,7 +124,7 @@ class WebhookListener(object):
         """
 
         self._id = id
-
+    
     @property
     def identity(self):
         """Gets the identity of this WebhookListener.
@@ -158,7 +147,7 @@ class WebhookListener(object):
         """
 
         self._identity = identity
-
+    
     @property
     def linked_space_id(self):
         """Gets the linked_space_id of this WebhookListener.
@@ -181,7 +170,7 @@ class WebhookListener(object):
         """
 
         self._linked_space_id = linked_space_id
-
+    
     @property
     def name(self):
         """Gets the name of this WebhookListener.
@@ -204,7 +193,7 @@ class WebhookListener(object):
         """
 
         self._name = name
-
+    
     @property
     def notify_every_change(self):
         """Gets the notify_every_change of this WebhookListener.
@@ -227,7 +216,7 @@ class WebhookListener(object):
         """
 
         self._notify_every_change = notify_every_change
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this WebhookListener.
@@ -250,7 +239,7 @@ class WebhookListener(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def state(self):
         """Gets the state of this WebhookListener.
@@ -273,7 +262,7 @@ class WebhookListener(object):
         """
 
         self._state = state
-
+    
     @property
     def url(self):
         """Gets the url of this WebhookListener.
@@ -296,7 +285,7 @@ class WebhookListener(object):
         """
 
         self._url = url
-
+    
     @property
     def version(self):
         """Gets the version of this WebhookListener.
@@ -319,6 +308,7 @@ class WebhookListener(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

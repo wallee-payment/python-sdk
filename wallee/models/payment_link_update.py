@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentLinkUpdate(object):
+class PaymentLinkUpdate:
 
     swagger_types = {
+    
         'id': 'int',
         'version': 'int',
         'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
@@ -24,19 +25,7 @@ class PaymentLinkUpdate(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'version': 'version',
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations',
-        'applied_space_view': 'appliedSpaceView',
-        'available_from': 'availableFrom',
-        'available_until': 'availableUntil',
-        'billing_address_required': 'billingAddressRequired',
-        'currency': 'currency',
-        'language': 'language',
-        'line_items': 'lineItems',
-        'maximal_number_of_transactions': 'maximalNumberOfTransactions',
-        'name': 'name',
-        'shipping_address_required': 'shippingAddressRequired',
+        'id': 'id','version': 'version','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_required': 'billingAddressRequired','currency': 'currency','language': 'language','line_items': 'lineItems','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','shipping_address_required': 'shippingAddressRequired',
     }
 
     
@@ -58,7 +47,9 @@ class PaymentLinkUpdate(object):
         self.discriminator = None
         
         self.id = kwargs.get('id')
+
         self.version = kwargs.get('version')
+
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
         self.applied_space_view = kwargs.get('applied_space_view', None)
         self.available_from = kwargs.get('available_from', None)
@@ -70,11 +61,9 @@ class PaymentLinkUpdate(object):
         self.maximal_number_of_transactions = kwargs.get('maximal_number_of_transactions', None)
         self.name = kwargs.get('name', None)
         self.shipping_address_required = kwargs.get('shipping_address_required', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this PaymentLinkUpdate.
@@ -99,7 +88,7 @@ class PaymentLinkUpdate(object):
             raise ValueError("Invalid value for `id`, must not be `None`")
 
         self._id = id
-
+    
     @property
     def version(self):
         """Gets the version of this PaymentLinkUpdate.
@@ -124,7 +113,7 @@ class PaymentLinkUpdate(object):
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
-
+    
     @property
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this PaymentLinkUpdate.
@@ -147,7 +136,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
-
+    
     @property
     def applied_space_view(self):
         """Gets the applied_space_view of this PaymentLinkUpdate.
@@ -170,7 +159,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._applied_space_view = applied_space_view
-
+    
     @property
     def available_from(self):
         """Gets the available_from of this PaymentLinkUpdate.
@@ -193,7 +182,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._available_from = available_from
-
+    
     @property
     def available_until(self):
         """Gets the available_until of this PaymentLinkUpdate.
@@ -216,7 +205,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._available_until = available_until
-
+    
     @property
     def billing_address_required(self):
         """Gets the billing_address_required of this PaymentLinkUpdate.
@@ -239,7 +228,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._billing_address_required = billing_address_required
-
+    
     @property
     def currency(self):
         """Gets the currency of this PaymentLinkUpdate.
@@ -262,7 +251,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._currency = currency
-
+    
     @property
     def language(self):
         """Gets the language of this PaymentLinkUpdate.
@@ -285,7 +274,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._language = language
-
+    
     @property
     def line_items(self):
         """Gets the line_items of this PaymentLinkUpdate.
@@ -308,7 +297,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._line_items = line_items
-
+    
     @property
     def maximal_number_of_transactions(self):
         """Gets the maximal_number_of_transactions of this PaymentLinkUpdate.
@@ -331,7 +320,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._maximal_number_of_transactions = maximal_number_of_transactions
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentLinkUpdate.
@@ -354,7 +343,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._name = name
-
+    
     @property
     def shipping_address_required(self):
         """Gets the shipping_address_required of this PaymentLinkUpdate.
@@ -377,6 +366,7 @@ class PaymentLinkUpdate(object):
         """
 
         self._shipping_address_required = shipping_address_required
+    
 
     def to_dict(self):
         result = {}

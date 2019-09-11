@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class User(object):
+class User:
 
     swagger_types = {
+    
         'id': 'int',
         'planned_purge_date': 'datetime',
         'scope': 'Scope',
@@ -17,12 +18,7 @@ class User(object):
     }
 
     attribute_map = {
-        'id': 'id',
-        'planned_purge_date': 'plannedPurgeDate',
-        'scope': 'scope',
-        'state': 'state',
-        'user_type': 'userType',
-        'version': 'version',
+        'id': 'id','planned_purge_date': 'plannedPurgeDate','scope': 'scope','state': 'state','user_type': 'userType','version': 'version',
     }
 
     
@@ -42,11 +38,9 @@ class User(object):
         self.state = kwargs.get('state', None)
         self.user_type = kwargs.get('user_type', None)
         self.version = kwargs.get('version', None)
-
-        
-        
         
 
+    
     @property
     def id(self):
         """Gets the id of this User.
@@ -69,7 +63,7 @@ class User(object):
         """
 
         self._id = id
-
+    
     @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this User.
@@ -92,7 +86,7 @@ class User(object):
         """
 
         self._planned_purge_date = planned_purge_date
-
+    
     @property
     def scope(self):
         """Gets the scope of this User.
@@ -115,7 +109,7 @@ class User(object):
         """
 
         self._scope = scope
-
+    
     @property
     def state(self):
         """Gets the state of this User.
@@ -138,7 +132,7 @@ class User(object):
         """
 
         self._state = state
-
+    
     @property
     def user_type(self):
         """Gets the user_type of this User.
@@ -161,7 +155,7 @@ class User(object):
         """
 
         self._user_type = user_type
-
+    
     @property
     def version(self):
         """Gets the version of this User.
@@ -184,6 +178,7 @@ class User(object):
         """
 
         self._version = version
+    
 
     def to_dict(self):
         result = {}

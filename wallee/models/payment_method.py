@@ -5,9 +5,10 @@ from enum import Enum
 
 
 
-class PaymentMethod(object):
+class PaymentMethod:
 
     swagger_types = {
+    
         'data_collection_types': 'list[DataCollectionType]',
         'description': 'dict(str, str)',
         'id': 'int',
@@ -18,13 +19,7 @@ class PaymentMethod(object):
     }
 
     attribute_map = {
-        'data_collection_types': 'dataCollectionTypes',
-        'description': 'description',
-        'id': 'id',
-        'image_path': 'imagePath',
-        'merchant_description': 'merchantDescription',
-        'name': 'name',
-        'supported_currencies': 'supportedCurrencies',
+        'data_collection_types': 'dataCollectionTypes','description': 'description','id': 'id','image_path': 'imagePath','merchant_description': 'merchantDescription','name': 'name','supported_currencies': 'supportedCurrencies',
     }
 
     
@@ -46,11 +41,9 @@ class PaymentMethod(object):
         self.merchant_description = kwargs.get('merchant_description', None)
         self.name = kwargs.get('name', None)
         self.supported_currencies = kwargs.get('supported_currencies', None)
-
-        
-        
         
 
+    
     @property
     def data_collection_types(self):
         """Gets the data_collection_types of this PaymentMethod.
@@ -73,7 +66,7 @@ class PaymentMethod(object):
         """
 
         self._data_collection_types = data_collection_types
-
+    
     @property
     def description(self):
         """Gets the description of this PaymentMethod.
@@ -96,7 +89,7 @@ class PaymentMethod(object):
         """
 
         self._description = description
-
+    
     @property
     def id(self):
         """Gets the id of this PaymentMethod.
@@ -119,7 +112,7 @@ class PaymentMethod(object):
         """
 
         self._id = id
-
+    
     @property
     def image_path(self):
         """Gets the image_path of this PaymentMethod.
@@ -142,7 +135,7 @@ class PaymentMethod(object):
         """
 
         self._image_path = image_path
-
+    
     @property
     def merchant_description(self):
         """Gets the merchant_description of this PaymentMethod.
@@ -165,7 +158,7 @@ class PaymentMethod(object):
         """
 
         self._merchant_description = merchant_description
-
+    
     @property
     def name(self):
         """Gets the name of this PaymentMethod.
@@ -188,7 +181,7 @@ class PaymentMethod(object):
         """
 
         self._name = name
-
+    
     @property
     def supported_currencies(self):
         """Gets the supported_currencies of this PaymentMethod.
@@ -211,6 +204,7 @@ class PaymentMethod(object):
         """
 
         self._supported_currencies = supported_currencies
+    
 
     def to_dict(self):
         result = {}
