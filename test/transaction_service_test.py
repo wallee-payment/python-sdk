@@ -4,21 +4,21 @@ from __future__ import absolute_import
 
 import unittest
 
-from wallee import Configuration, ApiClient
+from wallee import Configuration
 from wallee.api import TransactionServiceApi
 from wallee.models import LineItem, LineItemType, TransactionCreate, TransactionState, EntityQuery, \
     EntityQueryFilter, EntityQueryFilterType, CriteriaOperator
 
 
-class TestTransactionService(unittest.TestCase):
+class TransactionServiceTest(unittest.TestCase):
     """TransactionServiceApi unit test stubs"""
 
     def setUp(self):
         self.space_id = 405
-        self.transaction_service = TransactionServiceApi(api_client=ApiClient(configuration=Configuration(
-            user_id=512,  # change this to your application, user's user_id
-            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='  # change this to your application user's key
-        )))
+        self.transaction_service = TransactionServiceApi(configuration=Configuration(
+            user_id=512,
+            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+        ))
 
         # create line item
         self.line_item = LineItem(

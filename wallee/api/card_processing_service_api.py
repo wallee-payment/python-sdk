@@ -2,18 +2,14 @@
 
 from __future__ import absolute_import
 
-import re
 import six
 
 from wallee.api_client import ApiClient
 
-
 class CardProcessingServiceApi:
 
-    def __init__(self, api_client=None):
-        if api_client is None:
-            api_client = ApiClient()
-        self.api_client = api_client
+    def __init__(self, configuration):
+        self.api_client = ApiClient(configuration=configuration)
 
     def process(self, space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs):
         """Process

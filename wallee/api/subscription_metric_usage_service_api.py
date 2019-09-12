@@ -2,18 +2,14 @@
 
 from __future__ import absolute_import
 
-import re
 import six
 
 from wallee.api_client import ApiClient
 
-
 class SubscriptionMetricUsageServiceApi:
 
-    def __init__(self, api_client=None):
-        if api_client is None:
-            api_client = ApiClient()
-        self.api_client = api_client
+    def __init__(self, configuration):
+        self.api_client = ApiClient(configuration=configuration)
 
     def count(self, space_id, **kwargs):
         """Count

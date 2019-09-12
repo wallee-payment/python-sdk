@@ -8,4 +8,5 @@ class ChargeType(Enum):
     ASYNCHRONOUS = "ASYNCHRONOUS"
     SYNCHRONOUS = "SYNCHRONOUS"
     TOKEN = "TOKEN"
+    TERMINAL = "TERMINAL"
 

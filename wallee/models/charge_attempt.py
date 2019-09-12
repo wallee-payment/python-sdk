@@ -25,6 +25,7 @@ class ChargeAttempt(TransactionAwareEntity):
         'space_view_id': 'int',
         'state': 'ChargeAttemptState',
         'succeeded_on': 'datetime',
+        'terminal': 'PaymentTerminal',
         'time_zone': 'str',
         'timeout_on': 'datetime',
         'token_version': 'TokenVersion',
@@ -33,7 +34,7 @@ class ChargeAttempt(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
+        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
@@ -53,6 +54,7 @@ class ChargeAttempt(TransactionAwareEntity):
     _space_view_id = None
     _state = None
     _succeeded_on = None
+    _terminal = None
     _time_zone = None
     _timeout_on = None
     _token_version = None
@@ -78,6 +80,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
         self.succeeded_on = kwargs.get('succeeded_on', None)
+        self.terminal = kwargs.get('terminal', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.timeout_on = kwargs.get('timeout_on', None)
         self.token_version = kwargs.get('token_version', None)
@@ -455,6 +458,29 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._succeeded_on = succeeded_on
+    
+    @property
+    def terminal(self):
+        """Gets the terminal of this ChargeAttempt.
+
+            
+
+        :return: The terminal of this ChargeAttempt.
+        :rtype: PaymentTerminal
+        """
+        return self._terminal
+
+    @terminal.setter
+    def terminal(self, terminal):
+        """Sets the terminal of this ChargeAttempt.
+
+            
+
+        :param terminal: The terminal of this ChargeAttempt.
+        :type: PaymentTerminal
+        """
+
+        self._terminal = terminal
     
     @property
     def time_zone(self):

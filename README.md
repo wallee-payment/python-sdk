@@ -2,7 +2,7 @@
 
 # wallee Python Library
 
-The wallee Python library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, subscriptions.
+The wallee Python library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
 
 ## Documentation
 
@@ -37,37 +37,42 @@ python setup.py install
 
 ## Usage
 The library needs to be configured with your account's space id, user id, and secret key which are available in your [wallee
-account dashboard](https://app-wallee.com/account/select). Set `space_id`, `user_id`, and `api_secret` to their values:
+account dashboard](https://app-wallee.com/account/select). Set `space_id`, `user_id`, and `api_secret` to their values.
 
-### Configuring a Client
-
-```python
-from wallee import Configuration, ApiClient
-
-space_id = 405
-
-api_client = ApiClient(configuration=Configuration(
-    user_id=512,
-    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
-))
-
-```
-
-To get stated with sending transactions you can review the example below:
+### Configuring a Service
 
 ```python
-from wallee import Configuration, ApiClient
-from wallee.api import TransactionService
+from wallee import Configuration
+from wallee.api import TransactionServiceApi, TransactionPaymentPageServiceApi
 from wallee.models import LineItem, LineItemType, TransactionCreate
 
 space_id = 405
 
-api_client = ApiClient(configuration=Configuration(
+config = Configuration(
     user_id=512,
     api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
-))
+)
+transaction_service = TransactionServiceApi(configuration=config)
+transaction_payment_page_service = TransactionPaymentPageServiceApi(configuration=config)
 
-transaction_service = TransactionService(api_client=api_client)
+```
+
+To get started with sending transactions, please review the example below:
+
+```python
+from wallee import Configuration
+from wallee.api import TransactionServiceApi, TransactionPaymentPageServiceApi
+from wallee.models import LineItem, LineItemType, TransactionCreate
+
+space_id = 405
+
+config = Configuration(
+    user_id=512,
+    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+)
+
+transaction_service = TransactionServiceApi(configuration=config)
+transaction_payment_page_service = TransactionPaymentPageServiceApi(configuration=config)
 
 # create line item
 line_item = LineItem(
@@ -86,18 +91,12 @@ transaction = TransactionCreate(
     currency='EUR',
 )
 
-# send transaction to our API
 transaction_create = transaction_service.create(space_id=space_id, transaction=transaction)
-
-# redirect your customer to this url
-redirect_url = transaction_service.build_payment_page_url(space_id=space_id, id=transaction_create.id)
-print(redirect_url)
-
-# get the state of the transaction
-transaction_read = transaction_service.read(space_id=space_id, id=transaction_create.id)
-print(transaction_read.state)
+payment_page_url = transaction_payment_page_service.payment_page_url(space_id=space_id, id=transaction_create.id)
+# redirect your customer to this payment_page_url
 ```
+
 
 ## License
 
-Please see the [license file](LICENSE) for more information.
+Please see the [license file](https://github.com/wallee-payment/python-sdk/blob/master/LICENSE) for more information.
