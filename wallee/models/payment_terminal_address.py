@@ -18,15 +18,15 @@ class PaymentTerminalAddress:
         'mobile_phone_number': 'str',
         'organization_name': 'str',
         'phone_number': 'str',
-        'post_code': 'str',
         'postal_state': 'str',
+        'postcode': 'str',
         'salutation': 'str',
         'sorting_code': 'str',
         'street': 'str',
     }
 
     attribute_map = {
-        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','post_code': 'postCode','postal_state': 'postalState','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
+        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','postal_state': 'postalState','postcode': 'postcode','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -39,8 +39,8 @@ class PaymentTerminalAddress:
     _mobile_phone_number = None
     _organization_name = None
     _phone_number = None
-    _post_code = None
     _postal_state = None
+    _postcode = None
     _salutation = None
     _sorting_code = None
     _street = None
@@ -57,8 +57,8 @@ class PaymentTerminalAddress:
         self.mobile_phone_number = kwargs.get('mobile_phone_number', None)
         self.organization_name = kwargs.get('organization_name', None)
         self.phone_number = kwargs.get('phone_number', None)
-        self.post_code = kwargs.get('post_code', None)
         self.postal_state = kwargs.get('postal_state', None)
+        self.postcode = kwargs.get('postcode', None)
         self.salutation = kwargs.get('salutation', None)
         self.sorting_code = kwargs.get('sorting_code', None)
         self.street = kwargs.get('street', None)
@@ -273,29 +273,6 @@ class PaymentTerminalAddress:
         self._phone_number = phone_number
     
     @property
-    def post_code(self):
-        """Gets the post_code of this PaymentTerminalAddress.
-
-            
-
-        :return: The post_code of this PaymentTerminalAddress.
-        :rtype: str
-        """
-        return self._post_code
-
-    @post_code.setter
-    def post_code(self, post_code):
-        """Sets the post_code of this PaymentTerminalAddress.
-
-            
-
-        :param post_code: The post_code of this PaymentTerminalAddress.
-        :type: str
-        """
-
-        self._post_code = post_code
-    
-    @property
     def postal_state(self):
         """Gets the postal_state of this PaymentTerminalAddress.
 
@@ -317,6 +294,29 @@ class PaymentTerminalAddress:
         """
 
         self._postal_state = postal_state
+    
+    @property
+    def postcode(self):
+        """Gets the postcode of this PaymentTerminalAddress.
+
+            
+
+        :return: The postcode of this PaymentTerminalAddress.
+        :rtype: str
+        """
+        return self._postcode
+
+    @postcode.setter
+    def postcode(self, postcode):
+        """Sets the postcode of this PaymentTerminalAddress.
+
+            
+
+        :param postcode: The postcode of this PaymentTerminalAddress.
+        :type: str
+        """
+
+        self._postcode = postcode
     
     @property
     def salutation(self):

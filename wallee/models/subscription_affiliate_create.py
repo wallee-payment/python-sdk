@@ -26,7 +26,8 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
         
         self.external_id = kwargs.get('external_id')
 
-        self.reference = kwargs.get('reference', None)
+        self.reference = kwargs.get('reference')
+
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
@@ -77,6 +78,8 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
         :param reference: The reference of this SubscriptionAffiliateCreate.
         :type: str
         """
+        if reference is None:
+            raise ValueError("Invalid value for `reference`, must not be `None`")
 
         self._reference = reference
     

@@ -9,18 +9,16 @@ class SubscriptionPending(SubscriptionUpdate):
 
     swagger_types = {
     
-        'affiliate': 'int',
         'reference': 'str',
         'subscriber': 'int',
         'token': 'int',
     }
 
     attribute_map = {
-        'affiliate': 'affiliate','reference': 'reference','subscriber': 'subscriber','token': 'token',
+        'reference': 'reference','subscriber': 'subscriber','token': 'token',
     }
 
     
-    _affiliate = None
     _reference = None
     _subscriber = None
     _token = None
@@ -28,7 +26,6 @@ class SubscriptionPending(SubscriptionUpdate):
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.affiliate = kwargs.get('affiliate', None)
         self.reference = kwargs.get('reference', None)
         self.subscriber = kwargs.get('subscriber', None)
         self.token = kwargs.get('token', None)
@@ -36,29 +33,6 @@ class SubscriptionPending(SubscriptionUpdate):
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
 
-    
-    @property
-    def affiliate(self):
-        """Gets the affiliate of this SubscriptionPending.
-
-            
-
-        :return: The affiliate of this SubscriptionPending.
-        :rtype: int
-        """
-        return self._affiliate
-
-    @affiliate.setter
-    def affiliate(self, affiliate):
-        """Sets the affiliate of this SubscriptionPending.
-
-            
-
-        :param affiliate: The affiliate of this SubscriptionPending.
-        :type: int
-        """
-
-        self._affiliate = affiliate
     
     @property
     def reference(self):

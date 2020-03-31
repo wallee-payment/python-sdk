@@ -11,16 +11,18 @@ class ChargeFlowLevelConfigurationType:
     
         'description': 'dict(str, str)',
         'id': 'int',
+        'label': 'dict(str, str)',
         'name': 'dict(str, str)',
     }
 
     attribute_map = {
-        'description': 'description','id': 'id','name': 'name',
+        'description': 'description','id': 'id','label': 'label','name': 'name',
     }
 
     
     _description = None
     _id = None
+    _label = None
     _name = None
 
     def __init__(self, **kwargs):
@@ -28,6 +30,7 @@ class ChargeFlowLevelConfigurationType:
         
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
+        self.label = kwargs.get('label', None)
         self.name = kwargs.get('name', None)
         
 
@@ -77,6 +80,29 @@ class ChargeFlowLevelConfigurationType:
         """
 
         self._id = id
+    
+    @property
+    def label(self):
+        """Gets the label of this ChargeFlowLevelConfigurationType.
+
+            
+
+        :return: The label of this ChargeFlowLevelConfigurationType.
+        :rtype: dict(str, str)
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this ChargeFlowLevelConfigurationType.
+
+            
+
+        :param label: The label of this ChargeFlowLevelConfigurationType.
+        :type: dict(str, str)
+        """
+
+        self._label = label
     
     @property
     def name(self):

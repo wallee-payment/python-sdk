@@ -9,6 +9,7 @@ class SubscriptionChangeRequest:
 
     swagger_types = {
     
+        'component_configurations': 'list[SubscriptionComponentReferenceConfiguration]',
         'currency': 'str',
         'product': 'int',
         'respect_termination_period': 'bool',
@@ -17,10 +18,11 @@ class SubscriptionChangeRequest:
     }
 
     attribute_map = {
-        'currency': 'currency','product': 'product','respect_termination_period': 'respectTerminationPeriod','selected_components': 'selectedComponents','subscription': 'subscription',
+        'component_configurations': 'componentConfigurations','currency': 'currency','product': 'product','respect_termination_period': 'respectTerminationPeriod','selected_components': 'selectedComponents','subscription': 'subscription',
     }
 
     
+    _component_configurations = None
     _currency = None
     _product = None
     _respect_termination_period = None
@@ -30,6 +32,7 @@ class SubscriptionChangeRequest:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.component_configurations = kwargs.get('component_configurations', None)
         self.currency = kwargs.get('currency')
 
         self.product = kwargs.get('product')
@@ -40,6 +43,29 @@ class SubscriptionChangeRequest:
 
         
 
+    
+    @property
+    def component_configurations(self):
+        """Gets the component_configurations of this SubscriptionChangeRequest.
+
+            
+
+        :return: The component_configurations of this SubscriptionChangeRequest.
+        :rtype: list[SubscriptionComponentReferenceConfiguration]
+        """
+        return self._component_configurations
+
+    @component_configurations.setter
+    def component_configurations(self, component_configurations):
+        """Sets the component_configurations of this SubscriptionChangeRequest.
+
+            
+
+        :param component_configurations: The component_configurations of this SubscriptionChangeRequest.
+        :type: list[SubscriptionComponentReferenceConfiguration]
+        """
+
+        self._component_configurations = component_configurations
     
     @property
     def currency(self):

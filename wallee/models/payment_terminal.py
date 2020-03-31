@@ -17,13 +17,12 @@ class PaymentTerminal:
         'name': 'str',
         'planned_purge_date': 'datetime',
         'state': 'PaymentTerminalState',
-        'terminal_device_id': 'int',
         'type': 'PaymentTerminalType',
         'version': 'int',
     }
 
     attribute_map = {
-        'configuration_version': 'configurationVersion','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','terminal_device_id': 'terminalDeviceId','type': 'type','version': 'version',
+        'configuration_version': 'configurationVersion','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
@@ -35,7 +34,6 @@ class PaymentTerminal:
     _name = None
     _planned_purge_date = None
     _state = None
-    _terminal_device_id = None
     _type = None
     _version = None
 
@@ -50,7 +48,6 @@ class PaymentTerminal:
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
-        self.terminal_device_id = kwargs.get('terminal_device_id', None)
         self.type = kwargs.get('type', None)
         self.version = kwargs.get('version', None)
         
@@ -239,29 +236,6 @@ class PaymentTerminal:
         """
 
         self._state = state
-    
-    @property
-    def terminal_device_id(self):
-        """Gets the terminal_device_id of this PaymentTerminal.
-
-            
-
-        :return: The terminal_device_id of this PaymentTerminal.
-        :rtype: int
-        """
-        return self._terminal_device_id
-
-    @terminal_device_id.setter
-    def terminal_device_id(self, terminal_device_id):
-        """Sets the terminal_device_id of this PaymentTerminal.
-
-            
-
-        :param terminal_device_id: The terminal_device_id of this PaymentTerminal.
-        :type: int
-        """
-
-        self._terminal_device_id = terminal_device_id
     
     @property
     def type(self):

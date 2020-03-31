@@ -22,6 +22,7 @@ class ChargeAttempt(TransactionAwareEntity):
         'next_update_on': 'datetime',
         'planned_purge_date': 'datetime',
         'redirection_url': 'str',
+        'sales_channel': 'int',
         'space_view_id': 'int',
         'state': 'ChargeAttemptState',
         'succeeded_on': 'datetime',
@@ -34,7 +35,7 @@ class ChargeAttempt(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
+        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
@@ -51,6 +52,7 @@ class ChargeAttempt(TransactionAwareEntity):
     _next_update_on = None
     _planned_purge_date = None
     _redirection_url = None
+    _sales_channel = None
     _space_view_id = None
     _state = None
     _succeeded_on = None
@@ -77,6 +79,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.next_update_on = kwargs.get('next_update_on', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.redirection_url = kwargs.get('redirection_url', None)
+        self.sales_channel = kwargs.get('sales_channel', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
         self.succeeded_on = kwargs.get('succeeded_on', None)
@@ -389,6 +392,29 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._redirection_url = redirection_url
+    
+    @property
+    def sales_channel(self):
+        """Gets the sales_channel of this ChargeAttempt.
+
+            
+
+        :return: The sales_channel of this ChargeAttempt.
+        :rtype: int
+        """
+        return self._sales_channel
+
+    @sales_channel.setter
+    def sales_channel(self, sales_channel):
+        """Sets the sales_channel of this ChargeAttempt.
+
+            
+
+        :param sales_channel: The sales_channel of this ChargeAttempt.
+        :type: int
+        """
+
+        self._sales_channel = sales_channel
     
     @property
     def space_view_id(self):

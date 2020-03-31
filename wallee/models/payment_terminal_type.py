@@ -12,18 +12,16 @@ class PaymentTerminalType:
         'description': 'dict(str, str)',
         'id': 'int',
         'name': 'dict(str, str)',
-        'supported_connectors': 'list[PaymentConnector]',
     }
 
     attribute_map = {
-        'description': 'description','id': 'id','name': 'name','supported_connectors': 'supportedConnectors',
+        'description': 'description','id': 'id','name': 'name',
     }
 
     
     _description = None
     _id = None
     _name = None
-    _supported_connectors = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -31,7 +29,6 @@ class PaymentTerminalType:
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-        self.supported_connectors = kwargs.get('supported_connectors', None)
         
 
     
@@ -103,29 +100,6 @@ class PaymentTerminalType:
         """
 
         self._name = name
-    
-    @property
-    def supported_connectors(self):
-        """Gets the supported_connectors of this PaymentTerminalType.
-
-            
-
-        :return: The supported_connectors of this PaymentTerminalType.
-        :rtype: list[PaymentConnector]
-        """
-        return self._supported_connectors
-
-    @supported_connectors.setter
-    def supported_connectors(self, supported_connectors):
-        """Sets the supported_connectors of this PaymentTerminalType.
-
-            
-
-        :param supported_connectors: The supported_connectors of this PaymentTerminalType.
-        :type: list[PaymentConnector]
-        """
-
-        self._supported_connectors = supported_connectors
     
 
     def to_dict(self):

@@ -11,6 +11,7 @@ class SubscriptionVersion:
     
         'activated_on': 'datetime',
         'billing_currency': 'str',
+        'component_configurations': 'list[SubscriptionComponentConfiguration]',
         'created_on': 'datetime',
         'expected_last_period_end': 'datetime',
         'failed_on': 'datetime',
@@ -30,12 +31,13 @@ class SubscriptionVersion:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','selected_components': 'selectedComponents','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
+        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','component_configurations': 'componentConfigurations','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','selected_components': 'selectedComponents','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
     }
 
     
     _activated_on = None
     _billing_currency = None
+    _component_configurations = None
     _created_on = None
     _expected_last_period_end = None
     _failed_on = None
@@ -58,6 +60,7 @@ class SubscriptionVersion:
         
         self.activated_on = kwargs.get('activated_on', None)
         self.billing_currency = kwargs.get('billing_currency', None)
+        self.component_configurations = kwargs.get('component_configurations', None)
         self.created_on = kwargs.get('created_on', None)
         self.expected_last_period_end = kwargs.get('expected_last_period_end', None)
         self.failed_on = kwargs.get('failed_on', None)
@@ -122,6 +125,29 @@ class SubscriptionVersion:
         """
 
         self._billing_currency = billing_currency
+    
+    @property
+    def component_configurations(self):
+        """Gets the component_configurations of this SubscriptionVersion.
+
+            
+
+        :return: The component_configurations of this SubscriptionVersion.
+        :rtype: list[SubscriptionComponentConfiguration]
+        """
+        return self._component_configurations
+
+    @component_configurations.setter
+    def component_configurations(self, component_configurations):
+        """Sets the component_configurations of this SubscriptionVersion.
+
+            
+
+        :param component_configurations: The component_configurations of this SubscriptionVersion.
+        :type: list[SubscriptionComponentConfiguration]
+        """
+
+        self._component_configurations = component_configurations
     
     @property
     def created_on(self):

@@ -15,6 +15,7 @@ class Transaction:
         'allowed_payment_method_configurations': 'list[int]',
         'authorization_amount': 'float',
         'authorization_environment': 'ChargeAttemptEnvironment',
+        'authorization_sales_channel': 'int',
         'authorization_timeout_on': 'datetime',
         'authorized_on': 'datetime',
         'auto_confirmation_enabled': 'bool',
@@ -69,7 +70,7 @@ class Transaction:
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
     }
 
     
@@ -79,6 +80,7 @@ class Transaction:
     _allowed_payment_method_configurations = None
     _authorization_amount = None
     _authorization_environment = None
+    _authorization_sales_channel = None
     _authorization_timeout_on = None
     _authorized_on = None
     _auto_confirmation_enabled = None
@@ -140,6 +142,7 @@ class Transaction:
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
         self.authorization_amount = kwargs.get('authorization_amount', None)
         self.authorization_environment = kwargs.get('authorization_environment', None)
+        self.authorization_sales_channel = kwargs.get('authorization_sales_channel', None)
         self.authorization_timeout_on = kwargs.get('authorization_timeout_on', None)
         self.authorized_on = kwargs.get('authorized_on', None)
         self.auto_confirmation_enabled = kwargs.get('auto_confirmation_enabled', None)
@@ -331,6 +334,29 @@ class Transaction:
         """
 
         self._authorization_environment = authorization_environment
+    
+    @property
+    def authorization_sales_channel(self):
+        """Gets the authorization_sales_channel of this Transaction.
+
+            The sales channel through which the transaction was placed.
+
+        :return: The authorization_sales_channel of this Transaction.
+        :rtype: int
+        """
+        return self._authorization_sales_channel
+
+    @authorization_sales_channel.setter
+    def authorization_sales_channel(self, authorization_sales_channel):
+        """Sets the authorization_sales_channel of this Transaction.
+
+            The sales channel through which the transaction was placed.
+
+        :param authorization_sales_channel: The authorization_sales_channel of this Transaction.
+        :type: int
+        """
+
+        self._authorization_sales_channel = authorization_sales_channel
     
     @property
     def authorization_timeout_on(self):

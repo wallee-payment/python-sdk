@@ -11,17 +11,19 @@ class SubscriptionUpdate:
     
         'id': 'int',
         'version': 'int',
+        'affiliate': 'int',
         'description': 'str',
         'planned_termination_date': 'datetime',
     }
 
     attribute_map = {
-        'id': 'id','version': 'version','description': 'description','planned_termination_date': 'plannedTerminationDate',
+        'id': 'id','version': 'version','affiliate': 'affiliate','description': 'description','planned_termination_date': 'plannedTerminationDate',
     }
 
     
     _id = None
     _version = None
+    _affiliate = None
     _description = None
     _planned_termination_date = None
 
@@ -32,6 +34,7 @@ class SubscriptionUpdate:
 
         self.version = kwargs.get('version')
 
+        self.affiliate = kwargs.get('affiliate', None)
         self.description = kwargs.get('description', None)
         self.planned_termination_date = kwargs.get('planned_termination_date', None)
         
@@ -86,6 +89,29 @@ class SubscriptionUpdate:
             raise ValueError("Invalid value for `version`, must not be `None`")
 
         self._version = version
+    
+    @property
+    def affiliate(self):
+        """Gets the affiliate of this SubscriptionUpdate.
+
+            
+
+        :return: The affiliate of this SubscriptionUpdate.
+        :rtype: int
+        """
+        return self._affiliate
+
+    @affiliate.setter
+    def affiliate(self, affiliate):
+        """Sets the affiliate of this SubscriptionUpdate.
+
+            
+
+        :param affiliate: The affiliate of this SubscriptionUpdate.
+        :type: int
+        """
+
+        self._affiliate = affiliate
     
     @property
     def description(self):

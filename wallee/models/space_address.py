@@ -16,8 +16,8 @@ class SpaceAddress:
         'family_name': 'str',
         'given_name': 'str',
         'organization_name': 'str',
-        'post_code': 'str',
         'postal_state': 'str',
+        'postcode': 'str',
         'sales_tax_number': 'str',
         'salutation': 'str',
         'sorting_code': 'str',
@@ -25,7 +25,7 @@ class SpaceAddress:
     }
 
     attribute_map = {
-        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','organization_name': 'organizationName','post_code': 'postCode','postal_state': 'postalState','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
+        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','organization_name': 'organizationName','postal_state': 'postalState','postcode': 'postcode','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -36,8 +36,8 @@ class SpaceAddress:
     _family_name = None
     _given_name = None
     _organization_name = None
-    _post_code = None
     _postal_state = None
+    _postcode = None
     _sales_tax_number = None
     _salutation = None
     _sorting_code = None
@@ -53,8 +53,8 @@ class SpaceAddress:
         self.family_name = kwargs.get('family_name', None)
         self.given_name = kwargs.get('given_name', None)
         self.organization_name = kwargs.get('organization_name', None)
-        self.post_code = kwargs.get('post_code', None)
         self.postal_state = kwargs.get('postal_state', None)
+        self.postcode = kwargs.get('postcode', None)
         self.sales_tax_number = kwargs.get('sales_tax_number', None)
         self.salutation = kwargs.get('salutation', None)
         self.sorting_code = kwargs.get('sorting_code', None)
@@ -224,29 +224,6 @@ class SpaceAddress:
         self._organization_name = organization_name
     
     @property
-    def post_code(self):
-        """Gets the post_code of this SpaceAddress.
-
-            
-
-        :return: The post_code of this SpaceAddress.
-        :rtype: str
-        """
-        return self._post_code
-
-    @post_code.setter
-    def post_code(self, post_code):
-        """Sets the post_code of this SpaceAddress.
-
-            
-
-        :param post_code: The post_code of this SpaceAddress.
-        :type: str
-        """
-
-        self._post_code = post_code
-    
-    @property
     def postal_state(self):
         """Gets the postal_state of this SpaceAddress.
 
@@ -268,6 +245,29 @@ class SpaceAddress:
         """
 
         self._postal_state = postal_state
+    
+    @property
+    def postcode(self):
+        """Gets the postcode of this SpaceAddress.
+
+            
+
+        :return: The postcode of this SpaceAddress.
+        :rtype: str
+        """
+        return self._postcode
+
+    @postcode.setter
+    def postcode(self, postcode):
+        """Sets the postcode of this SpaceAddress.
+
+            
+
+        :param postcode: The postcode of this SpaceAddress.
+        :type: str
+        """
+
+        self._postcode = postcode
     
     @property
     def sales_tax_number(self):

@@ -126,7 +126,7 @@ class SubscriptionPeriodBillServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param int id: The id of the subscription period bill which should be returned. (required)
-        :return: SubscriptionVersion
+        :return: SubscriptionPeriodBill
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -149,7 +149,7 @@ class SubscriptionPeriodBillServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param int id: The id of the subscription period bill which should be returned. (required)
-        :return: SubscriptionVersion
+        :return: SubscriptionPeriodBill
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -213,7 +213,7 @@ class SubscriptionPeriodBillServiceApi:
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SubscriptionVersion',
+            response_type='SubscriptionPeriodBill',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -233,7 +233,7 @@ class SubscriptionPeriodBillServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param EntityQuery query: The query restricts the subscription period bills which are returned by the search. (required)
-        :return: list[SubscriptionVersion]
+        :return: list[SubscriptionPeriodBill]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -256,7 +256,7 @@ class SubscriptionPeriodBillServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param EntityQuery query: The query restricts the subscription period bills which are returned by the search. (required)
-        :return: list[SubscriptionVersion]
+        :return: list[SubscriptionPeriodBill]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -320,7 +320,7 @@ class SubscriptionPeriodBillServiceApi:
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[SubscriptionVersion]',
+            response_type='list[SubscriptionPeriodBill]',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

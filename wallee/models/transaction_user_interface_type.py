@@ -6,6 +6,7 @@ from enum import Enum, unique
 class TransactionUserInterfaceType(Enum):
     
     IFRAME = "IFRAME"
+    LIGHTBOX = "LIGHTBOX"
     PAYMENT_PAGE = "PAYMENT_PAGE"
     MOBILE_SDK = "MOBILE_SDK"
     TERMINAL = "TERMINAL"

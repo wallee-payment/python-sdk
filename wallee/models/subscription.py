@@ -22,6 +22,7 @@ class Subscription:
         'reference': 'str',
         'state': 'SubscriptionState',
         'subscriber': 'Subscriber',
+        'terminated_by': 'int',
         'terminated_on': 'datetime',
         'terminating_on': 'datetime',
         'token': 'Token',
@@ -29,7 +30,7 @@ class Subscription:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','token': 'token','version': 'version',
+        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','token': 'token','version': 'version',
     }
 
     
@@ -46,6 +47,7 @@ class Subscription:
     _reference = None
     _state = None
     _subscriber = None
+    _terminated_by = None
     _terminated_on = None
     _terminating_on = None
     _token = None
@@ -67,6 +69,7 @@ class Subscription:
         self.reference = kwargs.get('reference', None)
         self.state = kwargs.get('state', None)
         self.subscriber = kwargs.get('subscriber', None)
+        self.terminated_by = kwargs.get('terminated_by', None)
         self.terminated_on = kwargs.get('terminated_on', None)
         self.terminating_on = kwargs.get('terminating_on', None)
         self.token = kwargs.get('token', None)
@@ -372,6 +375,29 @@ class Subscription:
         """
 
         self._subscriber = subscriber
+    
+    @property
+    def terminated_by(self):
+        """Gets the terminated_by of this Subscription.
+
+            
+
+        :return: The terminated_by of this Subscription.
+        :rtype: int
+        """
+        return self._terminated_by
+
+    @terminated_by.setter
+    def terminated_by(self, terminated_by):
+        """Sets the terminated_by of this Subscription.
+
+            
+
+        :param terminated_by: The terminated_by of this Subscription.
+        :type: int
+        """
+
+        self._terminated_by = terminated_by
     
     @property
     def terminated_on(self):

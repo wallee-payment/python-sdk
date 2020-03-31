@@ -21,6 +21,7 @@ class TokenVersion:
         'name': 'str',
         'obsoleted_on': 'datetime',
         'payment_connector_configuration': 'PaymentConnectorConfiguration',
+        'payment_information_hashes': 'list[PaymentInformationHash]',
         'payment_method': 'int',
         'payment_method_brand': 'int',
         'planned_purge_date': 'datetime',
@@ -33,7 +34,7 @@ class TokenVersion:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
+        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_information_hashes': 'paymentInformationHashes','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
     }
 
     
@@ -49,6 +50,7 @@ class TokenVersion:
     _name = None
     _obsoleted_on = None
     _payment_connector_configuration = None
+    _payment_information_hashes = None
     _payment_method = None
     _payment_method_brand = None
     _planned_purge_date = None
@@ -74,6 +76,7 @@ class TokenVersion:
         self.name = kwargs.get('name', None)
         self.obsoleted_on = kwargs.get('obsoleted_on', None)
         self.payment_connector_configuration = kwargs.get('payment_connector_configuration', None)
+        self.payment_information_hashes = kwargs.get('payment_information_hashes', None)
         self.payment_method = kwargs.get('payment_method', None)
         self.payment_method_brand = kwargs.get('payment_method_brand', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
@@ -361,6 +364,29 @@ class TokenVersion:
         """
 
         self._payment_connector_configuration = payment_connector_configuration
+    
+    @property
+    def payment_information_hashes(self):
+        """Gets the payment_information_hashes of this TokenVersion.
+
+            The payment information hash set contains hashes of the payment information represented by this token version.
+
+        :return: The payment_information_hashes of this TokenVersion.
+        :rtype: list[PaymentInformationHash]
+        """
+        return self._payment_information_hashes
+
+    @payment_information_hashes.setter
+    def payment_information_hashes(self, payment_information_hashes):
+        """Sets the payment_information_hashes of this TokenVersion.
+
+            The payment information hash set contains hashes of the payment information represented by this token version.
+
+        :param payment_information_hashes: The payment_information_hashes of this TokenVersion.
+        :type: list[PaymentInformationHash]
+        """
+
+        self._payment_information_hashes = payment_information_hashes
     
     @property
     def payment_method(self):

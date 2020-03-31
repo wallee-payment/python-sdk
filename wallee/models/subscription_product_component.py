@@ -15,7 +15,10 @@ class SubscriptionProductComponent:
         'description': 'DatabaseTranslatedString',
         'id': 'int',
         'linked_space_id': 'int',
+        'maximal_quantity': 'float',
+        'minimal_quantity': 'float',
         'name': 'DatabaseTranslatedString',
+        'quantity_step': 'float',
         'reference': 'SubscriptionProductComponentReference',
         'sort_order': 'int',
         'tax_class': 'TaxClass',
@@ -23,7 +26,7 @@ class SubscriptionProductComponent:
     }
 
     attribute_map = {
-        'component_change_weight': 'componentChangeWeight','component_group': 'componentGroup','default_component': 'defaultComponent','description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','reference': 'reference','sort_order': 'sortOrder','tax_class': 'taxClass','version': 'version',
+        'component_change_weight': 'componentChangeWeight','component_group': 'componentGroup','default_component': 'defaultComponent','description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','maximal_quantity': 'maximalQuantity','minimal_quantity': 'minimalQuantity','name': 'name','quantity_step': 'quantityStep','reference': 'reference','sort_order': 'sortOrder','tax_class': 'taxClass','version': 'version',
     }
 
     
@@ -33,7 +36,10 @@ class SubscriptionProductComponent:
     _description = None
     _id = None
     _linked_space_id = None
+    _maximal_quantity = None
+    _minimal_quantity = None
     _name = None
+    _quantity_step = None
     _reference = None
     _sort_order = None
     _tax_class = None
@@ -48,7 +54,10 @@ class SubscriptionProductComponent:
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.maximal_quantity = kwargs.get('maximal_quantity', None)
+        self.minimal_quantity = kwargs.get('minimal_quantity', None)
         self.name = kwargs.get('name', None)
+        self.quantity_step = kwargs.get('quantity_step', None)
         self.reference = kwargs.get('reference', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.tax_class = kwargs.get('tax_class', None)
@@ -195,6 +204,52 @@ class SubscriptionProductComponent:
         self._linked_space_id = linked_space_id
     
     @property
+    def maximal_quantity(self):
+        """Gets the maximal_quantity of this SubscriptionProductComponent.
+
+            The maximum quantity defines the maximum value which must be entered for the quantity.
+
+        :return: The maximal_quantity of this SubscriptionProductComponent.
+        :rtype: float
+        """
+        return self._maximal_quantity
+
+    @maximal_quantity.setter
+    def maximal_quantity(self, maximal_quantity):
+        """Sets the maximal_quantity of this SubscriptionProductComponent.
+
+            The maximum quantity defines the maximum value which must be entered for the quantity.
+
+        :param maximal_quantity: The maximal_quantity of this SubscriptionProductComponent.
+        :type: float
+        """
+
+        self._maximal_quantity = maximal_quantity
+    
+    @property
+    def minimal_quantity(self):
+        """Gets the minimal_quantity of this SubscriptionProductComponent.
+
+            The minimal quantity defines the minimum value which must be entered for the quantity.
+
+        :return: The minimal_quantity of this SubscriptionProductComponent.
+        :rtype: float
+        """
+        return self._minimal_quantity
+
+    @minimal_quantity.setter
+    def minimal_quantity(self, minimal_quantity):
+        """Sets the minimal_quantity of this SubscriptionProductComponent.
+
+            The minimal quantity defines the minimum value which must be entered for the quantity.
+
+        :param minimal_quantity: The minimal_quantity of this SubscriptionProductComponent.
+        :type: float
+        """
+
+        self._minimal_quantity = minimal_quantity
+    
+    @property
     def name(self):
         """Gets the name of this SubscriptionProductComponent.
 
@@ -216,6 +271,29 @@ class SubscriptionProductComponent:
         """
 
         self._name = name
+    
+    @property
+    def quantity_step(self):
+        """Gets the quantity_step of this SubscriptionProductComponent.
+
+            The quantity step defines at which interval the quantity can be increased.
+
+        :return: The quantity_step of this SubscriptionProductComponent.
+        :rtype: float
+        """
+        return self._quantity_step
+
+    @quantity_step.setter
+    def quantity_step(self, quantity_step):
+        """Sets the quantity_step of this SubscriptionProductComponent.
+
+            The quantity step defines at which interval the quantity can be increased.
+
+        :param quantity_step: The quantity_step of this SubscriptionProductComponent.
+        :type: float
+        """
+
+        self._quantity_step = quantity_step
     
     @property
     def reference(self):

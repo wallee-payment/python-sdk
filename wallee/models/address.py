@@ -22,8 +22,8 @@ class Address:
         'mobile_phone_number': 'str',
         'organization_name': 'str',
         'phone_number': 'str',
-        'post_code': 'str',
         'postal_state': 'str',
+        'postcode': 'str',
         'sales_tax_number': 'str',
         'salutation': 'str',
         'social_security_number': 'str',
@@ -32,7 +32,7 @@ class Address:
     }
 
     attribute_map = {
-        'city': 'city','commercial_register_number': 'commercialRegisterNumber','country': 'country','date_of_birth': 'dateOfBirth','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','gender': 'gender','given_name': 'givenName','legal_organization_form': 'legalOrganizationForm','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','post_code': 'postCode','postal_state': 'postalState','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','social_security_number': 'socialSecurityNumber','sorting_code': 'sortingCode','street': 'street',
+        'city': 'city','commercial_register_number': 'commercialRegisterNumber','country': 'country','date_of_birth': 'dateOfBirth','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','gender': 'gender','given_name': 'givenName','legal_organization_form': 'legalOrganizationForm','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','postal_state': 'postalState','postcode': 'postcode','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','social_security_number': 'socialSecurityNumber','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -49,8 +49,8 @@ class Address:
     _mobile_phone_number = None
     _organization_name = None
     _phone_number = None
-    _post_code = None
     _postal_state = None
+    _postcode = None
     _sales_tax_number = None
     _salutation = None
     _social_security_number = None
@@ -73,8 +73,8 @@ class Address:
         self.mobile_phone_number = kwargs.get('mobile_phone_number', None)
         self.organization_name = kwargs.get('organization_name', None)
         self.phone_number = kwargs.get('phone_number', None)
-        self.post_code = kwargs.get('post_code', None)
         self.postal_state = kwargs.get('postal_state', None)
+        self.postcode = kwargs.get('postcode', None)
         self.sales_tax_number = kwargs.get('sales_tax_number', None)
         self.salutation = kwargs.get('salutation', None)
         self.social_security_number = kwargs.get('social_security_number', None)
@@ -383,29 +383,6 @@ class Address:
         self._phone_number = phone_number
     
     @property
-    def post_code(self):
-        """Gets the post_code of this Address.
-
-            
-
-        :return: The post_code of this Address.
-        :rtype: str
-        """
-        return self._post_code
-
-    @post_code.setter
-    def post_code(self, post_code):
-        """Sets the post_code of this Address.
-
-            
-
-        :param post_code: The post_code of this Address.
-        :type: str
-        """
-
-        self._post_code = post_code
-    
-    @property
     def postal_state(self):
         """Gets the postal_state of this Address.
 
@@ -427,6 +404,29 @@ class Address:
         """
 
         self._postal_state = postal_state
+    
+    @property
+    def postcode(self):
+        """Gets the postcode of this Address.
+
+            
+
+        :return: The postcode of this Address.
+        :rtype: str
+        """
+        return self._postcode
+
+    @postcode.setter
+    def postcode(self, postcode):
+        """Sets the postcode of this Address.
+
+            
+
+        :param postcode: The postcode of this Address.
+        :type: str
+        """
+
+        self._postcode = postcode
     
     @property
     def sales_tax_number(self):

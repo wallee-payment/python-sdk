@@ -9,6 +9,7 @@ class RefundCreate:
 
     swagger_types = {
     
+        'amount': 'float',
         'completion': 'int',
         'external_id': 'str',
         'merchant_reference': 'str',
@@ -18,10 +19,11 @@ class RefundCreate:
     }
 
     attribute_map = {
-        'completion': 'completion','external_id': 'externalId','merchant_reference': 'merchantReference','reductions': 'reductions','transaction': 'transaction','type': 'type',
+        'amount': 'amount','completion': 'completion','external_id': 'externalId','merchant_reference': 'merchantReference','reductions': 'reductions','transaction': 'transaction','type': 'type',
     }
 
     
+    _amount = None
     _completion = None
     _external_id = None
     _merchant_reference = None
@@ -32,17 +34,40 @@ class RefundCreate:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.amount = kwargs.get('amount', None)
         self.completion = kwargs.get('completion', None)
         self.external_id = kwargs.get('external_id')
 
         self.merchant_reference = kwargs.get('merchant_reference', None)
-        self.reductions = kwargs.get('reductions')
-
+        self.reductions = kwargs.get('reductions', None)
         self.transaction = kwargs.get('transaction', None)
         self.type = kwargs.get('type')
 
         
 
+    
+    @property
+    def amount(self):
+        """Gets the amount of this RefundCreate.
+
+            
+
+        :return: The amount of this RefundCreate.
+        :rtype: float
+        """
+        return self._amount
+
+    @amount.setter
+    def amount(self, amount):
+        """Sets the amount of this RefundCreate.
+
+            
+
+        :param amount: The amount of this RefundCreate.
+        :type: float
+        """
+
+        self._amount = amount
     
     @property
     def completion(self):
@@ -135,8 +160,6 @@ class RefundCreate:
         :param reductions: The reductions of this RefundCreate.
         :type: list[LineItemReductionCreate]
         """
-        if reductions is None:
-            raise ValueError("Invalid value for `reductions`, must not be `None`")
 
         self._reductions = reductions
     

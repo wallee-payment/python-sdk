@@ -10,6 +10,7 @@ class Feature:
     swagger_types = {
     
         'beta': 'bool',
+        'category': 'FeatureCategory',
         'description': 'dict(str, str)',
         'id': 'int',
         'logo_path': 'str',
@@ -20,11 +21,12 @@ class Feature:
     }
 
     attribute_map = {
-        'beta': 'beta','description': 'description','id': 'id','logo_path': 'logoPath','name': 'name','required_features': 'requiredFeatures','sort_order': 'sortOrder','visible': 'visible',
+        'beta': 'beta','category': 'category','description': 'description','id': 'id','logo_path': 'logoPath','name': 'name','required_features': 'requiredFeatures','sort_order': 'sortOrder','visible': 'visible',
     }
 
     
     _beta = None
+    _category = None
     _description = None
     _id = None
     _logo_path = None
@@ -37,6 +39,7 @@ class Feature:
         self.discriminator = None
         
         self.beta = kwargs.get('beta', None)
+        self.category = kwargs.get('category', None)
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.logo_path = kwargs.get('logo_path', None)
@@ -69,6 +72,29 @@ class Feature:
         """
 
         self._beta = beta
+    
+    @property
+    def category(self):
+        """Gets the category of this Feature.
+
+            
+
+        :return: The category of this Feature.
+        :rtype: FeatureCategory
+        """
+        return self._category
+
+    @category.setter
+    def category(self, category):
+        """Sets the category of this Feature.
+
+            
+
+        :param category: The category of this Feature.
+        :type: FeatureCategory
+        """
+
+        self._category = category
     
     @property
     def description(self):
