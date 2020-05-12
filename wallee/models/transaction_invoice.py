@@ -13,6 +13,7 @@ class TransactionInvoice(TransactionAwareEntity):
         'billing_address': 'Address',
         'completion': 'TransactionCompletion',
         'created_on': 'datetime',
+        'derecognized_by': 'int',
         'derecognized_on': 'datetime',
         'due_on': 'datetime',
         'environment': 'Environment',
@@ -31,7 +32,7 @@ class TransactionInvoice(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount','billing_address': 'billingAddress','completion': 'completion','created_on': 'createdOn','derecognized_on': 'derecognizedOn','due_on': 'dueOn','environment': 'environment','external_id': 'externalId','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','outstanding_amount': 'outstandingAmount','paid_on': 'paidOn','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','tax_amount': 'taxAmount','time_zone': 'timeZone','version': 'version',
+        'amount': 'amount','billing_address': 'billingAddress','completion': 'completion','created_on': 'createdOn','derecognized_by': 'derecognizedBy','derecognized_on': 'derecognizedOn','due_on': 'dueOn','environment': 'environment','external_id': 'externalId','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','outstanding_amount': 'outstandingAmount','paid_on': 'paidOn','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','tax_amount': 'taxAmount','time_zone': 'timeZone','version': 'version',
     }
 
     
@@ -39,6 +40,7 @@ class TransactionInvoice(TransactionAwareEntity):
     _billing_address = None
     _completion = None
     _created_on = None
+    _derecognized_by = None
     _derecognized_on = None
     _due_on = None
     _environment = None
@@ -62,6 +64,7 @@ class TransactionInvoice(TransactionAwareEntity):
         self.billing_address = kwargs.get('billing_address', None)
         self.completion = kwargs.get('completion', None)
         self.created_on = kwargs.get('created_on', None)
+        self.derecognized_by = kwargs.get('derecognized_by', None)
         self.derecognized_on = kwargs.get('derecognized_on', None)
         self.due_on = kwargs.get('due_on', None)
         self.environment = kwargs.get('environment', None)
@@ -173,6 +176,29 @@ class TransactionInvoice(TransactionAwareEntity):
         """
 
         self._created_on = created_on
+    
+    @property
+    def derecognized_by(self):
+        """Gets the derecognized_by of this TransactionInvoice.
+
+            The id of the user which marked the invoice as derecognized.
+
+        :return: The derecognized_by of this TransactionInvoice.
+        :rtype: int
+        """
+        return self._derecognized_by
+
+    @derecognized_by.setter
+    def derecognized_by(self, derecognized_by):
+        """Sets the derecognized_by of this TransactionInvoice.
+
+            The id of the user which marked the invoice as derecognized.
+
+        :param derecognized_by: The derecognized_by of this TransactionInvoice.
+        :type: int
+        """
+
+        self._derecognized_by = derecognized_by
     
     @property
     def derecognized_on(self):

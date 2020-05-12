@@ -14,6 +14,7 @@ class TokenVersion:
         'created_on': 'datetime',
         'environment': 'ChargeAttemptEnvironment',
         'expires_on': 'datetime',
+        'icon_url': 'str',
         'id': 'int',
         'labels': 'list[Label]',
         'language': 'str',
@@ -34,7 +35,7 @@ class TokenVersion:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_information_hashes': 'paymentInformationHashes','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
+        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','icon_url': 'iconUrl','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_information_hashes': 'paymentInformationHashes','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
     }
 
     
@@ -43,6 +44,7 @@ class TokenVersion:
     _created_on = None
     _environment = None
     _expires_on = None
+    _icon_url = None
     _id = None
     _labels = None
     _language = None
@@ -69,6 +71,7 @@ class TokenVersion:
         self.created_on = kwargs.get('created_on', None)
         self.environment = kwargs.get('environment', None)
         self.expires_on = kwargs.get('expires_on', None)
+        self.icon_url = kwargs.get('icon_url', None)
         self.id = kwargs.get('id', None)
         self.labels = kwargs.get('labels', None)
         self.language = kwargs.get('language', None)
@@ -203,6 +206,29 @@ class TokenVersion:
         """
 
         self._expires_on = expires_on
+    
+    @property
+    def icon_url(self):
+        """Gets the icon_url of this TokenVersion.
+
+            
+
+        :return: The icon_url of this TokenVersion.
+        :rtype: str
+        """
+        return self._icon_url
+
+    @icon_url.setter
+    def icon_url(self, icon_url):
+        """Sets the icon_url of this TokenVersion.
+
+            
+
+        :param icon_url: The icon_url of this TokenVersion.
+        :type: str
+        """
+
+        self._icon_url = icon_url
     
     @property
     def id(self):

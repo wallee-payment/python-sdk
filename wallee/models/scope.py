@@ -12,6 +12,7 @@ class Scope:
         'domain_name': 'str',
         'features': 'list[Feature]',
         'id': 'int',
+        'machine_name': 'str',
         'name': 'str',
         'planned_purge_date': 'datetime',
         'port': 'int',
@@ -23,13 +24,14 @@ class Scope:
     }
 
     attribute_map = {
-        'domain_name': 'domainName','features': 'features','id': 'id','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
+        'domain_name': 'domainName','features': 'features','id': 'id','machine_name': 'machineName','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
     }
 
     
     _domain_name = None
     _features = None
     _id = None
+    _machine_name = None
     _name = None
     _planned_purge_date = None
     _port = None
@@ -45,6 +47,7 @@ class Scope:
         self.domain_name = kwargs.get('domain_name', None)
         self.features = kwargs.get('features', None)
         self.id = kwargs.get('id', None)
+        self.machine_name = kwargs.get('machine_name', None)
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.port = kwargs.get('port', None)
@@ -124,6 +127,29 @@ class Scope:
         """
 
         self._id = id
+    
+    @property
+    def machine_name(self):
+        """Gets the machine_name of this Scope.
+
+            
+
+        :return: The machine_name of this Scope.
+        :rtype: str
+        """
+        return self._machine_name
+
+    @machine_name.setter
+    def machine_name(self, machine_name):
+        """Sets the machine_name of this Scope.
+
+            
+
+        :param machine_name: The machine_name of this Scope.
+        :type: str
+        """
+
+        self._machine_name = machine_name
     
     @property
     def name(self):

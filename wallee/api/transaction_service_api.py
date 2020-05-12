@@ -724,47 +724,49 @@ class TransactionServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def fetch_possible_payment_methods(self, space_id, id, **kwargs):
+    def fetch_payment_methods(self, space_id, id, integration_mode, **kwargs):
         """Fetch Possible Payment Methods
 
         This operation allows to get the payment method configurations which can be used with the provided transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_possible_payment_methods(space_id, id, async_req=True)
+        >>> thread = api.fetch_payment_methods(space_id, id, integration_mode, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
         :param int id: The id of the transaction which should be returned. (required)
+        :param str integration_mode: The integration mode defines the type of integration that is applied on the transaction. (required)
         :return: list[PaymentMethodConfiguration]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.fetch_possible_payment_methods_with_http_info(space_id, id, **kwargs)
+            return self.fetch_payment_methods_with_http_info(space_id, id, integration_mode, **kwargs)
         else:
-            (data) = self.fetch_possible_payment_methods_with_http_info(space_id, id, **kwargs)
+            (data) = self.fetch_payment_methods_with_http_info(space_id, id, integration_mode, **kwargs)
             return data
 
-    def fetch_possible_payment_methods_with_http_info(self, space_id, id, **kwargs):
+    def fetch_payment_methods_with_http_info(self, space_id, id, integration_mode, **kwargs):
         """Fetch Possible Payment Methods
 
         This operation allows to get the payment method configurations which can be used with the provided transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_possible_payment_methods_with_http_info(space_id, id, async_req=True)
+        >>> thread = api.fetch_payment_methods_with_http_info(space_id, id, integration_mode, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
         :param int id: The id of the transaction which should be returned. (required)
+        :param str integration_mode: The integration mode defines the type of integration that is applied on the transaction. (required)
         :return: list[PaymentMethodConfiguration]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'id']
+        all_params = ['space_id', 'id', 'integration_mode']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -775,18 +777,22 @@ class TransactionServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method fetch_possible_payment_methods" % key
+                    " to method fetch_payment_methods" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'space_id' is set
         if ('space_id' not in params or
                 params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `fetch_possible_payment_methods`")
+            raise ValueError("Missing the required parameter `space_id` when calling `fetch_payment_methods`")
         # verify the required parameter 'id' is set
         if ('id' not in params or
                 params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `fetch_possible_payment_methods`")
+            raise ValueError("Missing the required parameter `id` when calling `fetch_payment_methods`")
+        # verify the required parameter 'integration_mode' is set
+        if ('integration_mode' not in params or
+                params['integration_mode'] is None):
+            raise ValueError("Missing the required parameter `integration_mode` when calling `fetch_payment_methods`")
 
         collection_formats = {}
 
@@ -797,6 +803,8 @@ class TransactionServiceApi:
             query_params.append(('spaceId', params['space_id']))
         if 'id' in params:
             query_params.append(('id', params['id']))
+        if 'integration_mode' in params:
+            query_params.append(('integrationMode', params['integration_mode']))
 
         header_params = {}
 
@@ -812,7 +820,7 @@ class TransactionServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/transaction/fetchPossiblePaymentMethods', 'GET',
+            '/transaction/fetch-payment-methods', 'GET',
             path_params,
             query_params,
             header_params,
@@ -827,45 +835,47 @@ class TransactionServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def fetch_possible_payment_methods_with_credentials(self, credentials, **kwargs):
+    def fetch_payment_methods_with_credentials(self, credentials, integration_mode, **kwargs):
         """Fetch Possible Payment Methods with Credentials
 
         This operation allows to get the payment method configurations which can be used with the provided transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_possible_payment_methods_with_credentials(credentials, async_req=True)
+        >>> thread = api.fetch_payment_methods_with_credentials(credentials, integration_mode, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str credentials: The credentials identifies the transaction and contains the security details which grants the access this operation. (required)
+        :param str integration_mode: The integration mode defines the type of integration that is applied on the transaction. (required)
         :return: list[PaymentMethodConfiguration]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.fetch_possible_payment_methods_with_credentials_with_http_info(credentials, **kwargs)
+            return self.fetch_payment_methods_with_credentials_with_http_info(credentials, integration_mode, **kwargs)
         else:
-            (data) = self.fetch_possible_payment_methods_with_credentials_with_http_info(credentials, **kwargs)
+            (data) = self.fetch_payment_methods_with_credentials_with_http_info(credentials, integration_mode, **kwargs)
             return data
 
-    def fetch_possible_payment_methods_with_credentials_with_http_info(self, credentials, **kwargs):
+    def fetch_payment_methods_with_credentials_with_http_info(self, credentials, integration_mode, **kwargs):
         """Fetch Possible Payment Methods with Credentials
 
         This operation allows to get the payment method configurations which can be used with the provided transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.fetch_possible_payment_methods_with_credentials_with_http_info(credentials, async_req=True)
+        >>> thread = api.fetch_payment_methods_with_credentials_with_http_info(credentials, integration_mode, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str credentials: The credentials identifies the transaction and contains the security details which grants the access this operation. (required)
+        :param str integration_mode: The integration mode defines the type of integration that is applied on the transaction. (required)
         :return: list[PaymentMethodConfiguration]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['credentials']
+        all_params = ['credentials', 'integration_mode']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -876,14 +886,18 @@ class TransactionServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method fetch_possible_payment_methods_with_credentials" % key
+                    " to method fetch_payment_methods_with_credentials" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'credentials' is set
         if ('credentials' not in params or
                 params['credentials'] is None):
-            raise ValueError("Missing the required parameter `credentials` when calling `fetch_possible_payment_methods_with_credentials`")
+            raise ValueError("Missing the required parameter `credentials` when calling `fetch_payment_methods_with_credentials`")
+        # verify the required parameter 'integration_mode' is set
+        if ('integration_mode' not in params or
+                params['integration_mode'] is None):
+            raise ValueError("Missing the required parameter `integration_mode` when calling `fetch_payment_methods_with_credentials`")
 
         collection_formats = {}
 
@@ -892,6 +906,8 @@ class TransactionServiceApi:
         query_params = []
         if 'credentials' in params:
             query_params.append(('credentials', params['credentials']))
+        if 'integration_mode' in params:
+            query_params.append(('integrationMode', params['integration_mode']))
 
         header_params = {}
 
@@ -907,7 +923,7 @@ class TransactionServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/transaction/fetchPossiblePaymentMethodsWithCredentials', 'GET',
+            '/transaction/fetch-payment-methods-with-credentials', 'GET',
             path_params,
             query_params,
             header_params,

@@ -14,6 +14,7 @@ class ShopifyIntegration:
         'app_version': 'ShopifyIntegrationAppVersion',
         'currency': 'str',
         'id': 'int',
+        'installed': 'bool',
         'integrated_payment_form_enabled': 'bool',
         'language': 'str',
         'login_name': 'str',
@@ -31,7 +32,7 @@ class ShopifyIntegration:
     }
 
     attribute_map = {
-        'allow_invoice_download': 'allowInvoiceDownload','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','app_version': 'appVersion','currency': 'currency','id': 'id','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','planned_purge_date': 'plannedPurgeDate','proxy_path': 'proxyPath','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','version': 'version',
+        'allow_invoice_download': 'allowInvoiceDownload','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','app_version': 'appVersion','currency': 'currency','id': 'id','installed': 'installed','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','planned_purge_date': 'plannedPurgeDate','proxy_path': 'proxyPath','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','version': 'version',
     }
 
     
@@ -40,6 +41,7 @@ class ShopifyIntegration:
     _app_version = None
     _currency = None
     _id = None
+    _installed = None
     _integrated_payment_form_enabled = None
     _language = None
     _login_name = None
@@ -63,6 +65,7 @@ class ShopifyIntegration:
         self.app_version = kwargs.get('app_version', None)
         self.currency = kwargs.get('currency', None)
         self.id = kwargs.get('id', None)
+        self.installed = kwargs.get('installed', None)
         self.integrated_payment_form_enabled = kwargs.get('integrated_payment_form_enabled', None)
         self.language = kwargs.get('language', None)
         self.login_name = kwargs.get('login_name', None)
@@ -194,6 +197,29 @@ class ShopifyIntegration:
         """
 
         self._id = id
+    
+    @property
+    def installed(self):
+        """Gets the installed of this ShopifyIntegration.
+
+            
+
+        :return: The installed of this ShopifyIntegration.
+        :rtype: bool
+        """
+        return self._installed
+
+    @installed.setter
+    def installed(self, installed):
+        """Sets the installed of this ShopifyIntegration.
+
+            
+
+        :param installed: The installed of this ShopifyIntegration.
+        :type: bool
+        """
+
+        self._installed = installed
     
     @property
     def integrated_payment_form_enabled(self):

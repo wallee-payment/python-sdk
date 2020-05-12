@@ -11,6 +11,8 @@ class Account:
     
         'active': 'bool',
         'active_or_restricted_active': 'bool',
+        'deleted_by': 'int',
+        'deleted_on': 'datetime',
         'id': 'int',
         'name': 'str',
         'parent_account': 'Account',
@@ -24,12 +26,14 @@ class Account:
     }
 
     attribute_map = {
-        'active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','id': 'id','name': 'name','parent_account': 'parentAccount','planned_purge_date': 'plannedPurgeDate','restricted_active': 'restrictedActive','scope': 'scope','state': 'state','subaccount_limit': 'subaccountLimit','type': 'type','version': 'version',
+        'active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','deleted_by': 'deletedBy','deleted_on': 'deletedOn','id': 'id','name': 'name','parent_account': 'parentAccount','planned_purge_date': 'plannedPurgeDate','restricted_active': 'restrictedActive','scope': 'scope','state': 'state','subaccount_limit': 'subaccountLimit','type': 'type','version': 'version',
     }
 
     
     _active = None
     _active_or_restricted_active = None
+    _deleted_by = None
+    _deleted_on = None
     _id = None
     _name = None
     _parent_account = None
@@ -46,6 +50,8 @@ class Account:
         
         self.active = kwargs.get('active', None)
         self.active_or_restricted_active = kwargs.get('active_or_restricted_active', None)
+        self.deleted_by = kwargs.get('deleted_by', None)
+        self.deleted_on = kwargs.get('deleted_on', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.parent_account = kwargs.get('parent_account', None)
@@ -104,6 +110,52 @@ class Account:
         """
 
         self._active_or_restricted_active = active_or_restricted_active
+    
+    @property
+    def deleted_by(self):
+        """Gets the deleted_by of this Account.
+
+            The ID of a user that deleted this entity.
+
+        :return: The deleted_by of this Account.
+        :rtype: int
+        """
+        return self._deleted_by
+
+    @deleted_by.setter
+    def deleted_by(self, deleted_by):
+        """Sets the deleted_by of this Account.
+
+            The ID of a user that deleted this entity.
+
+        :param deleted_by: The deleted_by of this Account.
+        :type: int
+        """
+
+        self._deleted_by = deleted_by
+    
+    @property
+    def deleted_on(self):
+        """Gets the deleted_on of this Account.
+
+            The date and time when this entity was deleted.
+
+        :return: The deleted_on of this Account.
+        :rtype: datetime
+        """
+        return self._deleted_on
+
+    @deleted_on.setter
+    def deleted_on(self, deleted_on):
+        """Sets the deleted_on of this Account.
+
+            The date and time when this entity was deleted.
+
+        :param deleted_on: The deleted_on of this Account.
+        :type: datetime
+        """
+
+        self._deleted_on = deleted_on
     
     @property
     def id(self):

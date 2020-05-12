@@ -13,13 +13,14 @@ class TransactionCreate(AbstractTransactionPending):
         'charge_retry_enabled': 'bool',
         'customers_presence': 'CustomersPresence',
         'device_session_identifier': 'str',
+        'emails_disabled': 'bool',
         'environment': 'Environment',
         'environment_selection_strategy': 'TransactionEnvironmentSelectionStrategy',
         'space_view_id': 'int',
     }
 
     attribute_map = {
-        'auto_confirmation_enabled': 'autoConfirmationEnabled','charge_retry_enabled': 'chargeRetryEnabled','customers_presence': 'customersPresence','device_session_identifier': 'deviceSessionIdentifier','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','space_view_id': 'spaceViewId',
+        'auto_confirmation_enabled': 'autoConfirmationEnabled','charge_retry_enabled': 'chargeRetryEnabled','customers_presence': 'customersPresence','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','space_view_id': 'spaceViewId',
     }
 
     
@@ -27,6 +28,7 @@ class TransactionCreate(AbstractTransactionPending):
     _charge_retry_enabled = None
     _customers_presence = None
     _device_session_identifier = None
+    _emails_disabled = None
     _environment = None
     _environment_selection_strategy = None
     _space_view_id = None
@@ -38,6 +40,7 @@ class TransactionCreate(AbstractTransactionPending):
         self.charge_retry_enabled = kwargs.get('charge_retry_enabled', None)
         self.customers_presence = kwargs.get('customers_presence', None)
         self.device_session_identifier = kwargs.get('device_session_identifier', None)
+        self.emails_disabled = kwargs.get('emails_disabled', None)
         self.environment = kwargs.get('environment', None)
         self.environment_selection_strategy = kwargs.get('environment_selection_strategy', None)
         self.space_view_id = kwargs.get('space_view_id', None)
@@ -137,6 +140,29 @@ class TransactionCreate(AbstractTransactionPending):
         """
 
         self._device_session_identifier = device_session_identifier
+    
+    @property
+    def emails_disabled(self):
+        """Gets the emails_disabled of this TransactionCreate.
+
+            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+
+        :return: The emails_disabled of this TransactionCreate.
+        :rtype: bool
+        """
+        return self._emails_disabled
+
+    @emails_disabled.setter
+    def emails_disabled(self, emails_disabled):
+        """Sets the emails_disabled of this TransactionCreate.
+
+            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+
+        :param emails_disabled: The emails_disabled of this TransactionCreate.
+        :type: bool
+        """
+
+        self._emails_disabled = emails_disabled
     
     @property
     def environment(self):

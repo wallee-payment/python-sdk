@@ -36,11 +36,12 @@ class ShopifySubscriptionProduct:
         'store_order_confirmation_email_enabled': 'bool',
         'subscriber_suspension_allowed': 'bool',
         'termination_billing_cycles': 'int',
+        'updated_at': 'datetime',
         'version': 'int',
     }
 
     attribute_map = {
-        'absolute_price_adjustment': 'absolutePriceAdjustment','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','fixed_price': 'fixedPrice','id': 'id','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','planned_purge_date': 'plannedPurgeDate','pricing_option': 'pricingOption','product_id': 'productId','product_name': 'productName','product_price': 'productPrice','product_sku': 'productSku','product_variant_id': 'productVariantId','product_variant_name': 'productVariantName','relative_price_adjustment': 'relativePriceAdjustment','shipping_required': 'shippingRequired','shop': 'shop','state': 'state','stock_check_required': 'stockCheckRequired','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','termination_billing_cycles': 'terminationBillingCycles','version': 'version',
+        'absolute_price_adjustment': 'absolutePriceAdjustment','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','fixed_price': 'fixedPrice','id': 'id','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','planned_purge_date': 'plannedPurgeDate','pricing_option': 'pricingOption','product_id': 'productId','product_name': 'productName','product_price': 'productPrice','product_sku': 'productSku','product_variant_id': 'productVariantId','product_variant_name': 'productVariantName','relative_price_adjustment': 'relativePriceAdjustment','shipping_required': 'shippingRequired','shop': 'shop','state': 'state','stock_check_required': 'stockCheckRequired','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','termination_billing_cycles': 'terminationBillingCycles','updated_at': 'updatedAt','version': 'version',
     }
 
     
@@ -71,6 +72,7 @@ class ShopifySubscriptionProduct:
     _store_order_confirmation_email_enabled = None
     _subscriber_suspension_allowed = None
     _termination_billing_cycles = None
+    _updated_at = None
     _version = None
 
     def __init__(self, **kwargs):
@@ -103,6 +105,7 @@ class ShopifySubscriptionProduct:
         self.store_order_confirmation_email_enabled = kwargs.get('store_order_confirmation_email_enabled', None)
         self.subscriber_suspension_allowed = kwargs.get('subscriber_suspension_allowed', None)
         self.termination_billing_cycles = kwargs.get('termination_billing_cycles', None)
+        self.updated_at = kwargs.get('updated_at', None)
         self.version = kwargs.get('version', None)
         
 
@@ -727,6 +730,29 @@ class ShopifySubscriptionProduct:
         """
 
         self._termination_billing_cycles = termination_billing_cycles
+    
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this ShopifySubscriptionProduct.
+
+            
+
+        :return: The updated_at of this ShopifySubscriptionProduct.
+        :rtype: datetime
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this ShopifySubscriptionProduct.
+
+            
+
+        :param updated_at: The updated_at of this ShopifySubscriptionProduct.
+        :type: datetime
+        """
+
+        self._updated_at = updated_at
     
     @property
     def version(self):

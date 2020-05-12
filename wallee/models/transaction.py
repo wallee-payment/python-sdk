@@ -34,6 +34,7 @@ class Transaction:
         'customers_presence': 'CustomersPresence',
         'delivery_decision_made_on': 'datetime',
         'device_session_identifier': 'str',
+        'emails_disabled': 'bool',
         'end_of_life': 'datetime',
         'environment': 'Environment',
         'environment_selection_strategy': 'TransactionEnvironmentSelectionStrategy',
@@ -70,7 +71,7 @@ class Transaction:
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
     }
 
     
@@ -99,6 +100,7 @@ class Transaction:
     _customers_presence = None
     _delivery_decision_made_on = None
     _device_session_identifier = None
+    _emails_disabled = None
     _end_of_life = None
     _environment = None
     _environment_selection_strategy = None
@@ -161,6 +163,7 @@ class Transaction:
         self.customers_presence = kwargs.get('customers_presence', None)
         self.delivery_decision_made_on = kwargs.get('delivery_decision_made_on', None)
         self.device_session_identifier = kwargs.get('device_session_identifier', None)
+        self.emails_disabled = kwargs.get('emails_disabled', None)
         self.end_of_life = kwargs.get('end_of_life', None)
         self.environment = kwargs.get('environment', None)
         self.environment_selection_strategy = kwargs.get('environment_selection_strategy', None)
@@ -771,6 +774,29 @@ class Transaction:
         """
 
         self._device_session_identifier = device_session_identifier
+    
+    @property
+    def emails_disabled(self):
+        """Gets the emails_disabled of this Transaction.
+
+            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+
+        :return: The emails_disabled of this Transaction.
+        :rtype: bool
+        """
+        return self._emails_disabled
+
+    @emails_disabled.setter
+    def emails_disabled(self, emails_disabled):
+        """Sets the emails_disabled of this Transaction.
+
+            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+
+        :param emails_disabled: The emails_disabled of this Transaction.
+        :type: bool
+        """
+
+        self._emails_disabled = emails_disabled
     
     @property
     def end_of_life(self):

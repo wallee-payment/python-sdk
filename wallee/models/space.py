@@ -13,6 +13,8 @@ class Space:
         'active': 'bool',
         'active_or_restricted_active': 'bool',
         'database': 'TenantDatabase',
+        'deleted_by': 'int',
+        'deleted_on': 'datetime',
         'id': 'int',
         'name': 'str',
         'planned_purge_date': 'datetime',
@@ -27,7 +29,7 @@ class Space:
     }
 
     attribute_map = {
-        'account': 'account','active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','database': 'database','id': 'id','name': 'name','planned_purge_date': 'plannedPurgeDate','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','restricted_active': 'restrictedActive','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone','version': 'version',
+        'account': 'account','active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','database': 'database','deleted_by': 'deletedBy','deleted_on': 'deletedOn','id': 'id','name': 'name','planned_purge_date': 'plannedPurgeDate','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','restricted_active': 'restrictedActive','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone','version': 'version',
     }
 
     
@@ -35,6 +37,8 @@ class Space:
     _active = None
     _active_or_restricted_active = None
     _database = None
+    _deleted_by = None
+    _deleted_on = None
     _id = None
     _name = None
     _planned_purge_date = None
@@ -54,6 +58,8 @@ class Space:
         self.active = kwargs.get('active', None)
         self.active_or_restricted_active = kwargs.get('active_or_restricted_active', None)
         self.database = kwargs.get('database', None)
+        self.deleted_by = kwargs.get('deleted_by', None)
+        self.deleted_on = kwargs.get('deleted_on', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
@@ -159,6 +165,52 @@ class Space:
         """
 
         self._database = database
+    
+    @property
+    def deleted_by(self):
+        """Gets the deleted_by of this Space.
+
+            The ID of a user that deleted this entity.
+
+        :return: The deleted_by of this Space.
+        :rtype: int
+        """
+        return self._deleted_by
+
+    @deleted_by.setter
+    def deleted_by(self, deleted_by):
+        """Sets the deleted_by of this Space.
+
+            The ID of a user that deleted this entity.
+
+        :param deleted_by: The deleted_by of this Space.
+        :type: int
+        """
+
+        self._deleted_by = deleted_by
+    
+    @property
+    def deleted_on(self):
+        """Gets the deleted_on of this Space.
+
+            The date and time when this entity was deleted.
+
+        :return: The deleted_on of this Space.
+        :rtype: datetime
+        """
+        return self._deleted_on
+
+    @deleted_on.setter
+    def deleted_on(self, deleted_on):
+        """Sets the deleted_on of this Space.
+
+            The date and time when this entity was deleted.
+
+        :param deleted_on: The deleted_on of this Space.
+        :type: datetime
+        """
+
+        self._deleted_on = deleted_on
     
     @property
     def id(self):
