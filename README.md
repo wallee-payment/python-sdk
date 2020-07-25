@@ -10,7 +10,7 @@ The wallee Python library wraps around the wallee API. This library facilitates 
 
 ## Requirements
 
-- Python 3.4+
+- Python 3.5+
 
 ## Installation
 
@@ -77,7 +77,7 @@ transaction_payment_page_service = TransactionPaymentPageServiceApi(configuratio
 # create line item
 line_item = LineItem(
     name='Red T-Shirt',
-    unique_id=5412,
+    unique_id='5412',
     sku='red-t-shirt-123',
     quantity=1,
     amount_including_tax=29.95,
