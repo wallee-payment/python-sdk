@@ -122,6 +122,8 @@ class DebtCollectionCaseDocument:
         :param file_name: The file_name of this DebtCollectionCaseDocument.
         :type: str
         """
+        if file_name is not None and len(file_name) > 100:
+            raise ValueError("Invalid value for `file_name`, length must be less than or equal to `100`")
 
         self._file_name = file_name
     
@@ -260,6 +262,8 @@ class DebtCollectionCaseDocument:
         :param storage_id: The storage_id of this DebtCollectionCaseDocument.
         :type: str
         """
+        if storage_id is not None and len(storage_id) > 100:
+            raise ValueError("Invalid value for `storage_id`, length must be less than or equal to `100`")
 
         self._storage_id = storage_id
     
@@ -283,6 +287,8 @@ class DebtCollectionCaseDocument:
         :param unique_id: The unique_id of this DebtCollectionCaseDocument.
         :type: str
         """
+        if unique_id is not None and len(unique_id) > 500:
+            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `500`")
 
         self._unique_id = unique_id
     

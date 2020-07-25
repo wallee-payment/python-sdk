@@ -287,6 +287,8 @@ class ShopifyIntegration:
         :param login_name: The login_name of this ShopifyIntegration.
         :type: str
         """
+        if login_name is not None and len(login_name) > 100:
+            raise ValueError("Invalid value for `login_name`, length must be less than or equal to `100`")
 
         self._login_name = login_name
     
@@ -310,6 +312,8 @@ class ShopifyIntegration:
         :param name: The name of this ShopifyIntegration.
         :type: str
         """
+        if name is not None and len(name) > 100:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
 
         self._name = name
     
@@ -402,6 +406,8 @@ class ShopifyIntegration:
         :param shop_name: The shop_name of this ShopifyIntegration.
         :type: str
         """
+        if shop_name is not None and len(shop_name) > 100:
+            raise ValueError("Invalid value for `shop_name`, length must be less than or equal to `100`")
 
         self._shop_name = shop_name
     

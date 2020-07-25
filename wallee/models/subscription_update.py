@@ -133,6 +133,8 @@ class SubscriptionUpdate:
         :param description: The description of this SubscriptionUpdate.
         :type: str
         """
+        if description is not None and len(description) > 200:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
 
         self._description = description
     

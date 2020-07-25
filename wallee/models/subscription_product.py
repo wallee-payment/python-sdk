@@ -168,6 +168,8 @@ class SubscriptionProduct:
         :param name: The name of this SubscriptionProduct.
         :type: str
         """
+        if name is not None and len(name) > 100:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
 
         self._name = name
     
@@ -214,6 +216,8 @@ class SubscriptionProduct:
         :param reference: The reference of this SubscriptionProduct.
         :type: str
         """
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
 
         self._reference = reference
     

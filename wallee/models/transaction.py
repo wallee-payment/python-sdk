@@ -64,6 +64,8 @@ class Transaction:
         'time_zone': 'str',
         'token': 'Token',
         'tokenization_mode': 'TokenizationMode',
+        'total_applied_fees': 'float',
+        'total_settled_amount': 'float',
         'user_agent_header': 'str',
         'user_failure_message': 'str',
         'user_interface_type': 'TransactionUserInterfaceType',
@@ -71,7 +73,7 @@ class Transaction:
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
     }
 
     
@@ -130,6 +132,8 @@ class Transaction:
     _time_zone = None
     _token = None
     _tokenization_mode = None
+    _total_applied_fees = None
+    _total_settled_amount = None
     _user_agent_header = None
     _user_failure_message = None
     _user_interface_type = None
@@ -193,6 +197,8 @@ class Transaction:
         self.time_zone = kwargs.get('time_zone', None)
         self.token = kwargs.get('token', None)
         self.tokenization_mode = kwargs.get('tokenization_mode', None)
+        self.total_applied_fees = kwargs.get('total_applied_fees', None)
+        self.total_settled_amount = kwargs.get('total_settled_amount', None)
         self.user_agent_header = kwargs.get('user_agent_header', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.user_interface_type = kwargs.get('user_interface_type', None)
@@ -680,6 +686,8 @@ class Transaction:
         :param customer_email_address: The customer_email_address of this Transaction.
         :type: str
         """
+        if customer_email_address is not None and len(customer_email_address) > 254:
+            raise ValueError("Invalid value for `customer_email_address`, length must be less than or equal to `254`")
 
         self._customer_email_address = customer_email_address
     
@@ -772,6 +780,10 @@ class Transaction:
         :param device_session_identifier: The device_session_identifier of this Transaction.
         :type: str
         """
+        if device_session_identifier is not None and len(device_session_identifier) > 40:
+            raise ValueError("Invalid value for `device_session_identifier`, length must be less than or equal to `40`")
+        if device_session_identifier is not None and len(device_session_identifier) < 10:
+            raise ValueError("Invalid value for `device_session_identifier`, length must be greater than or equal to `10`")
 
         self._device_session_identifier = device_session_identifier
     
@@ -1048,6 +1060,8 @@ class Transaction:
         :param invoice_merchant_reference: The invoice_merchant_reference of this Transaction.
         :type: str
         """
+        if invoice_merchant_reference is not None and len(invoice_merchant_reference) > 100:
+            raise ValueError("Invalid value for `invoice_merchant_reference`, length must be less than or equal to `100`")
 
         self._invoice_merchant_reference = invoice_merchant_reference
     
@@ -1140,6 +1154,8 @@ class Transaction:
         :param merchant_reference: The merchant_reference of this Transaction.
         :type: str
         """
+        if merchant_reference is not None and len(merchant_reference) > 100:
+            raise ValueError("Invalid value for `merchant_reference`, length must be less than or equal to `100`")
 
         self._merchant_reference = merchant_reference
     
@@ -1324,6 +1340,8 @@ class Transaction:
         :param shipping_method: The shipping_method of this Transaction.
         :type: str
         """
+        if shipping_method is not None and len(shipping_method) > 200:
+            raise ValueError("Invalid value for `shipping_method`, length must be less than or equal to `200`")
 
         self._shipping_method = shipping_method
     
@@ -1464,6 +1482,52 @@ class Transaction:
         """
 
         self._tokenization_mode = tokenization_mode
+    
+    @property
+    def total_applied_fees(self):
+        """Gets the total_applied_fees of this Transaction.
+
+            The total applied fees is the sum of all fees that have been applied so far.
+
+        :return: The total_applied_fees of this Transaction.
+        :rtype: float
+        """
+        return self._total_applied_fees
+
+    @total_applied_fees.setter
+    def total_applied_fees(self, total_applied_fees):
+        """Sets the total_applied_fees of this Transaction.
+
+            The total applied fees is the sum of all fees that have been applied so far.
+
+        :param total_applied_fees: The total_applied_fees of this Transaction.
+        :type: float
+        """
+
+        self._total_applied_fees = total_applied_fees
+    
+    @property
+    def total_settled_amount(self):
+        """Gets the total_settled_amount of this Transaction.
+
+            The total settled amount is the total amount which has been settled so far.
+
+        :return: The total_settled_amount of this Transaction.
+        :rtype: float
+        """
+        return self._total_settled_amount
+
+    @total_settled_amount.setter
+    def total_settled_amount(self, total_settled_amount):
+        """Sets the total_settled_amount of this Transaction.
+
+            The total settled amount is the total amount which has been settled so far.
+
+        :param total_settled_amount: The total_settled_amount of this Transaction.
+        :type: float
+        """
+
+        self._total_settled_amount = total_settled_amount
     
     @property
     def user_agent_header(self):

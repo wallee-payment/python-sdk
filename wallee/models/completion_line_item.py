@@ -98,6 +98,8 @@ class CompletionLineItem:
         :param unique_id: The unique_id of this CompletionLineItem.
         :type: str
         """
+        if unique_id is not None and len(unique_id) > 200:
+            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
 
         self._unique_id = unique_id
     

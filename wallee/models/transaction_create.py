@@ -138,6 +138,10 @@ class TransactionCreate(AbstractTransactionPending):
         :param device_session_identifier: The device_session_identifier of this TransactionCreate.
         :type: str
         """
+        if device_session_identifier is not None and len(device_session_identifier) > 40:
+            raise ValueError("Invalid value for `device_session_identifier`, length must be less than or equal to `40`")
+        if device_session_identifier is not None and len(device_session_identifier) < 10:
+            raise ValueError("Invalid value for `device_session_identifier`, length must be greater than or equal to `10`")
 
         self._device_session_identifier = device_session_identifier
     

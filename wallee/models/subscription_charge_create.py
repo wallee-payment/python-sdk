@@ -163,6 +163,8 @@ class SubscriptionChargeCreate:
         :param reference: The reference of this SubscriptionChargeCreate.
         :type: str
         """
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
 
         self._reference = reference
     

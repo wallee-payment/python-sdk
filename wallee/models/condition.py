@@ -133,6 +133,8 @@ class Condition:
         :param name: The name of this Condition.
         :type: str
         """
+        if name is not None and len(name) > 100:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
 
         self._name = name
     

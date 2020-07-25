@@ -52,6 +52,7 @@ from wallee.api.shopify_subscription_product_service_api import ShopifySubscript
 from wallee.api.shopify_subscription_service_api import ShopifySubscriptionServiceApi
 from wallee.api.shopify_subscription_suspension_service_api import ShopifySubscriptionSuspensionServiceApi
 from wallee.api.shopify_subscription_version_service_api import ShopifySubscriptionVersionServiceApi
+from wallee.api.shopify_transaction_service_api import ShopifyTransactionServiceApi
 from wallee.api.space_service_api import SpaceServiceApi
 from wallee.api.static_value_service_api import StaticValueServiceApi
 from wallee.api.subscriber_service_api import SubscriberServiceApi
@@ -412,6 +413,7 @@ from wallee.models.human_user_update import HumanUserUpdate
 from wallee.models.installment_payment_slice import InstallmentPaymentSlice
 from wallee.models.payment_link_active import PaymentLinkActive
 from wallee.models.payment_link_create import PaymentLinkCreate
+from wallee.models.payment_terminal_contact_address import PaymentTerminalContactAddress
 from wallee.models.refund_comment_active import RefundCommentActive
 from wallee.models.refund_comment_create import RefundCommentCreate
 from wallee.models.shopify_recurring_order import ShopifyRecurringOrder

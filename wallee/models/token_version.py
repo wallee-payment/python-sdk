@@ -342,6 +342,8 @@ class TokenVersion:
         :param name: The name of this TokenVersion.
         :type: str
         """
+        if name is not None and len(name) > 150:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
 
         self._name = name
     
@@ -503,6 +505,8 @@ class TokenVersion:
         :param processor_token: The processor_token of this TokenVersion.
         :type: str
         """
+        if processor_token is not None and len(processor_token) > 150:
+            raise ValueError("Invalid value for `processor_token`, length must be less than or equal to `150`")
 
         self._processor_token = processor_token
     

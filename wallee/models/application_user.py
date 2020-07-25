@@ -54,6 +54,8 @@ class ApplicationUser(User):
         :param name: The name of this ApplicationUser.
         :type: str
         """
+        if name is not None and len(name) > 256:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `256`")
 
         self._name = name
     

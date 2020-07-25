@@ -244,6 +244,10 @@ class LineItem:
         :param name: The name of this LineItem.
         :type: str
         """
+        if name is not None and len(name) > 150:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
+        if name is not None and len(name) < 1:
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")
 
         self._name = name
     
@@ -313,6 +317,8 @@ class LineItem:
         :param sku: The sku of this LineItem.
         :type: str
         """
+        if sku is not None and len(sku) > 200:
+            raise ValueError("Invalid value for `sku`, length must be less than or equal to `200`")
 
         self._sku = sku
     
@@ -520,6 +526,8 @@ class LineItem:
         :param unique_id: The unique_id of this LineItem.
         :type: str
         """
+        if unique_id is not None and len(unique_id) > 200:
+            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
 
         self._unique_id = unique_id
     

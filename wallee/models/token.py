@@ -105,6 +105,8 @@ class Token:
         :param customer_email_address: The customer_email_address of this Token.
         :type: str
         """
+        if customer_email_address is not None and len(customer_email_address) > 150:
+            raise ValueError("Invalid value for `customer_email_address`, length must be less than or equal to `150`")
 
         self._customer_email_address = customer_email_address
     
@@ -174,6 +176,10 @@ class Token:
         :param external_id: The external_id of this Token.
         :type: str
         """
+        if external_id is not None and len(external_id) > 100:
+            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
+        if external_id is not None and len(external_id) < 1:
+            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
     
@@ -335,6 +341,8 @@ class Token:
         :param token_reference: The token_reference of this Token.
         :type: str
         """
+        if token_reference is not None and len(token_reference) > 100:
+            raise ValueError("Invalid value for `token_reference`, length must be less than or equal to `100`")
 
         self._token_reference = token_reference
     

@@ -52,6 +52,8 @@ class LineItemReduction:
         :param line_item_unique_id: The line_item_unique_id of this LineItemReduction.
         :type: str
         """
+        if line_item_unique_id is not None and len(line_item_unique_id) > 200:
+            raise ValueError("Invalid value for `line_item_unique_id`, length must be less than or equal to `200`")
 
         self._line_item_unique_id = line_item_unique_id
     

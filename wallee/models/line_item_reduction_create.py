@@ -57,6 +57,8 @@ class LineItemReductionCreate:
         """
         if line_item_unique_id is None:
             raise ValueError("Invalid value for `line_item_unique_id`, must not be `None`")
+        if line_item_unique_id is not None and len(line_item_unique_id) > 200:
+            raise ValueError("Invalid value for `line_item_unique_id`, length must be less than or equal to `200`")
 
         self._line_item_unique_id = line_item_unique_id
     

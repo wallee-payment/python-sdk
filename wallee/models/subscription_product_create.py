@@ -51,6 +51,8 @@ class SubscriptionProductCreate(AbstractSubscriptionProductActive):
         """
         if reference is None:
             raise ValueError("Invalid value for `reference`, must not be `None`")
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
 
         self._reference = reference
     

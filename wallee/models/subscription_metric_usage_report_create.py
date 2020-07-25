@@ -87,6 +87,8 @@ class SubscriptionMetricUsageReportCreate:
         :param description: The description of this SubscriptionMetricUsageReportCreate.
         :type: str
         """
+        if description is not None and len(description) > 100:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `100`")
 
         self._description = description
     

@@ -98,6 +98,8 @@ class DatabaseTranslatedStringItem:
         :param translation: The translation of this DatabaseTranslatedStringItem.
         :type: str
         """
+        if translation is not None and len(translation) > 16777216:
+            raise ValueError("Invalid value for `translation`, length must be less than or equal to `16777216`")
 
         self._translation = translation
     

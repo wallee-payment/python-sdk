@@ -67,6 +67,8 @@ class AbstractHumanUserUpdate:
         :param email_address: The email_address of this AbstractHumanUserUpdate.
         :type: str
         """
+        if email_address is not None and len(email_address) > 128:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `128`")
 
         self._email_address = email_address
     
@@ -90,6 +92,8 @@ class AbstractHumanUserUpdate:
         :param firstname: The firstname of this AbstractHumanUserUpdate.
         :type: str
         """
+        if firstname is not None and len(firstname) > 100:
+            raise ValueError("Invalid value for `firstname`, length must be less than or equal to `100`")
 
         self._firstname = firstname
     
@@ -136,6 +140,8 @@ class AbstractHumanUserUpdate:
         :param lastname: The lastname of this AbstractHumanUserUpdate.
         :type: str
         """
+        if lastname is not None and len(lastname) > 100:
+            raise ValueError("Invalid value for `lastname`, length must be less than or equal to `100`")
 
         self._lastname = lastname
     
@@ -159,6 +165,8 @@ class AbstractHumanUserUpdate:
         :param mobile_phone_number: The mobile_phone_number of this AbstractHumanUserUpdate.
         :type: str
         """
+        if mobile_phone_number is not None and len(mobile_phone_number) > 30:
+            raise ValueError("Invalid value for `mobile_phone_number`, length must be less than or equal to `30`")
 
         self._mobile_phone_number = mobile_phone_number
     

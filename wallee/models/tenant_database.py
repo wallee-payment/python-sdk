@@ -75,6 +75,8 @@ class TenantDatabase:
         :param name: The name of this TenantDatabase.
         :type: str
         """
+        if name is not None and len(name) > 200:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `200`")
 
         self._name = name
     

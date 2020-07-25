@@ -53,6 +53,8 @@ class LineItemAttributeCreate:
         """
         if label is None:
             raise ValueError("Invalid value for `label`, must not be `None`")
+        if label is not None and len(label) > 512:
+            raise ValueError("Invalid value for `label`, length must be less than or equal to `512`")
 
         self._label = label
     
@@ -78,6 +80,8 @@ class LineItemAttributeCreate:
         """
         if value is None:
             raise ValueError("Invalid value for `value`, must not be `None`")
+        if value is not None and len(value) > 512:
+            raise ValueError("Invalid value for `value`, length must be less than or equal to `512`")
 
         self._value = value
     

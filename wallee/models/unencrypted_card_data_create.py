@@ -56,6 +56,8 @@ class UnencryptedCardDataCreate:
         :param card_holder_name: The card_holder_name of this UnencryptedCardDataCreate.
         :type: str
         """
+        if card_holder_name is not None and len(card_holder_name) > 100:
+            raise ValueError("Invalid value for `card_holder_name`, length must be less than or equal to `100`")
 
         self._card_holder_name = card_holder_name
     
@@ -79,6 +81,10 @@ class UnencryptedCardDataCreate:
         :param card_verification_code: The card_verification_code of this UnencryptedCardDataCreate.
         :type: str
         """
+        if card_verification_code is not None and len(card_verification_code) > 4:
+            raise ValueError("Invalid value for `card_verification_code`, length must be less than or equal to `4`")
+        if card_verification_code is not None and len(card_verification_code) < 3:
+            raise ValueError("Invalid value for `card_verification_code`, length must be greater than or equal to `3`")
 
         self._card_verification_code = card_verification_code
     
@@ -127,6 +133,10 @@ class UnencryptedCardDataCreate:
         """
         if primary_account_number is None:
             raise ValueError("Invalid value for `primary_account_number`, must not be `None`")
+        if primary_account_number is not None and len(primary_account_number) > 30:
+            raise ValueError("Invalid value for `primary_account_number`, length must be less than or equal to `30`")
+        if primary_account_number is not None and len(primary_account_number) < 10:
+            raise ValueError("Invalid value for `primary_account_number`, length must be greater than or equal to `10`")
 
         self._primary_account_number = primary_account_number
     

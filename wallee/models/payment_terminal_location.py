@@ -9,6 +9,7 @@ class PaymentTerminalLocation:
 
     swagger_types = {
     
+        'contact_address': 'PaymentTerminalContactAddress',
         'default_configuration': 'PaymentTerminalConfiguration',
         'delivery_address': 'PaymentTerminalAddress',
         'id': 'int',
@@ -20,10 +21,11 @@ class PaymentTerminalLocation:
     }
 
     attribute_map = {
-        'default_configuration': 'defaultConfiguration','delivery_address': 'deliveryAddress','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
+        'contact_address': 'contactAddress','default_configuration': 'defaultConfiguration','delivery_address': 'deliveryAddress','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
+    _contact_address = None
     _default_configuration = None
     _delivery_address = None
     _id = None
@@ -36,6 +38,7 @@ class PaymentTerminalLocation:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.contact_address = kwargs.get('contact_address', None)
         self.default_configuration = kwargs.get('default_configuration', None)
         self.delivery_address = kwargs.get('delivery_address', None)
         self.id = kwargs.get('id', None)
@@ -46,6 +49,29 @@ class PaymentTerminalLocation:
         self.version = kwargs.get('version', None)
         
 
+    
+    @property
+    def contact_address(self):
+        """Gets the contact_address of this PaymentTerminalLocation.
+
+            
+
+        :return: The contact_address of this PaymentTerminalLocation.
+        :rtype: PaymentTerminalContactAddress
+        """
+        return self._contact_address
+
+    @contact_address.setter
+    def contact_address(self, contact_address):
+        """Sets the contact_address of this PaymentTerminalLocation.
+
+            
+
+        :param contact_address: The contact_address of this PaymentTerminalLocation.
+        :type: PaymentTerminalContactAddress
+        """
+
+        self._contact_address = contact_address
     
     @property
     def default_configuration(self):
@@ -159,6 +185,8 @@ class PaymentTerminalLocation:
         :param name: The name of this PaymentTerminalLocation.
         :type: str
         """
+        if name is not None and len(name) > 100:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
 
         self._name = name
     

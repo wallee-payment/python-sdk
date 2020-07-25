@@ -83,6 +83,8 @@ class SubscriptionSuspensionCreate:
         :param note: The note of this SubscriptionSuspensionCreate.
         :type: str
         """
+        if note is not None and len(note) > 300:
+            raise ValueError("Invalid value for `note`, length must be less than or equal to `300`")
 
         self._note = note
     

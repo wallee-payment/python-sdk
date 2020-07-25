@@ -35,6 +35,8 @@ class Refund:
         'taxes': 'list[Tax]',
         'time_zone': 'str',
         'timeout_on': 'datetime',
+        'total_applied_fees': 'float',
+        'total_settled_amount': 'float',
         'transaction': 'Transaction',
         'type': 'RefundType',
         'updated_invoice': 'int',
@@ -42,7 +44,7 @@ class Refund:
     }
 
     attribute_map = {
-        'amount': 'amount','base_line_items': 'baseLineItems','completion': 'completion','created_by': 'createdBy','created_on': 'createdOn','environment': 'environment','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','reduced_line_items': 'reducedLineItems','reductions': 'reductions','state': 'state','succeeded_on': 'succeededOn','taxes': 'taxes','time_zone': 'timeZone','timeout_on': 'timeoutOn','transaction': 'transaction','type': 'type','updated_invoice': 'updatedInvoice','version': 'version',
+        'amount': 'amount','base_line_items': 'baseLineItems','completion': 'completion','created_by': 'createdBy','created_on': 'createdOn','environment': 'environment','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','reduced_line_items': 'reducedLineItems','reductions': 'reductions','state': 'state','succeeded_on': 'succeededOn','taxes': 'taxes','time_zone': 'timeZone','timeout_on': 'timeoutOn','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','transaction': 'transaction','type': 'type','updated_invoice': 'updatedInvoice','version': 'version',
     }
 
     
@@ -72,6 +74,8 @@ class Refund:
     _taxes = None
     _time_zone = None
     _timeout_on = None
+    _total_applied_fees = None
+    _total_settled_amount = None
     _transaction = None
     _type = None
     _updated_invoice = None
@@ -106,6 +110,8 @@ class Refund:
         self.taxes = kwargs.get('taxes', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.timeout_on = kwargs.get('timeout_on', None)
+        self.total_applied_fees = kwargs.get('total_applied_fees', None)
+        self.total_settled_amount = kwargs.get('total_settled_amount', None)
         self.transaction = kwargs.get('transaction', None)
         self.type = kwargs.get('type', None)
         self.updated_invoice = kwargs.get('updated_invoice', None)
@@ -271,6 +277,10 @@ class Refund:
         :param external_id: The external_id of this Refund.
         :type: str
         """
+        if external_id is not None and len(external_id) > 100:
+            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
+        if external_id is not None and len(external_id) < 1:
+            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
     
@@ -455,6 +465,8 @@ class Refund:
         :param merchant_reference: The merchant_reference of this Refund.
         :type: str
         """
+        if merchant_reference is not None and len(merchant_reference) > 100:
+            raise ValueError("Invalid value for `merchant_reference`, length must be less than or equal to `100`")
 
         self._merchant_reference = merchant_reference
     
@@ -547,6 +559,8 @@ class Refund:
         :param processor_reference: The processor_reference of this Refund.
         :type: str
         """
+        if processor_reference is not None and len(processor_reference) > 150:
+            raise ValueError("Invalid value for `processor_reference`, length must be less than or equal to `150`")
 
         self._processor_reference = processor_reference
     
@@ -710,6 +724,52 @@ class Refund:
         """
 
         self._timeout_on = timeout_on
+    
+    @property
+    def total_applied_fees(self):
+        """Gets the total_applied_fees of this Refund.
+
+            The total applied fees is the sum of all fees that have been applied so far.
+
+        :return: The total_applied_fees of this Refund.
+        :rtype: float
+        """
+        return self._total_applied_fees
+
+    @total_applied_fees.setter
+    def total_applied_fees(self, total_applied_fees):
+        """Sets the total_applied_fees of this Refund.
+
+            The total applied fees is the sum of all fees that have been applied so far.
+
+        :param total_applied_fees: The total_applied_fees of this Refund.
+        :type: float
+        """
+
+        self._total_applied_fees = total_applied_fees
+    
+    @property
+    def total_settled_amount(self):
+        """Gets the total_settled_amount of this Refund.
+
+            The total settled amount is the total amount which has been settled so far.
+
+        :return: The total_settled_amount of this Refund.
+        :rtype: float
+        """
+        return self._total_settled_amount
+
+    @total_settled_amount.setter
+    def total_settled_amount(self, total_settled_amount):
+        """Sets the total_settled_amount of this Refund.
+
+            The total settled amount is the total amount which has been settled so far.
+
+        :param total_settled_amount: The total_settled_amount of this Refund.
+        :type: float
+        """
+
+        self._total_settled_amount = total_settled_amount
     
     @property
     def transaction(self):

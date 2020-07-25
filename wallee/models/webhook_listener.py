@@ -191,6 +191,8 @@ class WebhookListener:
         :param name: The name of this WebhookListener.
         :type: str
         """
+        if name is not None and len(name) > 50:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")
 
         self._name = name
     

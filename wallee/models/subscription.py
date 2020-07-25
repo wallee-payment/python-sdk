@@ -25,12 +25,13 @@ class Subscription:
         'terminated_by': 'int',
         'terminated_on': 'datetime',
         'terminating_on': 'datetime',
+        'termination_scheduled_on': 'datetime',
         'token': 'Token',
         'version': 'int',
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','token': 'token','version': 'version',
+        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_scheduled_on': 'terminationScheduledOn','token': 'token','version': 'version',
     }
 
     
@@ -50,6 +51,7 @@ class Subscription:
     _terminated_by = None
     _terminated_on = None
     _terminating_on = None
+    _termination_scheduled_on = None
     _token = None
     _version = None
 
@@ -72,6 +74,7 @@ class Subscription:
         self.terminated_by = kwargs.get('terminated_by', None)
         self.terminated_on = kwargs.get('terminated_on', None)
         self.terminating_on = kwargs.get('terminating_on', None)
+        self.termination_scheduled_on = kwargs.get('termination_scheduled_on', None)
         self.token = kwargs.get('token', None)
         self.version = kwargs.get('version', None)
         
@@ -166,6 +169,8 @@ class Subscription:
         :param description: The description of this Subscription.
         :type: str
         """
+        if description is not None and len(description) > 200:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
 
         self._description = description
     
@@ -327,6 +332,8 @@ class Subscription:
         :param reference: The reference of this Subscription.
         :type: str
         """
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
 
         self._reference = reference
     
@@ -444,6 +451,29 @@ class Subscription:
         """
 
         self._terminating_on = terminating_on
+    
+    @property
+    def termination_scheduled_on(self):
+        """Gets the termination_scheduled_on of this Subscription.
+
+            
+
+        :return: The termination_scheduled_on of this Subscription.
+        :rtype: datetime
+        """
+        return self._termination_scheduled_on
+
+    @termination_scheduled_on.setter
+    def termination_scheduled_on(self, termination_scheduled_on):
+        """Sets the termination_scheduled_on of this Subscription.
+
+            
+
+        :param termination_scheduled_on: The termination_scheduled_on of this Subscription.
+        :type: datetime
+        """
+
+        self._termination_scheduled_on = termination_scheduled_on
     
     @property
     def token(self):

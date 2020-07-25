@@ -413,6 +413,10 @@ class SubscriptionLedgerEntry:
         :param title: The title of this SubscriptionLedgerEntry.
         :type: str
         """
+        if title is not None and len(title) > 150:
+            raise ValueError("Invalid value for `title`, length must be less than or equal to `150`")
+        if title is not None and len(title) < 1:
+            raise ValueError("Invalid value for `title`, length must be greater than or equal to `1`")
 
         self._title = title
     

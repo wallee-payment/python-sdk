@@ -134,6 +134,8 @@ class Subscriber:
         :param description: The description of this Subscriber.
         :type: str
         """
+        if description is not None and len(description) > 200:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
 
         self._description = description
     
@@ -180,6 +182,8 @@ class Subscriber:
         :param email_address: The email_address of this Subscriber.
         :type: str
         """
+        if email_address is not None and len(email_address) > 254:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
 
         self._email_address = email_address
     
@@ -341,6 +345,8 @@ class Subscriber:
         :param reference: The reference of this Subscriber.
         :type: str
         """
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
 
         self._reference = reference
     

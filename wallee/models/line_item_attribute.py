@@ -49,6 +49,8 @@ class LineItemAttribute:
         :param label: The label of this LineItemAttribute.
         :type: str
         """
+        if label is not None and len(label) > 512:
+            raise ValueError("Invalid value for `label`, length must be less than or equal to `512`")
 
         self._label = label
     
@@ -72,6 +74,8 @@ class LineItemAttribute:
         :param value: The value of this LineItemAttribute.
         :type: str
         """
+        if value is not None and len(value) > 512:
+            raise ValueError("Invalid value for `value`, length must be less than or equal to `512`")
 
         self._value = value
     

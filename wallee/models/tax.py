@@ -72,6 +72,10 @@ class Tax:
         :param title: The title of this Tax.
         :type: str
         """
+        if title is not None and len(title) > 40:
+            raise ValueError("Invalid value for `title`, length must be less than or equal to `40`")
+        if title is not None and len(title) < 2:
+            raise ValueError("Invalid value for `title`, length must be greater than or equal to `2`")
 
         self._title = title
     

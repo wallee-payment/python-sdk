@@ -107,6 +107,8 @@ class CompletionLineItemCreate:
         """
         if unique_id is None:
             raise ValueError("Invalid value for `unique_id`, must not be `None`")
+        if unique_id is not None and len(unique_id) > 200:
+            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
 
         self._unique_id = unique_id
     

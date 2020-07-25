@@ -131,6 +131,8 @@ class PaymentTerminalAddress:
         :param dependent_locality: The dependent_locality of this PaymentTerminalAddress.
         :type: str
         """
+        if dependent_locality is not None and len(dependent_locality) > 100:
+            raise ValueError("Invalid value for `dependent_locality`, length must be less than or equal to `100`")
 
         self._dependent_locality = dependent_locality
     
@@ -154,6 +156,8 @@ class PaymentTerminalAddress:
         :param email_address: The email_address of this PaymentTerminalAddress.
         :type: str
         """
+        if email_address is not None and len(email_address) > 254:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
 
         self._email_address = email_address
     
@@ -177,6 +181,8 @@ class PaymentTerminalAddress:
         :param family_name: The family_name of this PaymentTerminalAddress.
         :type: str
         """
+        if family_name is not None and len(family_name) > 100:
+            raise ValueError("Invalid value for `family_name`, length must be less than or equal to `100`")
 
         self._family_name = family_name
     
@@ -200,6 +206,8 @@ class PaymentTerminalAddress:
         :param given_name: The given_name of this PaymentTerminalAddress.
         :type: str
         """
+        if given_name is not None and len(given_name) > 100:
+            raise ValueError("Invalid value for `given_name`, length must be less than or equal to `100`")
 
         self._given_name = given_name
     
@@ -223,6 +231,8 @@ class PaymentTerminalAddress:
         :param mobile_phone_number: The mobile_phone_number of this PaymentTerminalAddress.
         :type: str
         """
+        if mobile_phone_number is not None and len(mobile_phone_number) > 100:
+            raise ValueError("Invalid value for `mobile_phone_number`, length must be less than or equal to `100`")
 
         self._mobile_phone_number = mobile_phone_number
     
@@ -246,6 +256,8 @@ class PaymentTerminalAddress:
         :param organization_name: The organization_name of this PaymentTerminalAddress.
         :type: str
         """
+        if organization_name is not None and len(organization_name) > 100:
+            raise ValueError("Invalid value for `organization_name`, length must be less than or equal to `100`")
 
         self._organization_name = organization_name
     
@@ -269,6 +281,8 @@ class PaymentTerminalAddress:
         :param phone_number: The phone_number of this PaymentTerminalAddress.
         :type: str
         """
+        if phone_number is not None and len(phone_number) > 100:
+            raise ValueError("Invalid value for `phone_number`, length must be less than or equal to `100`")
 
         self._phone_number = phone_number
     
@@ -338,6 +352,8 @@ class PaymentTerminalAddress:
         :param salutation: The salutation of this PaymentTerminalAddress.
         :type: str
         """
+        if salutation is not None and len(salutation) > 20:
+            raise ValueError("Invalid value for `salutation`, length must be less than or equal to `20`")
 
         self._salutation = salutation
     
@@ -361,6 +377,8 @@ class PaymentTerminalAddress:
         :param sorting_code: The sorting_code of this PaymentTerminalAddress.
         :type: str
         """
+        if sorting_code is not None and len(sorting_code) > 100:
+            raise ValueError("Invalid value for `sorting_code`, length must be less than or equal to `100`")
 
         self._sorting_code = sorting_code
     

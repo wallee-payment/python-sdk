@@ -103,6 +103,8 @@ class CustomerPostalAddress:
         :param city: The city of this CustomerPostalAddress.
         :type: str
         """
+        if city is not None and len(city) > 100:
+            raise ValueError("Invalid value for `city`, length must be less than or equal to `100`")
 
         self._city = city
     
@@ -126,6 +128,8 @@ class CustomerPostalAddress:
         :param commercial_register_number: The commercial_register_number of this CustomerPostalAddress.
         :type: str
         """
+        if commercial_register_number is not None and len(commercial_register_number) > 100:
+            raise ValueError("Invalid value for `commercial_register_number`, length must be less than or equal to `100`")
 
         self._commercial_register_number = commercial_register_number
     
@@ -195,6 +199,8 @@ class CustomerPostalAddress:
         :param dependent_locality: The dependent_locality of this CustomerPostalAddress.
         :type: str
         """
+        if dependent_locality is not None and len(dependent_locality) > 100:
+            raise ValueError("Invalid value for `dependent_locality`, length must be less than or equal to `100`")
 
         self._dependent_locality = dependent_locality
     
@@ -218,6 +224,8 @@ class CustomerPostalAddress:
         :param email_address: The email_address of this CustomerPostalAddress.
         :type: str
         """
+        if email_address is not None and len(email_address) > 254:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
 
         self._email_address = email_address
     
@@ -241,6 +249,8 @@ class CustomerPostalAddress:
         :param family_name: The family_name of this CustomerPostalAddress.
         :type: str
         """
+        if family_name is not None and len(family_name) > 100:
+            raise ValueError("Invalid value for `family_name`, length must be less than or equal to `100`")
 
         self._family_name = family_name
     
@@ -287,6 +297,8 @@ class CustomerPostalAddress:
         :param given_name: The given_name of this CustomerPostalAddress.
         :type: str
         """
+        if given_name is not None and len(given_name) > 100:
+            raise ValueError("Invalid value for `given_name`, length must be less than or equal to `100`")
 
         self._given_name = given_name
     
@@ -333,6 +345,8 @@ class CustomerPostalAddress:
         :param mobile_phone_number: The mobile_phone_number of this CustomerPostalAddress.
         :type: str
         """
+        if mobile_phone_number is not None and len(mobile_phone_number) > 100:
+            raise ValueError("Invalid value for `mobile_phone_number`, length must be less than or equal to `100`")
 
         self._mobile_phone_number = mobile_phone_number
     
@@ -356,6 +370,8 @@ class CustomerPostalAddress:
         :param organization_name: The organization_name of this CustomerPostalAddress.
         :type: str
         """
+        if organization_name is not None and len(organization_name) > 100:
+            raise ValueError("Invalid value for `organization_name`, length must be less than or equal to `100`")
 
         self._organization_name = organization_name
     
@@ -379,6 +395,8 @@ class CustomerPostalAddress:
         :param phone_number: The phone_number of this CustomerPostalAddress.
         :type: str
         """
+        if phone_number is not None and len(phone_number) > 100:
+            raise ValueError("Invalid value for `phone_number`, length must be less than or equal to `100`")
 
         self._phone_number = phone_number
     
@@ -425,6 +443,8 @@ class CustomerPostalAddress:
         :param postcode: The postcode of this CustomerPostalAddress.
         :type: str
         """
+        if postcode is not None and len(postcode) > 40:
+            raise ValueError("Invalid value for `postcode`, length must be less than or equal to `40`")
 
         self._postcode = postcode
     
@@ -448,6 +468,8 @@ class CustomerPostalAddress:
         :param sales_tax_number: The sales_tax_number of this CustomerPostalAddress.
         :type: str
         """
+        if sales_tax_number is not None and len(sales_tax_number) > 100:
+            raise ValueError("Invalid value for `sales_tax_number`, length must be less than or equal to `100`")
 
         self._sales_tax_number = sales_tax_number
     
@@ -471,6 +493,8 @@ class CustomerPostalAddress:
         :param salutation: The salutation of this CustomerPostalAddress.
         :type: str
         """
+        if salutation is not None and len(salutation) > 20:
+            raise ValueError("Invalid value for `salutation`, length must be less than or equal to `20`")
 
         self._salutation = salutation
     
@@ -494,6 +518,8 @@ class CustomerPostalAddress:
         :param social_security_number: The social_security_number of this CustomerPostalAddress.
         :type: str
         """
+        if social_security_number is not None and len(social_security_number) > 100:
+            raise ValueError("Invalid value for `social_security_number`, length must be less than or equal to `100`")
 
         self._social_security_number = social_security_number
     
@@ -517,6 +543,8 @@ class CustomerPostalAddress:
         :param sorting_code: The sorting_code of this CustomerPostalAddress.
         :type: str
         """
+        if sorting_code is not None and len(sorting_code) > 100:
+            raise ValueError("Invalid value for `sorting_code`, length must be less than or equal to `100`")
 
         self._sorting_code = sorting_code
     
@@ -540,6 +568,8 @@ class CustomerPostalAddress:
         :param street: The street of this CustomerPostalAddress.
         :type: str
         """
+        if street is not None and len(street) > 300:
+            raise ValueError("Invalid value for `street`, length must be less than or equal to `300`")
 
         self._street = street
     

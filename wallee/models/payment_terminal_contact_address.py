@@ -2,54 +2,28 @@
 import pprint
 import six
 from enum import Enum
+from . import PaymentTerminalAddress
 
 
-
-class AbstractCustomerCommentActive:
+class PaymentTerminalContactAddress(PaymentTerminalAddress):
 
     swagger_types = {
     
-        'content': 'str',
     }
 
     attribute_map = {
-        'content': 'content',
+        
     }
 
     
-    _content = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.content = kwargs.get('content', None)
-        
+        super().__init__(**kwargs)
+        self.swagger_types.update(super().swagger_types)
+        self.attribute_map.update(super().attribute_map)
 
-    
-    @property
-    def content(self):
-        """Gets the content of this AbstractCustomerCommentActive.
-
-            
-
-        :return: The content of this AbstractCustomerCommentActive.
-        :rtype: str
-        """
-        return self._content
-
-    @content.setter
-    def content(self, content):
-        """Sets the content of this AbstractCustomerCommentActive.
-
-            
-
-        :param content: The content of this AbstractCustomerCommentActive.
-        :type: str
-        """
-        if content is not None and len(content) > 262144:
-            raise ValueError("Invalid value for `content`, length must be less than or equal to `262144`")
-
-        self._content = content
     
 
     def to_dict(self):
@@ -74,7 +48,7 @@ class AbstractCustomerCommentActive:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(AbstractCustomerCommentActive, dict):
+        if issubclass(PaymentTerminalContactAddress, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -87,7 +61,7 @@ class AbstractCustomerCommentActive:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, AbstractCustomerCommentActive):
+        if not isinstance(other, PaymentTerminalContactAddress):
             return False
 
         return self.__dict__ == other.__dict__

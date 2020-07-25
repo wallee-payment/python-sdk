@@ -73,6 +73,8 @@ class CustomerComment:
         :param content: The content of this CustomerComment.
         :type: str
         """
+        if content is not None and len(content) > 262144:
+            raise ValueError("Invalid value for `content`, length must be less than or equal to `262144`")
 
         self._content = content
     

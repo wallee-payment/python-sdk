@@ -23,7 +23,7 @@ class TransactionServiceTest(unittest.TestCase):
         # create line item
         self.line_item = LineItem(
             name='Red T-Shirt',
-            unique_id=5412,
+            unique_id='5412',
             sku='red-t-shirt-123',
             quantity=1,
             amount_including_tax=3.50,

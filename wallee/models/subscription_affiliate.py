@@ -73,6 +73,10 @@ class SubscriptionAffiliate:
         :param external_id: The external_id of this SubscriptionAffiliate.
         :type: str
         """
+        if external_id is not None and len(external_id) > 100:
+            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
+        if external_id is not None and len(external_id) < 1:
+            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
     
@@ -188,6 +192,10 @@ class SubscriptionAffiliate:
         :param name: The name of this SubscriptionAffiliate.
         :type: str
         """
+        if name is not None and len(name) > 255:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `255`")
+        if name is not None and len(name) < 3:
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
 
         self._name = name
     
@@ -234,6 +242,10 @@ class SubscriptionAffiliate:
         :param reference: The reference of this SubscriptionAffiliate.
         :type: str
         """
+        if reference is not None and len(reference) > 100:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
+        if reference is not None and len(reference) < 3:
+            raise ValueError("Invalid value for `reference`, length must be greater than or equal to `3`")
 
         self._reference = reference
     

@@ -13,7 +13,7 @@ class SubscriptionCreateRequest:
         'currency': 'str',
         'product': 'int',
         'selected_components': 'list[SubscriptionProductComponentReference]',
-        'subscription': 'int',
+        'subscription': 'SubscriptionPending',
     }
 
     attribute_map = {
@@ -144,7 +144,7 @@ class SubscriptionCreateRequest:
             
 
         :return: The subscription of this SubscriptionCreateRequest.
-        :rtype: int
+        :rtype: SubscriptionPending
         """
         return self._subscription
 
@@ -155,7 +155,7 @@ class SubscriptionCreateRequest:
             
 
         :param subscription: The subscription of this SubscriptionCreateRequest.
-        :type: int
+        :type: SubscriptionPending
         """
         if subscription is None:
             raise ValueError("Invalid value for `subscription`, must not be `None`")

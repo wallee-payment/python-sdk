@@ -226,6 +226,10 @@ class PaymentContract:
         :param external_id: The external_id of this PaymentContract.
         :type: str
         """
+        if external_id is not None and len(external_id) > 100:
+            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
+        if external_id is not None and len(external_id) < 1:
+            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
     

@@ -110,6 +110,10 @@ class ResourcePath:
         :param path: The path of this ResourcePath.
         :type: str
         """
+        if path is not None and len(path) > 500:
+            raise ValueError("Invalid value for `path`, length must be less than or equal to `500`")
+        if path is not None and len(path) < 4:
+            raise ValueError("Invalid value for `path`, length must be greater than or equal to `4`")
 
         self._path = path
     

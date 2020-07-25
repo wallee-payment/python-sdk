@@ -61,6 +61,8 @@ class AbstractTokenUpdate:
         :param customer_email_address: The customer_email_address of this AbstractTokenUpdate.
         :type: str
         """
+        if customer_email_address is not None and len(customer_email_address) > 150:
+            raise ValueError("Invalid value for `customer_email_address`, length must be less than or equal to `150`")
 
         self._customer_email_address = customer_email_address
     
@@ -176,6 +178,8 @@ class AbstractTokenUpdate:
         :param token_reference: The token_reference of this AbstractTokenUpdate.
         :type: str
         """
+        if token_reference is not None and len(token_reference) > 100:
+            raise ValueError("Invalid value for `token_reference`, length must be less than or equal to `100`")
 
         self._token_reference = token_reference
     

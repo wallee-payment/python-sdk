@@ -317,6 +317,7 @@ from .human_user_update import HumanUserUpdate
 from .installment_payment_slice import InstallmentPaymentSlice
 from .payment_link_active import PaymentLinkActive
 from .payment_link_create import PaymentLinkCreate
+from .payment_terminal_contact_address import PaymentTerminalContactAddress
 from .refund_comment_active import RefundCommentActive
 from .refund_comment_create import RefundCommentCreate
 from .shopify_recurring_order import ShopifyRecurringOrder

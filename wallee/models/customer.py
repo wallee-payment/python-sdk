@@ -99,6 +99,8 @@ class Customer:
         :param customer_id: The customer_id of this Customer.
         :type: str
         """
+        if customer_id is not None and len(customer_id) > 100:
+            raise ValueError("Invalid value for `customer_id`, length must be less than or equal to `100`")
 
         self._customer_id = customer_id
     
@@ -122,6 +124,8 @@ class Customer:
         :param email_address: The email_address of this Customer.
         :type: str
         """
+        if email_address is not None and len(email_address) > 254:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
 
         self._email_address = email_address
     
@@ -145,6 +149,8 @@ class Customer:
         :param family_name: The family_name of this Customer.
         :type: str
         """
+        if family_name is not None and len(family_name) > 100:
+            raise ValueError("Invalid value for `family_name`, length must be less than or equal to `100`")
 
         self._family_name = family_name
     
@@ -168,6 +174,8 @@ class Customer:
         :param given_name: The given_name of this Customer.
         :type: str
         """
+        if given_name is not None and len(given_name) > 100:
+            raise ValueError("Invalid value for `given_name`, length must be less than or equal to `100`")
 
         self._given_name = given_name
     

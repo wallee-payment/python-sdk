@@ -597,6 +597,8 @@ class ChargeAttempt(TransactionAwareEntity):
         :param user_failure_message: The user_failure_message of this ChargeAttempt.
         :type: str
         """
+        if user_failure_message is not None and len(user_failure_message) > 2000:
+            raise ValueError("Invalid value for `user_failure_message`, length must be less than or equal to `2000`")
 
         self._user_failure_message = user_failure_message
     

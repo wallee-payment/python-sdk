@@ -79,6 +79,8 @@ class Scope:
         :param domain_name: The domain_name of this Scope.
         :type: str
         """
+        if domain_name is not None and len(domain_name) > 40:
+            raise ValueError("Invalid value for `domain_name`, length must be less than or equal to `40`")
 
         self._domain_name = domain_name
     
@@ -148,6 +150,8 @@ class Scope:
         :param machine_name: The machine_name of this Scope.
         :type: str
         """
+        if machine_name is not None and len(machine_name) > 50:
+            raise ValueError("Invalid value for `machine_name`, length must be less than or equal to `50`")
 
         self._machine_name = machine_name
     
@@ -171,6 +175,8 @@ class Scope:
         :param name: The name of this Scope.
         :type: str
         """
+        if name is not None and len(name) > 50:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")
 
         self._name = name
     

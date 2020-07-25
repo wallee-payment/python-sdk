@@ -90,6 +90,8 @@ class TransactionGroup:
         :param customer_id: The customer_id of this TransactionGroup.
         :type: str
         """
+        if customer_id is not None and len(customer_id) > 100:
+            raise ValueError("Invalid value for `customer_id`, length must be less than or equal to `100`")
 
         self._customer_id = customer_id
     

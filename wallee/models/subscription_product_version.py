@@ -448,6 +448,8 @@ class SubscriptionProductVersion:
         :param reference: The reference of this SubscriptionProductVersion.
         :type: str
         """
+        if reference is not None and len(reference) > 125:
+            raise ValueError("Invalid value for `reference`, length must be less than or equal to `125`")
 
         self._reference = reference
     

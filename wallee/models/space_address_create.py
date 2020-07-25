@@ -128,6 +128,8 @@ class SpaceAddressCreate:
         :param dependent_locality: The dependent_locality of this SpaceAddressCreate.
         :type: str
         """
+        if dependent_locality is not None and len(dependent_locality) > 100:
+            raise ValueError("Invalid value for `dependent_locality`, length must be less than or equal to `100`")
 
         self._dependent_locality = dependent_locality
     
@@ -174,6 +176,8 @@ class SpaceAddressCreate:
         :param family_name: The family_name of this SpaceAddressCreate.
         :type: str
         """
+        if family_name is not None and len(family_name) > 100:
+            raise ValueError("Invalid value for `family_name`, length must be less than or equal to `100`")
 
         self._family_name = family_name
     
@@ -197,6 +201,8 @@ class SpaceAddressCreate:
         :param given_name: The given_name of this SpaceAddressCreate.
         :type: str
         """
+        if given_name is not None and len(given_name) > 100:
+            raise ValueError("Invalid value for `given_name`, length must be less than or equal to `100`")
 
         self._given_name = given_name
     
@@ -220,6 +226,8 @@ class SpaceAddressCreate:
         :param organization_name: The organization_name of this SpaceAddressCreate.
         :type: str
         """
+        if organization_name is not None and len(organization_name) > 100:
+            raise ValueError("Invalid value for `organization_name`, length must be less than or equal to `100`")
 
         self._organization_name = organization_name
     
@@ -289,6 +297,8 @@ class SpaceAddressCreate:
         :param sales_tax_number: The sales_tax_number of this SpaceAddressCreate.
         :type: str
         """
+        if sales_tax_number is not None and len(sales_tax_number) > 100:
+            raise ValueError("Invalid value for `sales_tax_number`, length must be less than or equal to `100`")
 
         self._sales_tax_number = sales_tax_number
     
@@ -312,6 +322,8 @@ class SpaceAddressCreate:
         :param salutation: The salutation of this SpaceAddressCreate.
         :type: str
         """
+        if salutation is not None and len(salutation) > 20:
+            raise ValueError("Invalid value for `salutation`, length must be less than or equal to `20`")
 
         self._salutation = salutation
     
@@ -335,6 +347,8 @@ class SpaceAddressCreate:
         :param sorting_code: The sorting_code of this SpaceAddressCreate.
         :type: str
         """
+        if sorting_code is not None and len(sorting_code) > 100:
+            raise ValueError("Invalid value for `sorting_code`, length must be less than or equal to `100`")
 
         self._sorting_code = sorting_code
     

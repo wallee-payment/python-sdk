@@ -200,6 +200,10 @@ class Account:
         :param name: The name of this Account.
         :type: str
         """
+        if name is not None and len(name) > 200:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `200`")
+        if name is not None and len(name) < 3:
+            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
 
         self._name = name
     
