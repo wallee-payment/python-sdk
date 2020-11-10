@@ -28,6 +28,8 @@ class SubscriptionSuspensionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class SubscriptionSuspensionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, suspension, **kwargs)
         else:
@@ -238,6 +242,8 @@ class SubscriptionSuspensionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -345,6 +351,8 @@ class SubscriptionSuspensionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -452,6 +460,8 @@ class SubscriptionSuspensionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.terminate_with_http_info(space_id, suspension_id, **kwargs)
         else:

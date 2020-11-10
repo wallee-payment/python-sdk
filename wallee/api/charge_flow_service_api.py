@@ -28,6 +28,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.apply_flow_with_http_info(space_id, id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -234,6 +238,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -341,6 +347,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -450,6 +458,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_recipient_with_http_info(space_id, transaction_id, type, recipient, **kwargs)
         else:

@@ -28,6 +28,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.all_with_http_info(space_id, refund_id, **kwargs)
         else:
@@ -135,6 +137,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -242,6 +246,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_with_http_info(space_id, id, **kwargs)
         else:
@@ -349,6 +355,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.pin_with_http_info(space_id, id, **kwargs)
         else:
@@ -456,6 +464,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -563,6 +573,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.unpin_with_http_info(space_id, id, **kwargs)
         else:
@@ -670,6 +682,8 @@ class RefundCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:

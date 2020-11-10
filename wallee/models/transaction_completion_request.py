@@ -10,17 +10,19 @@ class TransactionCompletionRequest:
     swagger_types = {
     
         'external_id': 'str',
+        'invoice_merchant_reference': 'str',
         'last_completion': 'bool',
         'line_items': 'list[CompletionLineItemCreate]',
         'transaction_id': 'int',
     }
 
     attribute_map = {
-        'external_id': 'externalId','last_completion': 'lastCompletion','line_items': 'lineItems','transaction_id': 'transactionId',
+        'external_id': 'externalId','invoice_merchant_reference': 'invoiceMerchantReference','last_completion': 'lastCompletion','line_items': 'lineItems','transaction_id': 'transactionId',
     }
 
     
     _external_id = None
+    _invoice_merchant_reference = None
     _last_completion = None
     _line_items = None
     _transaction_id = None
@@ -30,6 +32,7 @@ class TransactionCompletionRequest:
         
         self.external_id = kwargs.get('external_id')
 
+        self.invoice_merchant_reference = kwargs.get('invoice_merchant_reference', None)
         self.last_completion = kwargs.get('last_completion')
 
         self.line_items = kwargs.get('line_items', None)
@@ -66,6 +69,31 @@ class TransactionCompletionRequest:
             raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
+    
+    @property
+    def invoice_merchant_reference(self):
+        """Gets the invoice_merchant_reference of this TransactionCompletionRequest.
+
+            
+
+        :return: The invoice_merchant_reference of this TransactionCompletionRequest.
+        :rtype: str
+        """
+        return self._invoice_merchant_reference
+
+    @invoice_merchant_reference.setter
+    def invoice_merchant_reference(self, invoice_merchant_reference):
+        """Sets the invoice_merchant_reference of this TransactionCompletionRequest.
+
+            
+
+        :param invoice_merchant_reference: The invoice_merchant_reference of this TransactionCompletionRequest.
+        :type: str
+        """
+        if invoice_merchant_reference is not None and len(invoice_merchant_reference) > 100:
+            raise ValueError("Invalid value for `invoice_merchant_reference`, length must be less than or equal to `100`")
+
+        self._invoice_merchant_reference = invoice_merchant_reference
     
     @property
     def last_completion(self):

@@ -9,6 +9,7 @@ class AbstractSpaceUpdate:
 
     swagger_types = {
     
+        'last_modified_date': 'datetime',
         'name': 'str',
         'postal_address': 'SpaceAddressCreate',
         'primary_currency': 'str',
@@ -19,10 +20,11 @@ class AbstractSpaceUpdate:
     }
 
     attribute_map = {
-        'name': 'name','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone',
+        'last_modified_date': 'lastModifiedDate','name': 'name','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone',
     }
 
     
+    _last_modified_date = None
     _name = None
     _postal_address = None
     _primary_currency = None
@@ -34,6 +36,7 @@ class AbstractSpaceUpdate:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.last_modified_date = kwargs.get('last_modified_date', None)
         self.name = kwargs.get('name', None)
         self.postal_address = kwargs.get('postal_address', None)
         self.primary_currency = kwargs.get('primary_currency', None)
@@ -43,6 +46,29 @@ class AbstractSpaceUpdate:
         self.time_zone = kwargs.get('time_zone', None)
         
 
+    
+    @property
+    def last_modified_date(self):
+        """Gets the last_modified_date of this AbstractSpaceUpdate.
+
+            
+
+        :return: The last_modified_date of this AbstractSpaceUpdate.
+        :rtype: datetime
+        """
+        return self._last_modified_date
+
+    @last_modified_date.setter
+    def last_modified_date(self, last_modified_date):
+        """Sets the last_modified_date of this AbstractSpaceUpdate.
+
+            
+
+        :param last_modified_date: The last_modified_date of this AbstractSpaceUpdate.
+        :type: datetime
+        """
+
+        self._last_modified_date = last_modified_date
     
     @property
     def name(self):

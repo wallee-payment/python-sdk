@@ -5,75 +5,51 @@ from enum import Enum
 
 
 
-class ShopifySubscriptionEditModelTaxLine:
+class SubscriptionUpdateRequest:
 
     swagger_types = {
     
-        'rate': 'float',
-        'title': 'str',
+        'description': 'str',
     }
 
     attribute_map = {
-        'rate': 'rate','title': 'title',
+        'description': 'description',
     }
 
     
-    _rate = None
-    _title = None
+    _description = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.rate = kwargs.get('rate', None)
-        self.title = kwargs.get('title', None)
+        self.description = kwargs.get('description', None)
         
 
     
     @property
-    def rate(self):
-        """Gets the rate of this ShopifySubscriptionEditModelTaxLine.
+    def description(self):
+        """Gets the description of this SubscriptionUpdateRequest.
 
             
 
-        :return: The rate of this ShopifySubscriptionEditModelTaxLine.
-        :rtype: float
-        """
-        return self._rate
-
-    @rate.setter
-    def rate(self, rate):
-        """Sets the rate of this ShopifySubscriptionEditModelTaxLine.
-
-            
-
-        :param rate: The rate of this ShopifySubscriptionEditModelTaxLine.
-        :type: float
-        """
-
-        self._rate = rate
-    
-    @property
-    def title(self):
-        """Gets the title of this ShopifySubscriptionEditModelTaxLine.
-
-            
-
-        :return: The title of this ShopifySubscriptionEditModelTaxLine.
+        :return: The description of this SubscriptionUpdateRequest.
         :rtype: str
         """
-        return self._title
+        return self._description
 
-    @title.setter
-    def title(self, title):
-        """Sets the title of this ShopifySubscriptionEditModelTaxLine.
+    @description.setter
+    def description(self, description):
+        """Sets the description of this SubscriptionUpdateRequest.
 
             
 
-        :param title: The title of this ShopifySubscriptionEditModelTaxLine.
+        :param description: The description of this SubscriptionUpdateRequest.
         :type: str
         """
+        if description is not None and len(description) > 200:
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
 
-        self._title = title
+        self._description = description
     
 
     def to_dict(self):
@@ -98,7 +74,7 @@ class ShopifySubscriptionEditModelTaxLine:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionEditModelTaxLine, dict):
+        if issubclass(SubscriptionUpdateRequest, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -111,7 +87,7 @@ class ShopifySubscriptionEditModelTaxLine:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionEditModelTaxLine):
+        if not isinstance(other, SubscriptionUpdateRequest):
             return False
 
         return self.__dict__ == other.__dict__

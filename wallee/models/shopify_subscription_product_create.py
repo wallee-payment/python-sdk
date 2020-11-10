@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import AbstractShopifySubscriptionProductActive
+from . import AbstractShopifySubscriptionProductUpdate
 
 
-class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductActive):
+class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductUpdate):
 
     swagger_types = {
     
@@ -26,10 +26,12 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductActive)
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.product_id = kwargs.get('product_id', None)
+        self.product_id = kwargs.get('product_id')
+
         self.product_variant_id = kwargs.get('product_variant_id')
 
-        self.shop = kwargs.get('shop', None)
+        self.shop = kwargs.get('shop')
+
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
@@ -55,6 +57,8 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductActive)
         :param product_id: The product_id of this ShopifySubscriptionProductCreate.
         :type: str
         """
+        if product_id is None:
+            raise ValueError("Invalid value for `product_id`, must not be `None`")
 
         self._product_id = product_id
     
@@ -103,6 +107,8 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductActive)
         :param shop: The shop of this ShopifySubscriptionProductCreate.
         :type: int
         """
+        if shop is None:
+            raise ValueError("Invalid value for `shop`, must not be `None`")
 
         self._shop = shop
     

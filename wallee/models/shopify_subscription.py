@@ -11,8 +11,10 @@ class ShopifySubscription:
     
         'created_by': 'int',
         'created_on': 'datetime',
+        'external_id': 'str',
         'id': 'int',
-        'initial_transaction': 'int',
+        'initial_payment_transaction': 'int',
+        'initial_shopify_transaction': 'int',
         'language': 'str',
         'linked_space_id': 'int',
         'order_recurrence_number': 'int',
@@ -26,14 +28,16 @@ class ShopifySubscription:
     }
 
     attribute_map = {
-        'created_by': 'createdBy','created_on': 'createdOn','id': 'id','initial_transaction': 'initialTransaction','language': 'language','linked_space_id': 'linkedSpaceId','order_recurrence_number': 'orderRecurrenceNumber','shop': 'shop','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','termination_request_date': 'terminationRequestDate','version': 'version',
+        'created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','initial_payment_transaction': 'initialPaymentTransaction','initial_shopify_transaction': 'initialShopifyTransaction','language': 'language','linked_space_id': 'linkedSpaceId','order_recurrence_number': 'orderRecurrenceNumber','shop': 'shop','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','termination_request_date': 'terminationRequestDate','version': 'version',
     }
 
     
     _created_by = None
     _created_on = None
+    _external_id = None
     _id = None
-    _initial_transaction = None
+    _initial_payment_transaction = None
+    _initial_shopify_transaction = None
     _language = None
     _linked_space_id = None
     _order_recurrence_number = None
@@ -50,8 +54,10 @@ class ShopifySubscription:
         
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
+        self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
-        self.initial_transaction = kwargs.get('initial_transaction', None)
+        self.initial_payment_transaction = kwargs.get('initial_payment_transaction', None)
+        self.initial_shopify_transaction = kwargs.get('initial_shopify_transaction', None)
         self.language = kwargs.get('language', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.order_recurrence_number = kwargs.get('order_recurrence_number', None)
@@ -112,6 +118,33 @@ class ShopifySubscription:
         self._created_on = created_on
     
     @property
+    def external_id(self):
+        """Gets the external_id of this ShopifySubscription.
+
+            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+
+        :return: The external_id of this ShopifySubscription.
+        :rtype: str
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, external_id):
+        """Sets the external_id of this ShopifySubscription.
+
+            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+
+        :param external_id: The external_id of this ShopifySubscription.
+        :type: str
+        """
+        if external_id is not None and len(external_id) > 100:
+            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
+        if external_id is not None and len(external_id) < 1:
+            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
+
+        self._external_id = external_id
+    
+    @property
     def id(self):
         """Gets the id of this ShopifySubscription.
 
@@ -135,27 +168,50 @@ class ShopifySubscription:
         self._id = id
     
     @property
-    def initial_transaction(self):
-        """Gets the initial_transaction of this ShopifySubscription.
+    def initial_payment_transaction(self):
+        """Gets the initial_payment_transaction of this ShopifySubscription.
 
             
 
-        :return: The initial_transaction of this ShopifySubscription.
+        :return: The initial_payment_transaction of this ShopifySubscription.
         :rtype: int
         """
-        return self._initial_transaction
+        return self._initial_payment_transaction
 
-    @initial_transaction.setter
-    def initial_transaction(self, initial_transaction):
-        """Sets the initial_transaction of this ShopifySubscription.
+    @initial_payment_transaction.setter
+    def initial_payment_transaction(self, initial_payment_transaction):
+        """Sets the initial_payment_transaction of this ShopifySubscription.
 
             
 
-        :param initial_transaction: The initial_transaction of this ShopifySubscription.
+        :param initial_payment_transaction: The initial_payment_transaction of this ShopifySubscription.
         :type: int
         """
 
-        self._initial_transaction = initial_transaction
+        self._initial_payment_transaction = initial_payment_transaction
+    
+    @property
+    def initial_shopify_transaction(self):
+        """Gets the initial_shopify_transaction of this ShopifySubscription.
+
+            
+
+        :return: The initial_shopify_transaction of this ShopifySubscription.
+        :rtype: int
+        """
+        return self._initial_shopify_transaction
+
+    @initial_shopify_transaction.setter
+    def initial_shopify_transaction(self, initial_shopify_transaction):
+        """Sets the initial_shopify_transaction of this ShopifySubscription.
+
+            
+
+        :param initial_shopify_transaction: The initial_shopify_transaction of this ShopifySubscription.
+        :type: int
+        """
+
+        self._initial_shopify_transaction = initial_shopify_transaction
     
     @property
     def language(self):

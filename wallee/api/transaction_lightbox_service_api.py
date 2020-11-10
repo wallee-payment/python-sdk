@@ -28,6 +28,8 @@ class TransactionLightboxServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.javascript_url_with_http_info(space_id, id, **kwargs)
         else:

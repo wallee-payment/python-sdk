@@ -3,7 +3,7 @@ from enum import Enum, unique
 
 
 @unique
-class ShopifyIntegrationAppVersion(Enum):
+class ShopifyIntegrationSubscriptionAppVersion(Enum):
     
     BASIC = "BASIC"
     SUBSCRIPTION = "SUBSCRIPTION"

@@ -28,6 +28,8 @@ class InstallmentPaymentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, filter, **kwargs)
         else:
@@ -136,6 +138,8 @@ class InstallmentPaymentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_installment_payment_with_http_info(space_id, transaction_id, installment_plan_configuration, **kwargs)
         else:
@@ -246,6 +250,8 @@ class InstallmentPaymentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -353,6 +359,8 @@ class InstallmentPaymentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:

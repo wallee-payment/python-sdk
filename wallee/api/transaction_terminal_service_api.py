@@ -30,6 +30,8 @@ class TransactionTerminalServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.receipt_with_http_info(space_id, transaction_id, type_id, width, **kwargs)
         else:
@@ -153,6 +155,8 @@ class TransactionTerminalServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.till_connection_credentials_with_http_info(space_id, transaction_id, terminal_id, **kwargs)
         else:

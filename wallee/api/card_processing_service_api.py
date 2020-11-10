@@ -30,6 +30,8 @@ class CardProcessingServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.process_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs)
         else:
@@ -153,6 +155,8 @@ class CardProcessingServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.process_with3_d_secure_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs)
         else:

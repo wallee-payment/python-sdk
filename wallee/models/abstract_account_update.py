@@ -9,25 +9,51 @@ class AbstractAccountUpdate:
 
     swagger_types = {
     
+        'last_modified_date': 'datetime',
         'name': 'str',
         'subaccount_limit': 'int',
     }
 
     attribute_map = {
-        'name': 'name','subaccount_limit': 'subaccountLimit',
+        'last_modified_date': 'lastModifiedDate','name': 'name','subaccount_limit': 'subaccountLimit',
     }
 
     
+    _last_modified_date = None
     _name = None
     _subaccount_limit = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.last_modified_date = kwargs.get('last_modified_date', None)
         self.name = kwargs.get('name', None)
         self.subaccount_limit = kwargs.get('subaccount_limit', None)
         
 
+    
+    @property
+    def last_modified_date(self):
+        """Gets the last_modified_date of this AbstractAccountUpdate.
+
+            
+
+        :return: The last_modified_date of this AbstractAccountUpdate.
+        :rtype: datetime
+        """
+        return self._last_modified_date
+
+    @last_modified_date.setter
+    def last_modified_date(self, last_modified_date):
+        """Sets the last_modified_date of this AbstractAccountUpdate.
+
+            
+
+        :param last_modified_date: The last_modified_date of this AbstractAccountUpdate.
+        :type: datetime
+        """
+
+        self._last_modified_date = last_modified_date
     
     @property
     def name(self):

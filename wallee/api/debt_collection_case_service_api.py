@@ -30,6 +30,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.add_collected_amount_with_http_info(space_id, id, collected_amount, external_id, **kwargs)
         else:
@@ -145,6 +147,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.attach_document_with_http_info(space_id, id, file_name, content_base64, **kwargs)
         else:
@@ -258,6 +262,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.close_with_http_info(space_id, id, **kwargs)
         else:
@@ -357,6 +363,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -460,6 +468,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -567,6 +577,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_with_http_info(space_id, id, **kwargs)
         else:
@@ -674,6 +686,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.documents_with_http_info(space_id, id, **kwargs)
         else:
@@ -773,6 +787,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_prepared_with_http_info(space_id, id, **kwargs)
         else:
@@ -872,6 +888,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_reviewed_with_http_info(space_id, id, **kwargs)
         else:
@@ -971,6 +989,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -1078,6 +1098,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -1185,6 +1207,8 @@ class DebtCollectionCaseServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:

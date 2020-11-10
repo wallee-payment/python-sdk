@@ -9,18 +9,19 @@ class ShopifyIntegration:
 
     swagger_types = {
     
+        'additional_line_item_data': 'list[ShopifyAdditionalLineItemData]',
         'allow_invoice_download': 'bool',
         'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
-        'app_version': 'ShopifyIntegrationAppVersion',
         'currency': 'str',
         'id': 'int',
-        'installed': 'bool',
         'integrated_payment_form_enabled': 'bool',
         'language': 'str',
         'login_name': 'str',
         'name': 'str',
+        'payment_app_version': 'ShopifyIntegrationPaymentAppVersion',
+        'payment_installed': 'bool',
+        'payment_proxy_path': 'str',
         'planned_purge_date': 'datetime',
-        'proxy_path': 'str',
         'replace_payment_method_image': 'bool',
         'shop_name': 'str',
         'show_payment_information': 'bool',
@@ -28,26 +29,30 @@ class ShopifyIntegration:
         'space_id': 'int',
         'space_view_id': 'int',
         'state': 'CreationEntityState',
+        'subscription_app_version': 'ShopifyIntegrationSubscriptionAppVersion',
+        'subscription_installed': 'bool',
+        'subscription_proxy_path': 'str',
         'version': 'int',
     }
 
     attribute_map = {
-        'allow_invoice_download': 'allowInvoiceDownload','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','app_version': 'appVersion','currency': 'currency','id': 'id','installed': 'installed','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','planned_purge_date': 'plannedPurgeDate','proxy_path': 'proxyPath','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','version': 'version',
+        'additional_line_item_data': 'additionalLineItemData','allow_invoice_download': 'allowInvoiceDownload','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','currency': 'currency','id': 'id','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','payment_app_version': 'paymentAppVersion','payment_installed': 'paymentInstalled','payment_proxy_path': 'paymentProxyPath','planned_purge_date': 'plannedPurgeDate','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','subscription_app_version': 'subscriptionAppVersion','subscription_installed': 'subscriptionInstalled','subscription_proxy_path': 'subscriptionProxyPath','version': 'version',
     }
 
     
+    _additional_line_item_data = None
     _allow_invoice_download = None
     _allowed_payment_method_configurations = None
-    _app_version = None
     _currency = None
     _id = None
-    _installed = None
     _integrated_payment_form_enabled = None
     _language = None
     _login_name = None
     _name = None
+    _payment_app_version = None
+    _payment_installed = None
+    _payment_proxy_path = None
     _planned_purge_date = None
-    _proxy_path = None
     _replace_payment_method_image = None
     _shop_name = None
     _show_payment_information = None
@@ -55,23 +60,27 @@ class ShopifyIntegration:
     _space_id = None
     _space_view_id = None
     _state = None
+    _subscription_app_version = None
+    _subscription_installed = None
+    _subscription_proxy_path = None
     _version = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.additional_line_item_data = kwargs.get('additional_line_item_data', None)
         self.allow_invoice_download = kwargs.get('allow_invoice_download', None)
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
-        self.app_version = kwargs.get('app_version', None)
         self.currency = kwargs.get('currency', None)
         self.id = kwargs.get('id', None)
-        self.installed = kwargs.get('installed', None)
         self.integrated_payment_form_enabled = kwargs.get('integrated_payment_form_enabled', None)
         self.language = kwargs.get('language', None)
         self.login_name = kwargs.get('login_name', None)
         self.name = kwargs.get('name', None)
+        self.payment_app_version = kwargs.get('payment_app_version', None)
+        self.payment_installed = kwargs.get('payment_installed', None)
+        self.payment_proxy_path = kwargs.get('payment_proxy_path', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.proxy_path = kwargs.get('proxy_path', None)
         self.replace_payment_method_image = kwargs.get('replace_payment_method_image', None)
         self.shop_name = kwargs.get('shop_name', None)
         self.show_payment_information = kwargs.get('show_payment_information', None)
@@ -79,9 +88,35 @@ class ShopifyIntegration:
         self.space_id = kwargs.get('space_id', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
+        self.subscription_app_version = kwargs.get('subscription_app_version', None)
+        self.subscription_installed = kwargs.get('subscription_installed', None)
+        self.subscription_proxy_path = kwargs.get('subscription_proxy_path', None)
         self.version = kwargs.get('version', None)
         
 
+    
+    @property
+    def additional_line_item_data(self):
+        """Gets the additional_line_item_data of this ShopifyIntegration.
+
+            
+
+        :return: The additional_line_item_data of this ShopifyIntegration.
+        :rtype: list[ShopifyAdditionalLineItemData]
+        """
+        return self._additional_line_item_data
+
+    @additional_line_item_data.setter
+    def additional_line_item_data(self, additional_line_item_data):
+        """Sets the additional_line_item_data of this ShopifyIntegration.
+
+            
+
+        :param additional_line_item_data: The additional_line_item_data of this ShopifyIntegration.
+        :type: list[ShopifyAdditionalLineItemData]
+        """
+
+        self._additional_line_item_data = additional_line_item_data
     
     @property
     def allow_invoice_download(self):
@@ -130,29 +165,6 @@ class ShopifyIntegration:
         self._allowed_payment_method_configurations = allowed_payment_method_configurations
     
     @property
-    def app_version(self):
-        """Gets the app_version of this ShopifyIntegration.
-
-            
-
-        :return: The app_version of this ShopifyIntegration.
-        :rtype: ShopifyIntegrationAppVersion
-        """
-        return self._app_version
-
-    @app_version.setter
-    def app_version(self, app_version):
-        """Sets the app_version of this ShopifyIntegration.
-
-            
-
-        :param app_version: The app_version of this ShopifyIntegration.
-        :type: ShopifyIntegrationAppVersion
-        """
-
-        self._app_version = app_version
-    
-    @property
     def currency(self):
         """Gets the currency of this ShopifyIntegration.
 
@@ -197,29 +209,6 @@ class ShopifyIntegration:
         """
 
         self._id = id
-    
-    @property
-    def installed(self):
-        """Gets the installed of this ShopifyIntegration.
-
-            
-
-        :return: The installed of this ShopifyIntegration.
-        :rtype: bool
-        """
-        return self._installed
-
-    @installed.setter
-    def installed(self, installed):
-        """Sets the installed of this ShopifyIntegration.
-
-            
-
-        :param installed: The installed of this ShopifyIntegration.
-        :type: bool
-        """
-
-        self._installed = installed
     
     @property
     def integrated_payment_form_enabled(self):
@@ -318,6 +307,75 @@ class ShopifyIntegration:
         self._name = name
     
     @property
+    def payment_app_version(self):
+        """Gets the payment_app_version of this ShopifyIntegration.
+
+            
+
+        :return: The payment_app_version of this ShopifyIntegration.
+        :rtype: ShopifyIntegrationPaymentAppVersion
+        """
+        return self._payment_app_version
+
+    @payment_app_version.setter
+    def payment_app_version(self, payment_app_version):
+        """Sets the payment_app_version of this ShopifyIntegration.
+
+            
+
+        :param payment_app_version: The payment_app_version of this ShopifyIntegration.
+        :type: ShopifyIntegrationPaymentAppVersion
+        """
+
+        self._payment_app_version = payment_app_version
+    
+    @property
+    def payment_installed(self):
+        """Gets the payment_installed of this ShopifyIntegration.
+
+            
+
+        :return: The payment_installed of this ShopifyIntegration.
+        :rtype: bool
+        """
+        return self._payment_installed
+
+    @payment_installed.setter
+    def payment_installed(self, payment_installed):
+        """Sets the payment_installed of this ShopifyIntegration.
+
+            
+
+        :param payment_installed: The payment_installed of this ShopifyIntegration.
+        :type: bool
+        """
+
+        self._payment_installed = payment_installed
+    
+    @property
+    def payment_proxy_path(self):
+        """Gets the payment_proxy_path of this ShopifyIntegration.
+
+            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+
+        :return: The payment_proxy_path of this ShopifyIntegration.
+        :rtype: str
+        """
+        return self._payment_proxy_path
+
+    @payment_proxy_path.setter
+    def payment_proxy_path(self, payment_proxy_path):
+        """Sets the payment_proxy_path of this ShopifyIntegration.
+
+            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+
+        :param payment_proxy_path: The payment_proxy_path of this ShopifyIntegration.
+        :type: str
+        """
+
+        self._payment_proxy_path = payment_proxy_path
+    
+    @property
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ShopifyIntegration.
 
@@ -339,29 +397,6 @@ class ShopifyIntegration:
         """
 
         self._planned_purge_date = planned_purge_date
-    
-    @property
-    def proxy_path(self):
-        """Gets the proxy_path of this ShopifyIntegration.
-
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
-
-        :return: The proxy_path of this ShopifyIntegration.
-        :rtype: str
-        """
-        return self._proxy_path
-
-    @proxy_path.setter
-    def proxy_path(self, proxy_path):
-        """Sets the proxy_path of this ShopifyIntegration.
-
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
-
-        :param proxy_path: The proxy_path of this ShopifyIntegration.
-        :type: str
-        """
-
-        self._proxy_path = proxy_path
     
     @property
     def replace_payment_method_image(self):
@@ -525,6 +560,75 @@ class ShopifyIntegration:
         """
 
         self._state = state
+    
+    @property
+    def subscription_app_version(self):
+        """Gets the subscription_app_version of this ShopifyIntegration.
+
+            
+
+        :return: The subscription_app_version of this ShopifyIntegration.
+        :rtype: ShopifyIntegrationSubscriptionAppVersion
+        """
+        return self._subscription_app_version
+
+    @subscription_app_version.setter
+    def subscription_app_version(self, subscription_app_version):
+        """Sets the subscription_app_version of this ShopifyIntegration.
+
+            
+
+        :param subscription_app_version: The subscription_app_version of this ShopifyIntegration.
+        :type: ShopifyIntegrationSubscriptionAppVersion
+        """
+
+        self._subscription_app_version = subscription_app_version
+    
+    @property
+    def subscription_installed(self):
+        """Gets the subscription_installed of this ShopifyIntegration.
+
+            
+
+        :return: The subscription_installed of this ShopifyIntegration.
+        :rtype: bool
+        """
+        return self._subscription_installed
+
+    @subscription_installed.setter
+    def subscription_installed(self, subscription_installed):
+        """Sets the subscription_installed of this ShopifyIntegration.
+
+            
+
+        :param subscription_installed: The subscription_installed of this ShopifyIntegration.
+        :type: bool
+        """
+
+        self._subscription_installed = subscription_installed
+    
+    @property
+    def subscription_proxy_path(self):
+        """Gets the subscription_proxy_path of this ShopifyIntegration.
+
+            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+
+        :return: The subscription_proxy_path of this ShopifyIntegration.
+        :rtype: str
+        """
+        return self._subscription_proxy_path
+
+    @subscription_proxy_path.setter
+    def subscription_proxy_path(self, subscription_proxy_path):
+        """Sets the subscription_proxy_path of this ShopifyIntegration.
+
+            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+
+        :param subscription_proxy_path: The subscription_proxy_path of this ShopifyIntegration.
+        :type: str
+        """
+
+        self._subscription_proxy_path = subscription_proxy_path
     
     @property
     def version(self):

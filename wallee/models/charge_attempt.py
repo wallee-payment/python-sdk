@@ -10,6 +10,7 @@ class ChargeAttempt(TransactionAwareEntity):
     swagger_types = {
     
         'charge': 'Charge',
+        'completion_behavior': 'TransactionCompletionBehavior',
         'connector_configuration': 'PaymentConnectorConfiguration',
         'created_on': 'datetime',
         'environment': 'ChargeAttemptEnvironment',
@@ -35,11 +36,12 @@ class ChargeAttempt(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge': 'charge','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
+        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
     _charge = None
+    _completion_behavior = None
     _connector_configuration = None
     _created_on = None
     _environment = None
@@ -67,6 +69,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.discriminator = None
         
         self.charge = kwargs.get('charge', None)
+        self.completion_behavior = kwargs.get('completion_behavior', None)
         self.connector_configuration = kwargs.get('connector_configuration', None)
         self.created_on = kwargs.get('created_on', None)
         self.environment = kwargs.get('environment', None)
@@ -116,6 +119,29 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._charge = charge
+    
+    @property
+    def completion_behavior(self):
+        """Gets the completion_behavior of this ChargeAttempt.
+
+            
+
+        :return: The completion_behavior of this ChargeAttempt.
+        :rtype: TransactionCompletionBehavior
+        """
+        return self._completion_behavior
+
+    @completion_behavior.setter
+    def completion_behavior(self, completion_behavior):
+        """Sets the completion_behavior of this ChargeAttempt.
+
+            
+
+        :param completion_behavior: The completion_behavior of this ChargeAttempt.
+        :type: TransactionCompletionBehavior
+        """
+
+        self._completion_behavior = completion_behavior
     
     @property
     def connector_configuration(self):

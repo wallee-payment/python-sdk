@@ -28,11 +28,12 @@ class SubscriptionProductVersion:
         'retiring_finished_on': 'datetime',
         'retiring_started_on': 'datetime',
         'state': 'SubscriptionProductVersionState',
+        'tax_calculation': 'TaxCalculation',
         'version': 'int',
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','version': 'version',
+        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','tax_calculation': 'taxCalculation','version': 'version',
     }
 
     
@@ -55,6 +56,7 @@ class SubscriptionProductVersion:
     _retiring_finished_on = None
     _retiring_started_on = None
     _state = None
+    _tax_calculation = None
     _version = None
 
     def __init__(self, **kwargs):
@@ -79,6 +81,7 @@ class SubscriptionProductVersion:
         self.retiring_finished_on = kwargs.get('retiring_finished_on', None)
         self.retiring_started_on = kwargs.get('retiring_started_on', None)
         self.state = kwargs.get('state', None)
+        self.tax_calculation = kwargs.get('tax_calculation', None)
         self.version = kwargs.get('version', None)
         
 
@@ -521,6 +524,29 @@ class SubscriptionProductVersion:
         """
 
         self._state = state
+    
+    @property
+    def tax_calculation(self):
+        """Gets the tax_calculation of this SubscriptionProductVersion.
+
+            Strategy that is used for tax calculation in fees.
+
+        :return: The tax_calculation of this SubscriptionProductVersion.
+        :rtype: TaxCalculation
+        """
+        return self._tax_calculation
+
+    @tax_calculation.setter
+    def tax_calculation(self, tax_calculation):
+        """Sets the tax_calculation of this SubscriptionProductVersion.
+
+            Strategy that is used for tax calculation in fees.
+
+        :param tax_calculation: The tax_calculation of this SubscriptionProductVersion.
+        :type: TaxCalculation
+        """
+
+        self._tax_calculation = tax_calculation
     
     @property
     def version(self):

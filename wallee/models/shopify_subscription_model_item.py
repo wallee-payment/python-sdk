@@ -5,7 +5,7 @@ from enum import Enum
 
 
 
-class ShopifySubscriptionEditModelItem:
+class ShopifySubscriptionModelItem:
 
     swagger_types = {
     
@@ -13,7 +13,7 @@ class ShopifySubscriptionEditModelItem:
         'product_id': 'int',
         'quantity': 'float',
         'recalculate_price': 'bool',
-        'tax_lines': 'list[ShopifySubscriptionEditModelTaxLine]',
+        'tax_lines': 'list[ShopifySubscriptionModelTaxLine]',
     }
 
     attribute_map = {
@@ -40,22 +40,22 @@ class ShopifySubscriptionEditModelItem:
     
     @property
     def price_including_tax(self):
-        """Gets the price_including_tax of this ShopifySubscriptionEditModelItem.
+        """Gets the price_including_tax of this ShopifySubscriptionModelItem.
 
             
 
-        :return: The price_including_tax of this ShopifySubscriptionEditModelItem.
+        :return: The price_including_tax of this ShopifySubscriptionModelItem.
         :rtype: float
         """
         return self._price_including_tax
 
     @price_including_tax.setter
     def price_including_tax(self, price_including_tax):
-        """Sets the price_including_tax of this ShopifySubscriptionEditModelItem.
+        """Sets the price_including_tax of this ShopifySubscriptionModelItem.
 
             
 
-        :param price_including_tax: The price_including_tax of this ShopifySubscriptionEditModelItem.
+        :param price_including_tax: The price_including_tax of this ShopifySubscriptionModelItem.
         :type: float
         """
 
@@ -63,22 +63,22 @@ class ShopifySubscriptionEditModelItem:
     
     @property
     def product_id(self):
-        """Gets the product_id of this ShopifySubscriptionEditModelItem.
+        """Gets the product_id of this ShopifySubscriptionModelItem.
 
             
 
-        :return: The product_id of this ShopifySubscriptionEditModelItem.
+        :return: The product_id of this ShopifySubscriptionModelItem.
         :rtype: int
         """
         return self._product_id
 
     @product_id.setter
     def product_id(self, product_id):
-        """Sets the product_id of this ShopifySubscriptionEditModelItem.
+        """Sets the product_id of this ShopifySubscriptionModelItem.
 
             
 
-        :param product_id: The product_id of this ShopifySubscriptionEditModelItem.
+        :param product_id: The product_id of this ShopifySubscriptionModelItem.
         :type: int
         """
 
@@ -86,22 +86,22 @@ class ShopifySubscriptionEditModelItem:
     
     @property
     def quantity(self):
-        """Gets the quantity of this ShopifySubscriptionEditModelItem.
+        """Gets the quantity of this ShopifySubscriptionModelItem.
 
             
 
-        :return: The quantity of this ShopifySubscriptionEditModelItem.
+        :return: The quantity of this ShopifySubscriptionModelItem.
         :rtype: float
         """
         return self._quantity
 
     @quantity.setter
     def quantity(self, quantity):
-        """Sets the quantity of this ShopifySubscriptionEditModelItem.
+        """Sets the quantity of this ShopifySubscriptionModelItem.
 
             
 
-        :param quantity: The quantity of this ShopifySubscriptionEditModelItem.
+        :param quantity: The quantity of this ShopifySubscriptionModelItem.
         :type: float
         """
 
@@ -109,22 +109,22 @@ class ShopifySubscriptionEditModelItem:
     
     @property
     def recalculate_price(self):
-        """Gets the recalculate_price of this ShopifySubscriptionEditModelItem.
+        """Gets the recalculate_price of this ShopifySubscriptionModelItem.
 
             
 
-        :return: The recalculate_price of this ShopifySubscriptionEditModelItem.
+        :return: The recalculate_price of this ShopifySubscriptionModelItem.
         :rtype: bool
         """
         return self._recalculate_price
 
     @recalculate_price.setter
     def recalculate_price(self, recalculate_price):
-        """Sets the recalculate_price of this ShopifySubscriptionEditModelItem.
+        """Sets the recalculate_price of this ShopifySubscriptionModelItem.
 
             
 
-        :param recalculate_price: The recalculate_price of this ShopifySubscriptionEditModelItem.
+        :param recalculate_price: The recalculate_price of this ShopifySubscriptionModelItem.
         :type: bool
         """
 
@@ -132,23 +132,23 @@ class ShopifySubscriptionEditModelItem:
     
     @property
     def tax_lines(self):
-        """Gets the tax_lines of this ShopifySubscriptionEditModelItem.
+        """Gets the tax_lines of this ShopifySubscriptionModelItem.
 
             
 
-        :return: The tax_lines of this ShopifySubscriptionEditModelItem.
-        :rtype: list[ShopifySubscriptionEditModelTaxLine]
+        :return: The tax_lines of this ShopifySubscriptionModelItem.
+        :rtype: list[ShopifySubscriptionModelTaxLine]
         """
         return self._tax_lines
 
     @tax_lines.setter
     def tax_lines(self, tax_lines):
-        """Sets the tax_lines of this ShopifySubscriptionEditModelItem.
+        """Sets the tax_lines of this ShopifySubscriptionModelItem.
 
             
 
-        :param tax_lines: The tax_lines of this ShopifySubscriptionEditModelItem.
-        :type: list[ShopifySubscriptionEditModelTaxLine]
+        :param tax_lines: The tax_lines of this ShopifySubscriptionModelItem.
+        :type: list[ShopifySubscriptionModelTaxLine]
         """
 
         self._tax_lines = tax_lines
@@ -176,7 +176,7 @@ class ShopifySubscriptionEditModelItem:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionEditModelItem, dict):
+        if issubclass(ShopifySubscriptionModelItem, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -189,7 +189,7 @@ class ShopifySubscriptionEditModelItem:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionEditModelItem):
+        if not isinstance(other, ShopifySubscriptionModelItem):
             return False
 
         return self.__dict__ == other.__dict__

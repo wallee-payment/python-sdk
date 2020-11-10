@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import AbstractShopifySubscriptionProductActive
+from . import AbstractShopifySubscriptionProductUpdate
 
 
-class ShopifySubscriptionProductActive(AbstractShopifySubscriptionProductActive):
+class ShopifySubscriptionProductUpdate(AbstractShopifySubscriptionProductUpdate):
 
     swagger_types = {
     
@@ -35,22 +35,22 @@ class ShopifySubscriptionProductActive(AbstractShopifySubscriptionProductActive)
     
     @property
     def id(self):
-        """Gets the id of this ShopifySubscriptionProductActive.
+        """Gets the id of this ShopifySubscriptionProductUpdate.
 
             The ID is the primary key of the entity. The ID identifies the entity uniquely.
 
-        :return: The id of this ShopifySubscriptionProductActive.
+        :return: The id of this ShopifySubscriptionProductUpdate.
         :rtype: int
         """
         return self._id
 
     @id.setter
     def id(self, id):
-        """Sets the id of this ShopifySubscriptionProductActive.
+        """Sets the id of this ShopifySubscriptionProductUpdate.
 
             The ID is the primary key of the entity. The ID identifies the entity uniquely.
 
-        :param id: The id of this ShopifySubscriptionProductActive.
+        :param id: The id of this ShopifySubscriptionProductUpdate.
         :type: int
         """
         if id is None:
@@ -60,22 +60,22 @@ class ShopifySubscriptionProductActive(AbstractShopifySubscriptionProductActive)
     
     @property
     def version(self):
-        """Gets the version of this ShopifySubscriptionProductActive.
+        """Gets the version of this ShopifySubscriptionProductUpdate.
 
             The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this ShopifySubscriptionProductActive.
+        :return: The version of this ShopifySubscriptionProductUpdate.
         :rtype: int
         """
         return self._version
 
     @version.setter
     def version(self, version):
-        """Sets the version of this ShopifySubscriptionProductActive.
+        """Sets the version of this ShopifySubscriptionProductUpdate.
 
             The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :param version: The version of this ShopifySubscriptionProductActive.
+        :param version: The version of this ShopifySubscriptionProductUpdate.
         :type: int
         """
         if version is None:
@@ -106,7 +106,7 @@ class ShopifySubscriptionProductActive(AbstractShopifySubscriptionProductActive)
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionProductActive, dict):
+        if issubclass(ShopifySubscriptionProductUpdate, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -119,7 +119,7 @@ class ShopifySubscriptionProductActive(AbstractShopifySubscriptionProductActive)
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionProductActive):
+        if not isinstance(other, ShopifySubscriptionProductUpdate):
             return False
 
         return self.__dict__ == other.__dict__

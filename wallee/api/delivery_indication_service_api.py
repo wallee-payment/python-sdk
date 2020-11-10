@@ -28,6 +28,8 @@ class DeliveryIndicationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class DeliveryIndicationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_not_suitable_with_http_info(space_id, delivery_indication_id, **kwargs)
         else:
@@ -234,6 +238,8 @@ class DeliveryIndicationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_suitable_with_http_info(space_id, delivery_indication_id, **kwargs)
         else:
@@ -337,6 +343,8 @@ class DeliveryIndicationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -444,6 +452,8 @@ class DeliveryIndicationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:

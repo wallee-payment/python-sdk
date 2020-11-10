@@ -11,6 +11,107 @@ class TokenServiceApi:
     def __init__(self, configuration):
         self.api_client = ApiClient(configuration=configuration)
 
+    def check_token_creation_possible(self, space_id, transaction_id, **kwargs):
+        """Check If Token Creation Is Possible
+
+        This operation checks if the given transaction can be used to create a token out of it.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.check_token_creation_possible(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to check if the token can be created or not. (required)
+        :return: bool
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+
+
+        if kwargs.get('async_req'):
+            return self.check_token_creation_possible_with_http_info(space_id, transaction_id, **kwargs)
+        else:
+            (data) = self.check_token_creation_possible_with_http_info(space_id, transaction_id, **kwargs)
+            return data
+
+    def check_token_creation_possible_with_http_info(self, space_id, transaction_id, **kwargs):
+        """Check If Token Creation Is Possible
+
+        This operation checks if the given transaction can be used to create a token out of it.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.check_token_creation_possible_with_http_info(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to check if the token can be created or not. (required)
+        :return: bool
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'transaction_id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method check_token_creation_possible" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `check_token_creation_possible`")
+        # verify the required parameter 'transaction_id' is set
+        if ('transaction_id' not in params or
+                params['transaction_id'] is None):
+            raise ValueError("Missing the required parameter `transaction_id` when calling `check_token_creation_possible`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'transaction_id' in params:
+            query_params.append(('transactionId', params['transaction_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/token/check-token-creation-possible', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='bool',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def count(self, space_id, **kwargs):
         """Count
 
@@ -28,6 +129,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +234,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -221,6 +326,107 @@ class TokenServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def create_token_based_on_transaction(self, space_id, transaction_id, **kwargs):
+        """Create Token Based On Transaction
+
+        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_token_based_on_transaction(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to create the token. (required)
+        :return: TokenVersion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+
+
+        if kwargs.get('async_req'):
+            return self.create_token_based_on_transaction_with_http_info(space_id, transaction_id, **kwargs)
+        else:
+            (data) = self.create_token_based_on_transaction_with_http_info(space_id, transaction_id, **kwargs)
+            return data
+
+    def create_token_based_on_transaction_with_http_info(self, space_id, transaction_id, **kwargs):
+        """Create Token Based On Transaction
+
+        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_token_based_on_transaction_with_http_info(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to create the token. (required)
+        :return: TokenVersion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'transaction_id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_token_based_on_transaction" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `create_token_based_on_transaction`")
+        # verify the required parameter 'transaction_id' is set
+        if ('transaction_id' not in params or
+                params['transaction_id'] is None):
+            raise ValueError("Missing the required parameter `transaction_id` when calling `create_token_based_on_transaction`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'transaction_id' in params:
+            query_params.append(('transactionId', params['transaction_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/token/create-token-based-on-transaction', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TokenVersion',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def create_transaction_for_token_update(self, space_id, token_id, **kwargs):
         """Create Transaction for Token Update
 
@@ -238,6 +444,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_transaction_for_token_update_with_http_info(space_id, token_id, **kwargs)
         else:
@@ -337,6 +545,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_with_http_info(space_id, id, **kwargs)
         else:
@@ -444,6 +654,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -551,6 +763,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -658,6 +872,8 @@ class TokenServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:

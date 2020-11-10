@@ -28,6 +28,8 @@ class SubscriberServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -126,11 +128,13 @@ class SubscriberServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param SubscriberCreate entity: The customer object with the properties which should be created. (required)
-        :return: SubscriberCreate
+        :return: Subscriber
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -149,7 +153,7 @@ class SubscriberServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param SubscriberCreate entity: The customer object with the properties which should be created. (required)
-        :return: SubscriberCreate
+        :return: Subscriber
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -213,7 +217,7 @@ class SubscriberServiceApi:
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SubscriberCreate',
+            response_type='Subscriber',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -238,6 +242,8 @@ class SubscriberServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_with_http_info(space_id, id, **kwargs)
         else:
@@ -345,6 +351,8 @@ class SubscriberServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -452,6 +460,8 @@ class SubscriberServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -559,6 +569,8 @@ class SubscriberServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:

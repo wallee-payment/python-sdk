@@ -12,6 +12,7 @@ class AbstractTransactionPending:
         'allowed_payment_method_brands': 'list[PaymentMethodBrand]',
         'allowed_payment_method_configurations': 'list[int]',
         'billing_address': 'AddressCreate',
+        'completion_behavior': 'TransactionCompletionBehavior',
         'currency': 'str',
         'customer_email_address': 'str',
         'customer_id': 'str',
@@ -30,13 +31,14 @@ class AbstractTransactionPending:
     }
 
     attribute_map = {
-        'allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','billing_address': 'billingAddress','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','failed_url': 'failedUrl','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','meta_data': 'metaData','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode',
+        'allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','billing_address': 'billingAddress','completion_behavior': 'completionBehavior','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','failed_url': 'failedUrl','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','meta_data': 'metaData','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode',
     }
 
     
     _allowed_payment_method_brands = None
     _allowed_payment_method_configurations = None
     _billing_address = None
+    _completion_behavior = None
     _currency = None
     _customer_email_address = None
     _customer_id = None
@@ -59,6 +61,7 @@ class AbstractTransactionPending:
         self.allowed_payment_method_brands = kwargs.get('allowed_payment_method_brands', None)
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
         self.billing_address = kwargs.get('billing_address', None)
+        self.completion_behavior = kwargs.get('completion_behavior', None)
         self.currency = kwargs.get('currency', None)
         self.customer_email_address = kwargs.get('customer_email_address', None)
         self.customer_id = kwargs.get('customer_id', None)
@@ -145,6 +148,29 @@ class AbstractTransactionPending:
         """
 
         self._billing_address = billing_address
+    
+    @property
+    def completion_behavior(self):
+        """Gets the completion_behavior of this AbstractTransactionPending.
+
+            The completion behavior controls when the transaction is completed.
+
+        :return: The completion_behavior of this AbstractTransactionPending.
+        :rtype: TransactionCompletionBehavior
+        """
+        return self._completion_behavior
+
+    @completion_behavior.setter
+    def completion_behavior(self, completion_behavior):
+        """Sets the completion_behavior of this AbstractTransactionPending.
+
+            The completion behavior controls when the transaction is completed.
+
+        :param completion_behavior: The completion_behavior of this AbstractTransactionPending.
+        :type: TransactionCompletionBehavior
+        """
+
+        self._completion_behavior = completion_behavior
     
     @property
     def currency(self):
@@ -237,6 +263,10 @@ class AbstractTransactionPending:
         :param failed_url: The failed_url of this AbstractTransactionPending.
         :type: str
         """
+        if failed_url is not None and len(failed_url) > 1000:
+            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `1000`")
+        if failed_url is not None and len(failed_url) < 9:
+            raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
 
         self._failed_url = failed_url
     
@@ -427,6 +457,10 @@ class AbstractTransactionPending:
         :param success_url: The success_url of this AbstractTransactionPending.
         :type: str
         """
+        if success_url is not None and len(success_url) > 1000:
+            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `1000`")
+        if success_url is not None and len(success_url) < 9:
+            raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
 
         self._success_url = success_url
     

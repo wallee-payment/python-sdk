@@ -28,6 +28,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.fail_with_http_info(space_id, refund_id, **kwargs)
         else:
@@ -234,6 +238,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_refund_document_with_http_info(space_id, id, **kwargs)
         else:
@@ -342,6 +348,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_refund_document_with_target_media_type_with_http_info(space_id, id, target_media_type_id, **kwargs)
         else:
@@ -456,6 +464,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -563,6 +573,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.refund_with_http_info(space_id, refund, **kwargs)
         else:
@@ -670,6 +682,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -777,6 +791,8 @@ class RefundServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.succeed_with_http_info(space_id, refund_id, **kwargs)
         else:

@@ -9,147 +9,57 @@ class ShopifySubscriptionUpdateRequest:
 
     swagger_types = {
     
-        'billing_day_of_month': 'int',
-        'billing_interval_amount': 'int',
-        'billing_interval_unit': 'ShopifySubscriptionBillingIntervalUnit',
-        'billing_weekday': 'ShopifySubscriptionWeekday',
+        'billing_configuration': 'ShopifySubscriptionModelBillingConfiguration',
         'id': 'int',
-        'items': 'list[ShopifySubscriptionEditModelItem]',
-        'maximal_billing_cycles': 'int',
-        'maximal_suspendable_cycles': 'int',
-        'minimal_billing_cycles': 'int',
+        'items': 'list[ShopifySubscriptionModelItem]',
         'store_order_confirmation_email_enabled': 'bool',
         'subscriber_suspension_allowed': 'bool',
-        'termination_billing_cycles': 'int',
     }
 
     attribute_map = {
-        'billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','id': 'id','items': 'items','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','termination_billing_cycles': 'terminationBillingCycles',
+        'billing_configuration': 'billingConfiguration','id': 'id','items': 'items','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed',
     }
 
     
-    _billing_day_of_month = None
-    _billing_interval_amount = None
-    _billing_interval_unit = None
-    _billing_weekday = None
+    _billing_configuration = None
     _id = None
     _items = None
-    _maximal_billing_cycles = None
-    _maximal_suspendable_cycles = None
-    _minimal_billing_cycles = None
     _store_order_confirmation_email_enabled = None
     _subscriber_suspension_allowed = None
-    _termination_billing_cycles = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.billing_day_of_month = kwargs.get('billing_day_of_month', None)
-        self.billing_interval_amount = kwargs.get('billing_interval_amount', None)
-        self.billing_interval_unit = kwargs.get('billing_interval_unit', None)
-        self.billing_weekday = kwargs.get('billing_weekday', None)
+        self.billing_configuration = kwargs.get('billing_configuration', None)
         self.id = kwargs.get('id', None)
         self.items = kwargs.get('items', None)
-        self.maximal_billing_cycles = kwargs.get('maximal_billing_cycles', None)
-        self.maximal_suspendable_cycles = kwargs.get('maximal_suspendable_cycles', None)
-        self.minimal_billing_cycles = kwargs.get('minimal_billing_cycles', None)
         self.store_order_confirmation_email_enabled = kwargs.get('store_order_confirmation_email_enabled', None)
         self.subscriber_suspension_allowed = kwargs.get('subscriber_suspension_allowed', None)
-        self.termination_billing_cycles = kwargs.get('termination_billing_cycles', None)
         
 
     
     @property
-    def billing_day_of_month(self):
-        """Gets the billing_day_of_month of this ShopifySubscriptionUpdateRequest.
-
-            Define the day of the month on which the recurring orders should be created.
-
-        :return: The billing_day_of_month of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
-        """
-        return self._billing_day_of_month
-
-    @billing_day_of_month.setter
-    def billing_day_of_month(self, billing_day_of_month):
-        """Sets the billing_day_of_month of this ShopifySubscriptionUpdateRequest.
-
-            Define the day of the month on which the recurring orders should be created.
-
-        :param billing_day_of_month: The billing_day_of_month of this ShopifySubscriptionUpdateRequest.
-        :type: int
-        """
-
-        self._billing_day_of_month = billing_day_of_month
-    
-    @property
-    def billing_interval_amount(self):
-        """Gets the billing_interval_amount of this ShopifySubscriptionUpdateRequest.
+    def billing_configuration(self):
+        """Gets the billing_configuration of this ShopifySubscriptionUpdateRequest.
 
             
 
-        :return: The billing_interval_amount of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
+        :return: The billing_configuration of this ShopifySubscriptionUpdateRequest.
+        :rtype: ShopifySubscriptionModelBillingConfiguration
         """
-        return self._billing_interval_amount
+        return self._billing_configuration
 
-    @billing_interval_amount.setter
-    def billing_interval_amount(self, billing_interval_amount):
-        """Sets the billing_interval_amount of this ShopifySubscriptionUpdateRequest.
+    @billing_configuration.setter
+    def billing_configuration(self, billing_configuration):
+        """Sets the billing_configuration of this ShopifySubscriptionUpdateRequest.
 
             
 
-        :param billing_interval_amount: The billing_interval_amount of this ShopifySubscriptionUpdateRequest.
-        :type: int
+        :param billing_configuration: The billing_configuration of this ShopifySubscriptionUpdateRequest.
+        :type: ShopifySubscriptionModelBillingConfiguration
         """
 
-        self._billing_interval_amount = billing_interval_amount
-    
-    @property
-    def billing_interval_unit(self):
-        """Gets the billing_interval_unit of this ShopifySubscriptionUpdateRequest.
-
-            Define how frequently recurring orders should be created.
-
-        :return: The billing_interval_unit of this ShopifySubscriptionUpdateRequest.
-        :rtype: ShopifySubscriptionBillingIntervalUnit
-        """
-        return self._billing_interval_unit
-
-    @billing_interval_unit.setter
-    def billing_interval_unit(self, billing_interval_unit):
-        """Sets the billing_interval_unit of this ShopifySubscriptionUpdateRequest.
-
-            Define how frequently recurring orders should be created.
-
-        :param billing_interval_unit: The billing_interval_unit of this ShopifySubscriptionUpdateRequest.
-        :type: ShopifySubscriptionBillingIntervalUnit
-        """
-
-        self._billing_interval_unit = billing_interval_unit
-    
-    @property
-    def billing_weekday(self):
-        """Gets the billing_weekday of this ShopifySubscriptionUpdateRequest.
-
-            Define the weekday on which the recurring orders should be created.
-
-        :return: The billing_weekday of this ShopifySubscriptionUpdateRequest.
-        :rtype: ShopifySubscriptionWeekday
-        """
-        return self._billing_weekday
-
-    @billing_weekday.setter
-    def billing_weekday(self, billing_weekday):
-        """Sets the billing_weekday of this ShopifySubscriptionUpdateRequest.
-
-            Define the weekday on which the recurring orders should be created.
-
-        :param billing_weekday: The billing_weekday of this ShopifySubscriptionUpdateRequest.
-        :type: ShopifySubscriptionWeekday
-        """
-
-        self._billing_weekday = billing_weekday
+        self._billing_configuration = billing_configuration
     
     @property
     def id(self):
@@ -181,7 +91,7 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :return: The items of this ShopifySubscriptionUpdateRequest.
-        :rtype: list[ShopifySubscriptionEditModelItem]
+        :rtype: list[ShopifySubscriptionModelItem]
         """
         return self._items
 
@@ -192,79 +102,10 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :param items: The items of this ShopifySubscriptionUpdateRequest.
-        :type: list[ShopifySubscriptionEditModelItem]
+        :type: list[ShopifySubscriptionModelItem]
         """
 
         self._items = items
-    
-    @property
-    def maximal_billing_cycles(self):
-        """Gets the maximal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the maximum number of orders the subscription will run for.
-
-        :return: The maximal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
-        """
-        return self._maximal_billing_cycles
-
-    @maximal_billing_cycles.setter
-    def maximal_billing_cycles(self, maximal_billing_cycles):
-        """Sets the maximal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the maximum number of orders the subscription will run for.
-
-        :param maximal_billing_cycles: The maximal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :type: int
-        """
-
-        self._maximal_billing_cycles = maximal_billing_cycles
-    
-    @property
-    def maximal_suspendable_cycles(self):
-        """Gets the maximal_suspendable_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the maximum number of orders the subscription can be suspended for at a time.
-
-        :return: The maximal_suspendable_cycles of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
-        """
-        return self._maximal_suspendable_cycles
-
-    @maximal_suspendable_cycles.setter
-    def maximal_suspendable_cycles(self, maximal_suspendable_cycles):
-        """Sets the maximal_suspendable_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the maximum number of orders the subscription can be suspended for at a time.
-
-        :param maximal_suspendable_cycles: The maximal_suspendable_cycles of this ShopifySubscriptionUpdateRequest.
-        :type: int
-        """
-
-        self._maximal_suspendable_cycles = maximal_suspendable_cycles
-    
-    @property
-    def minimal_billing_cycles(self):
-        """Gets the minimal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the minimal number of orders the subscription will run for.
-
-        :return: The minimal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
-        """
-        return self._minimal_billing_cycles
-
-    @minimal_billing_cycles.setter
-    def minimal_billing_cycles(self, minimal_billing_cycles):
-        """Sets the minimal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the minimal number of orders the subscription will run for.
-
-        :param minimal_billing_cycles: The minimal_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :type: int
-        """
-
-        self._minimal_billing_cycles = minimal_billing_cycles
     
     @property
     def store_order_confirmation_email_enabled(self):
@@ -311,29 +152,6 @@ class ShopifySubscriptionUpdateRequest:
         """
 
         self._subscriber_suspension_allowed = subscriber_suspension_allowed
-    
-    @property
-    def termination_billing_cycles(self):
-        """Gets the termination_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the number of orders the subscription will keep running for after its termination has been requested.
-
-        :return: The termination_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :rtype: int
-        """
-        return self._termination_billing_cycles
-
-    @termination_billing_cycles.setter
-    def termination_billing_cycles(self, termination_billing_cycles):
-        """Sets the termination_billing_cycles of this ShopifySubscriptionUpdateRequest.
-
-            Define the number of orders the subscription will keep running for after its termination has been requested.
-
-        :param termination_billing_cycles: The termination_billing_cycles of this ShopifySubscriptionUpdateRequest.
-        :type: int
-        """
-
-        self._termination_billing_cycles = termination_billing_cycles
     
 
     def to_dict(self):

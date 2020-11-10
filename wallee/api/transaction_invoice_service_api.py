@@ -28,6 +28,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_invoice_document_with_http_info(space_id, id, **kwargs)
         else:
@@ -239,6 +243,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_invoice_document_with_target_media_type_with_http_info(space_id, id, target_media_type_id, **kwargs)
         else:
@@ -353,6 +359,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.is_replacement_possible_with_http_info(space_id, id, **kwargs)
         else:
@@ -460,6 +468,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_derecognized_with_http_info(space_id, id, **kwargs)
         else:
@@ -567,6 +577,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.mark_as_paid_with_http_info(space_id, id, **kwargs)
         else:
@@ -674,6 +686,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -782,6 +796,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.replace_with_http_info(space_id, id, replacement, **kwargs)
         else:
@@ -896,6 +912,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:

@@ -16,6 +16,7 @@ class TransactionCompletion(TransactionAwareEntity):
         'external_id': 'str',
         'failed_on': 'datetime',
         'failure_reason': 'FailureReason',
+        'invoice_merchant_reference': 'str',
         'labels': 'list[Label]',
         'language': 'str',
         'last_completion': 'bool',
@@ -38,7 +39,7 @@ class TransactionCompletion(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount','base_line_items': 'baseLineItems','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','labels': 'labels','language': 'language','last_completion': 'lastCompletion','line_item_version': 'lineItemVersion','line_items': 'lineItems','mode': 'mode','next_update_on': 'nextUpdateOn','payment_information': 'paymentInformation','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','remaining_line_items': 'remainingLineItems','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','time_zone': 'timeZone','timeout_on': 'timeoutOn','version': 'version',
+        'amount': 'amount','base_line_items': 'baseLineItems','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','invoice_merchant_reference': 'invoiceMerchantReference','labels': 'labels','language': 'language','last_completion': 'lastCompletion','line_item_version': 'lineItemVersion','line_items': 'lineItems','mode': 'mode','next_update_on': 'nextUpdateOn','payment_information': 'paymentInformation','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','remaining_line_items': 'remainingLineItems','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','time_zone': 'timeZone','timeout_on': 'timeoutOn','version': 'version',
     }
 
     
@@ -49,6 +50,7 @@ class TransactionCompletion(TransactionAwareEntity):
     _external_id = None
     _failed_on = None
     _failure_reason = None
+    _invoice_merchant_reference = None
     _labels = None
     _language = None
     _last_completion = None
@@ -79,6 +81,7 @@ class TransactionCompletion(TransactionAwareEntity):
         self.external_id = kwargs.get('external_id', None)
         self.failed_on = kwargs.get('failed_on', None)
         self.failure_reason = kwargs.get('failure_reason', None)
+        self.invoice_merchant_reference = kwargs.get('invoice_merchant_reference', None)
         self.labels = kwargs.get('labels', None)
         self.language = kwargs.get('language', None)
         self.last_completion = kwargs.get('last_completion', None)
@@ -267,6 +270,31 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._failure_reason = failure_reason
+    
+    @property
+    def invoice_merchant_reference(self):
+        """Gets the invoice_merchant_reference of this TransactionCompletion.
+
+            
+
+        :return: The invoice_merchant_reference of this TransactionCompletion.
+        :rtype: str
+        """
+        return self._invoice_merchant_reference
+
+    @invoice_merchant_reference.setter
+    def invoice_merchant_reference(self, invoice_merchant_reference):
+        """Sets the invoice_merchant_reference of this TransactionCompletion.
+
+            
+
+        :param invoice_merchant_reference: The invoice_merchant_reference of this TransactionCompletion.
+        :type: str
+        """
+        if invoice_merchant_reference is not None and len(invoice_merchant_reference) > 100:
+            raise ValueError("Invalid value for `invoice_merchant_reference`, length must be less than or equal to `100`")
+
+        self._invoice_merchant_reference = invoice_merchant_reference
     
     @property
     def labels(self):

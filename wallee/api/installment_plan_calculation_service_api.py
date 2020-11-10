@@ -28,6 +28,8 @@ class InstallmentPlanCalculationServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.calculate_plans_with_http_info(space_id, transaction_id, **kwargs)
         else:

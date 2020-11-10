@@ -12,6 +12,7 @@ class Subscription:
         'activated_on': 'datetime',
         'affiliate': 'SubscriptionAffiliate',
         'created_on': 'datetime',
+        'current_product_version': 'SubscriptionProductVersion',
         'description': 'str',
         'id': 'int',
         'initialized_on': 'datetime',
@@ -31,13 +32,14 @@ class Subscription:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_scheduled_on': 'terminationScheduledOn','token': 'token','version': 'version',
+        'activated_on': 'activatedOn','affiliate': 'affiliate','created_on': 'createdOn','current_product_version': 'currentProductVersion','description': 'description','id': 'id','initialized_on': 'initializedOn','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','reference': 'reference','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_scheduled_on': 'terminationScheduledOn','token': 'token','version': 'version',
     }
 
     
     _activated_on = None
     _affiliate = None
     _created_on = None
+    _current_product_version = None
     _description = None
     _id = None
     _initialized_on = None
@@ -61,6 +63,7 @@ class Subscription:
         self.activated_on = kwargs.get('activated_on', None)
         self.affiliate = kwargs.get('affiliate', None)
         self.created_on = kwargs.get('created_on', None)
+        self.current_product_version = kwargs.get('current_product_version', None)
         self.description = kwargs.get('description', None)
         self.id = kwargs.get('id', None)
         self.initialized_on = kwargs.get('initialized_on', None)
@@ -148,6 +151,29 @@ class Subscription:
         """
 
         self._created_on = created_on
+    
+    @property
+    def current_product_version(self):
+        """Gets the current_product_version of this Subscription.
+
+            
+
+        :return: The current_product_version of this Subscription.
+        :rtype: SubscriptionProductVersion
+        """
+        return self._current_product_version
+
+    @current_product_version.setter
+    def current_product_version(self, current_product_version):
+        """Sets the current_product_version of this Subscription.
+
+            
+
+        :param current_product_version: The current_product_version of this Subscription.
+        :type: SubscriptionProductVersion
+        """
+
+        self._current_product_version = current_product_version
     
     @property
     def description(self):

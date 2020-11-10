@@ -30,6 +30,8 @@ class UserAccountRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.add_role_with_http_info(user_id, account_id, role_id, **kwargs)
         else:
@@ -143,6 +145,8 @@ class UserAccountRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.list_with_http_info(user_id, account_id, **kwargs)
         else:
@@ -245,6 +249,8 @@ class UserAccountRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.remove_role_with_http_info(id, **kwargs)
         else:

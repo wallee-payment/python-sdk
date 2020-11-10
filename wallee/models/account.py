@@ -11,9 +11,12 @@ class Account:
     
         'active': 'bool',
         'active_or_restricted_active': 'bool',
+        'created_by': 'int',
+        'created_on': 'datetime',
         'deleted_by': 'int',
         'deleted_on': 'datetime',
         'id': 'int',
+        'last_modified_date': 'datetime',
         'name': 'str',
         'parent_account': 'Account',
         'planned_purge_date': 'datetime',
@@ -26,15 +29,18 @@ class Account:
     }
 
     attribute_map = {
-        'active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','deleted_by': 'deletedBy','deleted_on': 'deletedOn','id': 'id','name': 'name','parent_account': 'parentAccount','planned_purge_date': 'plannedPurgeDate','restricted_active': 'restrictedActive','scope': 'scope','state': 'state','subaccount_limit': 'subaccountLimit','type': 'type','version': 'version',
+        'active': 'active','active_or_restricted_active': 'activeOrRestrictedActive','created_by': 'createdBy','created_on': 'createdOn','deleted_by': 'deletedBy','deleted_on': 'deletedOn','id': 'id','last_modified_date': 'lastModifiedDate','name': 'name','parent_account': 'parentAccount','planned_purge_date': 'plannedPurgeDate','restricted_active': 'restrictedActive','scope': 'scope','state': 'state','subaccount_limit': 'subaccountLimit','type': 'type','version': 'version',
     }
 
     
     _active = None
     _active_or_restricted_active = None
+    _created_by = None
+    _created_on = None
     _deleted_by = None
     _deleted_on = None
     _id = None
+    _last_modified_date = None
     _name = None
     _parent_account = None
     _planned_purge_date = None
@@ -50,9 +56,12 @@ class Account:
         
         self.active = kwargs.get('active', None)
         self.active_or_restricted_active = kwargs.get('active_or_restricted_active', None)
+        self.created_by = kwargs.get('created_by', None)
+        self.created_on = kwargs.get('created_on', None)
         self.deleted_by = kwargs.get('deleted_by', None)
         self.deleted_on = kwargs.get('deleted_on', None)
         self.id = kwargs.get('id', None)
+        self.last_modified_date = kwargs.get('last_modified_date', None)
         self.name = kwargs.get('name', None)
         self.parent_account = kwargs.get('parent_account', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
@@ -110,6 +119,52 @@ class Account:
         """
 
         self._active_or_restricted_active = active_or_restricted_active
+    
+    @property
+    def created_by(self):
+        """Gets the created_by of this Account.
+
+            The ID of the user who created this entity.
+
+        :return: The created_by of this Account.
+        :rtype: int
+        """
+        return self._created_by
+
+    @created_by.setter
+    def created_by(self, created_by):
+        """Sets the created_by of this Account.
+
+            The ID of the user who created this entity.
+
+        :param created_by: The created_by of this Account.
+        :type: int
+        """
+
+        self._created_by = created_by
+    
+    @property
+    def created_on(self):
+        """Gets the created_on of this Account.
+
+            The date and time when this entity was created.
+
+        :return: The created_on of this Account.
+        :rtype: datetime
+        """
+        return self._created_on
+
+    @created_on.setter
+    def created_on(self, created_on):
+        """Sets the created_on of this Account.
+
+            The date and time when this entity was created.
+
+        :param created_on: The created_on of this Account.
+        :type: datetime
+        """
+
+        self._created_on = created_on
     
     @property
     def deleted_by(self):
@@ -179,6 +234,29 @@ class Account:
         """
 
         self._id = id
+    
+    @property
+    def last_modified_date(self):
+        """Gets the last_modified_date of this Account.
+
+            
+
+        :return: The last_modified_date of this Account.
+        :rtype: datetime
+        """
+        return self._last_modified_date
+
+    @last_modified_date.setter
+    def last_modified_date(self, last_modified_date):
+        """Sets the last_modified_date of this Account.
+
+            
+
+        :param last_modified_date: The last_modified_date of this Account.
+        :type: datetime
+        """
+
+        self._last_modified_date = last_modified_date
     
     @property
     def name(self):

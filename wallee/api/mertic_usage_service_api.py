@@ -29,6 +29,8 @@ class MerticUsageServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.calculate_with_http_info(space_id, start, end, **kwargs)
         else:

@@ -27,6 +27,8 @@ class TransactionMobileSdkServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.payment_form_url_with_http_info(credentials, **kwargs)
         else:

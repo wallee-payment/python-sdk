@@ -28,6 +28,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.confirm_with_http_info(space_id, transaction_model, **kwargs)
         else:
@@ -135,6 +137,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -238,6 +242,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, transaction, **kwargs)
         else:
@@ -345,6 +351,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_transaction_credentials_with_http_info(space_id, id, **kwargs)
         else:
@@ -444,6 +452,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_one_click_token_with_credentials_with_http_info(credentials, token_id, **kwargs)
         else:
@@ -543,6 +553,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.export_with_http_info(space_id, request, **kwargs)
         else:
@@ -649,6 +661,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.fetch_one_click_tokens_with_credentials_with_http_info(credentials, **kwargs)
         else:
@@ -742,6 +756,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.fetch_payment_methods_with_http_info(space_id, id, integration_mode, **kwargs)
         else:
@@ -852,6 +868,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.fetch_payment_methods_with_credentials_with_http_info(credentials, integration_mode, **kwargs)
         else:
@@ -955,6 +973,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_invoice_document_with_http_info(space_id, id, **kwargs)
         else:
@@ -1062,6 +1082,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_latest_transaction_line_item_version_with_http_info(space_id, id, **kwargs)
         else:
@@ -1165,6 +1187,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.get_packing_slip_with_http_info(space_id, id, **kwargs)
         else:
@@ -1272,6 +1296,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.process_one_click_token_and_redirect_with_credentials_with_http_info(credentials, token_id, **kwargs)
         else:
@@ -1371,6 +1397,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.process_without_user_interaction_with_http_info(space_id, id, **kwargs)
         else:
@@ -1470,6 +1498,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -1576,6 +1606,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_credentials_with_http_info(credentials, **kwargs)
         else:
@@ -1676,6 +1708,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -1783,6 +1817,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:
@@ -1890,6 +1926,8 @@ class TransactionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_transaction_line_items_with_http_info(space_id, update_request, **kwargs)
         else:

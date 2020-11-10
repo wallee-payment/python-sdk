@@ -23,6 +23,7 @@ class Transaction:
         'charge_retry_enabled': 'bool',
         'completed_amount': 'float',
         'completed_on': 'datetime',
+        'completion_behavior': 'TransactionCompletionBehavior',
         'completion_timeout_on': 'datetime',
         'confirmed_by': 'int',
         'confirmed_on': 'datetime',
@@ -61,6 +62,7 @@ class Transaction:
         'space_view_id': 'int',
         'state': 'TransactionState',
         'success_url': 'str',
+        'terminal': 'PaymentTerminal',
         'time_zone': 'str',
         'token': 'Token',
         'tokenization_mode': 'TokenizationMode',
@@ -73,7 +75,7 @@ class Transaction:
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_behavior': 'completionBehavior','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','terminal': 'terminal','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
     }
 
     
@@ -91,6 +93,7 @@ class Transaction:
     _charge_retry_enabled = None
     _completed_amount = None
     _completed_on = None
+    _completion_behavior = None
     _completion_timeout_on = None
     _confirmed_by = None
     _confirmed_on = None
@@ -129,6 +132,7 @@ class Transaction:
     _space_view_id = None
     _state = None
     _success_url = None
+    _terminal = None
     _time_zone = None
     _token = None
     _tokenization_mode = None
@@ -156,6 +160,7 @@ class Transaction:
         self.charge_retry_enabled = kwargs.get('charge_retry_enabled', None)
         self.completed_amount = kwargs.get('completed_amount', None)
         self.completed_on = kwargs.get('completed_on', None)
+        self.completion_behavior = kwargs.get('completion_behavior', None)
         self.completion_timeout_on = kwargs.get('completion_timeout_on', None)
         self.confirmed_by = kwargs.get('confirmed_by', None)
         self.confirmed_on = kwargs.get('confirmed_on', None)
@@ -194,6 +199,7 @@ class Transaction:
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
         self.success_url = kwargs.get('success_url', None)
+        self.terminal = kwargs.get('terminal', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.token = kwargs.get('token', None)
         self.tokenization_mode = kwargs.get('tokenization_mode', None)
@@ -527,6 +533,29 @@ class Transaction:
         """
 
         self._completed_on = completed_on
+    
+    @property
+    def completion_behavior(self):
+        """Gets the completion_behavior of this Transaction.
+
+            The completion behavior controls when the transaction is completed.
+
+        :return: The completion_behavior of this Transaction.
+        :rtype: TransactionCompletionBehavior
+        """
+        return self._completion_behavior
+
+    @completion_behavior.setter
+    def completion_behavior(self, completion_behavior):
+        """Sets the completion_behavior of this Transaction.
+
+            The completion behavior controls when the transaction is completed.
+
+        :param completion_behavior: The completion_behavior of this Transaction.
+        :type: TransactionCompletionBehavior
+        """
+
+        self._completion_behavior = completion_behavior
     
     @property
     def completion_timeout_on(self):
@@ -922,6 +951,10 @@ class Transaction:
         :param failed_url: The failed_url of this Transaction.
         :type: str
         """
+        if failed_url is not None and len(failed_url) > 1000:
+            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `1000`")
+        if failed_url is not None and len(failed_url) < 9:
+            raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
 
         self._failed_url = failed_url
     
@@ -1411,8 +1444,35 @@ class Transaction:
         :param success_url: The success_url of this Transaction.
         :type: str
         """
+        if success_url is not None and len(success_url) > 1000:
+            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `1000`")
+        if success_url is not None and len(success_url) < 9:
+            raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
 
         self._success_url = success_url
+    
+    @property
+    def terminal(self):
+        """Gets the terminal of this Transaction.
+
+            The terminal on which the payment was processed.
+
+        :return: The terminal of this Transaction.
+        :rtype: PaymentTerminal
+        """
+        return self._terminal
+
+    @terminal.setter
+    def terminal(self, terminal):
+        """Sets the terminal of this Transaction.
+
+            The terminal on which the payment was processed.
+
+        :param terminal: The terminal of this Transaction.
+        :type: PaymentTerminal
+        """
+
+        self._terminal = terminal
     
     @property
     def time_zone(self):

@@ -20,10 +20,11 @@ class SubscriptionProductVersionPending:
         'number_of_notice_periods': 'int',
         'product': 'int',
         'state': 'SubscriptionProductVersionState',
+        'tax_calculation': 'TaxCalculation',
     }
 
     attribute_map = {
-        'id': 'id','version': 'version','billing_cycle': 'billingCycle','comment': 'comment','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','product': 'product','state': 'state',
+        'id': 'id','version': 'version','billing_cycle': 'billingCycle','comment': 'comment','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','product': 'product','state': 'state','tax_calculation': 'taxCalculation',
     }
 
     
@@ -38,6 +39,7 @@ class SubscriptionProductVersionPending:
     _number_of_notice_periods = None
     _product = None
     _state = None
+    _tax_calculation = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -55,6 +57,7 @@ class SubscriptionProductVersionPending:
         self.number_of_notice_periods = kwargs.get('number_of_notice_periods', None)
         self.product = kwargs.get('product', None)
         self.state = kwargs.get('state', None)
+        self.tax_calculation = kwargs.get('tax_calculation', None)
         
 
     
@@ -314,6 +317,29 @@ class SubscriptionProductVersionPending:
         """
 
         self._state = state
+    
+    @property
+    def tax_calculation(self):
+        """Gets the tax_calculation of this SubscriptionProductVersionPending.
+
+            Strategy that is used for tax calculation in fees.
+
+        :return: The tax_calculation of this SubscriptionProductVersionPending.
+        :rtype: TaxCalculation
+        """
+        return self._tax_calculation
+
+    @tax_calculation.setter
+    def tax_calculation(self, tax_calculation):
+        """Sets the tax_calculation of this SubscriptionProductVersionPending.
+
+            Strategy that is used for tax calculation in fees.
+
+        :param tax_calculation: The tax_calculation of this SubscriptionProductVersionPending.
+        :type: TaxCalculation
+        """
+
+        self._tax_calculation = tax_calculation
     
 
     def to_dict(self):

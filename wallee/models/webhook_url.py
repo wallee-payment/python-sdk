@@ -181,6 +181,10 @@ class WebhookUrl:
         :param url: The url of this WebhookUrl.
         :type: str
         """
+        if url is not None and len(url) > 500:
+            raise ValueError("Invalid value for `url`, length must be less than or equal to `500`")
+        if url is not None and len(url) < 9:
+            raise ValueError("Invalid value for `url`, length must be greater than or equal to `9`")
 
         self._url = url
     

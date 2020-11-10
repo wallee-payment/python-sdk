@@ -27,6 +27,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(**kwargs)
         else:
@@ -122,6 +124,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(entity, **kwargs)
         else:
@@ -221,6 +225,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.delete_with_http_info(id, **kwargs)
         else:
@@ -320,6 +326,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(id, **kwargs)
         else:
@@ -419,6 +427,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(query, **kwargs)
         else:
@@ -518,6 +528,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(entity, **kwargs)
         else:

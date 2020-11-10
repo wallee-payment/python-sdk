@@ -26,6 +26,8 @@ class CountryStateServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.all_with_http_info(**kwargs)
         else:
@@ -118,6 +120,8 @@ class CountryStateServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.country_with_http_info(code, **kwargs)
         else:

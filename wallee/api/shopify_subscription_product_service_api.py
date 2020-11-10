@@ -28,6 +28,8 @@ class ShopifySubscriptionProductServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -131,6 +133,8 @@ class ShopifySubscriptionProductServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -238,6 +242,8 @@ class ShopifySubscriptionProductServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -345,6 +351,8 @@ class ShopifySubscriptionProductServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -446,12 +454,14 @@ class ShopifySubscriptionProductServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param ShopifySubscriptionProductActive entity: The Shopify subscription product object with all the properties which should be updated. The id and the version are required properties. (required)
+        :param ShopifySubscriptionProductUpdate entity: The Shopify subscription product object with all the properties which should be updated. The id and the version are required properties. (required)
         :return: ShopifySubscriptionProduct
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+
+
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:
@@ -469,7 +479,7 @@ class ShopifySubscriptionProductServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param ShopifySubscriptionProductActive entity: The Shopify subscription product object with all the properties which should be updated. The id and the version are required properties. (required)
+        :param ShopifySubscriptionProductUpdate entity: The Shopify subscription product object with all the properties which should be updated. The id and the version are required properties. (required)
         :return: ShopifySubscriptionProduct
                  If the method is called asynchronously,
                  returns the request thread.

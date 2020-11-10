@@ -92,6 +92,10 @@ class SubscriptionChargeCreate:
         :param failed_url: The failed_url of this SubscriptionChargeCreate.
         :type: str
         """
+        if failed_url is not None and len(failed_url) > 500:
+            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `500`")
+        if failed_url is not None and len(failed_url) < 9:
+            raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
 
         self._failed_url = failed_url
     
@@ -213,6 +217,10 @@ class SubscriptionChargeCreate:
         :param success_url: The success_url of this SubscriptionChargeCreate.
         :type: str
         """
+        if success_url is not None and len(success_url) > 500:
+            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `500`")
+        if success_url is not None and len(success_url) < 9:
+            raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
 
         self._success_url = success_url
     
