@@ -2,28 +2,78 @@
 import pprint
 import six
 from enum import Enum
-from . import PaymentTerminalAddress
 
 
-class PaymentTerminalContactAddress(PaymentTerminalAddress):
+
+class CardCryptogram:
 
     swagger_types = {
     
+        'type': 'CardCryptogramType',
+        'value': 'str',
     }
 
     attribute_map = {
-        
+        'type': 'type','value': 'value',
     }
 
     
+    _type = None
+    _value = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        self.type = kwargs.get('type', None)
+        self.value = kwargs.get('value', None)
+        
 
+    
+    @property
+    def type(self):
+        """Gets the type of this CardCryptogram.
+
+            
+
+        :return: The type of this CardCryptogram.
+        :rtype: CardCryptogramType
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this CardCryptogram.
+
+            
+
+        :param type: The type of this CardCryptogram.
+        :type: CardCryptogramType
+        """
+
+        self._type = type
+    
+    @property
+    def value(self):
+        """Gets the value of this CardCryptogram.
+
+            
+
+        :return: The value of this CardCryptogram.
+        :rtype: str
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        """Sets the value of this CardCryptogram.
+
+            
+
+        :param value: The value of this CardCryptogram.
+        :type: str
+        """
+
+        self._value = value
     
 
     def to_dict(self):
@@ -48,7 +98,7 @@ class PaymentTerminalContactAddress(PaymentTerminalAddress):
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(PaymentTerminalContactAddress, dict):
+        if issubclass(CardCryptogram, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -61,7 +111,7 @@ class PaymentTerminalContactAddress(PaymentTerminalAddress):
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, PaymentTerminalContactAddress):
+        if not isinstance(other, CardCryptogram):
             return False
 
         return self.__dict__ == other.__dict__

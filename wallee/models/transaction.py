@@ -47,6 +47,7 @@ class Transaction:
         'internet_protocol_address': 'str',
         'internet_protocol_address_country': 'str',
         'invoice_merchant_reference': 'str',
+        'java_enabled': 'bool',
         'language': 'str',
         'line_items': 'list[LineItem]',
         'linked_space_id': 'int',
@@ -57,6 +58,9 @@ class Transaction:
         'planned_purge_date': 'datetime',
         'processing_on': 'datetime',
         'refunded_amount': 'float',
+        'screen_color_depth': 'str',
+        'screen_height': 'str',
+        'screen_width': 'str',
         'shipping_address': 'Address',
         'shipping_method': 'str',
         'space_view_id': 'int',
@@ -72,10 +76,12 @@ class Transaction:
         'user_failure_message': 'str',
         'user_interface_type': 'TransactionUserInterfaceType',
         'version': 'int',
+        'window_height': 'str',
+        'window_width': 'str',
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_behavior': 'completionBehavior','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','terminal': 'terminal','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_behavior': 'completionBehavior','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','java_enabled': 'javaEnabled','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','screen_color_depth': 'screenColorDepth','screen_height': 'screenHeight','screen_width': 'screenWidth','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','terminal': 'terminal','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version','window_height': 'windowHeight','window_width': 'windowWidth',
     }
 
     
@@ -117,6 +123,7 @@ class Transaction:
     _internet_protocol_address = None
     _internet_protocol_address_country = None
     _invoice_merchant_reference = None
+    _java_enabled = None
     _language = None
     _line_items = None
     _linked_space_id = None
@@ -127,6 +134,9 @@ class Transaction:
     _planned_purge_date = None
     _processing_on = None
     _refunded_amount = None
+    _screen_color_depth = None
+    _screen_height = None
+    _screen_width = None
     _shipping_address = None
     _shipping_method = None
     _space_view_id = None
@@ -142,6 +152,8 @@ class Transaction:
     _user_failure_message = None
     _user_interface_type = None
     _version = None
+    _window_height = None
+    _window_width = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -184,6 +196,7 @@ class Transaction:
         self.internet_protocol_address = kwargs.get('internet_protocol_address', None)
         self.internet_protocol_address_country = kwargs.get('internet_protocol_address_country', None)
         self.invoice_merchant_reference = kwargs.get('invoice_merchant_reference', None)
+        self.java_enabled = kwargs.get('java_enabled', None)
         self.language = kwargs.get('language', None)
         self.line_items = kwargs.get('line_items', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -194,6 +207,9 @@ class Transaction:
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.processing_on = kwargs.get('processing_on', None)
         self.refunded_amount = kwargs.get('refunded_amount', None)
+        self.screen_color_depth = kwargs.get('screen_color_depth', None)
+        self.screen_height = kwargs.get('screen_height', None)
+        self.screen_width = kwargs.get('screen_width', None)
         self.shipping_address = kwargs.get('shipping_address', None)
         self.shipping_method = kwargs.get('shipping_method', None)
         self.space_view_id = kwargs.get('space_view_id', None)
@@ -209,6 +225,8 @@ class Transaction:
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.user_interface_type = kwargs.get('user_interface_type', None)
         self.version = kwargs.get('version', None)
+        self.window_height = kwargs.get('window_height', None)
+        self.window_width = kwargs.get('window_width', None)
         
 
     
@@ -1099,6 +1117,29 @@ class Transaction:
         self._invoice_merchant_reference = invoice_merchant_reference
     
     @property
+    def java_enabled(self):
+        """Gets the java_enabled of this Transaction.
+
+            
+
+        :return: The java_enabled of this Transaction.
+        :rtype: bool
+        """
+        return self._java_enabled
+
+    @java_enabled.setter
+    def java_enabled(self, java_enabled):
+        """Sets the java_enabled of this Transaction.
+
+            
+
+        :param java_enabled: The java_enabled of this Transaction.
+        :type: bool
+        """
+
+        self._java_enabled = java_enabled
+    
+    @property
     def language(self):
         """Gets the language of this Transaction.
 
@@ -1329,6 +1370,75 @@ class Transaction:
         """
 
         self._refunded_amount = refunded_amount
+    
+    @property
+    def screen_color_depth(self):
+        """Gets the screen_color_depth of this Transaction.
+
+            
+
+        :return: The screen_color_depth of this Transaction.
+        :rtype: str
+        """
+        return self._screen_color_depth
+
+    @screen_color_depth.setter
+    def screen_color_depth(self, screen_color_depth):
+        """Sets the screen_color_depth of this Transaction.
+
+            
+
+        :param screen_color_depth: The screen_color_depth of this Transaction.
+        :type: str
+        """
+
+        self._screen_color_depth = screen_color_depth
+    
+    @property
+    def screen_height(self):
+        """Gets the screen_height of this Transaction.
+
+            
+
+        :return: The screen_height of this Transaction.
+        :rtype: str
+        """
+        return self._screen_height
+
+    @screen_height.setter
+    def screen_height(self, screen_height):
+        """Sets the screen_height of this Transaction.
+
+            
+
+        :param screen_height: The screen_height of this Transaction.
+        :type: str
+        """
+
+        self._screen_height = screen_height
+    
+    @property
+    def screen_width(self):
+        """Gets the screen_width of this Transaction.
+
+            
+
+        :return: The screen_width of this Transaction.
+        :rtype: str
+        """
+        return self._screen_width
+
+    @screen_width.setter
+    def screen_width(self, screen_width):
+        """Sets the screen_width of this Transaction.
+
+            
+
+        :param screen_width: The screen_width of this Transaction.
+        :type: str
+        """
+
+        self._screen_width = screen_width
     
     @property
     def shipping_address(self):
@@ -1680,6 +1790,52 @@ class Transaction:
         """
 
         self._version = version
+    
+    @property
+    def window_height(self):
+        """Gets the window_height of this Transaction.
+
+            
+
+        :return: The window_height of this Transaction.
+        :rtype: str
+        """
+        return self._window_height
+
+    @window_height.setter
+    def window_height(self, window_height):
+        """Sets the window_height of this Transaction.
+
+            
+
+        :param window_height: The window_height of this Transaction.
+        :type: str
+        """
+
+        self._window_height = window_height
+    
+    @property
+    def window_width(self):
+        """Gets the window_width of this Transaction.
+
+            
+
+        :return: The window_width of this Transaction.
+        :rtype: str
+        """
+        return self._window_width
+
+    @window_width.setter
+    def window_width(self, window_width):
+        """Sets the window_width of this Transaction.
+
+            
+
+        :param window_width: The window_width of this Transaction.
+        :type: str
+        """
+
+        self._window_width = window_width
     
 
     def to_dict(self):

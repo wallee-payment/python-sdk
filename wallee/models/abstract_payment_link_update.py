@@ -13,17 +13,17 @@ class AbstractPaymentLinkUpdate:
         'applied_space_view': 'int',
         'available_from': 'datetime',
         'available_until': 'datetime',
-        'billing_address_required': 'bool',
+        'billing_address_handling_mode': 'PaymentLinkAddressHandlingMode',
         'currency': 'str',
         'language': 'str',
         'line_items': 'list[LineItemCreate]',
         'maximal_number_of_transactions': 'int',
         'name': 'str',
-        'shipping_address_required': 'bool',
+        'shipping_address_handling_mode': 'PaymentLinkAddressHandlingMode',
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_required': 'billingAddressRequired','currency': 'currency','language': 'language','line_items': 'lineItems','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','shipping_address_required': 'shippingAddressRequired',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_handling_mode': 'billingAddressHandlingMode','currency': 'currency','language': 'language','line_items': 'lineItems','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','shipping_address_handling_mode': 'shippingAddressHandlingMode',
     }
 
     
@@ -31,13 +31,13 @@ class AbstractPaymentLinkUpdate:
     _applied_space_view = None
     _available_from = None
     _available_until = None
-    _billing_address_required = None
+    _billing_address_handling_mode = None
     _currency = None
     _language = None
     _line_items = None
     _maximal_number_of_transactions = None
     _name = None
-    _shipping_address_required = None
+    _shipping_address_handling_mode = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -46,13 +46,13 @@ class AbstractPaymentLinkUpdate:
         self.applied_space_view = kwargs.get('applied_space_view', None)
         self.available_from = kwargs.get('available_from', None)
         self.available_until = kwargs.get('available_until', None)
-        self.billing_address_required = kwargs.get('billing_address_required', None)
+        self.billing_address_handling_mode = kwargs.get('billing_address_handling_mode', None)
         self.currency = kwargs.get('currency', None)
         self.language = kwargs.get('language', None)
         self.line_items = kwargs.get('line_items', None)
         self.maximal_number_of_transactions = kwargs.get('maximal_number_of_transactions', None)
         self.name = kwargs.get('name', None)
-        self.shipping_address_required = kwargs.get('shipping_address_required', None)
+        self.shipping_address_handling_mode = kwargs.get('shipping_address_handling_mode', None)
         
 
     
@@ -149,27 +149,27 @@ class AbstractPaymentLinkUpdate:
         self._available_until = available_until
     
     @property
-    def billing_address_required(self):
-        """Gets the billing_address_required of this AbstractPaymentLinkUpdate.
+    def billing_address_handling_mode(self):
+        """Gets the billing_address_handling_mode of this AbstractPaymentLinkUpdate.
 
-            By making the billing address required the transaction can only be created when a billing address is provided within the request.
+            The billing address handling mode controls if the address is collected or not and how it is collected.
 
-        :return: The billing_address_required of this AbstractPaymentLinkUpdate.
-        :rtype: bool
+        :return: The billing_address_handling_mode of this AbstractPaymentLinkUpdate.
+        :rtype: PaymentLinkAddressHandlingMode
         """
-        return self._billing_address_required
+        return self._billing_address_handling_mode
 
-    @billing_address_required.setter
-    def billing_address_required(self, billing_address_required):
-        """Sets the billing_address_required of this AbstractPaymentLinkUpdate.
+    @billing_address_handling_mode.setter
+    def billing_address_handling_mode(self, billing_address_handling_mode):
+        """Sets the billing_address_handling_mode of this AbstractPaymentLinkUpdate.
 
-            By making the billing address required the transaction can only be created when a billing address is provided within the request.
+            The billing address handling mode controls if the address is collected or not and how it is collected.
 
-        :param billing_address_required: The billing_address_required of this AbstractPaymentLinkUpdate.
-        :type: bool
+        :param billing_address_handling_mode: The billing_address_handling_mode of this AbstractPaymentLinkUpdate.
+        :type: PaymentLinkAddressHandlingMode
         """
 
-        self._billing_address_required = billing_address_required
+        self._billing_address_handling_mode = billing_address_handling_mode
     
     @property
     def currency(self):
@@ -289,27 +289,27 @@ class AbstractPaymentLinkUpdate:
         self._name = name
     
     @property
-    def shipping_address_required(self):
-        """Gets the shipping_address_required of this AbstractPaymentLinkUpdate.
+    def shipping_address_handling_mode(self):
+        """Gets the shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
 
-            By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
+            The shipping address handling mode controls if the address is collected or not and how it is collected.
 
-        :return: The shipping_address_required of this AbstractPaymentLinkUpdate.
-        :rtype: bool
+        :return: The shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
+        :rtype: PaymentLinkAddressHandlingMode
         """
-        return self._shipping_address_required
+        return self._shipping_address_handling_mode
 
-    @shipping_address_required.setter
-    def shipping_address_required(self, shipping_address_required):
-        """Sets the shipping_address_required of this AbstractPaymentLinkUpdate.
+    @shipping_address_handling_mode.setter
+    def shipping_address_handling_mode(self, shipping_address_handling_mode):
+        """Sets the shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
 
-            By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
+            The shipping address handling mode controls if the address is collected or not and how it is collected.
 
-        :param shipping_address_required: The shipping_address_required of this AbstractPaymentLinkUpdate.
-        :type: bool
+        :param shipping_address_handling_mode: The shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
+        :type: PaymentLinkAddressHandlingMode
         """
 
-        self._shipping_address_required = shipping_address_required
+        self._shipping_address_handling_mode = shipping_address_handling_mode
     
 
     def to_dict(self):

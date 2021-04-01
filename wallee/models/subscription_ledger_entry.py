@@ -14,6 +14,7 @@ class SubscriptionLedgerEntry:
         'amount_including_tax': 'float',
         'created_by': 'int',
         'created_on': 'datetime',
+        'discount_including_tax': 'float',
         'external_id': 'str',
         'id': 'int',
         'linked_space_id': 'int',
@@ -28,7 +29,7 @@ class SubscriptionLedgerEntry:
     }
 
     attribute_map = {
-        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','quantity': 'quantity','state': 'state','subscription_version': 'subscriptionVersion','tax_amount': 'taxAmount','taxes': 'taxes','title': 'title','version': 'version',
+        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','created_by': 'createdBy','created_on': 'createdOn','discount_including_tax': 'discountIncludingTax','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','quantity': 'quantity','state': 'state','subscription_version': 'subscriptionVersion','tax_amount': 'taxAmount','taxes': 'taxes','title': 'title','version': 'version',
     }
 
     
@@ -37,6 +38,7 @@ class SubscriptionLedgerEntry:
     _amount_including_tax = None
     _created_by = None
     _created_on = None
+    _discount_including_tax = None
     _external_id = None
     _id = None
     _linked_space_id = None
@@ -57,6 +59,7 @@ class SubscriptionLedgerEntry:
         self.amount_including_tax = kwargs.get('amount_including_tax', None)
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
+        self.discount_including_tax = kwargs.get('discount_including_tax', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -185,6 +188,29 @@ class SubscriptionLedgerEntry:
         """
 
         self._created_on = created_on
+    
+    @property
+    def discount_including_tax(self):
+        """Gets the discount_including_tax of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The discount_including_tax of this SubscriptionLedgerEntry.
+        :rtype: float
+        """
+        return self._discount_including_tax
+
+    @discount_including_tax.setter
+    def discount_including_tax(self, discount_including_tax):
+        """Sets the discount_including_tax of this SubscriptionLedgerEntry.
+
+            
+
+        :param discount_including_tax: The discount_including_tax of this SubscriptionLedgerEntry.
+        :type: float
+        """
+
+        self._discount_including_tax = discount_including_tax
     
     @property
     def external_id(self):

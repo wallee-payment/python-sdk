@@ -13,6 +13,7 @@ class ShopifySubscriptionCreationRequest:
         'billing_configuration': 'ShopifySubscriptionModelBillingConfiguration',
         'currency': 'str',
         'external_id': 'str',
+        'initial_execution_date': 'datetime',
         'integration': 'int',
         'items': 'list[ShopifySubscriptionModelItem]',
         'language': 'str',
@@ -25,7 +26,7 @@ class ShopifySubscriptionCreationRequest:
     }
 
     attribute_map = {
-        'billing_address': 'billingAddress','billing_configuration': 'billingConfiguration','currency': 'currency','external_id': 'externalId','integration': 'integration','items': 'items','language': 'language','shipping_address': 'shippingAddress','shipping_method_name': 'shippingMethodName','space_view_id': 'spaceViewId','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber': 'subscriber','subscriber_suspension_allowed': 'subscriberSuspensionAllowed',
+        'billing_address': 'billingAddress','billing_configuration': 'billingConfiguration','currency': 'currency','external_id': 'externalId','initial_execution_date': 'initialExecutionDate','integration': 'integration','items': 'items','language': 'language','shipping_address': 'shippingAddress','shipping_method_name': 'shippingMethodName','space_view_id': 'spaceViewId','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber': 'subscriber','subscriber_suspension_allowed': 'subscriberSuspensionAllowed',
     }
 
     
@@ -33,6 +34,7 @@ class ShopifySubscriptionCreationRequest:
     _billing_configuration = None
     _currency = None
     _external_id = None
+    _initial_execution_date = None
     _integration = None
     _items = None
     _language = None
@@ -53,6 +55,7 @@ class ShopifySubscriptionCreationRequest:
 
         self.external_id = kwargs.get('external_id')
 
+        self.initial_execution_date = kwargs.get('initial_execution_date', None)
         self.integration = kwargs.get('integration')
 
         self.items = kwargs.get('items')
@@ -167,6 +170,29 @@ class ShopifySubscriptionCreationRequest:
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
+    
+    @property
+    def initial_execution_date(self):
+        """Gets the initial_execution_date of this ShopifySubscriptionCreationRequest.
+
+            
+
+        :return: The initial_execution_date of this ShopifySubscriptionCreationRequest.
+        :rtype: datetime
+        """
+        return self._initial_execution_date
+
+    @initial_execution_date.setter
+    def initial_execution_date(self, initial_execution_date):
+        """Sets the initial_execution_date of this ShopifySubscriptionCreationRequest.
+
+            
+
+        :param initial_execution_date: The initial_execution_date of this ShopifySubscriptionCreationRequest.
+        :type: datetime
+        """
+
+        self._initial_execution_date = initial_execution_date
     
     @property
     def integration(self):

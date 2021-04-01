@@ -164,7 +164,7 @@ class SubscriptionProductComponentUpdate:
     def default_component(self):
         """Gets the default_component of this SubscriptionProductComponentUpdate.
 
-            When a component is marked as a 'default' component it is used when no other component is selected by the user.
+            When a component is marked as a 'default' component it is used as the default component in its group and will be preselected in the product configuration.
 
         :return: The default_component of this SubscriptionProductComponentUpdate.
         :rtype: bool
@@ -175,7 +175,7 @@ class SubscriptionProductComponentUpdate:
     def default_component(self, default_component):
         """Sets the default_component of this SubscriptionProductComponentUpdate.
 
-            When a component is marked as a 'default' component it is used when no other component is selected by the user.
+            When a component is marked as a 'default' component it is used as the default component in its group and will be preselected in the product configuration.
 
         :param default_component: The default_component of this SubscriptionProductComponentUpdate.
         :type: bool

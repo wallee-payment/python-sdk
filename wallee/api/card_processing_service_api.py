@@ -24,7 +24,7 @@ class CardProcessingServiceApi:
         :param int space_id:  (required)
         :param int transaction_id: The ID of the transaction which should be processed. (required)
         :param int payment_method_configuration_id: The payment method configuration ID which is applied to the transaction. (required)
-        :param UnencryptedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
+        :param AuthenticatedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -51,7 +51,7 @@ class CardProcessingServiceApi:
         :param int space_id:  (required)
         :param int transaction_id: The ID of the transaction which should be processed. (required)
         :param int payment_method_configuration_id: The payment method configuration ID which is applied to the transaction. (required)
-        :param UnencryptedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
+        :param AuthenticatedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -149,7 +149,7 @@ class CardProcessingServiceApi:
         :param int space_id:  (required)
         :param int transaction_id: The ID of the transaction which should be processed. (required)
         :param int payment_method_configuration_id: The payment method configuration ID which is applied to the transaction. (required)
-        :param UnencryptedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
+        :param TokenizedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -176,7 +176,7 @@ class CardProcessingServiceApi:
         :param int space_id:  (required)
         :param int transaction_id: The ID of the transaction which should be processed. (required)
         :param int payment_method_configuration_id: The payment method configuration ID which is applied to the transaction. (required)
-        :param UnencryptedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
+        :param TokenizedCardDataCreate card_data: The card details as JSON in plain which should be used to authorize the payment. (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.

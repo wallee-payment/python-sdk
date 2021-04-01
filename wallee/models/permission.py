@@ -19,10 +19,11 @@ class Permission:
         'path_to_root': 'list[int]',
         'title': 'dict(str, str)',
         'two_factor_required': 'bool',
+        'web_app_enabled': 'bool',
     }
 
     attribute_map = {
-        'description': 'description','feature': 'feature','group': 'group','id': 'id','leaf': 'leaf','name': 'name','parent': 'parent','path_to_root': 'pathToRoot','title': 'title','two_factor_required': 'twoFactorRequired',
+        'description': 'description','feature': 'feature','group': 'group','id': 'id','leaf': 'leaf','name': 'name','parent': 'parent','path_to_root': 'pathToRoot','title': 'title','two_factor_required': 'twoFactorRequired','web_app_enabled': 'webAppEnabled',
     }
 
     
@@ -36,6 +37,7 @@ class Permission:
     _path_to_root = None
     _title = None
     _two_factor_required = None
+    _web_app_enabled = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -50,6 +52,7 @@ class Permission:
         self.path_to_root = kwargs.get('path_to_root', None)
         self.title = kwargs.get('title', None)
         self.two_factor_required = kwargs.get('two_factor_required', None)
+        self.web_app_enabled = kwargs.get('web_app_enabled', None)
         
 
     
@@ -282,6 +285,29 @@ class Permission:
         """
 
         self._two_factor_required = two_factor_required
+    
+    @property
+    def web_app_enabled(self):
+        """Gets the web_app_enabled of this Permission.
+
+            
+
+        :return: The web_app_enabled of this Permission.
+        :rtype: bool
+        """
+        return self._web_app_enabled
+
+    @web_app_enabled.setter
+    def web_app_enabled(self, web_app_enabled):
+        """Sets the web_app_enabled of this Permission.
+
+            
+
+        :param web_app_enabled: The web_app_enabled of this Permission.
+        :type: bool
+        """
+
+        self._web_app_enabled = web_app_enabled
     
 
     def to_dict(self):

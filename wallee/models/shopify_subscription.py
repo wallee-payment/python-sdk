@@ -13,6 +13,7 @@ class ShopifySubscription:
         'created_on': 'datetime',
         'external_id': 'str',
         'id': 'int',
+        'initial_execution_date': 'datetime',
         'initial_payment_transaction': 'int',
         'initial_shopify_transaction': 'int',
         'language': 'str',
@@ -28,7 +29,7 @@ class ShopifySubscription:
     }
 
     attribute_map = {
-        'created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','initial_payment_transaction': 'initialPaymentTransaction','initial_shopify_transaction': 'initialShopifyTransaction','language': 'language','linked_space_id': 'linkedSpaceId','order_recurrence_number': 'orderRecurrenceNumber','shop': 'shop','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','termination_request_date': 'terminationRequestDate','version': 'version',
+        'created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','initial_execution_date': 'initialExecutionDate','initial_payment_transaction': 'initialPaymentTransaction','initial_shopify_transaction': 'initialShopifyTransaction','language': 'language','linked_space_id': 'linkedSpaceId','order_recurrence_number': 'orderRecurrenceNumber','shop': 'shop','state': 'state','subscriber': 'subscriber','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','termination_request_date': 'terminationRequestDate','version': 'version',
     }
 
     
@@ -36,6 +37,7 @@ class ShopifySubscription:
     _created_on = None
     _external_id = None
     _id = None
+    _initial_execution_date = None
     _initial_payment_transaction = None
     _initial_shopify_transaction = None
     _language = None
@@ -56,6 +58,7 @@ class ShopifySubscription:
         self.created_on = kwargs.get('created_on', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
+        self.initial_execution_date = kwargs.get('initial_execution_date', None)
         self.initial_payment_transaction = kwargs.get('initial_payment_transaction', None)
         self.initial_shopify_transaction = kwargs.get('initial_shopify_transaction', None)
         self.language = kwargs.get('language', None)
@@ -166,6 +169,29 @@ class ShopifySubscription:
         """
 
         self._id = id
+    
+    @property
+    def initial_execution_date(self):
+        """Gets the initial_execution_date of this ShopifySubscription.
+
+            
+
+        :return: The initial_execution_date of this ShopifySubscription.
+        :rtype: datetime
+        """
+        return self._initial_execution_date
+
+    @initial_execution_date.setter
+    def initial_execution_date(self, initial_execution_date):
+        """Sets the initial_execution_date of this ShopifySubscription.
+
+            
+
+        :param initial_execution_date: The initial_execution_date of this ShopifySubscription.
+        :type: datetime
+        """
+
+        self._initial_execution_date = initial_execution_date
     
     @property
     def initial_payment_transaction(self):

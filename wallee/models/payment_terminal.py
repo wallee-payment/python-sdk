@@ -10,6 +10,7 @@ class PaymentTerminal:
     swagger_types = {
     
         'configuration_version': 'PaymentTerminalConfigurationVersion',
+        'default_currency': 'str',
         'id': 'int',
         'identifier': 'str',
         'linked_space_id': 'int',
@@ -22,11 +23,12 @@ class PaymentTerminal:
     }
 
     attribute_map = {
-        'configuration_version': 'configurationVersion','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
+        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
     _configuration_version = None
+    _default_currency = None
     _id = None
     _identifier = None
     _linked_space_id = None
@@ -41,6 +43,7 @@ class PaymentTerminal:
         self.discriminator = None
         
         self.configuration_version = kwargs.get('configuration_version', None)
+        self.default_currency = kwargs.get('default_currency', None)
         self.id = kwargs.get('id', None)
         self.identifier = kwargs.get('identifier', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -75,6 +78,29 @@ class PaymentTerminal:
         """
 
         self._configuration_version = configuration_version
+    
+    @property
+    def default_currency(self):
+        """Gets the default_currency of this PaymentTerminal.
+
+            
+
+        :return: The default_currency of this PaymentTerminal.
+        :rtype: str
+        """
+        return self._default_currency
+
+    @default_currency.setter
+    def default_currency(self, default_currency):
+        """Sets the default_currency of this PaymentTerminal.
+
+            
+
+        :param default_currency: The default_currency of this PaymentTerminal.
+        :type: str
+        """
+
+        self._default_currency = default_currency
     
     @property
     def id(self):

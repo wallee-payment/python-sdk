@@ -9,9 +9,8 @@ class PaymentTerminalLocation:
 
     swagger_types = {
     
-        'contact_address': 'PaymentTerminalContactAddress',
+        'contact_address': 'PaymentTerminalAddress',
         'default_configuration': 'PaymentTerminalConfiguration',
-        'delivery_address': 'PaymentTerminalAddress',
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -21,13 +20,12 @@ class PaymentTerminalLocation:
     }
 
     attribute_map = {
-        'contact_address': 'contactAddress','default_configuration': 'defaultConfiguration','delivery_address': 'deliveryAddress','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
+        'contact_address': 'contactAddress','default_configuration': 'defaultConfiguration','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
     _contact_address = None
     _default_configuration = None
-    _delivery_address = None
     _id = None
     _linked_space_id = None
     _name = None
@@ -40,7 +38,6 @@ class PaymentTerminalLocation:
         
         self.contact_address = kwargs.get('contact_address', None)
         self.default_configuration = kwargs.get('default_configuration', None)
-        self.delivery_address = kwargs.get('delivery_address', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
@@ -57,7 +54,7 @@ class PaymentTerminalLocation:
             
 
         :return: The contact_address of this PaymentTerminalLocation.
-        :rtype: PaymentTerminalContactAddress
+        :rtype: PaymentTerminalAddress
         """
         return self._contact_address
 
@@ -68,7 +65,7 @@ class PaymentTerminalLocation:
             
 
         :param contact_address: The contact_address of this PaymentTerminalLocation.
-        :type: PaymentTerminalContactAddress
+        :type: PaymentTerminalAddress
         """
 
         self._contact_address = contact_address
@@ -95,29 +92,6 @@ class PaymentTerminalLocation:
         """
 
         self._default_configuration = default_configuration
-    
-    @property
-    def delivery_address(self):
-        """Gets the delivery_address of this PaymentTerminalLocation.
-
-            
-
-        :return: The delivery_address of this PaymentTerminalLocation.
-        :rtype: PaymentTerminalAddress
-        """
-        return self._delivery_address
-
-    @delivery_address.setter
-    def delivery_address(self, delivery_address):
-        """Sets the delivery_address of this PaymentTerminalLocation.
-
-            
-
-        :param delivery_address: The delivery_address of this PaymentTerminalLocation.
-        :type: PaymentTerminalAddress
-        """
-
-        self._delivery_address = delivery_address
     
     @property
     def id(self):

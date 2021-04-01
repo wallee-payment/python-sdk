@@ -13,6 +13,7 @@ class PaymentTerminalConfigurationVersion:
         'connector_configurations': 'list[int]',
         'created_by': 'int',
         'created_on': 'datetime',
+        'default_currency': 'str',
         'id': 'int',
         'linked_space_id': 'int',
         'maintenance_window_duration': 'str',
@@ -25,7 +26,7 @@ class PaymentTerminalConfigurationVersion:
     }
 
     attribute_map = {
-        'configuration': 'configuration','connector_configurations': 'connectorConfigurations','created_by': 'createdBy','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','maintenance_window_duration': 'maintenanceWindowDuration','maintenance_window_start': 'maintenanceWindowStart','planned_purge_date': 'plannedPurgeDate','state': 'state','time_zone': 'timeZone','version': 'version','version_applied_immediately': 'versionAppliedImmediately',
+        'configuration': 'configuration','connector_configurations': 'connectorConfigurations','created_by': 'createdBy','created_on': 'createdOn','default_currency': 'defaultCurrency','id': 'id','linked_space_id': 'linkedSpaceId','maintenance_window_duration': 'maintenanceWindowDuration','maintenance_window_start': 'maintenanceWindowStart','planned_purge_date': 'plannedPurgeDate','state': 'state','time_zone': 'timeZone','version': 'version','version_applied_immediately': 'versionAppliedImmediately',
     }
 
     
@@ -33,6 +34,7 @@ class PaymentTerminalConfigurationVersion:
     _connector_configurations = None
     _created_by = None
     _created_on = None
+    _default_currency = None
     _id = None
     _linked_space_id = None
     _maintenance_window_duration = None
@@ -50,6 +52,7 @@ class PaymentTerminalConfigurationVersion:
         self.connector_configurations = kwargs.get('connector_configurations', None)
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
+        self.default_currency = kwargs.get('default_currency', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.maintenance_window_duration = kwargs.get('maintenance_window_duration', None)
@@ -153,6 +156,29 @@ class PaymentTerminalConfigurationVersion:
         """
 
         self._created_on = created_on
+    
+    @property
+    def default_currency(self):
+        """Gets the default_currency of this PaymentTerminalConfigurationVersion.
+
+            The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+
+        :return: The default_currency of this PaymentTerminalConfigurationVersion.
+        :rtype: str
+        """
+        return self._default_currency
+
+    @default_currency.setter
+    def default_currency(self, default_currency):
+        """Sets the default_currency of this PaymentTerminalConfigurationVersion.
+
+            The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+
+        :param default_currency: The default_currency of this PaymentTerminalConfigurationVersion.
+        :type: str
+        """
+
+        self._default_currency = default_currency
     
     @property
     def id(self):

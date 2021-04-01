@@ -13,7 +13,7 @@ class PaymentLink:
         'applied_space_view': 'int',
         'available_from': 'datetime',
         'available_until': 'datetime',
-        'billing_address_required': 'bool',
+        'billing_address_handling_mode': 'PaymentLinkAddressHandlingMode',
         'currency': 'str',
         'external_id': 'str',
         'id': 'int',
@@ -24,14 +24,14 @@ class PaymentLink:
         'name': 'str',
         'planned_purge_date': 'datetime',
         'protection_mode': 'PaymentLinkProtectionMode',
-        'shipping_address_required': 'bool',
+        'shipping_address_handling_mode': 'PaymentLinkAddressHandlingMode',
         'state': 'CreationEntityState',
         'url': 'str',
         'version': 'int',
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_required': 'billingAddressRequired','currency': 'currency','external_id': 'externalId','id': 'id','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','planned_purge_date': 'plannedPurgeDate','protection_mode': 'protectionMode','shipping_address_required': 'shippingAddressRequired','state': 'state','url': 'url','version': 'version',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_handling_mode': 'billingAddressHandlingMode','currency': 'currency','external_id': 'externalId','id': 'id','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','planned_purge_date': 'plannedPurgeDate','protection_mode': 'protectionMode','shipping_address_handling_mode': 'shippingAddressHandlingMode','state': 'state','url': 'url','version': 'version',
     }
 
     
@@ -39,7 +39,7 @@ class PaymentLink:
     _applied_space_view = None
     _available_from = None
     _available_until = None
-    _billing_address_required = None
+    _billing_address_handling_mode = None
     _currency = None
     _external_id = None
     _id = None
@@ -50,7 +50,7 @@ class PaymentLink:
     _name = None
     _planned_purge_date = None
     _protection_mode = None
-    _shipping_address_required = None
+    _shipping_address_handling_mode = None
     _state = None
     _url = None
     _version = None
@@ -62,7 +62,7 @@ class PaymentLink:
         self.applied_space_view = kwargs.get('applied_space_view', None)
         self.available_from = kwargs.get('available_from', None)
         self.available_until = kwargs.get('available_until', None)
-        self.billing_address_required = kwargs.get('billing_address_required', None)
+        self.billing_address_handling_mode = kwargs.get('billing_address_handling_mode', None)
         self.currency = kwargs.get('currency', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
@@ -73,7 +73,7 @@ class PaymentLink:
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.protection_mode = kwargs.get('protection_mode', None)
-        self.shipping_address_required = kwargs.get('shipping_address_required', None)
+        self.shipping_address_handling_mode = kwargs.get('shipping_address_handling_mode', None)
         self.state = kwargs.get('state', None)
         self.url = kwargs.get('url', None)
         self.version = kwargs.get('version', None)
@@ -173,27 +173,27 @@ class PaymentLink:
         self._available_until = available_until
     
     @property
-    def billing_address_required(self):
-        """Gets the billing_address_required of this PaymentLink.
+    def billing_address_handling_mode(self):
+        """Gets the billing_address_handling_mode of this PaymentLink.
 
-            By making the billing address required the transaction can only be created when a billing address is provided within the request.
+            The billing address handling mode controls if the address is collected or not and how it is collected.
 
-        :return: The billing_address_required of this PaymentLink.
-        :rtype: bool
+        :return: The billing_address_handling_mode of this PaymentLink.
+        :rtype: PaymentLinkAddressHandlingMode
         """
-        return self._billing_address_required
+        return self._billing_address_handling_mode
 
-    @billing_address_required.setter
-    def billing_address_required(self, billing_address_required):
-        """Sets the billing_address_required of this PaymentLink.
+    @billing_address_handling_mode.setter
+    def billing_address_handling_mode(self, billing_address_handling_mode):
+        """Sets the billing_address_handling_mode of this PaymentLink.
 
-            By making the billing address required the transaction can only be created when a billing address is provided within the request.
+            The billing address handling mode controls if the address is collected or not and how it is collected.
 
-        :param billing_address_required: The billing_address_required of this PaymentLink.
-        :type: bool
+        :param billing_address_handling_mode: The billing_address_handling_mode of this PaymentLink.
+        :type: PaymentLinkAddressHandlingMode
         """
 
-        self._billing_address_required = billing_address_required
+        self._billing_address_handling_mode = billing_address_handling_mode
     
     @property
     def currency(self):
@@ -432,27 +432,27 @@ class PaymentLink:
         self._protection_mode = protection_mode
     
     @property
-    def shipping_address_required(self):
-        """Gets the shipping_address_required of this PaymentLink.
+    def shipping_address_handling_mode(self):
+        """Gets the shipping_address_handling_mode of this PaymentLink.
 
-            By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
+            The shipping address handling mode controls if the address is collected or not and how it is collected.
 
-        :return: The shipping_address_required of this PaymentLink.
-        :rtype: bool
+        :return: The shipping_address_handling_mode of this PaymentLink.
+        :rtype: PaymentLinkAddressHandlingMode
         """
-        return self._shipping_address_required
+        return self._shipping_address_handling_mode
 
-    @shipping_address_required.setter
-    def shipping_address_required(self, shipping_address_required):
-        """Sets the shipping_address_required of this PaymentLink.
+    @shipping_address_handling_mode.setter
+    def shipping_address_handling_mode(self, shipping_address_handling_mode):
+        """Sets the shipping_address_handling_mode of this PaymentLink.
 
-            By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
+            The shipping address handling mode controls if the address is collected or not and how it is collected.
 
-        :param shipping_address_required: The shipping_address_required of this PaymentLink.
-        :type: bool
+        :param shipping_address_handling_mode: The shipping_address_handling_mode of this PaymentLink.
+        :type: PaymentLinkAddressHandlingMode
         """
 
-        self._shipping_address_required = shipping_address_required
+        self._shipping_address_handling_mode = shipping_address_handling_mode
     
     @property
     def state(self):

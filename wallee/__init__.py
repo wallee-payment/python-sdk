@@ -4,14 +4,18 @@ from __future__ import absolute_import
 
 from wallee.api.account_service_api import AccountServiceApi
 from wallee.api.application_user_service_api import ApplicationUserServiceApi
+from wallee.api.bank_account_service_api import BankAccountServiceApi
+from wallee.api.bank_transaction_service_api import BankTransactionServiceApi
 from wallee.api.card_processing_service_api import CardProcessingServiceApi
 from wallee.api.charge_attempt_service_api import ChargeAttemptServiceApi
+from wallee.api.charge_bank_transaction_service_api import ChargeBankTransactionServiceApi
 from wallee.api.charge_flow_level_payment_link_service_api import ChargeFlowLevelPaymentLinkServiceApi
 from wallee.api.charge_flow_level_service_api import ChargeFlowLevelServiceApi
 from wallee.api.charge_flow_service_api import ChargeFlowServiceApi
 from wallee.api.condition_type_service_api import ConditionTypeServiceApi
 from wallee.api.country_service_api import CountryServiceApi
 from wallee.api.country_state_service_api import CountryStateServiceApi
+from wallee.api.currency_bank_account_service_api import CurrencyBankAccountServiceApi
 from wallee.api.currency_service_api import CurrencyServiceApi
 from wallee.api.customer_address_service_api import CustomerAddressServiceApi
 from wallee.api.customer_comment_service_api import CustomerCommentServiceApi
@@ -22,12 +26,14 @@ from wallee.api.debt_collector_service_api import DebtCollectorServiceApi
 from wallee.api.delivery_indication_service_api import DeliveryIndicationServiceApi
 from wallee.api.document_template_service_api import DocumentTemplateServiceApi
 from wallee.api.document_template_type_service_api import DocumentTemplateTypeServiceApi
+from wallee.api.external_transfer_bank_transaction_service_api import ExternalTransferBankTransactionServiceApi
 from wallee.api.human_user_service_api import HumanUserServiceApi
 from wallee.api.installment_payment_service_api import InstallmentPaymentServiceApi
 from wallee.api.installment_payment_slice_service_api import InstallmentPaymentSliceServiceApi
 from wallee.api.installment_plan_calculation_service_api import InstallmentPlanCalculationServiceApi
 from wallee.api.installment_plan_configuration_service_api import InstallmentPlanConfigurationServiceApi
 from wallee.api.installment_plan_slice_configuration_service_api import InstallmentPlanSliceConfigurationServiceApi
+from wallee.api.internal_transfer_bank_transaction_service_api import InternalTransferBankTransactionServiceApi
 from wallee.api.label_description_group_service_api import LabelDescriptionGroupServiceApi
 from wallee.api.label_description_service_api import LabelDescriptionServiceApi
 from wallee.api.language_service_api import LanguageServiceApi
@@ -45,7 +51,9 @@ from wallee.api.payment_processor_service_api import PaymentProcessorServiceApi
 from wallee.api.payment_terminal_service_api import PaymentTerminalServiceApi
 from wallee.api.payment_terminal_till_service_api import PaymentTerminalTillServiceApi
 from wallee.api.permission_service_api import PermissionServiceApi
+from wallee.api.refund_bank_transaction_service_api import RefundBankTransactionServiceApi
 from wallee.api.refund_comment_service_api import RefundCommentServiceApi
+from wallee.api.refund_recovery_bank_transaction_service_api import RefundRecoveryBankTransactionServiceApi
 from wallee.api.refund_service_api import RefundServiceApi
 from wallee.api.shopify_recurring_order_service_api import ShopifyRecurringOrderServiceApi
 from wallee.api.shopify_subscriber_service_api import ShopifySubscriberServiceApi
@@ -91,6 +99,7 @@ from wallee.api.transaction_terminal_service_api import TransactionTerminalServi
 from wallee.api.transaction_void_service_api import TransactionVoidServiceApi
 from wallee.api.user_account_role_service_api import UserAccountRoleServiceApi
 from wallee.api.user_space_role_service_api import UserSpaceRoleServiceApi
+from wallee.api.web_app_service_api import WebAppServiceApi
 from wallee.api.webhook_listener_service_api import WebhookListenerServiceApi
 from wallee.api.webhook_url_service_api import WebhookUrlServiceApi
 
@@ -124,6 +133,23 @@ from wallee.models.account_state import AccountState
 from wallee.models.account_type import AccountType
 from wallee.models.address import Address
 from wallee.models.address_create import AddressCreate
+from wallee.models.authenticated_card_data_create import AuthenticatedCardDataCreate
+from wallee.models.bank_account import BankAccount
+from wallee.models.bank_account_environment import BankAccountEnvironment
+from wallee.models.bank_account_state import BankAccountState
+from wallee.models.bank_account_type import BankAccountType
+from wallee.models.bank_transaction import BankTransaction
+from wallee.models.bank_transaction_flow_direction import BankTransactionFlowDirection
+from wallee.models.bank_transaction_source import BankTransactionSource
+from wallee.models.bank_transaction_state import BankTransactionState
+from wallee.models.bank_transaction_type import BankTransactionType
+from wallee.models.card_authentication_response import CardAuthenticationResponse
+from wallee.models.card_authentication_version import CardAuthenticationVersion
+from wallee.models.card_cryptogram import CardCryptogram
+from wallee.models.card_cryptogram_create import CardCryptogramCreate
+from wallee.models.card_cryptogram_type import CardCryptogramType
+from wallee.models.cardholder_authentication import CardholderAuthentication
+from wallee.models.cardholder_authentication_create import CardholderAuthenticationCreate
 from wallee.models.charge_attempt_environment import ChargeAttemptEnvironment
 from wallee.models.charge_attempt_state import ChargeAttemptState
 from wallee.models.charge_flow import ChargeFlow
@@ -141,6 +167,7 @@ from wallee.models.condition_type import ConditionType
 from wallee.models.connector_invocation_stage import ConnectorInvocationStage
 from wallee.models.creation_entity_state import CreationEntityState
 from wallee.models.criteria_operator import CriteriaOperator
+from wallee.models.currency_bank_account import CurrencyBankAccount
 from wallee.models.customer import Customer
 from wallee.models.customer_address import CustomerAddress
 from wallee.models.customer_address_type import CustomerAddressType
@@ -176,6 +203,7 @@ from wallee.models.entity_query_filter_type import EntityQueryFilterType
 from wallee.models.entity_query_order_by import EntityQueryOrderBy
 from wallee.models.entity_query_order_by_type import EntityQueryOrderByType
 from wallee.models.environment import Environment
+from wallee.models.external_transfer_bank_transaction import ExternalTransferBankTransaction
 from wallee.models.failure_category import FailureCategory
 from wallee.models.failure_reason import FailureReason
 from wallee.models.feature import Feature
@@ -189,6 +217,7 @@ from wallee.models.installment_payment_slice_state import InstallmentPaymentSlic
 from wallee.models.installment_payment_state import InstallmentPaymentState
 from wallee.models.installment_plan_configuration import InstallmentPlanConfiguration
 from wallee.models.installment_plan_slice_configuration import InstallmentPlanSliceConfiguration
+from wallee.models.internal_transfer_bank_transaction import InternalTransferBankTransaction
 from wallee.models.label import Label
 from wallee.models.label_descriptor import LabelDescriptor
 from wallee.models.label_descriptor_category import LabelDescriptorCategory
@@ -210,6 +239,8 @@ from wallee.models.manual_task_state import ManualTaskState
 from wallee.models.manual_task_type import ManualTaskType
 from wallee.models.metric_usage import MetricUsage
 from wallee.models.one_click_payment_mode import OneClickPaymentMode
+from wallee.models.payment_adjustment import PaymentAdjustment
+from wallee.models.payment_adjustment_type import PaymentAdjustmentType
 from wallee.models.payment_connector import PaymentConnector
 from wallee.models.payment_connector_configuration import PaymentConnectorConfiguration
 from wallee.models.payment_connector_feature import PaymentConnectorFeature
@@ -219,6 +250,7 @@ from wallee.models.payment_contract_type import PaymentContractType
 from wallee.models.payment_information_hash import PaymentInformationHash
 from wallee.models.payment_information_hash_type import PaymentInformationHashType
 from wallee.models.payment_link import PaymentLink
+from wallee.models.payment_link_address_handling_mode import PaymentLinkAddressHandlingMode
 from wallee.models.payment_link_protection_mode import PaymentLinkProtectionMode
 from wallee.models.payment_link_update import PaymentLinkUpdate
 from wallee.models.payment_method import PaymentMethod
@@ -237,6 +269,7 @@ from wallee.models.payment_terminal_location import PaymentTerminalLocation
 from wallee.models.payment_terminal_location_state import PaymentTerminalLocationState
 from wallee.models.payment_terminal_location_version import PaymentTerminalLocationVersion
 from wallee.models.payment_terminal_location_version_state import PaymentTerminalLocationVersionState
+from wallee.models.payment_terminal_receipt_type import PaymentTerminalReceiptType
 from wallee.models.payment_terminal_state import PaymentTerminalState
 from wallee.models.payment_terminal_type import PaymentTerminalType
 from wallee.models.permission import Permission
@@ -252,6 +285,7 @@ from wallee.models.product_period_fee import ProductPeriodFee
 from wallee.models.product_period_fee_update import ProductPeriodFeeUpdate
 from wallee.models.product_setup_fee import ProductSetupFee
 from wallee.models.product_setup_fee_update import ProductSetupFeeUpdate
+from wallee.models.recurring_indicator import RecurringIndicator
 from wallee.models.refund import Refund
 from wallee.models.refund_comment import RefundComment
 from wallee.models.refund_create import RefundCreate
@@ -278,6 +312,7 @@ from wallee.models.shopify_integration_subscription_app_version import ShopifyIn
 from wallee.models.shopify_recurring_order_state import ShopifyRecurringOrderState
 from wallee.models.shopify_recurring_order_update_request import ShopifyRecurringOrderUpdateRequest
 from wallee.models.shopify_subscriber import ShopifySubscriber
+from wallee.models.shopify_subscriber_active import ShopifySubscriberActive
 from wallee.models.shopify_subscriber_creation import ShopifySubscriberCreation
 from wallee.models.shopify_subscriber_state import ShopifySubscriberState
 from wallee.models.shopify_subscription import ShopifySubscription
@@ -366,11 +401,15 @@ from wallee.models.tax_calculation import TaxCalculation
 from wallee.models.tax_class import TaxClass
 from wallee.models.tax_create import TaxCreate
 from wallee.models.tenant_database import TenantDatabase
+from wallee.models.terminal_receipt_fetch_request import TerminalReceiptFetchRequest
+from wallee.models.terminal_receipt_format import TerminalReceiptFormat
 from wallee.models.token import Token
 from wallee.models.token_version import TokenVersion
 from wallee.models.token_version_state import TokenVersionState
 from wallee.models.token_version_type import TokenVersionType
 from wallee.models.tokenization_mode import TokenizationMode
+from wallee.models.tokenized_card_data import TokenizedCardData
+from wallee.models.tokenized_card_data_create import TokenizedCardDataCreate
 from wallee.models.transaction import Transaction
 from wallee.models.transaction_aware_entity import TransactionAwareEntity
 from wallee.models.transaction_comment import TransactionComment
@@ -390,12 +429,12 @@ from wallee.models.transaction_user_interface_type import TransactionUserInterfa
 from wallee.models.transaction_void_mode import TransactionVoidMode
 from wallee.models.transaction_void_state import TransactionVoidState
 from wallee.models.two_factor_authentication_type import TwoFactorAuthenticationType
-from wallee.models.unencrypted_card_data import UnencryptedCardData
-from wallee.models.unencrypted_card_data_create import UnencryptedCardDataCreate
 from wallee.models.user import User
 from wallee.models.user_account_role import UserAccountRole
 from wallee.models.user_space_role import UserSpaceRole
 from wallee.models.user_type import UserType
+from wallee.models.web_app_confirmation_request import WebAppConfirmationRequest
+from wallee.models.web_app_confirmation_response import WebAppConfirmationResponse
 from wallee.models.webhook_identity import WebhookIdentity
 from wallee.models.webhook_listener import WebhookListener
 from wallee.models.webhook_listener_entity import WebhookListenerEntity
@@ -405,8 +444,10 @@ from wallee.models.account_update import AccountUpdate
 from wallee.models.application_user import ApplicationUser
 from wallee.models.application_user_create import ApplicationUserCreate
 from wallee.models.application_user_update import ApplicationUserUpdate
+from wallee.models.authenticated_card_data import AuthenticatedCardData
 from wallee.models.charge import Charge
 from wallee.models.charge_attempt import ChargeAttempt
+from wallee.models.charge_bank_transaction import ChargeBankTransaction
 from wallee.models.charge_flow_level import ChargeFlowLevel
 from wallee.models.charge_flow_level_payment_link import ChargeFlowLevelPaymentLink
 from wallee.models.connector_invocation import ConnectorInvocation
@@ -424,9 +465,10 @@ from wallee.models.human_user_update import HumanUserUpdate
 from wallee.models.installment_payment_slice import InstallmentPaymentSlice
 from wallee.models.payment_link_active import PaymentLinkActive
 from wallee.models.payment_link_create import PaymentLinkCreate
-from wallee.models.payment_terminal_contact_address import PaymentTerminalContactAddress
+from wallee.models.refund_bank_transaction import RefundBankTransaction
 from wallee.models.refund_comment_active import RefundCommentActive
 from wallee.models.refund_comment_create import RefundCommentCreate
+from wallee.models.refund_recovery_bank_transaction import RefundRecoveryBankTransaction
 from wallee.models.shopify_recurring_order import ShopifyRecurringOrder
 from wallee.models.shopify_subscription_address import ShopifySubscriptionAddress
 from wallee.models.shopify_subscription_product_create import ShopifySubscriptionProductCreate

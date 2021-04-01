@@ -11,21 +11,19 @@ class TransactionTerminalServiceApi:
     def __init__(self, configuration):
         self.api_client = ApiClient(configuration=configuration)
 
-    def receipt(self, space_id, transaction_id, type_id, width, **kwargs):
-        """getTerminalReceipt
+    def fetch_receipts(self, space_id, request, **kwargs):
+        """Fetch Receipts
 
-        Returns the PDF document for the requested terminal receipt with the given page width.
+        Returns all receipts for the requested terminal transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.receipt(space_id, transaction_id, type_id, width, async_req=True)
+        >>> thread = api.fetch_receipts(space_id, request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int transaction_id: The ID of the transaction to get the receipt for. (required)
-        :param int type_id:  (required)
-        :param int width:  (required)
-        :return: RenderedTerminalReceipt
+        :param TerminalReceiptFetchRequest request:  (required)
+        :return: list[RenderedTerminalReceipt]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -33,31 +31,29 @@ class TransactionTerminalServiceApi:
 
 
         if kwargs.get('async_req'):
-            return self.receipt_with_http_info(space_id, transaction_id, type_id, width, **kwargs)
+            return self.fetch_receipts_with_http_info(space_id, request, **kwargs)
         else:
-            (data) = self.receipt_with_http_info(space_id, transaction_id, type_id, width, **kwargs)
+            (data) = self.fetch_receipts_with_http_info(space_id, request, **kwargs)
             return data
 
-    def receipt_with_http_info(self, space_id, transaction_id, type_id, width, **kwargs):
-        """getTerminalReceipt
+    def fetch_receipts_with_http_info(self, space_id, request, **kwargs):
+        """Fetch Receipts
 
-        Returns the PDF document for the requested terminal receipt with the given page width.
+        Returns all receipts for the requested terminal transaction.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.receipt_with_http_info(space_id, transaction_id, type_id, width, async_req=True)
+        >>> thread = api.fetch_receipts_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int transaction_id: The ID of the transaction to get the receipt for. (required)
-        :param int type_id:  (required)
-        :param int width:  (required)
-        :return: RenderedTerminalReceipt
+        :param TerminalReceiptFetchRequest request:  (required)
+        :return: list[RenderedTerminalReceipt]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'transaction_id', 'type_id', 'width']
+        all_params = ['space_id', 'request']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -68,26 +64,18 @@ class TransactionTerminalServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method receipt" % key
+                    " to method fetch_receipts" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'space_id' is set
         if ('space_id' not in params or
                 params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `receipt`")
-        # verify the required parameter 'transaction_id' is set
-        if ('transaction_id' not in params or
-                params['transaction_id'] is None):
-            raise ValueError("Missing the required parameter `transaction_id` when calling `receipt`")
-        # verify the required parameter 'type_id' is set
-        if ('type_id' not in params or
-                params['type_id'] is None):
-            raise ValueError("Missing the required parameter `type_id` when calling `receipt`")
-        # verify the required parameter 'width' is set
-        if ('width' not in params or
-                params['width'] is None):
-            raise ValueError("Missing the required parameter `width` when calling `receipt`")
+            raise ValueError("Missing the required parameter `space_id` when calling `fetch_receipts`")
+        # verify the required parameter 'request' is set
+        if ('request' not in params or
+                params['request'] is None):
+            raise ValueError("Missing the required parameter `request` when calling `fetch_receipts`")
 
         collection_formats = {}
 
@@ -96,12 +84,6 @@ class TransactionTerminalServiceApi:
         query_params = []
         if 'space_id' in params:
             query_params.append(('spaceId', params['space_id']))
-        if 'transaction_id' in params:
-            query_params.append(('transactionId', params['transaction_id']))
-        if 'type_id' in params:
-            query_params.append(('typeId', params['type_id']))
-        if 'width' in params:
-            query_params.append(('width', params['width']))
 
         header_params = {}
 
@@ -109,26 +91,28 @@ class TransactionTerminalServiceApi:
         local_var_files = {}
 
         body_params = None
+        if 'request' in params:
+            body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json;charset=utf-8'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(
-            ['*/*'])
+            ['application/json;charset=utf-8'])
 
         # Authentication setting
         auth_settings = []
 
         return self.api_client.call_api(
-            '/transaction-terminal/receipt', 'GET',
+            '/transaction-terminal/fetch-receipts', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='RenderedTerminalReceipt',
+            response_type='list[RenderedTerminalReceipt]',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

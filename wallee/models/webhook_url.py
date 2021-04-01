@@ -9,6 +9,7 @@ class WebhookUrl:
 
     swagger_types = {
     
+        'application_managed': 'bool',
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -19,10 +20,11 @@ class WebhookUrl:
     }
 
     attribute_map = {
-        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','url': 'url','version': 'version',
+        'application_managed': 'applicationManaged','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','url': 'url','version': 'version',
     }
 
     
+    _application_managed = None
     _id = None
     _linked_space_id = None
     _name = None
@@ -34,6 +36,7 @@ class WebhookUrl:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.application_managed = kwargs.get('application_managed', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
@@ -43,6 +46,29 @@ class WebhookUrl:
         self.version = kwargs.get('version', None)
         
 
+    
+    @property
+    def application_managed(self):
+        """Gets the application_managed of this WebhookUrl.
+
+            The webhook URL is managed by the application and cannot be changed via the user interface.
+
+        :return: The application_managed of this WebhookUrl.
+        :rtype: bool
+        """
+        return self._application_managed
+
+    @application_managed.setter
+    def application_managed(self, application_managed):
+        """Sets the application_managed of this WebhookUrl.
+
+            The webhook URL is managed by the application and cannot be changed via the user interface.
+
+        :param application_managed: The application_managed of this WebhookUrl.
+        :type: bool
+        """
+
+        self._application_managed = application_managed
     
     @property
     def id(self):
