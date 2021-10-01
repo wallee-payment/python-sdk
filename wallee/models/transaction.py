@@ -969,8 +969,8 @@ class Transaction:
         :param failed_url: The failed_url of this Transaction.
         :type: str
         """
-        if failed_url is not None and len(failed_url) > 1000:
-            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `1000`")
+        if failed_url is not None and len(failed_url) > 2000:
+            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `2000`")
         if failed_url is not None and len(failed_url) < 9:
             raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
 
@@ -1554,8 +1554,8 @@ class Transaction:
         :param success_url: The success_url of this Transaction.
         :type: str
         """
-        if success_url is not None and len(success_url) > 1000:
-            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `1000`")
+        if success_url is not None and len(success_url) > 2000:
+            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `2000`")
         if success_url is not None and len(success_url) < 9:
             raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
 

@@ -15,6 +15,7 @@ class SubscriptionProduct:
         'linked_space_id': 'int',
         'name': 'str',
         'planned_purge_date': 'datetime',
+        'product_locked': 'bool',
         'reference': 'str',
         'sort_order': 'int',
         'space_id': 'int',
@@ -23,7 +24,7 @@ class SubscriptionProduct:
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','reference': 'reference','sort_order': 'sortOrder','space_id': 'spaceId','state': 'state','version': 'version',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','product_locked': 'productLocked','reference': 'reference','sort_order': 'sortOrder','space_id': 'spaceId','state': 'state','version': 'version',
     }
 
     
@@ -33,6 +34,7 @@ class SubscriptionProduct:
     _linked_space_id = None
     _name = None
     _planned_purge_date = None
+    _product_locked = None
     _reference = None
     _sort_order = None
     _space_id = None
@@ -48,6 +50,7 @@ class SubscriptionProduct:
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
+        self.product_locked = kwargs.get('product_locked', None)
         self.reference = kwargs.get('reference', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.space_id = kwargs.get('space_id', None)
@@ -195,6 +198,29 @@ class SubscriptionProduct:
         """
 
         self._planned_purge_date = planned_purge_date
+    
+    @property
+    def product_locked(self):
+        """Gets the product_locked of this SubscriptionProduct.
+
+            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+
+        :return: The product_locked of this SubscriptionProduct.
+        :rtype: bool
+        """
+        return self._product_locked
+
+    @product_locked.setter
+    def product_locked(self, product_locked):
+        """Sets the product_locked of this SubscriptionProduct.
+
+            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+
+        :param product_locked: The product_locked of this SubscriptionProduct.
+        :type: bool
+        """
+
+        self._product_locked = product_locked
     
     @property
     def reference(self):

@@ -13,6 +13,7 @@ class ShopifySubscriptionVersion:
         'billing_day_of_month': 'int',
         'billing_interval_amount': 'int',
         'billing_interval_unit': 'ShopifySubscriptionBillingIntervalUnit',
+        'billing_reference_date': 'datetime',
         'billing_weekday': 'ShopifySubscriptionWeekday',
         'created_by': 'int',
         'created_on': 'datetime',
@@ -39,7 +40,7 @@ class ShopifySubscriptionVersion:
     }
 
     attribute_map = {
-        'billing_address': 'billingAddress','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','discharged_by': 'dischargedBy','discharged_on': 'dischargedOn','id': 'id','items': 'items','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','payment_gateway': 'paymentGateway','shipping_address': 'shippingAddress','shipping_rate': 'shippingRate','shop': 'shop','state': 'state','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','subscription': 'subscription','termination_billing_cycles': 'terminationBillingCycles','token': 'token','version': 'version',
+        'billing_address': 'billingAddress','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_reference_date': 'billingReferenceDate','billing_weekday': 'billingWeekday','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','discharged_by': 'dischargedBy','discharged_on': 'dischargedOn','id': 'id','items': 'items','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','payment_gateway': 'paymentGateway','shipping_address': 'shippingAddress','shipping_rate': 'shippingRate','shop': 'shop','state': 'state','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','subscription': 'subscription','termination_billing_cycles': 'terminationBillingCycles','token': 'token','version': 'version',
     }
 
     
@@ -47,6 +48,7 @@ class ShopifySubscriptionVersion:
     _billing_day_of_month = None
     _billing_interval_amount = None
     _billing_interval_unit = None
+    _billing_reference_date = None
     _billing_weekday = None
     _created_by = None
     _created_on = None
@@ -78,6 +80,7 @@ class ShopifySubscriptionVersion:
         self.billing_day_of_month = kwargs.get('billing_day_of_month', None)
         self.billing_interval_amount = kwargs.get('billing_interval_amount', None)
         self.billing_interval_unit = kwargs.get('billing_interval_unit', None)
+        self.billing_reference_date = kwargs.get('billing_reference_date', None)
         self.billing_weekday = kwargs.get('billing_weekday', None)
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
@@ -195,6 +198,29 @@ class ShopifySubscriptionVersion:
         """
 
         self._billing_interval_unit = billing_interval_unit
+    
+    @property
+    def billing_reference_date(self):
+        """Gets the billing_reference_date of this ShopifySubscriptionVersion.
+
+            
+
+        :return: The billing_reference_date of this ShopifySubscriptionVersion.
+        :rtype: datetime
+        """
+        return self._billing_reference_date
+
+    @billing_reference_date.setter
+    def billing_reference_date(self, billing_reference_date):
+        """Sets the billing_reference_date of this ShopifySubscriptionVersion.
+
+            
+
+        :param billing_reference_date: The billing_reference_date of this ShopifySubscriptionVersion.
+        :type: datetime
+        """
+
+        self._billing_reference_date = billing_reference_date
     
     @property
     def billing_weekday(self):

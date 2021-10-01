@@ -12,6 +12,7 @@ class ShopifySubscriptionModelBillingConfiguration:
         'billing_day_of_month': 'int',
         'billing_interval_amount': 'int',
         'billing_interval_unit': 'ShopifySubscriptionBillingIntervalUnit',
+        'billing_reference_date': 'datetime',
         'billing_weekday': 'ShopifySubscriptionWeekday',
         'maximal_billing_cycles': 'int',
         'maximal_suspendable_cycles': 'int',
@@ -20,13 +21,14 @@ class ShopifySubscriptionModelBillingConfiguration:
     }
 
     attribute_map = {
-        'billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','termination_billing_cycles': 'terminationBillingCycles',
+        'billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_reference_date': 'billingReferenceDate','billing_weekday': 'billingWeekday','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','termination_billing_cycles': 'terminationBillingCycles',
     }
 
     
     _billing_day_of_month = None
     _billing_interval_amount = None
     _billing_interval_unit = None
+    _billing_reference_date = None
     _billing_weekday = None
     _maximal_billing_cycles = None
     _maximal_suspendable_cycles = None
@@ -39,6 +41,7 @@ class ShopifySubscriptionModelBillingConfiguration:
         self.billing_day_of_month = kwargs.get('billing_day_of_month', None)
         self.billing_interval_amount = kwargs.get('billing_interval_amount', None)
         self.billing_interval_unit = kwargs.get('billing_interval_unit', None)
+        self.billing_reference_date = kwargs.get('billing_reference_date', None)
         self.billing_weekday = kwargs.get('billing_weekday', None)
         self.maximal_billing_cycles = kwargs.get('maximal_billing_cycles', None)
         self.maximal_suspendable_cycles = kwargs.get('maximal_suspendable_cycles', None)
@@ -115,6 +118,29 @@ class ShopifySubscriptionModelBillingConfiguration:
         """
 
         self._billing_interval_unit = billing_interval_unit
+    
+    @property
+    def billing_reference_date(self):
+        """Gets the billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+
+            This date will be used as basis to calculate the dates of recurring orders.
+
+        :return: The billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        :rtype: datetime
+        """
+        return self._billing_reference_date
+
+    @billing_reference_date.setter
+    def billing_reference_date(self, billing_reference_date):
+        """Sets the billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+
+            This date will be used as basis to calculate the dates of recurring orders.
+
+        :param billing_reference_date: The billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        :type: datetime
+        """
+
+        self._billing_reference_date = billing_reference_date
     
     @property
     def billing_weekday(self):

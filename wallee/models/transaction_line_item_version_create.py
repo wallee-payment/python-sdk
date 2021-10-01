@@ -2,83 +2,113 @@
 import pprint
 import six
 from enum import Enum
-from . import AbstractSubscriberUpdate
 
 
-class SubscriberCreate(AbstractSubscriberUpdate):
+
+class TransactionLineItemVersionCreate:
 
     swagger_types = {
     
-        'state': 'CreationEntityState',
         'external_id': 'str',
+        'line_items': 'list[LineItemCreate]',
+        'transaction': 'int',
     }
 
     attribute_map = {
-        'state': 'state','external_id': 'externalId',
+        'external_id': 'externalId','line_items': 'lineItems','transaction': 'transaction',
     }
 
     
-    _state = None
     _external_id = None
+    _line_items = None
+    _transaction = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.state = kwargs.get('state', None)
         self.external_id = kwargs.get('external_id')
 
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        self.line_items = kwargs.get('line_items')
 
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriberCreate.
+        self.transaction = kwargs.get('transaction')
 
-            
+        
 
-        :return: The state of this SubscriberCreate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriberCreate.
-
-            
-
-        :param state: The state of this SubscriberCreate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
     
     @property
     def external_id(self):
-        """Gets the external_id of this SubscriberCreate.
+        """Gets the external_id of this TransactionLineItemVersionCreate.
 
             A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
-        :return: The external_id of this SubscriberCreate.
+        :return: The external_id of this TransactionLineItemVersionCreate.
         :rtype: str
         """
         return self._external_id
 
     @external_id.setter
     def external_id(self, external_id):
-        """Sets the external_id of this SubscriberCreate.
+        """Sets the external_id of this TransactionLineItemVersionCreate.
 
             A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
-        :param external_id: The external_id of this SubscriberCreate.
+        :param external_id: The external_id of this TransactionLineItemVersionCreate.
         :type: str
         """
         if external_id is None:
             raise ValueError("Invalid value for `external_id`, must not be `None`")
 
         self._external_id = external_id
+    
+    @property
+    def line_items(self):
+        """Gets the line_items of this TransactionLineItemVersionCreate.
+
+            
+
+        :return: The line_items of this TransactionLineItemVersionCreate.
+        :rtype: list[LineItemCreate]
+        """
+        return self._line_items
+
+    @line_items.setter
+    def line_items(self, line_items):
+        """Sets the line_items of this TransactionLineItemVersionCreate.
+
+            
+
+        :param line_items: The line_items of this TransactionLineItemVersionCreate.
+        :type: list[LineItemCreate]
+        """
+        if line_items is None:
+            raise ValueError("Invalid value for `line_items`, must not be `None`")
+
+        self._line_items = line_items
+    
+    @property
+    def transaction(self):
+        """Gets the transaction of this TransactionLineItemVersionCreate.
+
+            
+
+        :return: The transaction of this TransactionLineItemVersionCreate.
+        :rtype: int
+        """
+        return self._transaction
+
+    @transaction.setter
+    def transaction(self, transaction):
+        """Sets the transaction of this TransactionLineItemVersionCreate.
+
+            
+
+        :param transaction: The transaction of this TransactionLineItemVersionCreate.
+        :type: int
+        """
+        if transaction is None:
+            raise ValueError("Invalid value for `transaction`, must not be `None`")
+
+        self._transaction = transaction
     
 
     def to_dict(self):
@@ -103,7 +133,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(SubscriberCreate, dict):
+        if issubclass(TransactionLineItemVersionCreate, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -116,7 +146,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, SubscriberCreate):
+        if not isinstance(other, TransactionLineItemVersionCreate):
             return False
 
         return self.__dict__ == other.__dict__

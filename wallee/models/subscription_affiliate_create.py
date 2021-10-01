@@ -37,7 +37,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def external_id(self):
         """Gets the external_id of this SubscriptionAffiliateCreate.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :return: The external_id of this SubscriptionAffiliateCreate.
         :rtype: str
@@ -48,17 +48,13 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionAffiliateCreate.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :param external_id: The external_id of this SubscriptionAffiliateCreate.
         :type: str
         """
         if external_id is None:
             raise ValueError("Invalid value for `external_id`, must not be `None`")
-        if external_id is not None and len(external_id) > 100:
-            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
-        if external_id is not None and len(external_id) < 1:
-            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
     

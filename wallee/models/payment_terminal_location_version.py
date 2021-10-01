@@ -10,6 +10,7 @@ class PaymentTerminalLocationVersion:
     swagger_types = {
     
         'address': 'PaymentTerminalAddress',
+        'contact_address': 'PaymentTerminalAddress',
         'created_by': 'int',
         'created_on': 'datetime',
         'id': 'int',
@@ -22,11 +23,12 @@ class PaymentTerminalLocationVersion:
     }
 
     attribute_map = {
-        'address': 'address','created_by': 'createdBy','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','location': 'location','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version','version_applied_immediately': 'versionAppliedImmediately',
+        'address': 'address','contact_address': 'contactAddress','created_by': 'createdBy','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','location': 'location','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version','version_applied_immediately': 'versionAppliedImmediately',
     }
 
     
     _address = None
+    _contact_address = None
     _created_by = None
     _created_on = None
     _id = None
@@ -41,6 +43,7 @@ class PaymentTerminalLocationVersion:
         self.discriminator = None
         
         self.address = kwargs.get('address', None)
+        self.contact_address = kwargs.get('contact_address', None)
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
         self.id = kwargs.get('id', None)
@@ -75,6 +78,29 @@ class PaymentTerminalLocationVersion:
         """
 
         self._address = address
+    
+    @property
+    def contact_address(self):
+        """Gets the contact_address of this PaymentTerminalLocationVersion.
+
+            
+
+        :return: The contact_address of this PaymentTerminalLocationVersion.
+        :rtype: PaymentTerminalAddress
+        """
+        return self._contact_address
+
+    @contact_address.setter
+    def contact_address(self, contact_address):
+        """Sets the contact_address of this PaymentTerminalLocationVersion.
+
+            
+
+        :param contact_address: The contact_address of this PaymentTerminalLocationVersion.
+        :type: PaymentTerminalAddress
+        """
+
+        self._contact_address = contact_address
     
     @property
     def created_by(self):

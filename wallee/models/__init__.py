@@ -196,6 +196,7 @@ from .rest_country_state import RestCountryState
 from .rest_currency import RestCurrency
 from .rest_language import RestLanguage
 from .role import Role
+from .role_state import RoleState
 from .sales_channel import SalesChannel
 from .scope import Scope
 from .server_error import ServerError
@@ -318,6 +319,8 @@ from .transaction_invoice_comment import TransactionInvoiceComment
 from .transaction_invoice_replacement import TransactionInvoiceReplacement
 from .transaction_invoice_state import TransactionInvoiceState
 from .transaction_line_item_update_request import TransactionLineItemUpdateRequest
+from .transaction_line_item_version_create import TransactionLineItemVersionCreate
+from .transaction_line_item_version_state import TransactionLineItemVersionState
 from .transaction_state import TransactionState
 from .transaction_user_interface_type import TransactionUserInterfaceType
 from .transaction_void_mode import TransactionVoidMode

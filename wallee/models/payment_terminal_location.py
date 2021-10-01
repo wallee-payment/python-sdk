@@ -9,8 +9,7 @@ class PaymentTerminalLocation:
 
     swagger_types = {
     
-        'contact_address': 'PaymentTerminalAddress',
-        'default_configuration': 'PaymentTerminalConfiguration',
+        'external_id': 'str',
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -20,12 +19,11 @@ class PaymentTerminalLocation:
     }
 
     attribute_map = {
-        'contact_address': 'contactAddress','default_configuration': 'defaultConfiguration','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
+        'external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
-    _contact_address = None
-    _default_configuration = None
+    _external_id = None
     _id = None
     _linked_space_id = None
     _name = None
@@ -36,8 +34,7 @@ class PaymentTerminalLocation:
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.contact_address = kwargs.get('contact_address', None)
-        self.default_configuration = kwargs.get('default_configuration', None)
+        self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
@@ -48,50 +45,27 @@ class PaymentTerminalLocation:
 
     
     @property
-    def contact_address(self):
-        """Gets the contact_address of this PaymentTerminalLocation.
+    def external_id(self):
+        """Gets the external_id of this PaymentTerminalLocation.
 
-            
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
-        :return: The contact_address of this PaymentTerminalLocation.
-        :rtype: PaymentTerminalAddress
+        :return: The external_id of this PaymentTerminalLocation.
+        :rtype: str
         """
-        return self._contact_address
+        return self._external_id
 
-    @contact_address.setter
-    def contact_address(self, contact_address):
-        """Sets the contact_address of this PaymentTerminalLocation.
+    @external_id.setter
+    def external_id(self, external_id):
+        """Sets the external_id of this PaymentTerminalLocation.
 
-            
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
-        :param contact_address: The contact_address of this PaymentTerminalLocation.
-        :type: PaymentTerminalAddress
-        """
-
-        self._contact_address = contact_address
-    
-    @property
-    def default_configuration(self):
-        """Gets the default_configuration of this PaymentTerminalLocation.
-
-            
-
-        :return: The default_configuration of this PaymentTerminalLocation.
-        :rtype: PaymentTerminalConfiguration
-        """
-        return self._default_configuration
-
-    @default_configuration.setter
-    def default_configuration(self, default_configuration):
-        """Sets the default_configuration of this PaymentTerminalLocation.
-
-            
-
-        :param default_configuration: The default_configuration of this PaymentTerminalLocation.
-        :type: PaymentTerminalConfiguration
+        :param external_id: The external_id of this PaymentTerminalLocation.
+        :type: str
         """
 
-        self._default_configuration = default_configuration
+        self._external_id = external_id
     
     @property
     def id(self):

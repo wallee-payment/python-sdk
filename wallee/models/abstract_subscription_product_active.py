@@ -12,18 +12,20 @@ class AbstractSubscriptionProductActive:
         'allowed_payment_method_configurations': 'list[int]',
         'failed_payment_suspension_period': 'str',
         'name': 'str',
+        'product_locked': 'bool',
         'sort_order': 'int',
         'state': 'SubscriptionProductState',
     }
 
     attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','name': 'name','sort_order': 'sortOrder','state': 'state',
+        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','name': 'name','product_locked': 'productLocked','sort_order': 'sortOrder','state': 'state',
     }
 
     
     _allowed_payment_method_configurations = None
     _failed_payment_suspension_period = None
     _name = None
+    _product_locked = None
     _sort_order = None
     _state = None
 
@@ -33,6 +35,7 @@ class AbstractSubscriptionProductActive:
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
         self.failed_payment_suspension_period = kwargs.get('failed_payment_suspension_period', None)
         self.name = kwargs.get('name', None)
+        self.product_locked = kwargs.get('product_locked', None)
         self.sort_order = kwargs.get('sort_order', None)
         self.state = kwargs.get('state', None)
         
@@ -108,6 +111,29 @@ class AbstractSubscriptionProductActive:
             raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
 
         self._name = name
+    
+    @property
+    def product_locked(self):
+        """Gets the product_locked of this AbstractSubscriptionProductActive.
+
+            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+
+        :return: The product_locked of this AbstractSubscriptionProductActive.
+        :rtype: bool
+        """
+        return self._product_locked
+
+    @product_locked.setter
+    def product_locked(self, product_locked):
+        """Sets the product_locked of this AbstractSubscriptionProductActive.
+
+            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+
+        :param product_locked: The product_locked of this AbstractSubscriptionProductActive.
+        :type: bool
+        """
+
+        self._product_locked = product_locked
     
     @property
     def sort_order(self):

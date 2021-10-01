@@ -637,6 +637,107 @@ class TokenServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def process_transaction(self, space_id, transaction_id, **kwargs):
+        """Process Transaction
+
+        This operation processes the given transaction by using the token associated with the transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.process_transaction(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to check if the token can be created or not. (required)
+        :return: Charge
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+
+
+        if kwargs.get('async_req'):
+            return self.process_transaction_with_http_info(space_id, transaction_id, **kwargs)
+        else:
+            (data) = self.process_transaction_with_http_info(space_id, transaction_id, **kwargs)
+            return data
+
+    def process_transaction_with_http_info(self, space_id, transaction_id, **kwargs):
+        """Process Transaction
+
+        This operation processes the given transaction by using the token associated with the transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.process_transaction_with_http_info(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to check if the token can be created or not. (required)
+        :return: Charge
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'transaction_id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method process_transaction" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `process_transaction`")
+        # verify the required parameter 'transaction_id' is set
+        if ('transaction_id' not in params or
+                params['transaction_id'] is None):
+            raise ValueError("Missing the required parameter `transaction_id` when calling `process_transaction`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'transaction_id' in params:
+            query_params.append(('transactionId', params['transaction_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/token/process-transaction', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Charge',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def read(self, space_id, id, **kwargs):
         """Read
 

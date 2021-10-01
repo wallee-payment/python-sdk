@@ -110,6 +110,8 @@ class ShopifySubscriberActive:
         :param email_address: The email_address of this ShopifySubscriberActive.
         :type: str
         """
+        if email_address is not None and len(email_address) > 254:
+            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
 
         self._email_address = email_address
     
@@ -117,7 +119,7 @@ class ShopifySubscriberActive:
     def external_id(self):
         """Gets the external_id of this ShopifySubscriberActive.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :return: The external_id of this ShopifySubscriberActive.
         :rtype: str
@@ -128,7 +130,7 @@ class ShopifySubscriberActive:
     def external_id(self, external_id):
         """Sets the external_id of this ShopifySubscriberActive.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :param external_id: The external_id of this ShopifySubscriberActive.
         :type: str
@@ -156,6 +158,8 @@ class ShopifySubscriberActive:
         :param phone_number: The phone_number of this ShopifySubscriberActive.
         :type: str
         """
+        if phone_number is not None and len(phone_number) > 254:
+            raise ValueError("Invalid value for `phone_number`, length must be less than or equal to `254`")
 
         self._phone_number = phone_number
     

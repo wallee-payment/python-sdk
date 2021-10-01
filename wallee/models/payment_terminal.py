@@ -11,6 +11,7 @@ class PaymentTerminal:
     
         'configuration_version': 'PaymentTerminalConfigurationVersion',
         'default_currency': 'str',
+        'external_id': 'str',
         'id': 'int',
         'identifier': 'str',
         'linked_space_id': 'int',
@@ -23,12 +24,13 @@ class PaymentTerminal:
     }
 
     attribute_map = {
-        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
+        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
     _configuration_version = None
     _default_currency = None
+    _external_id = None
     _id = None
     _identifier = None
     _linked_space_id = None
@@ -44,6 +46,7 @@ class PaymentTerminal:
         
         self.configuration_version = kwargs.get('configuration_version', None)
         self.default_currency = kwargs.get('default_currency', None)
+        self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
         self.identifier = kwargs.get('identifier', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -101,6 +104,29 @@ class PaymentTerminal:
         """
 
         self._default_currency = default_currency
+    
+    @property
+    def external_id(self):
+        """Gets the external_id of this PaymentTerminal.
+
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+
+        :return: The external_id of this PaymentTerminal.
+        :rtype: str
+        """
+        return self._external_id
+
+    @external_id.setter
+    def external_id(self, external_id):
+        """Sets the external_id of this PaymentTerminal.
+
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+
+        :param external_id: The external_id of this PaymentTerminal.
+        :type: str
+        """
+
+        self._external_id = external_id
     
     @property
     def id(self):

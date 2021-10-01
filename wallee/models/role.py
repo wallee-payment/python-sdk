@@ -14,7 +14,7 @@ class Role:
         'name': 'DatabaseTranslatedString',
         'permissions': 'list[Permission]',
         'planned_purge_date': 'datetime',
-        'state': 'CreationEntityState',
+        'state': 'RoleState',
         'two_factor_required': 'bool',
         'version': 'int',
     }
@@ -169,7 +169,7 @@ class Role:
             
 
         :return: The state of this Role.
-        :rtype: CreationEntityState
+        :rtype: RoleState
         """
         return self._state
 
@@ -180,7 +180,7 @@ class Role:
             
 
         :param state: The state of this Role.
-        :type: CreationEntityState
+        :type: RoleState
         """
 
         self._state = state

@@ -216,7 +216,7 @@ class SubscriptionLedgerEntry:
     def external_id(self):
         """Gets the external_id of this SubscriptionLedgerEntry.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :return: The external_id of this SubscriptionLedgerEntry.
         :rtype: str
@@ -227,7 +227,7 @@ class SubscriptionLedgerEntry:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionLedgerEntry.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :param external_id: The external_id of this SubscriptionLedgerEntry.
         :type: str

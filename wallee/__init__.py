@@ -92,6 +92,7 @@ from wallee.api.transaction_iframe_service_api import TransactionIframeServiceAp
 from wallee.api.transaction_invoice_comment_service_api import TransactionInvoiceCommentServiceApi
 from wallee.api.transaction_invoice_service_api import TransactionInvoiceServiceApi
 from wallee.api.transaction_lightbox_service_api import TransactionLightboxServiceApi
+from wallee.api.transaction_line_item_version_service_api import TransactionLineItemVersionServiceApi
 from wallee.api.transaction_mobile_sdk_service_api import TransactionMobileSdkServiceApi
 from wallee.api.transaction_payment_page_service_api import TransactionPaymentPageServiceApi
 from wallee.api.transaction_service_api import TransactionServiceApi
@@ -302,6 +303,7 @@ from wallee.models.rest_country_state import RestCountryState
 from wallee.models.rest_currency import RestCurrency
 from wallee.models.rest_language import RestLanguage
 from wallee.models.role import Role
+from wallee.models.role_state import RoleState
 from wallee.models.sales_channel import SalesChannel
 from wallee.models.scope import Scope
 from wallee.models.server_error import ServerError
@@ -424,6 +426,8 @@ from wallee.models.transaction_invoice_comment import TransactionInvoiceComment
 from wallee.models.transaction_invoice_replacement import TransactionInvoiceReplacement
 from wallee.models.transaction_invoice_state import TransactionInvoiceState
 from wallee.models.transaction_line_item_update_request import TransactionLineItemUpdateRequest
+from wallee.models.transaction_line_item_version_create import TransactionLineItemVersionCreate
+from wallee.models.transaction_line_item_version_state import TransactionLineItemVersionState
 from wallee.models.transaction_state import TransactionState
 from wallee.models.transaction_user_interface_type import TransactionUserInterfaceType
 from wallee.models.transaction_void_mode import TransactionVoidMode

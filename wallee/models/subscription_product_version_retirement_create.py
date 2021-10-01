@@ -85,7 +85,7 @@ class SubscriptionProductVersionRetirementCreate:
     def target_product(self):
         """Gets the target_product of this SubscriptionProductVersionRetirementCreate.
 
-            
+            When a target product is not chosen, all customers with the retired product will be terminated.
 
         :return: The target_product of this SubscriptionProductVersionRetirementCreate.
         :rtype: int
@@ -96,7 +96,7 @@ class SubscriptionProductVersionRetirementCreate:
     def target_product(self, target_product):
         """Sets the target_product of this SubscriptionProductVersionRetirementCreate.
 
-            
+            When a target product is not chosen, all customers with the retired product will be terminated.
 
         :param target_product: The target_product of this SubscriptionProductVersionRetirementCreate.
         :type: int
