@@ -6,21 +6,20 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 NAME = "wallee"
-VERSION = "3.0.1"
+VERSION = "3.0.2"
 
 REQUIRES = [
     "certifi>=2017.4.17",
     "python-dateutil>=2.1",
     "six>=1.10",
-    "urllib3>=1.23",
-    "enum34>=1.1.6"
+    "urllib3>=1.23"
 ]
-    
+
 
 setuptools.setup(
     name=NAME,
     version=VERSION,
-    author="customweb GmbH",
+    author="Wallee AG",
     description="SDK that allows you to access wallee",
     long_description=long_description,
     long_description_content_type="text/markdown",
