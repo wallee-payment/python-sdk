@@ -9,6 +9,7 @@ class PaymentProcessorConfiguration:
 
     swagger_types = {
     
+        'application_managed': 'bool',
         'contract_id': 'int',
         'id': 'int',
         'linked_space_id': 'int',
@@ -20,10 +21,11 @@ class PaymentProcessorConfiguration:
     }
 
     attribute_map = {
-        'contract_id': 'contractId','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','processor': 'processor','state': 'state','version': 'version',
+        'application_managed': 'applicationManaged','contract_id': 'contractId','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','processor': 'processor','state': 'state','version': 'version',
     }
 
     
+    _application_managed = None
     _contract_id = None
     _id = None
     _linked_space_id = None
@@ -36,6 +38,7 @@ class PaymentProcessorConfiguration:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.application_managed = kwargs.get('application_managed', None)
         self.contract_id = kwargs.get('contract_id', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -46,6 +49,29 @@ class PaymentProcessorConfiguration:
         self.version = kwargs.get('version', None)
         
 
+    
+    @property
+    def application_managed(self):
+        """Gets the application_managed of this PaymentProcessorConfiguration.
+
+            The configuration is managed by the application and cannot be changed via the user interface.
+
+        :return: The application_managed of this PaymentProcessorConfiguration.
+        :rtype: bool
+        """
+        return self._application_managed
+
+    @application_managed.setter
+    def application_managed(self, application_managed):
+        """Sets the application_managed of this PaymentProcessorConfiguration.
+
+            The configuration is managed by the application and cannot be changed via the user interface.
+
+        :param application_managed: The application_managed of this PaymentProcessorConfiguration.
+        :type: bool
+        """
+
+        self._application_managed = application_managed
     
     @property
     def contract_id(self):

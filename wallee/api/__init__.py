@@ -50,6 +50,7 @@ from .payment_processor_configuration_service_api import PaymentProcessorConfigu
 from .payment_processor_service_api import PaymentProcessorServiceApi
 from .payment_terminal_service_api import PaymentTerminalServiceApi
 from .payment_terminal_till_service_api import PaymentTerminalTillServiceApi
+from .payment_web_app_service_api import PaymentWebAppServiceApi
 from .permission_service_api import PermissionServiceApi
 from .refund_bank_transaction_service_api import RefundBankTransactionServiceApi
 from .refund_comment_service_api import RefundCommentServiceApi
