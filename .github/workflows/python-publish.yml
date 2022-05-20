@@ -41,7 +41,7 @@ jobs:
     - name: Build Tar Ball
       run: python -m build --sdist --outdir dist/ .
          
-#    - name: Publish package
-#      uses: pypa/gh-action-pypi-publish@master
-#      with:
-#        password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
