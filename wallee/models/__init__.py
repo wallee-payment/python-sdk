@@ -27,6 +27,12 @@ from .account_state import AccountState
 from .account_type import AccountType
 from .address import Address
 from .address_create import AddressCreate
+from .analytics_query import AnalyticsQuery
+from .analytics_query_execution import AnalyticsQueryExecution
+from .analytics_query_execution_state import AnalyticsQueryExecutionState
+from .analytics_query_result_batch import AnalyticsQueryResultBatch
+from .analytics_schema_column import AnalyticsSchemaColumn
+from .analytics_schema_table import AnalyticsSchemaTable
 from .authenticated_card_data_create import AuthenticatedCardDataCreate
 from .bank_account import BankAccount
 from .bank_account_environment import BankAccountEnvironment
@@ -112,6 +118,12 @@ from .installment_payment_state import InstallmentPaymentState
 from .installment_plan_configuration import InstallmentPlanConfiguration
 from .installment_plan_slice_configuration import InstallmentPlanSliceConfiguration
 from .internal_transfer_bank_transaction import InternalTransferBankTransaction
+from .invoice_reconciliation_record_invoice_link import InvoiceReconciliationRecordInvoiceLink
+from .invoice_reconciliation_record_rejection_status import InvoiceReconciliationRecordRejectionStatus
+from .invoice_reconciliation_record_state import InvoiceReconciliationRecordState
+from .invoice_reconciliation_record_type import InvoiceReconciliationRecordType
+from .invoice_reimbursement import InvoiceReimbursement
+from .invoice_reimbursement_state import InvoiceReimbursementState
 from .label import Label
 from .label_descriptor import LabelDescriptor
 from .label_descriptor_category import LabelDescriptorCategory
@@ -161,6 +173,8 @@ from .payment_contract_state import PaymentContractState
 from .payment_contract_type import PaymentContractType
 from .payment_information_hash import PaymentInformationHash
 from .payment_information_hash_type import PaymentInformationHashType
+from .payment_initiation_advice_file import PaymentInitiationAdviceFile
+from .payment_initiation_advice_file_state import PaymentInitiationAdviceFileState
 from .payment_link import PaymentLink
 from .payment_link_address_handling_mode import PaymentLinkAddressHandlingMode
 from .payment_link_protection_mode import PaymentLinkProtectionMode
@@ -177,12 +191,16 @@ from .payment_terminal_configuration import PaymentTerminalConfiguration
 from .payment_terminal_configuration_state import PaymentTerminalConfigurationState
 from .payment_terminal_configuration_version import PaymentTerminalConfigurationVersion
 from .payment_terminal_configuration_version_state import PaymentTerminalConfigurationVersionState
+from .payment_terminal_dcc_transaction_sum import PaymentTerminalDccTransactionSum
 from .payment_terminal_location import PaymentTerminalLocation
 from .payment_terminal_location_state import PaymentTerminalLocationState
 from .payment_terminal_location_version import PaymentTerminalLocationVersion
 from .payment_terminal_location_version_state import PaymentTerminalLocationVersionState
 from .payment_terminal_receipt_type import PaymentTerminalReceiptType
 from .payment_terminal_state import PaymentTerminalState
+from .payment_terminal_transaction_sum import PaymentTerminalTransactionSum
+from .payment_terminal_transaction_summary import PaymentTerminalTransactionSummary
+from .payment_terminal_transaction_summary_fetch_request import PaymentTerminalTransactionSummaryFetchRequest
 from .payment_terminal_type import PaymentTerminalType
 from .permission import Permission
 from .persistable_currency_amount import PersistableCurrencyAmount
@@ -205,6 +223,7 @@ from .refund_state import RefundState
 from .refund_type import RefundType
 from .rendered_document import RenderedDocument
 from .rendered_terminal_receipt import RenderedTerminalReceipt
+from .rendered_terminal_transaction_summary import RenderedTerminalTransactionSummary
 from .resource_path import ResourcePath
 from .resource_state import ResourceState
 from .rest_address_format import RestAddressFormat
@@ -336,7 +355,6 @@ from .transaction_group_state import TransactionGroupState
 from .transaction_invoice_comment import TransactionInvoiceComment
 from .transaction_invoice_replacement import TransactionInvoiceReplacement
 from .transaction_invoice_state import TransactionInvoiceState
-from .transaction_line_item_update_request import TransactionLineItemUpdateRequest
 from .transaction_line_item_version_create import TransactionLineItemVersionCreate
 from .transaction_line_item_version_state import TransactionLineItemVersionState
 from .transaction_state import TransactionState
@@ -378,6 +396,8 @@ from .delivery_indication import DeliveryIndication
 from .human_user_create import HumanUserCreate
 from .human_user_update import HumanUserUpdate
 from .installment_payment_slice import InstallmentPaymentSlice
+from .invoice_reconciliation_record import InvoiceReconciliationRecord
+from .invoice_reimbursement_with_refund_reference import InvoiceReimbursementWithRefundReference
 from .payment_link_active import PaymentLinkActive
 from .payment_link_create import PaymentLinkCreate
 from .refund_bank_transaction import RefundBankTransaction

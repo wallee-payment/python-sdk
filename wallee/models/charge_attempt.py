@@ -13,6 +13,7 @@ class ChargeAttempt(TransactionAwareEntity):
         'completion_behavior': 'TransactionCompletionBehavior',
         'connector_configuration': 'PaymentConnectorConfiguration',
         'created_on': 'datetime',
+        'customers_presence': 'CustomersPresence',
         'environment': 'ChargeAttemptEnvironment',
         'failed_on': 'datetime',
         'failure_reason': 'FailureReason',
@@ -36,7 +37,7 @@ class ChargeAttempt(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
+        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','customers_presence': 'customersPresence','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
@@ -44,6 +45,7 @@ class ChargeAttempt(TransactionAwareEntity):
     _completion_behavior = None
     _connector_configuration = None
     _created_on = None
+    _customers_presence = None
     _environment = None
     _failed_on = None
     _failure_reason = None
@@ -72,6 +74,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.completion_behavior = kwargs.get('completion_behavior', None)
         self.connector_configuration = kwargs.get('connector_configuration', None)
         self.created_on = kwargs.get('created_on', None)
+        self.customers_presence = kwargs.get('customers_presence', None)
         self.environment = kwargs.get('environment', None)
         self.failed_on = kwargs.get('failed_on', None)
         self.failure_reason = kwargs.get('failure_reason', None)
@@ -188,6 +191,29 @@ class ChargeAttempt(TransactionAwareEntity):
         """
 
         self._created_on = created_on
+    
+    @property
+    def customers_presence(self):
+        """Gets the customers_presence of this ChargeAttempt.
+
+            The customers presence indicates which kind of customer interaction was used during the charge attempt.
+
+        :return: The customers_presence of this ChargeAttempt.
+        :rtype: CustomersPresence
+        """
+        return self._customers_presence
+
+    @customers_presence.setter
+    def customers_presence(self, customers_presence):
+        """Sets the customers_presence of this ChargeAttempt.
+
+            The customers presence indicates which kind of customer interaction was used during the charge attempt.
+
+        :param customers_presence: The customers_presence of this ChargeAttempt.
+        :type: CustomersPresence
+        """
+
+        self._customers_presence = customers_presence
     
     @property
     def environment(self):

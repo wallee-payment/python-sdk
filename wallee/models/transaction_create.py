@@ -99,7 +99,7 @@ class TransactionCreate(AbstractTransactionPending):
     def customers_presence(self):
         """Gets the customers_presence of this TransactionCreate.
 
-            The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
 
         :return: The customers_presence of this TransactionCreate.
         :rtype: CustomersPresence
@@ -110,7 +110,7 @@ class TransactionCreate(AbstractTransactionPending):
     def customers_presence(self, customers_presence):
         """Sets the customers_presence of this TransactionCreate.
 
-            The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
 
         :param customers_presence: The customers_presence of this TransactionCreate.
         :type: CustomersPresence

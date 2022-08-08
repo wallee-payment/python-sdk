@@ -6,7 +6,7 @@ import six
 
 from wallee.api_client import ApiClient
 
-class PaymentTerminalServiceApi:
+class InvoiceReconciliationRecordInvoiceLinkServiceApi:
 
     def __init__(self, configuration):
         self.api_client = ApiClient(configuration=configuration)
@@ -101,7 +101,7 @@ class PaymentTerminalServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/payment-terminal/count', 'POST',
+            '/invoice-reconciliation-record-invoice-link-service/count', 'POST',
             path_params,
             query_params,
             header_params,
@@ -116,20 +116,21 @@ class PaymentTerminalServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def link(self, space_id, terminal_id, serial_number, **kwargs):
-        """Link Device With Terminal
+    def link(self, space_id, record_id, completion_id, **kwargs):
+        """Link Invoice
 
-        Links the device with given serial number with terminal.
+        Links the invoice reconciliation record with the provided invoice.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.link(space_id, terminal_id, serial_number, async_req=True)
+        >>> thread = api.link(space_id, record_id, completion_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int terminal_id:  (required)
-        :param str serial_number:  (required)
-        :return: None
+        :param int record_id: The ID of the invoice reconciliation record which should be linked. (required)
+        :param int completion_id: The ID of the completion which should be linked. (required)
+        :param float amount: The amount of the invoice reconciliation record linked completion which should be changed.
+        :return: InvoiceReconciliationRecordInvoiceLink
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -137,30 +138,31 @@ class PaymentTerminalServiceApi:
 
 
         if kwargs.get('async_req'):
-            return self.link_with_http_info(space_id, terminal_id, serial_number, **kwargs)
+            return self.link_with_http_info(space_id, record_id, completion_id, **kwargs)
         else:
-            (data) = self.link_with_http_info(space_id, terminal_id, serial_number, **kwargs)
+            (data) = self.link_with_http_info(space_id, record_id, completion_id, **kwargs)
             return data
 
-    def link_with_http_info(self, space_id, terminal_id, serial_number, **kwargs):
-        """Link Device With Terminal
+    def link_with_http_info(self, space_id, record_id, completion_id, **kwargs):
+        """Link Invoice
 
-        Links the device with given serial number with terminal.
+        Links the invoice reconciliation record with the provided invoice.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.link_with_http_info(space_id, terminal_id, serial_number, async_req=True)
+        >>> thread = api.link_with_http_info(space_id, record_id, completion_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int terminal_id:  (required)
-        :param str serial_number:  (required)
-        :return: None
+        :param int record_id: The ID of the invoice reconciliation record which should be linked. (required)
+        :param int completion_id: The ID of the completion which should be linked. (required)
+        :param float amount: The amount of the invoice reconciliation record linked completion which should be changed.
+        :return: InvoiceReconciliationRecordInvoiceLink
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'terminal_id', 'serial_number']
+        all_params = ['space_id', 'record_id', 'completion_id', 'amount']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -179,14 +181,14 @@ class PaymentTerminalServiceApi:
         if ('space_id' not in params or
                 params['space_id'] is None):
             raise ValueError("Missing the required parameter `space_id` when calling `link`")
-        # verify the required parameter 'terminal_id' is set
-        if ('terminal_id' not in params or
-                params['terminal_id'] is None):
-            raise ValueError("Missing the required parameter `terminal_id` when calling `link`")
-        # verify the required parameter 'serial_number' is set
-        if ('serial_number' not in params or
-                params['serial_number'] is None):
-            raise ValueError("Missing the required parameter `serial_number` when calling `link`")
+        # verify the required parameter 'record_id' is set
+        if ('record_id' not in params or
+                params['record_id'] is None):
+            raise ValueError("Missing the required parameter `record_id` when calling `link`")
+        # verify the required parameter 'completion_id' is set
+        if ('completion_id' not in params or
+                params['completion_id'] is None):
+            raise ValueError("Missing the required parameter `completion_id` when calling `link`")
 
         collection_formats = {}
 
@@ -195,10 +197,12 @@ class PaymentTerminalServiceApi:
         query_params = []
         if 'space_id' in params:
             query_params.append(('spaceId', params['space_id']))
-        if 'terminal_id' in params:
-            query_params.append(('terminalId', params['terminal_id']))
-        if 'serial_number' in params:
-            query_params.append(('serialNumber', params['serial_number']))
+        if 'record_id' in params:
+            query_params.append(('recordId', params['record_id']))
+        if 'completion_id' in params:
+            query_params.append(('completionId', params['completion_id']))
+        if 'amount' in params:
+            query_params.append(('amount', params['amount']))
 
         header_params = {}
 
@@ -210,14 +214,14 @@ class PaymentTerminalServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/payment-terminal/link', 'POST',
+            '/invoice-reconciliation-record-invoice-link-service/link', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,
+            response_type='InvoiceReconciliationRecordInvoiceLink',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -236,8 +240,8 @@ class PaymentTerminalServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id: The id of the payment terminal which should be returned. (required)
-        :return: PaymentTerminal
+        :param int id: The ID of the invoice reconciliation record invoice link which should be returned. (required)
+        :return: InvoiceReconciliationRecordInvoiceLink
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -261,8 +265,8 @@ class PaymentTerminalServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id: The id of the payment terminal which should be returned. (required)
-        :return: PaymentTerminal
+        :param int id: The ID of the invoice reconciliation record invoice link which should be returned. (required)
+        :return: InvoiceReconciliationRecordInvoiceLink
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -319,14 +323,14 @@ class PaymentTerminalServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/payment-terminal/read', 'GET',
+            '/invoice-reconciliation-record-invoice-link-service/read', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='PaymentTerminal',
+            response_type='InvoiceReconciliationRecordInvoiceLink',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -345,8 +349,8 @@ class PaymentTerminalServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param EntityQuery query: The query restricts the payment terminals which are returned by the search. (required)
-        :return: list[PaymentTerminal]
+        :param EntityQuery query: The query restricts the invoice reconciliation record invoice link which are returned by the search. (required)
+        :return: list[InvoiceReconciliationRecordInvoiceLink]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -370,8 +374,8 @@ class PaymentTerminalServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param EntityQuery query: The query restricts the payment terminals which are returned by the search. (required)
-        :return: list[PaymentTerminal]
+        :param EntityQuery query: The query restricts the invoice reconciliation record invoice link which are returned by the search. (required)
+        :return: list[InvoiceReconciliationRecordInvoiceLink]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -428,14 +432,14 @@ class PaymentTerminalServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/payment-terminal/search', 'POST',
+            '/invoice-reconciliation-record-invoice-link-service/search', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[PaymentTerminal]',
+            response_type='list[InvoiceReconciliationRecordInvoiceLink]',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -443,18 +447,19 @@ class PaymentTerminalServiceApi:
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trigger_final_balance(self, space_id, terminal_id, **kwargs):
-        """Remotely Trigger Final Balance
+    def unlink_transaction(self, space_id, record_id, completion_id, **kwargs):
+        """Unlink Invoice
 
-        Remotely triggers the final balance receipt on the terminal.
+        Unlinks the invoice reconciliation record from the provided invoice.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trigger_final_balance(space_id, terminal_id, async_req=True)
+        >>> thread = api.unlink_transaction(space_id, record_id, completion_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int terminal_id:  (required)
+        :param int record_id: The ID of the invoice reconciliation record which should be unlinked. (required)
+        :param int completion_id: The ID of the completion which should be unlinked. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -463,29 +468,30 @@ class PaymentTerminalServiceApi:
 
 
         if kwargs.get('async_req'):
-            return self.trigger_final_balance_with_http_info(space_id, terminal_id, **kwargs)
+            return self.unlink_transaction_with_http_info(space_id, record_id, completion_id, **kwargs)
         else:
-            (data) = self.trigger_final_balance_with_http_info(space_id, terminal_id, **kwargs)
+            (data) = self.unlink_transaction_with_http_info(space_id, record_id, completion_id, **kwargs)
             return data
 
-    def trigger_final_balance_with_http_info(self, space_id, terminal_id, **kwargs):
-        """Remotely Trigger Final Balance
+    def unlink_transaction_with_http_info(self, space_id, record_id, completion_id, **kwargs):
+        """Unlink Invoice
 
-        Remotely triggers the final balance receipt on the terminal.
+        Unlinks the invoice reconciliation record from the provided invoice.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trigger_final_balance_with_http_info(space_id, terminal_id, async_req=True)
+        >>> thread = api.unlink_transaction_with_http_info(space_id, record_id, completion_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int terminal_id:  (required)
+        :param int record_id: The ID of the invoice reconciliation record which should be unlinked. (required)
+        :param int completion_id: The ID of the completion which should be unlinked. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'terminal_id']
+        all_params = ['space_id', 'record_id', 'completion_id']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -496,18 +502,22 @@ class PaymentTerminalServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trigger_final_balance" % key
+                    " to method unlink_transaction" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'space_id' is set
         if ('space_id' not in params or
                 params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `trigger_final_balance`")
-        # verify the required parameter 'terminal_id' is set
-        if ('terminal_id' not in params or
-                params['terminal_id'] is None):
-            raise ValueError("Missing the required parameter `terminal_id` when calling `trigger_final_balance`")
+            raise ValueError("Missing the required parameter `space_id` when calling `unlink_transaction`")
+        # verify the required parameter 'record_id' is set
+        if ('record_id' not in params or
+                params['record_id'] is None):
+            raise ValueError("Missing the required parameter `record_id` when calling `unlink_transaction`")
+        # verify the required parameter 'completion_id' is set
+        if ('completion_id' not in params or
+                params['completion_id'] is None):
+            raise ValueError("Missing the required parameter `completion_id` when calling `unlink_transaction`")
 
         collection_formats = {}
 
@@ -516,8 +526,10 @@ class PaymentTerminalServiceApi:
         query_params = []
         if 'space_id' in params:
             query_params.append(('spaceId', params['space_id']))
-        if 'terminal_id' in params:
-            query_params.append(('terminalId', params['terminal_id']))
+        if 'record_id' in params:
+            query_params.append(('recordId', params['record_id']))
+        if 'completion_id' in params:
+            query_params.append(('completionId', params['completion_id']))
 
         header_params = {}
 
@@ -529,209 +541,7 @@ class PaymentTerminalServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/payment-terminal/trigger-final-balance', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def trigger_final_balance_by_identifier(self, space_id, terminal_identifier, **kwargs):
-        """Remotely Trigger Final Balance By Identifier
-
-        Remotely triggers the final balance receipt on the terminal by terminal identifier.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trigger_final_balance_by_identifier(space_id, terminal_identifier, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int space_id:  (required)
-        :param str terminal_identifier:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-
-
-        if kwargs.get('async_req'):
-            return self.trigger_final_balance_by_identifier_with_http_info(space_id, terminal_identifier, **kwargs)
-        else:
-            (data) = self.trigger_final_balance_by_identifier_with_http_info(space_id, terminal_identifier, **kwargs)
-            return data
-
-    def trigger_final_balance_by_identifier_with_http_info(self, space_id, terminal_identifier, **kwargs):
-        """Remotely Trigger Final Balance By Identifier
-
-        Remotely triggers the final balance receipt on the terminal by terminal identifier.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trigger_final_balance_by_identifier_with_http_info(space_id, terminal_identifier, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int space_id:  (required)
-        :param str terminal_identifier:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['space_id', 'terminal_identifier']
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method trigger_final_balance_by_identifier" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'space_id' is set
-        if ('space_id' not in params or
-                params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `trigger_final_balance_by_identifier`")
-        # verify the required parameter 'terminal_identifier' is set
-        if ('terminal_identifier' not in params or
-                params['terminal_identifier'] is None):
-            raise ValueError("Missing the required parameter `terminal_identifier` when calling `trigger_final_balance_by_identifier`")
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'space_id' in params:
-            query_params.append(('spaceId', params['space_id']))
-        if 'terminal_identifier' in params:
-            query_params.append(('terminalIdentifier', params['terminal_identifier']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/payment-terminal/trigger-final-balance-by-identifier', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type=None,
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def unlink(self, space_id, terminal_id, **kwargs):
-        """Unlink Device With Terminal
-
-        Unlinks the device from terminal.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.unlink(space_id, terminal_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int space_id:  (required)
-        :param int terminal_id:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-
-
-        if kwargs.get('async_req'):
-            return self.unlink_with_http_info(space_id, terminal_id, **kwargs)
-        else:
-            (data) = self.unlink_with_http_info(space_id, terminal_id, **kwargs)
-            return data
-
-    def unlink_with_http_info(self, space_id, terminal_id, **kwargs):
-        """Unlink Device With Terminal
-
-        Unlinks the device from terminal.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.unlink_with_http_info(space_id, terminal_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int space_id:  (required)
-        :param int terminal_id:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['space_id', 'terminal_id']
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method unlink" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'space_id' is set
-        if ('space_id' not in params or
-                params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `unlink`")
-        # verify the required parameter 'terminal_id' is set
-        if ('terminal_id' not in params or
-                params['terminal_id'] is None):
-            raise ValueError("Missing the required parameter `terminal_id` when calling `unlink`")
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'space_id' in params:
-            query_params.append(('spaceId', params['space_id']))
-        if 'terminal_id' in params:
-            query_params.append(('terminalId', params['terminal_id']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/payment-terminal/unlink', 'POST',
+            '/invoice-reconciliation-record-invoice-link-service/unlink-transaction', 'POST',
             path_params,
             query_params,
             header_params,

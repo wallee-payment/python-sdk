@@ -46,6 +46,7 @@ coverage.xml
 .hypothesis/
 venv/
 .python-version
+.travis.yml
 
 # Translations
 *.mo

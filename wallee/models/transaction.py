@@ -11,7 +11,7 @@ class Transaction:
     
         'accept_header': 'str',
         'accept_language_header': 'str',
-        'allowed_payment_method_brands': 'list[PaymentMethodBrand]',
+        'allowed_payment_method_brands': 'list[int]',
         'allowed_payment_method_configurations': 'list[int]',
         'authorization_amount': 'float',
         'authorization_environment': 'ChargeAttemptEnvironment',
@@ -78,10 +78,11 @@ class Transaction:
         'version': 'int',
         'window_height': 'str',
         'window_width': 'str',
+        'years_to_keep': 'int',
     }
 
     attribute_map = {
-        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_behavior': 'completionBehavior','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','java_enabled': 'javaEnabled','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','screen_color_depth': 'screenColorDepth','screen_height': 'screenHeight','screen_width': 'screenWidth','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','terminal': 'terminal','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version','window_height': 'windowHeight','window_width': 'windowWidth',
+        'accept_header': 'acceptHeader','accept_language_header': 'acceptLanguageHeader','allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','authorization_amount': 'authorizationAmount','authorization_environment': 'authorizationEnvironment','authorization_sales_channel': 'authorizationSalesChannel','authorization_timeout_on': 'authorizationTimeoutOn','authorized_on': 'authorizedOn','auto_confirmation_enabled': 'autoConfirmationEnabled','billing_address': 'billingAddress','charge_retry_enabled': 'chargeRetryEnabled','completed_amount': 'completedAmount','completed_on': 'completedOn','completion_behavior': 'completionBehavior','completion_timeout_on': 'completionTimeoutOn','confirmed_by': 'confirmedBy','confirmed_on': 'confirmedOn','created_by': 'createdBy','created_on': 'createdOn','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','customers_presence': 'customersPresence','delivery_decision_made_on': 'deliveryDecisionMadeOn','device_session_identifier': 'deviceSessionIdentifier','emails_disabled': 'emailsDisabled','end_of_life': 'endOfLife','environment': 'environment','environment_selection_strategy': 'environmentSelectionStrategy','failed_on': 'failedOn','failed_url': 'failedUrl','failure_reason': 'failureReason','group': 'group','id': 'id','internet_protocol_address': 'internetProtocolAddress','internet_protocol_address_country': 'internetProtocolAddressCountry','invoice_merchant_reference': 'invoiceMerchantReference','java_enabled': 'javaEnabled','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','merchant_reference': 'merchantReference','meta_data': 'metaData','parent': 'parent','payment_connector_configuration': 'paymentConnectorConfiguration','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','refunded_amount': 'refundedAmount','screen_color_depth': 'screenColorDepth','screen_height': 'screenHeight','screen_width': 'screenWidth','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','space_view_id': 'spaceViewId','state': 'state','success_url': 'successUrl','terminal': 'terminal','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode','total_applied_fees': 'totalAppliedFees','total_settled_amount': 'totalSettledAmount','user_agent_header': 'userAgentHeader','user_failure_message': 'userFailureMessage','user_interface_type': 'userInterfaceType','version': 'version','window_height': 'windowHeight','window_width': 'windowWidth','years_to_keep': 'yearsToKeep',
     }
 
     
@@ -154,6 +155,7 @@ class Transaction:
     _version = None
     _window_height = None
     _window_width = None
+    _years_to_keep = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -227,6 +229,7 @@ class Transaction:
         self.version = kwargs.get('version', None)
         self.window_height = kwargs.get('window_height', None)
         self.window_width = kwargs.get('window_width', None)
+        self.years_to_keep = kwargs.get('years_to_keep', None)
         
 
     
@@ -283,7 +286,7 @@ class Transaction:
             
 
         :return: The allowed_payment_method_brands of this Transaction.
-        :rtype: list[PaymentMethodBrand]
+        :rtype: list[int]
         """
         return self._allowed_payment_method_brands
 
@@ -294,7 +297,7 @@ class Transaction:
             
 
         :param allowed_payment_method_brands: The allowed_payment_method_brands of this Transaction.
-        :type: list[PaymentMethodBrand]
+        :type: list[int]
         """
 
         self._allowed_payment_method_brands = allowed_payment_method_brands
@@ -765,7 +768,7 @@ class Transaction:
     def customers_presence(self):
         """Gets the customers_presence of this Transaction.
 
-            The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
 
         :return: The customers_presence of this Transaction.
         :rtype: CustomersPresence
@@ -776,7 +779,7 @@ class Transaction:
     def customers_presence(self, customers_presence):
         """Sets the customers_presence of this Transaction.
 
-            The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
 
         :param customers_presence: The customers_presence of this Transaction.
         :type: CustomersPresence
@@ -1836,6 +1839,29 @@ class Transaction:
         """
 
         self._window_width = window_width
+    
+    @property
+    def years_to_keep(self):
+        """Gets the years_to_keep of this Transaction.
+
+            The number of years the transaction will be stored after it has been authorized.
+
+        :return: The years_to_keep of this Transaction.
+        :rtype: int
+        """
+        return self._years_to_keep
+
+    @years_to_keep.setter
+    def years_to_keep(self, years_to_keep):
+        """Sets the years_to_keep of this Transaction.
+
+            The number of years the transaction will be stored after it has been authorized.
+
+        :param years_to_keep: The years_to_keep of this Transaction.
+        :type: int
+        """
+
+        self._years_to_keep = years_to_keep
     
 
     def to_dict(self):

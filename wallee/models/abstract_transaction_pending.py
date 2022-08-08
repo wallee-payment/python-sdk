@@ -9,7 +9,7 @@ class AbstractTransactionPending:
 
     swagger_types = {
     
-        'allowed_payment_method_brands': 'list[PaymentMethodBrand]',
+        'allowed_payment_method_brands': 'list[int]',
         'allowed_payment_method_configurations': 'list[int]',
         'billing_address': 'AddressCreate',
         'completion_behavior': 'TransactionCompletionBehavior',
@@ -87,7 +87,7 @@ class AbstractTransactionPending:
             
 
         :return: The allowed_payment_method_brands of this AbstractTransactionPending.
-        :rtype: list[PaymentMethodBrand]
+        :rtype: list[int]
         """
         return self._allowed_payment_method_brands
 
@@ -98,7 +98,7 @@ class AbstractTransactionPending:
             
 
         :param allowed_payment_method_brands: The allowed_payment_method_brands of this AbstractTransactionPending.
-        :type: list[PaymentMethodBrand]
+        :type: list[int]
         """
 
         self._allowed_payment_method_brands = allowed_payment_method_brands

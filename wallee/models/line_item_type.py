@@ -9,4 +9,5 @@ class LineItemType(Enum):
     DISCOUNT = "DISCOUNT"
     FEE = "FEE"
     PRODUCT = "PRODUCT"
+    TIP = "TIP"
 

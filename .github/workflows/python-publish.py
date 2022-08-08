@@ -5,11 +5,12 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-
 name: Upload Python Package
 
 on:
    push:
+    branches: [ master ]
+   pull_request:
     branches: [ master ]
     
 permissions:
@@ -17,7 +18,9 @@ permissions:
 
 jobs:
    build:
-
+    strategy:
+      matrix:
+        python-version: [ '3.6', '3.7', '3.8', '3.9' ]
     runs-on: ubuntu-latest
 
     steps:
@@ -25,22 +28,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
+        python-version: ${{ matrix.python-version }}
           
-    - name: Install dependencies
+    - name: Install dependencies with ${{ matrix.python-version }}
       run: |
         python -m pip install --upgrade pip
         pip install -r test-requirements.txt
         python -m pip install build --user
-        
-        
-    - name: Build package
+
+    - name: Build package with ${{ matrix.python-version }}
       run: |
          echo "Starting build .."
          python -m unittest discover -s test/ -p 'test_*.py'
     - name: Build Tar Ball
       run: python -m build --sdist --outdir dist/ .
-         
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@master
       with:

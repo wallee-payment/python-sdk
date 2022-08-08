@@ -15,7 +15,9 @@ class SpaceAddressCreate:
         'email_address': 'str',
         'family_name': 'str',
         'given_name': 'str',
+        'mobile_phone_number': 'str',
         'organization_name': 'str',
+        'phone_number': 'str',
         'postal_state': 'str',
         'postcode': 'str',
         'sales_tax_number': 'str',
@@ -25,7 +27,7 @@ class SpaceAddressCreate:
     }
 
     attribute_map = {
-        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','organization_name': 'organizationName','postal_state': 'postalState','postcode': 'postcode','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
+        'city': 'city','country': 'country','dependent_locality': 'dependentLocality','email_address': 'emailAddress','family_name': 'familyName','given_name': 'givenName','mobile_phone_number': 'mobilePhoneNumber','organization_name': 'organizationName','phone_number': 'phoneNumber','postal_state': 'postalState','postcode': 'postcode','sales_tax_number': 'salesTaxNumber','salutation': 'salutation','sorting_code': 'sortingCode','street': 'street',
     }
 
     
@@ -35,7 +37,9 @@ class SpaceAddressCreate:
     _email_address = None
     _family_name = None
     _given_name = None
+    _mobile_phone_number = None
     _organization_name = None
+    _phone_number = None
     _postal_state = None
     _postcode = None
     _sales_tax_number = None
@@ -52,7 +56,9 @@ class SpaceAddressCreate:
         self.email_address = kwargs.get('email_address', None)
         self.family_name = kwargs.get('family_name', None)
         self.given_name = kwargs.get('given_name', None)
+        self.mobile_phone_number = kwargs.get('mobile_phone_number', None)
         self.organization_name = kwargs.get('organization_name', None)
+        self.phone_number = kwargs.get('phone_number', None)
         self.postal_state = kwargs.get('postal_state', None)
         self.postcode = kwargs.get('postcode', None)
         self.sales_tax_number = kwargs.get('sales_tax_number', None)
@@ -207,6 +213,31 @@ class SpaceAddressCreate:
         self._given_name = given_name
     
     @property
+    def mobile_phone_number(self):
+        """Gets the mobile_phone_number of this SpaceAddressCreate.
+
+            
+
+        :return: The mobile_phone_number of this SpaceAddressCreate.
+        :rtype: str
+        """
+        return self._mobile_phone_number
+
+    @mobile_phone_number.setter
+    def mobile_phone_number(self, mobile_phone_number):
+        """Sets the mobile_phone_number of this SpaceAddressCreate.
+
+            
+
+        :param mobile_phone_number: The mobile_phone_number of this SpaceAddressCreate.
+        :type: str
+        """
+        if mobile_phone_number is not None and len(mobile_phone_number) > 100:
+            raise ValueError("Invalid value for `mobile_phone_number`, length must be less than or equal to `100`")
+
+        self._mobile_phone_number = mobile_phone_number
+    
+    @property
     def organization_name(self):
         """Gets the organization_name of this SpaceAddressCreate.
 
@@ -230,6 +261,31 @@ class SpaceAddressCreate:
             raise ValueError("Invalid value for `organization_name`, length must be less than or equal to `100`")
 
         self._organization_name = organization_name
+    
+    @property
+    def phone_number(self):
+        """Gets the phone_number of this SpaceAddressCreate.
+
+            
+
+        :return: The phone_number of this SpaceAddressCreate.
+        :rtype: str
+        """
+        return self._phone_number
+
+    @phone_number.setter
+    def phone_number(self, phone_number):
+        """Sets the phone_number of this SpaceAddressCreate.
+
+            
+
+        :param phone_number: The phone_number of this SpaceAddressCreate.
+        :type: str
+        """
+        if phone_number is not None and len(phone_number) > 100:
+            raise ValueError("Invalid value for `phone_number`, length must be less than or equal to `100`")
+
+        self._phone_number = phone_number
     
     @property
     def postal_state(self):
