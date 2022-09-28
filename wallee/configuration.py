@@ -16,7 +16,7 @@ class Configuration:
 
     _default = None
 
-    def __init__(self, user_id='', api_secret='', mac_version=1):
+    def __init__(self, user_id='', api_secret='', mac_version=1, default_headers={}):
         if self._default:
             for key in self._default.__dict__.keys():
                 self.__dict__[key] = copy.copy(self._default.__dict__[key])
@@ -84,6 +84,8 @@ class Configuration:
         self.proxy = None
         # Safe chars for path_param
         self.safe_chars_for_path_param = ''
+
+        self.default_headers=default_headers
 
     @property
     def api_secret(self):
@@ -252,6 +254,6 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 3.1.1\n"\
-               "SDK Package Version: 3.1.1".\
+               "Version of the API: 3.2.0\n"\
+               "SDK Package Version: 3.2.0".\
                format(env=sys.platform, pyversion=sys.version)

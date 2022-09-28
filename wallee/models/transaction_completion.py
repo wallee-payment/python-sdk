@@ -31,6 +31,7 @@ class TransactionCompletion(TransactionAwareEntity):
         'remaining_line_items': 'list[LineItem]',
         'space_view_id': 'int',
         'state': 'TransactionCompletionState',
+        'statement_descriptor': 'str',
         'succeeded_on': 'datetime',
         'tax_amount': 'float',
         'time_zone': 'str',
@@ -39,7 +40,7 @@ class TransactionCompletion(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount','base_line_items': 'baseLineItems','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','invoice_merchant_reference': 'invoiceMerchantReference','labels': 'labels','language': 'language','last_completion': 'lastCompletion','line_item_version': 'lineItemVersion','line_items': 'lineItems','mode': 'mode','next_update_on': 'nextUpdateOn','payment_information': 'paymentInformation','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','remaining_line_items': 'remainingLineItems','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','time_zone': 'timeZone','timeout_on': 'timeoutOn','version': 'version',
+        'amount': 'amount','base_line_items': 'baseLineItems','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','invoice_merchant_reference': 'invoiceMerchantReference','labels': 'labels','language': 'language','last_completion': 'lastCompletion','line_item_version': 'lineItemVersion','line_items': 'lineItems','mode': 'mode','next_update_on': 'nextUpdateOn','payment_information': 'paymentInformation','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','processor_reference': 'processorReference','remaining_line_items': 'remainingLineItems','space_view_id': 'spaceViewId','state': 'state','statement_descriptor': 'statementDescriptor','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','time_zone': 'timeZone','timeout_on': 'timeoutOn','version': 'version',
     }
 
     
@@ -65,6 +66,7 @@ class TransactionCompletion(TransactionAwareEntity):
     _remaining_line_items = None
     _space_view_id = None
     _state = None
+    _statement_descriptor = None
     _succeeded_on = None
     _tax_amount = None
     _time_zone = None
@@ -96,6 +98,7 @@ class TransactionCompletion(TransactionAwareEntity):
         self.remaining_line_items = kwargs.get('remaining_line_items', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
+        self.statement_descriptor = kwargs.get('statement_descriptor', None)
         self.succeeded_on = kwargs.get('succeeded_on', None)
         self.tax_amount = kwargs.get('tax_amount', None)
         self.time_zone = kwargs.get('time_zone', None)
@@ -617,6 +620,31 @@ class TransactionCompletion(TransactionAwareEntity):
         """
 
         self._state = state
+    
+    @property
+    def statement_descriptor(self):
+        """Gets the statement_descriptor of this TransactionCompletion.
+
+            The statement descriptor explain charges or payments on bank statements.
+
+        :return: The statement_descriptor of this TransactionCompletion.
+        :rtype: str
+        """
+        return self._statement_descriptor
+
+    @statement_descriptor.setter
+    def statement_descriptor(self, statement_descriptor):
+        """Sets the statement_descriptor of this TransactionCompletion.
+
+            The statement descriptor explain charges or payments on bank statements.
+
+        :param statement_descriptor: The statement_descriptor of this TransactionCompletion.
+        :type: str
+        """
+        if statement_descriptor is not None and len(statement_descriptor) > 22:
+            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `22`")
+
+        self._statement_descriptor = statement_descriptor
     
     @property
     def succeeded_on(self):

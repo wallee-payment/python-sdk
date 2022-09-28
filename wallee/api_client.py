@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 3.1.1
+    OpenAPI spec version: 3.2.0
     
 """
 
@@ -24,6 +24,7 @@ import re
 import tempfile
 from enum import Enum
 import six
+import platform
 from six.moves.urllib.parse import quote
 
 from wallee.configuration import Configuration
@@ -55,11 +56,15 @@ class ApiClient:
         self._pool = None
         self.rest_client = rest.RESTClientObject(configuration)
         self.default_headers = {}
+
+        for name, value in configuration.default_headers.items():
+            self.default_headers[name] = value;
+
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/3.1.1/python'
+        self.user_agent = 'wallee/3.2.0/python'
 
     def __del__(self):
         if self._pool is not None:
@@ -95,8 +100,19 @@ class ApiClient:
 
         # header parameters
         header_params = header_params or {}
+
+        # predefined default headers
+        default_headers = {
+            'x-meta-sdk-version': '3.2.0',
+            'x-meta-sdk-language': 'python',
+            'x-meta-sdk-provider': 'wallee',
+            'x-meta-sdk-language-version': platform.python_version()
+        }
+
         header_params.update(self.default_headers)
+        header_params.update(default_headers)
         header_params.update(self.get_auth_headers(resource_path=resource_path, query_params=query_params, method=method))
+
         if self.cookie:
             header_params['Cookie'] = self.cookie
         if header_params:

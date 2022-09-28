@@ -38,6 +38,7 @@ python setup.py install
 ## Usage
 The library needs to be configured with your account's space id, user id, and secret key which are available in your [wallee
 account dashboard](https://app-wallee.com/account/select). Set `space_id`, `user_id`, and `api_secret` to their values.
+You can also optionally set `default_headers` to set some headers that will be sent to all requests
 
 ### Configuring a Service
 
@@ -48,9 +49,11 @@ from wallee.models import LineItem, LineItemType, TransactionCreate
 
 space_id = 405
 
+# default_headers is an optional param, that represents headers sent to all requests
 config = Configuration(
     user_id=512,
-    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=',
+    default_headers={'x-meta-custom-header': 'value-1', 'x-meta-custom-header-2': 'value-2'}
 )
 transaction_service = TransactionServiceApi(configuration=config)
 transaction_payment_page_service = TransactionPaymentPageServiceApi(configuration=config)

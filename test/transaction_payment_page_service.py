@@ -16,7 +16,8 @@ class TransactionPaymentPageServiceTest(unittest.TestCase):
         self.space_id = 405
         config = Configuration(
             user_id=512,
-            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=',
+            default_headers={'x-meta-custom-header': 'value-1', 'x-meta-custom-header-2': 'value-2'}
         )
         self.transaction_service = TransactionServiceApi(configuration=config)
         self.transaction_payment_page_service = TransactionPaymentPageServiceApi(configuration=config)

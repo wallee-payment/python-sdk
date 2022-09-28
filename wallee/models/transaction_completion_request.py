@@ -13,11 +13,12 @@ class TransactionCompletionRequest:
         'invoice_merchant_reference': 'str',
         'last_completion': 'bool',
         'line_items': 'list[CompletionLineItemCreate]',
+        'statement_descriptor': 'str',
         'transaction_id': 'int',
     }
 
     attribute_map = {
-        'external_id': 'externalId','invoice_merchant_reference': 'invoiceMerchantReference','last_completion': 'lastCompletion','line_items': 'lineItems','transaction_id': 'transactionId',
+        'external_id': 'externalId','invoice_merchant_reference': 'invoiceMerchantReference','last_completion': 'lastCompletion','line_items': 'lineItems','statement_descriptor': 'statementDescriptor','transaction_id': 'transactionId',
     }
 
     
@@ -25,6 +26,7 @@ class TransactionCompletionRequest:
     _invoice_merchant_reference = None
     _last_completion = None
     _line_items = None
+    _statement_descriptor = None
     _transaction_id = None
 
     def __init__(self, **kwargs):
@@ -36,6 +38,7 @@ class TransactionCompletionRequest:
         self.last_completion = kwargs.get('last_completion')
 
         self.line_items = kwargs.get('line_items', None)
+        self.statement_descriptor = kwargs.get('statement_descriptor', None)
         self.transaction_id = kwargs.get('transaction_id')
 
         
@@ -142,6 +145,31 @@ class TransactionCompletionRequest:
         """
 
         self._line_items = line_items
+    
+    @property
+    def statement_descriptor(self):
+        """Gets the statement_descriptor of this TransactionCompletionRequest.
+
+            The statement descriptor explain charges or payments on bank statements.
+
+        :return: The statement_descriptor of this TransactionCompletionRequest.
+        :rtype: str
+        """
+        return self._statement_descriptor
+
+    @statement_descriptor.setter
+    def statement_descriptor(self, statement_descriptor):
+        """Sets the statement_descriptor of this TransactionCompletionRequest.
+
+            The statement descriptor explain charges or payments on bank statements.
+
+        :param statement_descriptor: The statement_descriptor of this TransactionCompletionRequest.
+        :type: str
+        """
+        if statement_descriptor is not None and len(statement_descriptor) > 22:
+            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `22`")
+
+        self._statement_descriptor = statement_descriptor
     
     @property
     def transaction_id(self):
