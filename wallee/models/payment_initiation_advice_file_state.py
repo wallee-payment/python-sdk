@@ -5,6 +5,8 @@ from enum import Enum, unique
 @unique
 class PaymentInitiationAdviceFileState(Enum):
     
-    PENDING = "PENDING"
+    CREATED = "CREATED"
+    UPLOADED = "UPLOADED"
+    DOWNLOADED = "DOWNLOADED"
     PROCESSED = "PROCESSED"
 

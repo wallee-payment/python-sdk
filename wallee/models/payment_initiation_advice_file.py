@@ -15,11 +15,12 @@ class PaymentInitiationAdviceFile:
         'linked_space_id': 'int',
         'name': 'str',
         'processed_on': 'datetime',
+        'processor': 'PaymentProcessor',
         'state': 'PaymentInitiationAdviceFileState',
     }
 
     attribute_map = {
-        'created_on': 'createdOn','file_generated_on': 'fileGeneratedOn','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','processed_on': 'processedOn','state': 'state',
+        'created_on': 'createdOn','file_generated_on': 'fileGeneratedOn','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','processed_on': 'processedOn','processor': 'processor','state': 'state',
     }
 
     
@@ -29,6 +30,7 @@ class PaymentInitiationAdviceFile:
     _linked_space_id = None
     _name = None
     _processed_on = None
+    _processor = None
     _state = None
 
     def __init__(self, **kwargs):
@@ -40,6 +42,7 @@ class PaymentInitiationAdviceFile:
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
         self.processed_on = kwargs.get('processed_on', None)
+        self.processor = kwargs.get('processor', None)
         self.state = kwargs.get('state', None)
         
 
@@ -181,6 +184,29 @@ class PaymentInitiationAdviceFile:
         """
 
         self._processed_on = processed_on
+    
+    @property
+    def processor(self):
+        """Gets the processor of this PaymentInitiationAdviceFile.
+
+            
+
+        :return: The processor of this PaymentInitiationAdviceFile.
+        :rtype: PaymentProcessor
+        """
+        return self._processor
+
+    @processor.setter
+    def processor(self, processor):
+        """Sets the processor of this PaymentInitiationAdviceFile.
+
+            
+
+        :param processor: The processor of this PaymentInitiationAdviceFile.
+        :type: PaymentProcessor
+        """
+
+        self._processor = processor
     
     @property
     def state(self):
