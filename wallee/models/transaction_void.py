@@ -100,7 +100,7 @@ class TransactionVoid(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this TransactionVoid.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this TransactionVoid.
         :rtype: datetime
@@ -111,7 +111,7 @@ class TransactionVoid(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this TransactionVoid.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this TransactionVoid.
         :type: datetime
@@ -192,7 +192,7 @@ class TransactionVoid(TransactionAwareEntity):
     def language(self):
         """Gets the language of this TransactionVoid.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this TransactionVoid.
         :rtype: str
@@ -203,7 +203,7 @@ class TransactionVoid(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this TransactionVoid.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this TransactionVoid.
         :type: str
@@ -261,7 +261,7 @@ class TransactionVoid(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionVoid.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this TransactionVoid.
         :rtype: datetime
@@ -272,7 +272,7 @@ class TransactionVoid(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this TransactionVoid.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this TransactionVoid.
         :type: datetime
@@ -330,7 +330,7 @@ class TransactionVoid(TransactionAwareEntity):
     def state(self):
         """Gets the state of this TransactionVoid.
 
-            
+            The object's current state.
 
         :return: The state of this TransactionVoid.
         :rtype: TransactionVoidState
@@ -341,7 +341,7 @@ class TransactionVoid(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this TransactionVoid.
 
-            
+            The object's current state.
 
         :param state: The state of this TransactionVoid.
         :type: TransactionVoidState
@@ -422,7 +422,7 @@ class TransactionVoid(TransactionAwareEntity):
     def version(self):
         """Gets the version of this TransactionVoid.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this TransactionVoid.
         :rtype: int
@@ -433,7 +433,7 @@ class TransactionVoid(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this TransactionVoid.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this TransactionVoid.
         :type: int

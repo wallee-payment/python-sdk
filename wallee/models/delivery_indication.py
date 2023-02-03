@@ -131,7 +131,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this DeliveryIndication.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this DeliveryIndication.
         :rtype: datetime
@@ -142,7 +142,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this DeliveryIndication.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this DeliveryIndication.
         :type: datetime
@@ -223,7 +223,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this DeliveryIndication.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this DeliveryIndication.
         :rtype: datetime
@@ -234,7 +234,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this DeliveryIndication.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this DeliveryIndication.
         :type: datetime
@@ -246,7 +246,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def state(self):
         """Gets the state of this DeliveryIndication.
 
-            
+            The object's current state.
 
         :return: The state of this DeliveryIndication.
         :rtype: DeliveryIndicationState
@@ -257,7 +257,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this DeliveryIndication.
 
-            
+            The object's current state.
 
         :param state: The state of this DeliveryIndication.
         :type: DeliveryIndicationState

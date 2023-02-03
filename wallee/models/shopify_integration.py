@@ -191,7 +191,7 @@ class ShopifyIntegration:
     def id(self):
         """Gets the id of this ShopifyIntegration.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this ShopifyIntegration.
         :rtype: int
@@ -202,7 +202,7 @@ class ShopifyIntegration:
     def id(self, id):
         """Sets the id of this ShopifyIntegration.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this ShopifyIntegration.
         :type: int
@@ -379,7 +379,7 @@ class ShopifyIntegration:
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ShopifyIntegration.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this ShopifyIntegration.
         :rtype: datetime
@@ -390,7 +390,7 @@ class ShopifyIntegration:
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this ShopifyIntegration.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this ShopifyIntegration.
         :type: datetime
@@ -542,7 +542,7 @@ class ShopifyIntegration:
     def state(self):
         """Gets the state of this ShopifyIntegration.
 
-            
+            The object's current state.
 
         :return: The state of this ShopifyIntegration.
         :rtype: CreationEntityState
@@ -553,7 +553,7 @@ class ShopifyIntegration:
     def state(self, state):
         """Sets the state of this ShopifyIntegration.
 
-            
+            The object's current state.
 
         :param state: The state of this ShopifyIntegration.
         :type: CreationEntityState
@@ -634,7 +634,7 @@ class ShopifyIntegration:
     def version(self):
         """Gets the version of this ShopifyIntegration.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this ShopifyIntegration.
         :rtype: int
@@ -645,7 +645,7 @@ class ShopifyIntegration:
     def version(self, version):
         """Sets the version of this ShopifyIntegration.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this ShopifyIntegration.
         :type: int

@@ -97,7 +97,7 @@ class SubscriptionAffiliateUpdate:
     def language(self):
         """Gets the language of this SubscriptionAffiliateUpdate.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this SubscriptionAffiliateUpdate.
         :rtype: str
@@ -108,7 +108,7 @@ class SubscriptionAffiliateUpdate:
     def language(self, language):
         """Sets the language of this SubscriptionAffiliateUpdate.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this SubscriptionAffiliateUpdate.
         :type: str
@@ -170,7 +170,7 @@ class SubscriptionAffiliateUpdate:
     def state(self):
         """Gets the state of this SubscriptionAffiliateUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this SubscriptionAffiliateUpdate.
         :rtype: CreationEntityState
@@ -181,7 +181,7 @@ class SubscriptionAffiliateUpdate:
     def state(self, state):
         """Sets the state of this SubscriptionAffiliateUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this SubscriptionAffiliateUpdate.
         :type: CreationEntityState

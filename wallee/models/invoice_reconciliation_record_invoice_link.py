@@ -68,7 +68,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def created_on(self):
         """Gets the created_on of this InvoiceReconciliationRecordInvoiceLink.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this InvoiceReconciliationRecordInvoiceLink.
         :rtype: datetime
@@ -79,7 +79,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def created_on(self, created_on):
         """Sets the created_on of this InvoiceReconciliationRecordInvoiceLink.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this InvoiceReconciliationRecordInvoiceLink.
         :type: datetime
@@ -91,7 +91,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def id(self):
         """Gets the id of this InvoiceReconciliationRecordInvoiceLink.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this InvoiceReconciliationRecordInvoiceLink.
         :rtype: int
@@ -102,7 +102,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def id(self, id):
         """Sets the id of this InvoiceReconciliationRecordInvoiceLink.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this InvoiceReconciliationRecordInvoiceLink.
         :type: int
@@ -137,7 +137,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def linked_space_id(self):
         """Gets the linked_space_id of this InvoiceReconciliationRecordInvoiceLink.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this InvoiceReconciliationRecordInvoiceLink.
         :rtype: int
@@ -148,7 +148,7 @@ class InvoiceReconciliationRecordInvoiceLink:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this InvoiceReconciliationRecordInvoiceLink.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this InvoiceReconciliationRecordInvoiceLink.
         :type: int

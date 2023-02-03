@@ -39,7 +39,7 @@ class TokenVersionType:
     def description(self):
         """Gets the description of this TokenVersionType.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this TokenVersionType.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class TokenVersionType:
     def description(self, description):
         """Sets the description of this TokenVersionType.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this TokenVersionType.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class TokenVersionType:
     def id(self):
         """Gets the id of this TokenVersionType.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this TokenVersionType.
         :rtype: int
@@ -96,7 +96,7 @@ class TokenVersionType:
     def id(self, id):
         """Sets the id of this TokenVersionType.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this TokenVersionType.
         :type: int
@@ -108,7 +108,7 @@ class TokenVersionType:
     def name(self):
         """Gets the name of this TokenVersionType.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this TokenVersionType.
         :rtype: dict(str, str)
@@ -119,7 +119,7 @@ class TokenVersionType:
     def name(self, name):
         """Sets the name of this TokenVersionType.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this TokenVersionType.
         :type: dict(str, str)

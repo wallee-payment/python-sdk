@@ -16,7 +16,8 @@ class SpaceServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count(async_req=True)
         >>> result = thread.get()
 
@@ -27,8 +28,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.count_with_http_info(**kwargs)
         else:
@@ -40,7 +41,8 @@ class SpaceServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count_with_http_info(async_req=True)
         >>> result = thread.get()
 
@@ -55,7 +57,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -105,7 +107,7 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def create(self, entity, **kwargs):
@@ -113,7 +115,8 @@ class SpaceServiceApi:
 
         Creates the entity with the given properties.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create(entity, async_req=True)
         >>> result = thread.get()
 
@@ -124,8 +127,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.create_with_http_info(entity, **kwargs)
         else:
@@ -137,7 +140,8 @@ class SpaceServiceApi:
 
         Creates the entity with the given properties.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create_with_http_info(entity, async_req=True)
         >>> result = thread.get()
 
@@ -152,7 +156,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -206,7 +210,7 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def delete(self, id, **kwargs):
@@ -214,7 +218,8 @@ class SpaceServiceApi:
 
         Deletes the entity with the given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete(id, async_req=True)
         >>> result = thread.get()
 
@@ -225,8 +230,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.delete_with_http_info(id, **kwargs)
         else:
@@ -238,7 +243,8 @@ class SpaceServiceApi:
 
         Deletes the entity with the given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -253,7 +259,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -307,7 +313,7 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, id, **kwargs):
@@ -315,7 +321,8 @@ class SpaceServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(id, async_req=True)
         >>> result = thread.get()
 
@@ -326,8 +333,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(id, **kwargs)
         else:
@@ -339,7 +346,8 @@ class SpaceServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -354,7 +362,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -408,7 +416,7 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search(self, query, **kwargs):
@@ -416,7 +424,8 @@ class SpaceServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search(query, async_req=True)
         >>> result = thread.get()
 
@@ -427,8 +436,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_with_http_info(query, **kwargs)
         else:
@@ -440,7 +449,8 @@ class SpaceServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_with_http_info(query, async_req=True)
         >>> result = thread.get()
 
@@ -455,7 +465,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -509,7 +519,7 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update(self, entity, **kwargs):
@@ -517,7 +527,8 @@ class SpaceServiceApi:
 
         This updates the entity with the given properties. Only those properties which should be updated can be provided. The 'id' and 'version' are required to identify the entity.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update(entity, async_req=True)
         >>> result = thread.get()
 
@@ -528,8 +539,8 @@ class SpaceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_with_http_info(entity, **kwargs)
         else:
@@ -541,7 +552,8 @@ class SpaceServiceApi:
 
         This updates the entity with the given properties. Only those properties which should be updated can be provided. The 'id' and 'version' are required to identify the entity.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_with_http_info(entity, async_req=True)
         >>> result = thread.get()
 
@@ -556,7 +568,7 @@ class SpaceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -610,5 +622,5 @@ class SpaceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

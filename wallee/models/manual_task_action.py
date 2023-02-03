@@ -39,7 +39,7 @@ class ManualTaskAction:
     def id(self):
         """Gets the id of this ManualTaskAction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this ManualTaskAction.
         :rtype: int
@@ -50,7 +50,7 @@ class ManualTaskAction:
     def id(self, id):
         """Sets the id of this ManualTaskAction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this ManualTaskAction.
         :type: int

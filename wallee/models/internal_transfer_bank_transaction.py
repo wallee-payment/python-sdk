@@ -42,7 +42,7 @@ class InternalTransferBankTransaction:
     def id(self):
         """Gets the id of this InternalTransferBankTransaction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this InternalTransferBankTransaction.
         :rtype: int
@@ -53,7 +53,7 @@ class InternalTransferBankTransaction:
     def id(self, id):
         """Sets the id of this InternalTransferBankTransaction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this InternalTransferBankTransaction.
         :type: int
@@ -65,7 +65,7 @@ class InternalTransferBankTransaction:
     def linked_space_id(self):
         """Gets the linked_space_id of this InternalTransferBankTransaction.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this InternalTransferBankTransaction.
         :rtype: int
@@ -76,7 +76,7 @@ class InternalTransferBankTransaction:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this InternalTransferBankTransaction.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this InternalTransferBankTransaction.
         :type: int
@@ -134,7 +134,7 @@ class InternalTransferBankTransaction:
     def version(self):
         """Gets the version of this InternalTransferBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this InternalTransferBankTransaction.
         :rtype: int
@@ -145,7 +145,7 @@ class InternalTransferBankTransaction:
     def version(self, version):
         """Sets the version of this InternalTransferBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this InternalTransferBankTransaction.
         :type: int

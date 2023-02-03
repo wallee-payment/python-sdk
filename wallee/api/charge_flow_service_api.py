@@ -16,7 +16,8 @@ class ChargeFlowServiceApi:
 
         
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.apply_flow(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.apply_flow_with_http_info(space_id, id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class ChargeFlowServiceApi:
 
         
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.apply_flow_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,7 +115,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def cancel_charge_flow(self, space_id, id, **kwargs):
@@ -121,7 +123,8 @@ class ChargeFlowServiceApi:
 
         This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.cancel_charge_flow(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -133,8 +136,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.cancel_charge_flow_with_http_info(space_id, id, **kwargs)
         else:
@@ -146,7 +149,8 @@ class ChargeFlowServiceApi:
 
         This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.cancel_charge_flow_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -162,7 +166,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -218,7 +222,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def count(self, space_id, **kwargs):
@@ -226,7 +230,8 @@ class ChargeFlowServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -238,8 +243,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -251,7 +256,8 @@ class ChargeFlowServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count_with_http_info(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -267,7 +273,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -323,7 +329,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def fetch_charge_flow_payment_page_url(self, space_id, id, **kwargs):
@@ -331,7 +337,8 @@ class ChargeFlowServiceApi:
 
         This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.fetch_charge_flow_payment_page_url(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -343,8 +350,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.fetch_charge_flow_payment_page_url_with_http_info(space_id, id, **kwargs)
         else:
@@ -356,7 +363,8 @@ class ChargeFlowServiceApi:
 
         This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.fetch_charge_flow_payment_page_url_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -372,7 +380,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -428,7 +436,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, space_id, id, **kwargs):
@@ -436,7 +444,8 @@ class ChargeFlowServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -448,8 +457,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -461,7 +470,8 @@ class ChargeFlowServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -477,7 +487,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -537,7 +547,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search(self, space_id, query, **kwargs):
@@ -545,7 +555,8 @@ class ChargeFlowServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -557,8 +568,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -570,7 +581,8 @@ class ChargeFlowServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_with_http_info(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -586,7 +598,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -646,7 +658,7 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_recipient(self, space_id, transaction_id, type, recipient, **kwargs):
@@ -654,7 +666,8 @@ class ChargeFlowServiceApi:
 
         
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_recipient(space_id, transaction_id, type, recipient, async_req=True)
         >>> result = thread.get()
 
@@ -668,8 +681,8 @@ class ChargeFlowServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_recipient_with_http_info(space_id, transaction_id, type, recipient, **kwargs)
         else:
@@ -681,7 +694,8 @@ class ChargeFlowServiceApi:
 
         
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_recipient_with_http_info(space_id, transaction_id, type, recipient, async_req=True)
         >>> result = thread.get()
 
@@ -699,7 +713,7 @@ class ChargeFlowServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -767,5 +781,5 @@ class ChargeFlowServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

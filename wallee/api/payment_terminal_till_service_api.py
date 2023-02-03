@@ -16,7 +16,8 @@ class PaymentTerminalTillServiceApi:
 
         Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        Time out for this request is 90 seconds.
         >>> thread = api.perform_transaction(space_id, transaction_id, terminal_id, async_req=True)
         >>> result = thread.get()
 
@@ -30,9 +31,8 @@ class PaymentTerminalTillServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-        kwargs['_request_timeout'] = 90
-
+        kwargs['request_timeout'] = 90
+        
         if kwargs.get('async_req'):
             return self.perform_transaction_with_http_info(space_id, transaction_id, terminal_id, **kwargs)
         else:
@@ -44,7 +44,8 @@ class PaymentTerminalTillServiceApi:
 
         Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        Time out for this request is 90 seconds.
         >>> thread = api.perform_transaction_with_http_info(space_id, transaction_id, terminal_id, async_req=True)
         >>> result = thread.get()
 
@@ -62,7 +63,7 @@ class PaymentTerminalTillServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -130,7 +131,7 @@ class PaymentTerminalTillServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def perform_transaction_by_identifier(self, space_id, transaction_id, terminal_identifier, **kwargs):
@@ -138,7 +139,8 @@ class PaymentTerminalTillServiceApi:
 
         Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        Time out for this request is 90 seconds.
         >>> thread = api.perform_transaction_by_identifier(space_id, transaction_id, terminal_identifier, async_req=True)
         >>> result = thread.get()
 
@@ -152,9 +154,8 @@ class PaymentTerminalTillServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-        kwargs['_request_timeout'] = 90
-
+        kwargs['request_timeout'] = 90
+        
         if kwargs.get('async_req'):
             return self.perform_transaction_by_identifier_with_http_info(space_id, transaction_id, terminal_identifier, **kwargs)
         else:
@@ -166,7 +167,8 @@ class PaymentTerminalTillServiceApi:
 
         Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        Time out for this request is 90 seconds.
         >>> thread = api.perform_transaction_by_identifier_with_http_info(space_id, transaction_id, terminal_identifier, async_req=True)
         >>> result = thread.get()
 
@@ -184,7 +186,7 @@ class PaymentTerminalTillServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -252,5 +254,5 @@ class PaymentTerminalTillServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

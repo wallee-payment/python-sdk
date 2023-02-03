@@ -116,7 +116,7 @@ class AbstractTokenUpdate:
     def language(self):
         """Gets the language of this AbstractTokenUpdate.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this AbstractTokenUpdate.
         :rtype: str
@@ -127,7 +127,7 @@ class AbstractTokenUpdate:
     def language(self, language):
         """Sets the language of this AbstractTokenUpdate.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this AbstractTokenUpdate.
         :type: str

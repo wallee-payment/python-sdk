@@ -166,8 +166,8 @@ class TransactionCompletionRequest:
         :param statement_descriptor: The statement_descriptor of this TransactionCompletionRequest.
         :type: str
         """
-        if statement_descriptor is not None and len(statement_descriptor) > 22:
-            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `22`")
+        if statement_descriptor is not None and len(statement_descriptor) > 80:
+            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `80`")
 
         self._statement_descriptor = statement_descriptor
     

@@ -110,7 +110,7 @@ class AbstractWebhookListenerUpdate:
     def state(self):
         """Gets the state of this AbstractWebhookListenerUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractWebhookListenerUpdate.
         :rtype: CreationEntityState
@@ -121,7 +121,7 @@ class AbstractWebhookListenerUpdate:
     def state(self, state):
         """Sets the state of this AbstractWebhookListenerUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractWebhookListenerUpdate.
         :type: CreationEntityState

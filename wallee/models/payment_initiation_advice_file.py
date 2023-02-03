@@ -10,7 +10,9 @@ class PaymentInitiationAdviceFile:
     swagger_types = {
     
         'created_on': 'datetime',
+        'failure_message': 'str',
         'file_generated_on': 'datetime',
+        'forwarded_on': 'datetime',
         'id': 'int',
         'linked_space_id': 'int',
         'name': 'str',
@@ -20,12 +22,14 @@ class PaymentInitiationAdviceFile:
     }
 
     attribute_map = {
-        'created_on': 'createdOn','file_generated_on': 'fileGeneratedOn','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','processed_on': 'processedOn','processor': 'processor','state': 'state',
+        'created_on': 'createdOn','failure_message': 'failureMessage','file_generated_on': 'fileGeneratedOn','forwarded_on': 'forwardedOn','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','processed_on': 'processedOn','processor': 'processor','state': 'state',
     }
 
     
     _created_on = None
+    _failure_message = None
     _file_generated_on = None
+    _forwarded_on = None
     _id = None
     _linked_space_id = None
     _name = None
@@ -37,7 +41,9 @@ class PaymentInitiationAdviceFile:
         self.discriminator = None
         
         self.created_on = kwargs.get('created_on', None)
+        self.failure_message = kwargs.get('failure_message', None)
         self.file_generated_on = kwargs.get('file_generated_on', None)
+        self.forwarded_on = kwargs.get('forwarded_on', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
@@ -71,6 +77,29 @@ class PaymentInitiationAdviceFile:
         self._created_on = created_on
     
     @property
+    def failure_message(self):
+        """Gets the failure_message of this PaymentInitiationAdviceFile.
+
+            
+
+        :return: The failure_message of this PaymentInitiationAdviceFile.
+        :rtype: str
+        """
+        return self._failure_message
+
+    @failure_message.setter
+    def failure_message(self, failure_message):
+        """Sets the failure_message of this PaymentInitiationAdviceFile.
+
+            
+
+        :param failure_message: The failure_message of this PaymentInitiationAdviceFile.
+        :type: str
+        """
+
+        self._failure_message = failure_message
+    
+    @property
     def file_generated_on(self):
         """Gets the file_generated_on of this PaymentInitiationAdviceFile.
 
@@ -94,10 +123,33 @@ class PaymentInitiationAdviceFile:
         self._file_generated_on = file_generated_on
     
     @property
+    def forwarded_on(self):
+        """Gets the forwarded_on of this PaymentInitiationAdviceFile.
+
+            The shipping date indicates the date on which the pain file was transferred to an external processing system.
+
+        :return: The forwarded_on of this PaymentInitiationAdviceFile.
+        :rtype: datetime
+        """
+        return self._forwarded_on
+
+    @forwarded_on.setter
+    def forwarded_on(self, forwarded_on):
+        """Sets the forwarded_on of this PaymentInitiationAdviceFile.
+
+            The shipping date indicates the date on which the pain file was transferred to an external processing system.
+
+        :param forwarded_on: The forwarded_on of this PaymentInitiationAdviceFile.
+        :type: datetime
+        """
+
+        self._forwarded_on = forwarded_on
+    
+    @property
     def id(self):
         """Gets the id of this PaymentInitiationAdviceFile.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentInitiationAdviceFile.
         :rtype: int
@@ -108,7 +160,7 @@ class PaymentInitiationAdviceFile:
     def id(self, id):
         """Sets the id of this PaymentInitiationAdviceFile.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentInitiationAdviceFile.
         :type: int
@@ -120,7 +172,7 @@ class PaymentInitiationAdviceFile:
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentInitiationAdviceFile.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this PaymentInitiationAdviceFile.
         :rtype: int
@@ -131,7 +183,7 @@ class PaymentInitiationAdviceFile:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this PaymentInitiationAdviceFile.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this PaymentInitiationAdviceFile.
         :type: int
@@ -212,7 +264,7 @@ class PaymentInitiationAdviceFile:
     def state(self):
         """Gets the state of this PaymentInitiationAdviceFile.
 
-            
+            The object's current state.
 
         :return: The state of this PaymentInitiationAdviceFile.
         :rtype: PaymentInitiationAdviceFileState
@@ -223,7 +275,7 @@ class PaymentInitiationAdviceFile:
     def state(self, state):
         """Sets the state of this PaymentInitiationAdviceFile.
 
-            
+            The object's current state.
 
         :param state: The state of this PaymentInitiationAdviceFile.
         :type: PaymentInitiationAdviceFileState

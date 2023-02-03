@@ -84,7 +84,7 @@ class AbstractApplicationUserUpdate:
     def state(self):
         """Gets the state of this AbstractApplicationUserUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractApplicationUserUpdate.
         :rtype: CreationEntityState
@@ -95,7 +95,7 @@ class AbstractApplicationUserUpdate:
     def state(self, state):
         """Sets the state of this AbstractApplicationUserUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractApplicationUserUpdate.
         :type: CreationEntityState

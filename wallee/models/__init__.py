@@ -366,6 +366,7 @@ from .user import User
 from .user_account_role import UserAccountRole
 from .user_space_role import UserSpaceRole
 from .user_type import UserType
+from .wallet_type import WalletType
 from .web_app_confirmation_request import WebAppConfirmationRequest
 from .web_app_confirmation_response import WebAppConfirmationResponse
 from .webhook_identity import WebhookIdentity

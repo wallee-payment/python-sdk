@@ -300,7 +300,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def language(self):
         """Gets the language of this TransactionInvoice.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this TransactionInvoice.
         :rtype: str
@@ -311,7 +311,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this TransactionInvoice.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this TransactionInvoice.
         :type: str
@@ -417,7 +417,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionInvoice.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this TransactionInvoice.
         :rtype: datetime
@@ -428,7 +428,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this TransactionInvoice.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this TransactionInvoice.
         :type: datetime
@@ -463,7 +463,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def state(self):
         """Gets the state of this TransactionInvoice.
 
-            
+            The object's current state.
 
         :return: The state of this TransactionInvoice.
         :rtype: TransactionInvoiceState
@@ -474,7 +474,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this TransactionInvoice.
 
-            
+            The object's current state.
 
         :param state: The state of this TransactionInvoice.
         :type: TransactionInvoiceState
@@ -532,7 +532,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def version(self):
         """Gets the version of this TransactionInvoice.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this TransactionInvoice.
         :rtype: int
@@ -543,7 +543,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this TransactionInvoice.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this TransactionInvoice.
         :type: int

@@ -674,7 +674,7 @@ class Transaction:
     def created_on(self):
         """Gets the created_on of this Transaction.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this Transaction.
         :rtype: datetime
@@ -685,7 +685,7 @@ class Transaction:
     def created_on(self, created_on):
         """Sets the created_on of this Transaction.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this Transaction.
         :type: datetime
@@ -1029,7 +1029,7 @@ class Transaction:
     def id(self):
         """Gets the id of this Transaction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this Transaction.
         :rtype: int
@@ -1040,7 +1040,7 @@ class Transaction:
     def id(self, id):
         """Sets the id of this Transaction.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this Transaction.
         :type: int
@@ -1146,7 +1146,7 @@ class Transaction:
     def language(self):
         """Gets the language of this Transaction.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this Transaction.
         :rtype: str
@@ -1157,7 +1157,7 @@ class Transaction:
     def language(self, language):
         """Sets the language of this Transaction.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this Transaction.
         :type: str
@@ -1192,7 +1192,7 @@ class Transaction:
     def linked_space_id(self):
         """Gets the linked_space_id of this Transaction.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this Transaction.
         :rtype: int
@@ -1203,7 +1203,7 @@ class Transaction:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this Transaction.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this Transaction.
         :type: int
@@ -1309,7 +1309,7 @@ class Transaction:
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Transaction.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this Transaction.
         :rtype: datetime
@@ -1320,7 +1320,7 @@ class Transaction:
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this Transaction.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this Transaction.
         :type: datetime
@@ -1518,7 +1518,7 @@ class Transaction:
     def state(self):
         """Gets the state of this Transaction.
 
-            
+            The object's current state.
 
         :return: The state of this Transaction.
         :rtype: TransactionState
@@ -1529,7 +1529,7 @@ class Transaction:
     def state(self, state):
         """Sets the state of this Transaction.
 
-            
+            The object's current state.
 
         :param state: The state of this Transaction.
         :type: TransactionState
@@ -1775,7 +1775,7 @@ class Transaction:
     def version(self):
         """Gets the version of this Transaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this Transaction.
         :rtype: int
@@ -1786,7 +1786,7 @@ class Transaction:
     def version(self, version):
         """Sets the version of this Transaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this Transaction.
         :type: int

@@ -16,7 +16,8 @@ class TransactionInvoiceServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class TransactionInvoiceServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count_with_http_info(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,7 +115,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def get_invoice_document(self, space_id, id, **kwargs):
@@ -121,7 +123,8 @@ class TransactionInvoiceServiceApi:
 
         Returns the PDF document for the transaction invoice with given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.get_invoice_document(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -133,8 +136,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.get_invoice_document_with_http_info(space_id, id, **kwargs)
         else:
@@ -146,7 +149,8 @@ class TransactionInvoiceServiceApi:
 
         Returns the PDF document for the transaction invoice with given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.get_invoice_document_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -162,7 +166,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -222,7 +226,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def get_invoice_document_with_target_media_type(self, space_id, id, target_media_type_id, **kwargs):
@@ -230,7 +234,8 @@ class TransactionInvoiceServiceApi:
 
         Returns the PDF document for the transaction invoice with given id and target media type id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.get_invoice_document_with_target_media_type(space_id, id, target_media_type_id, async_req=True)
         >>> result = thread.get()
 
@@ -243,8 +248,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.get_invoice_document_with_target_media_type_with_http_info(space_id, id, target_media_type_id, **kwargs)
         else:
@@ -256,7 +261,8 @@ class TransactionInvoiceServiceApi:
 
         Returns the PDF document for the transaction invoice with given id and target media type id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.get_invoice_document_with_target_media_type_with_http_info(space_id, id, target_media_type_id, async_req=True)
         >>> result = thread.get()
 
@@ -273,7 +279,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -339,7 +345,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def is_replacement_possible(self, space_id, id, **kwargs):
@@ -347,7 +353,8 @@ class TransactionInvoiceServiceApi:
 
         Returns whether the transaction invoice with the given id can be replaced.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.is_replacement_possible(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -359,8 +366,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.is_replacement_possible_with_http_info(space_id, id, **kwargs)
         else:
@@ -372,7 +379,8 @@ class TransactionInvoiceServiceApi:
 
         Returns whether the transaction invoice with the given id can be replaced.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.is_replacement_possible_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -388,7 +396,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -448,7 +456,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def mark_as_derecognized(self, space_id, id, **kwargs):
@@ -456,7 +464,8 @@ class TransactionInvoiceServiceApi:
 
         Marks the transaction invoice with the given id as derecognized.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.mark_as_derecognized(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -468,8 +477,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.mark_as_derecognized_with_http_info(space_id, id, **kwargs)
         else:
@@ -481,7 +490,8 @@ class TransactionInvoiceServiceApi:
 
         Marks the transaction invoice with the given id as derecognized.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.mark_as_derecognized_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -497,7 +507,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -557,7 +567,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def mark_as_paid(self, space_id, id, **kwargs):
@@ -565,7 +575,8 @@ class TransactionInvoiceServiceApi:
 
         Marks the transaction invoice with the given id as paid.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.mark_as_paid(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -577,8 +588,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.mark_as_paid_with_http_info(space_id, id, **kwargs)
         else:
@@ -590,7 +601,8 @@ class TransactionInvoiceServiceApi:
 
         Marks the transaction invoice with the given id as paid.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.mark_as_paid_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -606,7 +618,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -666,7 +678,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, space_id, id, **kwargs):
@@ -674,7 +686,8 @@ class TransactionInvoiceServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -686,8 +699,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -699,7 +712,8 @@ class TransactionInvoiceServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -715,7 +729,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -775,7 +789,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def replace(self, space_id, id, replacement, **kwargs):
@@ -783,7 +797,8 @@ class TransactionInvoiceServiceApi:
 
         Replaces the transaction invoice with given id with the replacement and returns the new transaction invoice.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.replace(space_id, id, replacement, async_req=True)
         >>> result = thread.get()
 
@@ -796,8 +811,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.replace_with_http_info(space_id, id, replacement, **kwargs)
         else:
@@ -809,7 +824,8 @@ class TransactionInvoiceServiceApi:
 
         Replaces the transaction invoice with given id with the replacement and returns the new transaction invoice.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.replace_with_http_info(space_id, id, replacement, async_req=True)
         >>> result = thread.get()
 
@@ -826,7 +842,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -892,7 +908,7 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search(self, space_id, query, **kwargs):
@@ -900,7 +916,8 @@ class TransactionInvoiceServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -912,8 +929,8 @@ class TransactionInvoiceServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -925,7 +942,8 @@ class TransactionInvoiceServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_with_http_info(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -941,7 +959,7 @@ class TransactionInvoiceServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -1001,5 +1019,5 @@ class TransactionInvoiceServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

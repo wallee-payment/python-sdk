@@ -82,7 +82,7 @@ class PaymentConnectorFeature:
     def id(self):
         """Gets the id of this PaymentConnectorFeature.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentConnectorFeature.
         :rtype: int
@@ -93,7 +93,7 @@ class PaymentConnectorFeature:
     def id(self, id):
         """Sets the id of this PaymentConnectorFeature.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentConnectorFeature.
         :type: int

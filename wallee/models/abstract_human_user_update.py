@@ -174,7 +174,7 @@ class AbstractHumanUserUpdate:
     def state(self):
         """Gets the state of this AbstractHumanUserUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractHumanUserUpdate.
         :rtype: CreationEntityState
@@ -185,7 +185,7 @@ class AbstractHumanUserUpdate:
     def state(self, state):
         """Sets the state of this AbstractHumanUserUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractHumanUserUpdate.
         :type: CreationEntityState

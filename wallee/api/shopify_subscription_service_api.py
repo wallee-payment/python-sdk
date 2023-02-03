@@ -16,7 +16,8 @@ class ShopifySubscriptionServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class ShopifySubscriptionServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count_with_http_info(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,7 +115,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def create(self, space_id, creation_request, **kwargs):
@@ -121,7 +123,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to create a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create(space_id, creation_request, async_req=True)
         >>> result = thread.get()
 
@@ -133,8 +136,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, creation_request, **kwargs)
         else:
@@ -146,7 +149,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to create a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create_with_http_info(space_id, creation_request, async_req=True)
         >>> result = thread.get()
 
@@ -162,7 +166,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -222,7 +226,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, space_id, id, **kwargs):
@@ -230,7 +234,8 @@ class ShopifySubscriptionServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -242,8 +247,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -255,7 +260,8 @@ class ShopifySubscriptionServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -271,7 +277,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -331,7 +337,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search(self, space_id, query, **kwargs):
@@ -339,7 +345,8 @@ class ShopifySubscriptionServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -351,8 +358,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -364,7 +371,8 @@ class ShopifySubscriptionServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_with_http_info(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -380,7 +388,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -440,7 +448,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def terminate(self, space_id, subscription_id, respect_termination_period, **kwargs):
@@ -448,7 +456,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to terminate a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.terminate(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -461,8 +470,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.terminate_with_http_info(space_id, subscription_id, respect_termination_period, **kwargs)
         else:
@@ -474,7 +483,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to terminate a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.terminate_with_http_info(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -491,7 +501,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -553,7 +563,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update(self, space_id, subscription, **kwargs):
@@ -561,7 +571,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to update a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update(space_id, subscription, async_req=True)
         >>> result = thread.get()
 
@@ -573,8 +584,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, subscription, **kwargs)
         else:
@@ -586,7 +597,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to update a Shopify subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_with_http_info(space_id, subscription, async_req=True)
         >>> result = thread.get()
 
@@ -602,7 +614,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -662,7 +674,7 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_addresses(self, space_id, update_request, **kwargs):
@@ -670,7 +682,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to update a Shopify subscription addresses.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_addresses(space_id, update_request, async_req=True)
         >>> result = thread.get()
 
@@ -682,8 +695,8 @@ class ShopifySubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_addresses_with_http_info(space_id, update_request, **kwargs)
         else:
@@ -695,7 +708,8 @@ class ShopifySubscriptionServiceApi:
 
         This operation allows to update a Shopify subscription addresses.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_addresses_with_http_info(space_id, update_request, async_req=True)
         >>> result = thread.get()
 
@@ -711,7 +725,7 @@ class ShopifySubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -771,5 +785,5 @@ class ShopifySubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

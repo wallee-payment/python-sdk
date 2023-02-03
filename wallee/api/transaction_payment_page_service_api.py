@@ -16,7 +16,8 @@ class TransactionPaymentPageServiceApi:
 
         This operation creates the URL to which the user should be redirected to when the payment page should be used.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.payment_page_url(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class TransactionPaymentPageServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.payment_page_url_with_http_info(space_id, id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class TransactionPaymentPageServiceApi:
 
         This operation creates the URL to which the user should be redirected to when the payment page should be used.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.payment_page_url_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class TransactionPaymentPageServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,5 +115,5 @@ class TransactionPaymentPageServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

@@ -16,7 +16,8 @@ class SubscriptionServiceApi:
 
         This operation allows to apply changes on a subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.apply_changes(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.apply_changes_with_http_info(space_id, request, **kwargs)
         else:
@@ -41,7 +42,8 @@ class SubscriptionServiceApi:
 
         This operation allows to apply changes on a subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.apply_changes_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -117,7 +119,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def count(self, space_id, **kwargs):
@@ -125,7 +127,8 @@ class SubscriptionServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -137,8 +140,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.count_with_http_info(space_id, **kwargs)
         else:
@@ -150,7 +153,8 @@ class SubscriptionServiceApi:
 
         Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.count_with_http_info(space_id, async_req=True)
         >>> result = thread.get()
 
@@ -166,7 +170,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -222,7 +226,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def create(self, space_id, create_request, **kwargs):
@@ -230,7 +234,8 @@ class SubscriptionServiceApi:
 
         The create operation creates a new subscription and a corresponding subscription version.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create(space_id, create_request, async_req=True)
         >>> result = thread.get()
 
@@ -242,8 +247,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, create_request, **kwargs)
         else:
@@ -255,7 +260,8 @@ class SubscriptionServiceApi:
 
         The create operation creates a new subscription and a corresponding subscription version.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create_with_http_info(space_id, create_request, async_req=True)
         >>> result = thread.get()
 
@@ -271,7 +277,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -331,7 +337,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def initialize(self, space_id, subscription_id, **kwargs):
@@ -339,7 +345,8 @@ class SubscriptionServiceApi:
 
         The initialize operation initializes a subscription. This method uses charge flows to carry out the transaction.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.initialize(space_id, subscription_id, async_req=True)
         >>> result = thread.get()
 
@@ -351,8 +358,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.initialize_with_http_info(space_id, subscription_id, **kwargs)
         else:
@@ -364,7 +371,8 @@ class SubscriptionServiceApi:
 
         The initialize operation initializes a subscription. This method uses charge flows to carry out the transaction.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.initialize_with_http_info(space_id, subscription_id, async_req=True)
         >>> result = thread.get()
 
@@ -380,7 +388,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -436,7 +444,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def initialize_subscriber_present(self, space_id, subscription_id, **kwargs):
@@ -444,7 +452,8 @@ class SubscriptionServiceApi:
 
         The initialize operation initializes a subscription when the subscriber is present. The method will initialize a transaction which has to be completed by using the transaction service.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.initialize_subscriber_present(space_id, subscription_id, async_req=True)
         >>> result = thread.get()
 
@@ -458,8 +467,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.initialize_subscriber_present_with_http_info(space_id, subscription_id, **kwargs)
         else:
@@ -471,7 +480,8 @@ class SubscriptionServiceApi:
 
         The initialize operation initializes a subscription when the subscriber is present. The method will initialize a transaction which has to be completed by using the transaction service.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.initialize_subscriber_present_with_http_info(space_id, subscription_id, async_req=True)
         >>> result = thread.get()
 
@@ -489,7 +499,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -549,7 +559,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, space_id, id, **kwargs):
@@ -557,7 +567,8 @@ class SubscriptionServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -569,8 +580,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -582,7 +593,8 @@ class SubscriptionServiceApi:
 
         Reads the entity with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -598,7 +610,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -658,7 +670,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search(self, space_id, query, **kwargs):
@@ -666,7 +678,8 @@ class SubscriptionServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -678,8 +691,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_with_http_info(space_id, query, **kwargs)
         else:
@@ -691,7 +704,8 @@ class SubscriptionServiceApi:
 
         Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_with_http_info(space_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -707,7 +721,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -767,7 +781,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def search_subscription_invoices(self, space_id, subscription_id, query, **kwargs):
@@ -775,7 +789,8 @@ class SubscriptionServiceApi:
 
         This operation allows to search for subscription invoices.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_subscription_invoices(space_id, subscription_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -788,8 +803,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.search_subscription_invoices_with_http_info(space_id, subscription_id, query, **kwargs)
         else:
@@ -801,7 +816,8 @@ class SubscriptionServiceApi:
 
         This operation allows to search for subscription invoices.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.search_subscription_invoices_with_http_info(space_id, subscription_id, query, async_req=True)
         >>> result = thread.get()
 
@@ -818,7 +834,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -884,7 +900,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def terminate(self, space_id, subscription_id, respect_termination_period, **kwargs):
@@ -892,7 +908,8 @@ class SubscriptionServiceApi:
 
         This operation allows to terminate a subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.terminate(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -905,8 +922,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.terminate_with_http_info(space_id, subscription_id, respect_termination_period, **kwargs)
         else:
@@ -918,7 +935,8 @@ class SubscriptionServiceApi:
 
         This operation allows to terminate a subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.terminate_with_http_info(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -935,7 +953,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -997,7 +1015,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update(self, space_id, subscription_id, request, **kwargs):
@@ -1005,7 +1023,8 @@ class SubscriptionServiceApi:
 
         This operation allows to update the subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update(space_id, subscription_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -1018,8 +1037,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, subscription_id, request, **kwargs)
         else:
@@ -1031,7 +1050,8 @@ class SubscriptionServiceApi:
 
         This operation allows to update the subscription.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_with_http_info(space_id, subscription_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -1048,7 +1068,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -1114,7 +1134,7 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_product_version(self, space_id, subscription_id, respect_termination_period, **kwargs):
@@ -1122,7 +1142,8 @@ class SubscriptionServiceApi:
 
         The update product version operation updates the product version of the subscription to the latest active product version.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_product_version(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -1135,8 +1156,8 @@ class SubscriptionServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_product_version_with_http_info(space_id, subscription_id, respect_termination_period, **kwargs)
         else:
@@ -1148,7 +1169,8 @@ class SubscriptionServiceApi:
 
         The update product version operation updates the product version of the subscription to the latest active product version.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_product_version_with_http_info(space_id, subscription_id, respect_termination_period, async_req=True)
         >>> result = thread.get()
 
@@ -1165,7 +1187,7 @@ class SubscriptionServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -1227,5 +1249,5 @@ class SubscriptionServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

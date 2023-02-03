@@ -34,10 +34,11 @@ class ChargeAttempt(TransactionAwareEntity):
         'token_version': 'TokenVersion',
         'user_failure_message': 'str',
         'version': 'int',
+        'wallet_type': 'WalletType',
     }
 
     attribute_map = {
-        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','customers_presence': 'customersPresence','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version',
+        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','customers_presence': 'customersPresence','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version','wallet_type': 'walletType',
     }
 
     
@@ -66,6 +67,7 @@ class ChargeAttempt(TransactionAwareEntity):
     _token_version = None
     _user_failure_message = None
     _version = None
+    _wallet_type = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -95,6 +97,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.token_version = kwargs.get('token_version', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.version = kwargs.get('version', None)
+        self.wallet_type = kwargs.get('wallet_type', None)
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
@@ -173,7 +176,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this ChargeAttempt.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this ChargeAttempt.
         :rtype: datetime
@@ -184,7 +187,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this ChargeAttempt.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this ChargeAttempt.
         :type: datetime
@@ -357,7 +360,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def language(self):
         """Gets the language of this ChargeAttempt.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this ChargeAttempt.
         :rtype: str
@@ -368,7 +371,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this ChargeAttempt.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this ChargeAttempt.
         :type: str
@@ -403,7 +406,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ChargeAttempt.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this ChargeAttempt.
         :rtype: datetime
@@ -414,7 +417,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this ChargeAttempt.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this ChargeAttempt.
         :type: datetime
@@ -495,7 +498,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def state(self):
         """Gets the state of this ChargeAttempt.
 
-            
+            The object's current state.
 
         :return: The state of this ChargeAttempt.
         :rtype: ChargeAttemptState
@@ -506,7 +509,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this ChargeAttempt.
 
-            
+            The object's current state.
 
         :param state: The state of this ChargeAttempt.
         :type: ChargeAttemptState
@@ -658,7 +661,7 @@ class ChargeAttempt(TransactionAwareEntity):
     def version(self):
         """Gets the version of this ChargeAttempt.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this ChargeAttempt.
         :rtype: int
@@ -669,13 +672,36 @@ class ChargeAttempt(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this ChargeAttempt.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this ChargeAttempt.
         :type: int
         """
 
         self._version = version
+    
+    @property
+    def wallet_type(self):
+        """Gets the wallet_type of this ChargeAttempt.
+
+            
+
+        :return: The wallet_type of this ChargeAttempt.
+        :rtype: WalletType
+        """
+        return self._wallet_type
+
+    @wallet_type.setter
+    def wallet_type(self, wallet_type):
+        """Sets the wallet_type of this ChargeAttempt.
+
+            
+
+        :param wallet_type: The wallet_type of this ChargeAttempt.
+        :type: WalletType
+        """
+
+        self._wallet_type = wallet_type
     
 
     def to_dict(self):

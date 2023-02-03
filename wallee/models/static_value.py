@@ -39,7 +39,7 @@ class StaticValue:
     def description(self):
         """Gets the description of this StaticValue.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this StaticValue.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class StaticValue:
     def description(self, description):
         """Sets the description of this StaticValue.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this StaticValue.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class StaticValue:
     def id(self):
         """Gets the id of this StaticValue.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this StaticValue.
         :rtype: int
@@ -96,7 +96,7 @@ class StaticValue:
     def id(self, id):
         """Sets the id of this StaticValue.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this StaticValue.
         :type: int
@@ -108,7 +108,7 @@ class StaticValue:
     def name(self):
         """Gets the name of this StaticValue.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this StaticValue.
         :rtype: dict(str, str)
@@ -119,7 +119,7 @@ class StaticValue:
     def name(self, name):
         """Sets the name of this StaticValue.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this StaticValue.
         :type: dict(str, str)

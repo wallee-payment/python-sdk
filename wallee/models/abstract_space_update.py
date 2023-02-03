@@ -51,7 +51,7 @@ class AbstractSpaceUpdate:
     def last_modified_date(self):
         """Gets the last_modified_date of this AbstractSpaceUpdate.
 
-            
+            The date and time when the object was last modified.
 
         :return: The last_modified_date of this AbstractSpaceUpdate.
         :rtype: datetime
@@ -62,7 +62,7 @@ class AbstractSpaceUpdate:
     def last_modified_date(self, last_modified_date):
         """Sets the last_modified_date of this AbstractSpaceUpdate.
 
-            
+            The date and time when the object was last modified.
 
         :param last_modified_date: The last_modified_date of this AbstractSpaceUpdate.
         :type: datetime
@@ -170,7 +170,7 @@ class AbstractSpaceUpdate:
     def state(self):
         """Gets the state of this AbstractSpaceUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractSpaceUpdate.
         :rtype: CreationEntityState
@@ -181,7 +181,7 @@ class AbstractSpaceUpdate:
     def state(self, state):
         """Sets the state of this AbstractSpaceUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractSpaceUpdate.
         :type: CreationEntityState

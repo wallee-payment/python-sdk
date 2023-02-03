@@ -76,7 +76,7 @@ class RefundRecoveryBankTransaction(TransactionAwareEntity):
     def language(self):
         """Gets the language of this RefundRecoveryBankTransaction.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this RefundRecoveryBankTransaction.
         :rtype: str
@@ -87,7 +87,7 @@ class RefundRecoveryBankTransaction(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this RefundRecoveryBankTransaction.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this RefundRecoveryBankTransaction.
         :type: str
@@ -214,7 +214,7 @@ class RefundRecoveryBankTransaction(TransactionAwareEntity):
     def version(self):
         """Gets the version of this RefundRecoveryBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this RefundRecoveryBankTransaction.
         :rtype: int
@@ -225,7 +225,7 @@ class RefundRecoveryBankTransaction(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this RefundRecoveryBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this RefundRecoveryBankTransaction.
         :type: int

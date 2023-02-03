@@ -16,7 +16,8 @@ class TransactionCommentServiceApi:
 
         Returns all comments of the transaction.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.all(space_id, transaction_id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.all_with_http_info(space_id, transaction_id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class TransactionCommentServiceApi:
 
         Returns all comments of the transaction.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.all_with_http_info(space_id, transaction_id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -117,7 +119,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def create(self, space_id, entity, **kwargs):
@@ -125,7 +127,8 @@ class TransactionCommentServiceApi:
 
         Creates the comment with the given properties.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create(space_id, entity, async_req=True)
         >>> result = thread.get()
 
@@ -137,8 +140,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.create_with_http_info(space_id, entity, **kwargs)
         else:
@@ -150,7 +153,8 @@ class TransactionCommentServiceApi:
 
         Creates the comment with the given properties.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.create_with_http_info(space_id, entity, async_req=True)
         >>> result = thread.get()
 
@@ -166,7 +170,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -226,7 +230,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def delete(self, space_id, id, **kwargs):
@@ -234,7 +238,8 @@ class TransactionCommentServiceApi:
 
         Deletes the comment with the given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -246,8 +251,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.delete_with_http_info(space_id, id, **kwargs)
         else:
@@ -259,7 +264,8 @@ class TransactionCommentServiceApi:
 
         Deletes the comment with the given id.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -275,7 +281,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -335,7 +341,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def pin(self, space_id, id, **kwargs):
@@ -343,7 +349,8 @@ class TransactionCommentServiceApi:
 
         Pins the comment to the top.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.pin(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -355,8 +362,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.pin_with_http_info(space_id, id, **kwargs)
         else:
@@ -368,7 +375,8 @@ class TransactionCommentServiceApi:
 
         Pins the comment to the top.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.pin_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -384,7 +392,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -444,7 +452,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def read(self, space_id, id, **kwargs):
@@ -452,7 +460,8 @@ class TransactionCommentServiceApi:
 
         Reads the comment with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -464,8 +473,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.read_with_http_info(space_id, id, **kwargs)
         else:
@@ -477,7 +486,8 @@ class TransactionCommentServiceApi:
 
         Reads the comment with the given 'id' and returns it.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.read_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -493,7 +503,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -553,7 +563,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def unpin(self, space_id, id, **kwargs):
@@ -561,7 +571,8 @@ class TransactionCommentServiceApi:
 
         Unpins the comment from the top.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.unpin(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -573,8 +584,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.unpin_with_http_info(space_id, id, **kwargs)
         else:
@@ -586,7 +597,8 @@ class TransactionCommentServiceApi:
 
         Unpins the comment from the top.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.unpin_with_http_info(space_id, id, async_req=True)
         >>> result = thread.get()
 
@@ -602,7 +614,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -662,7 +674,7 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update(self, space_id, entity, **kwargs):
@@ -670,7 +682,8 @@ class TransactionCommentServiceApi:
 
         This updates the comment with the given properties. Only those properties which should be updated can be provided. The 'id' and 'version' are required to identify the comment.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update(space_id, entity, async_req=True)
         >>> result = thread.get()
 
@@ -682,8 +695,8 @@ class TransactionCommentServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_with_http_info(space_id, entity, **kwargs)
         else:
@@ -695,7 +708,8 @@ class TransactionCommentServiceApi:
 
         This updates the comment with the given properties. Only those properties which should be updated can be provided. The 'id' and 'version' are required to identify the comment.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_with_http_info(space_id, entity, async_req=True)
         >>> result = thread.get()
 
@@ -711,7 +725,7 @@ class TransactionCommentServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -771,5 +785,5 @@ class TransactionCommentServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

@@ -16,7 +16,8 @@ class AnalyticsQueryServiceApi:
 
         Cancels the specified query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.cancel_execution(id, async_req=True)
         >>> result = thread.get()
 
@@ -27,8 +28,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.cancel_execution_with_http_info(id, **kwargs)
         else:
@@ -40,7 +41,8 @@ class AnalyticsQueryServiceApi:
 
         Cancels the specified query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.cancel_execution_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -55,7 +57,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -109,7 +111,7 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def fetch_result(self, id, **kwargs):
@@ -117,7 +119,8 @@ class AnalyticsQueryServiceApi:
 
         Fetches one batch of the result of a query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.fetch_result(id, async_req=True)
         >>> result = thread.get()
 
@@ -131,8 +134,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.fetch_result_with_http_info(id, **kwargs)
         else:
@@ -144,7 +147,8 @@ class AnalyticsQueryServiceApi:
 
         Fetches one batch of the result of a query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.fetch_result_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -162,7 +166,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -222,7 +226,7 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def generate_download_url(self, id, **kwargs):
@@ -230,7 +234,8 @@ class AnalyticsQueryServiceApi:
 
         Generate a URL from which the results of a query execution can be downloaded in CSV format.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.generate_download_url(id, async_req=True)
         >>> result = thread.get()
 
@@ -242,8 +247,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.generate_download_url_with_http_info(id, **kwargs)
         else:
@@ -255,7 +260,8 @@ class AnalyticsQueryServiceApi:
 
         Generate a URL from which the results of a query execution can be downloaded in CSV format.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.generate_download_url_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -271,7 +277,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -327,7 +333,7 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def schema(self, **kwargs):
@@ -335,7 +341,8 @@ class AnalyticsQueryServiceApi:
 
         Get the schemas describing the available tables and their columns.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.schema(async_req=True)
         >>> result = thread.get()
 
@@ -345,8 +352,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.schema_with_http_info(**kwargs)
         else:
@@ -358,7 +365,8 @@ class AnalyticsQueryServiceApi:
 
         Get the schemas describing the available tables and their columns.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.schema_with_http_info(async_req=True)
         >>> result = thread.get()
 
@@ -372,7 +380,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -420,7 +428,7 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def status(self, id, **kwargs):
@@ -428,7 +436,8 @@ class AnalyticsQueryServiceApi:
 
         Returns the current status of a query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.status(id, async_req=True)
         >>> result = thread.get()
 
@@ -439,8 +448,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.status_with_http_info(id, **kwargs)
         else:
@@ -452,7 +461,8 @@ class AnalyticsQueryServiceApi:
 
         Returns the current status of a query execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.status_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -467,7 +477,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -521,7 +531,7 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def submit_query(self, query, **kwargs):
@@ -529,7 +539,8 @@ class AnalyticsQueryServiceApi:
 
         Submits a query for execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.submit_query(query, async_req=True)
         >>> result = thread.get()
 
@@ -540,8 +551,8 @@ class AnalyticsQueryServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.submit_query_with_http_info(query, **kwargs)
         else:
@@ -553,7 +564,8 @@ class AnalyticsQueryServiceApi:
 
         Submits a query for execution.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.submit_query_with_http_info(query, async_req=True)
         >>> result = thread.get()
 
@@ -568,7 +580,7 @@ class AnalyticsQueryServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -622,5 +634,5 @@ class AnalyticsQueryServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

@@ -39,7 +39,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def language(self):
         """Gets the language of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this AbstractSubscriptionAffiliateUpdate.
         :rtype: str
@@ -50,7 +50,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def language(self, language):
         """Sets the language of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this AbstractSubscriptionAffiliateUpdate.
         :type: str
@@ -112,7 +112,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def state(self):
         """Gets the state of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractSubscriptionAffiliateUpdate.
         :rtype: CreationEntityState
@@ -123,7 +123,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def state(self, state):
         """Sets the state of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractSubscriptionAffiliateUpdate.
         :type: CreationEntityState

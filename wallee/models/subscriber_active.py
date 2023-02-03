@@ -32,7 +32,7 @@ class SubscriberActive(SubscriberUpdate):
     def state(self):
         """Gets the state of this SubscriberActive.
 
-            
+            The object's current state.
 
         :return: The state of this SubscriberActive.
         :rtype: CreationEntityState
@@ -43,7 +43,7 @@ class SubscriberActive(SubscriberUpdate):
     def state(self, state):
         """Sets the state of this SubscriberActive.
 
-            
+            The object's current state.
 
         :param state: The state of this SubscriberActive.
         :type: CreationEntityState

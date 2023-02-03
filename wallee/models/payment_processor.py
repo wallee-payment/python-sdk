@@ -74,7 +74,7 @@ class PaymentProcessor:
     def description(self):
         """Gets the description of this PaymentProcessor.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -85,7 +85,7 @@ class PaymentProcessor:
     def description(self, description):
         """Sets the description of this PaymentProcessor.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this PaymentProcessor.
         :type: dict(str, str)
@@ -143,7 +143,7 @@ class PaymentProcessor:
     def id(self):
         """Gets the id of this PaymentProcessor.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentProcessor.
         :rtype: int
@@ -154,7 +154,7 @@ class PaymentProcessor:
     def id(self, id):
         """Sets the id of this PaymentProcessor.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentProcessor.
         :type: int
@@ -189,7 +189,7 @@ class PaymentProcessor:
     def name(self):
         """Gets the name of this PaymentProcessor.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -200,7 +200,7 @@ class PaymentProcessor:
     def name(self, name):
         """Sets the name of this PaymentProcessor.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this PaymentProcessor.
         :type: dict(str, str)

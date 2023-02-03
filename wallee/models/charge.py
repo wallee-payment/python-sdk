@@ -111,7 +111,7 @@ class Charge(TransactionAwareEntity):
     def language(self):
         """Gets the language of this Charge.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this Charge.
         :rtype: str
@@ -122,7 +122,7 @@ class Charge(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this Charge.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this Charge.
         :type: str
@@ -134,7 +134,7 @@ class Charge(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Charge.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this Charge.
         :rtype: datetime
@@ -145,7 +145,7 @@ class Charge(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this Charge.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this Charge.
         :type: datetime
@@ -180,7 +180,7 @@ class Charge(TransactionAwareEntity):
     def state(self):
         """Gets the state of this Charge.
 
-            
+            The object's current state.
 
         :return: The state of this Charge.
         :rtype: ChargeState
@@ -191,7 +191,7 @@ class Charge(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this Charge.
 
-            
+            The object's current state.
 
         :param state: The state of this Charge.
         :type: ChargeState
@@ -318,7 +318,7 @@ class Charge(TransactionAwareEntity):
     def version(self):
         """Gets the version of this Charge.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this Charge.
         :rtype: int
@@ -329,7 +329,7 @@ class Charge(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this Charge.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this Charge.
         :type: int

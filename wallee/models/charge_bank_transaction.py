@@ -99,7 +99,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def language(self):
         """Gets the language of this ChargeBankTransaction.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this ChargeBankTransaction.
         :rtype: str
@@ -110,7 +110,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this ChargeBankTransaction.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this ChargeBankTransaction.
         :type: str
@@ -214,7 +214,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def version(self):
         """Gets the version of this ChargeBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this ChargeBankTransaction.
         :rtype: int
@@ -225,7 +225,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this ChargeBankTransaction.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this ChargeBankTransaction.
         :type: int

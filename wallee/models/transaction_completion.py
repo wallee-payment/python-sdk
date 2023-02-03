@@ -182,7 +182,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this TransactionCompletion.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this TransactionCompletion.
         :rtype: datetime
@@ -193,7 +193,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this TransactionCompletion.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this TransactionCompletion.
         :type: datetime
@@ -326,7 +326,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def language(self):
         """Gets the language of this TransactionCompletion.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this TransactionCompletion.
         :rtype: str
@@ -337,7 +337,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def language(self, language):
         """Sets the language of this TransactionCompletion.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this TransactionCompletion.
         :type: str
@@ -487,7 +487,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this TransactionCompletion.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this TransactionCompletion.
         :rtype: datetime
@@ -498,7 +498,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this TransactionCompletion.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this TransactionCompletion.
         :type: datetime
@@ -602,7 +602,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def state(self):
         """Gets the state of this TransactionCompletion.
 
-            
+            The object's current state.
 
         :return: The state of this TransactionCompletion.
         :rtype: TransactionCompletionState
@@ -613,7 +613,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this TransactionCompletion.
 
-            
+            The object's current state.
 
         :param state: The state of this TransactionCompletion.
         :type: TransactionCompletionState
@@ -641,8 +641,8 @@ class TransactionCompletion(TransactionAwareEntity):
         :param statement_descriptor: The statement_descriptor of this TransactionCompletion.
         :type: str
         """
-        if statement_descriptor is not None and len(statement_descriptor) > 22:
-            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `22`")
+        if statement_descriptor is not None and len(statement_descriptor) > 80:
+            raise ValueError("Invalid value for `statement_descriptor`, length must be less than or equal to `80`")
 
         self._statement_descriptor = statement_descriptor
     
@@ -742,7 +742,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def version(self):
         """Gets the version of this TransactionCompletion.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this TransactionCompletion.
         :rtype: int
@@ -753,7 +753,7 @@ class TransactionCompletion(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this TransactionCompletion.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this TransactionCompletion.
         :type: int

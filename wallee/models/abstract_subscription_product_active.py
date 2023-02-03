@@ -162,7 +162,7 @@ class AbstractSubscriptionProductActive:
     def state(self):
         """Gets the state of this AbstractSubscriptionProductActive.
 
-            
+            The object's current state.
 
         :return: The state of this AbstractSubscriptionProductActive.
         :rtype: SubscriptionProductState
@@ -173,7 +173,7 @@ class AbstractSubscriptionProductActive:
     def state(self, state):
         """Sets the state of this AbstractSubscriptionProductActive.
 
-            
+            The object's current state.
 
         :param state: The state of this AbstractSubscriptionProductActive.
         :type: SubscriptionProductState

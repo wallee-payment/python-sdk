@@ -16,7 +16,8 @@ class CardProcessingServiceApi:
 
         The process method will process the transaction with the given card details without using 3-D secure.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.process(space_id, transaction_id, payment_method_configuration_id, card_data, async_req=True)
         >>> result = thread.get()
 
@@ -30,8 +31,8 @@ class CardProcessingServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.process_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs)
         else:
@@ -43,7 +44,8 @@ class CardProcessingServiceApi:
 
         The process method will process the transaction with the given card details without using 3-D secure.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.process_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, async_req=True)
         >>> result = thread.get()
 
@@ -61,7 +63,7 @@ class CardProcessingServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -133,7 +135,7 @@ class CardProcessingServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def process_with3_d_secure(self, space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs):
@@ -141,7 +143,8 @@ class CardProcessingServiceApi:
 
         The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.process_with3_d_secure(space_id, transaction_id, payment_method_configuration_id, card_data, async_req=True)
         >>> result = thread.get()
 
@@ -155,8 +158,8 @@ class CardProcessingServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.process_with3_d_secure_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, **kwargs)
         else:
@@ -168,7 +171,8 @@ class CardProcessingServiceApi:
 
         The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.process_with3_d_secure_with_http_info(space_id, transaction_id, payment_method_configuration_id, card_data, async_req=True)
         >>> result = thread.get()
 
@@ -186,7 +190,7 @@ class CardProcessingServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -254,5 +258,5 @@ class CardProcessingServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

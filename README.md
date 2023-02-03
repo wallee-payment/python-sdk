@@ -53,8 +53,11 @@ space_id = 405
 config = Configuration(
     user_id=512,
     api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=',
-    default_headers={'x-meta-custom-header': 'value-1', 'x-meta-custom-header-2': 'value-2'}
+    default_headers={'x-meta-custom-header': 'value-1', 'x-meta-custom-header-2': 'value-2'},
+    # set a custom request timeout if needed. (If not set, then the default value is: 25 seconds)
+    request_timeout = 30
 )
+
 transaction_service = TransactionServiceApi(configuration=config)
 transaction_payment_page_service = TransactionPaymentPageServiceApi(configuration=config)
 
@@ -71,7 +74,9 @@ space_id = 405
 
 config = Configuration(
     user_id=512,
-    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+    api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=',
+    # set a custom request timeout if needed. (If not set, then the default value is: 25 seconds)
+    request_timeout = 30
 )
 
 transaction_service = TransactionServiceApi(configuration=config)

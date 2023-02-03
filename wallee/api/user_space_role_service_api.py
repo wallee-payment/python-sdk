@@ -16,7 +16,8 @@ class UserSpaceRoleServiceApi:
 
         This operation grants the given role to the user in the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.add_role(user_id, space_id, role_id, async_req=True)
         >>> result = thread.get()
 
@@ -29,8 +30,8 @@ class UserSpaceRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.add_role_with_http_info(user_id, space_id, role_id, **kwargs)
         else:
@@ -42,7 +43,8 @@ class UserSpaceRoleServiceApi:
 
         This operation grants the given role to the user in the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.add_role_with_http_info(user_id, space_id, role_id, async_req=True)
         >>> result = thread.get()
 
@@ -59,7 +61,7 @@ class UserSpaceRoleServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -121,7 +123,7 @@ class UserSpaceRoleServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def list(self, user_id, space_id, **kwargs):
@@ -129,7 +131,8 @@ class UserSpaceRoleServiceApi:
 
         List all the roles that are assigned to the given user in the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.list(user_id, space_id, async_req=True)
         >>> result = thread.get()
 
@@ -141,8 +144,8 @@ class UserSpaceRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.list_with_http_info(user_id, space_id, **kwargs)
         else:
@@ -154,7 +157,8 @@ class UserSpaceRoleServiceApi:
 
         List all the roles that are assigned to the given user in the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.list_with_http_info(user_id, space_id, async_req=True)
         >>> result = thread.get()
 
@@ -170,7 +174,7 @@ class UserSpaceRoleServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -226,7 +230,7 @@ class UserSpaceRoleServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def remove_role(self, id, **kwargs):
@@ -234,7 +238,8 @@ class UserSpaceRoleServiceApi:
 
         This operation removes the specified user space role.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.remove_role(id, async_req=True)
         >>> result = thread.get()
 
@@ -245,8 +250,8 @@ class UserSpaceRoleServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.remove_role_with_http_info(id, **kwargs)
         else:
@@ -258,7 +263,8 @@ class UserSpaceRoleServiceApi:
 
         This operation removes the specified user space role.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.remove_role_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
@@ -273,7 +279,7 @@ class UserSpaceRoleServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -323,5 +329,5 @@ class UserSpaceRoleServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

@@ -60,7 +60,7 @@ class Permission:
     def description(self):
         """Gets the description of this Permission.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this Permission.
         :rtype: dict(str, str)
@@ -71,7 +71,7 @@ class Permission:
     def description(self, description):
         """Sets the description of this Permission.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this Permission.
         :type: dict(str, str)
@@ -129,7 +129,7 @@ class Permission:
     def id(self):
         """Gets the id of this Permission.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this Permission.
         :rtype: int
@@ -140,7 +140,7 @@ class Permission:
     def id(self, id):
         """Sets the id of this Permission.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this Permission.
         :type: int
@@ -175,7 +175,7 @@ class Permission:
     def name(self):
         """Gets the name of this Permission.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this Permission.
         :rtype: dict(str, str)
@@ -186,7 +186,7 @@ class Permission:
     def name(self, name):
         """Sets the name of this Permission.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this Permission.
         :type: dict(str, str)

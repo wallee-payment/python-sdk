@@ -17,7 +17,9 @@ class TransactionServiceTest(unittest.TestCase):
         self.space_id = 405
         self.transaction_service = TransactionServiceApi(configuration=Configuration(
             user_id=512,
-            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ='
+            api_secret='FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=',
+            # set a custom request timeout if needed. (If not set, then the default value is: 25 seconds)
+            request_timeout=30
         ))
 
         # create line item

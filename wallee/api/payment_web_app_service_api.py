@@ -16,7 +16,8 @@ class PaymentWebAppServiceApi:
 
         This operation marks the processor to be usable within the production environment.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.activate_processor_for_production(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -28,8 +29,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.activate_processor_for_production_with_http_info(space_id, external_id, **kwargs)
         else:
@@ -41,7 +42,8 @@ class PaymentWebAppServiceApi:
 
         This operation marks the processor to be usable within the production environment.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.activate_processor_for_production_with_http_info(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -57,7 +59,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -113,7 +115,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def delete_connector(self, space_id, external_id, **kwargs):
@@ -121,7 +123,8 @@ class PaymentWebAppServiceApi:
 
         This operation removes the web app payment connector from the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_connector(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -133,8 +136,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.delete_connector_with_http_info(space_id, external_id, **kwargs)
         else:
@@ -146,7 +149,8 @@ class PaymentWebAppServiceApi:
 
         This operation removes the web app payment connector from the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_connector_with_http_info(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -162,7 +166,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -214,7 +218,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def delete_processor(self, space_id, external_id, **kwargs):
@@ -222,7 +226,8 @@ class PaymentWebAppServiceApi:
 
         This operation removes the web app payment processor and its connectors from the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_processor(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -234,8 +239,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.delete_processor_with_http_info(space_id, external_id, **kwargs)
         else:
@@ -247,7 +252,8 @@ class PaymentWebAppServiceApi:
 
         This operation removes the web app payment processor and its connectors from the given space.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.delete_processor_with_http_info(space_id, external_id, async_req=True)
         >>> result = thread.get()
 
@@ -263,7 +269,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -315,7 +321,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def insert_or_update_connector(self, space_id, request, **kwargs):
@@ -323,7 +329,8 @@ class PaymentWebAppServiceApi:
 
         This operation inserts or updates a web app payment connector.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.insert_or_update_connector(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -335,8 +342,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.insert_or_update_connector_with_http_info(space_id, request, **kwargs)
         else:
@@ -348,7 +355,8 @@ class PaymentWebAppServiceApi:
 
         This operation inserts or updates a web app payment connector.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.insert_or_update_connector_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -364,7 +372,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -416,7 +424,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def insert_or_update_processor(self, space_id, request, **kwargs):
@@ -424,7 +432,8 @@ class PaymentWebAppServiceApi:
 
         This operation inserts or updates a web app payment processor.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.insert_or_update_processor(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -436,8 +445,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.insert_or_update_processor_with_http_info(space_id, request, **kwargs)
         else:
@@ -449,7 +458,8 @@ class PaymentWebAppServiceApi:
 
         This operation inserts or updates a web app payment processor.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.insert_or_update_processor_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -465,7 +475,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -517,7 +527,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_charge_attempt(self, space_id, request, **kwargs):
@@ -525,7 +535,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the charge attempt. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned charge attempt corresponds to the charge attempt indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_charge_attempt(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -537,8 +548,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_charge_attempt_with_http_info(space_id, request, **kwargs)
         else:
@@ -550,7 +561,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the charge attempt. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned charge attempt corresponds to the charge attempt indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_charge_attempt_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -566,7 +578,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -618,7 +630,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_completion(self, space_id, request, **kwargs):
@@ -626,7 +638,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the transaction completion. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned completion corresponds to the completion indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_completion(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -638,8 +651,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_completion_with_http_info(space_id, request, **kwargs)
         else:
@@ -651,7 +664,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the transaction completion. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned completion corresponds to the completion indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_completion_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -667,7 +681,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -719,7 +733,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_refund(self, space_id, request, **kwargs):
@@ -727,7 +741,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the refund. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned refund corresponds to the refund indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_refund(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -739,8 +754,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_refund_with_http_info(space_id, request, **kwargs)
         else:
@@ -752,7 +767,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the refund. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned refund corresponds to the refund indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_refund_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -768,7 +784,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -820,7 +836,7 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
     def update_void(self, space_id, request, **kwargs):
@@ -828,7 +844,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the transaction void. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned void corresponds to the void indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_void(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -840,8 +857,8 @@ class PaymentWebAppServiceApi:
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-
-
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
             return self.update_void_with_http_info(space_id, request, **kwargs)
         else:
@@ -853,7 +870,8 @@ class PaymentWebAppServiceApi:
 
         This operation updates the state of the transaction void. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned void corresponds to the void indicated in the request.
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
+        asynchronous HTTP request, please pass async_req=True.
+        
         >>> thread = api.update_void_with_http_info(space_id, request, async_req=True)
         >>> result = thread.get()
 
@@ -869,7 +887,7 @@ class PaymentWebAppServiceApi:
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params.append('request_timeout')
 
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
@@ -921,5 +939,5 @@ class PaymentWebAppServiceApi:
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
+            _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)

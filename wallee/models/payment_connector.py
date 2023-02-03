@@ -135,7 +135,7 @@ class PaymentConnector:
     def description(self):
         """Gets the description of this PaymentConnector.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this PaymentConnector.
         :rtype: dict(str, str)
@@ -146,7 +146,7 @@ class PaymentConnector:
     def description(self, description):
         """Sets the description of this PaymentConnector.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this PaymentConnector.
         :type: dict(str, str)
@@ -181,7 +181,7 @@ class PaymentConnector:
     def id(self):
         """Gets the id of this PaymentConnector.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentConnector.
         :rtype: int
@@ -192,7 +192,7 @@ class PaymentConnector:
     def id(self, id):
         """Sets the id of this PaymentConnector.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentConnector.
         :type: int
@@ -204,7 +204,7 @@ class PaymentConnector:
     def name(self):
         """Gets the name of this PaymentConnector.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this PaymentConnector.
         :rtype: dict(str, str)
@@ -215,7 +215,7 @@ class PaymentConnector:
     def name(self, name):
         """Sets the name of this PaymentConnector.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this PaymentConnector.
         :type: dict(str, str)

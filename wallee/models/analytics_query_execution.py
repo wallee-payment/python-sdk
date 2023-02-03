@@ -129,7 +129,7 @@ class AnalyticsQueryExecution:
     def id(self):
         """Gets the id of this AnalyticsQueryExecution.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this AnalyticsQueryExecution.
         :rtype: int
@@ -140,7 +140,7 @@ class AnalyticsQueryExecution:
     def id(self, id):
         """Sets the id of this AnalyticsQueryExecution.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this AnalyticsQueryExecution.
         :type: int

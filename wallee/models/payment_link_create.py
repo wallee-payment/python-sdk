@@ -39,7 +39,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def state(self):
         """Gets the state of this PaymentLinkCreate.
 
-            
+            The object's current state.
 
         :return: The state of this PaymentLinkCreate.
         :rtype: CreationEntityState
@@ -50,7 +50,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def state(self, state):
         """Sets the state of this PaymentLinkCreate.
 
-            
+            The object's current state.
 
         :param state: The state of this PaymentLinkCreate.
         :type: CreationEntityState

@@ -479,6 +479,7 @@ from wallee.models.user import User
 from wallee.models.user_account_role import UserAccountRole
 from wallee.models.user_space_role import UserSpaceRole
 from wallee.models.user_type import UserType
+from wallee.models.wallet_type import WalletType
 from wallee.models.web_app_confirmation_request import WebAppConfirmationRequest
 from wallee.models.web_app_confirmation_response import WebAppConfirmationResponse
 from wallee.models.webhook_identity import WebhookIdentity

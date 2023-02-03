@@ -47,7 +47,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this ConnectorInvocation.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this ConnectorInvocation.
         :rtype: datetime
@@ -58,7 +58,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this ConnectorInvocation.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this ConnectorInvocation.
         :type: datetime
@@ -70,7 +70,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ConnectorInvocation.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this ConnectorInvocation.
         :rtype: datetime
@@ -81,7 +81,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this ConnectorInvocation.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this ConnectorInvocation.
         :type: datetime
@@ -162,7 +162,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def version(self):
         """Gets the version of this ConnectorInvocation.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this ConnectorInvocation.
         :rtype: int
@@ -173,7 +173,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def version(self, version):
         """Sets the version of this ConnectorInvocation.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this ConnectorInvocation.
         :type: int

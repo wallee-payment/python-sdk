@@ -148,7 +148,7 @@ class AbstractCustomerActive:
     def language(self):
         """Gets the language of this AbstractCustomerActive.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this AbstractCustomerActive.
         :rtype: str
@@ -159,7 +159,7 @@ class AbstractCustomerActive:
     def language(self, language):
         """Sets the language of this AbstractCustomerActive.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this AbstractCustomerActive.
         :type: str

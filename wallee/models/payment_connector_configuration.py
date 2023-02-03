@@ -184,7 +184,7 @@ class PaymentConnectorConfiguration:
     def id(self):
         """Gets the id of this PaymentConnectorConfiguration.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentConnectorConfiguration.
         :rtype: int
@@ -195,7 +195,7 @@ class PaymentConnectorConfiguration:
     def id(self, id):
         """Sets the id of this PaymentConnectorConfiguration.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentConnectorConfiguration.
         :type: int
@@ -207,7 +207,7 @@ class PaymentConnectorConfiguration:
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentConnectorConfiguration.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this PaymentConnectorConfiguration.
         :rtype: int
@@ -218,7 +218,7 @@ class PaymentConnectorConfiguration:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this PaymentConnectorConfiguration.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this PaymentConnectorConfiguration.
         :type: int
@@ -278,7 +278,7 @@ class PaymentConnectorConfiguration:
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentConnectorConfiguration.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this PaymentConnectorConfiguration.
         :rtype: datetime
@@ -289,7 +289,7 @@ class PaymentConnectorConfiguration:
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this PaymentConnectorConfiguration.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this PaymentConnectorConfiguration.
         :type: datetime
@@ -347,7 +347,7 @@ class PaymentConnectorConfiguration:
     def state(self):
         """Gets the state of this PaymentConnectorConfiguration.
 
-            
+            The object's current state.
 
         :return: The state of this PaymentConnectorConfiguration.
         :rtype: CreationEntityState
@@ -358,7 +358,7 @@ class PaymentConnectorConfiguration:
     def state(self, state):
         """Sets the state of this PaymentConnectorConfiguration.
 
-            
+            The object's current state.
 
         :param state: The state of this PaymentConnectorConfiguration.
         :type: CreationEntityState
@@ -370,7 +370,7 @@ class PaymentConnectorConfiguration:
     def version(self):
         """Gets the version of this PaymentConnectorConfiguration.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this PaymentConnectorConfiguration.
         :rtype: int
@@ -381,7 +381,7 @@ class PaymentConnectorConfiguration:
     def version(self, version):
         """Sets the version of this PaymentConnectorConfiguration.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this PaymentConnectorConfiguration.
         :type: int

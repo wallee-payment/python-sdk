@@ -232,7 +232,7 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
     def planned_purge_date(self):
         """Gets the planned_purge_date of this ShopifyRecurringOrder.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this ShopifyRecurringOrder.
         :rtype: datetime
@@ -243,7 +243,7 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this ShopifyRecurringOrder.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this ShopifyRecurringOrder.
         :type: datetime
@@ -324,7 +324,7 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
     def state(self):
         """Gets the state of this ShopifyRecurringOrder.
 
-            
+            The object's current state.
 
         :return: The state of this ShopifyRecurringOrder.
         :rtype: ShopifyRecurringOrderState
@@ -335,7 +335,7 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
     def state(self, state):
         """Sets the state of this ShopifyRecurringOrder.
 
-            
+            The object's current state.
 
         :param state: The state of this ShopifyRecurringOrder.
         :type: ShopifyRecurringOrderState

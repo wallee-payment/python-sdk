@@ -245,7 +245,7 @@ class PaymentLink:
     def id(self):
         """Gets the id of this PaymentLink.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentLink.
         :rtype: int
@@ -256,7 +256,7 @@ class PaymentLink:
     def id(self, id):
         """Sets the id of this PaymentLink.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentLink.
         :type: int
@@ -314,7 +314,7 @@ class PaymentLink:
     def linked_space_id(self):
         """Gets the linked_space_id of this PaymentLink.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this PaymentLink.
         :rtype: int
@@ -325,7 +325,7 @@ class PaymentLink:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this PaymentLink.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this PaymentLink.
         :type: int
@@ -385,7 +385,7 @@ class PaymentLink:
     def planned_purge_date(self):
         """Gets the planned_purge_date of this PaymentLink.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this PaymentLink.
         :rtype: datetime
@@ -396,7 +396,7 @@ class PaymentLink:
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this PaymentLink.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this PaymentLink.
         :type: datetime
@@ -454,7 +454,7 @@ class PaymentLink:
     def state(self):
         """Gets the state of this PaymentLink.
 
-            
+            The object's current state.
 
         :return: The state of this PaymentLink.
         :rtype: CreationEntityState
@@ -465,7 +465,7 @@ class PaymentLink:
     def state(self, state):
         """Sets the state of this PaymentLink.
 
-            
+            The object's current state.
 
         :param state: The state of this PaymentLink.
         :type: CreationEntityState
@@ -500,7 +500,7 @@ class PaymentLink:
     def version(self):
         """Gets the version of this PaymentLink.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this PaymentLink.
         :rtype: int
@@ -511,7 +511,7 @@ class PaymentLink:
     def version(self, version):
         """Sets the version of this PaymentLink.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this PaymentLink.
         :type: int

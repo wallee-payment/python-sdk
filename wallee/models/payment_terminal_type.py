@@ -36,7 +36,7 @@ class PaymentTerminalType:
     def description(self):
         """Gets the description of this PaymentTerminalType.
 
-            
+            The description of the object translated into different languages.
 
         :return: The description of this PaymentTerminalType.
         :rtype: dict(str, str)
@@ -47,7 +47,7 @@ class PaymentTerminalType:
     def description(self, description):
         """Sets the description of this PaymentTerminalType.
 
-            
+            The description of the object translated into different languages.
 
         :param description: The description of this PaymentTerminalType.
         :type: dict(str, str)
@@ -59,7 +59,7 @@ class PaymentTerminalType:
     def id(self):
         """Gets the id of this PaymentTerminalType.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentTerminalType.
         :rtype: int
@@ -70,7 +70,7 @@ class PaymentTerminalType:
     def id(self, id):
         """Sets the id of this PaymentTerminalType.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentTerminalType.
         :type: int
@@ -82,7 +82,7 @@ class PaymentTerminalType:
     def name(self):
         """Gets the name of this PaymentTerminalType.
 
-            
+            The name of the object translated into different languages.
 
         :return: The name of this PaymentTerminalType.
         :rtype: dict(str, str)
@@ -93,7 +93,7 @@ class PaymentTerminalType:
     def name(self, name):
         """Sets the name of this PaymentTerminalType.
 
-            
+            The name of the object translated into different languages.
 
         :param name: The name of this PaymentTerminalType.
         :type: dict(str, str)

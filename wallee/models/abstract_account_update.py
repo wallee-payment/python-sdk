@@ -36,7 +36,7 @@ class AbstractAccountUpdate:
     def last_modified_date(self):
         """Gets the last_modified_date of this AbstractAccountUpdate.
 
-            
+            The date and time when the object was last modified.
 
         :return: The last_modified_date of this AbstractAccountUpdate.
         :rtype: datetime
@@ -47,7 +47,7 @@ class AbstractAccountUpdate:
     def last_modified_date(self, last_modified_date):
         """Sets the last_modified_date of this AbstractAccountUpdate.
 
-            
+            The date and time when the object was last modified.
 
         :param last_modified_date: The last_modified_date of this AbstractAccountUpdate.
         :type: datetime

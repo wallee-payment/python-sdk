@@ -36,7 +36,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
     def state(self):
         """Gets the state of this SubscriberCreate.
 
-            
+            The object's current state.
 
         :return: The state of this SubscriberCreate.
         :rtype: CreationEntityState
@@ -47,7 +47,7 @@ class SubscriberCreate(AbstractSubscriberUpdate):
     def state(self, state):
         """Sets the state of this SubscriberCreate.
 
-            
+            The object's current state.
 
         :param state: The state of this SubscriberCreate.
         :type: CreationEntityState

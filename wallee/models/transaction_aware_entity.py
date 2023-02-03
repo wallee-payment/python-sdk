@@ -36,7 +36,7 @@ class TransactionAwareEntity:
     def id(self):
         """Gets the id of this TransactionAwareEntity.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this TransactionAwareEntity.
         :rtype: int
@@ -47,7 +47,7 @@ class TransactionAwareEntity:
     def id(self, id):
         """Sets the id of this TransactionAwareEntity.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this TransactionAwareEntity.
         :type: int
@@ -59,7 +59,7 @@ class TransactionAwareEntity:
     def linked_space_id(self):
         """Gets the linked_space_id of this TransactionAwareEntity.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :return: The linked_space_id of this TransactionAwareEntity.
         :rtype: int
@@ -70,7 +70,7 @@ class TransactionAwareEntity:
     def linked_space_id(self, linked_space_id):
         """Sets the linked_space_id of this TransactionAwareEntity.
 
-            The linked space id holds the ID of the space to which the entity belongs to.
+            The ID of the space this object belongs to.
 
         :param linked_space_id: The linked_space_id of this TransactionAwareEntity.
         :type: int

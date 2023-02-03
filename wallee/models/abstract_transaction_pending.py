@@ -299,7 +299,7 @@ class AbstractTransactionPending:
     def language(self):
         """Gets the language of this AbstractTransactionPending.
 
-            
+            The language that is linked to the object.
 
         :return: The language of this AbstractTransactionPending.
         :rtype: str
@@ -310,7 +310,7 @@ class AbstractTransactionPending:
     def language(self, language):
         """Sets the language of this AbstractTransactionPending.
 
-            
+            The language that is linked to the object.
 
         :param language: The language of this AbstractTransactionPending.
         :type: str

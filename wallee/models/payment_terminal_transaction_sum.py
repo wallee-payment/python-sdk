@@ -152,7 +152,7 @@ class PaymentTerminalTransactionSum:
     def id(self):
         """Gets the id of this PaymentTerminalTransactionSum.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentTerminalTransactionSum.
         :rtype: int
@@ -163,7 +163,7 @@ class PaymentTerminalTransactionSum:
     def id(self, id):
         """Sets the id of this PaymentTerminalTransactionSum.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentTerminalTransactionSum.
         :type: int
@@ -290,7 +290,7 @@ class PaymentTerminalTransactionSum:
     def version(self):
         """Gets the version of this PaymentTerminalTransactionSum.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this PaymentTerminalTransactionSum.
         :rtype: int
@@ -301,7 +301,7 @@ class PaymentTerminalTransactionSum:
     def version(self, version):
         """Sets the version of this PaymentTerminalTransactionSum.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this PaymentTerminalTransactionSum.
         :type: int

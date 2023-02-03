@@ -74,7 +74,7 @@ class Role:
     def id(self):
         """Gets the id of this Role.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this Role.
         :rtype: int
@@ -85,7 +85,7 @@ class Role:
     def id(self, id):
         """Sets the id of this Role.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this Role.
         :type: int
@@ -143,7 +143,7 @@ class Role:
     def planned_purge_date(self):
         """Gets the planned_purge_date of this Role.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :return: The planned_purge_date of this Role.
         :rtype: datetime
@@ -154,7 +154,7 @@ class Role:
     def planned_purge_date(self, planned_purge_date):
         """Sets the planned_purge_date of this Role.
 
-            The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
         :param planned_purge_date: The planned_purge_date of this Role.
         :type: datetime
@@ -166,7 +166,7 @@ class Role:
     def state(self):
         """Gets the state of this Role.
 
-            
+            The object's current state.
 
         :return: The state of this Role.
         :rtype: RoleState
@@ -177,7 +177,7 @@ class Role:
     def state(self, state):
         """Sets the state of this Role.
 
-            
+            The object's current state.
 
         :param state: The state of this Role.
         :type: RoleState
@@ -212,7 +212,7 @@ class Role:
     def version(self):
         """Gets the version of this Role.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this Role.
         :rtype: int
@@ -223,7 +223,7 @@ class Role:
     def version(self, version):
         """Sets the version of this Role.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this Role.
         :type: int

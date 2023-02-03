@@ -16,7 +16,7 @@ class Configuration:
 
     _default = None
 
-    def __init__(self, user_id='', api_secret='', mac_version=1, default_headers={}):
+    def __init__(self, user_id='', api_secret='', mac_version=1, default_headers={}, request_timeout=25):
         if self._default:
             for key in self._default.__dict__.keys():
                 self.__dict__[key] = copy.copy(self._default.__dict__[key])
@@ -46,9 +46,7 @@ class Configuration:
         self.password = ""
 
         # Logging Settings
-        self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("wallee")
-        self.logger["urllib3_logger"] = logging.getLogger("urllib3")
+        self.logger = {"package_logger": logging.getLogger("wallee"), "urllib3_logger": logging.getLogger("urllib3")}
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
         # Log stream handler
@@ -84,8 +82,10 @@ class Configuration:
         self.proxy = None
         # Safe chars for path_param
         self.safe_chars_for_path_param = ''
-
+        # Default headers
         self.default_headers=default_headers
+        # The time limit for HTTP request in seconds. (Default value is: 25)
+        self.request_timeout = request_timeout
 
     @property
     def api_secret(self):
@@ -189,6 +189,14 @@ class Configuration:
             httplib.HTTPConnection.debuglevel = 0
 
     @property
+    def request_timeout(self):
+        return self._request_timeout
+
+    @request_timeout.setter
+    def request_timeout(self, value):
+        self._request_timeout = value
+
+    @property
     def logger_format(self):
         """The logger format.
 
@@ -254,6 +262,6 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 3.2.2\n"\
-               "SDK Package Version: 3.2.2".\
+               "Version of the API: 3.3.0\n"\
+               "SDK Package Version: 3.3.0".\
                format(env=sys.platform, pyversion=sys.version)

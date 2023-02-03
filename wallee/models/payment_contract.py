@@ -187,7 +187,7 @@ class PaymentContract:
     def created_on(self):
         """Gets the created_on of this PaymentContract.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :return: The created_on of this PaymentContract.
         :rtype: datetime
@@ -198,7 +198,7 @@ class PaymentContract:
     def created_on(self, created_on):
         """Sets the created_on of this PaymentContract.
 
-            The created on date indicates the date on which the entity was stored into the database.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this PaymentContract.
         :type: datetime
@@ -233,7 +233,7 @@ class PaymentContract:
     def id(self):
         """Gets the id of this PaymentContract.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :return: The id of this PaymentContract.
         :rtype: int
@@ -244,7 +244,7 @@ class PaymentContract:
     def id(self, id):
         """Sets the id of this PaymentContract.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+            A unique identifier for the object.
 
         :param id: The id of this PaymentContract.
         :type: int
@@ -325,7 +325,7 @@ class PaymentContract:
     def state(self):
         """Gets the state of this PaymentContract.
 
-            
+            The object's current state.
 
         :return: The state of this PaymentContract.
         :rtype: PaymentContractState
@@ -336,7 +336,7 @@ class PaymentContract:
     def state(self, state):
         """Sets the state of this PaymentContract.
 
-            
+            The object's current state.
 
         :param state: The state of this PaymentContract.
         :type: PaymentContractState
@@ -394,7 +394,7 @@ class PaymentContract:
     def version(self):
         """Gets the version of this PaymentContract.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :return: The version of this PaymentContract.
         :rtype: int
@@ -405,7 +405,7 @@ class PaymentContract:
     def version(self, version):
         """Sets the version of this PaymentContract.
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+            The version is used for optimistic locking and incremented whenever the object is updated.
 
         :param version: The version of this PaymentContract.
         :type: int
