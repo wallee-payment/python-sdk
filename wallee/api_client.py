@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 3.3.0
+    OpenAPI spec version: 3.4.0
     
 """
 
@@ -64,7 +64,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/3.3.0/python'
+        self.user_agent = 'wallee/3.4.0/python'
 
     def __del__(self):
         if self._pool is not None:
@@ -103,7 +103,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '3.3.0',
+            'x-meta-sdk-version': '3.4.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()
