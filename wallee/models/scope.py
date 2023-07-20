@@ -63,7 +63,7 @@ class Scope:
     def domain_name(self):
         """Gets the domain_name of this Scope.
 
-            The domain name to which this scope is mapped to.
+            The domain name that belongs to the scope.
 
         :return: The domain_name of this Scope.
         :rtype: str
@@ -74,7 +74,7 @@ class Scope:
     def domain_name(self, domain_name):
         """Sets the domain_name of this Scope.
 
-            The domain name to which this scope is mapped to.
+            The domain name that belongs to the scope.
 
         :param domain_name: The domain_name of this Scope.
         :type: str
@@ -88,7 +88,7 @@ class Scope:
     def features(self):
         """Gets the features of this Scope.
 
-            
+            The list of features that are active in the scope.
 
         :return: The features of this Scope.
         :rtype: list[Feature]
@@ -99,7 +99,7 @@ class Scope:
     def features(self, features):
         """Sets the features of this Scope.
 
-            
+            The list of features that are active in the scope.
 
         :param features: The features of this Scope.
         :type: list[Feature]
@@ -134,7 +134,7 @@ class Scope:
     def machine_name(self):
         """Gets the machine_name of this Scope.
 
-            
+            The name identifying the scope in e.g. URLs.
 
         :return: The machine_name of this Scope.
         :rtype: str
@@ -145,7 +145,7 @@ class Scope:
     def machine_name(self, machine_name):
         """Sets the machine_name of this Scope.
 
-            
+            The name identifying the scope in e.g. URLs.
 
         :param machine_name: The machine_name of this Scope.
         :type: str
@@ -159,7 +159,7 @@ class Scope:
     def name(self):
         """Gets the name of this Scope.
 
-            The name of the scope is shown to the user where the user should select a scope.
+            The name used to identify the scope.
 
         :return: The name of this Scope.
         :rtype: str
@@ -170,7 +170,7 @@ class Scope:
     def name(self, name):
         """Sets the name of this Scope.
 
-            The name of the scope is shown to the user where the user should select a scope.
+            The name used to identify the scope.
 
         :param name: The name of this Scope.
         :type: str
@@ -207,7 +207,7 @@ class Scope:
     def port(self):
         """Gets the port of this Scope.
 
-            The port number to which this scope is mapped to.
+            The port where the scope can be accessed.
 
         :return: The port of this Scope.
         :rtype: int
@@ -218,7 +218,7 @@ class Scope:
     def port(self, port):
         """Sets the port of this Scope.
 
-            The port number to which this scope is mapped to.
+            The port where the scope can be accessed.
 
         :param port: The port of this Scope.
         :type: int
@@ -230,7 +230,7 @@ class Scope:
     def ssl_active(self):
         """Gets the ssl_active of this Scope.
 
-            Define whether the scope supports SSL.
+            Whether the scope supports SSL.
 
         :return: The ssl_active of this Scope.
         :rtype: bool
@@ -241,7 +241,7 @@ class Scope:
     def ssl_active(self, ssl_active):
         """Sets the ssl_active of this Scope.
 
-            Define whether the scope supports SSL.
+            Whether the scope supports SSL.
 
         :param ssl_active: The ssl_active of this Scope.
         :type: bool
@@ -276,7 +276,7 @@ class Scope:
     def themes(self):
         """Gets the themes of this Scope.
 
-            The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.
+            The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.
 
         :return: The themes of this Scope.
         :rtype: list[str]
@@ -287,7 +287,7 @@ class Scope:
     def themes(self, themes):
         """Sets the themes of this Scope.
 
-            The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.
+            The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.
 
         :param themes: The themes of this Scope.
         :type: list[str]
@@ -299,7 +299,7 @@ class Scope:
     def url(self):
         """Gets the url of this Scope.
 
-            
+            The URL where the scope can be accessed.
 
         :return: The url of this Scope.
         :rtype: str
@@ -310,7 +310,7 @@ class Scope:
     def url(self, url):
         """Sets the url of this Scope.
 
-            
+            The URL where the scope can be accessed.
 
         :param url: The url of this Scope.
         :type: str

@@ -10,10 +10,10 @@ class ProductSetupFee:
     swagger_types = {
     
         'component': 'SubscriptionProductComponent',
-        'description': 'DatabaseTranslatedString',
+        'description': 'dict(str, str)',
         'id': 'int',
         'linked_space_id': 'int',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'on_downgrade_credited_amount': 'list[PersistableCurrencyAmount]',
         'on_upgrade_credited_amount': 'list[PersistableCurrencyAmount]',
         'setup_fee': 'list[PersistableCurrencyAmount]',
@@ -83,7 +83,7 @@ class ProductSetupFee:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :return: The description of this ProductSetupFee.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -94,7 +94,7 @@ class ProductSetupFee:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :param description: The description of this ProductSetupFee.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -152,7 +152,7 @@ class ProductSetupFee:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :return: The name of this ProductSetupFee.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -163,7 +163,7 @@ class ProductSetupFee:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :param name: The name of this ProductSetupFee.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name

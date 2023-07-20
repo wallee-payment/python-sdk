@@ -57,7 +57,7 @@ class TransactionComment:
     def content(self):
         """Gets the content of this TransactionComment.
 
-            
+            The comment's actual content.
 
         :return: The content of this TransactionComment.
         :rtype: str
@@ -68,7 +68,7 @@ class TransactionComment:
     def content(self, content):
         """Sets the content of this TransactionComment.
 
-            
+            The comment's actual content.
 
         :param content: The content of this TransactionComment.
         :type: str
@@ -82,7 +82,7 @@ class TransactionComment:
     def created_by(self):
         """Gets the created_by of this TransactionComment.
 
-            
+            The ID of the user the comment was created by.
 
         :return: The created_by of this TransactionComment.
         :rtype: int
@@ -93,7 +93,7 @@ class TransactionComment:
     def created_by(self, created_by):
         """Sets the created_by of this TransactionComment.
 
-            
+            The ID of the user the comment was created by.
 
         :param created_by: The created_by of this TransactionComment.
         :type: int
@@ -128,7 +128,7 @@ class TransactionComment:
     def edited_by(self):
         """Gets the edited_by of this TransactionComment.
 
-            
+            The ID of the user the comment was last updated by.
 
         :return: The edited_by of this TransactionComment.
         :rtype: int
@@ -139,7 +139,7 @@ class TransactionComment:
     def edited_by(self, edited_by):
         """Sets the edited_by of this TransactionComment.
 
-            
+            The ID of the user the comment was last updated by.
 
         :param edited_by: The edited_by of this TransactionComment.
         :type: int
@@ -151,7 +151,7 @@ class TransactionComment:
     def edited_on(self):
         """Gets the edited_on of this TransactionComment.
 
-            The date on which the comment was last edited.
+            The date and time when the comment was last updated.
 
         :return: The edited_on of this TransactionComment.
         :rtype: datetime
@@ -162,7 +162,7 @@ class TransactionComment:
     def edited_on(self, edited_on):
         """Sets the edited_on of this TransactionComment.
 
-            The date on which the comment was last edited.
+            The date and time when the comment was last updated.
 
         :param edited_on: The edited_on of this TransactionComment.
         :type: datetime
@@ -220,7 +220,7 @@ class TransactionComment:
     def pinned(self):
         """Gets the pinned of this TransactionComment.
 
-            
+            Whether the comment is pinned to the top.
 
         :return: The pinned of this TransactionComment.
         :rtype: bool
@@ -231,7 +231,7 @@ class TransactionComment:
     def pinned(self, pinned):
         """Sets the pinned of this TransactionComment.
 
-            
+            Whether the comment is pinned to the top.
 
         :param pinned: The pinned of this TransactionComment.
         :type: bool

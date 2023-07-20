@@ -59,7 +59,7 @@ class TenantDatabase:
     def name(self):
         """Gets the name of this TenantDatabase.
 
-            The name of the database.
+            The name used to identify the database.
 
         :return: The name of this TenantDatabase.
         :rtype: str
@@ -70,7 +70,7 @@ class TenantDatabase:
     def name(self, name):
         """Sets the name of this TenantDatabase.
 
-            The name of the database.
+            The name used to identify the database.
 
         :param name: The name of this TenantDatabase.
         :type: str

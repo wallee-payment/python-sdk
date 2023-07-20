@@ -1240,7 +1240,7 @@ class Transaction:
     def meta_data(self):
         """Gets the meta_data of this Transaction.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :return: The meta_data of this Transaction.
         :rtype: dict(str, str)
@@ -1251,7 +1251,7 @@ class Transaction:
     def meta_data(self, meta_data):
         """Sets the meta_data of this Transaction.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :param meta_data: The meta_data of this Transaction.
         :type: dict(str, str)

@@ -42,7 +42,7 @@ class TwoFactorAuthenticationType:
     def description(self):
         """Gets the description of this TwoFactorAuthenticationType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this TwoFactorAuthenticationType.
         :rtype: dict(str, str)
@@ -53,7 +53,7 @@ class TwoFactorAuthenticationType:
     def description(self, description):
         """Sets the description of this TwoFactorAuthenticationType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this TwoFactorAuthenticationType.
         :type: dict(str, str)
@@ -65,7 +65,7 @@ class TwoFactorAuthenticationType:
     def feature(self):
         """Gets the feature of this TwoFactorAuthenticationType.
 
-            
+            The feature that this type belongs to.
 
         :return: The feature of this TwoFactorAuthenticationType.
         :rtype: int
@@ -76,7 +76,7 @@ class TwoFactorAuthenticationType:
     def feature(self, feature):
         """Sets the feature of this TwoFactorAuthenticationType.
 
-            
+            The feature that this type belongs to.
 
         :param feature: The feature of this TwoFactorAuthenticationType.
         :type: int
@@ -88,7 +88,7 @@ class TwoFactorAuthenticationType:
     def icon(self):
         """Gets the icon of this TwoFactorAuthenticationType.
 
-            
+            The identifier of the icon representing this type.
 
         :return: The icon of this TwoFactorAuthenticationType.
         :rtype: str
@@ -99,7 +99,7 @@ class TwoFactorAuthenticationType:
     def icon(self, icon):
         """Sets the icon of this TwoFactorAuthenticationType.
 
-            
+            The identifier of the icon representing this type.
 
         :param icon: The icon of this TwoFactorAuthenticationType.
         :type: str
@@ -134,7 +134,7 @@ class TwoFactorAuthenticationType:
     def name(self):
         """Gets the name of this TwoFactorAuthenticationType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this TwoFactorAuthenticationType.
         :rtype: dict(str, str)
@@ -145,7 +145,7 @@ class TwoFactorAuthenticationType:
     def name(self, name):
         """Sets the name of this TwoFactorAuthenticationType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this TwoFactorAuthenticationType.
         :type: dict(str, str)

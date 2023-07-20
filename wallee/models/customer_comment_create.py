@@ -33,7 +33,7 @@ class CustomerCommentCreate(AbstractCustomerCommentActive):
     def customer(self):
         """Gets the customer of this CustomerCommentCreate.
 
-            
+            The customer that the object belongs to.
 
         :return: The customer of this CustomerCommentCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class CustomerCommentCreate(AbstractCustomerCommentActive):
     def customer(self, customer):
         """Sets the customer of this CustomerCommentCreate.
 
-            
+            The customer that the object belongs to.
 
         :param customer: The customer of this CustomerCommentCreate.
         :type: int

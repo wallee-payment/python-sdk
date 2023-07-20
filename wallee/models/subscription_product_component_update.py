@@ -14,10 +14,10 @@ class SubscriptionProductComponentUpdate:
         'component_change_weight': 'int',
         'component_group': 'int',
         'default_component': 'bool',
-        'description': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
         'maximal_quantity': 'float',
         'minimal_quantity': 'float',
-        'name': 'DatabaseTranslatedStringCreate',
+        'name': 'dict(str, str)',
         'quantity_step': 'float',
         'reference': 'int',
         'sort_order': 'int',
@@ -190,7 +190,7 @@ class SubscriptionProductComponentUpdate:
             The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
 
         :return: The description of this SubscriptionProductComponentUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -201,7 +201,7 @@ class SubscriptionProductComponentUpdate:
             The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
 
         :param description: The description of this SubscriptionProductComponentUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -259,7 +259,7 @@ class SubscriptionProductComponentUpdate:
             The component name is shown to the subscriber. It should describe in few words what the component does contain.
 
         :return: The name of this SubscriptionProductComponentUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -270,7 +270,7 @@ class SubscriptionProductComponentUpdate:
             The component name is shown to the subscriber. It should describe in few words what the component does contain.
 
         :param name: The name of this SubscriptionProductComponentUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

@@ -9,8 +9,8 @@ class AbstractSubscriptionMetricUpdate:
 
     swagger_types = {
     
-        'description': 'DatabaseTranslatedStringCreate',
-        'name': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
+        'name': 'dict(str, str)',
     }
 
     attribute_map = {
@@ -36,7 +36,7 @@ class AbstractSubscriptionMetricUpdate:
             
 
         :return: The description of this AbstractSubscriptionMetricUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -47,7 +47,7 @@ class AbstractSubscriptionMetricUpdate:
             
 
         :param description: The description of this AbstractSubscriptionMetricUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -59,7 +59,7 @@ class AbstractSubscriptionMetricUpdate:
             
 
         :return: The name of this AbstractSubscriptionMetricUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -70,7 +70,7 @@ class AbstractSubscriptionMetricUpdate:
             
 
         :param name: The name of this AbstractSubscriptionMetricUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

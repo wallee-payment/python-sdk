@@ -76,10 +76,6 @@ from .customer_postal_address import CustomerPostalAddress
 from .customer_postal_address_create import CustomerPostalAddressCreate
 from .customers_presence import CustomersPresence
 from .data_collection_type import DataCollectionType
-from .database_translated_string import DatabaseTranslatedString
-from .database_translated_string_create import DatabaseTranslatedStringCreate
-from .database_translated_string_item import DatabaseTranslatedStringItem
-from .database_translated_string_item_create import DatabaseTranslatedStringItemCreate
 from .debt_collection_case import DebtCollectionCase
 from .debt_collection_case_document import DebtCollectionCaseDocument
 from .debt_collection_case_source import DebtCollectionCaseSource

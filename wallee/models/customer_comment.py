@@ -57,7 +57,7 @@ class CustomerComment:
     def content(self):
         """Gets the content of this CustomerComment.
 
-            
+            The comment's actual content.
 
         :return: The content of this CustomerComment.
         :rtype: str
@@ -68,7 +68,7 @@ class CustomerComment:
     def content(self, content):
         """Sets the content of this CustomerComment.
 
-            
+            The comment's actual content.
 
         :param content: The content of this CustomerComment.
         :type: str
@@ -82,7 +82,7 @@ class CustomerComment:
     def created_by(self):
         """Gets the created_by of this CustomerComment.
 
-            
+            The ID of the user the comment was created by.
 
         :return: The created_by of this CustomerComment.
         :rtype: int
@@ -93,7 +93,7 @@ class CustomerComment:
     def created_by(self, created_by):
         """Sets the created_by of this CustomerComment.
 
-            
+            The ID of the user the comment was created by.
 
         :param created_by: The created_by of this CustomerComment.
         :type: int
@@ -128,7 +128,7 @@ class CustomerComment:
     def customer(self):
         """Gets the customer of this CustomerComment.
 
-            
+            The customer that the object belongs to.
 
         :return: The customer of this CustomerComment.
         :rtype: int
@@ -139,7 +139,7 @@ class CustomerComment:
     def customer(self, customer):
         """Sets the customer of this CustomerComment.
 
-            
+            The customer that the object belongs to.
 
         :param customer: The customer of this CustomerComment.
         :type: int
@@ -151,7 +151,7 @@ class CustomerComment:
     def edited_by(self):
         """Gets the edited_by of this CustomerComment.
 
-            
+            The ID of the user the comment was last updated by.
 
         :return: The edited_by of this CustomerComment.
         :rtype: int
@@ -162,7 +162,7 @@ class CustomerComment:
     def edited_by(self, edited_by):
         """Sets the edited_by of this CustomerComment.
 
-            
+            The ID of the user the comment was last updated by.
 
         :param edited_by: The edited_by of this CustomerComment.
         :type: int
@@ -174,7 +174,7 @@ class CustomerComment:
     def edited_on(self):
         """Gets the edited_on of this CustomerComment.
 
-            The date on which the comment was last edited.
+            The date and time when the comment was last updated.
 
         :return: The edited_on of this CustomerComment.
         :rtype: datetime
@@ -185,7 +185,7 @@ class CustomerComment:
     def edited_on(self, edited_on):
         """Sets the edited_on of this CustomerComment.
 
-            The date on which the comment was last edited.
+            The date and time when the comment was last updated.
 
         :param edited_on: The edited_on of this CustomerComment.
         :type: datetime
@@ -243,7 +243,7 @@ class CustomerComment:
     def pinned(self):
         """Gets the pinned of this CustomerComment.
 
-            
+            Whether the comment is pinned to the top.
 
         :return: The pinned of this CustomerComment.
         :rtype: bool
@@ -254,7 +254,7 @@ class CustomerComment:
     def pinned(self, pinned):
         """Sets the pinned of this CustomerComment.
 
-            
+            Whether the comment is pinned to the top.
 
         :param pinned: The pinned of this CustomerComment.
         :type: bool

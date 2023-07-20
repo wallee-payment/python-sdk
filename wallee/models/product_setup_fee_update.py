@@ -12,8 +12,8 @@ class ProductSetupFeeUpdate:
         'id': 'int',
         'version': 'int',
         'component': 'int',
-        'description': 'DatabaseTranslatedStringCreate',
-        'name': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
+        'name': 'dict(str, str)',
         'on_downgrade_credited_amount': 'list[PersistableCurrencyAmountUpdate]',
         'on_upgrade_credited_amount': 'list[PersistableCurrencyAmountUpdate]',
         'setup_fee': 'list[PersistableCurrencyAmountUpdate]',
@@ -129,7 +129,7 @@ class ProductSetupFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :return: The description of this ProductSetupFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -140,7 +140,7 @@ class ProductSetupFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :param description: The description of this ProductSetupFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -152,7 +152,7 @@ class ProductSetupFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :return: The name of this ProductSetupFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -163,7 +163,7 @@ class ProductSetupFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :param name: The name of this ProductSetupFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

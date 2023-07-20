@@ -33,7 +33,7 @@ class CustomerAddressCreate(AbstractCustomerAddressActive):
     def customer(self):
         """Gets the customer of this CustomerAddressCreate.
 
-            
+            The customer that the object belongs to.
 
         :return: The customer of this CustomerAddressCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class CustomerAddressCreate(AbstractCustomerAddressActive):
     def customer(self, customer):
         """Sets the customer of this CustomerAddressCreate.
 
-            
+            The customer that the object belongs to.
 
         :param customer: The customer of this CustomerAddressCreate.
         :type: int

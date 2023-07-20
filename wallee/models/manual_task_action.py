@@ -62,7 +62,7 @@ class ManualTaskAction:
     def label(self):
         """Gets the label of this ManualTaskAction.
 
-            
+            The action's label.
 
         :return: The label of this ManualTaskAction.
         :rtype: dict(str, str)
@@ -73,7 +73,7 @@ class ManualTaskAction:
     def label(self, label):
         """Sets the label of this ManualTaskAction.
 
-            
+            The action's label.
 
         :param label: The label of this ManualTaskAction.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class ManualTaskAction:
     def style(self):
         """Gets the style of this ManualTaskAction.
 
-            
+            The action's style.
 
         :return: The style of this ManualTaskAction.
         :rtype: ManualTaskActionStyle
@@ -96,7 +96,7 @@ class ManualTaskAction:
     def style(self, style):
         """Sets the style of this ManualTaskAction.
 
-            
+            The action's style.
 
         :param style: The style of this ManualTaskAction.
         :type: ManualTaskActionStyle
@@ -108,7 +108,7 @@ class ManualTaskAction:
     def task_type(self):
         """Gets the task_type of this ManualTaskAction.
 
-            
+            The type of manual tasks this action belongs to.
 
         :return: The task_type of this ManualTaskAction.
         :rtype: int
@@ -119,7 +119,7 @@ class ManualTaskAction:
     def task_type(self, task_type):
         """Sets the task_type of this ManualTaskAction.
 
-            
+            The type of manual tasks this action belongs to.
 
         :param task_type: The task_type of this ManualTaskAction.
         :type: int

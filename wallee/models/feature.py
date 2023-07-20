@@ -54,7 +54,7 @@ class Feature:
     def beta(self):
         """Gets the beta of this Feature.
 
-            
+            Whether the feature is in beta stage and there may still be some issues.
 
         :return: The beta of this Feature.
         :rtype: bool
@@ -65,7 +65,7 @@ class Feature:
     def beta(self, beta):
         """Sets the beta of this Feature.
 
-            
+            Whether the feature is in beta stage and there may still be some issues.
 
         :param beta: The beta of this Feature.
         :type: bool
@@ -77,7 +77,7 @@ class Feature:
     def category(self):
         """Gets the category of this Feature.
 
-            
+            The category that the feature belongs to.
 
         :return: The category of this Feature.
         :rtype: FeatureCategory
@@ -88,7 +88,7 @@ class Feature:
     def category(self, category):
         """Sets the category of this Feature.
 
-            
+            The category that the feature belongs to.
 
         :param category: The category of this Feature.
         :type: FeatureCategory
@@ -100,7 +100,7 @@ class Feature:
     def description(self):
         """Gets the description of this Feature.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this Feature.
         :rtype: dict(str, str)
@@ -111,7 +111,7 @@ class Feature:
     def description(self, description):
         """Sets the description of this Feature.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this Feature.
         :type: dict(str, str)
@@ -146,7 +146,7 @@ class Feature:
     def logo_path(self):
         """Gets the logo_path of this Feature.
 
-            
+            The path to the feature's logo image.
 
         :return: The logo_path of this Feature.
         :rtype: str
@@ -157,7 +157,7 @@ class Feature:
     def logo_path(self, logo_path):
         """Sets the logo_path of this Feature.
 
-            
+            The path to the feature's logo image.
 
         :param logo_path: The logo_path of this Feature.
         :type: str
@@ -169,7 +169,7 @@ class Feature:
     def name(self):
         """Gets the name of this Feature.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this Feature.
         :rtype: dict(str, str)
@@ -180,7 +180,7 @@ class Feature:
     def name(self, name):
         """Sets the name of this Feature.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this Feature.
         :type: dict(str, str)
@@ -192,7 +192,7 @@ class Feature:
     def required_features(self):
         """Gets the required_features of this Feature.
 
-            
+            The features that must be enabled for this feature to work properly.
 
         :return: The required_features of this Feature.
         :rtype: list[int]
@@ -203,7 +203,7 @@ class Feature:
     def required_features(self, required_features):
         """Sets the required_features of this Feature.
 
-            
+            The features that must be enabled for this feature to work properly.
 
         :param required_features: The required_features of this Feature.
         :type: list[int]
@@ -215,7 +215,7 @@ class Feature:
     def sort_order(self):
         """Gets the sort_order of this Feature.
 
-            
+            When listing features, they can be sorted by this number.
 
         :return: The sort_order of this Feature.
         :rtype: int
@@ -226,7 +226,7 @@ class Feature:
     def sort_order(self, sort_order):
         """Sets the sort_order of this Feature.
 
-            
+            When listing features, they can be sorted by this number.
 
         :param sort_order: The sort_order of this Feature.
         :type: int

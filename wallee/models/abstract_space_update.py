@@ -74,7 +74,7 @@ class AbstractSpaceUpdate:
     def name(self):
         """Gets the name of this AbstractSpaceUpdate.
 
-            The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space.
 
         :return: The name of this AbstractSpaceUpdate.
         :rtype: str
@@ -85,7 +85,7 @@ class AbstractSpaceUpdate:
     def name(self, name):
         """Sets the name of this AbstractSpaceUpdate.
 
-            The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space.
 
         :param name: The name of this AbstractSpaceUpdate.
         :type: str
@@ -101,7 +101,7 @@ class AbstractSpaceUpdate:
     def postal_address(self):
         """Gets the postal_address of this AbstractSpaceUpdate.
 
-            The address to use in communication with clients for example in email, documents etc.
+            The address that is used in communication with clients for example in emails, documents, etc.
 
         :return: The postal_address of this AbstractSpaceUpdate.
         :rtype: SpaceAddressCreate
@@ -112,7 +112,7 @@ class AbstractSpaceUpdate:
     def postal_address(self, postal_address):
         """Sets the postal_address of this AbstractSpaceUpdate.
 
-            The address to use in communication with clients for example in email, documents etc.
+            The address that is used in communication with clients for example in emails, documents, etc.
 
         :param postal_address: The postal_address of this AbstractSpaceUpdate.
         :type: SpaceAddressCreate
@@ -124,7 +124,7 @@ class AbstractSpaceUpdate:
     def primary_currency(self):
         """Gets the primary_currency of this AbstractSpaceUpdate.
 
-            This is the currency that is used to display aggregated amounts in the space.
+            The currency that is used to display aggregated amounts in the space.
 
         :return: The primary_currency of this AbstractSpaceUpdate.
         :rtype: str
@@ -135,7 +135,7 @@ class AbstractSpaceUpdate:
     def primary_currency(self, primary_currency):
         """Sets the primary_currency of this AbstractSpaceUpdate.
 
-            This is the currency that is used to display aggregated amounts in the space.
+            The currency that is used to display aggregated amounts in the space.
 
         :param primary_currency: The primary_currency of this AbstractSpaceUpdate.
         :type: str
@@ -147,7 +147,7 @@ class AbstractSpaceUpdate:
     def request_limit(self):
         """Gets the request_limit of this AbstractSpaceUpdate.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
 
         :return: The request_limit of this AbstractSpaceUpdate.
         :rtype: int
@@ -158,7 +158,7 @@ class AbstractSpaceUpdate:
     def request_limit(self, request_limit):
         """Sets the request_limit of this AbstractSpaceUpdate.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
 
         :param request_limit: The request_limit of this AbstractSpaceUpdate.
         :type: int
@@ -193,7 +193,7 @@ class AbstractSpaceUpdate:
     def technical_contact_addresses(self):
         """Gets the technical_contact_addresses of this AbstractSpaceUpdate.
 
-            The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
+            The email address that will receive messages about technical issues and errors that occur in the space.
 
         :return: The technical_contact_addresses of this AbstractSpaceUpdate.
         :rtype: list[str]
@@ -204,7 +204,7 @@ class AbstractSpaceUpdate:
     def technical_contact_addresses(self, technical_contact_addresses):
         """Sets the technical_contact_addresses of this AbstractSpaceUpdate.
 
-            The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
+            The email address that will receive messages about technical issues and errors that occur in the space.
 
         :param technical_contact_addresses: The technical_contact_addresses of this AbstractSpaceUpdate.
         :type: list[str]
@@ -216,7 +216,7 @@ class AbstractSpaceUpdate:
     def time_zone(self):
         """Gets the time_zone of this AbstractSpaceUpdate.
 
-            The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
+            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
 
         :return: The time_zone of this AbstractSpaceUpdate.
         :rtype: str
@@ -227,7 +227,7 @@ class AbstractSpaceUpdate:
     def time_zone(self, time_zone):
         """Sets the time_zone of this AbstractSpaceUpdate.
 
-            The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
+            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
 
         :param time_zone: The time_zone of this AbstractSpaceUpdate.
         :type: str

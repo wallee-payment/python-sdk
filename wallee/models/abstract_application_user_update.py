@@ -36,7 +36,7 @@ class AbstractApplicationUserUpdate:
     def name(self):
         """Gets the name of this AbstractApplicationUserUpdate.
 
-            The user name is used to identify the application user in administrative interfaces.
+            The name used to identify the application user.
 
         :return: The name of this AbstractApplicationUserUpdate.
         :rtype: str
@@ -47,7 +47,7 @@ class AbstractApplicationUserUpdate:
     def name(self, name):
         """Sets the name of this AbstractApplicationUserUpdate.
 
-            The user name is used to identify the application user in administrative interfaces.
+            The name used to identify the application user.
 
         :param name: The name of this AbstractApplicationUserUpdate.
         :type: str
@@ -61,7 +61,7 @@ class AbstractApplicationUserUpdate:
     def request_limit(self):
         """Gets the request_limit of this AbstractApplicationUserUpdate.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted every 2 minutes.
 
         :return: The request_limit of this AbstractApplicationUserUpdate.
         :rtype: int
@@ -72,7 +72,7 @@ class AbstractApplicationUserUpdate:
     def request_limit(self, request_limit):
         """Sets the request_limit of this AbstractApplicationUserUpdate.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted every 2 minutes.
 
         :param request_limit: The request_limit of this AbstractApplicationUserUpdate.
         :type: int

@@ -51,7 +51,7 @@ class LabelDescriptor:
     def category(self):
         """Gets the category of this LabelDescriptor.
 
-            
+            The label's category.
 
         :return: The category of this LabelDescriptor.
         :rtype: LabelDescriptorCategory
@@ -62,7 +62,7 @@ class LabelDescriptor:
     def category(self, category):
         """Sets the category of this LabelDescriptor.
 
-            
+            The label's category.
 
         :param category: The category of this LabelDescriptor.
         :type: LabelDescriptorCategory
@@ -74,7 +74,7 @@ class LabelDescriptor:
     def description(self):
         """Gets the description of this LabelDescriptor.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this LabelDescriptor.
         :rtype: dict(str, str)
@@ -85,7 +85,7 @@ class LabelDescriptor:
     def description(self, description):
         """Sets the description of this LabelDescriptor.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this LabelDescriptor.
         :type: dict(str, str)
@@ -97,7 +97,7 @@ class LabelDescriptor:
     def features(self):
         """Gets the features of this LabelDescriptor.
 
-            
+            The features that this label belongs to.
 
         :return: The features of this LabelDescriptor.
         :rtype: list[int]
@@ -108,7 +108,7 @@ class LabelDescriptor:
     def features(self, features):
         """Sets the features of this LabelDescriptor.
 
-            
+            The features that this label belongs to.
 
         :param features: The features of this LabelDescriptor.
         :type: list[int]
@@ -120,7 +120,7 @@ class LabelDescriptor:
     def group(self):
         """Gets the group of this LabelDescriptor.
 
-            
+            The group that this label belongs to.
 
         :return: The group of this LabelDescriptor.
         :rtype: int
@@ -131,7 +131,7 @@ class LabelDescriptor:
     def group(self, group):
         """Sets the group of this LabelDescriptor.
 
-            
+            The group that this label belongs to.
 
         :param group: The group of this LabelDescriptor.
         :type: int
@@ -166,7 +166,7 @@ class LabelDescriptor:
     def name(self):
         """Gets the name of this LabelDescriptor.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this LabelDescriptor.
         :rtype: dict(str, str)
@@ -177,7 +177,7 @@ class LabelDescriptor:
     def name(self, name):
         """Sets the name of this LabelDescriptor.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this LabelDescriptor.
         :type: dict(str, str)
@@ -189,7 +189,7 @@ class LabelDescriptor:
     def type(self):
         """Gets the type of this LabelDescriptor.
 
-            
+            The type of the label's value.
 
         :return: The type of this LabelDescriptor.
         :rtype: int
@@ -200,7 +200,7 @@ class LabelDescriptor:
     def type(self, type):
         """Sets the type of this LabelDescriptor.
 
-            
+            The type of the label's value.
 
         :param type: The type of this LabelDescriptor.
         :type: int
@@ -212,7 +212,7 @@ class LabelDescriptor:
     def weight(self):
         """Gets the weight of this LabelDescriptor.
 
-            
+            When listing labels, they can be sorted by this number.
 
         :return: The weight of this LabelDescriptor.
         :rtype: int
@@ -223,7 +223,7 @@ class LabelDescriptor:
     def weight(self, weight):
         """Sets the weight of this LabelDescriptor.
 
-            
+            When listing labels, they can be sorted by this number.
 
         :param weight: The weight of this LabelDescriptor.
         :type: int

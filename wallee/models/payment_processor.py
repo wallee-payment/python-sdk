@@ -74,7 +74,7 @@ class PaymentProcessor:
     def description(self):
         """Gets the description of this PaymentProcessor.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -85,7 +85,7 @@ class PaymentProcessor:
     def description(self, description):
         """Sets the description of this PaymentProcessor.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this PaymentProcessor.
         :type: dict(str, str)
@@ -189,7 +189,7 @@ class PaymentProcessor:
     def name(self):
         """Gets the name of this PaymentProcessor.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -200,7 +200,7 @@ class PaymentProcessor:
     def name(self, name):
         """Sets the name of this PaymentProcessor.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this PaymentProcessor.
         :type: dict(str, str)

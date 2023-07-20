@@ -12,9 +12,9 @@ class ProductMeteredFeeUpdate:
         'id': 'int',
         'version': 'int',
         'component': 'int',
-        'description': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
         'metric': 'int',
-        'name': 'DatabaseTranslatedStringCreate',
+        'name': 'dict(str, str)',
         'tier_pricing': 'ProductMeteredTierPricing',
     }
 
@@ -126,7 +126,7 @@ class ProductMeteredFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :return: The description of this ProductMeteredFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -137,7 +137,7 @@ class ProductMeteredFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :param description: The description of this ProductMeteredFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -172,7 +172,7 @@ class ProductMeteredFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :return: The name of this ProductMeteredFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -183,7 +183,7 @@ class ProductMeteredFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :param name: The name of this ProductMeteredFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

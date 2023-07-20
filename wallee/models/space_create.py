@@ -33,7 +33,7 @@ class SpaceCreate(AbstractSpaceUpdate):
     def account(self):
         """Gets the account of this SpaceCreate.
 
-            The account to which the space belongs to.
+            The account that the space belongs to.
 
         :return: The account of this SpaceCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class SpaceCreate(AbstractSpaceUpdate):
     def account(self, account):
         """Sets the account of this SpaceCreate.
 
-            The account to which the space belongs to.
+            The account that the space belongs to.
 
         :param account: The account of this SpaceCreate.
         :type: int

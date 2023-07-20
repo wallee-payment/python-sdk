@@ -59,7 +59,7 @@ class WebhookListenerEntity:
     def name(self):
         """Gets the name of this WebhookListenerEntity.
 
-            
+            The name used to identify the webhook listener entity.
 
         :return: The name of this WebhookListenerEntity.
         :rtype: dict(str, str)
@@ -70,7 +70,7 @@ class WebhookListenerEntity:
     def name(self, name):
         """Sets the name of this WebhookListenerEntity.
 
-            
+            The name used to identify the webhook listener entity.
 
         :param name: The name of this WebhookListenerEntity.
         :type: dict(str, str)
@@ -82,7 +82,7 @@ class WebhookListenerEntity:
     def technical_name(self):
         """Gets the technical_name of this WebhookListenerEntity.
 
-            
+            The name used to programmatically identify the webhook listener entity.
 
         :return: The technical_name of this WebhookListenerEntity.
         :rtype: str
@@ -93,7 +93,7 @@ class WebhookListenerEntity:
     def technical_name(self, technical_name):
         """Sets the technical_name of this WebhookListenerEntity.
 
-            
+            The name used to programmatically identify the webhook listener entity.
 
         :param technical_name: The technical_name of this WebhookListenerEntity.
         :type: str

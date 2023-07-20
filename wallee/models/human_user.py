@@ -16,8 +16,8 @@ class HumanUser:
         'lastname': 'str',
         'mobile_phone_number': 'str',
         'mobile_phone_verified': 'bool',
-        'primary_account': 'Account',
-        'scope': 'Scope',
+        'primary_account': 'int',
+        'scope': 'int',
         'time_zone': 'str',
         'two_factor_enabled': 'bool',
         'two_factor_type': 'TwoFactorAuthenticationType',
@@ -63,7 +63,7 @@ class HumanUser:
     def email_address(self):
         """Gets the email_address of this HumanUser.
 
-            The email address of the user.
+            The user's email address.
 
         :return: The email_address of this HumanUser.
         :rtype: str
@@ -74,7 +74,7 @@ class HumanUser:
     def email_address(self, email_address):
         """Sets the email_address of this HumanUser.
 
-            The email address of the user.
+            The user's email address.
 
         :param email_address: The email_address of this HumanUser.
         :type: str
@@ -88,7 +88,7 @@ class HumanUser:
     def email_address_verified(self):
         """Gets the email_address_verified of this HumanUser.
 
-            Defines whether a user is verified or not.
+            Whether the user's email address has been verified.
 
         :return: The email_address_verified of this HumanUser.
         :rtype: bool
@@ -99,7 +99,7 @@ class HumanUser:
     def email_address_verified(self, email_address_verified):
         """Sets the email_address_verified of this HumanUser.
 
-            Defines whether a user is verified or not.
+            Whether the user's email address has been verified.
 
         :param email_address_verified: The email_address_verified of this HumanUser.
         :type: bool
@@ -111,7 +111,7 @@ class HumanUser:
     def firstname(self):
         """Gets the firstname of this HumanUser.
 
-            The first name of the user.
+            The user's first name.
 
         :return: The firstname of this HumanUser.
         :rtype: str
@@ -122,7 +122,7 @@ class HumanUser:
     def firstname(self, firstname):
         """Sets the firstname of this HumanUser.
 
-            The first name of the user.
+            The user's first name.
 
         :param firstname: The firstname of this HumanUser.
         :type: str
@@ -136,7 +136,7 @@ class HumanUser:
     def language(self):
         """Gets the language of this HumanUser.
 
-            The preferred language of the user.
+            The user's preferred language.
 
         :return: The language of this HumanUser.
         :rtype: str
@@ -147,7 +147,7 @@ class HumanUser:
     def language(self, language):
         """Sets the language of this HumanUser.
 
-            The preferred language of the user.
+            The user's preferred language.
 
         :param language: The language of this HumanUser.
         :type: str
@@ -159,7 +159,7 @@ class HumanUser:
     def lastname(self):
         """Gets the lastname of this HumanUser.
 
-            The last name of the user.
+            The user's last name.
 
         :return: The lastname of this HumanUser.
         :rtype: str
@@ -170,7 +170,7 @@ class HumanUser:
     def lastname(self, lastname):
         """Sets the lastname of this HumanUser.
 
-            The last name of the user.
+            The user's last name.
 
         :param lastname: The lastname of this HumanUser.
         :type: str
@@ -184,7 +184,7 @@ class HumanUser:
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this HumanUser.
 
-            
+            The user's mobile phone number.
 
         :return: The mobile_phone_number of this HumanUser.
         :rtype: str
@@ -195,7 +195,7 @@ class HumanUser:
     def mobile_phone_number(self, mobile_phone_number):
         """Sets the mobile_phone_number of this HumanUser.
 
-            
+            The user's mobile phone number.
 
         :param mobile_phone_number: The mobile_phone_number of this HumanUser.
         :type: str
@@ -209,7 +209,7 @@ class HumanUser:
     def mobile_phone_verified(self):
         """Gets the mobile_phone_verified of this HumanUser.
 
-            Defines whether a users mobile phone number is verified or not.
+            Whether the user's mobile phone number has been verified.
 
         :return: The mobile_phone_verified of this HumanUser.
         :rtype: bool
@@ -220,7 +220,7 @@ class HumanUser:
     def mobile_phone_verified(self, mobile_phone_verified):
         """Sets the mobile_phone_verified of this HumanUser.
 
-            Defines whether a users mobile phone number is verified or not.
+            Whether the user's mobile phone number has been verified.
 
         :param mobile_phone_verified: The mobile_phone_verified of this HumanUser.
         :type: bool
@@ -232,10 +232,10 @@ class HumanUser:
     def primary_account(self):
         """Gets the primary_account of this HumanUser.
 
-            The primary account links the user to a specific account.
+            The primary account that the user belongs to.
 
         :return: The primary_account of this HumanUser.
-        :rtype: Account
+        :rtype: int
         """
         return self._primary_account
 
@@ -243,10 +243,10 @@ class HumanUser:
     def primary_account(self, primary_account):
         """Sets the primary_account of this HumanUser.
 
-            The primary account links the user to a specific account.
+            The primary account that the user belongs to.
 
         :param primary_account: The primary_account of this HumanUser.
-        :type: Account
+        :type: int
         """
 
         self._primary_account = primary_account
@@ -255,10 +255,10 @@ class HumanUser:
     def scope(self):
         """Gets the scope of this HumanUser.
 
-            The scope to which the user belongs to.
+            The scope that the user belongs to.
 
         :return: The scope of this HumanUser.
-        :rtype: Scope
+        :rtype: int
         """
         return self._scope
 
@@ -266,10 +266,10 @@ class HumanUser:
     def scope(self, scope):
         """Sets the scope of this HumanUser.
 
-            The scope to which the user belongs to.
+            The scope that the user belongs to.
 
         :param scope: The scope of this HumanUser.
-        :type: Scope
+        :type: int
         """
 
         self._scope = scope
@@ -278,7 +278,7 @@ class HumanUser:
     def time_zone(self):
         """Gets the time_zone of this HumanUser.
 
-            The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+            The user's time zone. If none is specified, the one provided by the browser will be used.
 
         :return: The time_zone of this HumanUser.
         :rtype: str
@@ -289,7 +289,7 @@ class HumanUser:
     def time_zone(self, time_zone):
         """Sets the time_zone of this HumanUser.
 
-            The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+            The user's time zone. If none is specified, the one provided by the browser will be used.
 
         :param time_zone: The time_zone of this HumanUser.
         :type: str
@@ -301,7 +301,7 @@ class HumanUser:
     def two_factor_enabled(self):
         """Gets the two_factor_enabled of this HumanUser.
 
-            Defines whether two-factor authentication is enabled for this user.
+            Whether two-factor authentication is enabled for this user.
 
         :return: The two_factor_enabled of this HumanUser.
         :rtype: bool
@@ -312,7 +312,7 @@ class HumanUser:
     def two_factor_enabled(self, two_factor_enabled):
         """Sets the two_factor_enabled of this HumanUser.
 
-            Defines whether two-factor authentication is enabled for this user.
+            Whether two-factor authentication is enabled for this user.
 
         :param two_factor_enabled: The two_factor_enabled of this HumanUser.
         :type: bool
@@ -324,7 +324,7 @@ class HumanUser:
     def two_factor_type(self):
         """Gets the two_factor_type of this HumanUser.
 
-            
+            The type of two-factor authentication that is enabled for the user.
 
         :return: The two_factor_type of this HumanUser.
         :rtype: TwoFactorAuthenticationType
@@ -335,7 +335,7 @@ class HumanUser:
     def two_factor_type(self, two_factor_type):
         """Sets the two_factor_type of this HumanUser.
 
-            
+            The type of two-factor authentication that is enabled for the user.
 
         :param two_factor_type: The two_factor_type of this HumanUser.
         :type: TwoFactorAuthenticationType

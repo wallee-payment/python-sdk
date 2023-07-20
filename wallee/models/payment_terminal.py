@@ -11,6 +11,7 @@ class PaymentTerminal:
     
         'configuration_version': 'PaymentTerminalConfigurationVersion',
         'default_currency': 'str',
+        'device_serial_number': 'str',
         'external_id': 'str',
         'id': 'int',
         'identifier': 'str',
@@ -24,12 +25,13 @@ class PaymentTerminal:
     }
 
     attribute_map = {
-        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
+        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','device_serial_number': 'deviceSerialNumber','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
     _configuration_version = None
     _default_currency = None
+    _device_serial_number = None
     _external_id = None
     _id = None
     _identifier = None
@@ -46,6 +48,7 @@ class PaymentTerminal:
         
         self.configuration_version = kwargs.get('configuration_version', None)
         self.default_currency = kwargs.get('default_currency', None)
+        self.device_serial_number = kwargs.get('device_serial_number', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
         self.identifier = kwargs.get('identifier', None)
@@ -104,6 +107,29 @@ class PaymentTerminal:
         """
 
         self._default_currency = default_currency
+    
+    @property
+    def device_serial_number(self):
+        """Gets the device_serial_number of this PaymentTerminal.
+
+            
+
+        :return: The device_serial_number of this PaymentTerminal.
+        :rtype: str
+        """
+        return self._device_serial_number
+
+    @device_serial_number.setter
+    def device_serial_number(self, device_serial_number):
+        """Sets the device_serial_number of this PaymentTerminal.
+
+            
+
+        :param device_serial_number: The device_serial_number of this PaymentTerminal.
+        :type: str
+        """
+
+        self._device_serial_number = device_serial_number
     
     @property
     def external_id(self):

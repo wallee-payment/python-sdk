@@ -16,7 +16,7 @@ class SubscriptionProductVersionPending:
         'default_currency': 'str',
         'enabled_currencies': 'list[str]',
         'minimal_number_of_periods': 'int',
-        'name': 'DatabaseTranslatedStringCreate',
+        'name': 'dict(str, str)',
         'number_of_notice_periods': 'int',
         'product': 'int',
         'state': 'SubscriptionProductVersionState',
@@ -233,7 +233,7 @@ class SubscriptionProductVersionPending:
             The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
 
         :return: The name of this SubscriptionProductVersionPending.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -244,7 +244,7 @@ class SubscriptionProductVersionPending:
             The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
 
         :param name: The name of this SubscriptionProductVersionPending.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

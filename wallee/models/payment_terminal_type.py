@@ -36,7 +36,7 @@ class PaymentTerminalType:
     def description(self):
         """Gets the description of this PaymentTerminalType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this PaymentTerminalType.
         :rtype: dict(str, str)
@@ -47,7 +47,7 @@ class PaymentTerminalType:
     def description(self, description):
         """Sets the description of this PaymentTerminalType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this PaymentTerminalType.
         :type: dict(str, str)
@@ -82,7 +82,7 @@ class PaymentTerminalType:
     def name(self):
         """Gets the name of this PaymentTerminalType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this PaymentTerminalType.
         :rtype: dict(str, str)
@@ -93,7 +93,7 @@ class PaymentTerminalType:
     def name(self, name):
         """Sets the name of this PaymentTerminalType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this PaymentTerminalType.
         :type: dict(str, str)

@@ -40,7 +40,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def entity(self):
         """Gets the entity of this WebhookListenerCreate.
 
-            The listener listens on state changes of the entity linked with the listener.
+            The entity that is to be monitored.
 
         :return: The entity of this WebhookListenerCreate.
         :rtype: int
@@ -51,7 +51,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def entity(self, entity):
         """Sets the entity of this WebhookListenerCreate.
 
-            The listener listens on state changes of the entity linked with the listener.
+            The entity that is to be monitored.
 
         :param entity: The entity of this WebhookListenerCreate.
         :type: int
@@ -65,7 +65,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def identity(self):
         """Gets the identity of this WebhookListenerCreate.
 
-            The identity which will be used to sign messages sent by this listener.
+            The identity used to sign messages.
 
         :return: The identity of this WebhookListenerCreate.
         :rtype: int
@@ -76,7 +76,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def identity(self, identity):
         """Sets the identity of this WebhookListenerCreate.
 
-            The identity which will be used to sign messages sent by this listener.
+            The identity used to sign messages.
 
         :param identity: The identity of this WebhookListenerCreate.
         :type: int
@@ -88,7 +88,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def url(self):
         """Gets the url of this WebhookListenerCreate.
 
-            The URL which is invoked by the listener to notify the application about the event.
+            The URL where notifications about entity changes are sent to.
 
         :return: The url of this WebhookListenerCreate.
         :rtype: int
@@ -99,7 +99,7 @@ class WebhookListenerCreate(AbstractWebhookListenerUpdate):
     def url(self, url):
         """Sets the url of this WebhookListenerCreate.
 
-            The URL which is invoked by the listener to notify the application about the event.
+            The URL where notifications about entity changes are sent to.
 
         :param url: The url of this WebhookListenerCreate.
         :type: int

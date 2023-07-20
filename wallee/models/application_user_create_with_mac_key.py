@@ -32,7 +32,7 @@ class ApplicationUserCreateWithMacKey(ApplicationUser):
     def mac_key(self):
         """Gets the mac_key of this ApplicationUserCreateWithMacKey.
 
-            
+            The user's authentication key securing requests. Only displayed a single time after the user has been created.
 
         :return: The mac_key of this ApplicationUserCreateWithMacKey.
         :rtype: str
@@ -43,7 +43,7 @@ class ApplicationUserCreateWithMacKey(ApplicationUser):
     def mac_key(self, mac_key):
         """Sets the mac_key of this ApplicationUserCreateWithMacKey.
 
-            
+            The user's authentication key securing requests. Only displayed a single time after the user has been created.
 
         :param mac_key: The mac_key of this ApplicationUserCreateWithMacKey.
         :type: str

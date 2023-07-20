@@ -91,7 +91,7 @@ class WebhookIdentity:
     def name(self):
         """Gets the name of this WebhookIdentity.
 
-            The identity name is used internally to identify the webhook identity in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook identity.
 
         :return: The name of this WebhookIdentity.
         :rtype: str
@@ -102,7 +102,7 @@ class WebhookIdentity:
     def name(self, name):
         """Sets the name of this WebhookIdentity.
 
-            The identity name is used internally to identify the webhook identity in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook identity.
 
         :param name: The name of this WebhookIdentity.
         :type: str

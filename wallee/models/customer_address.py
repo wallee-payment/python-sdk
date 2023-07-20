@@ -51,7 +51,7 @@ class CustomerAddress:
     def address(self):
         """Gets the address of this CustomerAddress.
 
-            
+            The actual postal address.
 
         :return: The address of this CustomerAddress.
         :rtype: CustomerPostalAddress
@@ -62,7 +62,7 @@ class CustomerAddress:
     def address(self, address):
         """Sets the address of this CustomerAddress.
 
-            
+            The actual postal address.
 
         :param address: The address of this CustomerAddress.
         :type: CustomerPostalAddress
@@ -74,7 +74,7 @@ class CustomerAddress:
     def address_type(self):
         """Gets the address_type of this CustomerAddress.
 
-            
+            Whether the address is for billing or shipping or both.
 
         :return: The address_type of this CustomerAddress.
         :rtype: CustomerAddressType
@@ -85,7 +85,7 @@ class CustomerAddress:
     def address_type(self, address_type):
         """Sets the address_type of this CustomerAddress.
 
-            
+            Whether the address is for billing or shipping or both.
 
         :param address_type: The address_type of this CustomerAddress.
         :type: CustomerAddressType
@@ -120,7 +120,7 @@ class CustomerAddress:
     def customer(self):
         """Gets the customer of this CustomerAddress.
 
-            
+            The customer that the object belongs to.
 
         :return: The customer of this CustomerAddress.
         :rtype: Customer
@@ -131,7 +131,7 @@ class CustomerAddress:
     def customer(self, customer):
         """Sets the customer of this CustomerAddress.
 
-            
+            The customer that the object belongs to.
 
         :param customer: The customer of this CustomerAddress.
         :type: Customer
@@ -143,7 +143,7 @@ class CustomerAddress:
     def default_address(self):
         """Gets the default_address of this CustomerAddress.
 
-            
+            Whether this is the customer's default address.
 
         :return: The default_address of this CustomerAddress.
         :rtype: bool
@@ -154,7 +154,7 @@ class CustomerAddress:
     def default_address(self, default_address):
         """Sets the default_address of this CustomerAddress.
 
-            
+            Whether this is the customer's default address.
 
         :param default_address: The default_address of this CustomerAddress.
         :type: bool

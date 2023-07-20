@@ -42,7 +42,7 @@ class LegalOrganizationForm:
     def country(self):
         """Gets the country of this LegalOrganizationForm.
 
-            
+            The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).
 
         :return: The country of this LegalOrganizationForm.
         :rtype: str
@@ -53,7 +53,7 @@ class LegalOrganizationForm:
     def country(self, country):
         """Sets the country of this LegalOrganizationForm.
 
-            
+            The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).
 
         :param country: The country of this LegalOrganizationForm.
         :type: str
@@ -65,7 +65,7 @@ class LegalOrganizationForm:
     def description(self):
         """Gets the description of this LegalOrganizationForm.
 
-            
+            The localized descriptions of the legal organization form.
 
         :return: The description of this LegalOrganizationForm.
         :rtype: list[LocalizedString]
@@ -76,7 +76,7 @@ class LegalOrganizationForm:
     def description(self, description):
         """Sets the description of this LegalOrganizationForm.
 
-            
+            The localized descriptions of the legal organization form.
 
         :param description: The description of this LegalOrganizationForm.
         :type: list[LocalizedString]
@@ -88,7 +88,7 @@ class LegalOrganizationForm:
     def english_description(self):
         """Gets the english_description of this LegalOrganizationForm.
 
-            
+            The English name of the legal organization form.
 
         :return: The english_description of this LegalOrganizationForm.
         :rtype: str
@@ -99,7 +99,7 @@ class LegalOrganizationForm:
     def english_description(self, english_description):
         """Sets the english_description of this LegalOrganizationForm.
 
-            
+            The English name of the legal organization form.
 
         :param english_description: The english_description of this LegalOrganizationForm.
         :type: str
@@ -134,7 +134,7 @@ class LegalOrganizationForm:
     def shortcut(self):
         """Gets the shortcut of this LegalOrganizationForm.
 
-            
+            The localized shortcuts of the legal organization form.
 
         :return: The shortcut of this LegalOrganizationForm.
         :rtype: list[LocalizedString]
@@ -145,7 +145,7 @@ class LegalOrganizationForm:
     def shortcut(self, shortcut):
         """Sets the shortcut of this LegalOrganizationForm.
 
-            
+            The localized shortcuts of the legal organization form.
 
         :param shortcut: The shortcut of this LegalOrganizationForm.
         :type: list[LocalizedString]

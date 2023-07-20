@@ -9,57 +9,31 @@ class LocalizedString:
 
     swagger_types = {
     
-        'display_name': 'str',
         'language': 'str',
         'string': 'str',
     }
 
     attribute_map = {
-        'display_name': 'displayName','language': 'language','string': 'string',
+        'language': 'language','string': 'string',
     }
 
     
-    _display_name = None
     _language = None
     _string = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.display_name = kwargs.get('display_name', None)
         self.language = kwargs.get('language', None)
         self.string = kwargs.get('string', None)
         
 
     
     @property
-    def display_name(self):
-        """Gets the display_name of this LocalizedString.
-
-            
-
-        :return: The display_name of this LocalizedString.
-        :rtype: str
-        """
-        return self._display_name
-
-    @display_name.setter
-    def display_name(self, display_name):
-        """Sets the display_name of this LocalizedString.
-
-            
-
-        :param display_name: The display_name of this LocalizedString.
-        :type: str
-        """
-
-        self._display_name = display_name
-    
-    @property
     def language(self):
         """Gets the language of this LocalizedString.
 
-            
+            The term's language.
 
         :return: The language of this LocalizedString.
         :rtype: str
@@ -70,7 +44,7 @@ class LocalizedString:
     def language(self, language):
         """Sets the language of this LocalizedString.
 
-            
+            The term's language.
 
         :param language: The language of this LocalizedString.
         :type: str
@@ -82,7 +56,7 @@ class LocalizedString:
     def string(self):
         """Gets the string of this LocalizedString.
 
-            
+            The localized term.
 
         :return: The string of this LocalizedString.
         :rtype: str
@@ -93,7 +67,7 @@ class LocalizedString:
     def string(self, string):
         """Sets the string of this LocalizedString.
 
-            
+            The localized term.
 
         :param string: The string of this LocalizedString.
         :type: str

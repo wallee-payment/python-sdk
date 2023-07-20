@@ -6,4 +6,6 @@ from enum import Enum, unique
 class WalletType(Enum):
     
     APPLE_PAY = "APPLE_PAY"
+    CLICK_TO_PAY = "CLICK_TO_PAY"
+    NONE = "NONE"
 

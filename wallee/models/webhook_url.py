@@ -51,7 +51,7 @@ class WebhookUrl:
     def application_managed(self):
         """Gets the application_managed of this WebhookUrl.
 
-            The webhook URL is managed by the application and cannot be changed via the user interface.
+            Whether the webhook URL is managed by the application, and therefore cannot be changed via the user interface.
 
         :return: The application_managed of this WebhookUrl.
         :rtype: bool
@@ -62,7 +62,7 @@ class WebhookUrl:
     def application_managed(self, application_managed):
         """Sets the application_managed of this WebhookUrl.
 
-            The webhook URL is managed by the application and cannot be changed via the user interface.
+            Whether the webhook URL is managed by the application, and therefore cannot be changed via the user interface.
 
         :param application_managed: The application_managed of this WebhookUrl.
         :type: bool
@@ -120,7 +120,7 @@ class WebhookUrl:
     def name(self):
         """Gets the name of this WebhookUrl.
 
-            The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook URL.
 
         :return: The name of this WebhookUrl.
         :rtype: str
@@ -131,7 +131,7 @@ class WebhookUrl:
     def name(self, name):
         """Sets the name of this WebhookUrl.
 
-            The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook URL.
 
         :param name: The name of this WebhookUrl.
         :type: str
@@ -191,7 +191,7 @@ class WebhookUrl:
     def url(self):
         """Gets the url of this WebhookUrl.
 
-            The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
+            The actual URL where notifications about entity changes are sent to.
 
         :return: The url of this WebhookUrl.
         :rtype: str
@@ -202,7 +202,7 @@ class WebhookUrl:
     def url(self, url):
         """Sets the url of this WebhookUrl.
 
-            The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
+            The actual URL where notifications about entity changes are sent to.
 
         :param url: The url of this WebhookUrl.
         :type: str

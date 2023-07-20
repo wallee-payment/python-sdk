@@ -12,12 +12,12 @@ class SubscriptionProductComponent:
         'component_change_weight': 'int',
         'component_group': 'SubscriptionProductComponentGroup',
         'default_component': 'bool',
-        'description': 'DatabaseTranslatedString',
+        'description': 'dict(str, str)',
         'id': 'int',
         'linked_space_id': 'int',
         'maximal_quantity': 'float',
         'minimal_quantity': 'float',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'quantity_step': 'float',
         'reference': 'SubscriptionProductComponentReference',
         'sort_order': 'int',
@@ -141,7 +141,7 @@ class SubscriptionProductComponent:
             The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
 
         :return: The description of this SubscriptionProductComponent.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -152,7 +152,7 @@ class SubscriptionProductComponent:
             The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
 
         :param description: The description of this SubscriptionProductComponent.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -256,7 +256,7 @@ class SubscriptionProductComponent:
             The component name is shown to the subscriber. It should describe in few words what the component does contain.
 
         :return: The name of this SubscriptionProductComponent.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -267,7 +267,7 @@ class SubscriptionProductComponent:
             The component name is shown to the subscriber. It should describe in few words what the component does contain.
 
         :param name: The name of this SubscriptionProductComponent.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name

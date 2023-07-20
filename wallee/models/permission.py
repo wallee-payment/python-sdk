@@ -60,7 +60,7 @@ class Permission:
     def description(self):
         """Gets the description of this Permission.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this Permission.
         :rtype: dict(str, str)
@@ -71,7 +71,7 @@ class Permission:
     def description(self, description):
         """Sets the description of this Permission.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this Permission.
         :type: dict(str, str)
@@ -83,7 +83,7 @@ class Permission:
     def feature(self):
         """Gets the feature of this Permission.
 
-            
+            The feature that this permission belongs to.
 
         :return: The feature of this Permission.
         :rtype: int
@@ -94,7 +94,7 @@ class Permission:
     def feature(self, feature):
         """Sets the feature of this Permission.
 
-            
+            The feature that this permission belongs to.
 
         :param feature: The feature of this Permission.
         :type: int
@@ -106,7 +106,7 @@ class Permission:
     def group(self):
         """Gets the group of this Permission.
 
-            
+            Whether this is a permission group.
 
         :return: The group of this Permission.
         :rtype: bool
@@ -117,7 +117,7 @@ class Permission:
     def group(self, group):
         """Sets the group of this Permission.
 
-            
+            Whether this is a permission group.
 
         :param group: The group of this Permission.
         :type: bool
@@ -152,7 +152,7 @@ class Permission:
     def leaf(self):
         """Gets the leaf of this Permission.
 
-            
+            Whether this is a leaf in the tree of permissions, and not a group.
 
         :return: The leaf of this Permission.
         :rtype: bool
@@ -163,7 +163,7 @@ class Permission:
     def leaf(self, leaf):
         """Sets the leaf of this Permission.
 
-            
+            Whether this is a leaf in the tree of permissions, and not a group.
 
         :param leaf: The leaf of this Permission.
         :type: bool
@@ -175,7 +175,7 @@ class Permission:
     def name(self):
         """Gets the name of this Permission.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this Permission.
         :rtype: dict(str, str)
@@ -186,7 +186,7 @@ class Permission:
     def name(self, name):
         """Sets the name of this Permission.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this Permission.
         :type: dict(str, str)
@@ -198,7 +198,7 @@ class Permission:
     def parent(self):
         """Gets the parent of this Permission.
 
-            
+            The group that this permission belongs to.
 
         :return: The parent of this Permission.
         :rtype: int
@@ -209,7 +209,7 @@ class Permission:
     def parent(self, parent):
         """Sets the parent of this Permission.
 
-            
+            The group that this permission belongs to.
 
         :param parent: The parent of this Permission.
         :type: int
@@ -221,7 +221,7 @@ class Permission:
     def path_to_root(self):
         """Gets the path_to_root of this Permission.
 
-            
+            All parents of this permission up to the root of the permission tree.
 
         :return: The path_to_root of this Permission.
         :rtype: list[int]
@@ -232,7 +232,7 @@ class Permission:
     def path_to_root(self, path_to_root):
         """Sets the path_to_root of this Permission.
 
-            
+            All parents of this permission up to the root of the permission tree.
 
         :param path_to_root: The path_to_root of this Permission.
         :type: list[int]
@@ -244,7 +244,7 @@ class Permission:
     def title(self):
         """Gets the title of this Permission.
 
-            
+            The localized name of the object.
 
         :return: The title of this Permission.
         :rtype: dict(str, str)
@@ -255,7 +255,7 @@ class Permission:
     def title(self, title):
         """Sets the title of this Permission.
 
-            
+            The localized name of the object.
 
         :param title: The title of this Permission.
         :type: dict(str, str)
@@ -267,7 +267,7 @@ class Permission:
     def two_factor_required(self):
         """Gets the two_factor_required of this Permission.
 
-            
+            Whether users with this permission are required to enable two-factor authentication.
 
         :return: The two_factor_required of this Permission.
         :rtype: bool
@@ -278,7 +278,7 @@ class Permission:
     def two_factor_required(self, two_factor_required):
         """Sets the two_factor_required of this Permission.
 
-            
+            Whether users with this permission are required to enable two-factor authentication.
 
         :param two_factor_required: The two_factor_required of this Permission.
         :type: bool

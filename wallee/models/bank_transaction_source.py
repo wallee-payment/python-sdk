@@ -36,7 +36,7 @@ class BankTransactionSource:
     def description(self):
         """Gets the description of this BankTransactionSource.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this BankTransactionSource.
         :rtype: dict(str, str)
@@ -47,7 +47,7 @@ class BankTransactionSource:
     def description(self, description):
         """Sets the description of this BankTransactionSource.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this BankTransactionSource.
         :type: dict(str, str)
@@ -82,7 +82,7 @@ class BankTransactionSource:
     def name(self):
         """Gets the name of this BankTransactionSource.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this BankTransactionSource.
         :rtype: dict(str, str)
@@ -93,7 +93,7 @@ class BankTransactionSource:
     def name(self, name):
         """Sets the name of this BankTransactionSource.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this BankTransactionSource.
         :type: dict(str, str)

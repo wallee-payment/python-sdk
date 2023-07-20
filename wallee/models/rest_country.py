@@ -45,7 +45,7 @@ class RestCountry:
     def iso_code2_letter(self):
         """Gets the iso_code2_letter of this RestCountry.
 
-            The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).
+            The country's two-letter code (ISO 3166-1 alpha-2 format).
 
         :return: The iso_code2_letter of this RestCountry.
         :rtype: str
@@ -56,7 +56,7 @@ class RestCountry:
     def iso_code2_letter(self, iso_code2_letter):
         """Sets the iso_code2_letter of this RestCountry.
 
-            The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).
+            The country's two-letter code (ISO 3166-1 alpha-2 format).
 
         :param iso_code2_letter: The iso_code2_letter of this RestCountry.
         :type: str
@@ -68,7 +68,7 @@ class RestCountry:
     def iso_code3_letter(self):
         """Gets the iso_code3_letter of this RestCountry.
 
-            The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).
+            The country's three-letter code (ISO 3166-1 alpha-3 format).
 
         :return: The iso_code3_letter of this RestCountry.
         :rtype: str
@@ -79,7 +79,7 @@ class RestCountry:
     def iso_code3_letter(self, iso_code3_letter):
         """Sets the iso_code3_letter of this RestCountry.
 
-            The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).
+            The country's three-letter code (ISO 3166-1 alpha-3 format).
 
         :param iso_code3_letter: The iso_code3_letter of this RestCountry.
         :type: str
@@ -91,7 +91,7 @@ class RestCountry:
     def address_format(self):
         """Gets the address_format of this RestCountry.
 
-            The address format of the country indicates how an address has to look like for the country.
+            Specifies the country's way of formatting addresses.
 
         :return: The address_format of this RestCountry.
         :rtype: RestAddressFormat
@@ -102,7 +102,7 @@ class RestCountry:
     def address_format(self, address_format):
         """Sets the address_format of this RestCountry.
 
-            The address format of the country indicates how an address has to look like for the country.
+            Specifies the country's way of formatting addresses.
 
         :param address_format: The address_format of this RestCountry.
         :type: RestAddressFormat
@@ -114,7 +114,7 @@ class RestCountry:
     def name(self):
         """Gets the name of this RestCountry.
 
-            The name labels the country by a name in English.
+            The name of the country.
 
         :return: The name of this RestCountry.
         :rtype: str
@@ -125,7 +125,7 @@ class RestCountry:
     def name(self, name):
         """Sets the name of this RestCountry.
 
-            The name labels the country by a name in English.
+            The name of the country.
 
         :param name: The name of this RestCountry.
         :type: str
@@ -137,7 +137,7 @@ class RestCountry:
     def numeric_code(self):
         """Gets the numeric_code of this RestCountry.
 
-            The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).
+            The country's three-digit code (ISO 3166-1 numeric format).
 
         :return: The numeric_code of this RestCountry.
         :rtype: str
@@ -148,7 +148,7 @@ class RestCountry:
     def numeric_code(self, numeric_code):
         """Sets the numeric_code of this RestCountry.
 
-            The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).
+            The country's three-digit code (ISO 3166-1 numeric format).
 
         :param numeric_code: The numeric_code of this RestCountry.
         :type: str
@@ -160,7 +160,7 @@ class RestCountry:
     def state_codes(self):
         """Gets the state_codes of this RestCountry.
 
-            The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.
+            The codes of all regions (e.g. states, provinces) of the country (ISO 3166-2 format).
 
         :return: The state_codes of this RestCountry.
         :rtype: list[str]
@@ -171,7 +171,7 @@ class RestCountry:
     def state_codes(self, state_codes):
         """Sets the state_codes of this RestCountry.
 
-            The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.
+            The codes of all regions (e.g. states, provinces) of the country (ISO 3166-2 format).
 
         :param state_codes: The state_codes of this RestCountry.
         :type: list[str]

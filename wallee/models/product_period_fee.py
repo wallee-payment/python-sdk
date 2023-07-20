@@ -10,11 +10,11 @@ class ProductPeriodFee:
     swagger_types = {
     
         'component': 'SubscriptionProductComponent',
-        'description': 'DatabaseTranslatedString',
+        'description': 'dict(str, str)',
         'id': 'int',
-        'ledger_entry_title': 'DatabaseTranslatedString',
+        'ledger_entry_title': 'dict(str, str)',
         'linked_space_id': 'int',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'number_of_free_trial_periods': 'int',
         'period_fee': 'list[PersistableCurrencyAmount]',
         'type': 'ProductFeeType',
@@ -83,7 +83,7 @@ class ProductPeriodFee:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :return: The description of this ProductPeriodFee.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -94,7 +94,7 @@ class ProductPeriodFee:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :param description: The description of this ProductPeriodFee.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -129,7 +129,7 @@ class ProductPeriodFee:
             The ledger entry title will be used for the title in the ledger entry and in the invoice.
 
         :return: The ledger_entry_title of this ProductPeriodFee.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._ledger_entry_title
 
@@ -140,7 +140,7 @@ class ProductPeriodFee:
             The ledger entry title will be used for the title in the ledger entry and in the invoice.
 
         :param ledger_entry_title: The ledger_entry_title of this ProductPeriodFee.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._ledger_entry_title = ledger_entry_title
@@ -175,7 +175,7 @@ class ProductPeriodFee:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :return: The name of this ProductPeriodFee.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -186,7 +186,7 @@ class ProductPeriodFee:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :param name: The name of this ProductPeriodFee.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name

@@ -78,7 +78,7 @@ class Account:
     def active(self):
         """Gets the active of this Account.
 
-            Active means that this account and all accounts in the hierarchy are active.
+            Whether this account and all its parent accounts are active.
 
         :return: The active of this Account.
         :rtype: bool
@@ -89,7 +89,7 @@ class Account:
     def active(self, active):
         """Sets the active of this Account.
 
-            Active means that this account and all accounts in the hierarchy are active.
+            Whether this account and all its parent accounts are active.
 
         :param active: The active of this Account.
         :type: bool
@@ -101,7 +101,7 @@ class Account:
     def active_or_restricted_active(self):
         """Gets the active_or_restricted_active of this Account.
 
-            This property is true when all accounts in the hierarchy are active or restricted active.
+            Whether this account and all its parent accounts are active or restricted active.
 
         :return: The active_or_restricted_active of this Account.
         :rtype: bool
@@ -112,7 +112,7 @@ class Account:
     def active_or_restricted_active(self, active_or_restricted_active):
         """Sets the active_or_restricted_active of this Account.
 
-            This property is true when all accounts in the hierarchy are active or restricted active.
+            Whether this account and all its parent accounts are active or restricted active.
 
         :param active_or_restricted_active: The active_or_restricted_active of this Account.
         :type: bool
@@ -124,7 +124,7 @@ class Account:
     def created_by(self):
         """Gets the created_by of this Account.
 
-            The ID of the user who created this entity.
+            The ID of the user the account was created by.
 
         :return: The created_by of this Account.
         :rtype: int
@@ -135,7 +135,7 @@ class Account:
     def created_by(self, created_by):
         """Sets the created_by of this Account.
 
-            The ID of the user who created this entity.
+            The ID of the user the account was created by.
 
         :param created_by: The created_by of this Account.
         :type: int
@@ -147,7 +147,7 @@ class Account:
     def created_on(self):
         """Gets the created_on of this Account.
 
-            The date and time when this entity was created.
+            The date and time when the account was created.
 
         :return: The created_on of this Account.
         :rtype: datetime
@@ -158,7 +158,7 @@ class Account:
     def created_on(self, created_on):
         """Sets the created_on of this Account.
 
-            The date and time when this entity was created.
+            The date and time when the account was created.
 
         :param created_on: The created_on of this Account.
         :type: datetime
@@ -170,7 +170,7 @@ class Account:
     def deleted_by(self):
         """Gets the deleted_by of this Account.
 
-            The ID of a user that deleted this entity.
+            The ID of a user the account was deleted by.
 
         :return: The deleted_by of this Account.
         :rtype: int
@@ -181,7 +181,7 @@ class Account:
     def deleted_by(self, deleted_by):
         """Sets the deleted_by of this Account.
 
-            The ID of a user that deleted this entity.
+            The ID of a user the account was deleted by.
 
         :param deleted_by: The deleted_by of this Account.
         :type: int
@@ -193,7 +193,7 @@ class Account:
     def deleted_on(self):
         """Gets the deleted_on of this Account.
 
-            The date and time when this entity was deleted.
+            The date and time when the account was deleted.
 
         :return: The deleted_on of this Account.
         :rtype: datetime
@@ -204,7 +204,7 @@ class Account:
     def deleted_on(self, deleted_on):
         """Sets the deleted_on of this Account.
 
-            The date and time when this entity was deleted.
+            The date and time when the account was deleted.
 
         :param deleted_on: The deleted_on of this Account.
         :type: datetime
@@ -262,7 +262,7 @@ class Account:
     def name(self):
         """Gets the name of this Account.
 
-            The name of the account identifies the account within the administrative interface.
+            The name used to identify the account.
 
         :return: The name of this Account.
         :rtype: str
@@ -273,7 +273,7 @@ class Account:
     def name(self, name):
         """Sets the name of this Account.
 
-            The name of the account identifies the account within the administrative interface.
+            The name used to identify the account.
 
         :param name: The name of this Account.
         :type: str
@@ -289,7 +289,7 @@ class Account:
     def parent_account(self):
         """Gets the parent_account of this Account.
 
-            The account which is responsible for administering the account.
+            The parent account responsible for administering this account.
 
         :return: The parent_account of this Account.
         :rtype: Account
@@ -300,7 +300,7 @@ class Account:
     def parent_account(self, parent_account):
         """Sets the parent_account of this Account.
 
-            The account which is responsible for administering the account.
+            The parent account responsible for administering this account.
 
         :param parent_account: The parent_account of this Account.
         :type: Account
@@ -335,7 +335,7 @@ class Account:
     def restricted_active(self):
         """Gets the restricted_active of this Account.
 
-            Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+            Whether this account and all its parent accounts are active or restricted active. There is at least one account that is restricted active.
 
         :return: The restricted_active of this Account.
         :rtype: bool
@@ -346,7 +346,7 @@ class Account:
     def restricted_active(self, restricted_active):
         """Sets the restricted_active of this Account.
 
-            Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+            Whether this account and all its parent accounts are active or restricted active. There is at least one account that is restricted active.
 
         :param restricted_active: The restricted_active of this Account.
         :type: bool
@@ -358,7 +358,7 @@ class Account:
     def scope(self):
         """Gets the scope of this Account.
 
-            This is the scope to which the account belongs to.
+            The scope that the account belongs to.
 
         :return: The scope of this Account.
         :rtype: int
@@ -369,7 +369,7 @@ class Account:
     def scope(self, scope):
         """Sets the scope of this Account.
 
-            This is the scope to which the account belongs to.
+            The scope that the account belongs to.
 
         :param scope: The scope of this Account.
         :type: int
@@ -404,7 +404,7 @@ class Account:
     def subaccount_limit(self):
         """Gets the subaccount_limit of this Account.
 
-            This property restricts the number of subaccounts which can be created within this account.
+            The number of sub-accounts that can be created within this account.
 
         :return: The subaccount_limit of this Account.
         :rtype: int
@@ -415,7 +415,7 @@ class Account:
     def subaccount_limit(self, subaccount_limit):
         """Sets the subaccount_limit of this Account.
 
-            This property restricts the number of subaccounts which can be created within this account.
+            The number of sub-accounts that can be created within this account.
 
         :param subaccount_limit: The subaccount_limit of this Account.
         :type: int
@@ -427,7 +427,7 @@ class Account:
     def type(self):
         """Gets the type of this Account.
 
-            The account type defines which role and capabilities it has.
+            The account's type which defines its role and capabilities.
 
         :return: The type of this Account.
         :rtype: AccountType
@@ -438,7 +438,7 @@ class Account:
     def type(self, type):
         """Sets the type of this Account.
 
-            The account type defines which role and capabilities it has.
+            The account's type which defines its role and capabilities.
 
         :param type: The type of this Account.
         :type: AccountType

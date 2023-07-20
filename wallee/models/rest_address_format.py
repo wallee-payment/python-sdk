@@ -39,7 +39,7 @@ class RestAddressFormat:
     def post_code_examples(self):
         """Gets the post_code_examples of this RestAddressFormat.
 
-            The example post codes allow the user to understand what we expect here.
+            A list of sample post codes.
 
         :return: The post_code_examples of this RestAddressFormat.
         :rtype: list[str]
@@ -50,7 +50,7 @@ class RestAddressFormat:
     def post_code_examples(self, post_code_examples):
         """Sets the post_code_examples of this RestAddressFormat.
 
-            The example post codes allow the user to understand what we expect here.
+            A list of sample post codes.
 
         :param post_code_examples: The post_code_examples of this RestAddressFormat.
         :type: list[str]
@@ -62,7 +62,7 @@ class RestAddressFormat:
     def post_code_regex(self):
         """Gets the post_code_regex of this RestAddressFormat.
 
-            The post code regex is a regular expression which can validates the input of the post code.
+            The regular expression to validate post codes.
 
         :return: The post_code_regex of this RestAddressFormat.
         :rtype: str
@@ -73,7 +73,7 @@ class RestAddressFormat:
     def post_code_regex(self, post_code_regex):
         """Sets the post_code_regex of this RestAddressFormat.
 
-            The post code regex is a regular expression which can validates the input of the post code.
+            The regular expression to validate post codes.
 
         :param post_code_regex: The post_code_regex of this RestAddressFormat.
         :type: str
@@ -85,7 +85,7 @@ class RestAddressFormat:
     def required_fields(self):
         """Gets the required_fields of this RestAddressFormat.
 
-            The required fields indicate what fields are required within an address to comply with the address format.
+            The fields that are required in the address format.
 
         :return: The required_fields of this RestAddressFormat.
         :rtype: list[RestAddressFormatField]
@@ -96,7 +96,7 @@ class RestAddressFormat:
     def required_fields(self, required_fields):
         """Sets the required_fields of this RestAddressFormat.
 
-            The required fields indicate what fields are required within an address to comply with the address format.
+            The fields that are required in the address format.
 
         :param required_fields: The required_fields of this RestAddressFormat.
         :type: list[RestAddressFormatField]
@@ -108,7 +108,7 @@ class RestAddressFormat:
     def used_fields(self):
         """Gets the used_fields of this RestAddressFormat.
 
-            The used fields indicate what fields are used within this address format.
+            The fields that are used in the address format.
 
         :return: The used_fields of this RestAddressFormat.
         :rtype: list[RestAddressFormatField]
@@ -119,7 +119,7 @@ class RestAddressFormat:
     def used_fields(self, used_fields):
         """Sets the used_fields of this RestAddressFormat.
 
-            The used fields indicate what fields are used within this address format.
+            The fields that are used in the address format.
 
         :param used_fields: The used_fields of this RestAddressFormat.
         :type: list[RestAddressFormatField]

@@ -11,16 +11,18 @@ class RestCurrency:
     
         'currency_code': 'str',
         'fraction_digits': 'int',
+        'name': 'str',
         'numeric_code': 'int',
     }
 
     attribute_map = {
-        'currency_code': 'currencyCode','fraction_digits': 'fractionDigits','numeric_code': 'numericCode',
+        'currency_code': 'currencyCode','fraction_digits': 'fractionDigits','name': 'name','numeric_code': 'numericCode',
     }
 
     
     _currency_code = None
     _fraction_digits = None
+    _name = None
     _numeric_code = None
 
     def __init__(self, **kwargs):
@@ -28,6 +30,7 @@ class RestCurrency:
         
         self.currency_code = kwargs.get('currency_code', None)
         self.fraction_digits = kwargs.get('fraction_digits', None)
+        self.name = kwargs.get('name', None)
         self.numeric_code = kwargs.get('numeric_code', None)
         
 
@@ -36,7 +39,7 @@ class RestCurrency:
     def currency_code(self):
         """Gets the currency_code of this RestCurrency.
 
-            The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).
+            The currency's three-letter code (ISO 4217 format).
 
         :return: The currency_code of this RestCurrency.
         :rtype: str
@@ -47,7 +50,7 @@ class RestCurrency:
     def currency_code(self, currency_code):
         """Sets the currency_code of this RestCurrency.
 
-            The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).
+            The currency's three-letter code (ISO 4217 format).
 
         :param currency_code: The currency_code of this RestCurrency.
         :type: str
@@ -59,7 +62,7 @@ class RestCurrency:
     def fraction_digits(self):
         """Gets the fraction_digits of this RestCurrency.
 
-            The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.
+            The currency's number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.
 
         :return: The fraction_digits of this RestCurrency.
         :rtype: int
@@ -70,7 +73,7 @@ class RestCurrency:
     def fraction_digits(self, fraction_digits):
         """Sets the fraction_digits of this RestCurrency.
 
-            The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.
+            The currency's number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.
 
         :param fraction_digits: The fraction_digits of this RestCurrency.
         :type: int
@@ -79,10 +82,33 @@ class RestCurrency:
         self._fraction_digits = fraction_digits
     
     @property
+    def name(self):
+        """Gets the name of this RestCurrency.
+
+            The name of the currency.
+
+        :return: The name of this RestCurrency.
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this RestCurrency.
+
+            The name of the currency.
+
+        :param name: The name of this RestCurrency.
+        :type: str
+        """
+
+        self._name = name
+    
+    @property
     def numeric_code(self):
         """Gets the numeric_code of this RestCurrency.
 
-            The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).
+            The currency's three-digit code (ISO 4217 format).
 
         :return: The numeric_code of this RestCurrency.
         :rtype: int
@@ -93,7 +119,7 @@ class RestCurrency:
     def numeric_code(self, numeric_code):
         """Sets the numeric_code of this RestCurrency.
 
-            The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).
+            The currency's three-digit code (ISO 4217 format).
 
         :param numeric_code: The numeric_code of this RestCurrency.
         :type: int

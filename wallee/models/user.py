@@ -11,7 +11,7 @@ class User:
     
         'id': 'int',
         'planned_purge_date': 'datetime',
-        'scope': 'Scope',
+        'scope': 'int',
         'state': 'CreationEntityState',
         'user_type': 'UserType',
         'version': 'int',
@@ -91,10 +91,10 @@ class User:
     def scope(self):
         """Gets the scope of this User.
 
-            
+            The scope that the user belongs to.
 
         :return: The scope of this User.
-        :rtype: Scope
+        :rtype: int
         """
         return self._scope
 
@@ -102,10 +102,10 @@ class User:
     def scope(self, scope):
         """Sets the scope of this User.
 
-            
+            The scope that the user belongs to.
 
         :param scope: The scope of this User.
-        :type: Scope
+        :type: int
         """
 
         self._scope = scope
@@ -137,7 +137,7 @@ class User:
     def user_type(self):
         """Gets the user_type of this User.
 
-            
+            The user's type which defines its role and capabilities.
 
         :return: The user_type of this User.
         :rtype: UserType
@@ -148,7 +148,7 @@ class User:
     def user_type(self, user_type):
         """Sets the user_type of this User.
 
-            
+            The user's type which defines its role and capabilities.
 
         :param user_type: The user_type of this User.
         :type: UserType

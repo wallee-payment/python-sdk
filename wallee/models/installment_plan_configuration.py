@@ -24,7 +24,7 @@ class InstallmentPlanConfiguration:
         'state': 'CreationEntityState',
         'tax_class': 'TaxClass',
         'terms_and_conditions': 'ResourcePath',
-        'title': 'DatabaseTranslatedString',
+        'title': 'dict(str, str)',
         'version': 'int',
     }
 
@@ -428,7 +428,7 @@ class InstallmentPlanConfiguration:
             The title of the installment plan is used within the payment process. The title is visible to the buyer.
 
         :return: The title of this InstallmentPlanConfiguration.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._title
 
@@ -439,7 +439,7 @@ class InstallmentPlanConfiguration:
             The title of the installment plan is used within the payment process. The title is visible to the buyer.
 
         :param title: The title of this InstallmentPlanConfiguration.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._title = title

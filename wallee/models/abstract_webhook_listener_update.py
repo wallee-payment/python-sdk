@@ -39,7 +39,7 @@ class AbstractWebhookListenerUpdate:
     def entity_states(self):
         """Gets the entity_states of this AbstractWebhookListenerUpdate.
 
-            The target state identifies the state into which entities need to move into to trigger the webhook listener.
+            The entity's target states that are to be monitored.
 
         :return: The entity_states of this AbstractWebhookListenerUpdate.
         :rtype: list[str]
@@ -50,7 +50,7 @@ class AbstractWebhookListenerUpdate:
     def entity_states(self, entity_states):
         """Sets the entity_states of this AbstractWebhookListenerUpdate.
 
-            The target state identifies the state into which entities need to move into to trigger the webhook listener.
+            The entity's target states that are to be monitored.
 
         :param entity_states: The entity_states of this AbstractWebhookListenerUpdate.
         :type: list[str]
@@ -62,7 +62,7 @@ class AbstractWebhookListenerUpdate:
     def name(self):
         """Gets the name of this AbstractWebhookListenerUpdate.
 
-            The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook listener.
 
         :return: The name of this AbstractWebhookListenerUpdate.
         :rtype: str
@@ -73,7 +73,7 @@ class AbstractWebhookListenerUpdate:
     def name(self, name):
         """Sets the name of this AbstractWebhookListenerUpdate.
 
-            The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook listener.
 
         :param name: The name of this AbstractWebhookListenerUpdate.
         :type: str
@@ -87,7 +87,7 @@ class AbstractWebhookListenerUpdate:
     def notify_every_change(self):
         """Gets the notify_every_change of this AbstractWebhookListenerUpdate.
 
-            Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+            Whether every update of the entity or only state changes are to be monitored.
 
         :return: The notify_every_change of this AbstractWebhookListenerUpdate.
         :rtype: bool
@@ -98,7 +98,7 @@ class AbstractWebhookListenerUpdate:
     def notify_every_change(self, notify_every_change):
         """Sets the notify_every_change of this AbstractWebhookListenerUpdate.
 
-            Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+            Whether every update of the entity or only state changes are to be monitored.
 
         :param notify_every_change: The notify_every_change of this AbstractWebhookListenerUpdate.
         :type: bool

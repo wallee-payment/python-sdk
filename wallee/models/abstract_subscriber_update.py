@@ -196,7 +196,7 @@ class AbstractSubscriberUpdate:
     def meta_data(self):
         """Gets the meta_data of this AbstractSubscriberUpdate.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :return: The meta_data of this AbstractSubscriberUpdate.
         :rtype: dict(str, str)
@@ -207,7 +207,7 @@ class AbstractSubscriberUpdate:
     def meta_data(self, meta_data):
         """Sets the meta_data of this AbstractSubscriberUpdate.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :param meta_data: The meta_data of this AbstractSubscriberUpdate.
         :type: dict(str, str)

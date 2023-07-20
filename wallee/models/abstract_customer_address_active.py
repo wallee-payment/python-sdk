@@ -33,7 +33,7 @@ class AbstractCustomerAddressActive:
     def address(self):
         """Gets the address of this AbstractCustomerAddressActive.
 
-            
+            The actual postal address.
 
         :return: The address of this AbstractCustomerAddressActive.
         :rtype: CustomerPostalAddressCreate
@@ -44,7 +44,7 @@ class AbstractCustomerAddressActive:
     def address(self, address):
         """Sets the address of this AbstractCustomerAddressActive.
 
-            
+            The actual postal address.
 
         :param address: The address of this AbstractCustomerAddressActive.
         :type: CustomerPostalAddressCreate
@@ -56,7 +56,7 @@ class AbstractCustomerAddressActive:
     def address_type(self):
         """Gets the address_type of this AbstractCustomerAddressActive.
 
-            
+            Whether the address is for billing or shipping or both.
 
         :return: The address_type of this AbstractCustomerAddressActive.
         :rtype: CustomerAddressType
@@ -67,7 +67,7 @@ class AbstractCustomerAddressActive:
     def address_type(self, address_type):
         """Sets the address_type of this AbstractCustomerAddressActive.
 
-            
+            Whether the address is for billing or shipping or both.
 
         :param address_type: The address_type of this AbstractCustomerAddressActive.
         :type: CustomerAddressType

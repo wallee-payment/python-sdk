@@ -87,7 +87,7 @@ class CustomerPostalAddress:
     def city(self):
         """Gets the city of this CustomerPostalAddress.
 
-            
+            The city, town or village.
 
         :return: The city of this CustomerPostalAddress.
         :rtype: str
@@ -98,7 +98,7 @@ class CustomerPostalAddress:
     def city(self, city):
         """Sets the city of this CustomerPostalAddress.
 
-            
+            The city, town or village.
 
         :param city: The city of this CustomerPostalAddress.
         :type: str
@@ -112,7 +112,7 @@ class CustomerPostalAddress:
     def commercial_register_number(self):
         """Gets the commercial_register_number of this CustomerPostalAddress.
 
-            
+            The commercial registration number of the organization.
 
         :return: The commercial_register_number of this CustomerPostalAddress.
         :rtype: str
@@ -123,7 +123,7 @@ class CustomerPostalAddress:
     def commercial_register_number(self, commercial_register_number):
         """Sets the commercial_register_number of this CustomerPostalAddress.
 
-            
+            The commercial registration number of the organization.
 
         :param commercial_register_number: The commercial_register_number of this CustomerPostalAddress.
         :type: str
@@ -137,7 +137,7 @@ class CustomerPostalAddress:
     def country(self):
         """Gets the country of this CustomerPostalAddress.
 
-            
+            The two-letter country code (ISO 3166 format).
 
         :return: The country of this CustomerPostalAddress.
         :rtype: str
@@ -148,7 +148,7 @@ class CustomerPostalAddress:
     def country(self, country):
         """Sets the country of this CustomerPostalAddress.
 
-            
+            The two-letter country code (ISO 3166 format).
 
         :param country: The country of this CustomerPostalAddress.
         :type: str
@@ -160,7 +160,7 @@ class CustomerPostalAddress:
     def date_of_birth(self):
         """Gets the date_of_birth of this CustomerPostalAddress.
 
-            
+            The date of birth.
 
         :return: The date_of_birth of this CustomerPostalAddress.
         :rtype: date
@@ -171,7 +171,7 @@ class CustomerPostalAddress:
     def date_of_birth(self, date_of_birth):
         """Sets the date_of_birth of this CustomerPostalAddress.
 
-            
+            The date of birth.
 
         :param date_of_birth: The date_of_birth of this CustomerPostalAddress.
         :type: date
@@ -183,7 +183,7 @@ class CustomerPostalAddress:
     def dependent_locality(self):
         """Gets the dependent_locality of this CustomerPostalAddress.
 
-            
+            The dependent locality which is a sub-division of the state.
 
         :return: The dependent_locality of this CustomerPostalAddress.
         :rtype: str
@@ -194,7 +194,7 @@ class CustomerPostalAddress:
     def dependent_locality(self, dependent_locality):
         """Sets the dependent_locality of this CustomerPostalAddress.
 
-            
+            The dependent locality which is a sub-division of the state.
 
         :param dependent_locality: The dependent_locality of this CustomerPostalAddress.
         :type: str
@@ -208,7 +208,7 @@ class CustomerPostalAddress:
     def email_address(self):
         """Gets the email_address of this CustomerPostalAddress.
 
-            
+            The email address.
 
         :return: The email_address of this CustomerPostalAddress.
         :rtype: str
@@ -219,7 +219,7 @@ class CustomerPostalAddress:
     def email_address(self, email_address):
         """Sets the email_address of this CustomerPostalAddress.
 
-            
+            The email address.
 
         :param email_address: The email_address of this CustomerPostalAddress.
         :type: str
@@ -233,7 +233,7 @@ class CustomerPostalAddress:
     def family_name(self):
         """Gets the family_name of this CustomerPostalAddress.
 
-            
+            The family or last name.
 
         :return: The family_name of this CustomerPostalAddress.
         :rtype: str
@@ -244,7 +244,7 @@ class CustomerPostalAddress:
     def family_name(self, family_name):
         """Sets the family_name of this CustomerPostalAddress.
 
-            
+            The family or last name.
 
         :param family_name: The family_name of this CustomerPostalAddress.
         :type: str
@@ -258,7 +258,7 @@ class CustomerPostalAddress:
     def gender(self):
         """Gets the gender of this CustomerPostalAddress.
 
-            
+            The gender.
 
         :return: The gender of this CustomerPostalAddress.
         :rtype: Gender
@@ -269,7 +269,7 @@ class CustomerPostalAddress:
     def gender(self, gender):
         """Sets the gender of this CustomerPostalAddress.
 
-            
+            The gender.
 
         :param gender: The gender of this CustomerPostalAddress.
         :type: Gender
@@ -281,7 +281,7 @@ class CustomerPostalAddress:
     def given_name(self):
         """Gets the given_name of this CustomerPostalAddress.
 
-            
+            The given or first name.
 
         :return: The given_name of this CustomerPostalAddress.
         :rtype: str
@@ -292,7 +292,7 @@ class CustomerPostalAddress:
     def given_name(self, given_name):
         """Sets the given_name of this CustomerPostalAddress.
 
-            
+            The given or first name.
 
         :param given_name: The given_name of this CustomerPostalAddress.
         :type: str
@@ -306,7 +306,7 @@ class CustomerPostalAddress:
     def legal_organization_form(self):
         """Gets the legal_organization_form of this CustomerPostalAddress.
 
-            
+            The legal form of the organization.
 
         :return: The legal_organization_form of this CustomerPostalAddress.
         :rtype: LegalOrganizationForm
@@ -317,7 +317,7 @@ class CustomerPostalAddress:
     def legal_organization_form(self, legal_organization_form):
         """Sets the legal_organization_form of this CustomerPostalAddress.
 
-            
+            The legal form of the organization.
 
         :param legal_organization_form: The legal_organization_form of this CustomerPostalAddress.
         :type: LegalOrganizationForm
@@ -329,7 +329,7 @@ class CustomerPostalAddress:
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this CustomerPostalAddress.
 
-            
+            The phone number of a mobile phone.
 
         :return: The mobile_phone_number of this CustomerPostalAddress.
         :rtype: str
@@ -340,7 +340,7 @@ class CustomerPostalAddress:
     def mobile_phone_number(self, mobile_phone_number):
         """Sets the mobile_phone_number of this CustomerPostalAddress.
 
-            
+            The phone number of a mobile phone.
 
         :param mobile_phone_number: The mobile_phone_number of this CustomerPostalAddress.
         :type: str
@@ -354,7 +354,7 @@ class CustomerPostalAddress:
     def organization_name(self):
         """Gets the organization_name of this CustomerPostalAddress.
 
-            
+            The organization's name.
 
         :return: The organization_name of this CustomerPostalAddress.
         :rtype: str
@@ -365,7 +365,7 @@ class CustomerPostalAddress:
     def organization_name(self, organization_name):
         """Sets the organization_name of this CustomerPostalAddress.
 
-            
+            The organization's name.
 
         :param organization_name: The organization_name of this CustomerPostalAddress.
         :type: str
@@ -379,7 +379,7 @@ class CustomerPostalAddress:
     def phone_number(self):
         """Gets the phone_number of this CustomerPostalAddress.
 
-            
+            The phone number.
 
         :return: The phone_number of this CustomerPostalAddress.
         :rtype: str
@@ -390,7 +390,7 @@ class CustomerPostalAddress:
     def phone_number(self, phone_number):
         """Sets the phone_number of this CustomerPostalAddress.
 
-            
+            The phone number.
 
         :param phone_number: The phone_number of this CustomerPostalAddress.
         :type: str
@@ -404,7 +404,7 @@ class CustomerPostalAddress:
     def postal_state(self):
         """Gets the postal_state of this CustomerPostalAddress.
 
-            
+            The name of the region, typically a state, county, province or prefecture.
 
         :return: The postal_state of this CustomerPostalAddress.
         :rtype: str
@@ -415,7 +415,7 @@ class CustomerPostalAddress:
     def postal_state(self, postal_state):
         """Sets the postal_state of this CustomerPostalAddress.
 
-            
+            The name of the region, typically a state, county, province or prefecture.
 
         :param postal_state: The postal_state of this CustomerPostalAddress.
         :type: str
@@ -427,7 +427,7 @@ class CustomerPostalAddress:
     def postcode(self):
         """Gets the postcode of this CustomerPostalAddress.
 
-            
+            The postal code, also known as ZIP, postcode, etc.
 
         :return: The postcode of this CustomerPostalAddress.
         :rtype: str
@@ -438,7 +438,7 @@ class CustomerPostalAddress:
     def postcode(self, postcode):
         """Sets the postcode of this CustomerPostalAddress.
 
-            
+            The postal code, also known as ZIP, postcode, etc.
 
         :param postcode: The postcode of this CustomerPostalAddress.
         :type: str
@@ -452,7 +452,7 @@ class CustomerPostalAddress:
     def sales_tax_number(self):
         """Gets the sales_tax_number of this CustomerPostalAddress.
 
-            
+            The sales tax number of the organization.
 
         :return: The sales_tax_number of this CustomerPostalAddress.
         :rtype: str
@@ -463,7 +463,7 @@ class CustomerPostalAddress:
     def sales_tax_number(self, sales_tax_number):
         """Sets the sales_tax_number of this CustomerPostalAddress.
 
-            
+            The sales tax number of the organization.
 
         :param sales_tax_number: The sales_tax_number of this CustomerPostalAddress.
         :type: str
@@ -477,7 +477,7 @@ class CustomerPostalAddress:
     def salutation(self):
         """Gets the salutation of this CustomerPostalAddress.
 
-            
+            The salutation e.g. Mrs, Mr, Dr.
 
         :return: The salutation of this CustomerPostalAddress.
         :rtype: str
@@ -488,7 +488,7 @@ class CustomerPostalAddress:
     def salutation(self, salutation):
         """Sets the salutation of this CustomerPostalAddress.
 
-            
+            The salutation e.g. Mrs, Mr, Dr.
 
         :param salutation: The salutation of this CustomerPostalAddress.
         :type: str
@@ -502,7 +502,7 @@ class CustomerPostalAddress:
     def social_security_number(self):
         """Gets the social_security_number of this CustomerPostalAddress.
 
-            
+            The social security number.
 
         :return: The social_security_number of this CustomerPostalAddress.
         :rtype: str
@@ -513,7 +513,7 @@ class CustomerPostalAddress:
     def social_security_number(self, social_security_number):
         """Sets the social_security_number of this CustomerPostalAddress.
 
-            
+            The social security number.
 
         :param social_security_number: The social_security_number of this CustomerPostalAddress.
         :type: str
@@ -527,7 +527,7 @@ class CustomerPostalAddress:
     def sorting_code(self):
         """Gets the sorting_code of this CustomerPostalAddress.
 
-            The sorting code identifies the post office at which the post box is located in.
+            The sorting code identifying the post office where the PO Box is located.
 
         :return: The sorting_code of this CustomerPostalAddress.
         :rtype: str
@@ -538,7 +538,7 @@ class CustomerPostalAddress:
     def sorting_code(self, sorting_code):
         """Sets the sorting_code of this CustomerPostalAddress.
 
-            The sorting code identifies the post office at which the post box is located in.
+            The sorting code identifying the post office where the PO Box is located.
 
         :param sorting_code: The sorting_code of this CustomerPostalAddress.
         :type: str
@@ -552,7 +552,7 @@ class CustomerPostalAddress:
     def street(self):
         """Gets the street of this CustomerPostalAddress.
 
-            
+            The street or PO Box.
 
         :return: The street of this CustomerPostalAddress.
         :rtype: str
@@ -563,7 +563,7 @@ class CustomerPostalAddress:
     def street(self, street):
         """Sets the street of this CustomerPostalAddress.
 
-            
+            The street or PO Box.
 
         :param street: The street of this CustomerPostalAddress.
         :type: str

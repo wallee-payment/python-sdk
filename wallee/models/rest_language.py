@@ -13,12 +13,13 @@ class RestLanguage:
         'ietf_code': 'str',
         'iso2_code': 'str',
         'iso3_code': 'str',
+        'name': 'str',
         'plural_expression': 'str',
         'primary_of_group': 'bool',
     }
 
     attribute_map = {
-        'country_code': 'countryCode','ietf_code': 'ietfCode','iso2_code': 'iso2Code','iso3_code': 'iso3Code','plural_expression': 'pluralExpression','primary_of_group': 'primaryOfGroup',
+        'country_code': 'countryCode','ietf_code': 'ietfCode','iso2_code': 'iso2Code','iso3_code': 'iso3Code','name': 'name','plural_expression': 'pluralExpression','primary_of_group': 'primaryOfGroup',
     }
 
     
@@ -26,6 +27,7 @@ class RestLanguage:
     _ietf_code = None
     _iso2_code = None
     _iso3_code = None
+    _name = None
     _plural_expression = None
     _primary_of_group = None
 
@@ -36,6 +38,7 @@ class RestLanguage:
         self.ietf_code = kwargs.get('ietf_code', None)
         self.iso2_code = kwargs.get('iso2_code', None)
         self.iso3_code = kwargs.get('iso3_code', None)
+        self.name = kwargs.get('name', None)
         self.plural_expression = kwargs.get('plural_expression', None)
         self.primary_of_group = kwargs.get('primary_of_group', None)
         
@@ -45,7 +48,7 @@ class RestLanguage:
     def country_code(self):
         """Gets the country_code of this RestLanguage.
 
-            The country code represents the region of the language as a 2 letter ISO code.
+            The two-letter code of the language's region (ISO 3166-1 alpha-2 format).
 
         :return: The country_code of this RestLanguage.
         :rtype: str
@@ -56,7 +59,7 @@ class RestLanguage:
     def country_code(self, country_code):
         """Sets the country_code of this RestLanguage.
 
-            The country code represents the region of the language as a 2 letter ISO code.
+            The two-letter code of the language's region (ISO 3166-1 alpha-2 format).
 
         :param country_code: The country_code of this RestLanguage.
         :type: str
@@ -68,7 +71,7 @@ class RestLanguage:
     def ietf_code(self):
         """Gets the ietf_code of this RestLanguage.
 
-            The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).
+            The language's IETF tag consisting of the two-letter ISO code and region e.g. en-US, de-CH.
 
         :return: The ietf_code of this RestLanguage.
         :rtype: str
@@ -79,7 +82,7 @@ class RestLanguage:
     def ietf_code(self, ietf_code):
         """Sets the ietf_code of this RestLanguage.
 
-            The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).
+            The language's IETF tag consisting of the two-letter ISO code and region e.g. en-US, de-CH.
 
         :param ietf_code: The ietf_code of this RestLanguage.
         :type: str
@@ -91,7 +94,7 @@ class RestLanguage:
     def iso2_code(self):
         """Gets the iso2_code of this RestLanguage.
 
-            The ISO 2 letter code represents the language with two letters.
+            The language's two-letter code (ISO 639-1 format).
 
         :return: The iso2_code of this RestLanguage.
         :rtype: str
@@ -102,7 +105,7 @@ class RestLanguage:
     def iso2_code(self, iso2_code):
         """Sets the iso2_code of this RestLanguage.
 
-            The ISO 2 letter code represents the language with two letters.
+            The language's two-letter code (ISO 639-1 format).
 
         :param iso2_code: The iso2_code of this RestLanguage.
         :type: str
@@ -114,7 +117,7 @@ class RestLanguage:
     def iso3_code(self):
         """Gets the iso3_code of this RestLanguage.
 
-            The ISO 3 letter code represents the language with three letters.
+            The language's three-letter code (ISO 639-2/T format).
 
         :return: The iso3_code of this RestLanguage.
         :rtype: str
@@ -125,7 +128,7 @@ class RestLanguage:
     def iso3_code(self, iso3_code):
         """Sets the iso3_code of this RestLanguage.
 
-            The ISO 3 letter code represents the language with three letters.
+            The language's three-letter code (ISO 639-2/T format).
 
         :param iso3_code: The iso3_code of this RestLanguage.
         :type: str
@@ -134,10 +137,33 @@ class RestLanguage:
         self._iso3_code = iso3_code
     
     @property
+    def name(self):
+        """Gets the name of this RestLanguage.
+
+            The name of the language.
+
+        :return: The name of this RestLanguage.
+        :rtype: str
+        """
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        """Sets the name of this RestLanguage.
+
+            The name of the language.
+
+        :param name: The name of this RestLanguage.
+        :type: str
+        """
+
+        self._name = name
+    
+    @property
     def plural_expression(self):
         """Gets the plural_expression of this RestLanguage.
 
-            The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.
+            The expression to determine the plural index for a given number of items used to find the proper plural form for translations.
 
         :return: The plural_expression of this RestLanguage.
         :rtype: str
@@ -148,7 +174,7 @@ class RestLanguage:
     def plural_expression(self, plural_expression):
         """Sets the plural_expression of this RestLanguage.
 
-            The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.
+            The expression to determine the plural index for a given number of items used to find the proper plural form for translations.
 
         :param plural_expression: The plural_expression of this RestLanguage.
         :type: str
@@ -160,7 +186,7 @@ class RestLanguage:
     def primary_of_group(self):
         """Gets the primary_of_group of this RestLanguage.
 
-            The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.
+            Whether this is the primary language in a group of languages.
 
         :return: The primary_of_group of this RestLanguage.
         :rtype: bool
@@ -171,7 +197,7 @@ class RestLanguage:
     def primary_of_group(self, primary_of_group):
         """Sets the primary_of_group of this RestLanguage.
 
-            The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.
+            Whether this is the primary language in a group of languages.
 
         :param primary_of_group: The primary_of_group of this RestLanguage.
         :type: bool

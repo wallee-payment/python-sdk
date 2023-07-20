@@ -10,7 +10,7 @@ class InstallmentPlanSliceConfiguration:
     swagger_types = {
     
         'id': 'int',
-        'line_item_title': 'DatabaseTranslatedString',
+        'line_item_title': 'dict(str, str)',
         'linked_space_id': 'int',
         'period': 'str',
         'plan': 'InstallmentPlanConfiguration',
@@ -83,7 +83,7 @@ class InstallmentPlanSliceConfiguration:
             The title of this slices line items. The title is visible to the buyer.
 
         :return: The line_item_title of this InstallmentPlanSliceConfiguration.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._line_item_title
 
@@ -94,7 +94,7 @@ class InstallmentPlanSliceConfiguration:
             The title of this slices line items. The title is visible to the buyer.
 
         :param line_item_title: The line_item_title of this InstallmentPlanSliceConfiguration.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._line_item_title = line_item_title

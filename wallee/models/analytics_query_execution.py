@@ -10,6 +10,7 @@ class AnalyticsQueryExecution:
     swagger_types = {
     
         'account': 'int',
+        'error_message': 'str',
         'external_id': 'str',
         'failure_reason': 'FailureReason',
         'id': 'int',
@@ -23,11 +24,12 @@ class AnalyticsQueryExecution:
     }
 
     attribute_map = {
-        'account': 'account','external_id': 'externalId','failure_reason': 'failureReason','id': 'id','processing_end_time': 'processingEndTime','processing_start_time': 'processingStartTime','query_string': 'queryString','scanned_data_in_gb': 'scannedDataInGb','scanned_data_limit': 'scannedDataLimit','spaces': 'spaces','state': 'state',
+        'account': 'account','error_message': 'errorMessage','external_id': 'externalId','failure_reason': 'failureReason','id': 'id','processing_end_time': 'processingEndTime','processing_start_time': 'processingStartTime','query_string': 'queryString','scanned_data_in_gb': 'scannedDataInGb','scanned_data_limit': 'scannedDataLimit','spaces': 'spaces','state': 'state',
     }
 
     
     _account = None
+    _error_message = None
     _external_id = None
     _failure_reason = None
     _id = None
@@ -43,6 +45,7 @@ class AnalyticsQueryExecution:
         self.discriminator = None
         
         self.account = kwargs.get('account', None)
+        self.error_message = kwargs.get('error_message', None)
         self.external_id = kwargs.get('external_id', None)
         self.failure_reason = kwargs.get('failure_reason', None)
         self.id = kwargs.get('id', None)
@@ -78,6 +81,29 @@ class AnalyticsQueryExecution:
         """
 
         self._account = account
+    
+    @property
+    def error_message(self):
+        """Gets the error_message of this AnalyticsQueryExecution.
+
+            The error message if and only if the query has failed, otherwise null.
+
+        :return: The error_message of this AnalyticsQueryExecution.
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this AnalyticsQueryExecution.
+
+            The error message if and only if the query has failed, otherwise null.
+
+        :param error_message: The error_message of this AnalyticsQueryExecution.
+        :type: str
+        """
+
+        self._error_message = error_message
     
     @property
     def external_id(self):

@@ -39,7 +39,7 @@ class LabelDescriptorGroup:
     def description(self):
         """Gets the description of this LabelDescriptorGroup.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this LabelDescriptorGroup.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class LabelDescriptorGroup:
     def description(self, description):
         """Sets the description of this LabelDescriptorGroup.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this LabelDescriptorGroup.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class LabelDescriptorGroup:
     def name(self):
         """Gets the name of this LabelDescriptorGroup.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this LabelDescriptorGroup.
         :rtype: dict(str, str)
@@ -96,7 +96,7 @@ class LabelDescriptorGroup:
     def name(self, name):
         """Sets the name of this LabelDescriptorGroup.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this LabelDescriptorGroup.
         :type: dict(str, str)
@@ -108,7 +108,7 @@ class LabelDescriptorGroup:
     def weight(self):
         """Gets the weight of this LabelDescriptorGroup.
 
-            
+            When listing label groups, they can be sorted by this number.
 
         :return: The weight of this LabelDescriptorGroup.
         :rtype: int
@@ -119,7 +119,7 @@ class LabelDescriptorGroup:
     def weight(self, weight):
         """Sets the weight of this LabelDescriptorGroup.
 
-            
+            When listing label groups, they can be sorted by this number.
 
         :param weight: The weight of this LabelDescriptorGroup.
         :type: int

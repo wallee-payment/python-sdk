@@ -11,7 +11,7 @@ class Role:
     
         'account': 'Account',
         'id': 'int',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'permissions': 'list[Permission]',
         'planned_purge_date': 'datetime',
         'state': 'RoleState',
@@ -51,7 +51,7 @@ class Role:
     def account(self):
         """Gets the account of this Role.
 
-            The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
+            The account the role belongs to. The role can only be assigned within this account.
 
         :return: The account of this Role.
         :rtype: Account
@@ -62,7 +62,7 @@ class Role:
     def account(self, account):
         """Sets the account of this Role.
 
-            The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
+            The account the role belongs to. The role can only be assigned within this account.
 
         :param account: The account of this Role.
         :type: Account
@@ -97,10 +97,10 @@ class Role:
     def name(self):
         """Gets the name of this Role.
 
-            The name of this role is used to identify the role within administrative interfaces.
+            The name used to identify the role.
 
         :return: The name of this Role.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -108,10 +108,10 @@ class Role:
     def name(self, name):
         """Sets the name of this Role.
 
-            The name of this role is used to identify the role within administrative interfaces.
+            The name used to identify the role.
 
         :param name: The name of this Role.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name
@@ -120,7 +120,7 @@ class Role:
     def permissions(self):
         """Gets the permissions of this Role.
 
-            Set of permissions that are granted to this role.
+            The permissions granted to users with this role.
 
         :return: The permissions of this Role.
         :rtype: list[Permission]
@@ -131,7 +131,7 @@ class Role:
     def permissions(self, permissions):
         """Sets the permissions of this Role.
 
-            Set of permissions that are granted to this role.
+            The permissions granted to users with this role.
 
         :param permissions: The permissions of this Role.
         :type: list[Permission]
@@ -189,7 +189,7 @@ class Role:
     def two_factor_required(self):
         """Gets the two_factor_required of this Role.
 
-            Defines whether having been granted this role will force a user to use two-factor authentication.
+            Whether users with this role are required to use two-factor authentication.
 
         :return: The two_factor_required of this Role.
         :rtype: bool
@@ -200,7 +200,7 @@ class Role:
     def two_factor_required(self, two_factor_required):
         """Sets the two_factor_required of this Role.
 
-            Defines whether having been granted this role will force a user to use two-factor authentication.
+            Whether users with this role are required to use two-factor authentication.
 
         :param two_factor_required: The two_factor_required of this Role.
         :type: bool

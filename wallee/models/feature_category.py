@@ -39,7 +39,7 @@ class FeatureCategory:
     def description(self):
         """Gets the description of this FeatureCategory.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this FeatureCategory.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class FeatureCategory:
     def description(self, description):
         """Sets the description of this FeatureCategory.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this FeatureCategory.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class FeatureCategory:
     def name(self):
         """Gets the name of this FeatureCategory.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this FeatureCategory.
         :rtype: dict(str, str)
@@ -96,7 +96,7 @@ class FeatureCategory:
     def name(self, name):
         """Sets the name of this FeatureCategory.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this FeatureCategory.
         :type: dict(str, str)
@@ -108,7 +108,7 @@ class FeatureCategory:
     def order_weight(self):
         """Gets the order_weight of this FeatureCategory.
 
-            
+            When listing feature categories, they can be sorted by this number.
 
         :return: The order_weight of this FeatureCategory.
         :rtype: int
@@ -119,7 +119,7 @@ class FeatureCategory:
     def order_weight(self, order_weight):
         """Sets the order_weight of this FeatureCategory.
 
-            
+            When listing feature categories, they can be sorted by this number.
 
         :param order_weight: The order_weight of this FeatureCategory.
         :type: int

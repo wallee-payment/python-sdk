@@ -9,10 +9,10 @@ class SubscriptionMetric:
 
     swagger_types = {
     
-        'description': 'DatabaseTranslatedString',
+        'description': 'dict(str, str)',
         'id': 'int',
         'linked_space_id': 'int',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'planned_purge_date': 'datetime',
         'state': 'CreationEntityState',
         'type': 'SubscriptionMetricType',
@@ -54,7 +54,7 @@ class SubscriptionMetric:
             
 
         :return: The description of this SubscriptionMetric.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -65,7 +65,7 @@ class SubscriptionMetric:
             
 
         :param description: The description of this SubscriptionMetric.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -123,7 +123,7 @@ class SubscriptionMetric:
             
 
         :return: The name of this SubscriptionMetric.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -134,7 +134,7 @@ class SubscriptionMetric:
             
 
         :param name: The name of this SubscriptionMetric.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name

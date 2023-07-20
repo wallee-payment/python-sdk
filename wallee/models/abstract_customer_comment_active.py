@@ -30,7 +30,7 @@ class AbstractCustomerCommentActive:
     def content(self):
         """Gets the content of this AbstractCustomerCommentActive.
 
-            
+            The comment's actual content.
 
         :return: The content of this AbstractCustomerCommentActive.
         :rtype: str
@@ -41,7 +41,7 @@ class AbstractCustomerCommentActive:
     def content(self, content):
         """Sets the content of this AbstractCustomerCommentActive.
 
-            
+            The comment's actual content.
 
         :param content: The content of this AbstractCustomerCommentActive.
         :type: str

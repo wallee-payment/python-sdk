@@ -11,7 +11,7 @@ class SubscriptionProductComponentGroupUpdate:
     
         'id': 'int',
         'version': 'int',
-        'name': 'DatabaseTranslatedStringCreate',
+        'name': 'dict(str, str)',
         'optional': 'bool',
         'product_version': 'int',
         'sort_order': 'int',
@@ -100,7 +100,7 @@ class SubscriptionProductComponentGroupUpdate:
             The component group name will be shown when the components are selected. This can be visible to the subscriber.
 
         :return: The name of this SubscriptionProductComponentGroupUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -111,7 +111,7 @@ class SubscriptionProductComponentGroupUpdate:
             The component group name will be shown when the components are selected. This can be visible to the subscriber.
 
         :param name: The name of this SubscriptionProductComponentGroupUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

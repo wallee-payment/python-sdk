@@ -30,7 +30,7 @@ class AbstractTransactionCommentActive:
     def content(self):
         """Gets the content of this AbstractTransactionCommentActive.
 
-            
+            The comment's actual content.
 
         :return: The content of this AbstractTransactionCommentActive.
         :rtype: str
@@ -41,7 +41,7 @@ class AbstractTransactionCommentActive:
     def content(self, content):
         """Sets the content of this AbstractTransactionCommentActive.
 
-            
+            The comment's actual content.
 
         :param content: The content of this AbstractTransactionCommentActive.
         :type: str

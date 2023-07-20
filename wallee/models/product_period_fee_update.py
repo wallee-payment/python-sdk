@@ -12,9 +12,9 @@ class ProductPeriodFeeUpdate:
         'id': 'int',
         'version': 'int',
         'component': 'int',
-        'description': 'DatabaseTranslatedStringCreate',
-        'ledger_entry_title': 'DatabaseTranslatedStringCreate',
-        'name': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
+        'ledger_entry_title': 'dict(str, str)',
+        'name': 'dict(str, str)',
         'number_of_free_trial_periods': 'int',
         'period_fee': 'list[PersistableCurrencyAmountUpdate]',
     }
@@ -129,7 +129,7 @@ class ProductPeriodFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :return: The description of this ProductPeriodFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -140,7 +140,7 @@ class ProductPeriodFeeUpdate:
             The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
 
         :param description: The description of this ProductPeriodFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -152,7 +152,7 @@ class ProductPeriodFeeUpdate:
             The ledger entry title will be used for the title in the ledger entry and in the invoice.
 
         :return: The ledger_entry_title of this ProductPeriodFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._ledger_entry_title
 
@@ -163,7 +163,7 @@ class ProductPeriodFeeUpdate:
             The ledger entry title will be used for the title in the ledger entry and in the invoice.
 
         :param ledger_entry_title: The ledger_entry_title of this ProductPeriodFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._ledger_entry_title = ledger_entry_title
@@ -175,7 +175,7 @@ class ProductPeriodFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :return: The name of this ProductPeriodFeeUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -186,7 +186,7 @@ class ProductPeriodFeeUpdate:
             The name of the fee should describe for the subscriber in few words for what the fee is for.
 
         :param name: The name of this ProductPeriodFeeUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

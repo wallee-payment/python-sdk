@@ -59,7 +59,7 @@ class AbstractAccountUpdate:
     def name(self):
         """Gets the name of this AbstractAccountUpdate.
 
-            The name of the account identifies the account within the administrative interface.
+            The name used to identify the account.
 
         :return: The name of this AbstractAccountUpdate.
         :rtype: str
@@ -70,7 +70,7 @@ class AbstractAccountUpdate:
     def name(self, name):
         """Sets the name of this AbstractAccountUpdate.
 
-            The name of the account identifies the account within the administrative interface.
+            The name used to identify the account.
 
         :param name: The name of this AbstractAccountUpdate.
         :type: str
@@ -86,7 +86,7 @@ class AbstractAccountUpdate:
     def subaccount_limit(self):
         """Gets the subaccount_limit of this AbstractAccountUpdate.
 
-            This property restricts the number of subaccounts which can be created within this account.
+            The number of sub-accounts that can be created within this account.
 
         :return: The subaccount_limit of this AbstractAccountUpdate.
         :rtype: int
@@ -97,7 +97,7 @@ class AbstractAccountUpdate:
     def subaccount_limit(self, subaccount_limit):
         """Sets the subaccount_limit of this AbstractAccountUpdate.
 
-            This property restricts the number of subaccounts which can be created within this account.
+            The number of sub-accounts that can be created within this account.
 
         :param subaccount_limit: The subaccount_limit of this AbstractAccountUpdate.
         :type: int

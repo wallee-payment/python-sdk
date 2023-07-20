@@ -72,7 +72,7 @@ class SpaceAddress:
     def city(self):
         """Gets the city of this SpaceAddress.
 
-            
+            The city, town or village.
 
         :return: The city of this SpaceAddress.
         :rtype: str
@@ -83,7 +83,7 @@ class SpaceAddress:
     def city(self, city):
         """Sets the city of this SpaceAddress.
 
-            
+            The city, town or village.
 
         :param city: The city of this SpaceAddress.
         :type: str
@@ -95,7 +95,7 @@ class SpaceAddress:
     def country(self):
         """Gets the country of this SpaceAddress.
 
-            
+            The two-letter country code (ISO 3166 format).
 
         :return: The country of this SpaceAddress.
         :rtype: str
@@ -106,7 +106,7 @@ class SpaceAddress:
     def country(self, country):
         """Sets the country of this SpaceAddress.
 
-            
+            The two-letter country code (ISO 3166 format).
 
         :param country: The country of this SpaceAddress.
         :type: str
@@ -118,7 +118,7 @@ class SpaceAddress:
     def dependent_locality(self):
         """Gets the dependent_locality of this SpaceAddress.
 
-            
+            The dependent locality which is a sub-division of the state.
 
         :return: The dependent_locality of this SpaceAddress.
         :rtype: str
@@ -129,7 +129,7 @@ class SpaceAddress:
     def dependent_locality(self, dependent_locality):
         """Sets the dependent_locality of this SpaceAddress.
 
-            
+            The dependent locality which is a sub-division of the state.
 
         :param dependent_locality: The dependent_locality of this SpaceAddress.
         :type: str
@@ -143,7 +143,7 @@ class SpaceAddress:
     def email_address(self):
         """Gets the email_address of this SpaceAddress.
 
-            The email address is used within emails and as reply to address.
+            The email address used for communication with clients.
 
         :return: The email_address of this SpaceAddress.
         :rtype: str
@@ -154,7 +154,7 @@ class SpaceAddress:
     def email_address(self, email_address):
         """Sets the email_address of this SpaceAddress.
 
-            The email address is used within emails and as reply to address.
+            The email address used for communication with clients.
 
         :param email_address: The email_address of this SpaceAddress.
         :type: str
@@ -166,7 +166,7 @@ class SpaceAddress:
     def family_name(self):
         """Gets the family_name of this SpaceAddress.
 
-            
+            The family or last name.
 
         :return: The family_name of this SpaceAddress.
         :rtype: str
@@ -177,7 +177,7 @@ class SpaceAddress:
     def family_name(self, family_name):
         """Sets the family_name of this SpaceAddress.
 
-            
+            The family or last name.
 
         :param family_name: The family_name of this SpaceAddress.
         :type: str
@@ -191,7 +191,7 @@ class SpaceAddress:
     def given_name(self):
         """Gets the given_name of this SpaceAddress.
 
-            
+            The given or first name.
 
         :return: The given_name of this SpaceAddress.
         :rtype: str
@@ -202,7 +202,7 @@ class SpaceAddress:
     def given_name(self, given_name):
         """Sets the given_name of this SpaceAddress.
 
-            
+            The given or first name.
 
         :param given_name: The given_name of this SpaceAddress.
         :type: str
@@ -216,7 +216,7 @@ class SpaceAddress:
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this SpaceAddress.
 
-            
+            The phone number of a mobile phone.
 
         :return: The mobile_phone_number of this SpaceAddress.
         :rtype: str
@@ -227,7 +227,7 @@ class SpaceAddress:
     def mobile_phone_number(self, mobile_phone_number):
         """Sets the mobile_phone_number of this SpaceAddress.
 
-            
+            The phone number of a mobile phone.
 
         :param mobile_phone_number: The mobile_phone_number of this SpaceAddress.
         :type: str
@@ -241,7 +241,7 @@ class SpaceAddress:
     def organization_name(self):
         """Gets the organization_name of this SpaceAddress.
 
-            
+            The organization's name.
 
         :return: The organization_name of this SpaceAddress.
         :rtype: str
@@ -252,7 +252,7 @@ class SpaceAddress:
     def organization_name(self, organization_name):
         """Sets the organization_name of this SpaceAddress.
 
-            
+            The organization's name.
 
         :param organization_name: The organization_name of this SpaceAddress.
         :type: str
@@ -266,7 +266,7 @@ class SpaceAddress:
     def phone_number(self):
         """Gets the phone_number of this SpaceAddress.
 
-            
+            The phone number.
 
         :return: The phone_number of this SpaceAddress.
         :rtype: str
@@ -277,7 +277,7 @@ class SpaceAddress:
     def phone_number(self, phone_number):
         """Sets the phone_number of this SpaceAddress.
 
-            
+            The phone number.
 
         :param phone_number: The phone_number of this SpaceAddress.
         :type: str
@@ -291,7 +291,7 @@ class SpaceAddress:
     def postal_state(self):
         """Gets the postal_state of this SpaceAddress.
 
-            
+            The name of the region, typically a state, county, province or prefecture.
 
         :return: The postal_state of this SpaceAddress.
         :rtype: str
@@ -302,7 +302,7 @@ class SpaceAddress:
     def postal_state(self, postal_state):
         """Sets the postal_state of this SpaceAddress.
 
-            
+            The name of the region, typically a state, county, province or prefecture.
 
         :param postal_state: The postal_state of this SpaceAddress.
         :type: str
@@ -314,7 +314,7 @@ class SpaceAddress:
     def postcode(self):
         """Gets the postcode of this SpaceAddress.
 
-            
+            The postal code, also known as ZIP, postcode, etc.
 
         :return: The postcode of this SpaceAddress.
         :rtype: str
@@ -325,7 +325,7 @@ class SpaceAddress:
     def postcode(self, postcode):
         """Sets the postcode of this SpaceAddress.
 
-            
+            The postal code, also known as ZIP, postcode, etc.
 
         :param postcode: The postcode of this SpaceAddress.
         :type: str
@@ -337,7 +337,7 @@ class SpaceAddress:
     def sales_tax_number(self):
         """Gets the sales_tax_number of this SpaceAddress.
 
-            
+            The sales tax number of the organization.
 
         :return: The sales_tax_number of this SpaceAddress.
         :rtype: str
@@ -348,7 +348,7 @@ class SpaceAddress:
     def sales_tax_number(self, sales_tax_number):
         """Sets the sales_tax_number of this SpaceAddress.
 
-            
+            The sales tax number of the organization.
 
         :param sales_tax_number: The sales_tax_number of this SpaceAddress.
         :type: str
@@ -362,7 +362,7 @@ class SpaceAddress:
     def salutation(self):
         """Gets the salutation of this SpaceAddress.
 
-            
+            The salutation e.g. Mrs, Mr, Dr.
 
         :return: The salutation of this SpaceAddress.
         :rtype: str
@@ -373,7 +373,7 @@ class SpaceAddress:
     def salutation(self, salutation):
         """Sets the salutation of this SpaceAddress.
 
-            
+            The salutation e.g. Mrs, Mr, Dr.
 
         :param salutation: The salutation of this SpaceAddress.
         :type: str
@@ -387,7 +387,7 @@ class SpaceAddress:
     def sorting_code(self):
         """Gets the sorting_code of this SpaceAddress.
 
-            The sorting code identifies the post office at which the post box is located in.
+            The sorting code identifying the post office where the PO Box is located.
 
         :return: The sorting_code of this SpaceAddress.
         :rtype: str
@@ -398,7 +398,7 @@ class SpaceAddress:
     def sorting_code(self, sorting_code):
         """Sets the sorting_code of this SpaceAddress.
 
-            The sorting code identifies the post office at which the post box is located in.
+            The sorting code identifying the post office where the PO Box is located.
 
         :param sorting_code: The sorting_code of this SpaceAddress.
         :type: str
@@ -412,7 +412,7 @@ class SpaceAddress:
     def street(self):
         """Gets the street of this SpaceAddress.
 
-            
+            The street or PO Box.
 
         :return: The street of this SpaceAddress.
         :rtype: str
@@ -423,7 +423,7 @@ class SpaceAddress:
     def street(self, street):
         """Sets the street of this SpaceAddress.
 
-            
+            The street or PO Box.
 
         :param street: The street of this SpaceAddress.
         :type: str

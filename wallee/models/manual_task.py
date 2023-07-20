@@ -16,13 +16,12 @@ class ManualTask:
         'id': 'int',
         'linked_space_id': 'int',
         'planned_purge_date': 'datetime',
-        'space_id': 'int',
         'state': 'ManualTaskState',
         'type': 'int',
     }
 
     attribute_map = {
-        'actions': 'actions','context_entity_id': 'contextEntityId','created_on': 'createdOn','expires_on': 'expiresOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','type': 'type',
+        'actions': 'actions','context_entity_id': 'contextEntityId','created_on': 'createdOn','expires_on': 'expiresOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type',
     }
 
     
@@ -33,7 +32,6 @@ class ManualTask:
     _id = None
     _linked_space_id = None
     _planned_purge_date = None
-    _space_id = None
     _state = None
     _type = None
 
@@ -47,7 +45,6 @@ class ManualTask:
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.type = kwargs.get('type', None)
         
@@ -57,7 +54,7 @@ class ManualTask:
     def actions(self):
         """Gets the actions of this ManualTask.
 
-            
+            The actions that can be triggered to handle the manual task.
 
         :return: The actions of this ManualTask.
         :rtype: list[int]
@@ -68,7 +65,7 @@ class ManualTask:
     def actions(self, actions):
         """Sets the actions of this ManualTask.
 
-            
+            The actions that can be triggered to handle the manual task.
 
         :param actions: The actions of this ManualTask.
         :type: list[int]
@@ -80,7 +77,7 @@ class ManualTask:
     def context_entity_id(self):
         """Gets the context_entity_id of this ManualTask.
 
-            The context entity ID links the manual task to the entity which caused its creation.
+            The ID of the entity the manual task is linked to.
 
         :return: The context_entity_id of this ManualTask.
         :rtype: int
@@ -91,7 +88,7 @@ class ManualTask:
     def context_entity_id(self, context_entity_id):
         """Sets the context_entity_id of this ManualTask.
 
-            The context entity ID links the manual task to the entity which caused its creation.
+            The ID of the entity the manual task is linked to.
 
         :param context_entity_id: The context_entity_id of this ManualTask.
         :type: int
@@ -126,7 +123,7 @@ class ManualTask:
     def expires_on(self):
         """Gets the expires_on of this ManualTask.
 
-            The expiry date indicates until when the manual task has to be executed.
+            The date and time until when the manual task has to be handled.
 
         :return: The expires_on of this ManualTask.
         :rtype: datetime
@@ -137,7 +134,7 @@ class ManualTask:
     def expires_on(self, expires_on):
         """Sets the expires_on of this ManualTask.
 
-            The expiry date indicates until when the manual task has to be executed.
+            The date and time until when the manual task has to be handled.
 
         :param expires_on: The expires_on of this ManualTask.
         :type: datetime
@@ -215,29 +212,6 @@ class ManualTask:
         self._planned_purge_date = planned_purge_date
     
     @property
-    def space_id(self):
-        """Gets the space_id of this ManualTask.
-
-            
-
-        :return: The space_id of this ManualTask.
-        :rtype: int
-        """
-        return self._space_id
-
-    @space_id.setter
-    def space_id(self, space_id):
-        """Sets the space_id of this ManualTask.
-
-            
-
-        :param space_id: The space_id of this ManualTask.
-        :type: int
-        """
-
-        self._space_id = space_id
-    
-    @property
     def state(self):
         """Gets the state of this ManualTask.
 
@@ -264,7 +238,7 @@ class ManualTask:
     def type(self):
         """Gets the type of this ManualTask.
 
-            The type categorizes the manual task.
+            The manual task's type.
 
         :return: The type of this ManualTask.
         :rtype: int
@@ -275,7 +249,7 @@ class ManualTask:
     def type(self, type):
         """Sets the type of this ManualTask.
 
-            The type categorizes the manual task.
+            The manual task's type.
 
         :param type: The type of this ManualTask.
         :type: int

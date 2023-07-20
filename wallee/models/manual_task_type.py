@@ -39,7 +39,7 @@ class ManualTaskType:
     def description(self):
         """Gets the description of this ManualTaskType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this ManualTaskType.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class ManualTaskType:
     def description(self, description):
         """Sets the description of this ManualTaskType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this ManualTaskType.
         :type: dict(str, str)
@@ -62,7 +62,7 @@ class ManualTaskType:
     def features(self):
         """Gets the features of this ManualTaskType.
 
-            
+            The features that this type belongs to.
 
         :return: The features of this ManualTaskType.
         :rtype: list[int]
@@ -73,7 +73,7 @@ class ManualTaskType:
     def features(self, features):
         """Sets the features of this ManualTaskType.
 
-            
+            The features that this type belongs to.
 
         :param features: The features of this ManualTaskType.
         :type: list[int]
@@ -108,7 +108,7 @@ class ManualTaskType:
     def name(self):
         """Gets the name of this ManualTaskType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this ManualTaskType.
         :rtype: dict(str, str)
@@ -119,7 +119,7 @@ class ManualTaskType:
     def name(self, name):
         """Sets the name of this ManualTaskType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this ManualTaskType.
         :type: dict(str, str)

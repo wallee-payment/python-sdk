@@ -48,7 +48,7 @@ class AbstractCustomerActive:
     def customer_id(self):
         """Gets the customer_id of this AbstractCustomerActive.
 
-            
+            The customer's ID in the merchant's system.
 
         :return: The customer_id of this AbstractCustomerActive.
         :rtype: str
@@ -59,7 +59,7 @@ class AbstractCustomerActive:
     def customer_id(self, customer_id):
         """Sets the customer_id of this AbstractCustomerActive.
 
-            
+            The customer's ID in the merchant's system.
 
         :param customer_id: The customer_id of this AbstractCustomerActive.
         :type: str
@@ -73,7 +73,7 @@ class AbstractCustomerActive:
     def email_address(self):
         """Gets the email_address of this AbstractCustomerActive.
 
-            
+            The customer's email address.
 
         :return: The email_address of this AbstractCustomerActive.
         :rtype: str
@@ -84,7 +84,7 @@ class AbstractCustomerActive:
     def email_address(self, email_address):
         """Sets the email_address of this AbstractCustomerActive.
 
-            
+            The customer's email address.
 
         :param email_address: The email_address of this AbstractCustomerActive.
         :type: str
@@ -98,7 +98,7 @@ class AbstractCustomerActive:
     def family_name(self):
         """Gets the family_name of this AbstractCustomerActive.
 
-            
+            The customer's family or last name.
 
         :return: The family_name of this AbstractCustomerActive.
         :rtype: str
@@ -109,7 +109,7 @@ class AbstractCustomerActive:
     def family_name(self, family_name):
         """Sets the family_name of this AbstractCustomerActive.
 
-            
+            The customer's family or last name.
 
         :param family_name: The family_name of this AbstractCustomerActive.
         :type: str
@@ -123,7 +123,7 @@ class AbstractCustomerActive:
     def given_name(self):
         """Gets the given_name of this AbstractCustomerActive.
 
-            
+            The customer's given or first name.
 
         :return: The given_name of this AbstractCustomerActive.
         :rtype: str
@@ -134,7 +134,7 @@ class AbstractCustomerActive:
     def given_name(self, given_name):
         """Sets the given_name of this AbstractCustomerActive.
 
-            
+            The customer's given or first name.
 
         :param given_name: The given_name of this AbstractCustomerActive.
         :type: str
@@ -171,7 +171,7 @@ class AbstractCustomerActive:
     def meta_data(self):
         """Gets the meta_data of this AbstractCustomerActive.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :return: The meta_data of this AbstractCustomerActive.
         :rtype: dict(str, str)
@@ -182,7 +182,7 @@ class AbstractCustomerActive:
     def meta_data(self, meta_data):
         """Sets the meta_data of this AbstractCustomerActive.
 
-            Meta data allow to store additional data along the object.
+            Allow to store additional information about the object.
 
         :param meta_data: The meta_data of this AbstractCustomerActive.
         :type: dict(str, str)
@@ -194,7 +194,7 @@ class AbstractCustomerActive:
     def preferred_currency(self):
         """Gets the preferred_currency of this AbstractCustomerActive.
 
-            
+            The customer's preferred currency.
 
         :return: The preferred_currency of this AbstractCustomerActive.
         :rtype: str
@@ -205,7 +205,7 @@ class AbstractCustomerActive:
     def preferred_currency(self, preferred_currency):
         """Sets the preferred_currency of this AbstractCustomerActive.
 
-            
+            The customer's preferred currency.
 
         :param preferred_currency: The preferred_currency of this AbstractCustomerActive.
         :type: str

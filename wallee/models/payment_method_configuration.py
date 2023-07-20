@@ -10,7 +10,7 @@ class PaymentMethodConfiguration:
     swagger_types = {
     
         'data_collection_type': 'DataCollectionType',
-        'description': 'DatabaseTranslatedString',
+        'description': 'dict(str, str)',
         'id': 'int',
         'image_resource_path': 'ResourcePath',
         'linked_space_id': 'int',
@@ -24,7 +24,7 @@ class PaymentMethodConfiguration:
         'sort_order': 'int',
         'space_id': 'int',
         'state': 'CreationEntityState',
-        'title': 'DatabaseTranslatedString',
+        'title': 'dict(str, str)',
         'version': 'int',
     }
 
@@ -104,7 +104,7 @@ class PaymentMethodConfiguration:
             The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.
 
         :return: The description of this PaymentMethodConfiguration.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -115,7 +115,7 @@ class PaymentMethodConfiguration:
             The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.
 
         :param description: The description of this PaymentMethodConfiguration.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -428,7 +428,7 @@ class PaymentMethodConfiguration:
             The title of the payment method configuration is used within the payment process. The title is visible to the customer.
 
         :return: The title of this PaymentMethodConfiguration.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._title
 
@@ -439,7 +439,7 @@ class PaymentMethodConfiguration:
             The title of the payment method configuration is used within the payment process. The title is visible to the customer.
 
         :param title: The title of this PaymentMethodConfiguration.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._title = title

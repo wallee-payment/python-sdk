@@ -51,7 +51,7 @@ class AbstractHumanUserUpdate:
     def email_address(self):
         """Gets the email_address of this AbstractHumanUserUpdate.
 
-            The email address of the user.
+            The user's email address.
 
         :return: The email_address of this AbstractHumanUserUpdate.
         :rtype: str
@@ -62,7 +62,7 @@ class AbstractHumanUserUpdate:
     def email_address(self, email_address):
         """Sets the email_address of this AbstractHumanUserUpdate.
 
-            The email address of the user.
+            The user's email address.
 
         :param email_address: The email_address of this AbstractHumanUserUpdate.
         :type: str
@@ -76,7 +76,7 @@ class AbstractHumanUserUpdate:
     def firstname(self):
         """Gets the firstname of this AbstractHumanUserUpdate.
 
-            The first name of the user.
+            The user's first name.
 
         :return: The firstname of this AbstractHumanUserUpdate.
         :rtype: str
@@ -87,7 +87,7 @@ class AbstractHumanUserUpdate:
     def firstname(self, firstname):
         """Sets the firstname of this AbstractHumanUserUpdate.
 
-            The first name of the user.
+            The user's first name.
 
         :param firstname: The firstname of this AbstractHumanUserUpdate.
         :type: str
@@ -101,7 +101,7 @@ class AbstractHumanUserUpdate:
     def language(self):
         """Gets the language of this AbstractHumanUserUpdate.
 
-            The preferred language of the user.
+            The user's preferred language.
 
         :return: The language of this AbstractHumanUserUpdate.
         :rtype: str
@@ -112,7 +112,7 @@ class AbstractHumanUserUpdate:
     def language(self, language):
         """Sets the language of this AbstractHumanUserUpdate.
 
-            The preferred language of the user.
+            The user's preferred language.
 
         :param language: The language of this AbstractHumanUserUpdate.
         :type: str
@@ -124,7 +124,7 @@ class AbstractHumanUserUpdate:
     def lastname(self):
         """Gets the lastname of this AbstractHumanUserUpdate.
 
-            The last name of the user.
+            The user's last name.
 
         :return: The lastname of this AbstractHumanUserUpdate.
         :rtype: str
@@ -135,7 +135,7 @@ class AbstractHumanUserUpdate:
     def lastname(self, lastname):
         """Sets the lastname of this AbstractHumanUserUpdate.
 
-            The last name of the user.
+            The user's last name.
 
         :param lastname: The lastname of this AbstractHumanUserUpdate.
         :type: str
@@ -149,7 +149,7 @@ class AbstractHumanUserUpdate:
     def mobile_phone_number(self):
         """Gets the mobile_phone_number of this AbstractHumanUserUpdate.
 
-            
+            The user's mobile phone number.
 
         :return: The mobile_phone_number of this AbstractHumanUserUpdate.
         :rtype: str
@@ -160,7 +160,7 @@ class AbstractHumanUserUpdate:
     def mobile_phone_number(self, mobile_phone_number):
         """Sets the mobile_phone_number of this AbstractHumanUserUpdate.
 
-            
+            The user's mobile phone number.
 
         :param mobile_phone_number: The mobile_phone_number of this AbstractHumanUserUpdate.
         :type: str
@@ -197,7 +197,7 @@ class AbstractHumanUserUpdate:
     def time_zone(self):
         """Gets the time_zone of this AbstractHumanUserUpdate.
 
-            The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+            The user's time zone. If none is specified, the one provided by the browser will be used.
 
         :return: The time_zone of this AbstractHumanUserUpdate.
         :rtype: str
@@ -208,7 +208,7 @@ class AbstractHumanUserUpdate:
     def time_zone(self, time_zone):
         """Sets the time_zone of this AbstractHumanUserUpdate.
 
-            The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+            The user's time zone. If none is specified, the one provided by the browser will be used.
 
         :param time_zone: The time_zone of this AbstractHumanUserUpdate.
         :type: str
@@ -220,7 +220,7 @@ class AbstractHumanUserUpdate:
     def two_factor_enabled(self):
         """Gets the two_factor_enabled of this AbstractHumanUserUpdate.
 
-            Defines whether two-factor authentication is enabled for this user.
+            Whether two-factor authentication is enabled for this user.
 
         :return: The two_factor_enabled of this AbstractHumanUserUpdate.
         :rtype: bool
@@ -231,7 +231,7 @@ class AbstractHumanUserUpdate:
     def two_factor_enabled(self, two_factor_enabled):
         """Sets the two_factor_enabled of this AbstractHumanUserUpdate.
 
-            Defines whether two-factor authentication is enabled for this user.
+            Whether two-factor authentication is enabled for this user.
 
         :param two_factor_enabled: The two_factor_enabled of this AbstractHumanUserUpdate.
         :type: bool

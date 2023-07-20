@@ -87,7 +87,7 @@ class Space:
     def account(self):
         """Gets the account of this Space.
 
-            The account to which the space belongs to.
+            The account that the space belongs to.
 
         :return: The account of this Space.
         :rtype: Account
@@ -98,7 +98,7 @@ class Space:
     def account(self, account):
         """Sets the account of this Space.
 
-            The account to which the space belongs to.
+            The account that the space belongs to.
 
         :param account: The account of this Space.
         :type: Account
@@ -110,7 +110,7 @@ class Space:
     def active(self):
         """Gets the active of this Space.
 
-            Active means that this account and all accounts in the hierarchy are active.
+            Whether this space and all its parent accounts are active.
 
         :return: The active of this Space.
         :rtype: bool
@@ -121,7 +121,7 @@ class Space:
     def active(self, active):
         """Sets the active of this Space.
 
-            Active means that this account and all accounts in the hierarchy are active.
+            Whether this space and all its parent accounts are active.
 
         :param active: The active of this Space.
         :type: bool
@@ -133,7 +133,7 @@ class Space:
     def active_or_restricted_active(self):
         """Gets the active_or_restricted_active of this Space.
 
-            This property is true when all accounts in the hierarchy are active or restricted active.
+            Whether this space and all its parent accounts are active or restricted active.
 
         :return: The active_or_restricted_active of this Space.
         :rtype: bool
@@ -144,7 +144,7 @@ class Space:
     def active_or_restricted_active(self, active_or_restricted_active):
         """Sets the active_or_restricted_active of this Space.
 
-            This property is true when all accounts in the hierarchy are active or restricted active.
+            Whether this space and all its parent accounts are active or restricted active.
 
         :param active_or_restricted_active: The active_or_restricted_active of this Space.
         :type: bool
@@ -156,7 +156,7 @@ class Space:
     def created_by(self):
         """Gets the created_by of this Space.
 
-            The ID of the user who created this entity.
+            The ID of the user the space was created by.
 
         :return: The created_by of this Space.
         :rtype: int
@@ -167,7 +167,7 @@ class Space:
     def created_by(self, created_by):
         """Sets the created_by of this Space.
 
-            The ID of the user who created this entity.
+            The ID of the user the space was created by.
 
         :param created_by: The created_by of this Space.
         :type: int
@@ -179,7 +179,7 @@ class Space:
     def created_on(self):
         """Gets the created_on of this Space.
 
-            The date and time when this entity was created.
+            The date and time when the space was created.
 
         :return: The created_on of this Space.
         :rtype: datetime
@@ -190,7 +190,7 @@ class Space:
     def created_on(self, created_on):
         """Sets the created_on of this Space.
 
-            The date and time when this entity was created.
+            The date and time when the space was created.
 
         :param created_on: The created_on of this Space.
         :type: datetime
@@ -202,7 +202,7 @@ class Space:
     def database(self):
         """Gets the database of this Space.
 
-            The database in which the space's data are stored in.
+            The database the space is connected to and that holds the space's data.
 
         :return: The database of this Space.
         :rtype: TenantDatabase
@@ -213,7 +213,7 @@ class Space:
     def database(self, database):
         """Sets the database of this Space.
 
-            The database in which the space's data are stored in.
+            The database the space is connected to and that holds the space's data.
 
         :param database: The database of this Space.
         :type: TenantDatabase
@@ -225,7 +225,7 @@ class Space:
     def deleted_by(self):
         """Gets the deleted_by of this Space.
 
-            The ID of a user that deleted this entity.
+            The ID of the user the space was deleted by.
 
         :return: The deleted_by of this Space.
         :rtype: int
@@ -236,7 +236,7 @@ class Space:
     def deleted_by(self, deleted_by):
         """Sets the deleted_by of this Space.
 
-            The ID of a user that deleted this entity.
+            The ID of the user the space was deleted by.
 
         :param deleted_by: The deleted_by of this Space.
         :type: int
@@ -248,7 +248,7 @@ class Space:
     def deleted_on(self):
         """Gets the deleted_on of this Space.
 
-            The date and time when this entity was deleted.
+            The date and time when the space was deleted.
 
         :return: The deleted_on of this Space.
         :rtype: datetime
@@ -259,7 +259,7 @@ class Space:
     def deleted_on(self, deleted_on):
         """Sets the deleted_on of this Space.
 
-            The date and time when this entity was deleted.
+            The date and time when the space was deleted.
 
         :param deleted_on: The deleted_on of this Space.
         :type: datetime
@@ -317,7 +317,7 @@ class Space:
     def name(self):
         """Gets the name of this Space.
 
-            The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space.
 
         :return: The name of this Space.
         :rtype: str
@@ -328,7 +328,7 @@ class Space:
     def name(self, name):
         """Sets the name of this Space.
 
-            The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space.
 
         :param name: The name of this Space.
         :type: str
@@ -367,7 +367,7 @@ class Space:
     def postal_address(self):
         """Gets the postal_address of this Space.
 
-            The address to use in communication with clients for example in email, documents etc.
+            The address that is used in communication with clients for example in emails, documents, etc.
 
         :return: The postal_address of this Space.
         :rtype: SpaceAddress
@@ -378,7 +378,7 @@ class Space:
     def postal_address(self, postal_address):
         """Sets the postal_address of this Space.
 
-            The address to use in communication with clients for example in email, documents etc.
+            The address that is used in communication with clients for example in emails, documents, etc.
 
         :param postal_address: The postal_address of this Space.
         :type: SpaceAddress
@@ -390,7 +390,7 @@ class Space:
     def primary_currency(self):
         """Gets the primary_currency of this Space.
 
-            This is the currency that is used to display aggregated amounts in the space.
+            The currency that is used to display aggregated amounts in the space.
 
         :return: The primary_currency of this Space.
         :rtype: str
@@ -401,7 +401,7 @@ class Space:
     def primary_currency(self, primary_currency):
         """Sets the primary_currency of this Space.
 
-            This is the currency that is used to display aggregated amounts in the space.
+            The currency that is used to display aggregated amounts in the space.
 
         :param primary_currency: The primary_currency of this Space.
         :type: str
@@ -413,7 +413,7 @@ class Space:
     def request_limit(self):
         """Gets the request_limit of this Space.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
 
         :return: The request_limit of this Space.
         :rtype: int
@@ -424,7 +424,7 @@ class Space:
     def request_limit(self, request_limit):
         """Sets the request_limit of this Space.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
 
         :param request_limit: The request_limit of this Space.
         :type: int
@@ -436,7 +436,7 @@ class Space:
     def restricted_active(self):
         """Gets the restricted_active of this Space.
 
-            Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+            Whether this space and all its parent accounts are active or restricted active. There is least one parent account that is restricted active.
 
         :return: The restricted_active of this Space.
         :rtype: bool
@@ -447,7 +447,7 @@ class Space:
     def restricted_active(self, restricted_active):
         """Sets the restricted_active of this Space.
 
-            Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+            Whether this space and all its parent accounts are active or restricted active. There is least one parent account that is restricted active.
 
         :param restricted_active: The restricted_active of this Space.
         :type: bool
@@ -482,7 +482,7 @@ class Space:
     def technical_contact_addresses(self):
         """Gets the technical_contact_addresses of this Space.
 
-            The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
+            The email address that will receive messages about technical issues and errors that occur in the space.
 
         :return: The technical_contact_addresses of this Space.
         :rtype: list[str]
@@ -493,7 +493,7 @@ class Space:
     def technical_contact_addresses(self, technical_contact_addresses):
         """Sets the technical_contact_addresses of this Space.
 
-            The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
+            The email address that will receive messages about technical issues and errors that occur in the space.
 
         :param technical_contact_addresses: The technical_contact_addresses of this Space.
         :type: list[str]
@@ -505,7 +505,7 @@ class Space:
     def time_zone(self):
         """Gets the time_zone of this Space.
 
-            The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
+            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
 
         :return: The time_zone of this Space.
         :rtype: str
@@ -516,7 +516,7 @@ class Space:
     def time_zone(self, time_zone):
         """Sets the time_zone of this Space.
 
-            The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
+            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
 
         :param time_zone: The time_zone of this Space.
         :type: str

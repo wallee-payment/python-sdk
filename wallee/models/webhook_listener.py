@@ -60,7 +60,7 @@ class WebhookListener:
     def entity(self):
         """Gets the entity of this WebhookListener.
 
-            The listener listens on state changes of the entity linked with the listener.
+            The entity that is to be monitored.
 
         :return: The entity of this WebhookListener.
         :rtype: int
@@ -71,7 +71,7 @@ class WebhookListener:
     def entity(self, entity):
         """Sets the entity of this WebhookListener.
 
-            The listener listens on state changes of the entity linked with the listener.
+            The entity that is to be monitored.
 
         :param entity: The entity of this WebhookListener.
         :type: int
@@ -83,7 +83,7 @@ class WebhookListener:
     def entity_states(self):
         """Gets the entity_states of this WebhookListener.
 
-            The target state identifies the state into which entities need to move into to trigger the webhook listener.
+            The entity's target states that are to be monitored.
 
         :return: The entity_states of this WebhookListener.
         :rtype: list[str]
@@ -94,7 +94,7 @@ class WebhookListener:
     def entity_states(self, entity_states):
         """Sets the entity_states of this WebhookListener.
 
-            The target state identifies the state into which entities need to move into to trigger the webhook listener.
+            The entity's target states that are to be monitored.
 
         :param entity_states: The entity_states of this WebhookListener.
         :type: list[str]
@@ -129,7 +129,7 @@ class WebhookListener:
     def identity(self):
         """Gets the identity of this WebhookListener.
 
-            The identity which will be used to sign messages sent by this listener.
+            The identity used to sign messages.
 
         :return: The identity of this WebhookListener.
         :rtype: WebhookIdentity
@@ -140,7 +140,7 @@ class WebhookListener:
     def identity(self, identity):
         """Sets the identity of this WebhookListener.
 
-            The identity which will be used to sign messages sent by this listener.
+            The identity used to sign messages.
 
         :param identity: The identity of this WebhookListener.
         :type: WebhookIdentity
@@ -175,7 +175,7 @@ class WebhookListener:
     def name(self):
         """Gets the name of this WebhookListener.
 
-            The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook listener.
 
         :return: The name of this WebhookListener.
         :rtype: str
@@ -186,7 +186,7 @@ class WebhookListener:
     def name(self, name):
         """Sets the name of this WebhookListener.
 
-            The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook listener.
 
         :param name: The name of this WebhookListener.
         :type: str
@@ -200,7 +200,7 @@ class WebhookListener:
     def notify_every_change(self):
         """Gets the notify_every_change of this WebhookListener.
 
-            Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+            Whether every update of the entity or only state changes are to be monitored.
 
         :return: The notify_every_change of this WebhookListener.
         :rtype: bool
@@ -211,7 +211,7 @@ class WebhookListener:
     def notify_every_change(self, notify_every_change):
         """Sets the notify_every_change of this WebhookListener.
 
-            Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+            Whether every update of the entity or only state changes are to be monitored.
 
         :param notify_every_change: The notify_every_change of this WebhookListener.
         :type: bool
@@ -269,7 +269,7 @@ class WebhookListener:
     def url(self):
         """Gets the url of this WebhookListener.
 
-            The URL which is invoked by the listener to notify the application about the event.
+            The URL where notifications about entity changes are sent to.
 
         :return: The url of this WebhookListener.
         :rtype: WebhookUrl
@@ -280,7 +280,7 @@ class WebhookListener:
     def url(self, url):
         """Sets the url of this WebhookListener.
 
-            The URL which is invoked by the listener to notify the application about the event.
+            The URL where notifications about entity changes are sent to.
 
         :param url: The url of this WebhookListener.
         :type: WebhookUrl

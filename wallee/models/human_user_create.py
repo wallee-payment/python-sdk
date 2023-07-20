@@ -32,7 +32,7 @@ class HumanUserCreate(AbstractHumanUserUpdate):
     def primary_account(self):
         """Gets the primary_account of this HumanUserCreate.
 
-            The primary account links the user to a specific account.
+            The primary account that the user belongs to.
 
         :return: The primary_account of this HumanUserCreate.
         :rtype: int
@@ -43,7 +43,7 @@ class HumanUserCreate(AbstractHumanUserUpdate):
     def primary_account(self, primary_account):
         """Sets the primary_account of this HumanUserCreate.
 
-            The primary account links the user to a specific account.
+            The primary account that the user belongs to.
 
         :param primary_account: The primary_account of this HumanUserCreate.
         :type: int

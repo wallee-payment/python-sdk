@@ -11,7 +11,7 @@ class SubscriptionProductComponentGroup:
     
         'id': 'int',
         'linked_space_id': 'int',
-        'name': 'DatabaseTranslatedString',
+        'name': 'dict(str, str)',
         'optional': 'bool',
         'product_version': 'SubscriptionProductVersion',
         'sort_order': 'int',
@@ -97,7 +97,7 @@ class SubscriptionProductComponentGroup:
             The component group name will be shown when the components are selected. This can be visible to the subscriber.
 
         :return: The name of this SubscriptionProductComponentGroup.
-        :rtype: DatabaseTranslatedString
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -108,7 +108,7 @@ class SubscriptionProductComponentGroup:
             The component group name will be shown when the components are selected. This can be visible to the subscriber.
 
         :param name: The name of this SubscriptionProductComponentGroup.
-        :type: DatabaseTranslatedString
+        :type: dict(str, str)
         """
 
         self._name = name

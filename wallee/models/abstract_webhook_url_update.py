@@ -36,7 +36,7 @@ class AbstractWebhookUrlUpdate:
     def name(self):
         """Gets the name of this AbstractWebhookUrlUpdate.
 
-            The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook URL.
 
         :return: The name of this AbstractWebhookUrlUpdate.
         :rtype: str
@@ -47,7 +47,7 @@ class AbstractWebhookUrlUpdate:
     def name(self, name):
         """Sets the name of this AbstractWebhookUrlUpdate.
 
-            The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the webhook URL.
 
         :param name: The name of this AbstractWebhookUrlUpdate.
         :type: str
@@ -84,7 +84,7 @@ class AbstractWebhookUrlUpdate:
     def url(self):
         """Gets the url of this AbstractWebhookUrlUpdate.
 
-            The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
+            The actual URL where notifications about entity changes are sent to.
 
         :return: The url of this AbstractWebhookUrlUpdate.
         :rtype: str
@@ -95,7 +95,7 @@ class AbstractWebhookUrlUpdate:
     def url(self, url):
         """Sets the url of this AbstractWebhookUrlUpdate.
 
-            The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
+            The actual URL where notifications about entity changes are sent to.
 
         :param url: The url of this AbstractWebhookUrlUpdate.
         :type: str

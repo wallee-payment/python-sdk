@@ -33,7 +33,7 @@ class ApplicationUserCreate(AbstractApplicationUserUpdate):
     def primary_account(self):
         """Gets the primary_account of this ApplicationUserCreate.
 
-            The account that this user is associated with. The account owner will be able to manage this user.
+            The primary account that the user belongs to.
 
         :return: The primary_account of this ApplicationUserCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class ApplicationUserCreate(AbstractApplicationUserUpdate):
     def primary_account(self, primary_account):
         """Sets the primary_account of this ApplicationUserCreate.
 
-            The account that this user is associated with. The account owner will be able to manage this user.
+            The primary account that the user belongs to.
 
         :param primary_account: The primary_account of this ApplicationUserCreate.
         :type: int

@@ -36,7 +36,7 @@ class AccountCreate(AbstractAccountUpdate):
     def parent_account(self):
         """Gets the parent_account of this AccountCreate.
 
-            The account which is responsible for administering the account.
+            The parent account responsible for administering this account.
 
         :return: The parent_account of this AccountCreate.
         :rtype: int
@@ -47,7 +47,7 @@ class AccountCreate(AbstractAccountUpdate):
     def parent_account(self, parent_account):
         """Sets the parent_account of this AccountCreate.
 
-            The account which is responsible for administering the account.
+            The parent account responsible for administering this account.
 
         :param parent_account: The parent_account of this AccountCreate.
         :type: int
@@ -59,7 +59,7 @@ class AccountCreate(AbstractAccountUpdate):
     def scope(self):
         """Gets the scope of this AccountCreate.
 
-            This is the scope to which the account belongs to.
+            The scope that the account belongs to.
 
         :return: The scope of this AccountCreate.
         :rtype: int
@@ -70,7 +70,7 @@ class AccountCreate(AbstractAccountUpdate):
     def scope(self, scope):
         """Sets the scope of this AccountCreate.
 
-            This is the scope to which the account belongs to.
+            The scope that the account belongs to.
 
         :param scope: The scope of this AccountCreate.
         :type: int

@@ -11,8 +11,8 @@ class SubscriptionMetricUpdate:
     
         'id': 'int',
         'version': 'int',
-        'description': 'DatabaseTranslatedStringCreate',
-        'name': 'DatabaseTranslatedStringCreate',
+        'description': 'dict(str, str)',
+        'name': 'dict(str, str)',
     }
 
     attribute_map = {
@@ -94,7 +94,7 @@ class SubscriptionMetricUpdate:
             
 
         :return: The description of this SubscriptionMetricUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._description
 
@@ -105,7 +105,7 @@ class SubscriptionMetricUpdate:
             
 
         :param description: The description of this SubscriptionMetricUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._description = description
@@ -117,7 +117,7 @@ class SubscriptionMetricUpdate:
             
 
         :return: The name of this SubscriptionMetricUpdate.
-        :rtype: DatabaseTranslatedStringCreate
+        :rtype: dict(str, str)
         """
         return self._name
 
@@ -128,7 +128,7 @@ class SubscriptionMetricUpdate:
             
 
         :param name: The name of this SubscriptionMetricUpdate.
-        :type: DatabaseTranslatedStringCreate
+        :type: dict(str, str)
         """
 
         self._name = name

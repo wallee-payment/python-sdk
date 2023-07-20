@@ -39,7 +39,7 @@ class BankAccountType:
     def description(self):
         """Gets the description of this BankAccountType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :return: The description of this BankAccountType.
         :rtype: dict(str, str)
@@ -50,7 +50,7 @@ class BankAccountType:
     def description(self, description):
         """Sets the description of this BankAccountType.
 
-            The description of the object translated into different languages.
+            The localized description of the object.
 
         :param description: The description of this BankAccountType.
         :type: dict(str, str)
@@ -108,7 +108,7 @@ class BankAccountType:
     def name(self):
         """Gets the name of this BankAccountType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :return: The name of this BankAccountType.
         :rtype: dict(str, str)
@@ -119,7 +119,7 @@ class BankAccountType:
     def name(self, name):
         """Sets the name of this BankAccountType.
 
-            The name of the object translated into different languages.
+            The localized name of the object.
 
         :param name: The name of this BankAccountType.
         :type: dict(str, str)

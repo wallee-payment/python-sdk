@@ -10,17 +10,19 @@ class RestCountryState:
     swagger_types = {
     
         'code': 'str',
+        'country': 'str',
         'country_code': 'str',
         'id': 'str',
         'name': 'str',
     }
 
     attribute_map = {
-        'code': 'code','country_code': 'countryCode','id': 'id','name': 'name',
+        'code': 'code','country': 'country','country_code': 'countryCode','id': 'id','name': 'name',
     }
 
     
     _code = None
+    _country = None
     _country_code = None
     _id = None
     _name = None
@@ -29,6 +31,7 @@ class RestCountryState:
         self.discriminator = None
         
         self.code = kwargs.get('code', None)
+        self.country = kwargs.get('country', None)
         self.country_code = kwargs.get('country_code', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
@@ -39,7 +42,7 @@ class RestCountryState:
     def code(self):
         """Gets the code of this RestCountryState.
 
-            The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.
+            The state's code used within addresses.
 
         :return: The code of this RestCountryState.
         :rtype: str
@@ -50,7 +53,7 @@ class RestCountryState:
     def code(self, code):
         """Sets the code of this RestCountryState.
 
-            The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.
+            The state's code used within addresses.
 
         :param code: The code of this RestCountryState.
         :type: str
@@ -59,10 +62,33 @@ class RestCountryState:
         self._code = code
     
     @property
+    def country(self):
+        """Gets the country of this RestCountryState.
+
+            
+
+        :return: The country of this RestCountryState.
+        :rtype: str
+        """
+        return self._country
+
+    @country.setter
+    def country(self, country):
+        """Sets the country of this RestCountryState.
+
+            
+
+        :param country: The country of this RestCountryState.
+        :type: str
+        """
+
+        self._country = country
+    
+    @property
     def country_code(self):
         """Gets the country_code of this RestCountryState.
 
-            The country code in ISO two letter format (e.g. UK, DE, CH, US).
+            The two-letter code of the state's country (ISO 3166-1 alpha-2 format).
 
         :return: The country_code of this RestCountryState.
         :rtype: str
@@ -73,7 +99,7 @@ class RestCountryState:
     def country_code(self, country_code):
         """Sets the country_code of this RestCountryState.
 
-            The country code in ISO two letter format (e.g. UK, DE, CH, US).
+            The two-letter code of the state's country (ISO 3166-1 alpha-2 format).
 
         :param country_code: The country_code of this RestCountryState.
         :type: str
@@ -85,7 +111,7 @@ class RestCountryState:
     def id(self):
         """Gets the id of this RestCountryState.
 
-            The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.
+            The state's code in ISO 3166-2 format.
 
         :return: The id of this RestCountryState.
         :rtype: str
@@ -96,7 +122,7 @@ class RestCountryState:
     def id(self, id):
         """Sets the id of this RestCountryState.
 
-            The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.
+            The state's code in ISO 3166-2 format.
 
         :param id: The id of this RestCountryState.
         :type: str
@@ -108,7 +134,7 @@ class RestCountryState:
     def name(self):
         """Gets the name of this RestCountryState.
 
-            The name is a human readable label of the state in the language of the region.
+            The name of the state.
 
         :return: The name of this RestCountryState.
         :rtype: str
@@ -119,7 +145,7 @@ class RestCountryState:
     def name(self, name):
         """Sets the name of this RestCountryState.
 
-            The name is a human readable label of the state in the language of the region.
+            The name of the state.
 
         :param name: The name of this RestCountryState.
         :type: str

@@ -10,7 +10,7 @@ class ApplicationUser(User):
     swagger_types = {
     
         'name': 'str',
-        'primary_account': 'Account',
+        'primary_account': 'int',
         'request_limit': 'int',
     }
 
@@ -38,7 +38,7 @@ class ApplicationUser(User):
     def name(self):
         """Gets the name of this ApplicationUser.
 
-            The user name is used to identify the application user in administrative interfaces.
+            The name used to identify the application user.
 
         :return: The name of this ApplicationUser.
         :rtype: str
@@ -49,7 +49,7 @@ class ApplicationUser(User):
     def name(self, name):
         """Sets the name of this ApplicationUser.
 
-            The user name is used to identify the application user in administrative interfaces.
+            The name used to identify the application user.
 
         :param name: The name of this ApplicationUser.
         :type: str
@@ -63,10 +63,10 @@ class ApplicationUser(User):
     def primary_account(self):
         """Gets the primary_account of this ApplicationUser.
 
-            The account that this user is associated with. The account owner will be able to manage this user.
+            The primary account that the user belongs to.
 
         :return: The primary_account of this ApplicationUser.
-        :rtype: Account
+        :rtype: int
         """
         return self._primary_account
 
@@ -74,10 +74,10 @@ class ApplicationUser(User):
     def primary_account(self, primary_account):
         """Sets the primary_account of this ApplicationUser.
 
-            The account that this user is associated with. The account owner will be able to manage this user.
+            The primary account that the user belongs to.
 
         :param primary_account: The primary_account of this ApplicationUser.
-        :type: Account
+        :type: int
         """
 
         self._primary_account = primary_account
@@ -86,7 +86,7 @@ class ApplicationUser(User):
     def request_limit(self):
         """Gets the request_limit of this ApplicationUser.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted every 2 minutes.
 
         :return: The request_limit of this ApplicationUser.
         :rtype: int
@@ -97,7 +97,7 @@ class ApplicationUser(User):
     def request_limit(self, request_limit):
         """Sets the request_limit of this ApplicationUser.
 
-            The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+            The maximum number of API requests that are accepted every 2 minutes.
 
         :param request_limit: The request_limit of this ApplicationUser.
         :type: int
