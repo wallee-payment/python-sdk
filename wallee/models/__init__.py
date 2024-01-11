@@ -365,6 +365,7 @@ from .user_type import UserType
 from .wallet_type import WalletType
 from .web_app_confirmation_request import WebAppConfirmationRequest
 from .web_app_confirmation_response import WebAppConfirmationResponse
+from .webhook_encryption_public_key import WebhookEncryptionPublicKey
 from .webhook_identity import WebhookIdentity
 from .webhook_listener import WebhookListener
 from .webhook_listener_entity import WebhookListenerEntity

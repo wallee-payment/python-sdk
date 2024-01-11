@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 4.0.0
+    OpenAPI spec version: 4.1.0
     
 """
 
@@ -26,6 +26,9 @@ from enum import Enum
 import six
 import platform
 from six.moves.urllib.parse import quote
+from dateutil.parser import parse as date_util_parse
+import sys
+
 
 from wallee.configuration import Configuration
 import wallee.models
@@ -64,7 +67,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/4.0.0/python'
+        self.user_agent = 'wallee/4.1.0/python'
 
     def __del__(self):
         if self._pool is not None:
@@ -103,7 +106,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '4.0.0',
+            'x-meta-sdk-version': '4.1.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()
@@ -560,6 +563,14 @@ class ApiClient:
         """
         return value
 
+    # TODO remove when the lowest supported Python version is 3.11+ . Then - also remove "python_dateutil" dependency from pip installs
+    # https://stackoverflow.com/questions/55542280
+    def __parse_iso_date(self, string):
+        if (sys.version_info < (3, 11)):
+            return date_util_parse(string).date()
+        
+        return datetime.datetime.fromisoformat(string)
+
     def __deserialize_date(self, string):
         """Deserializes string to date.
 
@@ -567,8 +578,7 @@ class ApiClient:
         :return: date.
         """
         try:
-            from dateutil.parser import parse
-            return parse(string).date()
+            return self.__parse_iso_date(string)
         except ImportError:
             return string
         except ValueError:
@@ -586,8 +596,7 @@ class ApiClient:
         :return: datetime.
         """
         try:
-            from dateutil.parser import parse
-            return parse(string)
+            return self.__parse_iso_date(string)
         except ImportError:
             return string
         except ValueError:
@@ -612,27 +621,31 @@ class ApiClient:
 
         if issubclass(klass, Enum):
             return getattr(klass, data)
+        
+        class_instance = klass()
+        swagger_types = class_instance.swagger_types
+        attribute_map = class_instance.attribute_map
 
-        if (not klass.swagger_types and
+        if (not swagger_types and
                 not self.__hasattr(klass, 'get_real_child_model')):
             return data
 
         kwargs = {}
-        if klass.swagger_types is not None:
-            for attr, attr_type in six.iteritems(klass.swagger_types):
+        if swagger_types is not None:
+            for attr, attr_type in six.iteritems(swagger_types):
                 if (data is not None and
-                        klass.attribute_map[attr] in data and
+                        attribute_map[attr] in data and
                         isinstance(data, (list, dict))):
-                    value = data[klass.attribute_map[attr]]
+                    value = data[attribute_map[attr]]
                     kwargs[attr] = self.__deserialize(value, attr_type)
 
         instance = klass(**kwargs)
 
         if (isinstance(instance, dict) and
-                klass.swagger_types is not None and
+                swagger_types is not None and
                 isinstance(data, dict)):
             for key, value in data.items():
-                if key not in klass.swagger_types:
+                if key not in swagger_types:
                     instance[key] = value
         if self.__hasattr(instance, 'get_real_child_model'):
             klass_name = instance.get_real_child_model(data)

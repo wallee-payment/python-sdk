@@ -10,22 +10,31 @@ class SubscriptionComponentConfiguration:
     swagger_types = {
     
         'component': 'int',
+        'id': 'int',
+        'linked_space_id': 'int',
         'quantity': 'float',
+        'version': 'int',
     }
 
     attribute_map = {
-        'component': 'component','quantity': 'quantity',
+        'component': 'component','id': 'id','linked_space_id': 'linkedSpaceId','quantity': 'quantity','version': 'version',
     }
 
     
     _component = None
+    _id = None
+    _linked_space_id = None
     _quantity = None
+    _version = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.component = kwargs.get('component', None)
+        self.id = kwargs.get('id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
         self.quantity = kwargs.get('quantity', None)
+        self.version = kwargs.get('version', None)
         
 
     
@@ -53,6 +62,52 @@ class SubscriptionComponentConfiguration:
         self._component = component
     
     @property
+    def id(self):
+        """Gets the id of this SubscriptionComponentConfiguration.
+
+            A unique identifier for the object.
+
+        :return: The id of this SubscriptionComponentConfiguration.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this SubscriptionComponentConfiguration.
+
+            A unique identifier for the object.
+
+        :param id: The id of this SubscriptionComponentConfiguration.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this SubscriptionComponentConfiguration.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this SubscriptionComponentConfiguration.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this SubscriptionComponentConfiguration.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this SubscriptionComponentConfiguration.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
     def quantity(self):
         """Gets the quantity of this SubscriptionComponentConfiguration.
 
@@ -74,6 +129,29 @@ class SubscriptionComponentConfiguration:
         """
 
         self._quantity = quantity
+    
+    @property
+    def version(self):
+        """Gets the version of this SubscriptionComponentConfiguration.
+
+            The version is used for optimistic locking and incremented whenever the object is updated.
+
+        :return: The version of this SubscriptionComponentConfiguration.
+        :rtype: int
+        """
+        return self._version
+
+    @version.setter
+    def version(self, version):
+        """Sets the version of this SubscriptionComponentConfiguration.
+
+            The version is used for optimistic locking and incremented whenever the object is updated.
+
+        :param version: The version of this SubscriptionComponentConfiguration.
+        :type: int
+        """
+
+        self._version = version
     
 
     def to_dict(self):

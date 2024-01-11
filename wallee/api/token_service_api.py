@@ -3,6 +3,7 @@
 from __future__ import absolute_import
 
 import six
+import re
 
 from wallee.api_client import ApiClient
 
@@ -318,6 +319,109 @@ class TokenServiceApi:
 
         return self.api_client.call_api(
             '/token/create', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Token',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_token(self, space_id, transaction_id, **kwargs):
+        """Create Token
+
+        This operation creates a token for the given transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.create_token(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to create the token. (required)
+        :return: Token
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
+        if kwargs.get('async_req'):
+            return self.create_token_with_http_info(space_id, transaction_id, **kwargs)
+        else:
+            (data) = self.create_token_with_http_info(space_id, transaction_id, **kwargs)
+            return data
+
+    def create_token_with_http_info(self, space_id, transaction_id, **kwargs):
+        """Create Token
+
+        This operation creates a token for the given transaction.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.create_token_with_http_info(space_id, transaction_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int transaction_id: The id of the transaction for which we want to create the token. (required)
+        :return: Token
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'transaction_id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_token" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `create_token`")
+        # verify the required parameter 'transaction_id' is set
+        if ('transaction_id' not in params or
+                params['transaction_id'] is None):
+            raise ValueError("Missing the required parameter `transaction_id` when calling `create_token`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'transaction_id' in params:
+            query_params.append(('transactionId', params['transaction_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/token/create-token', 'POST',
             path_params,
             query_params,
             header_params,

@@ -107,6 +107,7 @@ from wallee.api.transaction_void_service_api import TransactionVoidServiceApi
 from wallee.api.user_account_role_service_api import UserAccountRoleServiceApi
 from wallee.api.user_space_role_service_api import UserSpaceRoleServiceApi
 from wallee.api.web_app_service_api import WebAppServiceApi
+from wallee.api.webhook_encryption_service_api import WebhookEncryptionServiceApi
 from wallee.api.webhook_listener_service_api import WebhookListenerServiceApi
 from wallee.api.webhook_url_service_api import WebhookUrlServiceApi
 
@@ -478,6 +479,7 @@ from wallee.models.user_type import UserType
 from wallee.models.wallet_type import WalletType
 from wallee.models.web_app_confirmation_request import WebAppConfirmationRequest
 from wallee.models.web_app_confirmation_response import WebAppConfirmationResponse
+from wallee.models.webhook_encryption_public_key import WebhookEncryptionPublicKey
 from wallee.models.webhook_identity import WebhookIdentity
 from wallee.models.webhook_listener import WebhookListener
 from wallee.models.webhook_listener_entity import WebhookListenerEntity

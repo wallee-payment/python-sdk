@@ -6,13 +6,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 NAME = "wallee"
-VERSION = "4.0.0"
+VERSION = "4.1.0"
 
 REQUIRES = [
-    "certifi>=2017.4.17",
-    "python-dateutil>=2.1",
-    "six>=1.10",
-    "urllib3>=1.23"
+    "certifi >= 14.05.14",
+    "six >= 1.10",
+    "python_dateutil >= 2.8.2",
+    "setuptools >= 68.0.0",
+    "urllib3 >= 2.0.7",
+    "cryptography >= 2.0"
 ]
 
 
@@ -35,12 +37,7 @@ setuptools.setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
         'Topic :: Office/Business :: Financial :: Point-Of-Sale',
     ],
-    python_requires='>=3.5',
+    python_requires='>=3.7',
 )

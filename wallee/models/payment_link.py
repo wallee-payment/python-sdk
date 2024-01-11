@@ -291,7 +291,7 @@ class PaymentLink:
     def line_items(self):
         """Gets the line_items of this PaymentLink.
 
-            The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.
+            The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.
 
         :return: The line_items of this PaymentLink.
         :rtype: list[LineItem]
@@ -302,7 +302,7 @@ class PaymentLink:
     def line_items(self, line_items):
         """Sets the line_items of this PaymentLink.
 
-            The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.
+            The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.
 
         :param line_items: The line_items of this PaymentLink.
         :type: list[LineItem]

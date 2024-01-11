@@ -9,22 +9,22 @@ class RestCountry:
 
     swagger_types = {
     
-        'iso_code2_letter': 'str',
-        'iso_code3_letter': 'str',
         'address_format': 'RestAddressFormat',
+        'iso_code2': 'str',
+        'iso_code3': 'str',
         'name': 'str',
         'numeric_code': 'str',
         'state_codes': 'list[str]',
     }
 
     attribute_map = {
-        'iso_code2_letter': 'ISOCode2Letter','iso_code3_letter': 'ISOCode3Letter','address_format': 'addressFormat','name': 'name','numeric_code': 'numericCode','state_codes': 'stateCodes',
+        'address_format': 'addressFormat','iso_code2': 'isoCode2','iso_code3': 'isoCode3','name': 'name','numeric_code': 'numericCode','state_codes': 'stateCodes',
     }
 
     
-    _iso_code2_letter = None
-    _iso_code3_letter = None
     _address_format = None
+    _iso_code2 = None
+    _iso_code3 = None
     _name = None
     _numeric_code = None
     _state_codes = None
@@ -32,60 +32,14 @@ class RestCountry:
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.iso_code2_letter = kwargs.get('iso_code2_letter', None)
-        self.iso_code3_letter = kwargs.get('iso_code3_letter', None)
         self.address_format = kwargs.get('address_format', None)
+        self.iso_code2 = kwargs.get('iso_code2', None)
+        self.iso_code3 = kwargs.get('iso_code3', None)
         self.name = kwargs.get('name', None)
         self.numeric_code = kwargs.get('numeric_code', None)
         self.state_codes = kwargs.get('state_codes', None)
         
 
-    
-    @property
-    def iso_code2_letter(self):
-        """Gets the iso_code2_letter of this RestCountry.
-
-            The country's two-letter code (ISO 3166-1 alpha-2 format).
-
-        :return: The iso_code2_letter of this RestCountry.
-        :rtype: str
-        """
-        return self._iso_code2_letter
-
-    @iso_code2_letter.setter
-    def iso_code2_letter(self, iso_code2_letter):
-        """Sets the iso_code2_letter of this RestCountry.
-
-            The country's two-letter code (ISO 3166-1 alpha-2 format).
-
-        :param iso_code2_letter: The iso_code2_letter of this RestCountry.
-        :type: str
-        """
-
-        self._iso_code2_letter = iso_code2_letter
-    
-    @property
-    def iso_code3_letter(self):
-        """Gets the iso_code3_letter of this RestCountry.
-
-            The country's three-letter code (ISO 3166-1 alpha-3 format).
-
-        :return: The iso_code3_letter of this RestCountry.
-        :rtype: str
-        """
-        return self._iso_code3_letter
-
-    @iso_code3_letter.setter
-    def iso_code3_letter(self, iso_code3_letter):
-        """Sets the iso_code3_letter of this RestCountry.
-
-            The country's three-letter code (ISO 3166-1 alpha-3 format).
-
-        :param iso_code3_letter: The iso_code3_letter of this RestCountry.
-        :type: str
-        """
-
-        self._iso_code3_letter = iso_code3_letter
     
     @property
     def address_format(self):
@@ -109,6 +63,52 @@ class RestCountry:
         """
 
         self._address_format = address_format
+    
+    @property
+    def iso_code2(self):
+        """Gets the iso_code2 of this RestCountry.
+
+            The country's two-letter code (ISO 3166-1 alpha-2 format).
+
+        :return: The iso_code2 of this RestCountry.
+        :rtype: str
+        """
+        return self._iso_code2
+
+    @iso_code2.setter
+    def iso_code2(self, iso_code2):
+        """Sets the iso_code2 of this RestCountry.
+
+            The country's two-letter code (ISO 3166-1 alpha-2 format).
+
+        :param iso_code2: The iso_code2 of this RestCountry.
+        :type: str
+        """
+
+        self._iso_code2 = iso_code2
+    
+    @property
+    def iso_code3(self):
+        """Gets the iso_code3 of this RestCountry.
+
+            The country's three-letter code (ISO 3166-1 alpha-3 format).
+
+        :return: The iso_code3 of this RestCountry.
+        :rtype: str
+        """
+        return self._iso_code3
+
+    @iso_code3.setter
+    def iso_code3(self, iso_code3):
+        """Sets the iso_code3 of this RestCountry.
+
+            The country's three-letter code (ISO 3166-1 alpha-3 format).
+
+        :param iso_code3: The iso_code3 of this RestCountry.
+        :type: str
+        """
+
+        self._iso_code3 = iso_code3
     
     @property
     def name(self):

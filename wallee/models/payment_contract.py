@@ -17,6 +17,7 @@ class PaymentContract:
         'created_on': 'datetime',
         'external_id': 'str',
         'id': 'int',
+        'last_modified_date': 'datetime',
         'rejected_on': 'datetime',
         'rejection_reason': 'FailureReason',
         'start_terminating_on': 'datetime',
@@ -27,7 +28,7 @@ class PaymentContract:
     }
 
     attribute_map = {
-        'account': 'account','activated_on': 'activatedOn','contract_identifier': 'contractIdentifier','contract_type': 'contractType','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','rejected_on': 'rejectedOn','rejection_reason': 'rejectionReason','start_terminating_on': 'startTerminatingOn','state': 'state','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','version': 'version',
+        'account': 'account','activated_on': 'activatedOn','contract_identifier': 'contractIdentifier','contract_type': 'contractType','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','last_modified_date': 'lastModifiedDate','rejected_on': 'rejectedOn','rejection_reason': 'rejectionReason','start_terminating_on': 'startTerminatingOn','state': 'state','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','version': 'version',
     }
 
     
@@ -39,6 +40,7 @@ class PaymentContract:
     _created_on = None
     _external_id = None
     _id = None
+    _last_modified_date = None
     _rejected_on = None
     _rejection_reason = None
     _start_terminating_on = None
@@ -58,6 +60,7 @@ class PaymentContract:
         self.created_on = kwargs.get('created_on', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
+        self.last_modified_date = kwargs.get('last_modified_date', None)
         self.rejected_on = kwargs.get('rejected_on', None)
         self.rejection_reason = kwargs.get('rejection_reason', None)
         self.start_terminating_on = kwargs.get('start_terminating_on', None)
@@ -251,6 +254,29 @@ class PaymentContract:
         """
 
         self._id = id
+    
+    @property
+    def last_modified_date(self):
+        """Gets the last_modified_date of this PaymentContract.
+
+            The date and time when the object was last modified.
+
+        :return: The last_modified_date of this PaymentContract.
+        :rtype: datetime
+        """
+        return self._last_modified_date
+
+    @last_modified_date.setter
+    def last_modified_date(self, last_modified_date):
+        """Sets the last_modified_date of this PaymentContract.
+
+            The date and time when the object was last modified.
+
+        :param last_modified_date: The last_modified_date of this PaymentContract.
+        :type: datetime
+        """
+
+        self._last_modified_date = last_modified_date
     
     @property
     def rejected_on(self):

@@ -20,12 +20,13 @@ class PaymentConnector:
         'payment_method_brand': 'PaymentMethodBrand',
         'primary_risk_taker': 'PaymentPrimaryRiskTaker',
         'processor': 'int',
+        'supported_currencies': 'list[str]',
         'supported_customers_presences': 'list[CustomersPresence]',
         'supported_features': 'list[int]',
     }
 
     attribute_map = {
-        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','feature': 'feature','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
+        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','feature': 'feature','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_currencies': 'supportedCurrencies','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
     }
 
     
@@ -40,6 +41,7 @@ class PaymentConnector:
     _payment_method_brand = None
     _primary_risk_taker = None
     _processor = None
+    _supported_currencies = None
     _supported_customers_presences = None
     _supported_features = None
 
@@ -57,6 +59,7 @@ class PaymentConnector:
         self.payment_method_brand = kwargs.get('payment_method_brand', None)
         self.primary_risk_taker = kwargs.get('primary_risk_taker', None)
         self.processor = kwargs.get('processor', None)
+        self.supported_currencies = kwargs.get('supported_currencies', None)
         self.supported_customers_presences = kwargs.get('supported_customers_presences', None)
         self.supported_features = kwargs.get('supported_features', None)
         
@@ -314,6 +317,29 @@ class PaymentConnector:
         """
 
         self._processor = processor
+    
+    @property
+    def supported_currencies(self):
+        """Gets the supported_currencies of this PaymentConnector.
+
+            
+
+        :return: The supported_currencies of this PaymentConnector.
+        :rtype: list[str]
+        """
+        return self._supported_currencies
+
+    @supported_currencies.setter
+    def supported_currencies(self, supported_currencies):
+        """Sets the supported_currencies of this PaymentConnector.
+
+            
+
+        :param supported_currencies: The supported_currencies of this PaymentConnector.
+        :type: list[str]
+        """
+
+        self._supported_currencies = supported_currencies
     
     @property
     def supported_customers_presences(self):

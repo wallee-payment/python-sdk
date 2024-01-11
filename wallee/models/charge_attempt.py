@@ -34,11 +34,11 @@ class ChargeAttempt(TransactionAwareEntity):
         'token_version': 'TokenVersion',
         'user_failure_message': 'str',
         'version': 'int',
-        'wallet_type': 'WalletType',
+        'wallet': 'WalletType',
     }
 
     attribute_map = {
-        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','customers_presence': 'customersPresence','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version','wallet_type': 'walletType',
+        'charge': 'charge','completion_behavior': 'completionBehavior','connector_configuration': 'connectorConfiguration','created_on': 'createdOn','customers_presence': 'customersPresence','environment': 'environment','failed_on': 'failedOn','failure_reason': 'failureReason','initializing_token_version': 'initializingTokenVersion','invocation': 'invocation','labels': 'labels','language': 'language','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','redirection_url': 'redirectionUrl','sales_channel': 'salesChannel','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','terminal': 'terminal','time_zone': 'timeZone','timeout_on': 'timeoutOn','token_version': 'tokenVersion','user_failure_message': 'userFailureMessage','version': 'version','wallet': 'wallet',
     }
 
     
@@ -67,7 +67,7 @@ class ChargeAttempt(TransactionAwareEntity):
     _token_version = None
     _user_failure_message = None
     _version = None
-    _wallet_type = None
+    _wallet = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -97,7 +97,7 @@ class ChargeAttempt(TransactionAwareEntity):
         self.token_version = kwargs.get('token_version', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.version = kwargs.get('version', None)
-        self.wallet_type = kwargs.get('wallet_type', None)
+        self.wallet = kwargs.get('wallet', None)
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
@@ -681,27 +681,27 @@ class ChargeAttempt(TransactionAwareEntity):
         self._version = version
     
     @property
-    def wallet_type(self):
-        """Gets the wallet_type of this ChargeAttempt.
+    def wallet(self):
+        """Gets the wallet of this ChargeAttempt.
 
             
 
-        :return: The wallet_type of this ChargeAttempt.
+        :return: The wallet of this ChargeAttempt.
         :rtype: WalletType
         """
-        return self._wallet_type
+        return self._wallet
 
-    @wallet_type.setter
-    def wallet_type(self, wallet_type):
-        """Sets the wallet_type of this ChargeAttempt.
+    @wallet.setter
+    def wallet(self, wallet):
+        """Sets the wallet of this ChargeAttempt.
 
             
 
-        :param wallet_type: The wallet_type of this ChargeAttempt.
+        :param wallet: The wallet of this ChargeAttempt.
         :type: WalletType
         """
 
-        self._wallet_type = wallet_type
+        self._wallet = wallet
     
 
     def to_dict(self):

@@ -3,6 +3,7 @@
 from __future__ import absolute_import
 
 import six
+import re
 
 from wallee.api_client import ApiClient
 
