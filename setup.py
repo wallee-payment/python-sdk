@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 NAME = "wallee"
-VERSION = "4.1.0"
+VERSION = "4.2.0"
 
 REQUIRES = [
     "certifi >= 14.05.14",
