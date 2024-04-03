@@ -21,7 +21,7 @@ Library facilitates your interaction with various services such as transactions,
 pip3 install --upgrade wallee
 ```
 
-### pip3 install from source via github
+### pip3 install from source via GitHub
 
 ```sh
 pip3 install git+http://github.com/wallee-payment/python-sdk.git
@@ -49,7 +49,6 @@ You can also optionally set `default_headers` to set some headers that will be s
 ```python
 from wallee import Configuration
 from wallee.api import TransactionServiceApi, TransactionPaymentPageServiceApi
-from wallee.models import LineItem, LineItemType, TransactionCreate
 
 space_id = 405
 

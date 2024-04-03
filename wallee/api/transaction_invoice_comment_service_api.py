@@ -135,7 +135,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param TransactionInvoiceCommentCreate entity:  (required)
+        :param TransactionInvoiceCommentCreate entity: The comment object which should be created. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -161,7 +161,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param TransactionInvoiceCommentCreate entity:  (required)
+        :param TransactionInvoiceCommentCreate entity: The comment object which should be created. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -309,8 +309,6 @@ class TransactionInvoiceCommentServiceApi:
         query_params = []
         if 'space_id' in params:
             query_params.append(('spaceId', params['space_id']))
-        if 'id' in params:
-            query_params.append(('id', params['id']))
 
         header_params = {}
 
@@ -318,6 +316,8 @@ class TransactionInvoiceCommentServiceApi:
         local_var_files = {}
 
         body_params = None
+        if 'id' in params:
+            body_params = params['id']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json;charset=utf-8'])
@@ -357,7 +357,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment to pin to the top. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -383,7 +383,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment to pin to the top. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -468,7 +468,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment which should be returned. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -494,7 +494,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment which should be returned. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -579,7 +579,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment to unpin. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -605,7 +605,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param int id:  (required)
+        :param int id: The id of the comment to unpin. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -690,7 +690,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param TransactionInvoiceCommentActive entity:  (required)
+        :param TransactionInvoiceCommentActive entity: The comment object with the properties which should be updated. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -716,7 +716,7 @@ class TransactionInvoiceCommentServiceApi:
 
         :param async_req bool
         :param int space_id:  (required)
-        :param TransactionInvoiceCommentActive entity:  (required)
+        :param TransactionInvoiceCommentActive entity: The comment object with the properties which should be updated. (required)
         :return: TransactionInvoiceComment
                  If the method is called asynchronously,
                  returns the request thread.

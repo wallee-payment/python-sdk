@@ -2,11 +2,11 @@
 
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
 
 NAME = "wallee"
-VERSION = "4.2.0"
+VERSION = "5.0.0"
 
 REQUIRES = [
     "certifi >= 14.05.14",

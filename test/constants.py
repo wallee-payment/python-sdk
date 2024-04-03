@@ -15,6 +15,7 @@ API_CONFIG = Configuration(
 
 SPACE_ID = 405
 
+
 def get_transaction_create():
     return TransactionCreate(
         line_items=[

@@ -155,6 +155,16 @@ class TransactionServiceTest(unittest.TestCase):
         self.assertTrue(len(payment_methods) > 0,
                         "Payment methods should be configured for a given transaction in test space", )
 
+    def test_read_not_found(self):
+        """read_not_found() should read not found transaction as none"""
+
+        NOT_FOUND_TRANSACTION_ID = 0
+
+        transaction_read = self.transaction_service.read(
+            space_id=SPACE_ID, id=NOT_FOUND_TRANSACTION_ID)
+
+        self.assertIsNone(transaction_read, "Return data must be None.")
+
     def test_read(self):
         """read() should read transaction details"""
 
@@ -163,6 +173,8 @@ class TransactionServiceTest(unittest.TestCase):
 
         transaction_read = self.transaction_service.read(
             space_id=SPACE_ID, id=transaction.id)
+
+        self.assertIsNotNone(transaction_read, "Return data must not be None.")
 
         self.assertEqual(transaction.id, transaction_read.id,
                          "Transaction ids should match")
@@ -194,6 +206,8 @@ class TransactionServiceTest(unittest.TestCase):
 
         transaction_read = self.transaction_service.read_with_credentials(
             credentials=creds)
+
+        self.assertIsNotNone(transaction_read, "Return data must not be None.")
 
         self.assertEqual(transaction.id, transaction_read.id,
                          "Transaction ids should match")
@@ -239,7 +253,7 @@ class TransactionServiceTest(unittest.TestCase):
             space_id=SPACE_ID, id=transaction.id)
 
         self.assertEqual(
-            transaction.id, transaction_processed.id, "Transaction ids mush match"
+            transaction.id, transaction_processed.id, "Transaction ids must match"
         )
 
     def test_fetch_one_click_tokens_with_credentials_no_tokens(self):
@@ -317,6 +331,8 @@ class TransactionServiceTest(unittest.TestCase):
 
         transaction2_read = self.transaction_service.read(
             space_id=SPACE_ID, id=transaction2.id)
+
+        self.assertIsNotNone(transaction2_read, "Return data must not be None.")
 
         self.assertEqual(
             TransactionState.AUTHORIZED,

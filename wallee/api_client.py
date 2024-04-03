@@ -4,7 +4,7 @@
 
     Python SDK
 
-    OpenAPI spec version: 4.2.0
+    OpenAPI spec version: 5.0.0
     
 """
 
@@ -25,6 +25,7 @@ import tempfile
 from enum import Enum
 import six
 import platform
+
 from six.moves.urllib.parse import quote
 from dateutil.parser import parse as date_util_parse
 import sys
@@ -67,7 +68,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/4.2.0/python'
+        self.user_agent = 'wallee/5.0.0/python'
 
     def __del__(self):
         if self._pool is not None:
@@ -106,7 +107,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '4.2.0',
+            'x-meta-sdk-version': '5.0.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()
@@ -173,6 +174,10 @@ class ApiClient:
             if response_type:
                 return_data = self.deserialize(response_data, response_type)
             else:
+                return_data = None
+
+        if response_type is not None and hasattr(wallee.models, response_type):
+            if all(value is None for value in return_data.__dict__.values()):
                 return_data = None
 
         if _return_http_data_only:
@@ -451,7 +456,7 @@ class ApiClient:
                     continue
                 file_names = v if type(v) is list else [v]
                 for n in file_names:
-                    with open(n, 'rb') as f:
+                    with open(n, 'rb', encoding="utf8") as f:
                         filename = os.path.basename(f.name)
                         filedata = f.read()
                         mimetype = (mimetypes.guess_type(filename)[0] or
@@ -536,7 +541,7 @@ class ApiClient:
                                  content_disposition).group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
-        with open(path, "wb") as f:
+        with open(path, "wb", encoding="utf8") as f:
             f.write(response.data)
 
         return path
@@ -557,7 +562,7 @@ class ApiClient:
             return data
 
     def __deserialize_object(self, value):
-        """Return a original value.
+        """Return an original value.
 
         :return: object.
         """

@@ -419,7 +419,7 @@ class ChargeFlowServiceApi:
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/plain;charset=utf-8'])
+            ['text/plain;charset=utf-8', 'application/json'])
 
         # Authentication setting
         auth_settings = []

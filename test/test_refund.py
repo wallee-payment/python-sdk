@@ -84,8 +84,18 @@ class RefundServiceTest(unittest.TestCase):
             "State must be SUCCESSFUL",
         )
 
+    def test_read_not_found(self):
+        """read_not_found() should read not found refund as none"""
+
+        NOT_FOUND_REFUND_ID = 0
+
+        refund_read = self.refund_service.read(
+            space_id=SPACE_ID, id=NOT_FOUND_REFUND_ID)
+
+        self.assertIsNone(refund_read, "Return data must be None.")
+
     def test_read(self):
-        """read() should should fetch refund details"""
+        """read() should fetch refund details"""
 
         transaction = self.transaction_service.create(
             space_id=SPACE_ID, transaction=get_transaction_create())
@@ -120,6 +130,8 @@ class RefundServiceTest(unittest.TestCase):
 
         read_refund = self.refund_service.read(
             space_id=SPACE_ID, id=refund.id)
+
+        self.assertIsNotNone(read_refund, "Return data must not be None.")
 
         self.assertEqual(
             refund.id,
@@ -164,7 +176,7 @@ class RefundServiceTest(unittest.TestCase):
         criteria = EntityQuery(
             filter=EntityQueryFilter(
                 field_name="id",
-                value=transaction_completion.id,
+                value=refund.id,
                 type=EntityQueryFilterType.LEAF,
                 operator=CriteriaOperator.EQUALS
             )
@@ -173,6 +185,7 @@ class RefundServiceTest(unittest.TestCase):
         refunds_found = self.refund_service.search(
             SPACE_ID, query=criteria)
 
+        self.assertEqual(1, len(refunds_found))
         for ref in refunds_found:
             self.assertEqual(
                 refund.id,

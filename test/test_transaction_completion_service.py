@@ -26,6 +26,7 @@ from wallee.models import (
     TransactionCompletionState
 )
 
+
 class TransactionCompletionServiceTest(unittest.TestCase):
     """TransactionCompletionServiceApi tests"""
 
@@ -125,6 +126,8 @@ class TransactionCompletionServiceTest(unittest.TestCase):
 
         transaction_read = self.transaction_completion_service.read(
             space_id=SPACE_ID, id=transaction_completion.id)
+
+        self.assertIsNotNone(transaction_read, "Return data must not be None.")
 
         self.assertEqual(transaction_completion.id,
                          transaction_read.id, "Transaction ids must match", )

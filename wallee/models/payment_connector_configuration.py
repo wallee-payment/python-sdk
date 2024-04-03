@@ -15,6 +15,7 @@ class PaymentConnectorConfiguration:
         'enabled_sales_channels': 'list[SalesChannel]',
         'enabled_space_views': 'list[int]',
         'id': 'int',
+        'image_path': 'str',
         'linked_space_id': 'int',
         'name': 'str',
         'payment_method_configuration': 'PaymentMethodConfiguration',
@@ -26,7 +27,7 @@ class PaymentConnectorConfiguration:
     }
 
     attribute_map = {
-        'applicable_for_transaction_processing': 'applicableForTransactionProcessing','conditions': 'conditions','connector': 'connector','enabled_sales_channels': 'enabledSalesChannels','enabled_space_views': 'enabledSpaceViews','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','payment_method_configuration': 'paymentMethodConfiguration','planned_purge_date': 'plannedPurgeDate','priority': 'priority','processor_configuration': 'processorConfiguration','state': 'state','version': 'version',
+        'applicable_for_transaction_processing': 'applicableForTransactionProcessing','conditions': 'conditions','connector': 'connector','enabled_sales_channels': 'enabledSalesChannels','enabled_space_views': 'enabledSpaceViews','id': 'id','image_path': 'imagePath','linked_space_id': 'linkedSpaceId','name': 'name','payment_method_configuration': 'paymentMethodConfiguration','planned_purge_date': 'plannedPurgeDate','priority': 'priority','processor_configuration': 'processorConfiguration','state': 'state','version': 'version',
     }
 
     
@@ -36,6 +37,7 @@ class PaymentConnectorConfiguration:
     _enabled_sales_channels = None
     _enabled_space_views = None
     _id = None
+    _image_path = None
     _linked_space_id = None
     _name = None
     _payment_method_configuration = None
@@ -54,6 +56,7 @@ class PaymentConnectorConfiguration:
         self.enabled_sales_channels = kwargs.get('enabled_sales_channels', None)
         self.enabled_space_views = kwargs.get('enabled_space_views', None)
         self.id = kwargs.get('id', None)
+        self.image_path = kwargs.get('image_path', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
         self.payment_method_configuration = kwargs.get('payment_method_configuration', None)
@@ -202,6 +205,29 @@ class PaymentConnectorConfiguration:
         """
 
         self._id = id
+    
+    @property
+    def image_path(self):
+        """Gets the image_path of this PaymentConnectorConfiguration.
+
+            
+
+        :return: The image_path of this PaymentConnectorConfiguration.
+        :rtype: str
+        """
+        return self._image_path
+
+    @image_path.setter
+    def image_path(self, image_path):
+        """Sets the image_path of this PaymentConnectorConfiguration.
+
+            
+
+        :param image_path: The image_path of this PaymentConnectorConfiguration.
+        :type: str
+        """
+
+        self._image_path = image_path
     
     @property
     def linked_space_id(self):

@@ -17,6 +17,7 @@ class BankTransaction:
         'flow_direction': 'BankTransactionFlowDirection',
         'id': 'int',
         'linked_space_id': 'int',
+        'payment_date': 'datetime',
         'planned_purge_date': 'datetime',
         'posting_amount': 'float',
         'reference': 'str',
@@ -30,7 +31,7 @@ class BankTransaction:
     }
 
     attribute_map = {
-        'adjustments': 'adjustments','created_by': 'createdBy','created_on': 'createdOn','currency_bank_account': 'currencyBankAccount','external_id': 'externalId','flow_direction': 'flowDirection','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','posting_amount': 'postingAmount','reference': 'reference','source': 'source','state': 'state','total_adjustment_amount_including_tax': 'totalAdjustmentAmountIncludingTax','type': 'type','value_amount': 'valueAmount','value_date': 'valueDate','version': 'version',
+        'adjustments': 'adjustments','created_by': 'createdBy','created_on': 'createdOn','currency_bank_account': 'currencyBankAccount','external_id': 'externalId','flow_direction': 'flowDirection','id': 'id','linked_space_id': 'linkedSpaceId','payment_date': 'paymentDate','planned_purge_date': 'plannedPurgeDate','posting_amount': 'postingAmount','reference': 'reference','source': 'source','state': 'state','total_adjustment_amount_including_tax': 'totalAdjustmentAmountIncludingTax','type': 'type','value_amount': 'valueAmount','value_date': 'valueDate','version': 'version',
     }
 
     
@@ -42,6 +43,7 @@ class BankTransaction:
     _flow_direction = None
     _id = None
     _linked_space_id = None
+    _payment_date = None
     _planned_purge_date = None
     _posting_amount = None
     _reference = None
@@ -64,6 +66,7 @@ class BankTransaction:
         self.flow_direction = kwargs.get('flow_direction', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.payment_date = kwargs.get('payment_date', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.posting_amount = kwargs.get('posting_amount', None)
         self.reference = kwargs.get('reference', None)
@@ -264,6 +267,29 @@ class BankTransaction:
         """
 
         self._linked_space_id = linked_space_id
+    
+    @property
+    def payment_date(self):
+        """Gets the payment_date of this BankTransaction.
+
+            The payment date describes the date when the transaction was made.
+
+        :return: The payment_date of this BankTransaction.
+        :rtype: datetime
+        """
+        return self._payment_date
+
+    @payment_date.setter
+    def payment_date(self, payment_date):
+        """Sets the payment_date of this BankTransaction.
+
+            The payment date describes the date when the transaction was made.
+
+        :param payment_date: The payment_date of this BankTransaction.
+        :type: datetime
+        """
+
+        self._payment_date = payment_date
     
     @property
     def planned_purge_date(self):

@@ -37,11 +37,11 @@ class Configuration:
         # Username for HTTP basic authentication
         self.username = ""
         # api secret for MAC authentication
-        self._api_secret=api_secret
+        self._api_secret = api_secret
         # user id for MAC authentication
-        self._user_id=user_id
+        self._user_id = user_id
         # version for MAC authentication
-        self._mac_version=mac_version
+        self._mac_version = mac_version
         # Password for HTTP basic authentication
         self.password = ""
 
@@ -262,6 +262,6 @@ class Configuration:
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 4.2.0\n"\
-               "SDK Package Version: 4.2.0".\
+               "Version of the API: 5.0.0\n"\
+               "SDK Package Version: 5.0.0".\
                format(env=sys.platform, pyversion=sys.version)

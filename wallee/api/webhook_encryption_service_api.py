@@ -134,12 +134,12 @@ class WebhookEncryptionServiceApi:
             public_key_id = matcher.group(2)
             content_signature = matcher.group(3)
 
-            public_key = WebhookEncryptionServiceApi.read(self, public_key_id)
+            public_key_response = WebhookEncryptionServiceApi.read(self, public_key_id)
 
-            if public_key.public_key is None:
+            if public_key_response is None or public_key_response.public_key is None:
                 raise ValueError(f"Could not find public key with id {public_key_id}")
 
-            return EncryptionUtil.is_content_valid(content_to_verify, content_signature, public_key.public_key,
+            return EncryptionUtil.is_content_valid(content_to_verify, content_signature, public_key_response.public_key,
                                                    signature_algorithm)
         else:
             raise ValueError(
