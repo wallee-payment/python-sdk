@@ -271,7 +271,7 @@ class TransactionServiceTest(unittest.TestCase):
         self.assertEqual(0, len(tokens), "Should be no tokens yet")
 
     def test_fetch_payment_methods_with_credentials(self):
-        """fetch_one_click_tokens_with_credentials() should return one-click payment tokens (if any) for provided transaction"""
+        """fetch_payment_methods_with_credentials() should return payment methods (if any) for credentials"""
 
         transaction = self.transaction_service.create(
             space_id=SPACE_ID, transaction=get_transaction_create())

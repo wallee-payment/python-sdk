@@ -633,7 +633,7 @@ class TransactionServiceApi:
             body_params = params['request']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/csv', 'application/json;charset=utf-8'])
+            ['application/json;charset=utf-8', 'text/csv'])
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(
