@@ -47,7 +47,7 @@ class TransactionInvoiceReplacement:
     def billing_address(self):
         """Gets the billing_address of this TransactionInvoiceReplacement.
 
-            
+            The address associated with the invoice, used for billing purposes.
 
         :return: The billing_address of this TransactionInvoiceReplacement.
         :rtype: AddressCreate
@@ -58,7 +58,7 @@ class TransactionInvoiceReplacement:
     def billing_address(self, billing_address):
         """Sets the billing_address of this TransactionInvoiceReplacement.
 
-            
+            The address associated with the invoice, used for billing purposes.
 
         :param billing_address: The billing_address of this TransactionInvoiceReplacement.
         :type: AddressCreate
@@ -70,7 +70,7 @@ class TransactionInvoiceReplacement:
     def due_on(self):
         """Gets the due_on of this TransactionInvoiceReplacement.
 
-            The date on which the invoice should be paid on.
+            The due date for payment of the invoice.
 
         :return: The due_on of this TransactionInvoiceReplacement.
         :rtype: datetime
@@ -81,7 +81,7 @@ class TransactionInvoiceReplacement:
     def due_on(self, due_on):
         """Sets the due_on of this TransactionInvoiceReplacement.
 
-            The date on which the invoice should be paid on.
+            The due date for payment of the invoice.
 
         :param due_on: The due_on of this TransactionInvoiceReplacement.
         :type: datetime
@@ -93,7 +93,7 @@ class TransactionInvoiceReplacement:
     def external_id(self):
         """Gets the external_id of this TransactionInvoiceReplacement.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this TransactionInvoiceReplacement.
         :rtype: str
@@ -104,7 +104,7 @@ class TransactionInvoiceReplacement:
     def external_id(self, external_id):
         """Sets the external_id of this TransactionInvoiceReplacement.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this TransactionInvoiceReplacement.
         :type: str
@@ -122,7 +122,7 @@ class TransactionInvoiceReplacement:
     def line_items(self):
         """Gets the line_items of this TransactionInvoiceReplacement.
 
-            
+            The invoiced line items that will appear on the invoice document.
 
         :return: The line_items of this TransactionInvoiceReplacement.
         :rtype: list[LineItemCreate]
@@ -133,7 +133,7 @@ class TransactionInvoiceReplacement:
     def line_items(self, line_items):
         """Sets the line_items of this TransactionInvoiceReplacement.
 
-            
+            The invoiced line items that will appear on the invoice document.
 
         :param line_items: The line_items of this TransactionInvoiceReplacement.
         :type: list[LineItemCreate]
@@ -147,7 +147,7 @@ class TransactionInvoiceReplacement:
     def merchant_reference(self):
         """Gets the merchant_reference of this TransactionInvoiceReplacement.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :return: The merchant_reference of this TransactionInvoiceReplacement.
         :rtype: str
@@ -158,7 +158,7 @@ class TransactionInvoiceReplacement:
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this TransactionInvoiceReplacement.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :param merchant_reference: The merchant_reference of this TransactionInvoiceReplacement.
         :type: str
@@ -172,7 +172,7 @@ class TransactionInvoiceReplacement:
     def sent_to_customer(self):
         """Gets the sent_to_customer of this TransactionInvoiceReplacement.
 
-            When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.
+            Whether the invoice will be sent to the customer via email.
 
         :return: The sent_to_customer of this TransactionInvoiceReplacement.
         :rtype: bool
@@ -183,7 +183,7 @@ class TransactionInvoiceReplacement:
     def sent_to_customer(self, sent_to_customer):
         """Sets the sent_to_customer of this TransactionInvoiceReplacement.
 
-            When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.
+            Whether the invoice will be sent to the customer via email.
 
         :param sent_to_customer: The sent_to_customer of this TransactionInvoiceReplacement.
         :type: bool

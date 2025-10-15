@@ -68,7 +68,7 @@ class PaymentMethodBrand:
     def gray_image_path(self):
         """Gets the gray_image_path of this PaymentMethodBrand.
 
-            
+            The path to the payment method brand's grayscale image.
 
         :return: The gray_image_path of this PaymentMethodBrand.
         :rtype: str
@@ -79,7 +79,7 @@ class PaymentMethodBrand:
     def gray_image_path(self, gray_image_path):
         """Sets the gray_image_path of this PaymentMethodBrand.
 
-            
+            The path to the payment method brand's grayscale image.
 
         :param gray_image_path: The gray_image_path of this PaymentMethodBrand.
         :type: str
@@ -114,7 +114,7 @@ class PaymentMethodBrand:
     def image_path(self):
         """Gets the image_path of this PaymentMethodBrand.
 
-            
+            The path to the payment method brand's image.
 
         :return: The image_path of this PaymentMethodBrand.
         :rtype: str
@@ -125,7 +125,7 @@ class PaymentMethodBrand:
     def image_path(self, image_path):
         """Sets the image_path of this PaymentMethodBrand.
 
-            
+            The path to the payment method brand's image.
 
         :param image_path: The image_path of this PaymentMethodBrand.
         :type: str
@@ -160,7 +160,7 @@ class PaymentMethodBrand:
     def payment_method(self):
         """Gets the payment_method of this PaymentMethodBrand.
 
-            
+            The payment method that the brand belongs to.
 
         :return: The payment_method of this PaymentMethodBrand.
         :rtype: int
@@ -171,7 +171,7 @@ class PaymentMethodBrand:
     def payment_method(self, payment_method):
         """Sets the payment_method of this PaymentMethodBrand.
 
-            
+            The payment method that the brand belongs to.
 
         :param payment_method: The payment_method of this PaymentMethodBrand.
         :type: int

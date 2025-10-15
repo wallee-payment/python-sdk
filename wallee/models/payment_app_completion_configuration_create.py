@@ -42,7 +42,7 @@ class PaymentAppCompletionConfigurationCreate:
     def completion_endpoint(self):
         """Gets the completion_endpoint of this PaymentAppCompletionConfigurationCreate.
 
-            The completion endpoint is invoked to request the payment service provider to execute a completion.
+            The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.
 
         :return: The completion_endpoint of this PaymentAppCompletionConfigurationCreate.
         :rtype: str
@@ -53,7 +53,7 @@ class PaymentAppCompletionConfigurationCreate:
     def completion_endpoint(self, completion_endpoint):
         """Sets the completion_endpoint of this PaymentAppCompletionConfigurationCreate.
 
-            The completion endpoint is invoked to request the payment service provider to execute a completion.
+            The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.
 
         :param completion_endpoint: The completion_endpoint of this PaymentAppCompletionConfigurationCreate.
         :type: str
@@ -65,7 +65,7 @@ class PaymentAppCompletionConfigurationCreate:
     def completion_timeout_in_minutes(self):
         """Gets the completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
 
-            When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.
+            The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.
 
         :return: The completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
         :rtype: int
@@ -76,7 +76,7 @@ class PaymentAppCompletionConfigurationCreate:
     def completion_timeout_in_minutes(self, completion_timeout_in_minutes):
         """Sets the completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
 
-            When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.
+            The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.
 
         :param completion_timeout_in_minutes: The completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
         :type: int
@@ -88,7 +88,7 @@ class PaymentAppCompletionConfigurationCreate:
     def maximal_completion_delay_in_days(self):
         """Gets the maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
 
-            The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.
+            The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.
 
         :return: The maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
         :rtype: int
@@ -99,7 +99,7 @@ class PaymentAppCompletionConfigurationCreate:
     def maximal_completion_delay_in_days(self, maximal_completion_delay_in_days):
         """Sets the maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
 
-            The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.
+            The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.
 
         :param maximal_completion_delay_in_days: The maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
         :type: int
@@ -111,7 +111,7 @@ class PaymentAppCompletionConfigurationCreate:
     def multiple_completions_supported(self):
         """Gets the multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
 
-            This flag indicates whether the connector supports multiple completions for a single transaction or not.
+            Whether the payment connector can process multiple completions for a single transaction.
 
         :return: The multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
         :rtype: bool
@@ -122,7 +122,7 @@ class PaymentAppCompletionConfigurationCreate:
     def multiple_completions_supported(self, multiple_completions_supported):
         """Sets the multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
 
-            This flag indicates whether the connector supports multiple completions for a single transaction or not.
+            Whether the payment connector can process multiple completions for a single transaction.
 
         :param multiple_completions_supported: The multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
         :type: bool
@@ -134,7 +134,7 @@ class PaymentAppCompletionConfigurationCreate:
     def void_endpoint(self):
         """Gets the void_endpoint of this PaymentAppCompletionConfigurationCreate.
 
-            The void endpoint is invoked to request the payment service provider to execute a void.
+            The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.
 
         :return: The void_endpoint of this PaymentAppCompletionConfigurationCreate.
         :rtype: str
@@ -145,7 +145,7 @@ class PaymentAppCompletionConfigurationCreate:
     def void_endpoint(self, void_endpoint):
         """Sets the void_endpoint of this PaymentAppCompletionConfigurationCreate.
 
-            The void endpoint is invoked to request the payment service provider to execute a void.
+            The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.
 
         :param void_endpoint: The void_endpoint of this PaymentAppCompletionConfigurationCreate.
         :type: str

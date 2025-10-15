@@ -33,7 +33,7 @@ class RefundCommentCreate(AbstractRefundCommentActive):
     def refund(self):
         """Gets the refund of this RefundCommentCreate.
 
-            
+            The refund that the comment belongs to.
 
         :return: The refund of this RefundCommentCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class RefundCommentCreate(AbstractRefundCommentActive):
     def refund(self, refund):
         """Sets the refund of this RefundCommentCreate.
 
-            
+            The refund that the comment belongs to.
 
         :param refund: The refund of this RefundCommentCreate.
         :type: int

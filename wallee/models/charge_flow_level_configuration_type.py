@@ -85,7 +85,7 @@ class ChargeFlowLevelConfigurationType:
     def label(self):
         """Gets the label of this ChargeFlowLevelConfigurationType.
 
-            
+            The localized label that describes the action triggered by the configuration type.
 
         :return: The label of this ChargeFlowLevelConfigurationType.
         :rtype: dict(str, str)
@@ -96,7 +96,7 @@ class ChargeFlowLevelConfigurationType:
     def label(self, label):
         """Sets the label of this ChargeFlowLevelConfigurationType.
 
-            
+            The localized label that describes the action triggered by the configuration type.
 
         :param label: The label of this ChargeFlowLevelConfigurationType.
         :type: dict(str, str)

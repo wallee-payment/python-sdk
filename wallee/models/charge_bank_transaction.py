@@ -2,16 +2,19 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class ChargeBankTransaction(TransactionAwareEntity):
+
+class ChargeBankTransaction:
 
     swagger_types = {
     
         'bank_transaction': 'BankTransaction',
         'completion': 'int',
+        'id': 'int',
         'language': 'str',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'space_view_id': 'int',
         'transaction': 'Transaction',
         'transaction_currency_amount': 'float',
@@ -20,13 +23,16 @@ class ChargeBankTransaction(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'bank_transaction': 'bankTransaction','completion': 'completion','language': 'language','space_view_id': 'spaceViewId','transaction': 'transaction','transaction_currency_amount': 'transactionCurrencyAmount','transaction_currency_value_amount': 'transactionCurrencyValueAmount','version': 'version',
+        'bank_transaction': 'bankTransaction','completion': 'completion','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','space_view_id': 'spaceViewId','transaction': 'transaction','transaction_currency_amount': 'transactionCurrencyAmount','transaction_currency_value_amount': 'transactionCurrencyValueAmount','version': 'version',
     }
 
     
     _bank_transaction = None
     _completion = None
+    _id = None
     _language = None
+    _linked_space_id = None
+    _linked_transaction = None
     _space_view_id = None
     _transaction = None
     _transaction_currency_amount = None
@@ -38,22 +44,23 @@ class ChargeBankTransaction(TransactionAwareEntity):
         
         self.bank_transaction = kwargs.get('bank_transaction', None)
         self.completion = kwargs.get('completion', None)
+        self.id = kwargs.get('id', None)
         self.language = kwargs.get('language', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.transaction = kwargs.get('transaction', None)
         self.transaction_currency_amount = kwargs.get('transaction_currency_amount', None)
         self.transaction_currency_value_amount = kwargs.get('transaction_currency_value_amount', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def bank_transaction(self):
         """Gets the bank_transaction of this ChargeBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :return: The bank_transaction of this ChargeBankTransaction.
         :rtype: BankTransaction
@@ -64,7 +71,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def bank_transaction(self, bank_transaction):
         """Sets the bank_transaction of this ChargeBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :param bank_transaction: The bank_transaction of this ChargeBankTransaction.
         :type: BankTransaction
@@ -76,7 +83,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def completion(self):
         """Gets the completion of this ChargeBankTransaction.
 
-            
+            The transaction completion this bank transaction is belongs to.
 
         :return: The completion of this ChargeBankTransaction.
         :rtype: int
@@ -87,13 +94,36 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def completion(self, completion):
         """Sets the completion of this ChargeBankTransaction.
 
-            
+            The transaction completion this bank transaction is belongs to.
 
         :param completion: The completion of this ChargeBankTransaction.
         :type: int
         """
 
         self._completion = completion
+    
+    @property
+    def id(self):
+        """Gets the id of this ChargeBankTransaction.
+
+            A unique identifier for the object.
+
+        :return: The id of this ChargeBankTransaction.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ChargeBankTransaction.
+
+            A unique identifier for the object.
+
+        :param id: The id of this ChargeBankTransaction.
+        :type: int
+        """
+
+        self._id = id
     
     @property
     def language(self):
@@ -119,10 +149,56 @@ class ChargeBankTransaction(TransactionAwareEntity):
         self._language = language
     
     @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this ChargeBankTransaction.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this ChargeBankTransaction.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this ChargeBankTransaction.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this ChargeBankTransaction.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this ChargeBankTransaction.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this ChargeBankTransaction.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this ChargeBankTransaction.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this ChargeBankTransaction.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def space_view_id(self):
         """Gets the space_view_id of this ChargeBankTransaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this ChargeBankTransaction.
         :rtype: int
@@ -133,7 +209,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this ChargeBankTransaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this ChargeBankTransaction.
         :type: int
@@ -145,7 +221,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this ChargeBankTransaction.
 
-            
+            The payment transaction this bank transaction belongs to.
 
         :return: The transaction of this ChargeBankTransaction.
         :rtype: Transaction
@@ -156,7 +232,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this ChargeBankTransaction.
 
-            
+            The payment transaction this bank transaction belongs to.
 
         :param transaction: The transaction of this ChargeBankTransaction.
         :type: Transaction
@@ -168,7 +244,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction_currency_amount(self):
         """Gets the transaction_currency_amount of this ChargeBankTransaction.
 
-            Specify the posting amount in the transaction's currency.
+            The posting amount represents the monetary value of the bank transaction, recorded in the payment transaction's currency, before applying any adjustments.
 
         :return: The transaction_currency_amount of this ChargeBankTransaction.
         :rtype: float
@@ -179,7 +255,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction_currency_amount(self, transaction_currency_amount):
         """Sets the transaction_currency_amount of this ChargeBankTransaction.
 
-            Specify the posting amount in the transaction's currency.
+            The posting amount represents the monetary value of the bank transaction, recorded in the payment transaction's currency, before applying any adjustments.
 
         :param transaction_currency_amount: The transaction_currency_amount of this ChargeBankTransaction.
         :type: float
@@ -191,7 +267,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction_currency_value_amount(self):
         """Gets the transaction_currency_value_amount of this ChargeBankTransaction.
 
-            
+            The value amount represents the net monetary value of the bank transaction, recorded in the payment transaction's currency, after applicable deductions.
 
         :return: The transaction_currency_value_amount of this ChargeBankTransaction.
         :rtype: float
@@ -202,7 +278,7 @@ class ChargeBankTransaction(TransactionAwareEntity):
     def transaction_currency_value_amount(self, transaction_currency_value_amount):
         """Sets the transaction_currency_value_amount of this ChargeBankTransaction.
 
-            
+            The value amount represents the net monetary value of the bank transaction, recorded in the payment transaction's currency, after applicable deductions.
 
         :param transaction_currency_value_amount: The transaction_currency_value_amount of this ChargeBankTransaction.
         :type: float

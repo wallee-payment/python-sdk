@@ -5,7 +5,7 @@ from enum import Enum
 
 
 
-class ShopifySubscriptionModelTaxLine:
+class TaxLine:
 
     swagger_types = {
     
@@ -31,22 +31,22 @@ class ShopifySubscriptionModelTaxLine:
     
     @property
     def rate(self):
-        """Gets the rate of this ShopifySubscriptionModelTaxLine.
+        """Gets the rate of this TaxLine.
 
             
 
-        :return: The rate of this ShopifySubscriptionModelTaxLine.
+        :return: The rate of this TaxLine.
         :rtype: float
         """
         return self._rate
 
     @rate.setter
     def rate(self, rate):
-        """Sets the rate of this ShopifySubscriptionModelTaxLine.
+        """Sets the rate of this TaxLine.
 
             
 
-        :param rate: The rate of this ShopifySubscriptionModelTaxLine.
+        :param rate: The rate of this TaxLine.
         :type: float
         """
 
@@ -54,22 +54,22 @@ class ShopifySubscriptionModelTaxLine:
     
     @property
     def title(self):
-        """Gets the title of this ShopifySubscriptionModelTaxLine.
+        """Gets the title of this TaxLine.
 
             
 
-        :return: The title of this ShopifySubscriptionModelTaxLine.
+        :return: The title of this TaxLine.
         :rtype: str
         """
         return self._title
 
     @title.setter
     def title(self, title):
-        """Sets the title of this ShopifySubscriptionModelTaxLine.
+        """Sets the title of this TaxLine.
 
             
 
-        :param title: The title of this ShopifySubscriptionModelTaxLine.
+        :param title: The title of this TaxLine.
         :type: str
         """
 
@@ -98,7 +98,7 @@ class ShopifySubscriptionModelTaxLine:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionModelTaxLine, dict):
+        if issubclass(TaxLine, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -111,7 +111,7 @@ class ShopifySubscriptionModelTaxLine:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionModelTaxLine):
+        if not isinstance(other, TaxLine):
             return False
 
         return self.__dict__ == other.__dict__

@@ -10,17 +10,17 @@ class SubscriptionProductVersionRetirementCreate:
     swagger_types = {
     
         'product_version': 'int',
-        'respect_terminiation_periods_enabled': 'bool',
+        'respect_termination_periods': 'bool',
         'target_product': 'int',
     }
 
     attribute_map = {
-        'product_version': 'productVersion','respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled','target_product': 'targetProduct',
+        'product_version': 'productVersion','respect_termination_periods': 'respectTerminationPeriods','target_product': 'targetProduct',
     }
 
     
     _product_version = None
-    _respect_terminiation_periods_enabled = None
+    _respect_termination_periods = None
     _target_product = None
 
     def __init__(self, **kwargs):
@@ -28,7 +28,7 @@ class SubscriptionProductVersionRetirementCreate:
         
         self.product_version = kwargs.get('product_version')
 
-        self.respect_terminiation_periods_enabled = kwargs.get('respect_terminiation_periods_enabled', None)
+        self.respect_termination_periods = kwargs.get('respect_termination_periods', None)
         self.target_product = kwargs.get('target_product', None)
         
 
@@ -37,7 +37,7 @@ class SubscriptionProductVersionRetirementCreate:
     def product_version(self):
         """Gets the product_version of this SubscriptionProductVersionRetirementCreate.
 
-            
+            The product version that is to be retired.
 
         :return: The product_version of this SubscriptionProductVersionRetirementCreate.
         :rtype: int
@@ -48,7 +48,7 @@ class SubscriptionProductVersionRetirementCreate:
     def product_version(self, product_version):
         """Sets the product_version of this SubscriptionProductVersionRetirementCreate.
 
-            
+            The product version that is to be retired.
 
         :param product_version: The product_version of this SubscriptionProductVersionRetirementCreate.
         :type: int
@@ -59,33 +59,33 @@ class SubscriptionProductVersionRetirementCreate:
         self._product_version = product_version
     
     @property
-    def respect_terminiation_periods_enabled(self):
-        """Gets the respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirementCreate.
+    def respect_termination_periods(self):
+        """Gets the respect_termination_periods of this SubscriptionProductVersionRetirementCreate.
 
-            
+            Whether the subscriptions' termination periods should be respected.
 
-        :return: The respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirementCreate.
+        :return: The respect_termination_periods of this SubscriptionProductVersionRetirementCreate.
         :rtype: bool
         """
-        return self._respect_terminiation_periods_enabled
+        return self._respect_termination_periods
 
-    @respect_terminiation_periods_enabled.setter
-    def respect_terminiation_periods_enabled(self, respect_terminiation_periods_enabled):
-        """Sets the respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirementCreate.
+    @respect_termination_periods.setter
+    def respect_termination_periods(self, respect_termination_periods):
+        """Sets the respect_termination_periods of this SubscriptionProductVersionRetirementCreate.
 
-            
+            Whether the subscriptions' termination periods should be respected.
 
-        :param respect_terminiation_periods_enabled: The respect_terminiation_periods_enabled of this SubscriptionProductVersionRetirementCreate.
+        :param respect_termination_periods: The respect_termination_periods of this SubscriptionProductVersionRetirementCreate.
         :type: bool
         """
 
-        self._respect_terminiation_periods_enabled = respect_terminiation_periods_enabled
+        self._respect_termination_periods = respect_termination_periods
     
     @property
     def target_product(self):
         """Gets the target_product of this SubscriptionProductVersionRetirementCreate.
 
-            When a target product is not chosen, all customers with the retired product will be terminated.
+            The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.
 
         :return: The target_product of this SubscriptionProductVersionRetirementCreate.
         :rtype: int
@@ -96,7 +96,7 @@ class SubscriptionProductVersionRetirementCreate:
     def target_product(self, target_product):
         """Sets the target_product of this SubscriptionProductVersionRetirementCreate.
 
-            When a target product is not chosen, all customers with the retired product will be terminated.
+            The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.
 
         :param target_product: The target_product of this SubscriptionProductVersionRetirementCreate.
         :type: int

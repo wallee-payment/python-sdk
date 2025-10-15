@@ -2,17 +2,22 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class ShopifyTransaction(TransactionAwareEntity):
+
+class ShopifyTransaction:
 
     swagger_types = {
     
         'checkout_id': 'str',
         'created_on': 'datetime',
-        'integration': 'ShopifyIntegration',
-        'order_id': 'str',
+        'draft_order_id': 'str',
+        'draft_order_legacy_id': 'str',
+        'id': 'int',
+        'integration': 'ShopifyV1Integration',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
+        'order_legacy_id': 'str',
         'order_name': 'str',
         'planned_purge_date': 'datetime',
         'state': 'ShopifyTransactionState',
@@ -21,14 +26,19 @@ class ShopifyTransaction(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'checkout_id': 'checkoutId','created_on': 'createdOn','integration': 'integration','order_id': 'orderId','order_name': 'orderName','planned_purge_date': 'plannedPurgeDate','state': 'state','transaction': 'transaction','version': 'version',
+        'checkout_id': 'checkoutId','created_on': 'createdOn','draft_order_id': 'draftOrderId','draft_order_legacy_id': 'draftOrderLegacyId','id': 'id','integration': 'integration','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','order_legacy_id': 'orderLegacyId','order_name': 'orderName','planned_purge_date': 'plannedPurgeDate','state': 'state','transaction': 'transaction','version': 'version',
     }
 
     
     _checkout_id = None
     _created_on = None
+    _draft_order_id = None
+    _draft_order_legacy_id = None
+    _id = None
     _integration = None
-    _order_id = None
+    _linked_space_id = None
+    _linked_transaction = None
+    _order_legacy_id = None
     _order_name = None
     _planned_purge_date = None
     _state = None
@@ -40,16 +50,19 @@ class ShopifyTransaction(TransactionAwareEntity):
         
         self.checkout_id = kwargs.get('checkout_id', None)
         self.created_on = kwargs.get('created_on', None)
+        self.draft_order_id = kwargs.get('draft_order_id', None)
+        self.draft_order_legacy_id = kwargs.get('draft_order_legacy_id', None)
+        self.id = kwargs.get('id', None)
         self.integration = kwargs.get('integration', None)
-        self.order_id = kwargs.get('order_id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
+        self.order_legacy_id = kwargs.get('order_legacy_id', None)
         self.order_name = kwargs.get('order_name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
@@ -99,13 +112,82 @@ class ShopifyTransaction(TransactionAwareEntity):
         self._created_on = created_on
     
     @property
+    def draft_order_id(self):
+        """Gets the draft_order_id of this ShopifyTransaction.
+
+            
+
+        :return: The draft_order_id of this ShopifyTransaction.
+        :rtype: str
+        """
+        return self._draft_order_id
+
+    @draft_order_id.setter
+    def draft_order_id(self, draft_order_id):
+        """Sets the draft_order_id of this ShopifyTransaction.
+
+            
+
+        :param draft_order_id: The draft_order_id of this ShopifyTransaction.
+        :type: str
+        """
+
+        self._draft_order_id = draft_order_id
+    
+    @property
+    def draft_order_legacy_id(self):
+        """Gets the draft_order_legacy_id of this ShopifyTransaction.
+
+            
+
+        :return: The draft_order_legacy_id of this ShopifyTransaction.
+        :rtype: str
+        """
+        return self._draft_order_legacy_id
+
+    @draft_order_legacy_id.setter
+    def draft_order_legacy_id(self, draft_order_legacy_id):
+        """Sets the draft_order_legacy_id of this ShopifyTransaction.
+
+            
+
+        :param draft_order_legacy_id: The draft_order_legacy_id of this ShopifyTransaction.
+        :type: str
+        """
+
+        self._draft_order_legacy_id = draft_order_legacy_id
+    
+    @property
+    def id(self):
+        """Gets the id of this ShopifyTransaction.
+
+            A unique identifier for the object.
+
+        :return: The id of this ShopifyTransaction.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ShopifyTransaction.
+
+            A unique identifier for the object.
+
+        :param id: The id of this ShopifyTransaction.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def integration(self):
         """Gets the integration of this ShopifyTransaction.
 
             
 
         :return: The integration of this ShopifyTransaction.
-        :rtype: ShopifyIntegration
+        :rtype: ShopifyV1Integration
         """
         return self._integration
 
@@ -116,33 +198,79 @@ class ShopifyTransaction(TransactionAwareEntity):
             
 
         :param integration: The integration of this ShopifyTransaction.
-        :type: ShopifyIntegration
+        :type: ShopifyV1Integration
         """
 
         self._integration = integration
     
     @property
-    def order_id(self):
-        """Gets the order_id of this ShopifyTransaction.
+    def linked_space_id(self):
+        """Gets the linked_space_id of this ShopifyTransaction.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this ShopifyTransaction.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this ShopifyTransaction.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this ShopifyTransaction.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this ShopifyTransaction.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this ShopifyTransaction.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this ShopifyTransaction.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this ShopifyTransaction.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
+    def order_legacy_id(self):
+        """Gets the order_legacy_id of this ShopifyTransaction.
 
             
 
-        :return: The order_id of this ShopifyTransaction.
+        :return: The order_legacy_id of this ShopifyTransaction.
         :rtype: str
         """
-        return self._order_id
+        return self._order_legacy_id
 
-    @order_id.setter
-    def order_id(self, order_id):
-        """Sets the order_id of this ShopifyTransaction.
+    @order_legacy_id.setter
+    def order_legacy_id(self, order_legacy_id):
+        """Sets the order_legacy_id of this ShopifyTransaction.
 
             
 
-        :param order_id: The order_id of this ShopifyTransaction.
+        :param order_legacy_id: The order_legacy_id of this ShopifyTransaction.
         :type: str
         """
 
-        self._order_id = order_id
+        self._order_legacy_id = order_legacy_id
     
     @property
     def order_name(self):

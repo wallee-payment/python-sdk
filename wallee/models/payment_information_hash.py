@@ -59,7 +59,7 @@ class PaymentInformationHash:
     def type(self):
         """Gets the type of this PaymentInformationHash.
 
-            
+            The type specifies the algorithm used for calculating the hash.
 
         :return: The type of this PaymentInformationHash.
         :rtype: PaymentInformationHashType
@@ -70,7 +70,7 @@ class PaymentInformationHash:
     def type(self, type):
         """Sets the type of this PaymentInformationHash.
 
-            
+            The type specifies the algorithm used for calculating the hash.
 
         :param type: The type of this PaymentInformationHash.
         :type: PaymentInformationHashType
@@ -82,7 +82,7 @@ class PaymentInformationHash:
     def value(self):
         """Gets the value of this PaymentInformationHash.
 
-            
+            The hash value generated based on the specified type.
 
         :return: The value of this PaymentInformationHash.
         :rtype: str
@@ -93,7 +93,7 @@ class PaymentInformationHash:
     def value(self, value):
         """Sets the value of this PaymentInformationHash.
 
-            
+            The hash value generated based on the specified type.
 
         :param value: The value of this PaymentInformationHash.
         :type: str

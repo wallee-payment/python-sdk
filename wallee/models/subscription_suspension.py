@@ -92,7 +92,7 @@ class SubscriptionSuspension:
     def effective_end_date(self):
         """Gets the effective_end_date of this SubscriptionSuspension.
 
-            
+            The date and time when the suspension ended.
 
         :return: The effective_end_date of this SubscriptionSuspension.
         :rtype: datetime
@@ -103,7 +103,7 @@ class SubscriptionSuspension:
     def effective_end_date(self, effective_end_date):
         """Sets the effective_end_date of this SubscriptionSuspension.
 
-            
+            The date and time when the suspension ended.
 
         :param effective_end_date: The effective_end_date of this SubscriptionSuspension.
         :type: datetime
@@ -115,7 +115,7 @@ class SubscriptionSuspension:
     def end_action(self):
         """Gets the end_action of this SubscriptionSuspension.
 
-            When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+            Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
 
         :return: The end_action of this SubscriptionSuspension.
         :rtype: SubscriptionSuspensionAction
@@ -126,7 +126,7 @@ class SubscriptionSuspension:
     def end_action(self, end_action):
         """Sets the end_action of this SubscriptionSuspension.
 
-            When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+            Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
 
         :param end_action: The end_action of this SubscriptionSuspension.
         :type: SubscriptionSuspensionAction
@@ -207,7 +207,7 @@ class SubscriptionSuspension:
     def note(self):
         """Gets the note of this SubscriptionSuspension.
 
-            The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+            A note that contains details about the suspension. It is not disclosed to the subscriber.
 
         :return: The note of this SubscriptionSuspension.
         :rtype: str
@@ -218,7 +218,7 @@ class SubscriptionSuspension:
     def note(self, note):
         """Sets the note of this SubscriptionSuspension.
 
-            The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+            A note that contains details about the suspension. It is not disclosed to the subscriber.
 
         :param note: The note of this SubscriptionSuspension.
         :type: str
@@ -232,7 +232,7 @@ class SubscriptionSuspension:
     def period_bill(self):
         """Gets the period_bill of this SubscriptionSuspension.
 
-            
+            The period bill that led to the suspension of the subscription.
 
         :return: The period_bill of this SubscriptionSuspension.
         :rtype: int
@@ -243,7 +243,7 @@ class SubscriptionSuspension:
     def period_bill(self, period_bill):
         """Sets the period_bill of this SubscriptionSuspension.
 
-            
+            The period bill that led to the suspension of the subscription.
 
         :param period_bill: The period_bill of this SubscriptionSuspension.
         :type: int
@@ -255,7 +255,7 @@ class SubscriptionSuspension:
     def planned_end_date(self):
         """Gets the planned_end_date of this SubscriptionSuspension.
 
-            The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+            The date and time when the suspension is planned to end.
 
         :return: The planned_end_date of this SubscriptionSuspension.
         :rtype: datetime
@@ -266,7 +266,7 @@ class SubscriptionSuspension:
     def planned_end_date(self, planned_end_date):
         """Sets the planned_end_date of this SubscriptionSuspension.
 
-            The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+            The date and time when the suspension is planned to end.
 
         :param planned_end_date: The planned_end_date of this SubscriptionSuspension.
         :type: datetime
@@ -301,7 +301,7 @@ class SubscriptionSuspension:
     def reason(self):
         """Gets the reason of this SubscriptionSuspension.
 
-            The suspension reason indicates why a suspension has been created.
+            The reason why the subscription was suspended.
 
         :return: The reason of this SubscriptionSuspension.
         :rtype: SubscriptionSuspensionReason
@@ -312,7 +312,7 @@ class SubscriptionSuspension:
     def reason(self, reason):
         """Sets the reason of this SubscriptionSuspension.
 
-            The suspension reason indicates why a suspension has been created.
+            The reason why the subscription was suspended.
 
         :param reason: The reason of this SubscriptionSuspension.
         :type: SubscriptionSuspensionReason
@@ -347,7 +347,7 @@ class SubscriptionSuspension:
     def subscription(self):
         """Gets the subscription of this SubscriptionSuspension.
 
-            
+            The subscription that this suspension belongs to.
 
         :return: The subscription of this SubscriptionSuspension.
         :rtype: int
@@ -358,7 +358,7 @@ class SubscriptionSuspension:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionSuspension.
 
-            
+            The subscription that this suspension belongs to.
 
         :param subscription: The subscription of this SubscriptionSuspension.
         :type: int

@@ -13,7 +13,6 @@ class PaymentConnector:
         'deprecated': 'bool',
         'deprecation_reason': 'dict(str, str)',
         'description': 'dict(str, str)',
-        'feature': 'Feature',
         'id': 'int',
         'name': 'dict(str, str)',
         'payment_method': 'int',
@@ -26,7 +25,7 @@ class PaymentConnector:
     }
 
     attribute_map = {
-        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','feature': 'feature','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_currencies': 'supportedCurrencies','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
+        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_currencies': 'supportedCurrencies','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
     }
 
     
@@ -34,7 +33,6 @@ class PaymentConnector:
     _deprecated = None
     _deprecation_reason = None
     _description = None
-    _feature = None
     _id = None
     _name = None
     _payment_method = None
@@ -52,7 +50,6 @@ class PaymentConnector:
         self.deprecated = kwargs.get('deprecated', None)
         self.deprecation_reason = kwargs.get('deprecation_reason', None)
         self.description = kwargs.get('description', None)
-        self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         self.payment_method = kwargs.get('payment_method', None)
@@ -69,7 +66,7 @@ class PaymentConnector:
     def data_collection_type(self):
         """Gets the data_collection_type of this PaymentConnector.
 
-            
+            The data collection type specifies how the payment information is collected.
 
         :return: The data_collection_type of this PaymentConnector.
         :rtype: DataCollectionType
@@ -80,7 +77,7 @@ class PaymentConnector:
     def data_collection_type(self, data_collection_type):
         """Sets the data_collection_type of this PaymentConnector.
 
-            
+            The data collection type specifies how the payment information is collected.
 
         :param data_collection_type: The data_collection_type of this PaymentConnector.
         :type: DataCollectionType
@@ -92,7 +89,7 @@ class PaymentConnector:
     def deprecated(self):
         """Gets the deprecated of this PaymentConnector.
 
-            
+            Whether the object was deprecated.
 
         :return: The deprecated of this PaymentConnector.
         :rtype: bool
@@ -103,7 +100,7 @@ class PaymentConnector:
     def deprecated(self, deprecated):
         """Sets the deprecated of this PaymentConnector.
 
-            
+            Whether the object was deprecated.
 
         :param deprecated: The deprecated of this PaymentConnector.
         :type: bool
@@ -115,7 +112,7 @@ class PaymentConnector:
     def deprecation_reason(self):
         """Gets the deprecation_reason of this PaymentConnector.
 
-            
+            The deprecation reason describes why the object was deprecated.
 
         :return: The deprecation_reason of this PaymentConnector.
         :rtype: dict(str, str)
@@ -126,7 +123,7 @@ class PaymentConnector:
     def deprecation_reason(self, deprecation_reason):
         """Sets the deprecation_reason of this PaymentConnector.
 
-            
+            The deprecation reason describes why the object was deprecated.
 
         :param deprecation_reason: The deprecation_reason of this PaymentConnector.
         :type: dict(str, str)
@@ -156,29 +153,6 @@ class PaymentConnector:
         """
 
         self._description = description
-    
-    @property
-    def feature(self):
-        """Gets the feature of this PaymentConnector.
-
-            
-
-        :return: The feature of this PaymentConnector.
-        :rtype: Feature
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this PaymentConnector.
-
-            
-
-        :param feature: The feature of this PaymentConnector.
-        :type: Feature
-        """
-
-        self._feature = feature
     
     @property
     def id(self):
@@ -230,7 +204,7 @@ class PaymentConnector:
     def payment_method(self):
         """Gets the payment_method of this PaymentConnector.
 
-            
+            The payment method that the connector supports.
 
         :return: The payment_method of this PaymentConnector.
         :rtype: int
@@ -241,7 +215,7 @@ class PaymentConnector:
     def payment_method(self, payment_method):
         """Sets the payment_method of this PaymentConnector.
 
-            
+            The payment method that the connector supports.
 
         :param payment_method: The payment_method of this PaymentConnector.
         :type: int
@@ -253,7 +227,7 @@ class PaymentConnector:
     def payment_method_brand(self):
         """Gets the payment_method_brand of this PaymentConnector.
 
-            
+            The specific brand that this payment connector supports.
 
         :return: The payment_method_brand of this PaymentConnector.
         :rtype: PaymentMethodBrand
@@ -264,7 +238,7 @@ class PaymentConnector:
     def payment_method_brand(self, payment_method_brand):
         """Sets the payment_method_brand of this PaymentConnector.
 
-            
+            The specific brand that this payment connector supports.
 
         :param payment_method_brand: The payment_method_brand of this PaymentConnector.
         :type: PaymentMethodBrand
@@ -276,7 +250,7 @@ class PaymentConnector:
     def primary_risk_taker(self):
         """Gets the primary_risk_taker of this PaymentConnector.
 
-            
+            The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
 
         :return: The primary_risk_taker of this PaymentConnector.
         :rtype: PaymentPrimaryRiskTaker
@@ -287,7 +261,7 @@ class PaymentConnector:
     def primary_risk_taker(self, primary_risk_taker):
         """Sets the primary_risk_taker of this PaymentConnector.
 
-            
+            The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
 
         :param primary_risk_taker: The primary_risk_taker of this PaymentConnector.
         :type: PaymentPrimaryRiskTaker
@@ -299,7 +273,7 @@ class PaymentConnector:
     def processor(self):
         """Gets the processor of this PaymentConnector.
 
-            
+            The processor that the connector belongs to.
 
         :return: The processor of this PaymentConnector.
         :rtype: int
@@ -310,7 +284,7 @@ class PaymentConnector:
     def processor(self, processor):
         """Sets the processor of this PaymentConnector.
 
-            
+            The processor that the connector belongs to.
 
         :param processor: The processor of this PaymentConnector.
         :type: int
@@ -322,7 +296,7 @@ class PaymentConnector:
     def supported_currencies(self):
         """Gets the supported_currencies of this PaymentConnector.
 
-            
+            The currencies that are supported by the connector.
 
         :return: The supported_currencies of this PaymentConnector.
         :rtype: list[str]
@@ -333,7 +307,7 @@ class PaymentConnector:
     def supported_currencies(self, supported_currencies):
         """Sets the supported_currencies of this PaymentConnector.
 
-            
+            The currencies that are supported by the connector.
 
         :param supported_currencies: The supported_currencies of this PaymentConnector.
         :type: list[str]
@@ -345,7 +319,7 @@ class PaymentConnector:
     def supported_customers_presences(self):
         """Gets the supported_customers_presences of this PaymentConnector.
 
-            
+            The types of customer's presence that are supported by the connector.
 
         :return: The supported_customers_presences of this PaymentConnector.
         :rtype: list[CustomersPresence]
@@ -356,7 +330,7 @@ class PaymentConnector:
     def supported_customers_presences(self, supported_customers_presences):
         """Sets the supported_customers_presences of this PaymentConnector.
 
-            
+            The types of customer's presence that are supported by the connector.
 
         :param supported_customers_presences: The supported_customers_presences of this PaymentConnector.
         :type: list[CustomersPresence]
@@ -368,7 +342,7 @@ class PaymentConnector:
     def supported_features(self):
         """Gets the supported_features of this PaymentConnector.
 
-            
+            The features that are supported by the connector.
 
         :return: The supported_features of this PaymentConnector.
         :rtype: list[int]
@@ -379,7 +353,7 @@ class PaymentConnector:
     def supported_features(self, supported_features):
         """Sets the supported_features of this PaymentConnector.
 
-            
+            The features that are supported by the connector.
 
         :param supported_features: The supported_features of this PaymentConnector.
         :type: list[int]

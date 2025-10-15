@@ -33,7 +33,7 @@ class AbstractSubscriptionMetricUpdate:
     def description(self):
         """Gets the description of this AbstractSubscriptionMetricUpdate.
 
-            
+            The localized description of the metric that is displayed to the customer.
 
         :return: The description of this AbstractSubscriptionMetricUpdate.
         :rtype: dict(str, str)
@@ -44,7 +44,7 @@ class AbstractSubscriptionMetricUpdate:
     def description(self, description):
         """Sets the description of this AbstractSubscriptionMetricUpdate.
 
-            
+            The localized description of the metric that is displayed to the customer.
 
         :param description: The description of this AbstractSubscriptionMetricUpdate.
         :type: dict(str, str)
@@ -56,7 +56,7 @@ class AbstractSubscriptionMetricUpdate:
     def name(self):
         """Gets the name of this AbstractSubscriptionMetricUpdate.
 
-            
+            The localized name of the metric that is displayed to the customer.
 
         :return: The name of this AbstractSubscriptionMetricUpdate.
         :rtype: dict(str, str)
@@ -67,7 +67,7 @@ class AbstractSubscriptionMetricUpdate:
     def name(self, name):
         """Sets the name of this AbstractSubscriptionMetricUpdate.
 
-            
+            The localized name of the metric that is displayed to the customer.
 
         :param name: The name of this AbstractSubscriptionMetricUpdate.
         :type: dict(str, str)

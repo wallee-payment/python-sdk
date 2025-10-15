@@ -11,19 +11,17 @@ class FailureReason:
     
         'category': 'FailureCategory',
         'description': 'dict(str, str)',
-        'features': 'list[int]',
         'id': 'int',
         'name': 'dict(str, str)',
     }
 
     attribute_map = {
-        'category': 'category','description': 'description','features': 'features','id': 'id','name': 'name',
+        'category': 'category','description': 'description','id': 'id','name': 'name',
     }
 
     
     _category = None
     _description = None
-    _features = None
     _id = None
     _name = None
 
@@ -32,7 +30,6 @@ class FailureReason:
         
         self.category = kwargs.get('category', None)
         self.description = kwargs.get('description', None)
-        self.features = kwargs.get('features', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         
@@ -42,7 +39,7 @@ class FailureReason:
     def category(self):
         """Gets the category of this FailureReason.
 
-            
+            The category that the failure reason belongs to.
 
         :return: The category of this FailureReason.
         :rtype: FailureCategory
@@ -53,7 +50,7 @@ class FailureReason:
     def category(self, category):
         """Sets the category of this FailureReason.
 
-            
+            The category that the failure reason belongs to.
 
         :param category: The category of this FailureReason.
         :type: FailureCategory
@@ -83,29 +80,6 @@ class FailureReason:
         """
 
         self._description = description
-    
-    @property
-    def features(self):
-        """Gets the features of this FailureReason.
-
-            
-
-        :return: The features of this FailureReason.
-        :rtype: list[int]
-        """
-        return self._features
-
-    @features.setter
-    def features(self, features):
-        """Sets the features of this FailureReason.
-
-            
-
-        :param features: The features of this FailureReason.
-        :type: list[int]
-        """
-
-        self._features = features
     
     @property
     def id(self):

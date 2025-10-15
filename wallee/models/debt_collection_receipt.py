@@ -57,7 +57,7 @@ class DebtCollectionReceipt:
     def amount(self):
         """Gets the amount of this DebtCollectionReceipt.
 
-            
+            The amount that was collected.
 
         :return: The amount of this DebtCollectionReceipt.
         :rtype: float
@@ -68,7 +68,7 @@ class DebtCollectionReceipt:
     def amount(self, amount):
         """Sets the amount of this DebtCollectionReceipt.
 
-            
+            The amount that was collected.
 
         :param amount: The amount of this DebtCollectionReceipt.
         :type: float
@@ -80,7 +80,7 @@ class DebtCollectionReceipt:
     def created_by(self):
         """Gets the created_by of this DebtCollectionReceipt.
 
-            The created by field indicates the user which has created the receipt.
+            The ID of the user the receipt was created by.
 
         :return: The created_by of this DebtCollectionReceipt.
         :rtype: int
@@ -91,7 +91,7 @@ class DebtCollectionReceipt:
     def created_by(self, created_by):
         """Sets the created_by of this DebtCollectionReceipt.
 
-            The created by field indicates the user which has created the receipt.
+            The ID of the user the receipt was created by.
 
         :param created_by: The created_by of this DebtCollectionReceipt.
         :type: int
@@ -126,7 +126,7 @@ class DebtCollectionReceipt:
     def debt_collection_case(self):
         """Gets the debt_collection_case of this DebtCollectionReceipt.
 
-            
+            The debt collection case that this document belongs to.
 
         :return: The debt_collection_case of this DebtCollectionReceipt.
         :rtype: int
@@ -137,7 +137,7 @@ class DebtCollectionReceipt:
     def debt_collection_case(self, debt_collection_case):
         """Sets the debt_collection_case of this DebtCollectionReceipt.
 
-            
+            The debt collection case that this document belongs to.
 
         :param debt_collection_case: The debt_collection_case of this DebtCollectionReceipt.
         :type: int
@@ -149,7 +149,7 @@ class DebtCollectionReceipt:
     def external_id(self):
         """Gets the external_id of this DebtCollectionReceipt.
 
-            The external id is a unique identifier for the receipt. The external id has to be unique in combination with the debt collection case. When a receipt is sent with an existing external id the existing one is returned rather than a new one is created.
+            A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.
 
         :return: The external_id of this DebtCollectionReceipt.
         :rtype: str
@@ -160,7 +160,7 @@ class DebtCollectionReceipt:
     def external_id(self, external_id):
         """Sets the external_id of this DebtCollectionReceipt.
 
-            The external id is a unique identifier for the receipt. The external id has to be unique in combination with the debt collection case. When a receipt is sent with an existing external id the existing one is returned rather than a new one is created.
+            A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.
 
         :param external_id: The external_id of this DebtCollectionReceipt.
         :type: str
@@ -245,7 +245,7 @@ class DebtCollectionReceipt:
     def source(self):
         """Gets the source of this DebtCollectionReceipt.
 
-            
+            The source stating where the receipt is coming from.
 
         :return: The source of this DebtCollectionReceipt.
         :rtype: int
@@ -256,7 +256,7 @@ class DebtCollectionReceipt:
     def source(self, source):
         """Sets the source of this DebtCollectionReceipt.
 
-            
+            The source stating where the receipt is coming from.
 
         :param source: The source of this DebtCollectionReceipt.
         :type: int

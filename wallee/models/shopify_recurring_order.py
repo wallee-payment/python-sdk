@@ -2,18 +2,23 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class ShopifyRecurringOrder(TransactionAwareEntity):
+
+class ShopifyRecurringOrder:
 
     swagger_types = {
     
         'billed_on': 'datetime',
         'checkout_token': 'str',
         'created_on': 'datetime',
+        'draft_order_id': 'str',
         'failure_reason': 'FailureReason',
+        'id': 'int',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'order_id': 'str',
+        'order_legacy_id': 'str',
         'order_name': 'str',
         'planned_execution_date': 'datetime',
         'planned_purge_date': 'datetime',
@@ -26,15 +31,20 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'billed_on': 'billedOn','checkout_token': 'checkoutToken','created_on': 'createdOn','failure_reason': 'failureReason','order_id': 'orderId','order_name': 'orderName','planned_execution_date': 'plannedExecutionDate','planned_purge_date': 'plannedPurgeDate','recurrence_number': 'recurrenceNumber','shop': 'shop','started_processing_on': 'startedProcessingOn','state': 'state','subscription_version': 'subscriptionVersion','transaction': 'transaction',
+        'billed_on': 'billedOn','checkout_token': 'checkoutToken','created_on': 'createdOn','draft_order_id': 'draftOrderId','failure_reason': 'failureReason','id': 'id','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','order_id': 'orderId','order_legacy_id': 'orderLegacyId','order_name': 'orderName','planned_execution_date': 'plannedExecutionDate','planned_purge_date': 'plannedPurgeDate','recurrence_number': 'recurrenceNumber','shop': 'shop','started_processing_on': 'startedProcessingOn','state': 'state','subscription_version': 'subscriptionVersion','transaction': 'transaction',
     }
 
     
     _billed_on = None
     _checkout_token = None
     _created_on = None
+    _draft_order_id = None
     _failure_reason = None
+    _id = None
+    _linked_space_id = None
+    _linked_transaction = None
     _order_id = None
+    _order_legacy_id = None
     _order_name = None
     _planned_execution_date = None
     _planned_purge_date = None
@@ -51,8 +61,13 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
         self.billed_on = kwargs.get('billed_on', None)
         self.checkout_token = kwargs.get('checkout_token', None)
         self.created_on = kwargs.get('created_on', None)
+        self.draft_order_id = kwargs.get('draft_order_id', None)
         self.failure_reason = kwargs.get('failure_reason', None)
+        self.id = kwargs.get('id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.order_id = kwargs.get('order_id', None)
+        self.order_legacy_id = kwargs.get('order_legacy_id', None)
         self.order_name = kwargs.get('order_name', None)
         self.planned_execution_date = kwargs.get('planned_execution_date', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
@@ -62,9 +77,7 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
         self.state = kwargs.get('state', None)
         self.subscription_version = kwargs.get('subscription_version', None)
         self.transaction = kwargs.get('transaction', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
@@ -137,6 +150,29 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
         self._created_on = created_on
     
     @property
+    def draft_order_id(self):
+        """Gets the draft_order_id of this ShopifyRecurringOrder.
+
+            
+
+        :return: The draft_order_id of this ShopifyRecurringOrder.
+        :rtype: str
+        """
+        return self._draft_order_id
+
+    @draft_order_id.setter
+    def draft_order_id(self, draft_order_id):
+        """Sets the draft_order_id of this ShopifyRecurringOrder.
+
+            
+
+        :param draft_order_id: The draft_order_id of this ShopifyRecurringOrder.
+        :type: str
+        """
+
+        self._draft_order_id = draft_order_id
+    
+    @property
     def failure_reason(self):
         """Gets the failure_reason of this ShopifyRecurringOrder.
 
@@ -160,6 +196,75 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
         self._failure_reason = failure_reason
     
     @property
+    def id(self):
+        """Gets the id of this ShopifyRecurringOrder.
+
+            A unique identifier for the object.
+
+        :return: The id of this ShopifyRecurringOrder.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ShopifyRecurringOrder.
+
+            A unique identifier for the object.
+
+        :param id: The id of this ShopifyRecurringOrder.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this ShopifyRecurringOrder.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this ShopifyRecurringOrder.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this ShopifyRecurringOrder.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this ShopifyRecurringOrder.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this ShopifyRecurringOrder.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this ShopifyRecurringOrder.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this ShopifyRecurringOrder.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this ShopifyRecurringOrder.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def order_id(self):
         """Gets the order_id of this ShopifyRecurringOrder.
 
@@ -181,6 +286,29 @@ class ShopifyRecurringOrder(TransactionAwareEntity):
         """
 
         self._order_id = order_id
+    
+    @property
+    def order_legacy_id(self):
+        """Gets the order_legacy_id of this ShopifyRecurringOrder.
+
+            
+
+        :return: The order_legacy_id of this ShopifyRecurringOrder.
+        :rtype: str
+        """
+        return self._order_legacy_id
+
+    @order_legacy_id.setter
+    def order_legacy_id(self, order_legacy_id):
+        """Sets the order_legacy_id of this ShopifyRecurringOrder.
+
+            
+
+        :param order_legacy_id: The order_legacy_id of this ShopifyRecurringOrder.
+        :type: str
+        """
+
+        self._order_legacy_id = order_legacy_id
     
     @property
     def order_name(self):

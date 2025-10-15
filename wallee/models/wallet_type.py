@@ -10,25 +10,34 @@ class WalletType:
     swagger_types = {
     
         'description': 'dict(str, str)',
+        'feature': 'Feature',
         'id': 'int',
         'name': 'dict(str, str)',
+        'navigation_path': 'str',
+        'sort_order': 'int',
     }
 
     attribute_map = {
-        'description': 'description','id': 'id','name': 'name',
+        'description': 'description','feature': 'feature','id': 'id','name': 'name','navigation_path': 'navigationPath','sort_order': 'sortOrder',
     }
 
     
     _description = None
+    _feature = None
     _id = None
     _name = None
+    _navigation_path = None
+    _sort_order = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.description = kwargs.get('description', None)
+        self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
+        self.navigation_path = kwargs.get('navigation_path', None)
+        self.sort_order = kwargs.get('sort_order', None)
         
 
     
@@ -54,6 +63,29 @@ class WalletType:
         """
 
         self._description = description
+    
+    @property
+    def feature(self):
+        """Gets the feature of this WalletType.
+
+            
+
+        :return: The feature of this WalletType.
+        :rtype: Feature
+        """
+        return self._feature
+
+    @feature.setter
+    def feature(self, feature):
+        """Sets the feature of this WalletType.
+
+            
+
+        :param feature: The feature of this WalletType.
+        :type: Feature
+        """
+
+        self._feature = feature
     
     @property
     def id(self):
@@ -100,6 +132,52 @@ class WalletType:
         """
 
         self._name = name
+    
+    @property
+    def navigation_path(self):
+        """Gets the navigation_path of this WalletType.
+
+            
+
+        :return: The navigation_path of this WalletType.
+        :rtype: str
+        """
+        return self._navigation_path
+
+    @navigation_path.setter
+    def navigation_path(self, navigation_path):
+        """Sets the navigation_path of this WalletType.
+
+            
+
+        :param navigation_path: The navigation_path of this WalletType.
+        :type: str
+        """
+
+        self._navigation_path = navigation_path
+    
+    @property
+    def sort_order(self):
+        """Gets the sort_order of this WalletType.
+
+            
+
+        :return: The sort_order of this WalletType.
+        :rtype: int
+        """
+        return self._sort_order
+
+    @sort_order.setter
+    def sort_order(self, sort_order):
+        """Sets the sort_order of this WalletType.
+
+            
+
+        :param sort_order: The sort_order of this WalletType.
+        :type: int
+        """
+
+        self._sort_order = sort_order
     
 
     def to_dict(self):

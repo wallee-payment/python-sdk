@@ -465,7 +465,7 @@ class PaymentTerminalServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param int terminal_id:  (required)
-        :return: None
+        :return: PaymentTerminalTransactionSummaryReference
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -491,7 +491,7 @@ class PaymentTerminalServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param int terminal_id:  (required)
-        :return: None
+        :return: PaymentTerminalTransactionSummaryReference
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -547,7 +547,7 @@ class PaymentTerminalServiceApi:
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,
+            response_type='PaymentTerminalTransactionSummaryReference',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -568,7 +568,7 @@ class PaymentTerminalServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param str terminal_identifier:  (required)
-        :return: None
+        :return: PaymentTerminalTransactionSummaryReference
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -594,7 +594,7 @@ class PaymentTerminalServiceApi:
         :param async_req bool
         :param int space_id:  (required)
         :param str terminal_identifier:  (required)
-        :return: None
+        :return: PaymentTerminalTransactionSummaryReference
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -650,7 +650,7 @@ class PaymentTerminalServiceApi:
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,
+            response_type='PaymentTerminalTransactionSummaryReference',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

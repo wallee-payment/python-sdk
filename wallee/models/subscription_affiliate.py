@@ -57,7 +57,7 @@ class SubscriptionAffiliate:
     def external_id(self):
         """Gets the external_id of this SubscriptionAffiliate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionAffiliate.
         :rtype: str
@@ -68,7 +68,7 @@ class SubscriptionAffiliate:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionAffiliate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionAffiliate.
         :type: str
@@ -172,7 +172,7 @@ class SubscriptionAffiliate:
     def name(self):
         """Gets the name of this SubscriptionAffiliate.
 
-            
+            The name used to identify the affiliate.
 
         :return: The name of this SubscriptionAffiliate.
         :rtype: str
@@ -183,7 +183,7 @@ class SubscriptionAffiliate:
     def name(self, name):
         """Sets the name of this SubscriptionAffiliate.
 
-            
+            The name used to identify the affiliate.
 
         :param name: The name of this SubscriptionAffiliate.
         :type: str
@@ -222,7 +222,7 @@ class SubscriptionAffiliate:
     def reference(self):
         """Gets the reference of this SubscriptionAffiliate.
 
-            
+            The reference used to identify the affiliate.
 
         :return: The reference of this SubscriptionAffiliate.
         :rtype: str
@@ -233,7 +233,7 @@ class SubscriptionAffiliate:
     def reference(self, reference):
         """Sets the reference of this SubscriptionAffiliate.
 
-            
+            The reference used to identify the affiliate.
 
         :param reference: The reference of this SubscriptionAffiliate.
         :type: str

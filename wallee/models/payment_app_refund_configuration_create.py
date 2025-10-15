@@ -36,7 +36,7 @@ class PaymentAppRefundConfigurationCreate:
     def multiple_refunds_supported(self):
         """Gets the multiple_refunds_supported of this PaymentAppRefundConfigurationCreate.
 
-            This flag indicates whether the connector supports multiple refunds for a single transaction or not.
+            Whether the payment connector can process multiple refunds for a single transaction.
 
         :return: The multiple_refunds_supported of this PaymentAppRefundConfigurationCreate.
         :rtype: bool
@@ -47,7 +47,7 @@ class PaymentAppRefundConfigurationCreate:
     def multiple_refunds_supported(self, multiple_refunds_supported):
         """Sets the multiple_refunds_supported of this PaymentAppRefundConfigurationCreate.
 
-            This flag indicates whether the connector supports multiple refunds for a single transaction or not.
+            Whether the payment connector can process multiple refunds for a single transaction.
 
         :param multiple_refunds_supported: The multiple_refunds_supported of this PaymentAppRefundConfigurationCreate.
         :type: bool
@@ -59,7 +59,7 @@ class PaymentAppRefundConfigurationCreate:
     def refund_endpoint(self):
         """Gets the refund_endpoint of this PaymentAppRefundConfigurationCreate.
 
-            The refund endpoint is invoked to request the payment service provider to execute a refund.
+            The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
 
         :return: The refund_endpoint of this PaymentAppRefundConfigurationCreate.
         :rtype: str
@@ -70,7 +70,7 @@ class PaymentAppRefundConfigurationCreate:
     def refund_endpoint(self, refund_endpoint):
         """Sets the refund_endpoint of this PaymentAppRefundConfigurationCreate.
 
-            The refund endpoint is invoked to request the payment service provider to execute a refund.
+            The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
 
         :param refund_endpoint: The refund_endpoint of this PaymentAppRefundConfigurationCreate.
         :type: str
@@ -82,7 +82,7 @@ class PaymentAppRefundConfigurationCreate:
     def refund_timeout_in_minutes(self):
         """Gets the refund_timeout_in_minutes of this PaymentAppRefundConfigurationCreate.
 
-            When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.
+            The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
 
         :return: The refund_timeout_in_minutes of this PaymentAppRefundConfigurationCreate.
         :rtype: int
@@ -93,7 +93,7 @@ class PaymentAppRefundConfigurationCreate:
     def refund_timeout_in_minutes(self, refund_timeout_in_minutes):
         """Sets the refund_timeout_in_minutes of this PaymentAppRefundConfigurationCreate.
 
-            When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.
+            The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
 
         :param refund_timeout_in_minutes: The refund_timeout_in_minutes of this PaymentAppRefundConfigurationCreate.
         :type: int

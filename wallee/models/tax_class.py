@@ -13,13 +13,12 @@ class TaxClass:
         'linked_space_id': 'int',
         'name': 'str',
         'planned_purge_date': 'datetime',
-        'space_id': 'int',
         'state': 'CreationEntityState',
         'version': 'int',
     }
 
     attribute_map = {
-        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','version': 'version',
     }
 
     
@@ -27,7 +26,6 @@ class TaxClass:
     _linked_space_id = None
     _name = None
     _planned_purge_date = None
-    _space_id = None
     _state = None
     _version = None
 
@@ -38,7 +36,6 @@ class TaxClass:
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.space_id = kwargs.get('space_id', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
         
@@ -94,7 +91,7 @@ class TaxClass:
     def name(self):
         """Gets the name of this TaxClass.
 
-            The tax class name is used internally to identify the tax class in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the tax class.
 
         :return: The name of this TaxClass.
         :rtype: str
@@ -105,7 +102,7 @@ class TaxClass:
     def name(self, name):
         """Sets the name of this TaxClass.
 
-            The tax class name is used internally to identify the tax class in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the tax class.
 
         :param name: The name of this TaxClass.
         :type: str
@@ -137,29 +134,6 @@ class TaxClass:
         """
 
         self._planned_purge_date = planned_purge_date
-    
-    @property
-    def space_id(self):
-        """Gets the space_id of this TaxClass.
-
-            
-
-        :return: The space_id of this TaxClass.
-        :rtype: int
-        """
-        return self._space_id
-
-    @space_id.setter
-    def space_id(self, space_id):
-        """Sets the space_id of this TaxClass.
-
-            
-
-        :param space_id: The space_id of this TaxClass.
-        :type: int
-        """
-
-        self._space_id = space_id
     
     @property
     def state(self):

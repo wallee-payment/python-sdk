@@ -51,7 +51,7 @@ class AbstractDebtCollectionCaseUpdate:
     def billing_address(self):
         """Gets the billing_address of this AbstractDebtCollectionCaseUpdate.
 
-            The billing address of the case identifies the debtor.
+            The billing address that identifies the debtor.
 
         :return: The billing_address of this AbstractDebtCollectionCaseUpdate.
         :rtype: AddressCreate
@@ -62,7 +62,7 @@ class AbstractDebtCollectionCaseUpdate:
     def billing_address(self, billing_address):
         """Sets the billing_address of this AbstractDebtCollectionCaseUpdate.
 
-            The billing address of the case identifies the debtor.
+            The billing address that identifies the debtor.
 
         :param billing_address: The billing_address of this AbstractDebtCollectionCaseUpdate.
         :type: AddressCreate
@@ -74,7 +74,7 @@ class AbstractDebtCollectionCaseUpdate:
     def contract_date(self):
         """Gets the contract_date of this AbstractDebtCollectionCaseUpdate.
 
-            The contract date is the date on which the contract with the debtor was signed on.
+            The date and time when the contract with the debtor was signed.
 
         :return: The contract_date of this AbstractDebtCollectionCaseUpdate.
         :rtype: datetime
@@ -85,7 +85,7 @@ class AbstractDebtCollectionCaseUpdate:
     def contract_date(self, contract_date):
         """Sets the contract_date of this AbstractDebtCollectionCaseUpdate.
 
-            The contract date is the date on which the contract with the debtor was signed on.
+            The date and time when the contract with the debtor was signed.
 
         :param contract_date: The contract_date of this AbstractDebtCollectionCaseUpdate.
         :type: datetime
@@ -97,7 +97,7 @@ class AbstractDebtCollectionCaseUpdate:
     def currency(self):
         """Gets the currency of this AbstractDebtCollectionCaseUpdate.
 
-            The currency defines the billing currency of the debt collection case.
+            The three-letter code (ISO 4217 format) of the case's currency.
 
         :return: The currency of this AbstractDebtCollectionCaseUpdate.
         :rtype: str
@@ -108,7 +108,7 @@ class AbstractDebtCollectionCaseUpdate:
     def currency(self, currency):
         """Sets the currency of this AbstractDebtCollectionCaseUpdate.
 
-            The currency defines the billing currency of the debt collection case.
+            The three-letter code (ISO 4217 format) of the case's currency.
 
         :param currency: The currency of this AbstractDebtCollectionCaseUpdate.
         :type: str
@@ -120,7 +120,7 @@ class AbstractDebtCollectionCaseUpdate:
     def due_date(self):
         """Gets the due_date of this AbstractDebtCollectionCaseUpdate.
 
-            The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+            The date and time when the claim was due.
 
         :return: The due_date of this AbstractDebtCollectionCaseUpdate.
         :rtype: datetime
@@ -131,7 +131,7 @@ class AbstractDebtCollectionCaseUpdate:
     def due_date(self, due_date):
         """Sets the due_date of this AbstractDebtCollectionCaseUpdate.
 
-            The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+            The date and time when the claim was due.
 
         :param due_date: The due_date of this AbstractDebtCollectionCaseUpdate.
         :type: datetime
@@ -143,7 +143,7 @@ class AbstractDebtCollectionCaseUpdate:
     def environment(self):
         """Gets the environment of this AbstractDebtCollectionCaseUpdate.
 
-            The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+            The environment in which the case is processed.
 
         :return: The environment of this AbstractDebtCollectionCaseUpdate.
         :rtype: DebtCollectionEnvironment
@@ -154,7 +154,7 @@ class AbstractDebtCollectionCaseUpdate:
     def environment(self, environment):
         """Sets the environment of this AbstractDebtCollectionCaseUpdate.
 
-            The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+            The environment in which the case is processed.
 
         :param environment: The environment of this AbstractDebtCollectionCaseUpdate.
         :type: DebtCollectionEnvironment
@@ -166,7 +166,7 @@ class AbstractDebtCollectionCaseUpdate:
     def language(self):
         """Gets the language of this AbstractDebtCollectionCaseUpdate.
 
-            The language indicates the language to be used in the communication with the debtor.
+            The language that is linked to the object.
 
         :return: The language of this AbstractDebtCollectionCaseUpdate.
         :rtype: str
@@ -177,7 +177,7 @@ class AbstractDebtCollectionCaseUpdate:
     def language(self, language):
         """Sets the language of this AbstractDebtCollectionCaseUpdate.
 
-            The language indicates the language to be used in the communication with the debtor.
+            The language that is linked to the object.
 
         :param language: The language of this AbstractDebtCollectionCaseUpdate.
         :type: str
@@ -189,7 +189,7 @@ class AbstractDebtCollectionCaseUpdate:
     def line_items(self):
         """Gets the line_items of this AbstractDebtCollectionCaseUpdate.
 
-            The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+            The line items that are subject of this debt collection case.
 
         :return: The line_items of this AbstractDebtCollectionCaseUpdate.
         :rtype: list[LineItemCreate]
@@ -200,7 +200,7 @@ class AbstractDebtCollectionCaseUpdate:
     def line_items(self, line_items):
         """Sets the line_items of this AbstractDebtCollectionCaseUpdate.
 
-            The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+            The line items that are subject of this debt collection case.
 
         :param line_items: The line_items of this AbstractDebtCollectionCaseUpdate.
         :type: list[LineItemCreate]
@@ -212,7 +212,7 @@ class AbstractDebtCollectionCaseUpdate:
     def space_view_id(self):
         """Gets the space_view_id of this AbstractDebtCollectionCaseUpdate.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this AbstractDebtCollectionCaseUpdate.
         :rtype: int
@@ -223,7 +223,7 @@ class AbstractDebtCollectionCaseUpdate:
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this AbstractDebtCollectionCaseUpdate.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this AbstractDebtCollectionCaseUpdate.
         :type: int

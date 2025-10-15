@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class TransactionLineItemVersion(TransactionAwareEntity):
+
+class TransactionLineItemVersion:
 
     swagger_types = {
     
@@ -15,9 +15,12 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         'external_id': 'str',
         'failed_on': 'datetime',
         'failure_reason': 'FailureReason',
+        'id': 'int',
         'labels': 'list[Label]',
         'language': 'str',
         'line_items': 'list[LineItem]',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'next_update_on': 'datetime',
         'planned_purge_date': 'datetime',
         'processing_on': 'datetime',
@@ -31,7 +34,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','labels': 'labels','language': 'language','line_items': 'lineItems','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','timeout_on': 'timeoutOn','transaction': 'transaction','version': 'version',
+        'amount': 'amount','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processing_on': 'processingOn','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','tax_amount': 'taxAmount','timeout_on': 'timeoutOn','transaction': 'transaction','version': 'version',
     }
 
     
@@ -41,9 +44,12 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     _external_id = None
     _failed_on = None
     _failure_reason = None
+    _id = None
     _labels = None
     _language = None
     _line_items = None
+    _linked_space_id = None
+    _linked_transaction = None
     _next_update_on = None
     _planned_purge_date = None
     _processing_on = None
@@ -64,9 +70,12 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         self.external_id = kwargs.get('external_id', None)
         self.failed_on = kwargs.get('failed_on', None)
         self.failure_reason = kwargs.get('failure_reason', None)
+        self.id = kwargs.get('id', None)
         self.labels = kwargs.get('labels', None)
         self.language = kwargs.get('language', None)
         self.line_items = kwargs.get('line_items', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.next_update_on = kwargs.get('next_update_on', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.processing_on = kwargs.get('processing_on', None)
@@ -77,16 +86,14 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         self.timeout_on = kwargs.get('timeout_on', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def amount(self):
         """Gets the amount of this TransactionLineItemVersion.
 
-            
+            The total amount of the updated line items, including taxes.
 
         :return: The amount of this TransactionLineItemVersion.
         :rtype: float
@@ -97,7 +104,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def amount(self, amount):
         """Sets the amount of this TransactionLineItemVersion.
 
-            
+            The total amount of the updated line items, including taxes.
 
         :param amount: The amount of this TransactionLineItemVersion.
         :type: float
@@ -109,7 +116,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def created_by(self):
         """Gets the created_by of this TransactionLineItemVersion.
 
-            
+            The ID of the user the line item version was created by.
 
         :return: The created_by of this TransactionLineItemVersion.
         :rtype: int
@@ -120,7 +127,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def created_by(self, created_by):
         """Sets the created_by of this TransactionLineItemVersion.
 
-            
+            The ID of the user the line item version was created by.
 
         :param created_by: The created_by of this TransactionLineItemVersion.
         :type: int
@@ -155,7 +162,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def external_id(self):
         """Gets the external_id of this TransactionLineItemVersion.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this TransactionLineItemVersion.
         :rtype: str
@@ -166,7 +173,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def external_id(self, external_id):
         """Sets the external_id of this TransactionLineItemVersion.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this TransactionLineItemVersion.
         :type: str
@@ -178,7 +185,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def failed_on(self):
         """Gets the failed_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the processing of the line item version failed.
 
         :return: The failed_on of this TransactionLineItemVersion.
         :rtype: datetime
@@ -189,7 +196,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def failed_on(self, failed_on):
         """Sets the failed_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the processing of the line item version failed.
 
         :param failed_on: The failed_on of this TransactionLineItemVersion.
         :type: datetime
@@ -221,10 +228,33 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         self._failure_reason = failure_reason
     
     @property
+    def id(self):
+        """Gets the id of this TransactionLineItemVersion.
+
+            A unique identifier for the object.
+
+        :return: The id of this TransactionLineItemVersion.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this TransactionLineItemVersion.
+
+            A unique identifier for the object.
+
+        :param id: The id of this TransactionLineItemVersion.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def labels(self):
         """Gets the labels of this TransactionLineItemVersion.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this TransactionLineItemVersion.
         :rtype: list[Label]
@@ -235,7 +265,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def labels(self, labels):
         """Sets the labels of this TransactionLineItemVersion.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this TransactionLineItemVersion.
         :type: list[Label]
@@ -270,7 +300,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def line_items(self):
         """Gets the line_items of this TransactionLineItemVersion.
 
-            
+            The line items that replace the original line items in the transaction.
 
         :return: The line_items of this TransactionLineItemVersion.
         :rtype: list[LineItem]
@@ -281,7 +311,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def line_items(self, line_items):
         """Sets the line_items of this TransactionLineItemVersion.
 
-            
+            The line items that replace the original line items in the transaction.
 
         :param line_items: The line_items of this TransactionLineItemVersion.
         :type: list[LineItem]
@@ -290,10 +320,56 @@ class TransactionLineItemVersion(TransactionAwareEntity):
         self._line_items = line_items
     
     @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this TransactionLineItemVersion.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this TransactionLineItemVersion.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this TransactionLineItemVersion.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this TransactionLineItemVersion.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this TransactionLineItemVersion.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this TransactionLineItemVersion.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this TransactionLineItemVersion.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this TransactionLineItemVersion.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def next_update_on(self):
         """Gets the next_update_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the next update of the line item version's state is planned.
 
         :return: The next_update_on of this TransactionLineItemVersion.
         :rtype: datetime
@@ -304,7 +380,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def next_update_on(self, next_update_on):
         """Sets the next_update_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the next update of the line item version's state is planned.
 
         :param next_update_on: The next_update_on of this TransactionLineItemVersion.
         :type: datetime
@@ -339,7 +415,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def processing_on(self):
         """Gets the processing_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the processing of the line item version was started.
 
         :return: The processing_on of this TransactionLineItemVersion.
         :rtype: datetime
@@ -350,7 +426,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def processing_on(self, processing_on):
         """Sets the processing_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the processing of the line item version was started.
 
         :param processing_on: The processing_on of this TransactionLineItemVersion.
         :type: datetime
@@ -362,7 +438,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def space_view_id(self):
         """Gets the space_view_id of this TransactionLineItemVersion.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this TransactionLineItemVersion.
         :rtype: int
@@ -373,7 +449,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this TransactionLineItemVersion.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this TransactionLineItemVersion.
         :type: int
@@ -408,7 +484,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def succeeded_on(self):
         """Gets the succeeded_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the line item version was processed successfully.
 
         :return: The succeeded_on of this TransactionLineItemVersion.
         :rtype: datetime
@@ -419,7 +495,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def succeeded_on(self, succeeded_on):
         """Sets the succeeded_on of this TransactionLineItemVersion.
 
-            
+            The date and time when the line item version was processed successfully.
 
         :param succeeded_on: The succeeded_on of this TransactionLineItemVersion.
         :type: datetime
@@ -431,7 +507,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def tax_amount(self):
         """Gets the tax_amount of this TransactionLineItemVersion.
 
-            
+            The portion of the total amount that corresponds to taxes.
 
         :return: The tax_amount of this TransactionLineItemVersion.
         :rtype: float
@@ -442,7 +518,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def tax_amount(self, tax_amount):
         """Sets the tax_amount of this TransactionLineItemVersion.
 
-            
+            The portion of the total amount that corresponds to taxes.
 
         :param tax_amount: The tax_amount of this TransactionLineItemVersion.
         :type: float
@@ -454,7 +530,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def timeout_on(self):
         """Gets the timeout_on of this TransactionLineItemVersion.
 
-            
+            The date and time by when the line item version is expected to be processed.
 
         :return: The timeout_on of this TransactionLineItemVersion.
         :rtype: datetime
@@ -465,7 +541,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this TransactionLineItemVersion.
 
-            
+            The date and time by when the line item version is expected to be processed.
 
         :param timeout_on: The timeout_on of this TransactionLineItemVersion.
         :type: datetime
@@ -477,7 +553,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this TransactionLineItemVersion.
 
-            
+            The transaction that the line item version belongs to.
 
         :return: The transaction of this TransactionLineItemVersion.
         :rtype: Transaction
@@ -488,7 +564,7 @@ class TransactionLineItemVersion(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this TransactionLineItemVersion.
 
-            
+            The transaction that the line item version belongs to.
 
         :param transaction: The transaction of this TransactionLineItemVersion.
         :type: Transaction

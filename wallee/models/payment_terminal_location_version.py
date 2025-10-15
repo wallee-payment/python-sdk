@@ -60,7 +60,7 @@ class PaymentTerminalLocationVersion:
     def address(self):
         """Gets the address of this PaymentTerminalLocationVersion.
 
-            
+            The postal address of the location where the payment terminals are used.
 
         :return: The address of this PaymentTerminalLocationVersion.
         :rtype: PaymentTerminalAddress
@@ -71,7 +71,7 @@ class PaymentTerminalLocationVersion:
     def address(self, address):
         """Sets the address of this PaymentTerminalLocationVersion.
 
-            
+            The postal address of the location where the payment terminals are used.
 
         :param address: The address of this PaymentTerminalLocationVersion.
         :type: PaymentTerminalAddress
@@ -83,7 +83,7 @@ class PaymentTerminalLocationVersion:
     def contact_address(self):
         """Gets the contact_address of this PaymentTerminalLocationVersion.
 
-            
+            The contact details if the person responsible for the payment terminals at this location.
 
         :return: The contact_address of this PaymentTerminalLocationVersion.
         :rtype: PaymentTerminalAddress
@@ -94,7 +94,7 @@ class PaymentTerminalLocationVersion:
     def contact_address(self, contact_address):
         """Sets the contact_address of this PaymentTerminalLocationVersion.
 
-            
+            The contact details if the person responsible for the payment terminals at this location.
 
         :param contact_address: The contact_address of this PaymentTerminalLocationVersion.
         :type: PaymentTerminalAddress
@@ -106,7 +106,7 @@ class PaymentTerminalLocationVersion:
     def created_by(self):
         """Gets the created_by of this PaymentTerminalLocationVersion.
 
-            
+            The ID of the user the payment terminal location version was created by.
 
         :return: The created_by of this PaymentTerminalLocationVersion.
         :rtype: int
@@ -117,7 +117,7 @@ class PaymentTerminalLocationVersion:
     def created_by(self, created_by):
         """Sets the created_by of this PaymentTerminalLocationVersion.
 
-            
+            The ID of the user the payment terminal location version was created by.
 
         :param created_by: The created_by of this PaymentTerminalLocationVersion.
         :type: int
@@ -198,7 +198,7 @@ class PaymentTerminalLocationVersion:
     def location(self):
         """Gets the location of this PaymentTerminalLocationVersion.
 
-            
+            The payment terminal location that the version belongs to.
 
         :return: The location of this PaymentTerminalLocationVersion.
         :rtype: PaymentTerminalLocation
@@ -209,7 +209,7 @@ class PaymentTerminalLocationVersion:
     def location(self, location):
         """Sets the location of this PaymentTerminalLocationVersion.
 
-            
+            The payment terminal location that the version belongs to.
 
         :param location: The location of this PaymentTerminalLocationVersion.
         :type: PaymentTerminalLocation
@@ -290,7 +290,7 @@ class PaymentTerminalLocationVersion:
     def version_applied_immediately(self):
         """Gets the version_applied_immediately of this PaymentTerminalLocationVersion.
 
-            
+            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
 
         :return: The version_applied_immediately of this PaymentTerminalLocationVersion.
         :rtype: bool
@@ -301,7 +301,7 @@ class PaymentTerminalLocationVersion:
     def version_applied_immediately(self, version_applied_immediately):
         """Sets the version_applied_immediately of this PaymentTerminalLocationVersion.
 
-            
+            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
 
         :param version_applied_immediately: The version_applied_immediately of this PaymentTerminalLocationVersion.
         :type: bool

@@ -42,7 +42,7 @@ class DocumentTemplateType:
     def description(self):
         """Gets the description of this DocumentTemplateType.
 
-            
+            The localized description of the document template type.
 
         :return: The description of this DocumentTemplateType.
         :rtype: dict(str, str)
@@ -53,7 +53,7 @@ class DocumentTemplateType:
     def description(self, description):
         """Sets the description of this DocumentTemplateType.
 
-            
+            The localized description of the document template type.
 
         :param description: The description of this DocumentTemplateType.
         :type: dict(str, str)
@@ -65,7 +65,7 @@ class DocumentTemplateType:
     def feature(self):
         """Gets the feature of this DocumentTemplateType.
 
-            
+            The feature that this document template type belongs to.
 
         :return: The feature of this DocumentTemplateType.
         :rtype: int
@@ -76,7 +76,7 @@ class DocumentTemplateType:
     def feature(self, feature):
         """Sets the feature of this DocumentTemplateType.
 
-            
+            The feature that this document template type belongs to.
 
         :param feature: The feature of this DocumentTemplateType.
         :type: int
@@ -88,7 +88,7 @@ class DocumentTemplateType:
     def group(self):
         """Gets the group of this DocumentTemplateType.
 
-            
+            The group that this document template type belongs to.
 
         :return: The group of this DocumentTemplateType.
         :rtype: DocumentTemplateTypeGroup
@@ -99,7 +99,7 @@ class DocumentTemplateType:
     def group(self, group):
         """Sets the group of this DocumentTemplateType.
 
-            
+            The group that this document template type belongs to.
 
         :param group: The group of this DocumentTemplateType.
         :type: DocumentTemplateTypeGroup
@@ -134,7 +134,7 @@ class DocumentTemplateType:
     def title(self):
         """Gets the title of this DocumentTemplateType.
 
-            
+            The localized title of the document template type.
 
         :return: The title of this DocumentTemplateType.
         :rtype: dict(str, str)
@@ -145,7 +145,7 @@ class DocumentTemplateType:
     def title(self, title):
         """Sets the title of this DocumentTemplateType.
 
-            
+            The localized title of the document template type.
 
         :param title: The title of this DocumentTemplateType.
         :type: dict(str, str)

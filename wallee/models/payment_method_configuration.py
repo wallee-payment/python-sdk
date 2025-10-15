@@ -78,7 +78,7 @@ class PaymentMethodConfiguration:
     def data_collection_type(self):
         """Gets the data_collection_type of this PaymentMethodConfiguration.
 
-            The data collection type determines who is collecting the payment information. This can be done either by the processor (offsite) or by our application (onsite).
+            The data collection type specifies how the payment information is collected.
 
         :return: The data_collection_type of this PaymentMethodConfiguration.
         :rtype: DataCollectionType
@@ -89,7 +89,7 @@ class PaymentMethodConfiguration:
     def data_collection_type(self, data_collection_type):
         """Sets the data_collection_type of this PaymentMethodConfiguration.
 
-            The data collection type determines who is collecting the payment information. This can be done either by the processor (offsite) or by our application (onsite).
+            The data collection type specifies how the payment information is collected.
 
         :param data_collection_type: The data_collection_type of this PaymentMethodConfiguration.
         :type: DataCollectionType
@@ -101,7 +101,7 @@ class PaymentMethodConfiguration:
     def description(self):
         """Gets the description of this PaymentMethodConfiguration.
 
-            The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.
+            A customer-facing custom description for the payment method.
 
         :return: The description of this PaymentMethodConfiguration.
         :rtype: dict(str, str)
@@ -112,7 +112,7 @@ class PaymentMethodConfiguration:
     def description(self, description):
         """Sets the description of this PaymentMethodConfiguration.
 
-            The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.
+            A customer-facing custom description for the payment method.
 
         :param description: The description of this PaymentMethodConfiguration.
         :type: dict(str, str)
@@ -147,7 +147,7 @@ class PaymentMethodConfiguration:
     def image_resource_path(self):
         """Gets the image_resource_path of this PaymentMethodConfiguration.
 
-            The image of the payment method configuration overrides the default image of the payment method.
+            The resource path to a custom image for the payment method, displayed to the customer for visual identification.
 
         :return: The image_resource_path of this PaymentMethodConfiguration.
         :rtype: ResourcePath
@@ -158,7 +158,7 @@ class PaymentMethodConfiguration:
     def image_resource_path(self, image_resource_path):
         """Sets the image_resource_path of this PaymentMethodConfiguration.
 
-            The image of the payment method configuration overrides the default image of the payment method.
+            The resource path to a custom image for the payment method, displayed to the customer for visual identification.
 
         :param image_resource_path: The image_resource_path of this PaymentMethodConfiguration.
         :type: ResourcePath
@@ -193,7 +193,7 @@ class PaymentMethodConfiguration:
     def name(self):
         """Gets the name of this PaymentMethodConfiguration.
 
-            The payment method configuration name is used internally to identify the payment method configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment method configuration.
 
         :return: The name of this PaymentMethodConfiguration.
         :rtype: str
@@ -204,7 +204,7 @@ class PaymentMethodConfiguration:
     def name(self, name):
         """Sets the name of this PaymentMethodConfiguration.
 
-            The payment method configuration name is used internally to identify the payment method configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment method configuration.
 
         :param name: The name of this PaymentMethodConfiguration.
         :type: str
@@ -218,7 +218,7 @@ class PaymentMethodConfiguration:
     def one_click_payment_mode(self):
         """Gets the one_click_payment_mode of this PaymentMethodConfiguration.
 
-            When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway
+            The one-click payment mode determines whether the customer can save their payment details for later payments.
 
         :return: The one_click_payment_mode of this PaymentMethodConfiguration.
         :rtype: OneClickPaymentMode
@@ -229,7 +229,7 @@ class PaymentMethodConfiguration:
     def one_click_payment_mode(self, one_click_payment_mode):
         """Sets the one_click_payment_mode of this PaymentMethodConfiguration.
 
-            When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway
+            The one-click payment mode determines whether the customer can save their payment details for later payments.
 
         :param one_click_payment_mode: The one_click_payment_mode of this PaymentMethodConfiguration.
         :type: OneClickPaymentMode
@@ -241,7 +241,7 @@ class PaymentMethodConfiguration:
     def payment_method(self):
         """Gets the payment_method of this PaymentMethodConfiguration.
 
-            
+            The payment method that the configuration is for.
 
         :return: The payment_method of this PaymentMethodConfiguration.
         :rtype: int
@@ -252,7 +252,7 @@ class PaymentMethodConfiguration:
     def payment_method(self, payment_method):
         """Sets the payment_method of this PaymentMethodConfiguration.
 
-            
+            The payment method that the configuration is for.
 
         :param payment_method: The payment_method of this PaymentMethodConfiguration.
         :type: int
@@ -287,7 +287,7 @@ class PaymentMethodConfiguration:
     def resolved_description(self):
         """Gets the resolved_description of this PaymentMethodConfiguration.
 
-            The resolved description uses the specified description or the default one when it is not overridden.
+            The description of the payment method displayed to the customer. If a custom description is defined, it will be used; otherwise, the default description of the payment method will be shown.
 
         :return: The resolved_description of this PaymentMethodConfiguration.
         :rtype: dict(str, str)
@@ -298,7 +298,7 @@ class PaymentMethodConfiguration:
     def resolved_description(self, resolved_description):
         """Sets the resolved_description of this PaymentMethodConfiguration.
 
-            The resolved description uses the specified description or the default one when it is not overridden.
+            The description of the payment method displayed to the customer. If a custom description is defined, it will be used; otherwise, the default description of the payment method will be shown.
 
         :param resolved_description: The resolved_description of this PaymentMethodConfiguration.
         :type: dict(str, str)
@@ -310,7 +310,7 @@ class PaymentMethodConfiguration:
     def resolved_image_url(self):
         """Gets the resolved_image_url of this PaymentMethodConfiguration.
 
-            The resolved URL of the image to use with this payment method.
+            The URL to the image of the payment method displayed to the customer. If a custom image is defined, it will be used; otherwise, the default image of the payment method will be shown.
 
         :return: The resolved_image_url of this PaymentMethodConfiguration.
         :rtype: str
@@ -321,7 +321,7 @@ class PaymentMethodConfiguration:
     def resolved_image_url(self, resolved_image_url):
         """Sets the resolved_image_url of this PaymentMethodConfiguration.
 
-            The resolved URL of the image to use with this payment method.
+            The URL to the image of the payment method displayed to the customer. If a custom image is defined, it will be used; otherwise, the default image of the payment method will be shown.
 
         :param resolved_image_url: The resolved_image_url of this PaymentMethodConfiguration.
         :type: str
@@ -333,7 +333,7 @@ class PaymentMethodConfiguration:
     def resolved_title(self):
         """Gets the resolved_title of this PaymentMethodConfiguration.
 
-            The resolved title uses the specified title or the default one when it is not overridden.
+            The title of the payment method displayed to the customer. If a custom title is defined, it will be used; otherwise, the default title of the payment method will be shown.
 
         :return: The resolved_title of this PaymentMethodConfiguration.
         :rtype: dict(str, str)
@@ -344,7 +344,7 @@ class PaymentMethodConfiguration:
     def resolved_title(self, resolved_title):
         """Sets the resolved_title of this PaymentMethodConfiguration.
 
-            The resolved title uses the specified title or the default one when it is not overridden.
+            The title of the payment method displayed to the customer. If a custom title is defined, it will be used; otherwise, the default title of the payment method will be shown.
 
         :param resolved_title: The resolved_title of this PaymentMethodConfiguration.
         :type: dict(str, str)
@@ -356,7 +356,7 @@ class PaymentMethodConfiguration:
     def sort_order(self):
         """Gets the sort_order of this PaymentMethodConfiguration.
 
-            The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.
+            When listing payment methods, they can be sorted by this number.
 
         :return: The sort_order of this PaymentMethodConfiguration.
         :rtype: int
@@ -367,7 +367,7 @@ class PaymentMethodConfiguration:
     def sort_order(self, sort_order):
         """Sets the sort_order of this PaymentMethodConfiguration.
 
-            The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.
+            When listing payment methods, they can be sorted by this number.
 
         :param sort_order: The sort_order of this PaymentMethodConfiguration.
         :type: int
@@ -379,7 +379,7 @@ class PaymentMethodConfiguration:
     def space_id(self):
         """Gets the space_id of this PaymentMethodConfiguration.
 
-            
+            The ID of the space this object belongs to.
 
         :return: The space_id of this PaymentMethodConfiguration.
         :rtype: int
@@ -390,7 +390,7 @@ class PaymentMethodConfiguration:
     def space_id(self, space_id):
         """Sets the space_id of this PaymentMethodConfiguration.
 
-            
+            The ID of the space this object belongs to.
 
         :param space_id: The space_id of this PaymentMethodConfiguration.
         :type: int
@@ -425,7 +425,7 @@ class PaymentMethodConfiguration:
     def title(self):
         """Gets the title of this PaymentMethodConfiguration.
 
-            The title of the payment method configuration is used within the payment process. The title is visible to the customer.
+            A customer-facing custom title for the payment method.
 
         :return: The title of this PaymentMethodConfiguration.
         :rtype: dict(str, str)
@@ -436,7 +436,7 @@ class PaymentMethodConfiguration:
     def title(self, title):
         """Sets the title of this PaymentMethodConfiguration.
 
-            The title of the payment method configuration is used within the payment process. The title is visible to the customer.
+            A customer-facing custom title for the payment method.
 
         :param title: The title of this PaymentMethodConfiguration.
         :type: dict(str, str)

@@ -103,7 +103,7 @@ class ProductPeriodFeeUpdate:
     def component(self):
         """Gets the component of this ProductPeriodFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :return: The component of this ProductPeriodFeeUpdate.
         :rtype: int
@@ -114,7 +114,7 @@ class ProductPeriodFeeUpdate:
     def component(self, component):
         """Sets the component of this ProductPeriodFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :param component: The component of this ProductPeriodFeeUpdate.
         :type: int
@@ -126,7 +126,7 @@ class ProductPeriodFeeUpdate:
     def description(self):
         """Gets the description of this ProductPeriodFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :return: The description of this ProductPeriodFeeUpdate.
         :rtype: dict(str, str)
@@ -137,7 +137,7 @@ class ProductPeriodFeeUpdate:
     def description(self, description):
         """Sets the description of this ProductPeriodFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :param description: The description of this ProductPeriodFeeUpdate.
         :type: dict(str, str)
@@ -149,7 +149,7 @@ class ProductPeriodFeeUpdate:
     def ledger_entry_title(self):
         """Gets the ledger_entry_title of this ProductPeriodFeeUpdate.
 
-            The ledger entry title will be used for the title in the ledger entry and in the invoice.
+            The localized title that be used on ledger entries and invoices.
 
         :return: The ledger_entry_title of this ProductPeriodFeeUpdate.
         :rtype: dict(str, str)
@@ -160,7 +160,7 @@ class ProductPeriodFeeUpdate:
     def ledger_entry_title(self, ledger_entry_title):
         """Sets the ledger_entry_title of this ProductPeriodFeeUpdate.
 
-            The ledger entry title will be used for the title in the ledger entry and in the invoice.
+            The localized title that be used on ledger entries and invoices.
 
         :param ledger_entry_title: The ledger_entry_title of this ProductPeriodFeeUpdate.
         :type: dict(str, str)
@@ -172,7 +172,7 @@ class ProductPeriodFeeUpdate:
     def name(self):
         """Gets the name of this ProductPeriodFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :return: The name of this ProductPeriodFeeUpdate.
         :rtype: dict(str, str)
@@ -183,7 +183,7 @@ class ProductPeriodFeeUpdate:
     def name(self, name):
         """Sets the name of this ProductPeriodFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :param name: The name of this ProductPeriodFeeUpdate.
         :type: dict(str, str)
@@ -195,7 +195,7 @@ class ProductPeriodFeeUpdate:
     def number_of_free_trial_periods(self):
         """Gets the number_of_free_trial_periods of this ProductPeriodFeeUpdate.
 
-            The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
+            The number of subscription billing cycles that count as a trial phase and during which no fees are charged.
 
         :return: The number_of_free_trial_periods of this ProductPeriodFeeUpdate.
         :rtype: int
@@ -206,7 +206,7 @@ class ProductPeriodFeeUpdate:
     def number_of_free_trial_periods(self, number_of_free_trial_periods):
         """Sets the number_of_free_trial_periods of this ProductPeriodFeeUpdate.
 
-            The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
+            The number of subscription billing cycles that count as a trial phase and during which no fees are charged.
 
         :param number_of_free_trial_periods: The number_of_free_trial_periods of this ProductPeriodFeeUpdate.
         :type: int
@@ -218,7 +218,7 @@ class ProductPeriodFeeUpdate:
     def period_fee(self):
         """Gets the period_fee of this ProductPeriodFeeUpdate.
 
-            The period fee is charged for every period of the subscription except for those periods which are trial periods.
+            The amount charged to the customer for each billing cycle during the term of a subscription.
 
         :return: The period_fee of this ProductPeriodFeeUpdate.
         :rtype: list[PersistableCurrencyAmountUpdate]
@@ -229,7 +229,7 @@ class ProductPeriodFeeUpdate:
     def period_fee(self, period_fee):
         """Sets the period_fee of this ProductPeriodFeeUpdate.
 
-            The period fee is charged for every period of the subscription except for those periods which are trial periods.
+            The amount charged to the customer for each billing cycle during the term of a subscription.
 
         :param period_fee: The period_fee of this ProductPeriodFeeUpdate.
         :type: list[PersistableCurrencyAmountUpdate]

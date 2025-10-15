@@ -9,7 +9,6 @@ class AbstractWebhookListenerUpdate:
 
     swagger_types = {
     
-        'enable_payload_signature_and_state': 'bool',
         'entity_states': 'list[str]',
         'name': 'str',
         'notify_every_change': 'bool',
@@ -17,11 +16,10 @@ class AbstractWebhookListenerUpdate:
     }
 
     attribute_map = {
-        'enable_payload_signature_and_state': 'enablePayloadSignatureAndState','entity_states': 'entityStates','name': 'name','notify_every_change': 'notifyEveryChange','state': 'state',
+        'entity_states': 'entityStates','name': 'name','notify_every_change': 'notifyEveryChange','state': 'state',
     }
 
     
-    _enable_payload_signature_and_state = None
     _entity_states = None
     _name = None
     _notify_every_change = None
@@ -30,36 +28,12 @@ class AbstractWebhookListenerUpdate:
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.enable_payload_signature_and_state = kwargs.get('enable_payload_signature_and_state', None)
         self.entity_states = kwargs.get('entity_states', None)
         self.name = kwargs.get('name', None)
         self.notify_every_change = kwargs.get('notify_every_change', None)
         self.state = kwargs.get('state', None)
         
 
-    
-    @property
-    def enable_payload_signature_and_state(self):
-        """Gets the enable_payload_signature_and_state of this AbstractWebhookListenerUpdate.
-
-            Whether signature header and state property are enabled in webhook payload.
-
-        :return: The enable_payload_signature_and_state of this AbstractWebhookListenerUpdate.
-        :rtype: bool
-        """
-        return self._enable_payload_signature_and_state
-
-    @enable_payload_signature_and_state.setter
-    def enable_payload_signature_and_state(self, enable_payload_signature_and_state):
-        """Sets the enable_payload_signature_and_state of this AbstractWebhookListenerUpdate.
-
-            Whether signature header and state property are enabled in webhook payload.
-
-        :param enable_payload_signature_and_state: The enable_payload_signature_and_state of this AbstractWebhookListenerUpdate.
-        :type: bool
-        """
-
-        self._enable_payload_signature_and_state = enable_payload_signature_and_state
     
     @property
     def entity_states(self):

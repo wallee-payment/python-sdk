@@ -2,14 +2,16 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class ConnectorInvocation(TransactionAwareEntity):
+
+class ConnectorInvocation:
 
     swagger_types = {
     
         'created_on': 'datetime',
+        'id': 'int',
+        'linked_space_id': 'int',
         'planned_purge_date': 'datetime',
         'stage': 'ConnectorInvocationStage',
         'time_took_in_milliseconds': 'int',
@@ -18,11 +20,13 @@ class ConnectorInvocation(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_on': 'createdOn','planned_purge_date': 'plannedPurgeDate','stage': 'stage','time_took_in_milliseconds': 'timeTookInMilliseconds','transaction': 'transaction','version': 'version',
+        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','stage': 'stage','time_took_in_milliseconds': 'timeTookInMilliseconds','transaction': 'transaction','version': 'version',
     }
 
     
     _created_on = None
+    _id = None
+    _linked_space_id = None
     _planned_purge_date = None
     _stage = None
     _time_took_in_milliseconds = None
@@ -33,14 +37,14 @@ class ConnectorInvocation(TransactionAwareEntity):
         self.discriminator = None
         
         self.created_on = kwargs.get('created_on', None)
+        self.id = kwargs.get('id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.stage = kwargs.get('stage', None)
         self.time_took_in_milliseconds = kwargs.get('time_took_in_milliseconds', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
@@ -65,6 +69,52 @@ class ConnectorInvocation(TransactionAwareEntity):
         """
 
         self._created_on = created_on
+    
+    @property
+    def id(self):
+        """Gets the id of this ConnectorInvocation.
+
+            A unique identifier for the object.
+
+        :return: The id of this ConnectorInvocation.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ConnectorInvocation.
+
+            A unique identifier for the object.
+
+        :param id: The id of this ConnectorInvocation.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this ConnectorInvocation.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this ConnectorInvocation.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this ConnectorInvocation.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this ConnectorInvocation.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
     
     @property
     def planned_purge_date(self):
@@ -93,7 +143,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def stage(self):
         """Gets the stage of this ConnectorInvocation.
 
-            
+            The transaction stage during which the connector invocation was performed.
 
         :return: The stage of this ConnectorInvocation.
         :rtype: ConnectorInvocationStage
@@ -104,7 +154,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def stage(self, stage):
         """Sets the stage of this ConnectorInvocation.
 
-            
+            The transaction stage during which the connector invocation was performed.
 
         :param stage: The stage of this ConnectorInvocation.
         :type: ConnectorInvocationStage
@@ -116,7 +166,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def time_took_in_milliseconds(self):
         """Gets the time_took_in_milliseconds of this ConnectorInvocation.
 
-            
+            The duration, in milliseconds, taken to execute the connector invocation.
 
         :return: The time_took_in_milliseconds of this ConnectorInvocation.
         :rtype: int
@@ -127,7 +177,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def time_took_in_milliseconds(self, time_took_in_milliseconds):
         """Sets the time_took_in_milliseconds of this ConnectorInvocation.
 
-            
+            The duration, in milliseconds, taken to execute the connector invocation.
 
         :param time_took_in_milliseconds: The time_took_in_milliseconds of this ConnectorInvocation.
         :type: int
@@ -139,7 +189,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this ConnectorInvocation.
 
-            
+            The transaction that the connector invocation belongs to.
 
         :return: The transaction of this ConnectorInvocation.
         :rtype: int
@@ -150,7 +200,7 @@ class ConnectorInvocation(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this ConnectorInvocation.
 
-            
+            The transaction that the connector invocation belongs to.
 
         :param transaction: The transaction of this ConnectorInvocation.
         :type: int

@@ -65,7 +65,7 @@ class UserSpaceRole:
     def role(self):
         """Gets the role of this UserSpaceRole.
 
-            
+            The role that is assigned to the user.
 
         :return: The role of this UserSpaceRole.
         :rtype: int
@@ -76,7 +76,7 @@ class UserSpaceRole:
     def role(self, role):
         """Sets the role of this UserSpaceRole.
 
-            
+            The role that is assigned to the user.
 
         :param role: The role of this UserSpaceRole.
         :type: int
@@ -88,7 +88,7 @@ class UserSpaceRole:
     def space(self):
         """Gets the space of this UserSpaceRole.
 
-            
+            The space in which the role is assigned to the user.
 
         :return: The space of this UserSpaceRole.
         :rtype: int
@@ -99,7 +99,7 @@ class UserSpaceRole:
     def space(self, space):
         """Sets the space of this UserSpaceRole.
 
-            
+            The space in which the role is assigned to the user.
 
         :param space: The space of this UserSpaceRole.
         :type: int
@@ -111,7 +111,7 @@ class UserSpaceRole:
     def user(self):
         """Gets the user of this UserSpaceRole.
 
-            
+            The user whose role this defines.
 
         :return: The user of this UserSpaceRole.
         :rtype: int
@@ -122,7 +122,7 @@ class UserSpaceRole:
     def user(self, user):
         """Sets the user of this UserSpaceRole.
 
-            
+            The user whose role this defines.
 
         :param user: The user of this UserSpaceRole.
         :type: int

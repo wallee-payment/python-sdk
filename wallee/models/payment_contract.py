@@ -9,11 +9,11 @@ class PaymentContract:
 
     swagger_types = {
     
-        'account': 'Account',
+        'account': 'int',
         'activated_on': 'datetime',
         'contract_identifier': 'str',
         'contract_type': 'PaymentContractType',
-        'created_by': 'User',
+        'created_by': 'int',
         'created_on': 'datetime',
         'external_id': 'str',
         'id': 'int',
@@ -22,7 +22,7 @@ class PaymentContract:
         'rejection_reason': 'FailureReason',
         'start_terminating_on': 'datetime',
         'state': 'PaymentContractState',
-        'terminated_by': 'User',
+        'terminated_by': 'int',
         'terminated_on': 'datetime',
         'version': 'int',
     }
@@ -75,10 +75,10 @@ class PaymentContract:
     def account(self):
         """Gets the account of this PaymentContract.
 
-            
+            This account that the contract belongs to.
 
         :return: The account of this PaymentContract.
-        :rtype: Account
+        :rtype: int
         """
         return self._account
 
@@ -86,10 +86,10 @@ class PaymentContract:
     def account(self, account):
         """Sets the account of this PaymentContract.
 
-            
+            This account that the contract belongs to.
 
         :param account: The account of this PaymentContract.
-        :type: Account
+        :type: int
         """
 
         self._account = account
@@ -98,7 +98,7 @@ class PaymentContract:
     def activated_on(self):
         """Gets the activated_on of this PaymentContract.
 
-            
+            The date and time when the contract was activated.
 
         :return: The activated_on of this PaymentContract.
         :rtype: datetime
@@ -109,7 +109,7 @@ class PaymentContract:
     def activated_on(self, activated_on):
         """Sets the activated_on of this PaymentContract.
 
-            
+            The date and time when the contract was activated.
 
         :param activated_on: The activated_on of this PaymentContract.
         :type: datetime
@@ -121,7 +121,7 @@ class PaymentContract:
     def contract_identifier(self):
         """Gets the contract_identifier of this PaymentContract.
 
-            
+            The identifier of the contract.
 
         :return: The contract_identifier of this PaymentContract.
         :rtype: str
@@ -132,7 +132,7 @@ class PaymentContract:
     def contract_identifier(self, contract_identifier):
         """Sets the contract_identifier of this PaymentContract.
 
-            
+            The identifier of the contract.
 
         :param contract_identifier: The contract_identifier of this PaymentContract.
         :type: str
@@ -144,7 +144,7 @@ class PaymentContract:
     def contract_type(self):
         """Gets the contract_type of this PaymentContract.
 
-            
+            The type of the contract.
 
         :return: The contract_type of this PaymentContract.
         :rtype: PaymentContractType
@@ -155,7 +155,7 @@ class PaymentContract:
     def contract_type(self, contract_type):
         """Sets the contract_type of this PaymentContract.
 
-            
+            The type of the contract.
 
         :param contract_type: The contract_type of this PaymentContract.
         :type: PaymentContractType
@@ -167,10 +167,10 @@ class PaymentContract:
     def created_by(self):
         """Gets the created_by of this PaymentContract.
 
-            
+            The ID of the user the contract was created by.
 
         :return: The created_by of this PaymentContract.
-        :rtype: User
+        :rtype: int
         """
         return self._created_by
 
@@ -178,10 +178,10 @@ class PaymentContract:
     def created_by(self, created_by):
         """Sets the created_by of this PaymentContract.
 
-            
+            The ID of the user the contract was created by.
 
         :param created_by: The created_by of this PaymentContract.
-        :type: User
+        :type: int
         """
 
         self._created_by = created_by
@@ -213,7 +213,7 @@ class PaymentContract:
     def external_id(self):
         """Gets the external_id of this PaymentContract.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentContract.
         :rtype: str
@@ -224,7 +224,7 @@ class PaymentContract:
     def external_id(self, external_id):
         """Sets the external_id of this PaymentContract.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentContract.
         :type: str
@@ -282,7 +282,7 @@ class PaymentContract:
     def rejected_on(self):
         """Gets the rejected_on of this PaymentContract.
 
-            
+            The date and time when the contract was rejected.
 
         :return: The rejected_on of this PaymentContract.
         :rtype: datetime
@@ -293,7 +293,7 @@ class PaymentContract:
     def rejected_on(self, rejected_on):
         """Sets the rejected_on of this PaymentContract.
 
-            
+            The date and time when the contract was rejected.
 
         :param rejected_on: The rejected_on of this PaymentContract.
         :type: datetime
@@ -305,7 +305,7 @@ class PaymentContract:
     def rejection_reason(self):
         """Gets the rejection_reason of this PaymentContract.
 
-            
+            The reason for rejecting the contract.
 
         :return: The rejection_reason of this PaymentContract.
         :rtype: FailureReason
@@ -316,7 +316,7 @@ class PaymentContract:
     def rejection_reason(self, rejection_reason):
         """Sets the rejection_reason of this PaymentContract.
 
-            
+            The reason for rejecting the contract.
 
         :param rejection_reason: The rejection_reason of this PaymentContract.
         :type: FailureReason
@@ -328,7 +328,7 @@ class PaymentContract:
     def start_terminating_on(self):
         """Gets the start_terminating_on of this PaymentContract.
 
-            
+            The date and time when the termination process of the contract was started.
 
         :return: The start_terminating_on of this PaymentContract.
         :rtype: datetime
@@ -339,7 +339,7 @@ class PaymentContract:
     def start_terminating_on(self, start_terminating_on):
         """Sets the start_terminating_on of this PaymentContract.
 
-            
+            The date and time when the termination process of the contract was started.
 
         :param start_terminating_on: The start_terminating_on of this PaymentContract.
         :type: datetime
@@ -374,10 +374,10 @@ class PaymentContract:
     def terminated_by(self):
         """Gets the terminated_by of this PaymentContract.
 
-            
+            The ID of the user the contract was terminated by.
 
         :return: The terminated_by of this PaymentContract.
-        :rtype: User
+        :rtype: int
         """
         return self._terminated_by
 
@@ -385,10 +385,10 @@ class PaymentContract:
     def terminated_by(self, terminated_by):
         """Sets the terminated_by of this PaymentContract.
 
-            
+            The ID of the user the contract was terminated by.
 
         :param terminated_by: The terminated_by of this PaymentContract.
-        :type: User
+        :type: int
         """
 
         self._terminated_by = terminated_by
@@ -397,7 +397,7 @@ class PaymentContract:
     def terminated_on(self):
         """Gets the terminated_on of this PaymentContract.
 
-            
+            The date and time when the contract was terminated.
 
         :return: The terminated_on of this PaymentContract.
         :rtype: datetime
@@ -408,7 +408,7 @@ class PaymentContract:
     def terminated_on(self, terminated_on):
         """Sets the terminated_on of this PaymentContract.
 
-            
+            The date and time when the contract was terminated.
 
         :param terminated_on: The terminated_on of this PaymentContract.
         :type: datetime

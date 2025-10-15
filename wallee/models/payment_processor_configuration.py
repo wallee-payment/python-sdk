@@ -54,7 +54,7 @@ class PaymentProcessorConfiguration:
     def application_managed(self):
         """Gets the application_managed of this PaymentProcessorConfiguration.
 
-            The configuration is managed by the application and cannot be changed via the user interface.
+            Whether the processor configuration is managed by the application and therefore cannot be changed.
 
         :return: The application_managed of this PaymentProcessorConfiguration.
         :rtype: bool
@@ -65,7 +65,7 @@ class PaymentProcessorConfiguration:
     def application_managed(self, application_managed):
         """Sets the application_managed of this PaymentProcessorConfiguration.
 
-            The configuration is managed by the application and cannot be changed via the user interface.
+            Whether the processor configuration is managed by the application and therefore cannot be changed.
 
         :param application_managed: The application_managed of this PaymentProcessorConfiguration.
         :type: bool
@@ -77,7 +77,7 @@ class PaymentProcessorConfiguration:
     def contract_id(self):
         """Gets the contract_id of this PaymentProcessorConfiguration.
 
-            The contract links the processor configuration with the contract that is used to process payments.
+            The ID of the payment contract the processor configuration is linked to.
 
         :return: The contract_id of this PaymentProcessorConfiguration.
         :rtype: int
@@ -88,7 +88,7 @@ class PaymentProcessorConfiguration:
     def contract_id(self, contract_id):
         """Sets the contract_id of this PaymentProcessorConfiguration.
 
-            The contract links the processor configuration with the contract that is used to process payments.
+            The ID of the payment contract the processor configuration is linked to.
 
         :param contract_id: The contract_id of this PaymentProcessorConfiguration.
         :type: int
@@ -146,7 +146,7 @@ class PaymentProcessorConfiguration:
     def name(self):
         """Gets the name of this PaymentProcessorConfiguration.
 
-            The processor configuration name is used internally to identify a specific processor configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment method configuration.
 
         :return: The name of this PaymentProcessorConfiguration.
         :rtype: str
@@ -157,7 +157,7 @@ class PaymentProcessorConfiguration:
     def name(self, name):
         """Sets the name of this PaymentProcessorConfiguration.
 
-            The processor configuration name is used internally to identify a specific processor configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment method configuration.
 
         :param name: The name of this PaymentProcessorConfiguration.
         :type: str
@@ -194,7 +194,7 @@ class PaymentProcessorConfiguration:
     def processor(self):
         """Gets the processor of this PaymentProcessorConfiguration.
 
-            A processor handles the connection to a third part company (a Payment Service Provider) that technically manages the transaction and therefore processes the payment. For the same processor multiple processor configuration can be setup.
+            The payment processor that the configuration is for.
 
         :return: The processor of this PaymentProcessorConfiguration.
         :rtype: int
@@ -205,7 +205,7 @@ class PaymentProcessorConfiguration:
     def processor(self, processor):
         """Sets the processor of this PaymentProcessorConfiguration.
 
-            A processor handles the connection to a third part company (a Payment Service Provider) that technically manages the transaction and therefore processes the payment. For the same processor multiple processor configuration can be setup.
+            The payment processor that the configuration is for.
 
         :param processor: The processor of this PaymentProcessorConfiguration.
         :type: int

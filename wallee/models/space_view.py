@@ -94,7 +94,7 @@ class SpaceView:
     def name(self):
         """Gets the name of this SpaceView.
 
-            The space view name is used internally to identify the space view in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space view.
 
         :return: The name of this SpaceView.
         :rtype: str
@@ -105,7 +105,7 @@ class SpaceView:
     def name(self, name):
         """Sets the name of this SpaceView.
 
-            The space view name is used internally to identify the space view in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the space view.
 
         :param name: The name of this SpaceView.
         :type: str
@@ -144,7 +144,7 @@ class SpaceView:
     def space(self):
         """Gets the space of this SpaceView.
 
-            The space to which the view belongs to.
+            The space that the space view belongs to.
 
         :return: The space of this SpaceView.
         :rtype: Space
@@ -155,7 +155,7 @@ class SpaceView:
     def space(self, space):
         """Sets the space of this SpaceView.
 
-            The space to which the view belongs to.
+            The space that the space view belongs to.
 
         :param space: The space of this SpaceView.
         :type: Space

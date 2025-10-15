@@ -39,7 +39,7 @@ class CompletionLineItemCreate:
     def amount(self):
         """Gets the amount of this CompletionLineItemCreate.
 
-            The total amount of the line item including any tax.
+            The total amount of the line item to be captured, including taxes.
 
         :return: The amount of this CompletionLineItemCreate.
         :rtype: float
@@ -50,7 +50,7 @@ class CompletionLineItemCreate:
     def amount(self, amount):
         """Sets the amount of this CompletionLineItemCreate.
 
-            The total amount of the line item including any tax.
+            The total amount of the line item to be captured, including taxes.
 
         :param amount: The amount of this CompletionLineItemCreate.
         :type: float
@@ -64,7 +64,7 @@ class CompletionLineItemCreate:
     def quantity(self):
         """Gets the quantity of this CompletionLineItemCreate.
 
-            The quantity of the line item which should be completed.
+            The number of items to be captured.
 
         :return: The quantity of this CompletionLineItemCreate.
         :rtype: float
@@ -75,7 +75,7 @@ class CompletionLineItemCreate:
     def quantity(self, quantity):
         """Sets the quantity of this CompletionLineItemCreate.
 
-            The quantity of the line item which should be completed.
+            The number of items to be captured.
 
         :param quantity: The quantity of this CompletionLineItemCreate.
         :type: float
@@ -89,7 +89,7 @@ class CompletionLineItemCreate:
     def unique_id(self):
         """Gets the unique_id of this CompletionLineItemCreate.
 
-            The unique id identifies the line item on which the capture is applied on.
+            The unique identifier of the line item within the set of line items.
 
         :return: The unique_id of this CompletionLineItemCreate.
         :rtype: str
@@ -100,7 +100,7 @@ class CompletionLineItemCreate:
     def unique_id(self, unique_id):
         """Sets the unique_id of this CompletionLineItemCreate.
 
-            The unique id identifies the line item on which the capture is applied on.
+            The unique identifier of the line item within the set of line items.
 
         :param unique_id: The unique_id of this CompletionLineItemCreate.
         :type: str

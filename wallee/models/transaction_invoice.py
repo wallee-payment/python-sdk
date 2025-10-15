@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class TransactionInvoice(TransactionAwareEntity):
+
+class TransactionInvoice:
 
     swagger_types = {
     
@@ -18,8 +18,11 @@ class TransactionInvoice(TransactionAwareEntity):
         'due_on': 'datetime',
         'environment': 'Environment',
         'external_id': 'str',
+        'id': 'int',
         'language': 'str',
         'line_items': 'list[LineItem]',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'merchant_reference': 'str',
         'outstanding_amount': 'float',
         'paid_on': 'datetime',
@@ -32,7 +35,7 @@ class TransactionInvoice(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'amount': 'amount','billing_address': 'billingAddress','completion': 'completion','created_on': 'createdOn','derecognized_by': 'derecognizedBy','derecognized_on': 'derecognizedOn','due_on': 'dueOn','environment': 'environment','external_id': 'externalId','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','outstanding_amount': 'outstandingAmount','paid_on': 'paidOn','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','tax_amount': 'taxAmount','time_zone': 'timeZone','version': 'version',
+        'amount': 'amount','billing_address': 'billingAddress','completion': 'completion','created_on': 'createdOn','derecognized_by': 'derecognizedBy','derecognized_on': 'derecognizedOn','due_on': 'dueOn','environment': 'environment','external_id': 'externalId','id': 'id','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','merchant_reference': 'merchantReference','outstanding_amount': 'outstandingAmount','paid_on': 'paidOn','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','tax_amount': 'taxAmount','time_zone': 'timeZone','version': 'version',
     }
 
     
@@ -45,8 +48,11 @@ class TransactionInvoice(TransactionAwareEntity):
     _due_on = None
     _environment = None
     _external_id = None
+    _id = None
     _language = None
     _line_items = None
+    _linked_space_id = None
+    _linked_transaction = None
     _merchant_reference = None
     _outstanding_amount = None
     _paid_on = None
@@ -69,8 +75,11 @@ class TransactionInvoice(TransactionAwareEntity):
         self.due_on = kwargs.get('due_on', None)
         self.environment = kwargs.get('environment', None)
         self.external_id = kwargs.get('external_id', None)
+        self.id = kwargs.get('id', None)
         self.language = kwargs.get('language', None)
         self.line_items = kwargs.get('line_items', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.merchant_reference = kwargs.get('merchant_reference', None)
         self.outstanding_amount = kwargs.get('outstanding_amount', None)
         self.paid_on = kwargs.get('paid_on', None)
@@ -80,16 +89,14 @@ class TransactionInvoice(TransactionAwareEntity):
         self.tax_amount = kwargs.get('tax_amount', None)
         self.time_zone = kwargs.get('time_zone', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def amount(self):
         """Gets the amount of this TransactionInvoice.
 
-            
+            The total sum of all line items on the invoice, including taxes.
 
         :return: The amount of this TransactionInvoice.
         :rtype: float
@@ -100,7 +107,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def amount(self, amount):
         """Sets the amount of this TransactionInvoice.
 
-            
+            The total sum of all line items on the invoice, including taxes.
 
         :param amount: The amount of this TransactionInvoice.
         :type: float
@@ -112,7 +119,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def billing_address(self):
         """Gets the billing_address of this TransactionInvoice.
 
-            
+            The address associated with the invoice, used for billing purposes.
 
         :return: The billing_address of this TransactionInvoice.
         :rtype: Address
@@ -123,7 +130,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def billing_address(self, billing_address):
         """Sets the billing_address of this TransactionInvoice.
 
-            
+            The address associated with the invoice, used for billing purposes.
 
         :param billing_address: The billing_address of this TransactionInvoice.
         :type: Address
@@ -135,7 +142,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def completion(self):
         """Gets the completion of this TransactionInvoice.
 
-            
+            The transaction completion this object is linked to.
 
         :return: The completion of this TransactionInvoice.
         :rtype: TransactionCompletion
@@ -146,7 +153,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def completion(self, completion):
         """Sets the completion of this TransactionInvoice.
 
-            
+            The transaction completion this object is linked to.
 
         :param completion: The completion of this TransactionInvoice.
         :type: TransactionCompletion
@@ -158,7 +165,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def created_on(self):
         """Gets the created_on of this TransactionInvoice.
 
-            The date on which the invoice is created on.
+            The date and time when the object was created.
 
         :return: The created_on of this TransactionInvoice.
         :rtype: datetime
@@ -169,7 +176,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this TransactionInvoice.
 
-            The date on which the invoice is created on.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this TransactionInvoice.
         :type: datetime
@@ -181,7 +188,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def derecognized_by(self):
         """Gets the derecognized_by of this TransactionInvoice.
 
-            The id of the user which marked the invoice as derecognized.
+            The ID of the user the invoice was derecognized by.
 
         :return: The derecognized_by of this TransactionInvoice.
         :rtype: int
@@ -192,7 +199,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def derecognized_by(self, derecognized_by):
         """Sets the derecognized_by of this TransactionInvoice.
 
-            The id of the user which marked the invoice as derecognized.
+            The ID of the user the invoice was derecognized by.
 
         :param derecognized_by: The derecognized_by of this TransactionInvoice.
         :type: int
@@ -204,7 +211,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def derecognized_on(self):
         """Gets the derecognized_on of this TransactionInvoice.
 
-            The date on which the invoice is marked as derecognized.
+            The date and time when the invoice was derecognized, meaning it is no longer considered outstanding or valid in the system.
 
         :return: The derecognized_on of this TransactionInvoice.
         :rtype: datetime
@@ -215,7 +222,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def derecognized_on(self, derecognized_on):
         """Sets the derecognized_on of this TransactionInvoice.
 
-            The date on which the invoice is marked as derecognized.
+            The date and time when the invoice was derecognized, meaning it is no longer considered outstanding or valid in the system.
 
         :param derecognized_on: The derecognized_on of this TransactionInvoice.
         :type: datetime
@@ -227,7 +234,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def due_on(self):
         """Gets the due_on of this TransactionInvoice.
 
-            The date on which the invoice should be paid on.
+            The due date for payment of the invoice.
 
         :return: The due_on of this TransactionInvoice.
         :rtype: datetime
@@ -238,7 +245,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def due_on(self, due_on):
         """Sets the due_on of this TransactionInvoice.
 
-            The date on which the invoice should be paid on.
+            The due date for payment of the invoice.
 
         :param due_on: The due_on of this TransactionInvoice.
         :type: datetime
@@ -250,7 +257,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def environment(self):
         """Gets the environment of this TransactionInvoice.
 
-            
+            The environment used when rendering resources.
 
         :return: The environment of this TransactionInvoice.
         :rtype: Environment
@@ -261,7 +268,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def environment(self, environment):
         """Sets the environment of this TransactionInvoice.
 
-            
+            The environment used when rendering resources.
 
         :param environment: The environment of this TransactionInvoice.
         :type: Environment
@@ -273,7 +280,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def external_id(self):
         """Gets the external_id of this TransactionInvoice.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this TransactionInvoice.
         :rtype: str
@@ -284,7 +291,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def external_id(self, external_id):
         """Sets the external_id of this TransactionInvoice.
 
-            The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this TransactionInvoice.
         :type: str
@@ -295,6 +302,29 @@ class TransactionInvoice(TransactionAwareEntity):
             raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
 
         self._external_id = external_id
+    
+    @property
+    def id(self):
+        """Gets the id of this TransactionInvoice.
+
+            A unique identifier for the object.
+
+        :return: The id of this TransactionInvoice.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this TransactionInvoice.
+
+            A unique identifier for the object.
+
+        :param id: The id of this TransactionInvoice.
+        :type: int
+        """
+
+        self._id = id
     
     @property
     def language(self):
@@ -323,7 +353,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def line_items(self):
         """Gets the line_items of this TransactionInvoice.
 
-            
+            The invoiced line items that will appear on the invoice document.
 
         :return: The line_items of this TransactionInvoice.
         :rtype: list[LineItem]
@@ -334,7 +364,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def line_items(self, line_items):
         """Sets the line_items of this TransactionInvoice.
 
-            
+            The invoiced line items that will appear on the invoice document.
 
         :param line_items: The line_items of this TransactionInvoice.
         :type: list[LineItem]
@@ -343,10 +373,56 @@ class TransactionInvoice(TransactionAwareEntity):
         self._line_items = line_items
     
     @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this TransactionInvoice.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this TransactionInvoice.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this TransactionInvoice.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this TransactionInvoice.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this TransactionInvoice.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this TransactionInvoice.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this TransactionInvoice.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this TransactionInvoice.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def merchant_reference(self):
         """Gets the merchant_reference of this TransactionInvoice.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :return: The merchant_reference of this TransactionInvoice.
         :rtype: str
@@ -357,7 +433,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this TransactionInvoice.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :param merchant_reference: The merchant_reference of this TransactionInvoice.
         :type: str
@@ -371,7 +447,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def outstanding_amount(self):
         """Gets the outstanding_amount of this TransactionInvoice.
 
-            The outstanding amount indicates how much the buyer owes the merchant. A negative amount indicates that the invoice is overpaid.
+            The remaining amount the buyer owes to the merchant. A negative value indicates the invoice has been overpaid.
 
         :return: The outstanding_amount of this TransactionInvoice.
         :rtype: float
@@ -382,7 +458,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def outstanding_amount(self, outstanding_amount):
         """Sets the outstanding_amount of this TransactionInvoice.
 
-            The outstanding amount indicates how much the buyer owes the merchant. A negative amount indicates that the invoice is overpaid.
+            The remaining amount the buyer owes to the merchant. A negative value indicates the invoice has been overpaid.
 
         :param outstanding_amount: The outstanding_amount of this TransactionInvoice.
         :type: float
@@ -394,7 +470,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def paid_on(self):
         """Gets the paid_on of this TransactionInvoice.
 
-            The date on which the invoice is marked as paid. Eventually this date lags behind of the actual paid date.
+            The date and time when the invoice was recorded as paid. May differ from the actual payment date due to processing delays.
 
         :return: The paid_on of this TransactionInvoice.
         :rtype: datetime
@@ -405,7 +481,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def paid_on(self, paid_on):
         """Sets the paid_on of this TransactionInvoice.
 
-            The date on which the invoice is marked as paid. Eventually this date lags behind of the actual paid date.
+            The date and time when the invoice was recorded as paid. May differ from the actual payment date due to processing delays.
 
         :param paid_on: The paid_on of this TransactionInvoice.
         :type: datetime
@@ -440,7 +516,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def space_view_id(self):
         """Gets the space_view_id of this TransactionInvoice.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this TransactionInvoice.
         :rtype: int
@@ -451,7 +527,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this TransactionInvoice.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this TransactionInvoice.
         :type: int
@@ -486,7 +562,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def tax_amount(self):
         """Gets the tax_amount of this TransactionInvoice.
 
-            
+            The portion of the invoiced amount that corresponds to taxes.
 
         :return: The tax_amount of this TransactionInvoice.
         :rtype: float
@@ -497,7 +573,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def tax_amount(self, tax_amount):
         """Sets the tax_amount of this TransactionInvoice.
 
-            
+            The portion of the invoiced amount that corresponds to taxes.
 
         :param tax_amount: The tax_amount of this TransactionInvoice.
         :type: float
@@ -509,7 +585,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def time_zone(self):
         """Gets the time_zone of this TransactionInvoice.
 
-            
+            The time zone that this object is associated with.
 
         :return: The time_zone of this TransactionInvoice.
         :rtype: str
@@ -520,7 +596,7 @@ class TransactionInvoice(TransactionAwareEntity):
     def time_zone(self, time_zone):
         """Sets the time_zone of this TransactionInvoice.
 
-            
+            The time zone that this object is associated with.
 
         :param time_zone: The time_zone of this TransactionInvoice.
         :type: str

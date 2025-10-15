@@ -38,7 +38,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def reference(self):
         """Gets the reference of this SubscriptionPending.
 
-            
+            The merchant's reference used to identify the subscription.
 
         :return: The reference of this SubscriptionPending.
         :rtype: str
@@ -49,7 +49,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def reference(self, reference):
         """Sets the reference of this SubscriptionPending.
 
-            
+            The merchant's reference used to identify the subscription.
 
         :param reference: The reference of this SubscriptionPending.
         :type: str
@@ -63,7 +63,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def subscriber(self):
         """Gets the subscriber of this SubscriptionPending.
 
-            
+            The subscriber that the subscription belongs to.
 
         :return: The subscriber of this SubscriptionPending.
         :rtype: int
@@ -74,7 +74,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def subscriber(self, subscriber):
         """Sets the subscriber of this SubscriptionPending.
 
-            
+            The subscriber that the subscription belongs to.
 
         :param subscriber: The subscriber of this SubscriptionPending.
         :type: int
@@ -86,7 +86,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def token(self):
         """Gets the token of this SubscriptionPending.
 
-            
+            The payment token that is used to charge the customer.
 
         :return: The token of this SubscriptionPending.
         :rtype: int
@@ -97,7 +97,7 @@ class SubscriptionPending(SubscriptionUpdate):
     def token(self, token):
         """Sets the token of this SubscriptionPending.
 
-            
+            The payment token that is used to charge the customer.
 
         :param token: The token of this SubscriptionPending.
         :type: int

@@ -40,7 +40,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def collector_configuration(self):
         """Gets the collector_configuration of this DebtCollectionCaseCreate.
 
-            The collector configuration determines how the debt collection case is processed.
+            The configuration that the case is processed with.
 
         :return: The collector_configuration of this DebtCollectionCaseCreate.
         :rtype: int
@@ -51,7 +51,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def collector_configuration(self, collector_configuration):
         """Sets the collector_configuration of this DebtCollectionCaseCreate.
 
-            The collector configuration determines how the debt collection case is processed.
+            The configuration that the case is processed with.
 
         :param collector_configuration: The collector_configuration of this DebtCollectionCaseCreate.
         :type: int
@@ -63,7 +63,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def external_id(self):
         """Gets the external_id of this DebtCollectionCaseCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this DebtCollectionCaseCreate.
         :rtype: str
@@ -74,7 +74,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def external_id(self, external_id):
         """Sets the external_id of this DebtCollectionCaseCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this DebtCollectionCaseCreate.
         :type: str
@@ -88,7 +88,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def reference(self):
         """Gets the reference of this DebtCollectionCaseCreate.
 
-            The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+            A unique reference to identify the debt collection case in communication with the debtor.
 
         :return: The reference of this DebtCollectionCaseCreate.
         :rtype: str
@@ -99,7 +99,7 @@ class DebtCollectionCaseCreate(AbstractDebtCollectionCaseUpdate):
     def reference(self, reference):
         """Sets the reference of this DebtCollectionCaseCreate.
 
-            The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+            A unique reference to identify the debt collection case in communication with the debtor.
 
         :param reference: The reference of this DebtCollectionCaseCreate.
         :type: str

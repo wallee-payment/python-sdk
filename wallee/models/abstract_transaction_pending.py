@@ -84,7 +84,7 @@ class AbstractTransactionPending:
     def allowed_payment_method_brands(self):
         """Gets the allowed_payment_method_brands of this AbstractTransactionPending.
 
-            
+            The payment method brands that can be used to authorize the transaction.
 
         :return: The allowed_payment_method_brands of this AbstractTransactionPending.
         :rtype: list[int]
@@ -95,7 +95,7 @@ class AbstractTransactionPending:
     def allowed_payment_method_brands(self, allowed_payment_method_brands):
         """Sets the allowed_payment_method_brands of this AbstractTransactionPending.
 
-            
+            The payment method brands that can be used to authorize the transaction.
 
         :param allowed_payment_method_brands: The allowed_payment_method_brands of this AbstractTransactionPending.
         :type: list[int]
@@ -107,7 +107,7 @@ class AbstractTransactionPending:
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this AbstractTransactionPending.
 
-            
+            The payment method configurations that can be used to authorize the transaction.
 
         :return: The allowed_payment_method_configurations of this AbstractTransactionPending.
         :rtype: list[int]
@@ -118,7 +118,7 @@ class AbstractTransactionPending:
     def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
         """Sets the allowed_payment_method_configurations of this AbstractTransactionPending.
 
-            
+            The payment method configurations that can be used to authorize the transaction.
 
         :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this AbstractTransactionPending.
         :type: list[int]
@@ -130,7 +130,7 @@ class AbstractTransactionPending:
     def billing_address(self):
         """Gets the billing_address of this AbstractTransactionPending.
 
-            
+            The address associated with the payment method for invoicing and transaction processing purposes.
 
         :return: The billing_address of this AbstractTransactionPending.
         :rtype: AddressCreate
@@ -141,7 +141,7 @@ class AbstractTransactionPending:
     def billing_address(self, billing_address):
         """Sets the billing_address of this AbstractTransactionPending.
 
-            
+            The address associated with the payment method for invoicing and transaction processing purposes.
 
         :param billing_address: The billing_address of this AbstractTransactionPending.
         :type: AddressCreate
@@ -153,7 +153,7 @@ class AbstractTransactionPending:
     def completion_behavior(self):
         """Gets the completion_behavior of this AbstractTransactionPending.
 
-            The completion behavior controls when the transaction is completed.
+            The behavior that controls when the transaction is completed.
 
         :return: The completion_behavior of this AbstractTransactionPending.
         :rtype: TransactionCompletionBehavior
@@ -164,7 +164,7 @@ class AbstractTransactionPending:
     def completion_behavior(self, completion_behavior):
         """Sets the completion_behavior of this AbstractTransactionPending.
 
-            The completion behavior controls when the transaction is completed.
+            The behavior that controls when the transaction is completed.
 
         :param completion_behavior: The completion_behavior of this AbstractTransactionPending.
         :type: TransactionCompletionBehavior
@@ -176,7 +176,7 @@ class AbstractTransactionPending:
     def currency(self):
         """Gets the currency of this AbstractTransactionPending.
 
-            
+            The three-letter code (ISO 4217 format) of the transaction's currency.
 
         :return: The currency of this AbstractTransactionPending.
         :rtype: str
@@ -187,7 +187,7 @@ class AbstractTransactionPending:
     def currency(self, currency):
         """Sets the currency of this AbstractTransactionPending.
 
-            
+            The three-letter code (ISO 4217 format) of the transaction's currency.
 
         :param currency: The currency of this AbstractTransactionPending.
         :type: str
@@ -199,7 +199,7 @@ class AbstractTransactionPending:
     def customer_email_address(self):
         """Gets the customer_email_address of this AbstractTransactionPending.
 
-            The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
+            The customer's email address.
 
         :return: The customer_email_address of this AbstractTransactionPending.
         :rtype: str
@@ -210,7 +210,7 @@ class AbstractTransactionPending:
     def customer_email_address(self, customer_email_address):
         """Sets the customer_email_address of this AbstractTransactionPending.
 
-            The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
+            The customer's email address.
 
         :param customer_email_address: The customer_email_address of this AbstractTransactionPending.
         :type: str
@@ -224,7 +224,7 @@ class AbstractTransactionPending:
     def customer_id(self):
         """Gets the customer_id of this AbstractTransactionPending.
 
-            
+            The unique identifier of the customer in the external system.
 
         :return: The customer_id of this AbstractTransactionPending.
         :rtype: str
@@ -235,7 +235,7 @@ class AbstractTransactionPending:
     def customer_id(self, customer_id):
         """Sets the customer_id of this AbstractTransactionPending.
 
-            
+            The unique identifier of the customer in the external system.
 
         :param customer_id: The customer_id of this AbstractTransactionPending.
         :type: str
@@ -247,7 +247,7 @@ class AbstractTransactionPending:
     def failed_url(self):
         """Gets the failed_url of this AbstractTransactionPending.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :return: The failed_url of this AbstractTransactionPending.
         :rtype: str
@@ -258,7 +258,7 @@ class AbstractTransactionPending:
     def failed_url(self, failed_url):
         """Sets the failed_url of this AbstractTransactionPending.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :param failed_url: The failed_url of this AbstractTransactionPending.
         :type: str
@@ -274,7 +274,7 @@ class AbstractTransactionPending:
     def invoice_merchant_reference(self):
         """Gets the invoice_merchant_reference of this AbstractTransactionPending.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :return: The invoice_merchant_reference of this AbstractTransactionPending.
         :rtype: str
@@ -285,7 +285,7 @@ class AbstractTransactionPending:
     def invoice_merchant_reference(self, invoice_merchant_reference):
         """Sets the invoice_merchant_reference of this AbstractTransactionPending.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :param invoice_merchant_reference: The invoice_merchant_reference of this AbstractTransactionPending.
         :type: str
@@ -322,7 +322,7 @@ class AbstractTransactionPending:
     def line_items(self):
         """Gets the line_items of this AbstractTransactionPending.
 
-            
+            The line items purchased by the customer.
 
         :return: The line_items of this AbstractTransactionPending.
         :rtype: list[LineItemCreate]
@@ -333,7 +333,7 @@ class AbstractTransactionPending:
     def line_items(self, line_items):
         """Sets the line_items of this AbstractTransactionPending.
 
-            
+            The line items purchased by the customer.
 
         :param line_items: The line_items of this AbstractTransactionPending.
         :type: list[LineItemCreate]
@@ -345,7 +345,7 @@ class AbstractTransactionPending:
     def merchant_reference(self):
         """Gets the merchant_reference of this AbstractTransactionPending.
 
-            
+            The merchant's reference used to identify the transaction.
 
         :return: The merchant_reference of this AbstractTransactionPending.
         :rtype: str
@@ -356,7 +356,7 @@ class AbstractTransactionPending:
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this AbstractTransactionPending.
 
-            
+            The merchant's reference used to identify the transaction.
 
         :param merchant_reference: The merchant_reference of this AbstractTransactionPending.
         :type: str
@@ -393,7 +393,7 @@ class AbstractTransactionPending:
     def shipping_address(self):
         """Gets the shipping_address of this AbstractTransactionPending.
 
-            
+            The address to where the order will be shipped.
 
         :return: The shipping_address of this AbstractTransactionPending.
         :rtype: AddressCreate
@@ -404,7 +404,7 @@ class AbstractTransactionPending:
     def shipping_address(self, shipping_address):
         """Sets the shipping_address of this AbstractTransactionPending.
 
-            
+            The address to where the order will be shipped.
 
         :param shipping_address: The shipping_address of this AbstractTransactionPending.
         :type: AddressCreate
@@ -416,7 +416,7 @@ class AbstractTransactionPending:
     def shipping_method(self):
         """Gets the shipping_method of this AbstractTransactionPending.
 
-            
+            The name of the shipping method used to ship the products.
 
         :return: The shipping_method of this AbstractTransactionPending.
         :rtype: str
@@ -427,7 +427,7 @@ class AbstractTransactionPending:
     def shipping_method(self, shipping_method):
         """Sets the shipping_method of this AbstractTransactionPending.
 
-            
+            The name of the shipping method used to ship the products.
 
         :param shipping_method: The shipping_method of this AbstractTransactionPending.
         :type: str
@@ -441,7 +441,7 @@ class AbstractTransactionPending:
     def success_url(self):
         """Gets the success_url of this AbstractTransactionPending.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :return: The success_url of this AbstractTransactionPending.
         :rtype: str
@@ -452,7 +452,7 @@ class AbstractTransactionPending:
     def success_url(self, success_url):
         """Sets the success_url of this AbstractTransactionPending.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :param success_url: The success_url of this AbstractTransactionPending.
         :type: str
@@ -468,7 +468,7 @@ class AbstractTransactionPending:
     def time_zone(self):
         """Gets the time_zone of this AbstractTransactionPending.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :return: The time_zone of this AbstractTransactionPending.
         :rtype: str
@@ -479,7 +479,7 @@ class AbstractTransactionPending:
     def time_zone(self, time_zone):
         """Sets the time_zone of this AbstractTransactionPending.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :param time_zone: The time_zone of this AbstractTransactionPending.
         :type: str
@@ -491,7 +491,7 @@ class AbstractTransactionPending:
     def token(self):
         """Gets the token of this AbstractTransactionPending.
 
-            
+            The payment token that should be used to charge the customer.
 
         :return: The token of this AbstractTransactionPending.
         :rtype: int
@@ -502,7 +502,7 @@ class AbstractTransactionPending:
     def token(self, token):
         """Sets the token of this AbstractTransactionPending.
 
-            
+            The payment token that should be used to charge the customer.
 
         :param token: The token of this AbstractTransactionPending.
         :type: int
@@ -514,7 +514,7 @@ class AbstractTransactionPending:
     def tokenization_mode(self):
         """Gets the tokenization_mode of this AbstractTransactionPending.
 
-            The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
 
         :return: The tokenization_mode of this AbstractTransactionPending.
         :rtype: TokenizationMode
@@ -525,7 +525,7 @@ class AbstractTransactionPending:
     def tokenization_mode(self, tokenization_mode):
         """Sets the tokenization_mode of this AbstractTransactionPending.
 
-            The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
 
         :param tokenization_mode: The tokenization_mode of this AbstractTransactionPending.
         :type: TokenizationMode

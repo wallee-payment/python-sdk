@@ -36,7 +36,7 @@ class CompletionLineItem:
     def amount(self):
         """Gets the amount of this CompletionLineItem.
 
-            The total amount of the line item including any tax.
+            The total amount of the line item to be captured, including taxes.
 
         :return: The amount of this CompletionLineItem.
         :rtype: float
@@ -47,7 +47,7 @@ class CompletionLineItem:
     def amount(self, amount):
         """Sets the amount of this CompletionLineItem.
 
-            The total amount of the line item including any tax.
+            The total amount of the line item to be captured, including taxes.
 
         :param amount: The amount of this CompletionLineItem.
         :type: float
@@ -59,7 +59,7 @@ class CompletionLineItem:
     def quantity(self):
         """Gets the quantity of this CompletionLineItem.
 
-            The quantity of the line item which should be completed.
+            The number of items to be captured.
 
         :return: The quantity of this CompletionLineItem.
         :rtype: float
@@ -70,7 +70,7 @@ class CompletionLineItem:
     def quantity(self, quantity):
         """Sets the quantity of this CompletionLineItem.
 
-            The quantity of the line item which should be completed.
+            The number of items to be captured.
 
         :param quantity: The quantity of this CompletionLineItem.
         :type: float
@@ -82,7 +82,7 @@ class CompletionLineItem:
     def unique_id(self):
         """Gets the unique_id of this CompletionLineItem.
 
-            The unique id identifies the line item on which the capture is applied on.
+            The unique identifier of the line item within the set of line items.
 
         :return: The unique_id of this CompletionLineItem.
         :rtype: str
@@ -93,7 +93,7 @@ class CompletionLineItem:
     def unique_id(self, unique_id):
         """Sets the unique_id of this CompletionLineItem.
 
-            The unique id identifies the line item on which the capture is applied on.
+            The unique identifier of the line item within the set of line items.
 
         :param unique_id: The unique_id of this CompletionLineItem.
         :type: str

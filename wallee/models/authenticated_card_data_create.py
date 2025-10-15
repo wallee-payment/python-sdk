@@ -14,6 +14,7 @@ class AuthenticatedCardDataCreate:
         'cardholder_authentication': 'CardholderAuthenticationCreate',
         'cryptogram': 'CardCryptogramCreate',
         'expiry_date': 'str',
+        'pan_type': 'PanType',
         'primary_account_number': 'str',
         'recurring_indicator': 'RecurringIndicator',
         'scheme_transaction_reference': 'str',
@@ -21,7 +22,7 @@ class AuthenticatedCardDataCreate:
     }
 
     attribute_map = {
-        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','cardholder_authentication': 'cardholderAuthentication','cryptogram': 'cryptogram','expiry_date': 'expiryDate','primary_account_number': 'primaryAccountNumber','recurring_indicator': 'recurringIndicator','scheme_transaction_reference': 'schemeTransactionReference','token_requestor_id': 'tokenRequestorId',
+        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','cardholder_authentication': 'cardholderAuthentication','cryptogram': 'cryptogram','expiry_date': 'expiryDate','pan_type': 'panType','primary_account_number': 'primaryAccountNumber','recurring_indicator': 'recurringIndicator','scheme_transaction_reference': 'schemeTransactionReference','token_requestor_id': 'tokenRequestorId',
     }
 
     
@@ -30,6 +31,7 @@ class AuthenticatedCardDataCreate:
     _cardholder_authentication = None
     _cryptogram = None
     _expiry_date = None
+    _pan_type = None
     _primary_account_number = None
     _recurring_indicator = None
     _scheme_transaction_reference = None
@@ -43,6 +45,7 @@ class AuthenticatedCardDataCreate:
         self.cardholder_authentication = kwargs.get('cardholder_authentication', None)
         self.cryptogram = kwargs.get('cryptogram', None)
         self.expiry_date = kwargs.get('expiry_date', None)
+        self.pan_type = kwargs.get('pan_type', None)
         self.primary_account_number = kwargs.get('primary_account_number')
 
         self.recurring_indicator = kwargs.get('recurring_indicator', None)
@@ -55,7 +58,7 @@ class AuthenticatedCardDataCreate:
     def card_holder_name(self):
         """Gets the card_holder_name of this AuthenticatedCardDataCreate.
 
-            The card holder name is the name printed onto the card. It identifies the person who owns the card.
+            The name of the cardholder, as printed on the card, identifying the card owner.
 
         :return: The card_holder_name of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -66,7 +69,7 @@ class AuthenticatedCardDataCreate:
     def card_holder_name(self, card_holder_name):
         """Sets the card_holder_name of this AuthenticatedCardDataCreate.
 
-            The card holder name is the name printed onto the card. It identifies the person who owns the card.
+            The name of the cardholder, as printed on the card, identifying the card owner.
 
         :param card_holder_name: The card_holder_name of this AuthenticatedCardDataCreate.
         :type: str
@@ -80,7 +83,7 @@ class AuthenticatedCardDataCreate:
     def card_verification_code(self):
         """Gets the card_verification_code of this AuthenticatedCardDataCreate.
 
-            The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
+            The security code used to validate the card during transactions.
 
         :return: The card_verification_code of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -91,7 +94,7 @@ class AuthenticatedCardDataCreate:
     def card_verification_code(self, card_verification_code):
         """Sets the card_verification_code of this AuthenticatedCardDataCreate.
 
-            The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
+            The security code used to validate the card during transactions.
 
         :param card_verification_code: The card_verification_code of this AuthenticatedCardDataCreate.
         :type: str
@@ -107,7 +110,7 @@ class AuthenticatedCardDataCreate:
     def cardholder_authentication(self):
         """Gets the cardholder_authentication of this AuthenticatedCardDataCreate.
 
-            The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+            Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
 
         :return: The cardholder_authentication of this AuthenticatedCardDataCreate.
         :rtype: CardholderAuthenticationCreate
@@ -118,7 +121,7 @@ class AuthenticatedCardDataCreate:
     def cardholder_authentication(self, cardholder_authentication):
         """Sets the cardholder_authentication of this AuthenticatedCardDataCreate.
 
-            The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+            Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
 
         :param cardholder_authentication: The cardholder_authentication of this AuthenticatedCardDataCreate.
         :type: CardholderAuthenticationCreate
@@ -130,7 +133,7 @@ class AuthenticatedCardDataCreate:
     def cryptogram(self):
         """Gets the cryptogram of this AuthenticatedCardDataCreate.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :return: The cryptogram of this AuthenticatedCardDataCreate.
         :rtype: CardCryptogramCreate
@@ -141,7 +144,7 @@ class AuthenticatedCardDataCreate:
     def cryptogram(self, cryptogram):
         """Sets the cryptogram of this AuthenticatedCardDataCreate.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :param cryptogram: The cryptogram of this AuthenticatedCardDataCreate.
         :type: CardCryptogramCreate
@@ -153,7 +156,7 @@ class AuthenticatedCardDataCreate:
     def expiry_date(self):
         """Gets the expiry_date of this AuthenticatedCardDataCreate.
 
-            The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
+            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
 
         :return: The expiry_date of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -164,7 +167,7 @@ class AuthenticatedCardDataCreate:
     def expiry_date(self, expiry_date):
         """Sets the expiry_date of this AuthenticatedCardDataCreate.
 
-            The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
+            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
 
         :param expiry_date: The expiry_date of this AuthenticatedCardDataCreate.
         :type: str
@@ -173,10 +176,33 @@ class AuthenticatedCardDataCreate:
         self._expiry_date = expiry_date
     
     @property
+    def pan_type(self):
+        """Gets the pan_type of this AuthenticatedCardDataCreate.
+
+            The type of PAN or token, indicating the source or security method of the card information.
+
+        :return: The pan_type of this AuthenticatedCardDataCreate.
+        :rtype: PanType
+        """
+        return self._pan_type
+
+    @pan_type.setter
+    def pan_type(self, pan_type):
+        """Sets the pan_type of this AuthenticatedCardDataCreate.
+
+            The type of PAN or token, indicating the source or security method of the card information.
+
+        :param pan_type: The pan_type of this AuthenticatedCardDataCreate.
+        :type: PanType
+        """
+
+        self._pan_type = pan_type
+    
+    @property
     def primary_account_number(self):
         """Gets the primary_account_number of this AuthenticatedCardDataCreate.
 
-            The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
+            The card's primary account number (PAN), the unique identifier of the card.
 
         :return: The primary_account_number of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -187,7 +213,7 @@ class AuthenticatedCardDataCreate:
     def primary_account_number(self, primary_account_number):
         """Sets the primary_account_number of this AuthenticatedCardDataCreate.
 
-            The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
+            The card's primary account number (PAN), the unique identifier of the card.
 
         :param primary_account_number: The primary_account_number of this AuthenticatedCardDataCreate.
         :type: str
@@ -205,7 +231,7 @@ class AuthenticatedCardDataCreate:
     def recurring_indicator(self):
         """Gets the recurring_indicator of this AuthenticatedCardDataCreate.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :return: The recurring_indicator of this AuthenticatedCardDataCreate.
         :rtype: RecurringIndicator
@@ -216,7 +242,7 @@ class AuthenticatedCardDataCreate:
     def recurring_indicator(self, recurring_indicator):
         """Sets the recurring_indicator of this AuthenticatedCardDataCreate.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :param recurring_indicator: The recurring_indicator of this AuthenticatedCardDataCreate.
         :type: RecurringIndicator
@@ -228,7 +254,7 @@ class AuthenticatedCardDataCreate:
     def scheme_transaction_reference(self):
         """Gets the scheme_transaction_reference of this AuthenticatedCardDataCreate.
 
-            
+            A reference specific to the card's transaction within its payment scheme.
 
         :return: The scheme_transaction_reference of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -239,7 +265,7 @@ class AuthenticatedCardDataCreate:
     def scheme_transaction_reference(self, scheme_transaction_reference):
         """Sets the scheme_transaction_reference of this AuthenticatedCardDataCreate.
 
-            
+            A reference specific to the card's transaction within its payment scheme.
 
         :param scheme_transaction_reference: The scheme_transaction_reference of this AuthenticatedCardDataCreate.
         :type: str
@@ -253,7 +279,7 @@ class AuthenticatedCardDataCreate:
     def token_requestor_id(self):
         """Gets the token_requestor_id of this AuthenticatedCardDataCreate.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :return: The token_requestor_id of this AuthenticatedCardDataCreate.
         :rtype: str
@@ -264,7 +290,7 @@ class AuthenticatedCardDataCreate:
     def token_requestor_id(self, token_requestor_id):
         """Sets the token_requestor_id of this AuthenticatedCardDataCreate.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :param token_requestor_id: The token_requestor_id of this AuthenticatedCardDataCreate.
         :type: str

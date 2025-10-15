@@ -56,7 +56,7 @@ class PaymentInformationHashType:
     def name(self):
         """Gets the name of this PaymentInformationHashType.
 
-            
+            The name that describes the hash type.
 
         :return: The name of this PaymentInformationHashType.
         :rtype: dict(str, str)
@@ -67,7 +67,7 @@ class PaymentInformationHashType:
     def name(self, name):
         """Sets the name of this PaymentInformationHashType.
 
-            
+            The name that describes the hash type.
 
         :param name: The name of this PaymentInformationHashType.
         :type: dict(str, str)

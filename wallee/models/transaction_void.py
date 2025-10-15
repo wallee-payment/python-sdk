@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class TransactionVoid(TransactionAwareEntity):
+
+class TransactionVoid:
 
     swagger_types = {
     
@@ -13,8 +13,11 @@ class TransactionVoid(TransactionAwareEntity):
         'created_on': 'datetime',
         'failed_on': 'datetime',
         'failure_reason': 'FailureReason',
+        'id': 'int',
         'labels': 'list[Label]',
         'language': 'str',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'mode': 'TransactionVoidMode',
         'next_update_on': 'datetime',
         'planned_purge_date': 'datetime',
@@ -28,7 +31,7 @@ class TransactionVoid(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_by': 'createdBy','created_on': 'createdOn','failed_on': 'failedOn','failure_reason': 'failureReason','labels': 'labels','language': 'language','mode': 'mode','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processor_reference': 'processorReference','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','timeout_on': 'timeoutOn','transaction': 'transaction','version': 'version',
+        'created_by': 'createdBy','created_on': 'createdOn','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','mode': 'mode','next_update_on': 'nextUpdateOn','planned_purge_date': 'plannedPurgeDate','processor_reference': 'processorReference','space_view_id': 'spaceViewId','state': 'state','succeeded_on': 'succeededOn','timeout_on': 'timeoutOn','transaction': 'transaction','version': 'version',
     }
 
     
@@ -36,8 +39,11 @@ class TransactionVoid(TransactionAwareEntity):
     _created_on = None
     _failed_on = None
     _failure_reason = None
+    _id = None
     _labels = None
     _language = None
+    _linked_space_id = None
+    _linked_transaction = None
     _mode = None
     _next_update_on = None
     _planned_purge_date = None
@@ -56,8 +62,11 @@ class TransactionVoid(TransactionAwareEntity):
         self.created_on = kwargs.get('created_on', None)
         self.failed_on = kwargs.get('failed_on', None)
         self.failure_reason = kwargs.get('failure_reason', None)
+        self.id = kwargs.get('id', None)
         self.labels = kwargs.get('labels', None)
         self.language = kwargs.get('language', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.mode = kwargs.get('mode', None)
         self.next_update_on = kwargs.get('next_update_on', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
@@ -68,16 +77,14 @@ class TransactionVoid(TransactionAwareEntity):
         self.timeout_on = kwargs.get('timeout_on', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def created_by(self):
         """Gets the created_by of this TransactionVoid.
 
-            
+            The ID of the user the transaction void was created by.
 
         :return: The created_by of this TransactionVoid.
         :rtype: int
@@ -88,7 +95,7 @@ class TransactionVoid(TransactionAwareEntity):
     def created_by(self, created_by):
         """Sets the created_by of this TransactionVoid.
 
-            
+            The ID of the user the transaction void was created by.
 
         :param created_by: The created_by of this TransactionVoid.
         :type: int
@@ -123,7 +130,7 @@ class TransactionVoid(TransactionAwareEntity):
     def failed_on(self):
         """Gets the failed_on of this TransactionVoid.
 
-            
+            The date and time when the transaction void failed.
 
         :return: The failed_on of this TransactionVoid.
         :rtype: datetime
@@ -134,7 +141,7 @@ class TransactionVoid(TransactionAwareEntity):
     def failed_on(self, failed_on):
         """Sets the failed_on of this TransactionVoid.
 
-            
+            The date and time when the transaction void failed.
 
         :param failed_on: The failed_on of this TransactionVoid.
         :type: datetime
@@ -146,7 +153,7 @@ class TransactionVoid(TransactionAwareEntity):
     def failure_reason(self):
         """Gets the failure_reason of this TransactionVoid.
 
-            
+            The reason for the failure of the transaction void.
 
         :return: The failure_reason of this TransactionVoid.
         :rtype: FailureReason
@@ -157,7 +164,7 @@ class TransactionVoid(TransactionAwareEntity):
     def failure_reason(self, failure_reason):
         """Sets the failure_reason of this TransactionVoid.
 
-            
+            The reason for the failure of the transaction void.
 
         :param failure_reason: The failure_reason of this TransactionVoid.
         :type: FailureReason
@@ -166,10 +173,33 @@ class TransactionVoid(TransactionAwareEntity):
         self._failure_reason = failure_reason
     
     @property
+    def id(self):
+        """Gets the id of this TransactionVoid.
+
+            A unique identifier for the object.
+
+        :return: The id of this TransactionVoid.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this TransactionVoid.
+
+            A unique identifier for the object.
+
+        :param id: The id of this TransactionVoid.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def labels(self):
         """Gets the labels of this TransactionVoid.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this TransactionVoid.
         :rtype: list[Label]
@@ -180,7 +210,7 @@ class TransactionVoid(TransactionAwareEntity):
     def labels(self, labels):
         """Sets the labels of this TransactionVoid.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this TransactionVoid.
         :type: list[Label]
@@ -212,10 +242,56 @@ class TransactionVoid(TransactionAwareEntity):
         self._language = language
     
     @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this TransactionVoid.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this TransactionVoid.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this TransactionVoid.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this TransactionVoid.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this TransactionVoid.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this TransactionVoid.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this TransactionVoid.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this TransactionVoid.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def mode(self):
         """Gets the mode of this TransactionVoid.
 
-            
+            The mode of transaction void, such as online or offline, determining how the void process is executed.
 
         :return: The mode of this TransactionVoid.
         :rtype: TransactionVoidMode
@@ -226,7 +302,7 @@ class TransactionVoid(TransactionAwareEntity):
     def mode(self, mode):
         """Sets the mode of this TransactionVoid.
 
-            
+            The mode of transaction void, such as online or offline, determining how the void process is executed.
 
         :param mode: The mode of this TransactionVoid.
         :type: TransactionVoidMode
@@ -238,7 +314,7 @@ class TransactionVoid(TransactionAwareEntity):
     def next_update_on(self):
         """Gets the next_update_on of this TransactionVoid.
 
-            
+            The date and time when the next update of the object's state is planned.
 
         :return: The next_update_on of this TransactionVoid.
         :rtype: datetime
@@ -249,7 +325,7 @@ class TransactionVoid(TransactionAwareEntity):
     def next_update_on(self, next_update_on):
         """Sets the next_update_on of this TransactionVoid.
 
-            
+            The date and time when the next update of the object's state is planned.
 
         :param next_update_on: The next_update_on of this TransactionVoid.
         :type: datetime
@@ -284,7 +360,7 @@ class TransactionVoid(TransactionAwareEntity):
     def processor_reference(self):
         """Gets the processor_reference of this TransactionVoid.
 
-            
+            The reference ID provided by the payment processor, used to trace the void through the external payment system.
 
         :return: The processor_reference of this TransactionVoid.
         :rtype: str
@@ -295,7 +371,7 @@ class TransactionVoid(TransactionAwareEntity):
     def processor_reference(self, processor_reference):
         """Sets the processor_reference of this TransactionVoid.
 
-            
+            The reference ID provided by the payment processor, used to trace the void through the external payment system.
 
         :param processor_reference: The processor_reference of this TransactionVoid.
         :type: str
@@ -307,7 +383,7 @@ class TransactionVoid(TransactionAwareEntity):
     def space_view_id(self):
         """Gets the space_view_id of this TransactionVoid.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this TransactionVoid.
         :rtype: int
@@ -318,7 +394,7 @@ class TransactionVoid(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this TransactionVoid.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this TransactionVoid.
         :type: int
@@ -353,7 +429,7 @@ class TransactionVoid(TransactionAwareEntity):
     def succeeded_on(self):
         """Gets the succeeded_on of this TransactionVoid.
 
-            
+            The date and time when the transaction void succeeded.
 
         :return: The succeeded_on of this TransactionVoid.
         :rtype: datetime
@@ -364,7 +440,7 @@ class TransactionVoid(TransactionAwareEntity):
     def succeeded_on(self, succeeded_on):
         """Sets the succeeded_on of this TransactionVoid.
 
-            
+            The date and time when the transaction void succeeded.
 
         :param succeeded_on: The succeeded_on of this TransactionVoid.
         :type: datetime
@@ -376,7 +452,7 @@ class TransactionVoid(TransactionAwareEntity):
     def timeout_on(self):
         """Gets the timeout_on of this TransactionVoid.
 
-            
+            The date and time when the object will expire.
 
         :return: The timeout_on of this TransactionVoid.
         :rtype: datetime
@@ -387,7 +463,7 @@ class TransactionVoid(TransactionAwareEntity):
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this TransactionVoid.
 
-            
+            The date and time when the object will expire.
 
         :param timeout_on: The timeout_on of this TransactionVoid.
         :type: datetime
@@ -399,7 +475,7 @@ class TransactionVoid(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this TransactionVoid.
 
-            
+            The transaction that the void belongs to.
 
         :return: The transaction of this TransactionVoid.
         :rtype: Transaction
@@ -410,7 +486,7 @@ class TransactionVoid(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this TransactionVoid.
 
-            
+            The transaction that the void belongs to.
 
         :param transaction: The transaction of this TransactionVoid.
         :type: Transaction

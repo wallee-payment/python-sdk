@@ -96,7 +96,7 @@ class TokenVersion:
     def activated_on(self):
         """Gets the activated_on of this TokenVersion.
 
-            
+            The date and time when the token version was activated.
 
         :return: The activated_on of this TokenVersion.
         :rtype: datetime
@@ -107,7 +107,7 @@ class TokenVersion:
     def activated_on(self, activated_on):
         """Sets the activated_on of this TokenVersion.
 
-            
+            The date and time when the token version was activated.
 
         :param activated_on: The activated_on of this TokenVersion.
         :type: datetime
@@ -119,7 +119,7 @@ class TokenVersion:
     def billing_address(self):
         """Gets the billing_address of this TokenVersion.
 
-            
+            The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
 
         :return: The billing_address of this TokenVersion.
         :rtype: Address
@@ -130,7 +130,7 @@ class TokenVersion:
     def billing_address(self, billing_address):
         """Sets the billing_address of this TokenVersion.
 
-            
+            The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
 
         :param billing_address: The billing_address of this TokenVersion.
         :type: Address
@@ -165,7 +165,7 @@ class TokenVersion:
     def environment(self):
         """Gets the environment of this TokenVersion.
 
-            
+            The environment in which the token version was created.
 
         :return: The environment of this TokenVersion.
         :rtype: ChargeAttemptEnvironment
@@ -176,7 +176,7 @@ class TokenVersion:
     def environment(self, environment):
         """Sets the environment of this TokenVersion.
 
-            
+            The environment in which the token version was created.
 
         :param environment: The environment of this TokenVersion.
         :type: ChargeAttemptEnvironment
@@ -188,7 +188,7 @@ class TokenVersion:
     def expires_on(self):
         """Gets the expires_on of this TokenVersion.
 
-            The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
+            The date and time when the token version is set to expire, after which it will be marked as obsolete.
 
         :return: The expires_on of this TokenVersion.
         :rtype: datetime
@@ -199,7 +199,7 @@ class TokenVersion:
     def expires_on(self, expires_on):
         """Sets the expires_on of this TokenVersion.
 
-            The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
+            The date and time when the token version is set to expire, after which it will be marked as obsolete.
 
         :param expires_on: The expires_on of this TokenVersion.
         :type: datetime
@@ -211,7 +211,7 @@ class TokenVersion:
     def icon_url(self):
         """Gets the icon_url of this TokenVersion.
 
-            
+            The URL to the token's icon displayed to the customer.
 
         :return: The icon_url of this TokenVersion.
         :rtype: str
@@ -222,7 +222,7 @@ class TokenVersion:
     def icon_url(self, icon_url):
         """Sets the icon_url of this TokenVersion.
 
-            
+            The URL to the token's icon displayed to the customer.
 
         :param icon_url: The icon_url of this TokenVersion.
         :type: str
@@ -257,7 +257,7 @@ class TokenVersion:
     def labels(self):
         """Gets the labels of this TokenVersion.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this TokenVersion.
         :rtype: list[Label]
@@ -268,7 +268,7 @@ class TokenVersion:
     def labels(self, labels):
         """Sets the labels of this TokenVersion.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this TokenVersion.
         :type: list[Label]
@@ -326,7 +326,7 @@ class TokenVersion:
     def name(self):
         """Gets the name of this TokenVersion.
 
-            
+            The name used to identify the token.
 
         :return: The name of this TokenVersion.
         :rtype: str
@@ -337,7 +337,7 @@ class TokenVersion:
     def name(self, name):
         """Sets the name of this TokenVersion.
 
-            
+            The name used to identify the token.
 
         :param name: The name of this TokenVersion.
         :type: str
@@ -351,7 +351,7 @@ class TokenVersion:
     def obsoleted_on(self):
         """Gets the obsoleted_on of this TokenVersion.
 
-            
+            The date and time when the token version was marked obsolete.
 
         :return: The obsoleted_on of this TokenVersion.
         :rtype: datetime
@@ -362,7 +362,7 @@ class TokenVersion:
     def obsoleted_on(self, obsoleted_on):
         """Sets the obsoleted_on of this TokenVersion.
 
-            
+            The date and time when the token version was marked obsolete.
 
         :param obsoleted_on: The obsoleted_on of this TokenVersion.
         :type: datetime
@@ -374,7 +374,7 @@ class TokenVersion:
     def payment_connector_configuration(self):
         """Gets the payment_connector_configuration of this TokenVersion.
 
-            
+            The payment connector configuration that initialized the token version.
 
         :return: The payment_connector_configuration of this TokenVersion.
         :rtype: PaymentConnectorConfiguration
@@ -385,7 +385,7 @@ class TokenVersion:
     def payment_connector_configuration(self, payment_connector_configuration):
         """Sets the payment_connector_configuration of this TokenVersion.
 
-            
+            The payment connector configuration that initialized the token version.
 
         :param payment_connector_configuration: The payment_connector_configuration of this TokenVersion.
         :type: PaymentConnectorConfiguration
@@ -397,7 +397,7 @@ class TokenVersion:
     def payment_information_hashes(self):
         """Gets the payment_information_hashes of this TokenVersion.
 
-            The payment information hash set contains hashes of the payment information represented by this token version.
+            The hashed payment information that the token version represents.
 
         :return: The payment_information_hashes of this TokenVersion.
         :rtype: list[PaymentInformationHash]
@@ -408,7 +408,7 @@ class TokenVersion:
     def payment_information_hashes(self, payment_information_hashes):
         """Sets the payment_information_hashes of this TokenVersion.
 
-            The payment information hash set contains hashes of the payment information represented by this token version.
+            The hashed payment information that the token version represents.
 
         :param payment_information_hashes: The payment_information_hashes of this TokenVersion.
         :type: list[PaymentInformationHash]
@@ -420,7 +420,7 @@ class TokenVersion:
     def payment_method(self):
         """Gets the payment_method of this TokenVersion.
 
-            
+            The payment method that initialized the token version.
 
         :return: The payment_method of this TokenVersion.
         :rtype: int
@@ -431,7 +431,7 @@ class TokenVersion:
     def payment_method(self, payment_method):
         """Sets the payment_method of this TokenVersion.
 
-            
+            The payment method that initialized the token version.
 
         :param payment_method: The payment_method of this TokenVersion.
         :type: int
@@ -443,7 +443,7 @@ class TokenVersion:
     def payment_method_brand(self):
         """Gets the payment_method_brand of this TokenVersion.
 
-            
+            The payment method brand that initialized the token version.
 
         :return: The payment_method_brand of this TokenVersion.
         :rtype: int
@@ -454,7 +454,7 @@ class TokenVersion:
     def payment_method_brand(self, payment_method_brand):
         """Sets the payment_method_brand of this TokenVersion.
 
-            
+            The payment method brand that initialized the token version.
 
         :param payment_method_brand: The payment_method_brand of this TokenVersion.
         :type: int
@@ -489,7 +489,7 @@ class TokenVersion:
     def processor_token(self):
         """Gets the processor_token of this TokenVersion.
 
-            
+            The token name as specified by the processor.
 
         :return: The processor_token of this TokenVersion.
         :rtype: str
@@ -500,7 +500,7 @@ class TokenVersion:
     def processor_token(self, processor_token):
         """Sets the processor_token of this TokenVersion.
 
-            
+            The token name as specified by the processor.
 
         :param processor_token: The processor_token of this TokenVersion.
         :type: str
@@ -514,7 +514,7 @@ class TokenVersion:
     def shipping_address(self):
         """Gets the shipping_address of this TokenVersion.
 
-            
+            The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
 
         :return: The shipping_address of this TokenVersion.
         :rtype: Address
@@ -525,7 +525,7 @@ class TokenVersion:
     def shipping_address(self, shipping_address):
         """Sets the shipping_address of this TokenVersion.
 
-            
+            The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
 
         :param shipping_address: The shipping_address of this TokenVersion.
         :type: Address
@@ -560,7 +560,7 @@ class TokenVersion:
     def token(self):
         """Gets the token of this TokenVersion.
 
-            
+            The token that the token version belongs to.
 
         :return: The token of this TokenVersion.
         :rtype: Token
@@ -571,7 +571,7 @@ class TokenVersion:
     def token(self, token):
         """Sets the token of this TokenVersion.
 
-            
+            The token that the token version belongs to.
 
         :param token: The token of this TokenVersion.
         :type: Token
@@ -583,7 +583,7 @@ class TokenVersion:
     def type(self):
         """Gets the type of this TokenVersion.
 
-            The token version type determines what kind of token it is and by which payment connector the token can be processed by.
+            The type specifies the nature of the token and identifies the payment connector capable of processing it.
 
         :return: The type of this TokenVersion.
         :rtype: TokenVersionType
@@ -594,7 +594,7 @@ class TokenVersion:
     def type(self, type):
         """Sets the type of this TokenVersion.
 
-            The token version type determines what kind of token it is and by which payment connector the token can be processed by.
+            The type specifies the nature of the token and identifies the payment connector capable of processing it.
 
         :param type: The type of this TokenVersion.
         :type: TokenVersionType

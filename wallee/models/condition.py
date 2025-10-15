@@ -48,7 +48,7 @@ class Condition:
     def condition_type(self):
         """Gets the condition_type of this Condition.
 
-            The selected condition type defines how the configuration is applied to the transactions.
+            The condition type determines the criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.
 
         :return: The condition_type of this Condition.
         :rtype: int
@@ -59,7 +59,7 @@ class Condition:
     def condition_type(self, condition_type):
         """Sets the condition_type of this Condition.
 
-            The selected condition type defines how the configuration is applied to the transactions.
+            The condition type determines the criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.
 
         :param condition_type: The condition_type of this Condition.
         :type: int
@@ -117,7 +117,7 @@ class Condition:
     def name(self):
         """Gets the name of this Condition.
 
-            The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the condition.
 
         :return: The name of this Condition.
         :rtype: str
@@ -128,7 +128,7 @@ class Condition:
     def name(self, name):
         """Sets the name of this Condition.
 
-            The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the condition.
 
         :param name: The name of this Condition.
         :type: str

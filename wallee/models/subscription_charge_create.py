@@ -51,7 +51,7 @@ class SubscriptionChargeCreate:
     def external_id(self):
         """Gets the external_id of this SubscriptionChargeCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionChargeCreate.
         :rtype: str
@@ -62,7 +62,7 @@ class SubscriptionChargeCreate:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionChargeCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionChargeCreate.
         :type: str
@@ -76,7 +76,7 @@ class SubscriptionChargeCreate:
     def failed_url(self):
         """Gets the failed_url of this SubscriptionChargeCreate.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :return: The failed_url of this SubscriptionChargeCreate.
         :rtype: str
@@ -87,7 +87,7 @@ class SubscriptionChargeCreate:
     def failed_url(self, failed_url):
         """Sets the failed_url of this SubscriptionChargeCreate.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :param failed_url: The failed_url of this SubscriptionChargeCreate.
         :type: str
@@ -103,7 +103,7 @@ class SubscriptionChargeCreate:
     def planned_execution_date(self):
         """Gets the planned_execution_date of this SubscriptionChargeCreate.
 
-            
+            The date and time when the execution of the charge is planned.
 
         :return: The planned_execution_date of this SubscriptionChargeCreate.
         :rtype: datetime
@@ -114,7 +114,7 @@ class SubscriptionChargeCreate:
     def planned_execution_date(self, planned_execution_date):
         """Sets the planned_execution_date of this SubscriptionChargeCreate.
 
-            
+            The date and time when the execution of the charge is planned.
 
         :param planned_execution_date: The planned_execution_date of this SubscriptionChargeCreate.
         :type: datetime
@@ -126,7 +126,7 @@ class SubscriptionChargeCreate:
     def processing_type(self):
         """Gets the processing_type of this SubscriptionChargeCreate.
 
-            
+            The processing type specifies how the charge is to be processed.
 
         :return: The processing_type of this SubscriptionChargeCreate.
         :rtype: SubscriptionChargeProcessingType
@@ -137,7 +137,7 @@ class SubscriptionChargeCreate:
     def processing_type(self, processing_type):
         """Sets the processing_type of this SubscriptionChargeCreate.
 
-            
+            The processing type specifies how the charge is to be processed.
 
         :param processing_type: The processing_type of this SubscriptionChargeCreate.
         :type: SubscriptionChargeProcessingType
@@ -151,7 +151,7 @@ class SubscriptionChargeCreate:
     def reference(self):
         """Gets the reference of this SubscriptionChargeCreate.
 
-            
+            The merchant's reference used to identify the charge.
 
         :return: The reference of this SubscriptionChargeCreate.
         :rtype: str
@@ -162,7 +162,7 @@ class SubscriptionChargeCreate:
     def reference(self, reference):
         """Sets the reference of this SubscriptionChargeCreate.
 
-            
+            The merchant's reference used to identify the charge.
 
         :param reference: The reference of this SubscriptionChargeCreate.
         :type: str
@@ -176,7 +176,7 @@ class SubscriptionChargeCreate:
     def subscription(self):
         """Gets the subscription of this SubscriptionChargeCreate.
 
-            The field subscription indicates the subscription to which the charge belongs to.
+            The subscription that the charge belongs to.
 
         :return: The subscription of this SubscriptionChargeCreate.
         :rtype: int
@@ -187,7 +187,7 @@ class SubscriptionChargeCreate:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionChargeCreate.
 
-            The field subscription indicates the subscription to which the charge belongs to.
+            The subscription that the charge belongs to.
 
         :param subscription: The subscription of this SubscriptionChargeCreate.
         :type: int
@@ -201,7 +201,7 @@ class SubscriptionChargeCreate:
     def success_url(self):
         """Gets the success_url of this SubscriptionChargeCreate.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :return: The success_url of this SubscriptionChargeCreate.
         :rtype: str
@@ -212,7 +212,7 @@ class SubscriptionChargeCreate:
     def success_url(self, success_url):
         """Sets the success_url of this SubscriptionChargeCreate.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :param success_url: The success_url of this SubscriptionChargeCreate.
         :type: str

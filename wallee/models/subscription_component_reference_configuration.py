@@ -33,7 +33,7 @@ class SubscriptionComponentReferenceConfiguration:
     def product_component_reference_id(self):
         """Gets the product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
 
-            
+            The ID of the component reference that is being configured.
 
         :return: The product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
         :rtype: int
@@ -44,7 +44,7 @@ class SubscriptionComponentReferenceConfiguration:
     def product_component_reference_id(self, product_component_reference_id):
         """Sets the product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
 
-            
+            The ID of the component reference that is being configured.
 
         :param product_component_reference_id: The product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
         :type: int
@@ -56,7 +56,7 @@ class SubscriptionComponentReferenceConfiguration:
     def quantity(self):
         """Gets the quantity of this SubscriptionComponentReferenceConfiguration.
 
-            
+            The quantity that should be applied to the component.
 
         :return: The quantity of this SubscriptionComponentReferenceConfiguration.
         :rtype: float
@@ -67,7 +67,7 @@ class SubscriptionComponentReferenceConfiguration:
     def quantity(self, quantity):
         """Sets the quantity of this SubscriptionComponentReferenceConfiguration.
 
-            
+            The quantity that should be applied to the component.
 
         :param quantity: The quantity of this SubscriptionComponentReferenceConfiguration.
         :type: float

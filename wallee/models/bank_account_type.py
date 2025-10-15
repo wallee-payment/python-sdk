@@ -85,7 +85,7 @@ class BankAccountType:
     def identifier_name(self):
         """Gets the identifier_name of this BankAccountType.
 
-            
+            The identifier name specifies how the bank account type's identifier is called.
 
         :return: The identifier_name of this BankAccountType.
         :rtype: dict(str, str)
@@ -96,7 +96,7 @@ class BankAccountType:
     def identifier_name(self, identifier_name):
         """Sets the identifier_name of this BankAccountType.
 
-            
+            The identifier name specifies how the bank account type's identifier is called.
 
         :param identifier_name: The identifier_name of this BankAccountType.
         :type: dict(str, str)

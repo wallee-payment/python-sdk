@@ -39,7 +39,7 @@ class TransactionLineItemVersionCreate:
     def external_id(self):
         """Gets the external_id of this TransactionLineItemVersionCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this TransactionLineItemVersionCreate.
         :rtype: str
@@ -50,7 +50,7 @@ class TransactionLineItemVersionCreate:
     def external_id(self, external_id):
         """Sets the external_id of this TransactionLineItemVersionCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this TransactionLineItemVersionCreate.
         :type: str
@@ -64,7 +64,7 @@ class TransactionLineItemVersionCreate:
     def line_items(self):
         """Gets the line_items of this TransactionLineItemVersionCreate.
 
-            
+            The line items that replace the original line items in the transaction.
 
         :return: The line_items of this TransactionLineItemVersionCreate.
         :rtype: list[LineItemCreate]
@@ -75,7 +75,7 @@ class TransactionLineItemVersionCreate:
     def line_items(self, line_items):
         """Sets the line_items of this TransactionLineItemVersionCreate.
 
-            
+            The line items that replace the original line items in the transaction.
 
         :param line_items: The line_items of this TransactionLineItemVersionCreate.
         :type: list[LineItemCreate]
@@ -89,7 +89,7 @@ class TransactionLineItemVersionCreate:
     def transaction(self):
         """Gets the transaction of this TransactionLineItemVersionCreate.
 
-            
+            The transaction that the line item version belongs to.
 
         :return: The transaction of this TransactionLineItemVersionCreate.
         :rtype: int
@@ -100,7 +100,7 @@ class TransactionLineItemVersionCreate:
     def transaction(self, transaction):
         """Sets the transaction of this TransactionLineItemVersionCreate.
 
-            
+            The transaction that the line item version belongs to.
 
         :param transaction: The transaction of this TransactionLineItemVersionCreate.
         :type: int

@@ -42,7 +42,7 @@ class ProductMeteredTierFee:
     def fee(self):
         """Gets the fee of this ProductMeteredTierFee.
 
-            The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.
+            The amount charged to the customer for each consumed unit at the end of a billing cycle.
 
         :return: The fee of this ProductMeteredTierFee.
         :rtype: list[PersistableCurrencyAmount]
@@ -53,7 +53,7 @@ class ProductMeteredTierFee:
     def fee(self, fee):
         """Sets the fee of this ProductMeteredTierFee.
 
-            The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.
+            The amount charged to the customer for each consumed unit at the end of a billing cycle.
 
         :param fee: The fee of this ProductMeteredTierFee.
         :type: list[PersistableCurrencyAmount]
@@ -88,7 +88,7 @@ class ProductMeteredTierFee:
     def metered_fee(self):
         """Gets the metered_fee of this ProductMeteredTierFee.
 
-            
+            The metered fee that this tier belongs to.
 
         :return: The metered_fee of this ProductMeteredTierFee.
         :rtype: ProductMeteredFee
@@ -99,7 +99,7 @@ class ProductMeteredTierFee:
     def metered_fee(self, metered_fee):
         """Sets the metered_fee of this ProductMeteredTierFee.
 
-            
+            The metered fee that this tier belongs to.
 
         :param metered_fee: The metered_fee of this ProductMeteredTierFee.
         :type: ProductMeteredFee
@@ -111,7 +111,7 @@ class ProductMeteredTierFee:
     def start_range(self):
         """Gets the start_range of this ProductMeteredTierFee.
 
-            The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.
+            Starting from and including this quantity is contained in the tier.
 
         :return: The start_range of this ProductMeteredTierFee.
         :rtype: float
@@ -122,7 +122,7 @@ class ProductMeteredTierFee:
     def start_range(self, start_range):
         """Sets the start_range of this ProductMeteredTierFee.
 
-            The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.
+            Starting from and including this quantity is contained in the tier.
 
         :param start_range: The start_range of this ProductMeteredTierFee.
         :type: float

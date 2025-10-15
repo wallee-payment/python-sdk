@@ -10,7 +10,7 @@ class SubscriptionMetricType:
     swagger_types = {
     
         'description': 'dict(str, str)',
-        'feature': 'Feature',
+        'feature': 'int',
         'id': 'int',
         'name': 'dict(str, str)',
     }
@@ -65,7 +65,7 @@ class SubscriptionMetricType:
             
 
         :return: The feature of this SubscriptionMetricType.
-        :rtype: Feature
+        :rtype: int
         """
         return self._feature
 
@@ -76,7 +76,7 @@ class SubscriptionMetricType:
             
 
         :param feature: The feature of this SubscriptionMetricType.
-        :type: Feature
+        :type: int
         """
 
         self._feature = feature

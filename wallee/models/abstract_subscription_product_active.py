@@ -45,7 +45,7 @@ class AbstractSubscriptionProductActive:
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
 
-            The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
+            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
 
         :return: The allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
         :rtype: list[int]
@@ -56,7 +56,7 @@ class AbstractSubscriptionProductActive:
     def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
         """Sets the allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
 
-            The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
+            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
 
         :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
         :type: list[int]
@@ -68,7 +68,7 @@ class AbstractSubscriptionProductActive:
     def failed_payment_suspension_period(self):
         """Gets the failed_payment_suspension_period of this AbstractSubscriptionProductActive.
 
-            When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
+            The period after which a subscription that has been suspended due to a failed payment is terminated.
 
         :return: The failed_payment_suspension_period of this AbstractSubscriptionProductActive.
         :rtype: str
@@ -79,7 +79,7 @@ class AbstractSubscriptionProductActive:
     def failed_payment_suspension_period(self, failed_payment_suspension_period):
         """Sets the failed_payment_suspension_period of this AbstractSubscriptionProductActive.
 
-            When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
+            The period after which a subscription that has been suspended due to a failed payment is terminated.
 
         :param failed_payment_suspension_period: The failed_payment_suspension_period of this AbstractSubscriptionProductActive.
         :type: str
@@ -91,7 +91,7 @@ class AbstractSubscriptionProductActive:
     def name(self):
         """Gets the name of this AbstractSubscriptionProductActive.
 
-            The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the product.
 
         :return: The name of this AbstractSubscriptionProductActive.
         :rtype: str
@@ -102,7 +102,7 @@ class AbstractSubscriptionProductActive:
     def name(self, name):
         """Sets the name of this AbstractSubscriptionProductActive.
 
-            The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the product.
 
         :param name: The name of this AbstractSubscriptionProductActive.
         :type: str
@@ -116,7 +116,7 @@ class AbstractSubscriptionProductActive:
     def product_locked(self):
         """Gets the product_locked of this AbstractSubscriptionProductActive.
 
-            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+            Whether subscriptions can be switched to or from this product, or whether they are locked in.
 
         :return: The product_locked of this AbstractSubscriptionProductActive.
         :rtype: bool
@@ -127,7 +127,7 @@ class AbstractSubscriptionProductActive:
     def product_locked(self, product_locked):
         """Sets the product_locked of this AbstractSubscriptionProductActive.
 
-            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+            Whether subscriptions can be switched to or from this product, or whether they are locked in.
 
         :param product_locked: The product_locked of this AbstractSubscriptionProductActive.
         :type: bool
@@ -139,7 +139,7 @@ class AbstractSubscriptionProductActive:
     def sort_order(self):
         """Gets the sort_order of this AbstractSubscriptionProductActive.
 
-            The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
+            When listing products, they can be sorted by this number.
 
         :return: The sort_order of this AbstractSubscriptionProductActive.
         :rtype: int
@@ -150,7 +150,7 @@ class AbstractSubscriptionProductActive:
     def sort_order(self, sort_order):
         """Sets the sort_order of this AbstractSubscriptionProductActive.
 
-            The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
+            When listing products, they can be sorted by this number.
 
         :param sort_order: The sort_order of this AbstractSubscriptionProductActive.
         :type: int

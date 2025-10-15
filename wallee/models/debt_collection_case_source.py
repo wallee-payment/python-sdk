@@ -62,7 +62,7 @@ class DebtCollectionCaseSource:
     def forced_preparing_state(self):
         """Gets the forced_preparing_state of this DebtCollectionCaseSource.
 
-            
+            Whether debt collection cases created from this source will skip review and directly enter preparing state.
 
         :return: The forced_preparing_state of this DebtCollectionCaseSource.
         :rtype: bool
@@ -73,7 +73,7 @@ class DebtCollectionCaseSource:
     def forced_preparing_state(self, forced_preparing_state):
         """Sets the forced_preparing_state of this DebtCollectionCaseSource.
 
-            
+            Whether debt collection cases created from this source will skip review and directly enter preparing state.
 
         :param forced_preparing_state: The forced_preparing_state of this DebtCollectionCaseSource.
         :type: bool

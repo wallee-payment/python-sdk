@@ -12,18 +12,20 @@ class ShopifySubscriberActive:
         'id': 'int',
         'version': 'int',
         'email_address': 'str',
+        'external_gid': 'str',
         'external_id': 'str',
         'phone_number': 'str',
     }
 
     attribute_map = {
-        'id': 'id','version': 'version','email_address': 'emailAddress','external_id': 'externalId','phone_number': 'phoneNumber',
+        'id': 'id','version': 'version','email_address': 'emailAddress','external_gid': 'externalGid','external_id': 'externalId','phone_number': 'phoneNumber',
     }
 
     
     _id = None
     _version = None
     _email_address = None
+    _external_gid = None
     _external_id = None
     _phone_number = None
 
@@ -35,6 +37,7 @@ class ShopifySubscriberActive:
         self.version = kwargs.get('version')
 
         self.email_address = kwargs.get('email_address', None)
+        self.external_gid = kwargs.get('external_gid', None)
         self.external_id = kwargs.get('external_id', None)
         self.phone_number = kwargs.get('phone_number', None)
         
@@ -116,10 +119,33 @@ class ShopifySubscriberActive:
         self._email_address = email_address
     
     @property
+    def external_gid(self):
+        """Gets the external_gid of this ShopifySubscriberActive.
+
+            
+
+        :return: The external_gid of this ShopifySubscriberActive.
+        :rtype: str
+        """
+        return self._external_gid
+
+    @external_gid.setter
+    def external_gid(self, external_gid):
+        """Sets the external_gid of this ShopifySubscriberActive.
+
+            
+
+        :param external_gid: The external_gid of this ShopifySubscriberActive.
+        :type: str
+        """
+
+        self._external_gid = external_gid
+    
+    @property
     def external_id(self):
         """Gets the external_id of this ShopifySubscriberActive.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this ShopifySubscriberActive.
         :rtype: str
@@ -130,7 +156,7 @@ class ShopifySubscriberActive:
     def external_id(self, external_id):
         """Sets the external_id of this ShopifySubscriberActive.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this ShopifySubscriberActive.
         :type: str

@@ -13,13 +13,13 @@ class SubscriptionProductComponentReference:
         'linked_space_id': 'int',
         'name': 'str',
         'planned_purge_date': 'datetime',
-        'space_id': 'int',
+        'sku': 'str',
         'state': 'SubscriptionProductComponentReferenceState',
         'version': 'int',
     }
 
     attribute_map = {
-        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','version': 'version',
+        'id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','sku': 'sku','state': 'state','version': 'version',
     }
 
     
@@ -27,7 +27,7 @@ class SubscriptionProductComponentReference:
     _linked_space_id = None
     _name = None
     _planned_purge_date = None
-    _space_id = None
+    _sku = None
     _state = None
     _version = None
 
@@ -38,7 +38,7 @@ class SubscriptionProductComponentReference:
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.space_id = kwargs.get('space_id', None)
+        self.sku = kwargs.get('sku', None)
         self.state = kwargs.get('state', None)
         self.version = kwargs.get('version', None)
         
@@ -94,7 +94,7 @@ class SubscriptionProductComponentReference:
     def name(self):
         """Gets the name of this SubscriptionProductComponentReference.
 
-            The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the component reference.
 
         :return: The name of this SubscriptionProductComponentReference.
         :rtype: str
@@ -105,7 +105,7 @@ class SubscriptionProductComponentReference:
     def name(self, name):
         """Sets the name of this SubscriptionProductComponentReference.
 
-            The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the component reference.
 
         :param name: The name of this SubscriptionProductComponentReference.
         :type: str
@@ -139,27 +139,29 @@ class SubscriptionProductComponentReference:
         self._planned_purge_date = planned_purge_date
     
     @property
-    def space_id(self):
-        """Gets the space_id of this SubscriptionProductComponentReference.
+    def sku(self):
+        """Gets the sku of this SubscriptionProductComponentReference.
 
-            
+            The component reference sku as a unique identifier.
 
-        :return: The space_id of this SubscriptionProductComponentReference.
-        :rtype: int
+        :return: The sku of this SubscriptionProductComponentReference.
+        :rtype: str
         """
-        return self._space_id
+        return self._sku
 
-    @space_id.setter
-    def space_id(self, space_id):
-        """Sets the space_id of this SubscriptionProductComponentReference.
+    @sku.setter
+    def sku(self, sku):
+        """Sets the sku of this SubscriptionProductComponentReference.
 
-            
+            The component reference sku as a unique identifier.
 
-        :param space_id: The space_id of this SubscriptionProductComponentReference.
-        :type: int
+        :param sku: The sku of this SubscriptionProductComponentReference.
+        :type: str
         """
+        if sku is not None and len(sku) > 100:
+            raise ValueError("Invalid value for `sku`, length must be less than or equal to `100`")
 
-        self._space_id = space_id
+        self._sku = sku
     
     @property
     def state(self):

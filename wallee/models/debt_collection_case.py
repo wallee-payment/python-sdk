@@ -120,7 +120,7 @@ class DebtCollectionCase:
     def amount(self):
         """Gets the amount of this DebtCollectionCase.
 
-            The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.
+            The sum of all unpaid item prices in the case's currency. The amount can no longer be changed once the case has been reviewed.
 
         :return: The amount of this DebtCollectionCase.
         :rtype: float
@@ -131,7 +131,7 @@ class DebtCollectionCase:
     def amount(self, amount):
         """Sets the amount of this DebtCollectionCase.
 
-            The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.
+            The sum of all unpaid item prices in the case's currency. The amount can no longer be changed once the case has been reviewed.
 
         :param amount: The amount of this DebtCollectionCase.
         :type: float
@@ -143,7 +143,7 @@ class DebtCollectionCase:
     def billing_address(self):
         """Gets the billing_address of this DebtCollectionCase.
 
-            The billing address of the case identifies the debtor.
+            The billing address that identifies the debtor.
 
         :return: The billing_address of this DebtCollectionCase.
         :rtype: Address
@@ -154,7 +154,7 @@ class DebtCollectionCase:
     def billing_address(self, billing_address):
         """Sets the billing_address of this DebtCollectionCase.
 
-            The billing address of the case identifies the debtor.
+            The billing address that identifies the debtor.
 
         :param billing_address: The billing_address of this DebtCollectionCase.
         :type: Address
@@ -166,7 +166,7 @@ class DebtCollectionCase:
     def closed_on(self):
         """Gets the closed_on of this DebtCollectionCase.
 
-            The closed on date indicates when the case is closed on.
+            The date and time when the case was closed.
 
         :return: The closed_on of this DebtCollectionCase.
         :rtype: datetime
@@ -177,7 +177,7 @@ class DebtCollectionCase:
     def closed_on(self, closed_on):
         """Sets the closed_on of this DebtCollectionCase.
 
-            The closed on date indicates when the case is closed on.
+            The date and time when the case was closed.
 
         :param closed_on: The closed_on of this DebtCollectionCase.
         :type: datetime
@@ -189,7 +189,7 @@ class DebtCollectionCase:
     def collector_configuration(self):
         """Gets the collector_configuration of this DebtCollectionCase.
 
-            The collector configuration determines how the debt collection case is processed.
+            The configuration that the case is processed with.
 
         :return: The collector_configuration of this DebtCollectionCase.
         :rtype: DebtCollectorConfiguration
@@ -200,7 +200,7 @@ class DebtCollectionCase:
     def collector_configuration(self, collector_configuration):
         """Sets the collector_configuration of this DebtCollectionCase.
 
-            The collector configuration determines how the debt collection case is processed.
+            The configuration that the case is processed with.
 
         :param collector_configuration: The collector_configuration of this DebtCollectionCase.
         :type: DebtCollectorConfiguration
@@ -212,7 +212,7 @@ class DebtCollectionCase:
     def contract_date(self):
         """Gets the contract_date of this DebtCollectionCase.
 
-            The contract date is the date on which the contract with the debtor was signed on.
+            The date and time when the contract with the debtor was signed.
 
         :return: The contract_date of this DebtCollectionCase.
         :rtype: datetime
@@ -223,7 +223,7 @@ class DebtCollectionCase:
     def contract_date(self, contract_date):
         """Sets the contract_date of this DebtCollectionCase.
 
-            The contract date is the date on which the contract with the debtor was signed on.
+            The date and time when the contract with the debtor was signed.
 
         :param contract_date: The contract_date of this DebtCollectionCase.
         :type: datetime
@@ -258,7 +258,7 @@ class DebtCollectionCase:
     def creator(self):
         """Gets the creator of this DebtCollectionCase.
 
-            The creator references the user which has created the debt collection case.
+            The ID of the user the case was created by.
 
         :return: The creator of this DebtCollectionCase.
         :rtype: int
@@ -269,7 +269,7 @@ class DebtCollectionCase:
     def creator(self, creator):
         """Sets the creator of this DebtCollectionCase.
 
-            The creator references the user which has created the debt collection case.
+            The ID of the user the case was created by.
 
         :param creator: The creator of this DebtCollectionCase.
         :type: int
@@ -281,7 +281,7 @@ class DebtCollectionCase:
     def currency(self):
         """Gets the currency of this DebtCollectionCase.
 
-            The currency defines the billing currency of the debt collection case.
+            The three-letter code (ISO 4217 format) of the case's currency.
 
         :return: The currency of this DebtCollectionCase.
         :rtype: str
@@ -292,7 +292,7 @@ class DebtCollectionCase:
     def currency(self, currency):
         """Sets the currency of this DebtCollectionCase.
 
-            The currency defines the billing currency of the debt collection case.
+            The three-letter code (ISO 4217 format) of the case's currency.
 
         :param currency: The currency of this DebtCollectionCase.
         :type: str
@@ -304,7 +304,7 @@ class DebtCollectionCase:
     def due_date(self):
         """Gets the due_date of this DebtCollectionCase.
 
-            The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+            The date and time when the claim was due.
 
         :return: The due_date of this DebtCollectionCase.
         :rtype: datetime
@@ -315,7 +315,7 @@ class DebtCollectionCase:
     def due_date(self, due_date):
         """Sets the due_date of this DebtCollectionCase.
 
-            The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+            The date and time when the claim was due.
 
         :param due_date: The due_date of this DebtCollectionCase.
         :type: datetime
@@ -327,7 +327,7 @@ class DebtCollectionCase:
     def environment(self):
         """Gets the environment of this DebtCollectionCase.
 
-            The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+            The environment in which the case is processed.
 
         :return: The environment of this DebtCollectionCase.
         :rtype: DebtCollectionEnvironment
@@ -338,7 +338,7 @@ class DebtCollectionCase:
     def environment(self, environment):
         """Sets the environment of this DebtCollectionCase.
 
-            The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+            The environment in which the case is processed.
 
         :param environment: The environment of this DebtCollectionCase.
         :type: DebtCollectionEnvironment
@@ -350,7 +350,7 @@ class DebtCollectionCase:
     def external_id(self):
         """Gets the external_id of this DebtCollectionCase.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this DebtCollectionCase.
         :rtype: str
@@ -361,7 +361,7 @@ class DebtCollectionCase:
     def external_id(self, external_id):
         """Sets the external_id of this DebtCollectionCase.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this DebtCollectionCase.
         :type: str
@@ -373,7 +373,7 @@ class DebtCollectionCase:
     def failed_on(self):
         """Gets the failed_on of this DebtCollectionCase.
 
-            The failed on date indicates when the case is failed on.
+            The date and time when the case failed.
 
         :return: The failed_on of this DebtCollectionCase.
         :rtype: datetime
@@ -384,7 +384,7 @@ class DebtCollectionCase:
     def failed_on(self, failed_on):
         """Sets the failed_on of this DebtCollectionCase.
 
-            The failed on date indicates when the case is failed on.
+            The date and time when the case failed.
 
         :param failed_on: The failed_on of this DebtCollectionCase.
         :type: datetime
@@ -396,7 +396,7 @@ class DebtCollectionCase:
     def failure_reason(self):
         """Gets the failure_reason of this DebtCollectionCase.
 
-            
+            The reason for the failure of the case.
 
         :return: The failure_reason of this DebtCollectionCase.
         :rtype: FailureReason
@@ -407,7 +407,7 @@ class DebtCollectionCase:
     def failure_reason(self, failure_reason):
         """Sets the failure_reason of this DebtCollectionCase.
 
-            
+            The reason for the failure of the case.
 
         :param failure_reason: The failure_reason of this DebtCollectionCase.
         :type: FailureReason
@@ -442,7 +442,7 @@ class DebtCollectionCase:
     def labels(self):
         """Gets the labels of this DebtCollectionCase.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this DebtCollectionCase.
         :rtype: list[Label]
@@ -453,7 +453,7 @@ class DebtCollectionCase:
     def labels(self, labels):
         """Sets the labels of this DebtCollectionCase.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this DebtCollectionCase.
         :type: list[Label]
@@ -465,7 +465,7 @@ class DebtCollectionCase:
     def language(self):
         """Gets the language of this DebtCollectionCase.
 
-            The language indicates the language to be used in the communication with the debtor.
+            The language that is linked to the object.
 
         :return: The language of this DebtCollectionCase.
         :rtype: str
@@ -476,7 +476,7 @@ class DebtCollectionCase:
     def language(self, language):
         """Sets the language of this DebtCollectionCase.
 
-            The language indicates the language to be used in the communication with the debtor.
+            The language that is linked to the object.
 
         :param language: The language of this DebtCollectionCase.
         :type: str
@@ -488,7 +488,7 @@ class DebtCollectionCase:
     def line_items(self):
         """Gets the line_items of this DebtCollectionCase.
 
-            The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+            The line items that are subject of this debt collection case.
 
         :return: The line_items of this DebtCollectionCase.
         :rtype: list[LineItem]
@@ -499,7 +499,7 @@ class DebtCollectionCase:
     def line_items(self, line_items):
         """Sets the line_items of this DebtCollectionCase.
 
-            The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+            The line items that are subject of this debt collection case.
 
         :param line_items: The line_items of this DebtCollectionCase.
         :type: list[LineItem]
@@ -534,7 +534,7 @@ class DebtCollectionCase:
     def next_attempt_on(self):
         """Gets the next_attempt_on of this DebtCollectionCase.
 
-            
+            The date and time when the next attempt at processing the case will be made.
 
         :return: The next_attempt_on of this DebtCollectionCase.
         :rtype: datetime
@@ -545,7 +545,7 @@ class DebtCollectionCase:
     def next_attempt_on(self, next_attempt_on):
         """Sets the next_attempt_on of this DebtCollectionCase.
 
-            
+            The date and time when the next attempt at processing the case will be made.
 
         :param next_attempt_on: The next_attempt_on of this DebtCollectionCase.
         :type: datetime
@@ -580,7 +580,7 @@ class DebtCollectionCase:
     def processing_started_on(self):
         """Gets the processing_started_on of this DebtCollectionCase.
 
-            The processing started on date indicates the date on which the processing of the case started on.
+            The date and time when the processing of the case was started.
 
         :return: The processing_started_on of this DebtCollectionCase.
         :rtype: datetime
@@ -591,7 +591,7 @@ class DebtCollectionCase:
     def processing_started_on(self, processing_started_on):
         """Sets the processing_started_on of this DebtCollectionCase.
 
-            The processing started on date indicates the date on which the processing of the case started on.
+            The date and time when the processing of the case was started.
 
         :param processing_started_on: The processing_started_on of this DebtCollectionCase.
         :type: datetime
@@ -603,7 +603,7 @@ class DebtCollectionCase:
     def processing_timeout_on(self):
         """Gets the processing_timeout_on of this DebtCollectionCase.
 
-            
+            The date and time when the processing of the case times out.
 
         :return: The processing_timeout_on of this DebtCollectionCase.
         :rtype: datetime
@@ -614,7 +614,7 @@ class DebtCollectionCase:
     def processing_timeout_on(self, processing_timeout_on):
         """Sets the processing_timeout_on of this DebtCollectionCase.
 
-            
+            The date and time when the processing of the case times out.
 
         :param processing_timeout_on: The processing_timeout_on of this DebtCollectionCase.
         :type: datetime
@@ -626,7 +626,7 @@ class DebtCollectionCase:
     def reference(self):
         """Gets the reference of this DebtCollectionCase.
 
-            The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+            A unique reference to identify the debt collection case in communication with the debtor.
 
         :return: The reference of this DebtCollectionCase.
         :rtype: str
@@ -637,7 +637,7 @@ class DebtCollectionCase:
     def reference(self, reference):
         """Sets the reference of this DebtCollectionCase.
 
-            The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+            A unique reference to identify the debt collection case in communication with the debtor.
 
         :param reference: The reference of this DebtCollectionCase.
         :type: str
@@ -649,7 +649,7 @@ class DebtCollectionCase:
     def review_started_on(self):
         """Gets the review_started_on of this DebtCollectionCase.
 
-            
+            The date and time when the review of the case was started.
 
         :return: The review_started_on of this DebtCollectionCase.
         :rtype: datetime
@@ -660,7 +660,7 @@ class DebtCollectionCase:
     def review_started_on(self, review_started_on):
         """Sets the review_started_on of this DebtCollectionCase.
 
-            
+            The date and time when the review of the case was started.
 
         :param review_started_on: The review_started_on of this DebtCollectionCase.
         :type: datetime
@@ -672,7 +672,7 @@ class DebtCollectionCase:
     def reviewed_on(self):
         """Gets the reviewed_on of this DebtCollectionCase.
 
-            The reviewed on date indicates when the review of the case was conducted on.
+            The date and time when the case was reviewed.
 
         :return: The reviewed_on of this DebtCollectionCase.
         :rtype: datetime
@@ -683,7 +683,7 @@ class DebtCollectionCase:
     def reviewed_on(self, reviewed_on):
         """Sets the reviewed_on of this DebtCollectionCase.
 
-            The reviewed on date indicates when the review of the case was conducted on.
+            The date and time when the case was reviewed.
 
         :param reviewed_on: The reviewed_on of this DebtCollectionCase.
         :type: datetime
@@ -695,7 +695,7 @@ class DebtCollectionCase:
     def reviewer(self):
         """Gets the reviewer of this DebtCollectionCase.
 
-            The reviewer references the user which has reviewed the case.
+            The ID of the user the case was reviewed by.
 
         :return: The reviewer of this DebtCollectionCase.
         :rtype: int
@@ -706,7 +706,7 @@ class DebtCollectionCase:
     def reviewer(self, reviewer):
         """Sets the reviewer of this DebtCollectionCase.
 
-            The reviewer references the user which has reviewed the case.
+            The ID of the user the case was reviewed by.
 
         :param reviewer: The reviewer of this DebtCollectionCase.
         :type: int
@@ -718,7 +718,7 @@ class DebtCollectionCase:
     def source(self):
         """Gets the source of this DebtCollectionCase.
 
-            The source of the debt collection case indicates the origin of the amount receivable.
+            The source of the case stating the origin of the claim.
 
         :return: The source of this DebtCollectionCase.
         :rtype: DebtCollectionCaseSource
@@ -729,7 +729,7 @@ class DebtCollectionCase:
     def source(self, source):
         """Sets the source of this DebtCollectionCase.
 
-            The source of the debt collection case indicates the origin of the amount receivable.
+            The source of the case stating the origin of the claim.
 
         :param source: The source of this DebtCollectionCase.
         :type: DebtCollectionCaseSource
@@ -741,7 +741,7 @@ class DebtCollectionCase:
     def source_entity_id(self):
         """Gets the source_entity_id of this DebtCollectionCase.
 
-            The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.
+            The ID of the object that is the source of the case. Only defined if the case was created by an internal process.
 
         :return: The source_entity_id of this DebtCollectionCase.
         :rtype: int
@@ -752,7 +752,7 @@ class DebtCollectionCase:
     def source_entity_id(self, source_entity_id):
         """Sets the source_entity_id of this DebtCollectionCase.
 
-            The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.
+            The ID of the object that is the source of the case. Only defined if the case was created by an internal process.
 
         :param source_entity_id: The source_entity_id of this DebtCollectionCase.
         :type: int
@@ -764,7 +764,7 @@ class DebtCollectionCase:
     def space_view_id(self):
         """Gets the space_view_id of this DebtCollectionCase.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this DebtCollectionCase.
         :rtype: int
@@ -775,7 +775,7 @@ class DebtCollectionCase:
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this DebtCollectionCase.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this DebtCollectionCase.
         :type: int

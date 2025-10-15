@@ -11,6 +11,7 @@ class ShopifySubscriber:
     
         'created_on': 'datetime',
         'email_address': 'str',
+        'external_gid': 'str',
         'external_id': 'str',
         'id': 'int',
         'linked_space_id': 'int',
@@ -22,12 +23,13 @@ class ShopifySubscriber:
     }
 
     attribute_map = {
-        'created_on': 'createdOn','email_address': 'emailAddress','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','phone_number': 'phoneNumber','planned_purge_date': 'plannedPurgeDate','shop': 'shop','state': 'state','version': 'version',
+        'created_on': 'createdOn','email_address': 'emailAddress','external_gid': 'externalGid','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','phone_number': 'phoneNumber','planned_purge_date': 'plannedPurgeDate','shop': 'shop','state': 'state','version': 'version',
     }
 
     
     _created_on = None
     _email_address = None
+    _external_gid = None
     _external_id = None
     _id = None
     _linked_space_id = None
@@ -42,6 +44,7 @@ class ShopifySubscriber:
         
         self.created_on = kwargs.get('created_on', None)
         self.email_address = kwargs.get('email_address', None)
+        self.external_gid = kwargs.get('external_gid', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
@@ -102,10 +105,33 @@ class ShopifySubscriber:
         self._email_address = email_address
     
     @property
+    def external_gid(self):
+        """Gets the external_gid of this ShopifySubscriber.
+
+            
+
+        :return: The external_gid of this ShopifySubscriber.
+        :rtype: str
+        """
+        return self._external_gid
+
+    @external_gid.setter
+    def external_gid(self, external_gid):
+        """Sets the external_gid of this ShopifySubscriber.
+
+            
+
+        :param external_gid: The external_gid of this ShopifySubscriber.
+        :type: str
+        """
+
+        self._external_gid = external_gid
+    
+    @property
     def external_id(self):
         """Gets the external_id of this ShopifySubscriber.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this ShopifySubscriber.
         :rtype: str
@@ -116,7 +142,7 @@ class ShopifySubscriber:
     def external_id(self, external_id):
         """Sets the external_id of this ShopifySubscriber.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this ShopifySubscriber.
         :type: str

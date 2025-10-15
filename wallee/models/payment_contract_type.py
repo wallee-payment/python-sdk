@@ -10,18 +10,16 @@ class PaymentContractType:
     swagger_types = {
     
         'description': 'dict(str, str)',
-        'feature': 'Feature',
         'id': 'int',
         'name': 'dict(str, str)',
     }
 
     attribute_map = {
-        'description': 'description','feature': 'feature','id': 'id','name': 'name',
+        'description': 'description','id': 'id','name': 'name',
     }
 
     
     _description = None
-    _feature = None
     _id = None
     _name = None
 
@@ -29,7 +27,6 @@ class PaymentContractType:
         self.discriminator = None
         
         self.description = kwargs.get('description', None)
-        self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
         
@@ -57,29 +54,6 @@ class PaymentContractType:
         """
 
         self._description = description
-    
-    @property
-    def feature(self):
-        """Gets the feature of this PaymentContractType.
-
-            
-
-        :return: The feature of this PaymentContractType.
-        :rtype: Feature
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this PaymentContractType.
-
-            
-
-        :param feature: The feature of this PaymentContractType.
-        :type: Feature
-        """
-
-        self._feature = feature
     
     @property
     def id(self):

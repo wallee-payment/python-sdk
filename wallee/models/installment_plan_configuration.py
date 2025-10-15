@@ -216,7 +216,7 @@ class InstallmentPlanConfiguration:
     def minimal_amount(self):
         """Gets the minimal_amount of this InstallmentPlanConfiguration.
 
-            The installment plan can only be applied if the orders total is at least the defined minimal amount.
+            The installment plan can only be applied if the order's total is at least the defined minimal amount.
 
         :return: The minimal_amount of this InstallmentPlanConfiguration.
         :rtype: float
@@ -227,7 +227,7 @@ class InstallmentPlanConfiguration:
     def minimal_amount(self, minimal_amount):
         """Sets the minimal_amount of this InstallmentPlanConfiguration.
 
-            The installment plan can only be applied if the orders total is at least the defined minimal amount.
+            The installment plan can only be applied if the order's total is at least the defined minimal amount.
 
         :param minimal_amount: The minimal_amount of this InstallmentPlanConfiguration.
         :type: float

@@ -16,6 +16,8 @@ class Scope:
         'name': 'str',
         'planned_purge_date': 'datetime',
         'port': 'int',
+        'preprod_domain_name': 'str',
+        'sandbox_domain_name': 'str',
         'ssl_active': 'bool',
         'state': 'CreationEntityState',
         'themes': 'list[str]',
@@ -24,7 +26,7 @@ class Scope:
     }
 
     attribute_map = {
-        'domain_name': 'domainName','features': 'features','id': 'id','machine_name': 'machineName','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
+        'domain_name': 'domainName','features': 'features','id': 'id','machine_name': 'machineName','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','preprod_domain_name': 'preprodDomainName','sandbox_domain_name': 'sandboxDomainName','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
     }
 
     
@@ -35,6 +37,8 @@ class Scope:
     _name = None
     _planned_purge_date = None
     _port = None
+    _preprod_domain_name = None
+    _sandbox_domain_name = None
     _ssl_active = None
     _state = None
     _themes = None
@@ -51,6 +55,8 @@ class Scope:
         self.name = kwargs.get('name', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.port = kwargs.get('port', None)
+        self.preprod_domain_name = kwargs.get('preprod_domain_name', None)
+        self.sandbox_domain_name = kwargs.get('sandbox_domain_name', None)
         self.ssl_active = kwargs.get('ssl_active', None)
         self.state = kwargs.get('state', None)
         self.themes = kwargs.get('themes', None)
@@ -225,6 +231,56 @@ class Scope:
         """
 
         self._port = port
+    
+    @property
+    def preprod_domain_name(self):
+        """Gets the preprod_domain_name of this Scope.
+
+            The preprod domain name that belongs to the scope.
+
+        :return: The preprod_domain_name of this Scope.
+        :rtype: str
+        """
+        return self._preprod_domain_name
+
+    @preprod_domain_name.setter
+    def preprod_domain_name(self, preprod_domain_name):
+        """Sets the preprod_domain_name of this Scope.
+
+            The preprod domain name that belongs to the scope.
+
+        :param preprod_domain_name: The preprod_domain_name of this Scope.
+        :type: str
+        """
+        if preprod_domain_name is not None and len(preprod_domain_name) > 40:
+            raise ValueError("Invalid value for `preprod_domain_name`, length must be less than or equal to `40`")
+
+        self._preprod_domain_name = preprod_domain_name
+    
+    @property
+    def sandbox_domain_name(self):
+        """Gets the sandbox_domain_name of this Scope.
+
+            The sandbox domain name that belongs to the scope.
+
+        :return: The sandbox_domain_name of this Scope.
+        :rtype: str
+        """
+        return self._sandbox_domain_name
+
+    @sandbox_domain_name.setter
+    def sandbox_domain_name(self, sandbox_domain_name):
+        """Sets the sandbox_domain_name of this Scope.
+
+            The sandbox domain name that belongs to the scope.
+
+        :param sandbox_domain_name: The sandbox_domain_name of this Scope.
+        :type: str
+        """
+        if sandbox_domain_name is not None and len(sandbox_domain_name) > 40:
+            raise ValueError("Invalid value for `sandbox_domain_name`, length must be less than or equal to `40`")
+
+        self._sandbox_domain_name = sandbox_domain_name
     
     @property
     def ssl_active(self):

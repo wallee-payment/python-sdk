@@ -51,7 +51,7 @@ class ChargeFlow:
     def conditions(self):
         """Gets the conditions of this ChargeFlow.
 
-            If a transaction meets all selected conditions, the charge flow will be used to process the transaction. If the conditions are not met the next charge flow in line will be chosen according to the priorities.
+            Conditions allow to define criteria that a transaction must fulfill in order for the charge flow to be considered for processing the payment.
 
         :return: The conditions of this ChargeFlow.
         :rtype: list[int]
@@ -62,7 +62,7 @@ class ChargeFlow:
     def conditions(self, conditions):
         """Sets the conditions of this ChargeFlow.
 
-            If a transaction meets all selected conditions, the charge flow will be used to process the transaction. If the conditions are not met the next charge flow in line will be chosen according to the priorities.
+            Conditions allow to define criteria that a transaction must fulfill in order for the charge flow to be considered for processing the payment.
 
         :param conditions: The conditions of this ChargeFlow.
         :type: list[int]
@@ -120,7 +120,7 @@ class ChargeFlow:
     def name(self):
         """Gets the name of this ChargeFlow.
 
-            The charge flow name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the charge flow.
 
         :return: The name of this ChargeFlow.
         :rtype: str
@@ -131,7 +131,7 @@ class ChargeFlow:
     def name(self, name):
         """Sets the name of this ChargeFlow.
 
-            The charge flow name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the charge flow.
 
         :param name: The name of this ChargeFlow.
         :type: str
@@ -166,7 +166,7 @@ class ChargeFlow:
     def priority(self):
         """Gets the priority of this ChargeFlow.
 
-            The priority orders the charge flows. As such the priority determines together with the conditions the charge flow the selection mechanism for a particular transaction. A change of the priority affects all future selections.
+            The priority that determines the order in which charge flows are taken into account when processing a payment. Low values are considered first.
 
         :return: The priority of this ChargeFlow.
         :rtype: int
@@ -177,7 +177,7 @@ class ChargeFlow:
     def priority(self, priority):
         """Sets the priority of this ChargeFlow.
 
-            The priority orders the charge flows. As such the priority determines together with the conditions the charge flow the selection mechanism for a particular transaction. A change of the priority affects all future selections.
+            The priority that determines the order in which charge flows are taken into account when processing a payment. Low values are considered first.
 
         :param priority: The priority of this ChargeFlow.
         :type: int

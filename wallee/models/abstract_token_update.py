@@ -45,7 +45,7 @@ class AbstractTokenUpdate:
     def customer_email_address(self):
         """Gets the customer_email_address of this AbstractTokenUpdate.
 
-            The customer email address is the email address of the customer.
+            The customer's email address.
 
         :return: The customer_email_address of this AbstractTokenUpdate.
         :rtype: str
@@ -56,7 +56,7 @@ class AbstractTokenUpdate:
     def customer_email_address(self, customer_email_address):
         """Sets the customer_email_address of this AbstractTokenUpdate.
 
-            The customer email address is the email address of the customer.
+            The customer's email address.
 
         :param customer_email_address: The customer_email_address of this AbstractTokenUpdate.
         :type: str
@@ -70,7 +70,7 @@ class AbstractTokenUpdate:
     def customer_id(self):
         """Gets the customer_id of this AbstractTokenUpdate.
 
-            The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.
+            The unique identifier of the customer in the external system.
 
         :return: The customer_id of this AbstractTokenUpdate.
         :rtype: str
@@ -81,7 +81,7 @@ class AbstractTokenUpdate:
     def customer_id(self, customer_id):
         """Sets the customer_id of this AbstractTokenUpdate.
 
-            The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.
+            The unique identifier of the customer in the external system.
 
         :param customer_id: The customer_id of this AbstractTokenUpdate.
         :type: str
@@ -93,7 +93,7 @@ class AbstractTokenUpdate:
     def enabled_for_one_click_payment(self):
         """Gets the enabled_for_one_click_payment of this AbstractTokenUpdate.
 
-            When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.
+            Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
 
         :return: The enabled_for_one_click_payment of this AbstractTokenUpdate.
         :rtype: bool
@@ -104,7 +104,7 @@ class AbstractTokenUpdate:
     def enabled_for_one_click_payment(self, enabled_for_one_click_payment):
         """Sets the enabled_for_one_click_payment of this AbstractTokenUpdate.
 
-            When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.
+            Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
 
         :param enabled_for_one_click_payment: The enabled_for_one_click_payment of this AbstractTokenUpdate.
         :type: bool
@@ -139,7 +139,7 @@ class AbstractTokenUpdate:
     def time_zone(self):
         """Gets the time_zone of this AbstractTokenUpdate.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :return: The time_zone of this AbstractTokenUpdate.
         :rtype: str
@@ -150,7 +150,7 @@ class AbstractTokenUpdate:
     def time_zone(self, time_zone):
         """Sets the time_zone of this AbstractTokenUpdate.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :param time_zone: The time_zone of this AbstractTokenUpdate.
         :type: str
@@ -162,7 +162,7 @@ class AbstractTokenUpdate:
     def token_reference(self):
         """Gets the token_reference of this AbstractTokenUpdate.
 
-            Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
+            The reference used to identify the payment token (e.g. the customer's ID or email address).
 
         :return: The token_reference of this AbstractTokenUpdate.
         :rtype: str
@@ -173,7 +173,7 @@ class AbstractTokenUpdate:
     def token_reference(self, token_reference):
         """Sets the token_reference of this AbstractTokenUpdate.
 
-            Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
+            The reference used to identify the payment token (e.g. the customer's ID or email address).
 
         :param token_reference: The token_reference of this AbstractTokenUpdate.
         :type: str

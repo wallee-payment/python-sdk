@@ -5,12 +5,13 @@ from enum import Enum
 
 
 
-class ShopifyIntegration:
+class ShopifyV1Integration:
 
     swagger_types = {
     
         'additional_line_item_data': 'list[ShopifyAdditionalLineItemData]',
         'allow_invoice_download': 'bool',
+        'allow_payment_with_tax_discrepancy': 'bool',
         'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
         'currency': 'str',
         'id': 'int',
@@ -36,12 +37,13 @@ class ShopifyIntegration:
     }
 
     attribute_map = {
-        'additional_line_item_data': 'additionalLineItemData','allow_invoice_download': 'allowInvoiceDownload','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','currency': 'currency','id': 'id','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','payment_app_version': 'paymentAppVersion','payment_installed': 'paymentInstalled','payment_proxy_path': 'paymentProxyPath','planned_purge_date': 'plannedPurgeDate','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','subscription_app_version': 'subscriptionAppVersion','subscription_installed': 'subscriptionInstalled','subscription_proxy_path': 'subscriptionProxyPath','version': 'version',
+        'additional_line_item_data': 'additionalLineItemData','allow_invoice_download': 'allowInvoiceDownload','allow_payment_with_tax_discrepancy': 'allowPaymentWithTaxDiscrepancy','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','currency': 'currency','id': 'id','integrated_payment_form_enabled': 'integratedPaymentFormEnabled','language': 'language','login_name': 'loginName','name': 'name','payment_app_version': 'paymentAppVersion','payment_installed': 'paymentInstalled','payment_proxy_path': 'paymentProxyPath','planned_purge_date': 'plannedPurgeDate','replace_payment_method_image': 'replacePaymentMethodImage','shop_name': 'shopName','show_payment_information': 'showPaymentInformation','show_subscription_information': 'showSubscriptionInformation','space_id': 'spaceId','space_view_id': 'spaceViewId','state': 'state','subscription_app_version': 'subscriptionAppVersion','subscription_installed': 'subscriptionInstalled','subscription_proxy_path': 'subscriptionProxyPath','version': 'version',
     }
 
     
     _additional_line_item_data = None
     _allow_invoice_download = None
+    _allow_payment_with_tax_discrepancy = None
     _allowed_payment_method_configurations = None
     _currency = None
     _id = None
@@ -70,6 +72,7 @@ class ShopifyIntegration:
         
         self.additional_line_item_data = kwargs.get('additional_line_item_data', None)
         self.allow_invoice_download = kwargs.get('allow_invoice_download', None)
+        self.allow_payment_with_tax_discrepancy = kwargs.get('allow_payment_with_tax_discrepancy', None)
         self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
         self.currency = kwargs.get('currency', None)
         self.id = kwargs.get('id', None)
@@ -97,22 +100,22 @@ class ShopifyIntegration:
     
     @property
     def additional_line_item_data(self):
-        """Gets the additional_line_item_data of this ShopifyIntegration.
+        """Gets the additional_line_item_data of this ShopifyV1Integration.
 
             
 
-        :return: The additional_line_item_data of this ShopifyIntegration.
+        :return: The additional_line_item_data of this ShopifyV1Integration.
         :rtype: list[ShopifyAdditionalLineItemData]
         """
         return self._additional_line_item_data
 
     @additional_line_item_data.setter
     def additional_line_item_data(self, additional_line_item_data):
-        """Sets the additional_line_item_data of this ShopifyIntegration.
+        """Sets the additional_line_item_data of this ShopifyV1Integration.
 
             
 
-        :param additional_line_item_data: The additional_line_item_data of this ShopifyIntegration.
+        :param additional_line_item_data: The additional_line_item_data of this ShopifyV1Integration.
         :type: list[ShopifyAdditionalLineItemData]
         """
 
@@ -120,45 +123,68 @@ class ShopifyIntegration:
     
     @property
     def allow_invoice_download(self):
-        """Gets the allow_invoice_download of this ShopifyIntegration.
+        """Gets the allow_invoice_download of this ShopifyV1Integration.
 
             
 
-        :return: The allow_invoice_download of this ShopifyIntegration.
+        :return: The allow_invoice_download of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._allow_invoice_download
 
     @allow_invoice_download.setter
     def allow_invoice_download(self, allow_invoice_download):
-        """Sets the allow_invoice_download of this ShopifyIntegration.
+        """Sets the allow_invoice_download of this ShopifyV1Integration.
 
             
 
-        :param allow_invoice_download: The allow_invoice_download of this ShopifyIntegration.
+        :param allow_invoice_download: The allow_invoice_download of this ShopifyV1Integration.
         :type: bool
         """
 
         self._allow_invoice_download = allow_invoice_download
     
     @property
+    def allow_payment_with_tax_discrepancy(self):
+        """Gets the allow_payment_with_tax_discrepancy of this ShopifyV1Integration.
+
+            If in the merchant Shopify store is used legacy tax service, rounding discrepancies in line item tax amounts may occur. When this check is enabled, such discrepancies are tolerated, allowing the payment to proceed without raising an exception.
+
+        :return: The allow_payment_with_tax_discrepancy of this ShopifyV1Integration.
+        :rtype: bool
+        """
+        return self._allow_payment_with_tax_discrepancy
+
+    @allow_payment_with_tax_discrepancy.setter
+    def allow_payment_with_tax_discrepancy(self, allow_payment_with_tax_discrepancy):
+        """Sets the allow_payment_with_tax_discrepancy of this ShopifyV1Integration.
+
+            If in the merchant Shopify store is used legacy tax service, rounding discrepancies in line item tax amounts may occur. When this check is enabled, such discrepancies are tolerated, allowing the payment to proceed without raising an exception.
+
+        :param allow_payment_with_tax_discrepancy: The allow_payment_with_tax_discrepancy of this ShopifyV1Integration.
+        :type: bool
+        """
+
+        self._allow_payment_with_tax_discrepancy = allow_payment_with_tax_discrepancy
+    
+    @property
     def allowed_payment_method_configurations(self):
-        """Gets the allowed_payment_method_configurations of this ShopifyIntegration.
+        """Gets the allowed_payment_method_configurations of this ShopifyV1Integration.
 
             
 
-        :return: The allowed_payment_method_configurations of this ShopifyIntegration.
+        :return: The allowed_payment_method_configurations of this ShopifyV1Integration.
         :rtype: list[PaymentMethodConfiguration]
         """
         return self._allowed_payment_method_configurations
 
     @allowed_payment_method_configurations.setter
     def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
-        """Sets the allowed_payment_method_configurations of this ShopifyIntegration.
+        """Sets the allowed_payment_method_configurations of this ShopifyV1Integration.
 
             
 
-        :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this ShopifyIntegration.
+        :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this ShopifyV1Integration.
         :type: list[PaymentMethodConfiguration]
         """
 
@@ -166,22 +192,22 @@ class ShopifyIntegration:
     
     @property
     def currency(self):
-        """Gets the currency of this ShopifyIntegration.
+        """Gets the currency of this ShopifyV1Integration.
 
             
 
-        :return: The currency of this ShopifyIntegration.
+        :return: The currency of this ShopifyV1Integration.
         :rtype: str
         """
         return self._currency
 
     @currency.setter
     def currency(self, currency):
-        """Sets the currency of this ShopifyIntegration.
+        """Sets the currency of this ShopifyV1Integration.
 
             
 
-        :param currency: The currency of this ShopifyIntegration.
+        :param currency: The currency of this ShopifyV1Integration.
         :type: str
         """
 
@@ -189,22 +215,22 @@ class ShopifyIntegration:
     
     @property
     def id(self):
-        """Gets the id of this ShopifyIntegration.
+        """Gets the id of this ShopifyV1Integration.
 
             A unique identifier for the object.
 
-        :return: The id of this ShopifyIntegration.
+        :return: The id of this ShopifyV1Integration.
         :rtype: int
         """
         return self._id
 
     @id.setter
     def id(self, id):
-        """Sets the id of this ShopifyIntegration.
+        """Sets the id of this ShopifyV1Integration.
 
             A unique identifier for the object.
 
-        :param id: The id of this ShopifyIntegration.
+        :param id: The id of this ShopifyV1Integration.
         :type: int
         """
 
@@ -212,22 +238,22 @@ class ShopifyIntegration:
     
     @property
     def integrated_payment_form_enabled(self):
-        """Gets the integrated_payment_form_enabled of this ShopifyIntegration.
+        """Gets the integrated_payment_form_enabled of this ShopifyV1Integration.
 
             Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.
 
-        :return: The integrated_payment_form_enabled of this ShopifyIntegration.
+        :return: The integrated_payment_form_enabled of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._integrated_payment_form_enabled
 
     @integrated_payment_form_enabled.setter
     def integrated_payment_form_enabled(self, integrated_payment_form_enabled):
-        """Sets the integrated_payment_form_enabled of this ShopifyIntegration.
+        """Sets the integrated_payment_form_enabled of this ShopifyV1Integration.
 
             Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.
 
-        :param integrated_payment_form_enabled: The integrated_payment_form_enabled of this ShopifyIntegration.
+        :param integrated_payment_form_enabled: The integrated_payment_form_enabled of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -235,22 +261,22 @@ class ShopifyIntegration:
     
     @property
     def language(self):
-        """Gets the language of this ShopifyIntegration.
+        """Gets the language of this ShopifyV1Integration.
 
             The checkout language forces a specific language in the checkout. Without a checkout language the browser setting of the buyer is used to determine the language.
 
-        :return: The language of this ShopifyIntegration.
+        :return: The language of this ShopifyV1Integration.
         :rtype: str
         """
         return self._language
 
     @language.setter
     def language(self, language):
-        """Sets the language of this ShopifyIntegration.
+        """Sets the language of this ShopifyV1Integration.
 
             The checkout language forces a specific language in the checkout. Without a checkout language the browser setting of the buyer is used to determine the language.
 
-        :param language: The language of this ShopifyIntegration.
+        :param language: The language of this ShopifyV1Integration.
         :type: str
         """
 
@@ -258,22 +284,22 @@ class ShopifyIntegration:
     
     @property
     def login_name(self):
-        """Gets the login_name of this ShopifyIntegration.
+        """Gets the login_name of this ShopifyV1Integration.
 
-            The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.
+            The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shop's payment gateway configuration.
 
-        :return: The login_name of this ShopifyIntegration.
+        :return: The login_name of this ShopifyV1Integration.
         :rtype: str
         """
         return self._login_name
 
     @login_name.setter
     def login_name(self, login_name):
-        """Sets the login_name of this ShopifyIntegration.
+        """Sets the login_name of this ShopifyV1Integration.
 
-            The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.
+            The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shop's payment gateway configuration.
 
-        :param login_name: The login_name of this ShopifyIntegration.
+        :param login_name: The login_name of this ShopifyV1Integration.
         :type: str
         """
         if login_name is not None and len(login_name) > 100:
@@ -283,22 +309,22 @@ class ShopifyIntegration:
     
     @property
     def name(self):
-        """Gets the name of this ShopifyIntegration.
+        """Gets the name of this ShopifyV1Integration.
 
             The integration name is used internally to identify a specific integration.For example the name is used withinsearch fields and hence it should be distinct and descriptive.
 
-        :return: The name of this ShopifyIntegration.
+        :return: The name of this ShopifyV1Integration.
         :rtype: str
         """
         return self._name
 
     @name.setter
     def name(self, name):
-        """Sets the name of this ShopifyIntegration.
+        """Sets the name of this ShopifyV1Integration.
 
             The integration name is used internally to identify a specific integration.For example the name is used withinsearch fields and hence it should be distinct and descriptive.
 
-        :param name: The name of this ShopifyIntegration.
+        :param name: The name of this ShopifyV1Integration.
         :type: str
         """
         if name is not None and len(name) > 100:
@@ -308,22 +334,22 @@ class ShopifyIntegration:
     
     @property
     def payment_app_version(self):
-        """Gets the payment_app_version of this ShopifyIntegration.
+        """Gets the payment_app_version of this ShopifyV1Integration.
 
             
 
-        :return: The payment_app_version of this ShopifyIntegration.
+        :return: The payment_app_version of this ShopifyV1Integration.
         :rtype: ShopifyIntegrationPaymentAppVersion
         """
         return self._payment_app_version
 
     @payment_app_version.setter
     def payment_app_version(self, payment_app_version):
-        """Sets the payment_app_version of this ShopifyIntegration.
+        """Sets the payment_app_version of this ShopifyV1Integration.
 
             
 
-        :param payment_app_version: The payment_app_version of this ShopifyIntegration.
+        :param payment_app_version: The payment_app_version of this ShopifyV1Integration.
         :type: ShopifyIntegrationPaymentAppVersion
         """
 
@@ -331,22 +357,22 @@ class ShopifyIntegration:
     
     @property
     def payment_installed(self):
-        """Gets the payment_installed of this ShopifyIntegration.
+        """Gets the payment_installed of this ShopifyV1Integration.
 
             
 
-        :return: The payment_installed of this ShopifyIntegration.
+        :return: The payment_installed of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._payment_installed
 
     @payment_installed.setter
     def payment_installed(self, payment_installed):
-        """Sets the payment_installed of this ShopifyIntegration.
+        """Sets the payment_installed of this ShopifyV1Integration.
 
             
 
-        :param payment_installed: The payment_installed of this ShopifyIntegration.
+        :param payment_installed: The payment_installed of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -354,22 +380,22 @@ class ShopifyIntegration:
     
     @property
     def payment_proxy_path(self):
-        """Gets the payment_proxy_path of this ShopifyIntegration.
+        """Gets the payment_proxy_path of this ShopifyV1Integration.
 
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+            Define the path of the proxy URL. This only needs to be changed if the app's proxy URL is overwritten in the Shopify store.
 
-        :return: The payment_proxy_path of this ShopifyIntegration.
+        :return: The payment_proxy_path of this ShopifyV1Integration.
         :rtype: str
         """
         return self._payment_proxy_path
 
     @payment_proxy_path.setter
     def payment_proxy_path(self, payment_proxy_path):
-        """Sets the payment_proxy_path of this ShopifyIntegration.
+        """Sets the payment_proxy_path of this ShopifyV1Integration.
 
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+            Define the path of the proxy URL. This only needs to be changed if the app's proxy URL is overwritten in the Shopify store.
 
-        :param payment_proxy_path: The payment_proxy_path of this ShopifyIntegration.
+        :param payment_proxy_path: The payment_proxy_path of this ShopifyV1Integration.
         :type: str
         """
 
@@ -377,22 +403,22 @@ class ShopifyIntegration:
     
     @property
     def planned_purge_date(self):
-        """Gets the planned_purge_date of this ShopifyIntegration.
+        """Gets the planned_purge_date of this ShopifyV1Integration.
 
             The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
-        :return: The planned_purge_date of this ShopifyIntegration.
+        :return: The planned_purge_date of this ShopifyV1Integration.
         :rtype: datetime
         """
         return self._planned_purge_date
 
     @planned_purge_date.setter
     def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this ShopifyIntegration.
+        """Sets the planned_purge_date of this ShopifyV1Integration.
 
             The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
 
-        :param planned_purge_date: The planned_purge_date of this ShopifyIntegration.
+        :param planned_purge_date: The planned_purge_date of this ShopifyV1Integration.
         :type: datetime
         """
 
@@ -400,22 +426,22 @@ class ShopifyIntegration:
     
     @property
     def replace_payment_method_image(self):
-        """Gets the replace_payment_method_image of this ShopifyIntegration.
+        """Gets the replace_payment_method_image of this ShopifyV1Integration.
 
             
 
-        :return: The replace_payment_method_image of this ShopifyIntegration.
+        :return: The replace_payment_method_image of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._replace_payment_method_image
 
     @replace_payment_method_image.setter
     def replace_payment_method_image(self, replace_payment_method_image):
-        """Sets the replace_payment_method_image of this ShopifyIntegration.
+        """Sets the replace_payment_method_image of this ShopifyV1Integration.
 
             
 
-        :param replace_payment_method_image: The replace_payment_method_image of this ShopifyIntegration.
+        :param replace_payment_method_image: The replace_payment_method_image of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -423,22 +449,22 @@ class ShopifyIntegration:
     
     @property
     def shop_name(self):
-        """Gets the shop_name of this ShopifyIntegration.
+        """Gets the shop_name of this ShopifyV1Integration.
 
-            The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com
+            The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopify's admin URL: [storeAddress].myshopify.com
 
-        :return: The shop_name of this ShopifyIntegration.
+        :return: The shop_name of this ShopifyV1Integration.
         :rtype: str
         """
         return self._shop_name
 
     @shop_name.setter
     def shop_name(self, shop_name):
-        """Sets the shop_name of this ShopifyIntegration.
+        """Sets the shop_name of this ShopifyV1Integration.
 
-            The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com
+            The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopify's admin URL: [storeAddress].myshopify.com
 
-        :param shop_name: The shop_name of this ShopifyIntegration.
+        :param shop_name: The shop_name of this ShopifyV1Integration.
         :type: str
         """
         if shop_name is not None and len(shop_name) > 100:
@@ -448,22 +474,22 @@ class ShopifyIntegration:
     
     @property
     def show_payment_information(self):
-        """Gets the show_payment_information of this ShopifyIntegration.
+        """Gets the show_payment_information of this ShopifyV1Integration.
 
             
 
-        :return: The show_payment_information of this ShopifyIntegration.
+        :return: The show_payment_information of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._show_payment_information
 
     @show_payment_information.setter
     def show_payment_information(self, show_payment_information):
-        """Sets the show_payment_information of this ShopifyIntegration.
+        """Sets the show_payment_information of this ShopifyV1Integration.
 
             
 
-        :param show_payment_information: The show_payment_information of this ShopifyIntegration.
+        :param show_payment_information: The show_payment_information of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -471,22 +497,22 @@ class ShopifyIntegration:
     
     @property
     def show_subscription_information(self):
-        """Gets the show_subscription_information of this ShopifyIntegration.
+        """Gets the show_subscription_information of this ShopifyV1Integration.
 
             
 
-        :return: The show_subscription_information of this ShopifyIntegration.
+        :return: The show_subscription_information of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._show_subscription_information
 
     @show_subscription_information.setter
     def show_subscription_information(self, show_subscription_information):
-        """Sets the show_subscription_information of this ShopifyIntegration.
+        """Sets the show_subscription_information of this ShopifyV1Integration.
 
             
 
-        :param show_subscription_information: The show_subscription_information of this ShopifyIntegration.
+        :param show_subscription_information: The show_subscription_information of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -494,22 +520,22 @@ class ShopifyIntegration:
     
     @property
     def space_id(self):
-        """Gets the space_id of this ShopifyIntegration.
+        """Gets the space_id of this ShopifyV1Integration.
 
             
 
-        :return: The space_id of this ShopifyIntegration.
+        :return: The space_id of this ShopifyV1Integration.
         :rtype: int
         """
         return self._space_id
 
     @space_id.setter
     def space_id(self, space_id):
-        """Sets the space_id of this ShopifyIntegration.
+        """Sets the space_id of this ShopifyV1Integration.
 
             
 
-        :param space_id: The space_id of this ShopifyIntegration.
+        :param space_id: The space_id of this ShopifyV1Integration.
         :type: int
         """
 
@@ -517,22 +543,22 @@ class ShopifyIntegration:
     
     @property
     def space_view_id(self):
-        """Gets the space_view_id of this ShopifyIntegration.
+        """Gets the space_view_id of this ShopifyV1Integration.
 
-            
+            The ID of the space view this object is linked to.
 
-        :return: The space_view_id of this ShopifyIntegration.
+        :return: The space_view_id of this ShopifyV1Integration.
         :rtype: int
         """
         return self._space_view_id
 
     @space_view_id.setter
     def space_view_id(self, space_view_id):
-        """Sets the space_view_id of this ShopifyIntegration.
+        """Sets the space_view_id of this ShopifyV1Integration.
 
-            
+            The ID of the space view this object is linked to.
 
-        :param space_view_id: The space_view_id of this ShopifyIntegration.
+        :param space_view_id: The space_view_id of this ShopifyV1Integration.
         :type: int
         """
 
@@ -540,22 +566,22 @@ class ShopifyIntegration:
     
     @property
     def state(self):
-        """Gets the state of this ShopifyIntegration.
+        """Gets the state of this ShopifyV1Integration.
 
             The object's current state.
 
-        :return: The state of this ShopifyIntegration.
+        :return: The state of this ShopifyV1Integration.
         :rtype: CreationEntityState
         """
         return self._state
 
     @state.setter
     def state(self, state):
-        """Sets the state of this ShopifyIntegration.
+        """Sets the state of this ShopifyV1Integration.
 
             The object's current state.
 
-        :param state: The state of this ShopifyIntegration.
+        :param state: The state of this ShopifyV1Integration.
         :type: CreationEntityState
         """
 
@@ -563,22 +589,22 @@ class ShopifyIntegration:
     
     @property
     def subscription_app_version(self):
-        """Gets the subscription_app_version of this ShopifyIntegration.
+        """Gets the subscription_app_version of this ShopifyV1Integration.
 
             
 
-        :return: The subscription_app_version of this ShopifyIntegration.
+        :return: The subscription_app_version of this ShopifyV1Integration.
         :rtype: ShopifyIntegrationSubscriptionAppVersion
         """
         return self._subscription_app_version
 
     @subscription_app_version.setter
     def subscription_app_version(self, subscription_app_version):
-        """Sets the subscription_app_version of this ShopifyIntegration.
+        """Sets the subscription_app_version of this ShopifyV1Integration.
 
             
 
-        :param subscription_app_version: The subscription_app_version of this ShopifyIntegration.
+        :param subscription_app_version: The subscription_app_version of this ShopifyV1Integration.
         :type: ShopifyIntegrationSubscriptionAppVersion
         """
 
@@ -586,22 +612,22 @@ class ShopifyIntegration:
     
     @property
     def subscription_installed(self):
-        """Gets the subscription_installed of this ShopifyIntegration.
+        """Gets the subscription_installed of this ShopifyV1Integration.
 
             
 
-        :return: The subscription_installed of this ShopifyIntegration.
+        :return: The subscription_installed of this ShopifyV1Integration.
         :rtype: bool
         """
         return self._subscription_installed
 
     @subscription_installed.setter
     def subscription_installed(self, subscription_installed):
-        """Sets the subscription_installed of this ShopifyIntegration.
+        """Sets the subscription_installed of this ShopifyV1Integration.
 
             
 
-        :param subscription_installed: The subscription_installed of this ShopifyIntegration.
+        :param subscription_installed: The subscription_installed of this ShopifyV1Integration.
         :type: bool
         """
 
@@ -609,22 +635,22 @@ class ShopifyIntegration:
     
     @property
     def subscription_proxy_path(self):
-        """Gets the subscription_proxy_path of this ShopifyIntegration.
+        """Gets the subscription_proxy_path of this ShopifyV1Integration.
 
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+            Define the path of the proxy URL. This only needs to be changed if the app's proxy URL is overwritten in the Shopify store.
 
-        :return: The subscription_proxy_path of this ShopifyIntegration.
+        :return: The subscription_proxy_path of this ShopifyV1Integration.
         :rtype: str
         """
         return self._subscription_proxy_path
 
     @subscription_proxy_path.setter
     def subscription_proxy_path(self, subscription_proxy_path):
-        """Sets the subscription_proxy_path of this ShopifyIntegration.
+        """Sets the subscription_proxy_path of this ShopifyV1Integration.
 
-            Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+            Define the path of the proxy URL. This only needs to be changed if the app's proxy URL is overwritten in the Shopify store.
 
-        :param subscription_proxy_path: The subscription_proxy_path of this ShopifyIntegration.
+        :param subscription_proxy_path: The subscription_proxy_path of this ShopifyV1Integration.
         :type: str
         """
 
@@ -632,22 +658,22 @@ class ShopifyIntegration:
     
     @property
     def version(self):
-        """Gets the version of this ShopifyIntegration.
+        """Gets the version of this ShopifyV1Integration.
 
             The version is used for optimistic locking and incremented whenever the object is updated.
 
-        :return: The version of this ShopifyIntegration.
+        :return: The version of this ShopifyV1Integration.
         :rtype: int
         """
         return self._version
 
     @version.setter
     def version(self, version):
-        """Sets the version of this ShopifyIntegration.
+        """Sets the version of this ShopifyV1Integration.
 
             The version is used for optimistic locking and incremented whenever the object is updated.
 
-        :param version: The version of this ShopifyIntegration.
+        :param version: The version of this ShopifyV1Integration.
         :type: int
         """
 
@@ -676,7 +702,7 @@ class ShopifyIntegration:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifyIntegration, dict):
+        if issubclass(ShopifyV1Integration, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -689,7 +715,7 @@ class ShopifyIntegration:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifyIntegration):
+        if not isinstance(other, ShopifyV1Integration):
             return False
 
         return self.__dict__ == other.__dict__

@@ -2,17 +2,20 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class InstallmentPaymentSlice(TransactionAwareEntity):
+
+class InstallmentPaymentSlice:
 
     swagger_types = {
     
         'charge_on': 'datetime',
         'created_on': 'datetime',
+        'id': 'int',
         'installment_payment': 'InstallmentPayment',
         'line_items': 'list[LineItem]',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'planned_purge_date': 'datetime',
         'state': 'InstallmentPaymentSliceState',
         'transaction': 'Transaction',
@@ -20,14 +23,17 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'charge_on': 'chargeOn','created_on': 'createdOn','installment_payment': 'installmentPayment','line_items': 'lineItems','planned_purge_date': 'plannedPurgeDate','state': 'state','transaction': 'transaction','version': 'version',
+        'charge_on': 'chargeOn','created_on': 'createdOn','id': 'id','installment_payment': 'installmentPayment','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','planned_purge_date': 'plannedPurgeDate','state': 'state','transaction': 'transaction','version': 'version',
     }
 
     
     _charge_on = None
     _created_on = None
+    _id = None
     _installment_payment = None
     _line_items = None
+    _linked_space_id = None
+    _linked_transaction = None
     _planned_purge_date = None
     _state = None
     _transaction = None
@@ -38,15 +44,16 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         
         self.charge_on = kwargs.get('charge_on', None)
         self.created_on = kwargs.get('created_on', None)
+        self.id = kwargs.get('id', None)
         self.installment_payment = kwargs.get('installment_payment', None)
         self.line_items = kwargs.get('line_items', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
@@ -96,6 +103,29 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         self._created_on = created_on
     
     @property
+    def id(self):
+        """Gets the id of this InstallmentPaymentSlice.
+
+            A unique identifier for the object.
+
+        :return: The id of this InstallmentPaymentSlice.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this InstallmentPaymentSlice.
+
+            A unique identifier for the object.
+
+        :param id: The id of this InstallmentPaymentSlice.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def installment_payment(self):
         """Gets the installment_payment of this InstallmentPaymentSlice.
 
@@ -140,6 +170,52 @@ class InstallmentPaymentSlice(TransactionAwareEntity):
         """
 
         self._line_items = line_items
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this InstallmentPaymentSlice.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this InstallmentPaymentSlice.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this InstallmentPaymentSlice.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this InstallmentPaymentSlice.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this InstallmentPaymentSlice.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this InstallmentPaymentSlice.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this InstallmentPaymentSlice.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this InstallmentPaymentSlice.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
     
     @property
     def planned_purge_date(self):

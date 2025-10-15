@@ -9,6 +9,7 @@ class PaymentTerminalTransactionSummary:
 
     swagger_types = {
     
+        'balance_amount_per_currency': 'dict(str, float)',
         'dcc_transaction_sums': 'list[PaymentTerminalDccTransactionSum]',
         'ended_on': 'datetime',
         'id': 'int',
@@ -16,16 +17,18 @@ class PaymentTerminalTransactionSummary:
         'number_of_transactions': 'int',
         'payment_terminal': 'int',
         'receipt': 'str',
+        'reference': 'int',
         'started_on': 'datetime',
         'transaction_sums': 'list[PaymentTerminalTransactionSum]',
         'version': 'int',
     }
 
     attribute_map = {
-        'dcc_transaction_sums': 'dccTransactionSums','ended_on': 'endedOn','id': 'id','linked_space_id': 'linkedSpaceId','number_of_transactions': 'numberOfTransactions','payment_terminal': 'paymentTerminal','receipt': 'receipt','started_on': 'startedOn','transaction_sums': 'transactionSums','version': 'version',
+        'balance_amount_per_currency': 'balanceAmountPerCurrency','dcc_transaction_sums': 'dccTransactionSums','ended_on': 'endedOn','id': 'id','linked_space_id': 'linkedSpaceId','number_of_transactions': 'numberOfTransactions','payment_terminal': 'paymentTerminal','receipt': 'receipt','reference': 'reference','started_on': 'startedOn','transaction_sums': 'transactionSums','version': 'version',
     }
 
     
+    _balance_amount_per_currency = None
     _dcc_transaction_sums = None
     _ended_on = None
     _id = None
@@ -33,6 +36,7 @@ class PaymentTerminalTransactionSummary:
     _number_of_transactions = None
     _payment_terminal = None
     _receipt = None
+    _reference = None
     _started_on = None
     _transaction_sums = None
     _version = None
@@ -40,6 +44,7 @@ class PaymentTerminalTransactionSummary:
     def __init__(self, **kwargs):
         self.discriminator = None
         
+        self.balance_amount_per_currency = kwargs.get('balance_amount_per_currency', None)
         self.dcc_transaction_sums = kwargs.get('dcc_transaction_sums', None)
         self.ended_on = kwargs.get('ended_on', None)
         self.id = kwargs.get('id', None)
@@ -47,11 +52,35 @@ class PaymentTerminalTransactionSummary:
         self.number_of_transactions = kwargs.get('number_of_transactions', None)
         self.payment_terminal = kwargs.get('payment_terminal', None)
         self.receipt = kwargs.get('receipt', None)
+        self.reference = kwargs.get('reference', None)
         self.started_on = kwargs.get('started_on', None)
         self.transaction_sums = kwargs.get('transaction_sums', None)
         self.version = kwargs.get('version', None)
         
 
+    
+    @property
+    def balance_amount_per_currency(self):
+        """Gets the balance_amount_per_currency of this PaymentTerminalTransactionSummary.
+
+            The transactions amount per currency.
+
+        :return: The balance_amount_per_currency of this PaymentTerminalTransactionSummary.
+        :rtype: dict(str, float)
+        """
+        return self._balance_amount_per_currency
+
+    @balance_amount_per_currency.setter
+    def balance_amount_per_currency(self, balance_amount_per_currency):
+        """Sets the balance_amount_per_currency of this PaymentTerminalTransactionSummary.
+
+            The transactions amount per currency.
+
+        :param balance_amount_per_currency: The balance_amount_per_currency of this PaymentTerminalTransactionSummary.
+        :type: dict(str, float)
+        """
+
+        self._balance_amount_per_currency = balance_amount_per_currency
     
     @property
     def dcc_transaction_sums(self):
@@ -172,7 +201,7 @@ class PaymentTerminalTransactionSummary:
     def payment_terminal(self):
         """Gets the payment_terminal of this PaymentTerminalTransactionSummary.
 
-            
+            The payment terminal of the transaction summary.
 
         :return: The payment_terminal of this PaymentTerminalTransactionSummary.
         :rtype: int
@@ -183,7 +212,7 @@ class PaymentTerminalTransactionSummary:
     def payment_terminal(self, payment_terminal):
         """Sets the payment_terminal of this PaymentTerminalTransactionSummary.
 
-            
+            The payment terminal of the transaction summary.
 
         :param payment_terminal: The payment_terminal of this PaymentTerminalTransactionSummary.
         :type: int
@@ -213,6 +242,29 @@ class PaymentTerminalTransactionSummary:
         """
 
         self._receipt = receipt
+    
+    @property
+    def reference(self):
+        """Gets the reference of this PaymentTerminalTransactionSummary.
+
+            
+
+        :return: The reference of this PaymentTerminalTransactionSummary.
+        :rtype: int
+        """
+        return self._reference
+
+    @reference.setter
+    def reference(self, reference):
+        """Sets the reference of this PaymentTerminalTransactionSummary.
+
+            
+
+        :param reference: The reference of this PaymentTerminalTransactionSummary.
+        :type: int
+        """
+
+        self._reference = reference
     
     @property
     def started_on(self):

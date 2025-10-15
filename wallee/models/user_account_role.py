@@ -45,7 +45,7 @@ class UserAccountRole:
     def account(self):
         """Gets the account of this UserAccountRole.
 
-            
+            The account in which the role is assigned to the user.
 
         :return: The account of this UserAccountRole.
         :rtype: int
@@ -56,7 +56,7 @@ class UserAccountRole:
     def account(self, account):
         """Sets the account of this UserAccountRole.
 
-            
+            The account in which the role is assigned to the user.
 
         :param account: The account of this UserAccountRole.
         :type: int
@@ -68,7 +68,7 @@ class UserAccountRole:
     def applies_on_sub_account(self):
         """Gets the applies_on_sub_account of this UserAccountRole.
 
-            
+            Whether the role is assigned to the user in subaccounts only.
 
         :return: The applies_on_sub_account of this UserAccountRole.
         :rtype: bool
@@ -79,7 +79,7 @@ class UserAccountRole:
     def applies_on_sub_account(self, applies_on_sub_account):
         """Sets the applies_on_sub_account of this UserAccountRole.
 
-            
+            Whether the role is assigned to the user in subaccounts only.
 
         :param applies_on_sub_account: The applies_on_sub_account of this UserAccountRole.
         :type: bool
@@ -114,7 +114,7 @@ class UserAccountRole:
     def role(self):
         """Gets the role of this UserAccountRole.
 
-            
+            The role that is assigned to the user.
 
         :return: The role of this UserAccountRole.
         :rtype: int
@@ -125,7 +125,7 @@ class UserAccountRole:
     def role(self, role):
         """Sets the role of this UserAccountRole.
 
-            
+            The role that is assigned to the user.
 
         :param role: The role of this UserAccountRole.
         :type: int
@@ -137,7 +137,7 @@ class UserAccountRole:
     def user(self):
         """Gets the user of this UserAccountRole.
 
-            
+            The user whose role this defines.
 
         :return: The user of this UserAccountRole.
         :rtype: int
@@ -148,7 +148,7 @@ class UserAccountRole:
     def user(self, user):
         """Sets the user of this UserAccountRole.
 
-            
+            The user whose role this defines.
 
         :param user: The user of this UserAccountRole.
         :type: int

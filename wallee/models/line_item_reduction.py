@@ -36,7 +36,7 @@ class LineItemReduction:
     def line_item_unique_id(self):
         """Gets the line_item_unique_id of this LineItemReduction.
 
-            The unique id identifies the line item on which the reduction is applied on.
+            The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.
 
         :return: The line_item_unique_id of this LineItemReduction.
         :rtype: str
@@ -47,7 +47,7 @@ class LineItemReduction:
     def line_item_unique_id(self, line_item_unique_id):
         """Sets the line_item_unique_id of this LineItemReduction.
 
-            The unique id identifies the line item on which the reduction is applied on.
+            The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.
 
         :param line_item_unique_id: The line_item_unique_id of this LineItemReduction.
         :type: str
@@ -61,7 +61,7 @@ class LineItemReduction:
     def quantity_reduction(self):
         """Gets the quantity_reduction of this LineItemReduction.
 
-            
+            The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.
 
         :return: The quantity_reduction of this LineItemReduction.
         :rtype: float
@@ -72,7 +72,7 @@ class LineItemReduction:
     def quantity_reduction(self, quantity_reduction):
         """Sets the quantity_reduction of this LineItemReduction.
 
-            
+            The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.
 
         :param quantity_reduction: The quantity_reduction of this LineItemReduction.
         :type: float
@@ -84,7 +84,7 @@ class LineItemReduction:
     def unit_price_reduction(self):
         """Gets the unit_price_reduction of this LineItemReduction.
 
-            
+            The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.
 
         :return: The unit_price_reduction of this LineItemReduction.
         :rtype: float
@@ -95,7 +95,7 @@ class LineItemReduction:
     def unit_price_reduction(self, unit_price_reduction):
         """Sets the unit_price_reduction of this LineItemReduction.
 
-            
+            The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.
 
         :param unit_price_reduction: The unit_price_reduction of this LineItemReduction.
         :type: float

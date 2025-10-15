@@ -63,7 +63,7 @@ class SubscriptionProduct:
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this SubscriptionProduct.
 
-            The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
+            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
 
         :return: The allowed_payment_method_configurations of this SubscriptionProduct.
         :rtype: list[int]
@@ -74,7 +74,7 @@ class SubscriptionProduct:
     def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
         """Sets the allowed_payment_method_configurations of this SubscriptionProduct.
 
-            The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
+            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
 
         :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this SubscriptionProduct.
         :type: list[int]
@@ -86,7 +86,7 @@ class SubscriptionProduct:
     def failed_payment_suspension_period(self):
         """Gets the failed_payment_suspension_period of this SubscriptionProduct.
 
-            When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
+            The period after which a subscription that has been suspended due to a failed payment is terminated.
 
         :return: The failed_payment_suspension_period of this SubscriptionProduct.
         :rtype: str
@@ -97,7 +97,7 @@ class SubscriptionProduct:
     def failed_payment_suspension_period(self, failed_payment_suspension_period):
         """Sets the failed_payment_suspension_period of this SubscriptionProduct.
 
-            When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
+            The period after which a subscription that has been suspended due to a failed payment is terminated.
 
         :param failed_payment_suspension_period: The failed_payment_suspension_period of this SubscriptionProduct.
         :type: str
@@ -155,7 +155,7 @@ class SubscriptionProduct:
     def name(self):
         """Gets the name of this SubscriptionProduct.
 
-            The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the product.
 
         :return: The name of this SubscriptionProduct.
         :rtype: str
@@ -166,7 +166,7 @@ class SubscriptionProduct:
     def name(self, name):
         """Sets the name of this SubscriptionProduct.
 
-            The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the product.
 
         :param name: The name of this SubscriptionProduct.
         :type: str
@@ -203,7 +203,7 @@ class SubscriptionProduct:
     def product_locked(self):
         """Gets the product_locked of this SubscriptionProduct.
 
-            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+            Whether subscriptions can be switched to or from this product, or whether they are locked in.
 
         :return: The product_locked of this SubscriptionProduct.
         :rtype: bool
@@ -214,7 +214,7 @@ class SubscriptionProduct:
     def product_locked(self, product_locked):
         """Sets the product_locked of this SubscriptionProduct.
 
-            Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+            Whether subscriptions can be switched to or from this product, or whether they are locked in.
 
         :param product_locked: The product_locked of this SubscriptionProduct.
         :type: bool
@@ -226,7 +226,7 @@ class SubscriptionProduct:
     def reference(self):
         """Gets the reference of this SubscriptionProduct.
 
-            The product reference identifies the product for external systems. This field may contain the product's SKU.
+            The merchant's reference used to identify the product, e.g. the SKU.
 
         :return: The reference of this SubscriptionProduct.
         :rtype: str
@@ -237,7 +237,7 @@ class SubscriptionProduct:
     def reference(self, reference):
         """Sets the reference of this SubscriptionProduct.
 
-            The product reference identifies the product for external systems. This field may contain the product's SKU.
+            The merchant's reference used to identify the product, e.g. the SKU.
 
         :param reference: The reference of this SubscriptionProduct.
         :type: str
@@ -251,7 +251,7 @@ class SubscriptionProduct:
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProduct.
 
-            The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
+            When listing products, they can be sorted by this number.
 
         :return: The sort_order of this SubscriptionProduct.
         :rtype: int
@@ -262,7 +262,7 @@ class SubscriptionProduct:
     def sort_order(self, sort_order):
         """Sets the sort_order of this SubscriptionProduct.
 
-            The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
+            When listing products, they can be sorted by this number.
 
         :param sort_order: The sort_order of this SubscriptionProduct.
         :type: int
@@ -274,7 +274,7 @@ class SubscriptionProduct:
     def space_id(self):
         """Gets the space_id of this SubscriptionProduct.
 
-            
+            The ID of the space this object belongs to.
 
         :return: The space_id of this SubscriptionProduct.
         :rtype: int
@@ -285,7 +285,7 @@ class SubscriptionProduct:
     def space_id(self, space_id):
         """Sets the space_id of this SubscriptionProduct.
 
-            
+            The ID of the space this object belongs to.
 
         :param space_id: The space_id of this SubscriptionProduct.
         :type: int

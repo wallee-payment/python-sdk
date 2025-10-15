@@ -85,7 +85,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def name(self):
         """Gets the name of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The name used to identify the affiliate.
 
         :return: The name of this AbstractSubscriptionAffiliateUpdate.
         :rtype: str
@@ -96,7 +96,7 @@ class AbstractSubscriptionAffiliateUpdate:
     def name(self, name):
         """Sets the name of this AbstractSubscriptionAffiliateUpdate.
 
-            
+            The name used to identify the affiliate.
 
         :param name: The name of this AbstractSubscriptionAffiliateUpdate.
         :type: str

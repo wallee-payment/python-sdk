@@ -17,13 +17,12 @@ class DebtCollectionCaseDocument:
         'linked_space_id': 'int',
         'mime_type': 'str',
         'planned_purge_date': 'datetime',
-        'storage_id': 'str',
         'unique_id': 'str',
         'version': 'int',
     }
 
     attribute_map = {
-        'created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','file_name': 'fileName','id': 'id','labels': 'labels','linked_space_id': 'linkedSpaceId','mime_type': 'mimeType','planned_purge_date': 'plannedPurgeDate','storage_id': 'storageId','unique_id': 'uniqueId','version': 'version',
+        'created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','file_name': 'fileName','id': 'id','labels': 'labels','linked_space_id': 'linkedSpaceId','mime_type': 'mimeType','planned_purge_date': 'plannedPurgeDate','unique_id': 'uniqueId','version': 'version',
     }
 
     
@@ -35,7 +34,6 @@ class DebtCollectionCaseDocument:
     _linked_space_id = None
     _mime_type = None
     _planned_purge_date = None
-    _storage_id = None
     _unique_id = None
     _version = None
 
@@ -50,7 +48,6 @@ class DebtCollectionCaseDocument:
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.mime_type = kwargs.get('mime_type', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.storage_id = kwargs.get('storage_id', None)
         self.unique_id = kwargs.get('unique_id', None)
         self.version = kwargs.get('version', None)
         
@@ -83,7 +80,7 @@ class DebtCollectionCaseDocument:
     def debt_collection_case(self):
         """Gets the debt_collection_case of this DebtCollectionCaseDocument.
 
-            
+            The debt collection case that this document belongs to.
 
         :return: The debt_collection_case of this DebtCollectionCaseDocument.
         :rtype: int
@@ -94,7 +91,7 @@ class DebtCollectionCaseDocument:
     def debt_collection_case(self, debt_collection_case):
         """Sets the debt_collection_case of this DebtCollectionCaseDocument.
 
-            
+            The debt collection case that this document belongs to.
 
         :param debt_collection_case: The debt_collection_case of this DebtCollectionCaseDocument.
         :type: int
@@ -106,7 +103,7 @@ class DebtCollectionCaseDocument:
     def file_name(self):
         """Gets the file_name of this DebtCollectionCaseDocument.
 
-            
+            The file name of the document.
 
         :return: The file_name of this DebtCollectionCaseDocument.
         :rtype: str
@@ -117,7 +114,7 @@ class DebtCollectionCaseDocument:
     def file_name(self, file_name):
         """Sets the file_name of this DebtCollectionCaseDocument.
 
-            
+            The file name of the document.
 
         :param file_name: The file_name of this DebtCollectionCaseDocument.
         :type: str
@@ -154,7 +151,7 @@ class DebtCollectionCaseDocument:
     def labels(self):
         """Gets the labels of this DebtCollectionCaseDocument.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this DebtCollectionCaseDocument.
         :rtype: list[Label]
@@ -165,7 +162,7 @@ class DebtCollectionCaseDocument:
     def labels(self, labels):
         """Sets the labels of this DebtCollectionCaseDocument.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this DebtCollectionCaseDocument.
         :type: list[Label]
@@ -200,7 +197,7 @@ class DebtCollectionCaseDocument:
     def mime_type(self):
         """Gets the mime_type of this DebtCollectionCaseDocument.
 
-            
+            The MIME type of the document's content.
 
         :return: The mime_type of this DebtCollectionCaseDocument.
         :rtype: str
@@ -211,7 +208,7 @@ class DebtCollectionCaseDocument:
     def mime_type(self, mime_type):
         """Sets the mime_type of this DebtCollectionCaseDocument.
 
-            
+            The MIME type of the document's content.
 
         :param mime_type: The mime_type of this DebtCollectionCaseDocument.
         :type: str
@@ -243,35 +240,10 @@ class DebtCollectionCaseDocument:
         self._planned_purge_date = planned_purge_date
     
     @property
-    def storage_id(self):
-        """Gets the storage_id of this DebtCollectionCaseDocument.
-
-            
-
-        :return: The storage_id of this DebtCollectionCaseDocument.
-        :rtype: str
-        """
-        return self._storage_id
-
-    @storage_id.setter
-    def storage_id(self, storage_id):
-        """Sets the storage_id of this DebtCollectionCaseDocument.
-
-            
-
-        :param storage_id: The storage_id of this DebtCollectionCaseDocument.
-        :type: str
-        """
-        if storage_id is not None and len(storage_id) > 100:
-            raise ValueError("Invalid value for `storage_id`, length must be less than or equal to `100`")
-
-        self._storage_id = storage_id
-    
-    @property
     def unique_id(self):
         """Gets the unique_id of this DebtCollectionCaseDocument.
 
-            
+            A unique identifier of the document.
 
         :return: The unique_id of this DebtCollectionCaseDocument.
         :rtype: str
@@ -282,7 +254,7 @@ class DebtCollectionCaseDocument:
     def unique_id(self, unique_id):
         """Sets the unique_id of this DebtCollectionCaseDocument.
 
-            
+            A unique identifier of the document.
 
         :param unique_id: The unique_id of this DebtCollectionCaseDocument.
         :type: str

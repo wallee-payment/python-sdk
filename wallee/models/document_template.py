@@ -60,7 +60,7 @@ class DocumentTemplate:
     def default_template(self):
         """Gets the default_template of this DocumentTemplate.
 
-            The default document template is used whenever no specific template is specified for a particular template type.
+            Whether this is the default document template which is used whenever no specific template is specified for the same template type.
 
         :return: The default_template of this DocumentTemplate.
         :rtype: bool
@@ -71,7 +71,7 @@ class DocumentTemplate:
     def default_template(self, default_template):
         """Sets the default_template of this DocumentTemplate.
 
-            The default document template is used whenever no specific template is specified for a particular template type.
+            Whether this is the default document template which is used whenever no specific template is specified for the same template type.
 
         :param default_template: The default_template of this DocumentTemplate.
         :type: bool
@@ -83,7 +83,7 @@ class DocumentTemplate:
     def delivery_enabled(self):
         """Gets the delivery_enabled of this DocumentTemplate.
 
-            
+            Whether documents of this template should be delivered.
 
         :return: The delivery_enabled of this DocumentTemplate.
         :rtype: bool
@@ -94,7 +94,7 @@ class DocumentTemplate:
     def delivery_enabled(self, delivery_enabled):
         """Sets the delivery_enabled of this DocumentTemplate.
 
-            
+            Whether documents of this template should be delivered.
 
         :param delivery_enabled: The delivery_enabled of this DocumentTemplate.
         :type: bool
@@ -152,7 +152,7 @@ class DocumentTemplate:
     def name(self):
         """Gets the name of this DocumentTemplate.
 
-            
+            The name used to identify the document template.
 
         :return: The name of this DocumentTemplate.
         :rtype: str
@@ -163,7 +163,7 @@ class DocumentTemplate:
     def name(self, name):
         """Sets the name of this DocumentTemplate.
 
-            
+            The name used to identify the document template.
 
         :param name: The name of this DocumentTemplate.
         :type: str
@@ -200,7 +200,7 @@ class DocumentTemplate:
     def space_id(self):
         """Gets the space_id of this DocumentTemplate.
 
-            
+            The ID of the space this object belongs to.
 
         :return: The space_id of this DocumentTemplate.
         :rtype: int
@@ -211,7 +211,7 @@ class DocumentTemplate:
     def space_id(self, space_id):
         """Sets the space_id of this DocumentTemplate.
 
-            
+            The ID of the space this object belongs to.
 
         :param space_id: The space_id of this DocumentTemplate.
         :type: int
@@ -246,7 +246,7 @@ class DocumentTemplate:
     def template_resource(self):
         """Gets the template_resource of this DocumentTemplate.
 
-            
+            The resource path to a custom template to be used to generate PDF documents.
 
         :return: The template_resource of this DocumentTemplate.
         :rtype: ResourcePath
@@ -257,7 +257,7 @@ class DocumentTemplate:
     def template_resource(self, template_resource):
         """Sets the template_resource of this DocumentTemplate.
 
-            
+            The resource path to a custom template to be used to generate PDF documents.
 
         :param template_resource: The template_resource of this DocumentTemplate.
         :type: ResourcePath
@@ -269,7 +269,7 @@ class DocumentTemplate:
     def type(self):
         """Gets the type of this DocumentTemplate.
 
-            
+            The document template's type.
 
         :return: The type of this DocumentTemplate.
         :rtype: int
@@ -280,7 +280,7 @@ class DocumentTemplate:
     def type(self, type):
         """Sets the type of this DocumentTemplate.
 
-            
+            The document template's type.
 
         :param type: The type of this DocumentTemplate.
         :type: int

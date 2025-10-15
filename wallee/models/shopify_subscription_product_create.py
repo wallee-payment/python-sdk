@@ -10,25 +10,31 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductUpdate)
     swagger_types = {
     
         'product_id': 'str',
+        'product_legacy_id': 'str',
         'product_variant_id': 'str',
+        'product_variant_legacy_id': 'str',
         'shop': 'int',
     }
 
     attribute_map = {
-        'product_id': 'productId','product_variant_id': 'productVariantId','shop': 'shop',
+        'product_id': 'productId','product_legacy_id': 'productLegacyId','product_variant_id': 'productVariantId','product_variant_legacy_id': 'productVariantLegacyId','shop': 'shop',
     }
 
     
     _product_id = None
+    _product_legacy_id = None
     _product_variant_id = None
+    _product_variant_legacy_id = None
     _shop = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.product_id = kwargs.get('product_id')
+        self.product_id = kwargs.get('product_id', None)
+        self.product_legacy_id = kwargs.get('product_legacy_id')
 
-        self.product_variant_id = kwargs.get('product_variant_id')
+        self.product_variant_id = kwargs.get('product_variant_id', None)
+        self.product_variant_legacy_id = kwargs.get('product_variant_legacy_id')
 
         self.shop = kwargs.get('shop')
 
@@ -57,10 +63,33 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductUpdate)
         :param product_id: The product_id of this ShopifySubscriptionProductCreate.
         :type: str
         """
-        if product_id is None:
-            raise ValueError("Invalid value for `product_id`, must not be `None`")
 
         self._product_id = product_id
+    
+    @property
+    def product_legacy_id(self):
+        """Gets the product_legacy_id of this ShopifySubscriptionProductCreate.
+
+            The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+
+        :return: The product_legacy_id of this ShopifySubscriptionProductCreate.
+        :rtype: str
+        """
+        return self._product_legacy_id
+
+    @product_legacy_id.setter
+    def product_legacy_id(self, product_legacy_id):
+        """Sets the product_legacy_id of this ShopifySubscriptionProductCreate.
+
+            The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+
+        :param product_legacy_id: The product_legacy_id of this ShopifySubscriptionProductCreate.
+        :type: str
+        """
+        if product_legacy_id is None:
+            raise ValueError("Invalid value for `product_legacy_id`, must not be `None`")
+
+        self._product_legacy_id = product_legacy_id
     
     @property
     def product_variant_id(self):
@@ -82,10 +111,33 @@ class ShopifySubscriptionProductCreate(AbstractShopifySubscriptionProductUpdate)
         :param product_variant_id: The product_variant_id of this ShopifySubscriptionProductCreate.
         :type: str
         """
-        if product_variant_id is None:
-            raise ValueError("Invalid value for `product_variant_id`, must not be `None`")
 
         self._product_variant_id = product_variant_id
+    
+    @property
+    def product_variant_legacy_id(self):
+        """Gets the product_variant_legacy_id of this ShopifySubscriptionProductCreate.
+
+            
+
+        :return: The product_variant_legacy_id of this ShopifySubscriptionProductCreate.
+        :rtype: str
+        """
+        return self._product_variant_legacy_id
+
+    @product_variant_legacy_id.setter
+    def product_variant_legacy_id(self, product_variant_legacy_id):
+        """Sets the product_variant_legacy_id of this ShopifySubscriptionProductCreate.
+
+            
+
+        :param product_variant_legacy_id: The product_variant_legacy_id of this ShopifySubscriptionProductCreate.
+        :type: str
+        """
+        if product_variant_legacy_id is None:
+            raise ValueError("Invalid value for `product_variant_legacy_id`, must not be `None`")
+
+        self._product_variant_legacy_id = product_variant_legacy_id
     
     @property
     def shop(self):

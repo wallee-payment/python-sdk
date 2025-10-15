@@ -118,7 +118,7 @@ class SubscriptionProductComponentUpdate:
     def component_change_weight(self):
         """Gets the component_change_weight of this SubscriptionProductComponentUpdate.
 
-            If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.
+            If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.
 
         :return: The component_change_weight of this SubscriptionProductComponentUpdate.
         :rtype: int
@@ -129,7 +129,7 @@ class SubscriptionProductComponentUpdate:
     def component_change_weight(self, component_change_weight):
         """Sets the component_change_weight of this SubscriptionProductComponentUpdate.
 
-            If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.
+            If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.
 
         :param component_change_weight: The component_change_weight of this SubscriptionProductComponentUpdate.
         :type: int
@@ -141,7 +141,7 @@ class SubscriptionProductComponentUpdate:
     def component_group(self):
         """Gets the component_group of this SubscriptionProductComponentUpdate.
 
-            
+            The group that the component belongs to.
 
         :return: The component_group of this SubscriptionProductComponentUpdate.
         :rtype: int
@@ -152,7 +152,7 @@ class SubscriptionProductComponentUpdate:
     def component_group(self, component_group):
         """Sets the component_group of this SubscriptionProductComponentUpdate.
 
-            
+            The group that the component belongs to.
 
         :param component_group: The component_group of this SubscriptionProductComponentUpdate.
         :type: int
@@ -164,7 +164,7 @@ class SubscriptionProductComponentUpdate:
     def default_component(self):
         """Gets the default_component of this SubscriptionProductComponentUpdate.
 
-            When a component is marked as a 'default' component it is used as the default component in its group and will be preselected in the product configuration.
+            Whether this is the default component in its group and preselected.
 
         :return: The default_component of this SubscriptionProductComponentUpdate.
         :rtype: bool
@@ -175,7 +175,7 @@ class SubscriptionProductComponentUpdate:
     def default_component(self, default_component):
         """Sets the default_component of this SubscriptionProductComponentUpdate.
 
-            When a component is marked as a 'default' component it is used as the default component in its group and will be preselected in the product configuration.
+            Whether this is the default component in its group and preselected.
 
         :param default_component: The default_component of this SubscriptionProductComponentUpdate.
         :type: bool
@@ -187,7 +187,7 @@ class SubscriptionProductComponentUpdate:
     def description(self):
         """Gets the description of this SubscriptionProductComponentUpdate.
 
-            The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
+            The localized description of the component that is displayed to the customer.
 
         :return: The description of this SubscriptionProductComponentUpdate.
         :rtype: dict(str, str)
@@ -198,7 +198,7 @@ class SubscriptionProductComponentUpdate:
     def description(self, description):
         """Sets the description of this SubscriptionProductComponentUpdate.
 
-            The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
+            The localized description of the component that is displayed to the customer.
 
         :param description: The description of this SubscriptionProductComponentUpdate.
         :type: dict(str, str)
@@ -210,7 +210,7 @@ class SubscriptionProductComponentUpdate:
     def maximal_quantity(self):
         """Gets the maximal_quantity of this SubscriptionProductComponentUpdate.
 
-            The maximum quantity defines the maximum value which must be entered for the quantity.
+            A maximum of the defined quantity can be selected for this component.
 
         :return: The maximal_quantity of this SubscriptionProductComponentUpdate.
         :rtype: float
@@ -221,7 +221,7 @@ class SubscriptionProductComponentUpdate:
     def maximal_quantity(self, maximal_quantity):
         """Sets the maximal_quantity of this SubscriptionProductComponentUpdate.
 
-            The maximum quantity defines the maximum value which must be entered for the quantity.
+            A maximum of the defined quantity can be selected for this component.
 
         :param maximal_quantity: The maximal_quantity of this SubscriptionProductComponentUpdate.
         :type: float
@@ -233,7 +233,7 @@ class SubscriptionProductComponentUpdate:
     def minimal_quantity(self):
         """Gets the minimal_quantity of this SubscriptionProductComponentUpdate.
 
-            The minimal quantity defines the minimum value which must be entered for the quantity.
+            A minimum of the defined quantity must be selected for this component.
 
         :return: The minimal_quantity of this SubscriptionProductComponentUpdate.
         :rtype: float
@@ -244,7 +244,7 @@ class SubscriptionProductComponentUpdate:
     def minimal_quantity(self, minimal_quantity):
         """Sets the minimal_quantity of this SubscriptionProductComponentUpdate.
 
-            The minimal quantity defines the minimum value which must be entered for the quantity.
+            A minimum of the defined quantity must be selected for this component.
 
         :param minimal_quantity: The minimal_quantity of this SubscriptionProductComponentUpdate.
         :type: float
@@ -256,7 +256,7 @@ class SubscriptionProductComponentUpdate:
     def name(self):
         """Gets the name of this SubscriptionProductComponentUpdate.
 
-            The component name is shown to the subscriber. It should describe in few words what the component does contain.
+            The localized name of the component that is displayed to the customer.
 
         :return: The name of this SubscriptionProductComponentUpdate.
         :rtype: dict(str, str)
@@ -267,7 +267,7 @@ class SubscriptionProductComponentUpdate:
     def name(self, name):
         """Sets the name of this SubscriptionProductComponentUpdate.
 
-            The component name is shown to the subscriber. It should describe in few words what the component does contain.
+            The localized name of the component that is displayed to the customer.
 
         :param name: The name of this SubscriptionProductComponentUpdate.
         :type: dict(str, str)
@@ -279,7 +279,7 @@ class SubscriptionProductComponentUpdate:
     def quantity_step(self):
         """Gets the quantity_step of this SubscriptionProductComponentUpdate.
 
-            The quantity step defines at which interval the quantity can be increased.
+            The quantity step determines the interval in which the quantity can be increased.
 
         :return: The quantity_step of this SubscriptionProductComponentUpdate.
         :rtype: float
@@ -290,7 +290,7 @@ class SubscriptionProductComponentUpdate:
     def quantity_step(self, quantity_step):
         """Sets the quantity_step of this SubscriptionProductComponentUpdate.
 
-            The quantity step defines at which interval the quantity can be increased.
+            The quantity step determines the interval in which the quantity can be increased.
 
         :param quantity_step: The quantity_step of this SubscriptionProductComponentUpdate.
         :type: float
@@ -302,7 +302,7 @@ class SubscriptionProductComponentUpdate:
     def reference(self):
         """Gets the reference of this SubscriptionProductComponentUpdate.
 
-            The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.
+            The reference is used to link components across different product versions.
 
         :return: The reference of this SubscriptionProductComponentUpdate.
         :rtype: int
@@ -313,7 +313,7 @@ class SubscriptionProductComponentUpdate:
     def reference(self, reference):
         """Sets the reference of this SubscriptionProductComponentUpdate.
 
-            The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.
+            The reference is used to link components across different product versions.
 
         :param reference: The reference of this SubscriptionProductComponentUpdate.
         :type: int
@@ -325,7 +325,7 @@ class SubscriptionProductComponentUpdate:
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponentUpdate.
 
-            The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.
+            When listing components, they can be sorted by this number.
 
         :return: The sort_order of this SubscriptionProductComponentUpdate.
         :rtype: int
@@ -336,7 +336,7 @@ class SubscriptionProductComponentUpdate:
     def sort_order(self, sort_order):
         """Sets the sort_order of this SubscriptionProductComponentUpdate.
 
-            The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.
+            When listing components, they can be sorted by this number.
 
         :param sort_order: The sort_order of this SubscriptionProductComponentUpdate.
         :type: int
@@ -348,7 +348,7 @@ class SubscriptionProductComponentUpdate:
     def tax_class(self):
         """Gets the tax_class of this SubscriptionProductComponentUpdate.
 
-            The tax class of the component determines the taxes which are applicable on all fees linked with the component.
+            The tax class to be applied to fees.
 
         :return: The tax_class of this SubscriptionProductComponentUpdate.
         :rtype: int
@@ -359,7 +359,7 @@ class SubscriptionProductComponentUpdate:
     def tax_class(self, tax_class):
         """Sets the tax_class of this SubscriptionProductComponentUpdate.
 
-            The tax class of the component determines the taxes which are applicable on all fees linked with the component.
+            The tax class to be applied to fees.
 
         :param tax_class: The tax_class of this SubscriptionProductComponentUpdate.
         :type: int

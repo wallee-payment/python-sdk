@@ -7,24 +7,25 @@ import re
 
 from wallee.api_client import ApiClient
 
-class AnalyticsQueryServiceApi:
+class DunningCaseServiceApi:
 
     def __init__(self, configuration):
         self.api_client = ApiClient(configuration=configuration)
 
-    def cancel_execution(self, id, **kwargs):
-        """Cancel Execution
+    def count(self, space_id, **kwargs):
+        """Count
 
-        Cancels the specified query execution.
+        Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.cancel_execution(id, async_req=True)
+        >>> thread = api.count(space_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The ID of the query execution to cancel. (required)
-        :return: None
+        :param int space_id:  (required)
+        :param EntityQueryFilter filter: The filter which restricts the entities which are used to calculate the count.
+        :return: int
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -32,29 +33,30 @@ class AnalyticsQueryServiceApi:
         
         kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
-            return self.cancel_execution_with_http_info(id, **kwargs)
+            return self.count_with_http_info(space_id, **kwargs)
         else:
-            (data) = self.cancel_execution_with_http_info(id, **kwargs)
+            (data) = self.count_with_http_info(space_id, **kwargs)
             return data
 
-    def cancel_execution_with_http_info(self, id, **kwargs):
-        """Cancel Execution
+    def count_with_http_info(self, space_id, **kwargs):
+        """Count
 
-        Cancels the specified query execution.
+        Counts the number of items in the database as restricted by the given filter.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.cancel_execution_with_http_info(id, async_req=True)
+        >>> thread = api.count_with_http_info(space_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The ID of the query execution to cancel. (required)
-        :return: None
+        :param int space_id:  (required)
+        :param EntityQueryFilter filter: The filter which restricts the entities which are used to calculate the count.
+        :return: int
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']
+        all_params = ['space_id', 'filter']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -65,20 +67,240 @@ class AnalyticsQueryServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method cancel_execution" % key
+                    " to method count" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `cancel_execution`")
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `count`")
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'filter' in params:
+            body_params = params['filter']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json;charset=utf-8'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(
+            ['application/json;charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/dunning-case/count', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='int',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_from_invoice(self, space_id, invoice_id, **kwargs):
+        """Create Dunning Case
+
+        Creates a dunning case for the invoice referenced by the provided ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.create_from_invoice(space_id, invoice_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int invoice_id: ID of the invoice to base the dunning case on. (required)
+        :return: DunningCase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
+        if kwargs.get('async_req'):
+            return self.create_from_invoice_with_http_info(space_id, invoice_id, **kwargs)
+        else:
+            (data) = self.create_from_invoice_with_http_info(space_id, invoice_id, **kwargs)
+            return data
+
+    def create_from_invoice_with_http_info(self, space_id, invoice_id, **kwargs):
+        """Create Dunning Case
+
+        Creates a dunning case for the invoice referenced by the provided ID.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.create_from_invoice_with_http_info(space_id, invoice_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int invoice_id: ID of the invoice to base the dunning case on. (required)
+        :return: DunningCase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'invoice_id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_from_invoice" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `create_from_invoice`")
+        # verify the required parameter 'invoice_id' is set
+        if ('invoice_id' not in params or
+                params['invoice_id'] is None):
+            raise ValueError("Missing the required parameter `invoice_id` when calling `create_from_invoice`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'invoice_id' in params:
+            query_params.append(('invoiceId', params['invoice_id']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json;charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/dunning-case/create-from-invoice', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DunningCase',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('request_timeout'),
+            collection_formats=collection_formats)
+
+    def read(self, space_id, id, **kwargs):
+        """Read
+
+        Reads the entity with the given 'id' and returns it.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.read(space_id, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int id: The id of the dunning case which should be returned. (required)
+        :return: DunningCase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
+        if kwargs.get('async_req'):
+            return self.read_with_http_info(space_id, id, **kwargs)
+        else:
+            (data) = self.read_with_http_info(space_id, id, **kwargs)
+            return data
+
+    def read_with_http_info(self, space_id, id, **kwargs):
+        """Read
+
+        Reads the entity with the given 'id' and returns it.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.read_with_http_info(space_id, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int id: The id of the dunning case which should be returned. (required)
+        :return: DunningCase
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'id']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method read" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `read`")
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `read`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
         if 'id' in params:
             query_params.append(('id', params['id']))
 
@@ -100,14 +322,14 @@ class AnalyticsQueryServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/analytics-query/cancel-execution', 'POST',
+            '/dunning-case/read', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,
+            response_type='DunningCase',
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -115,22 +337,20 @@ class AnalyticsQueryServiceApi:
             _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
-    def fetch_result(self, id, **kwargs):
-        """Fetch Result
+    def search(self, space_id, query, **kwargs):
+        """Search
 
-        Fetches one batch of the result of a query execution.
+        Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.fetch_result(id, async_req=True)
+        >>> thread = api.search(space_id, query, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The ID of the query execution for which to fetch the result. (required)
-        :param int timeout: The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting.
-        :param int max_rows: The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.)
-        :param str next_token: The next-token of the preceding batch to get the next result batch or null to get the first result batch.
-        :return: AnalyticsQueryResultBatch
+        :param int space_id:  (required)
+        :param EntityQuery query: Query restricting the returned dunning cases. (required)
+        :return: list[DunningCase]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -138,32 +358,30 @@ class AnalyticsQueryServiceApi:
         
         kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
-            return self.fetch_result_with_http_info(id, **kwargs)
+            return self.search_with_http_info(space_id, query, **kwargs)
         else:
-            (data) = self.fetch_result_with_http_info(id, **kwargs)
+            (data) = self.search_with_http_info(space_id, query, **kwargs)
             return data
 
-    def fetch_result_with_http_info(self, id, **kwargs):
-        """Fetch Result
+    def search_with_http_info(self, space_id, query, **kwargs):
+        """Search
 
-        Fetches one batch of the result of a query execution.
+        Searches for the entities as specified by the given query.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.fetch_result_with_http_info(id, async_req=True)
+        >>> thread = api.search_with_http_info(space_id, query, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: The ID of the query execution for which to fetch the result. (required)
-        :param int timeout: The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting.
-        :param int max_rows: The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.)
-        :param str next_token: The next-token of the preceding batch to get the next result batch or null to get the first result batch.
-        :return: AnalyticsQueryResultBatch
+        :param int space_id:  (required)
+        :param EntityQuery query: Query restricting the returned dunning cases. (required)
+        :return: list[DunningCase]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'timeout', 'max_rows', 'next_token']
+        all_params = ['space_id', 'query']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -174,434 +392,26 @@ class AnalyticsQueryServiceApi:
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method fetch_result" % key
+                    " to method search" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `fetch_result`")
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'id' in params:
-            query_params.append(('id', params['id']))
-        if 'timeout' in params:
-            query_params.append(('timeout', params['timeout']))
-        if 'max_rows' in params:
-            query_params.append(('maxRows', params['max_rows']))
-        if 'next_token' in params:
-            query_params.append(('nextToken', params['next_token']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json;charset=utf-8'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(
-            ['*/*'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/analytics-query/fetch-result', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnalyticsQueryResultBatch',
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('request_timeout'),
-            collection_formats=collection_formats)
-
-    def generate_download_url(self, id, **kwargs):
-        """Generate Download URL
-
-        Generate a URL from which the results of a query execution can be downloaded in CSV format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.generate_download_url(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The ID of the query execution for which to generate the download URL. (required)
-        :param int timeout: The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting.
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        
-        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
-        if kwargs.get('async_req'):
-            return self.generate_download_url_with_http_info(id, **kwargs)
-        else:
-            (data) = self.generate_download_url_with_http_info(id, **kwargs)
-            return data
-
-    def generate_download_url_with_http_info(self, id, **kwargs):
-        """Generate Download URL
-
-        Generate a URL from which the results of a query execution can be downloaded in CSV format.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.generate_download_url_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The ID of the query execution for which to generate the download URL. (required)
-        :param int timeout: The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting.
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'timeout']
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method generate_download_url" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `generate_download_url`")
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'id' in params:
-            query_params.append(('id', params['id']))
-        if 'timeout' in params:
-            query_params.append(('timeout', params['timeout']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/plain'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(
-            ['*/*'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/analytics-query/generate-download-url', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('request_timeout'),
-            collection_formats=collection_formats)
-
-    def schema(self, **kwargs):
-        """Get Schemas
-
-        Get the schemas describing the available tables and their columns.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.schema(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :return: list[AnalyticsSchemaTable]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        
-        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
-        if kwargs.get('async_req'):
-            return self.schema_with_http_info(**kwargs)
-        else:
-            (data) = self.schema_with_http_info(**kwargs)
-            return data
-
-    def schema_with_http_info(self, **kwargs):
-        """Get Schemas
-
-        Get the schemas describing the available tables and their columns.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.schema_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :return: list[AnalyticsSchemaTable]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = []
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method schema" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json;charset=utf-8'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(
-            ['*/*'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/analytics-query/schema', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='list[AnalyticsSchemaTable]',
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('request_timeout'),
-            collection_formats=collection_formats)
-
-    def status(self, id, **kwargs):
-        """Execution Status
-
-        Returns the current status of a query execution.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.status(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The ID of the query execution for which to get the status. (required)
-        :return: AnalyticsQueryExecution
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        
-        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
-        if kwargs.get('async_req'):
-            return self.status_with_http_info(id, **kwargs)
-        else:
-            (data) = self.status_with_http_info(id, **kwargs)
-            return data
-
-    def status_with_http_info(self, id, **kwargs):
-        """Execution Status
-
-        Returns the current status of a query execution.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.status_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param int id: The ID of the query execution for which to get the status. (required)
-        :return: AnalyticsQueryExecution
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id']
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method status" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `status`")
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'id' in params:
-            query_params.append(('id', params['id']))
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json;charset=utf-8'])
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(
-            ['*/*'])
-
-        # Authentication setting
-        auth_settings = []
-
-        return self.api_client.call_api(
-            '/analytics-query/status', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnalyticsQueryExecution',
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('request_timeout'),
-            collection_formats=collection_formats)
-
-    def submit_query(self, query, **kwargs):
-        """Submit Query
-
-        Submits a query for execution.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.submit_query(query, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param AnalyticsQuery query: The query to submit. (required)
-        :return: AnalyticsQueryExecution
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        
-        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
-        if kwargs.get('async_req'):
-            return self.submit_query_with_http_info(query, **kwargs)
-        else:
-            (data) = self.submit_query_with_http_info(query, **kwargs)
-            return data
-
-    def submit_query_with_http_info(self, query, **kwargs):
-        """Submit Query
-
-        Submits a query for execution.
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True.
-        
-        >>> thread = api.submit_query_with_http_info(query, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param AnalyticsQuery query: The query to submit. (required)
-        :return: AnalyticsQueryExecution
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['query']
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method submit_query" % key
-                )
-            params[key] = val
-        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `search`")
         # verify the required parameter 'query' is set
         if ('query' not in params or
                 params['query'] is None):
-            raise ValueError("Missing the required parameter `query` when calling `submit_query`")
+            raise ValueError("Missing the required parameter `query` when calling `search`")
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
 
         header_params = {}
 
@@ -623,14 +433,125 @@ class AnalyticsQueryServiceApi:
         auth_settings = []
 
         return self.api_client.call_api(
-            '/analytics-query/submit-query', 'POST',
+            '/dunning-case/search', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AnalyticsQueryExecution',
+            response_type='list[DunningCase]',
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('request_timeout'),
+            collection_formats=collection_formats)
+
+    def suspend(self, space_id, id, **kwargs):
+        """Suspend Dunning Case
+
+        Suspends the specified dunning case.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.suspend(space_id, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int id: ID of the dunning case to suspend. (required)
+        :param datetime planned_end_date: Optional planned end date of the suspension.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        
+        kwargs['request_timeout'] = self.api_client.configuration.request_timeout
+        if kwargs.get('async_req'):
+            return self.suspend_with_http_info(space_id, id, **kwargs)
+        else:
+            (data) = self.suspend_with_http_info(space_id, id, **kwargs)
+            return data
+
+    def suspend_with_http_info(self, space_id, id, **kwargs):
+        """Suspend Dunning Case
+
+        Suspends the specified dunning case.
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True.
+        
+        >>> thread = api.suspend_with_http_info(space_id, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int space_id:  (required)
+        :param int id: ID of the dunning case to suspend. (required)
+        :param datetime planned_end_date: Optional planned end date of the suspension.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['space_id', 'id', 'planned_end_date']
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method suspend" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'space_id' is set
+        if ('space_id' not in params or
+                params['space_id'] is None):
+            raise ValueError("Missing the required parameter `space_id` when calling `suspend`")
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `suspend`")
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'space_id' in params:
+            query_params.append(('spaceId', params['space_id']))
+        if 'id' in params:
+            query_params.append(('id', params['id']))
+        if 'planned_end_date' in params:
+            query_params.append(('plannedEndDate', params['planned_end_date']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json;charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = []
+
+        return self.api_client.call_api(
+            '/dunning-case/suspend', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

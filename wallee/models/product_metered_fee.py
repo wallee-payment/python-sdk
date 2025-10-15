@@ -54,7 +54,7 @@ class ProductMeteredFee:
     def component(self):
         """Gets the component of this ProductMeteredFee.
 
-            
+            The product component that the fee belongs to.
 
         :return: The component of this ProductMeteredFee.
         :rtype: SubscriptionProductComponent
@@ -65,7 +65,7 @@ class ProductMeteredFee:
     def component(self, component):
         """Sets the component of this ProductMeteredFee.
 
-            
+            The product component that the fee belongs to.
 
         :param component: The component of this ProductMeteredFee.
         :type: SubscriptionProductComponent
@@ -77,7 +77,7 @@ class ProductMeteredFee:
     def description(self):
         """Gets the description of this ProductMeteredFee.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :return: The description of this ProductMeteredFee.
         :rtype: dict(str, str)
@@ -88,7 +88,7 @@ class ProductMeteredFee:
     def description(self, description):
         """Sets the description of this ProductMeteredFee.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :param description: The description of this ProductMeteredFee.
         :type: dict(str, str)
@@ -146,7 +146,7 @@ class ProductMeteredFee:
     def metric(self):
         """Gets the metric of this ProductMeteredFee.
 
-            
+            The metric used to determine the resource consumption billed to the customer.
 
         :return: The metric of this ProductMeteredFee.
         :rtype: SubscriptionMetric
@@ -157,7 +157,7 @@ class ProductMeteredFee:
     def metric(self, metric):
         """Sets the metric of this ProductMeteredFee.
 
-            
+            The metric used to determine the resource consumption billed to the customer.
 
         :param metric: The metric of this ProductMeteredFee.
         :type: SubscriptionMetric
@@ -169,7 +169,7 @@ class ProductMeteredFee:
     def name(self):
         """Gets the name of this ProductMeteredFee.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :return: The name of this ProductMeteredFee.
         :rtype: dict(str, str)
@@ -180,7 +180,7 @@ class ProductMeteredFee:
     def name(self, name):
         """Sets the name of this ProductMeteredFee.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :param name: The name of this ProductMeteredFee.
         :type: dict(str, str)
@@ -192,7 +192,7 @@ class ProductMeteredFee:
     def tier_pricing(self):
         """Gets the tier_pricing of this ProductMeteredFee.
 
-            The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
+            The method used to calculate the tier price.
 
         :return: The tier_pricing of this ProductMeteredFee.
         :rtype: ProductMeteredTierPricing
@@ -203,7 +203,7 @@ class ProductMeteredFee:
     def tier_pricing(self, tier_pricing):
         """Sets the tier_pricing of this ProductMeteredFee.
 
-            The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
+            The method used to calculate the tier price.
 
         :param tier_pricing: The tier_pricing of this ProductMeteredFee.
         :type: ProductMeteredTierPricing
@@ -215,7 +215,7 @@ class ProductMeteredFee:
     def type(self):
         """Gets the type of this ProductMeteredFee.
 
-            
+            The type of the fee.
 
         :return: The type of this ProductMeteredFee.
         :rtype: ProductFeeType
@@ -226,7 +226,7 @@ class ProductMeteredFee:
     def type(self, type):
         """Sets the type of this ProductMeteredFee.
 
-            
+            The type of the fee.
 
         :param type: The type of this ProductMeteredFee.
         :type: ProductFeeType

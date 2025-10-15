@@ -9,58 +9,55 @@ class CardCryptogramCreate:
 
     swagger_types = {
     
-        'type': 'CardCryptogramType',
+        'eci': 'str',
         'value': 'str',
     }
 
     attribute_map = {
-        'type': 'type','value': 'value',
+        'eci': 'eci','value': 'value',
     }
 
     
-    _type = None
+    _eci = None
     _value = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
-        self.type = kwargs.get('type')
-
+        self.eci = kwargs.get('eci', None)
         self.value = kwargs.get('value')
 
         
 
     
     @property
-    def type(self):
-        """Gets the type of this CardCryptogramCreate.
+    def eci(self):
+        """Gets the eci of this CardCryptogramCreate.
 
-            
+            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
 
-        :return: The type of this CardCryptogramCreate.
-        :rtype: CardCryptogramType
+        :return: The eci of this CardCryptogramCreate.
+        :rtype: str
         """
-        return self._type
+        return self._eci
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this CardCryptogramCreate.
+    @eci.setter
+    def eci(self, eci):
+        """Sets the eci of this CardCryptogramCreate.
 
-            
+            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
 
-        :param type: The type of this CardCryptogramCreate.
-        :type: CardCryptogramType
+        :param eci: The eci of this CardCryptogramCreate.
+        :type: str
         """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
 
-        self._type = type
+        self._eci = eci
     
     @property
     def value(self):
         """Gets the value of this CardCryptogramCreate.
 
-            
+            The cryptogram value used for securing card transactions, format varying based on the PAN type.
 
         :return: The value of this CardCryptogramCreate.
         :rtype: str
@@ -71,7 +68,7 @@ class CardCryptogramCreate:
     def value(self, value):
         """Sets the value of this CardCryptogramCreate.
 
-            
+            The cryptogram value used for securing card transactions, format varying based on the PAN type.
 
         :param value: The value of this CardCryptogramCreate.
         :type: str

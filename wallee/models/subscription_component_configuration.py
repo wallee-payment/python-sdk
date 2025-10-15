@@ -42,7 +42,7 @@ class SubscriptionComponentConfiguration:
     def component(self):
         """Gets the component of this SubscriptionComponentConfiguration.
 
-            
+            The component that is being configured.
 
         :return: The component of this SubscriptionComponentConfiguration.
         :rtype: int
@@ -53,7 +53,7 @@ class SubscriptionComponentConfiguration:
     def component(self, component):
         """Sets the component of this SubscriptionComponentConfiguration.
 
-            
+            The component that is being configured.
 
         :param component: The component of this SubscriptionComponentConfiguration.
         :type: int
@@ -111,7 +111,7 @@ class SubscriptionComponentConfiguration:
     def quantity(self):
         """Gets the quantity of this SubscriptionComponentConfiguration.
 
-            
+            The quantity that should be applied to the component.
 
         :return: The quantity of this SubscriptionComponentConfiguration.
         :rtype: float
@@ -122,7 +122,7 @@ class SubscriptionComponentConfiguration:
     def quantity(self, quantity):
         """Sets the quantity of this SubscriptionComponentConfiguration.
 
-            
+            The quantity that should be applied to the component.
 
         :param quantity: The quantity of this SubscriptionComponentConfiguration.
         :type: float

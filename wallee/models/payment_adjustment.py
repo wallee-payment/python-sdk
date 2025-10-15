@@ -11,18 +11,20 @@ class PaymentAdjustment:
     
         'amount_excluding_tax': 'float',
         'amount_including_tax': 'float',
+        'id': 'int',
         'rate_in_percentage': 'float',
         'tax': 'Tax',
         'type': 'int',
     }
 
     attribute_map = {
-        'amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','rate_in_percentage': 'rateInPercentage','tax': 'tax','type': 'type',
+        'amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','id': 'id','rate_in_percentage': 'rateInPercentage','tax': 'tax','type': 'type',
     }
 
     
     _amount_excluding_tax = None
     _amount_including_tax = None
+    _id = None
     _rate_in_percentage = None
     _tax = None
     _type = None
@@ -32,6 +34,7 @@ class PaymentAdjustment:
         
         self.amount_excluding_tax = kwargs.get('amount_excluding_tax', None)
         self.amount_including_tax = kwargs.get('amount_including_tax', None)
+        self.id = kwargs.get('id', None)
         self.rate_in_percentage = kwargs.get('rate_in_percentage', None)
         self.tax = kwargs.get('tax', None)
         self.type = kwargs.get('type', None)
@@ -42,7 +45,7 @@ class PaymentAdjustment:
     def amount_excluding_tax(self):
         """Gets the amount_excluding_tax of this PaymentAdjustment.
 
-            
+            The adjustment's amount, excluding taxes.
 
         :return: The amount_excluding_tax of this PaymentAdjustment.
         :rtype: float
@@ -53,7 +56,7 @@ class PaymentAdjustment:
     def amount_excluding_tax(self, amount_excluding_tax):
         """Sets the amount_excluding_tax of this PaymentAdjustment.
 
-            
+            The adjustment's amount, excluding taxes.
 
         :param amount_excluding_tax: The amount_excluding_tax of this PaymentAdjustment.
         :type: float
@@ -65,7 +68,7 @@ class PaymentAdjustment:
     def amount_including_tax(self):
         """Gets the amount_including_tax of this PaymentAdjustment.
 
-            The total amount of this adjustment including taxes.
+            The adjustment's amount, including taxes.
 
         :return: The amount_including_tax of this PaymentAdjustment.
         :rtype: float
@@ -76,7 +79,7 @@ class PaymentAdjustment:
     def amount_including_tax(self, amount_including_tax):
         """Sets the amount_including_tax of this PaymentAdjustment.
 
-            The total amount of this adjustment including taxes.
+            The adjustment's amount, including taxes.
 
         :param amount_including_tax: The amount_including_tax of this PaymentAdjustment.
         :type: float
@@ -85,10 +88,33 @@ class PaymentAdjustment:
         self._amount_including_tax = amount_including_tax
     
     @property
+    def id(self):
+        """Gets the id of this PaymentAdjustment.
+
+            A unique identifier for the object.
+
+        :return: The id of this PaymentAdjustment.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PaymentAdjustment.
+
+            A unique identifier for the object.
+
+        :param id: The id of this PaymentAdjustment.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def rate_in_percentage(self):
         """Gets the rate_in_percentage of this PaymentAdjustment.
 
-            The rate in percentage is the rate on which the adjustment amount was calculated with.
+            The percentage rate used to calculate the adjustment amount.
 
         :return: The rate_in_percentage of this PaymentAdjustment.
         :rtype: float
@@ -99,7 +125,7 @@ class PaymentAdjustment:
     def rate_in_percentage(self, rate_in_percentage):
         """Sets the rate_in_percentage of this PaymentAdjustment.
 
-            The rate in percentage is the rate on which the adjustment amount was calculated with.
+            The percentage rate used to calculate the adjustment amount.
 
         :param rate_in_percentage: The rate_in_percentage of this PaymentAdjustment.
         :type: float
@@ -111,7 +137,7 @@ class PaymentAdjustment:
     def tax(self):
         """Gets the tax of this PaymentAdjustment.
 
-            
+            The tax applied to the adjustment.
 
         :return: The tax of this PaymentAdjustment.
         :rtype: Tax
@@ -122,7 +148,7 @@ class PaymentAdjustment:
     def tax(self, tax):
         """Sets the tax of this PaymentAdjustment.
 
-            
+            The tax applied to the adjustment.
 
         :param tax: The tax of this PaymentAdjustment.
         :type: Tax
@@ -134,7 +160,7 @@ class PaymentAdjustment:
     def type(self):
         """Gets the type of this PaymentAdjustment.
 
-            
+            The type of the adjustment.
 
         :return: The type of this PaymentAdjustment.
         :rtype: int
@@ -145,7 +171,7 @@ class PaymentAdjustment:
     def type(self, type):
         """Sets the type of this PaymentAdjustment.
 
-            
+            The type of the adjustment.
 
         :param type: The type of this PaymentAdjustment.
         :type: int

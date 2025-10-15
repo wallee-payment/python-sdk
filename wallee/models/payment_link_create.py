@@ -29,7 +29,8 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
         self.state = kwargs.get('state', None)
         self.external_id = kwargs.get('external_id')
 
-        self.protection_mode = kwargs.get('protection_mode', None)
+        self.protection_mode = kwargs.get('protection_mode')
+
         super().__init__(**kwargs)
         self.swagger_types.update(super().swagger_types)
         self.attribute_map.update(super().attribute_map)
@@ -62,7 +63,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def external_id(self):
         """Gets the external_id of this PaymentLinkCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentLinkCreate.
         :rtype: str
@@ -73,7 +74,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def external_id(self, external_id):
         """Sets the external_id of this PaymentLinkCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentLinkCreate.
         :type: str
@@ -87,7 +88,7 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def protection_mode(self):
         """Gets the protection_mode of this PaymentLinkCreate.
 
-            The protection mode determines if the payment link is protected against tampering and in what way.
+            The protection mode defines whether the payment link is protected against tampering and specifies the protection method.
 
         :return: The protection_mode of this PaymentLinkCreate.
         :rtype: PaymentLinkProtectionMode
@@ -98,11 +99,13 @@ class PaymentLinkCreate(AbstractPaymentLinkUpdate):
     def protection_mode(self, protection_mode):
         """Sets the protection_mode of this PaymentLinkCreate.
 
-            The protection mode determines if the payment link is protected against tampering and in what way.
+            The protection mode defines whether the payment link is protected against tampering and specifies the protection method.
 
         :param protection_mode: The protection_mode of this PaymentLinkCreate.
         :type: PaymentLinkProtectionMode
         """
+        if protection_mode is None:
+            raise ValueError("Invalid value for `protection_mode`, must not be `None`")
 
         self._protection_mode = protection_mode
     

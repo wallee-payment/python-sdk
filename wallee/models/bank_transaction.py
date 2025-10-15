@@ -84,7 +84,7 @@ class BankTransaction:
     def adjustments(self):
         """Gets the adjustments of this BankTransaction.
 
-            The adjustments applied on this bank transaction.
+            Adjustments are changes made to the initial transaction amount, such as fees or corrections.
 
         :return: The adjustments of this BankTransaction.
         :rtype: list[PaymentAdjustment]
@@ -95,7 +95,7 @@ class BankTransaction:
     def adjustments(self, adjustments):
         """Sets the adjustments of this BankTransaction.
 
-            The adjustments applied on this bank transaction.
+            Adjustments are changes made to the initial transaction amount, such as fees or corrections.
 
         :param adjustments: The adjustments of this BankTransaction.
         :type: list[PaymentAdjustment]
@@ -107,7 +107,7 @@ class BankTransaction:
     def created_by(self):
         """Gets the created_by of this BankTransaction.
 
-            The created by indicates the user which has created the bank transaction.
+            The ID of the user the bank transaction was created by.
 
         :return: The created_by of this BankTransaction.
         :rtype: int
@@ -118,7 +118,7 @@ class BankTransaction:
     def created_by(self, created_by):
         """Sets the created_by of this BankTransaction.
 
-            The created by indicates the user which has created the bank transaction.
+            The ID of the user the bank transaction was created by.
 
         :param created_by: The created_by of this BankTransaction.
         :type: int
@@ -153,7 +153,7 @@ class BankTransaction:
     def currency_bank_account(self):
         """Gets the currency_bank_account of this BankTransaction.
 
-            The currency bank account which is used to handle money flow.
+            The currency bank account that sends or receives money based on the bank transaction's flow direction.
 
         :return: The currency_bank_account of this BankTransaction.
         :rtype: CurrencyBankAccount
@@ -164,7 +164,7 @@ class BankTransaction:
     def currency_bank_account(self, currency_bank_account):
         """Sets the currency_bank_account of this BankTransaction.
 
-            The currency bank account which is used to handle money flow.
+            The currency bank account that sends or receives money based on the bank transaction's flow direction.
 
         :param currency_bank_account: The currency_bank_account of this BankTransaction.
         :type: CurrencyBankAccount
@@ -176,7 +176,7 @@ class BankTransaction:
     def external_id(self):
         """Gets the external_id of this BankTransaction.
 
-            
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :return: The external_id of this BankTransaction.
         :rtype: str
@@ -187,7 +187,7 @@ class BankTransaction:
     def external_id(self, external_id):
         """Sets the external_id of this BankTransaction.
 
-            
+            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
 
         :param external_id: The external_id of this BankTransaction.
         :type: str
@@ -203,7 +203,7 @@ class BankTransaction:
     def flow_direction(self):
         """Gets the flow_direction of this BankTransaction.
 
-            
+            Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.
 
         :return: The flow_direction of this BankTransaction.
         :rtype: BankTransactionFlowDirection
@@ -214,7 +214,7 @@ class BankTransaction:
     def flow_direction(self, flow_direction):
         """Sets the flow_direction of this BankTransaction.
 
-            
+            Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.
 
         :param flow_direction: The flow_direction of this BankTransaction.
         :type: BankTransactionFlowDirection
@@ -272,7 +272,7 @@ class BankTransaction:
     def payment_date(self):
         """Gets the payment_date of this BankTransaction.
 
-            The payment date describes the date when the transaction was made.
+            The payment date specifies the date on which the payment was processed.
 
         :return: The payment_date of this BankTransaction.
         :rtype: datetime
@@ -283,7 +283,7 @@ class BankTransaction:
     def payment_date(self, payment_date):
         """Sets the payment_date of this BankTransaction.
 
-            The payment date describes the date when the transaction was made.
+            The payment date specifies the date on which the payment was processed.
 
         :param payment_date: The payment_date of this BankTransaction.
         :type: datetime
@@ -318,7 +318,7 @@ class BankTransaction:
     def posting_amount(self):
         """Gets the posting_amount of this BankTransaction.
 
-            The posting amount indicates the amount including adjustments.
+            The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.
 
         :return: The posting_amount of this BankTransaction.
         :rtype: float
@@ -329,7 +329,7 @@ class BankTransaction:
     def posting_amount(self, posting_amount):
         """Sets the posting_amount of this BankTransaction.
 
-            The posting amount indicates the amount including adjustments.
+            The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.
 
         :param posting_amount: The posting_amount of this BankTransaction.
         :type: float
@@ -341,7 +341,7 @@ class BankTransaction:
     def reference(self):
         """Gets the reference of this BankTransaction.
 
-            
+            A unique reference to identify the bank transaction.
 
         :return: The reference of this BankTransaction.
         :rtype: str
@@ -352,7 +352,7 @@ class BankTransaction:
     def reference(self, reference):
         """Sets the reference of this BankTransaction.
 
-            
+            A unique reference to identify the bank transaction.
 
         :param reference: The reference of this BankTransaction.
         :type: str
@@ -364,7 +364,7 @@ class BankTransaction:
     def source(self):
         """Gets the source of this BankTransaction.
 
-            
+            The source indicates how the bank transaction was created.
 
         :return: The source of this BankTransaction.
         :rtype: int
@@ -375,7 +375,7 @@ class BankTransaction:
     def source(self, source):
         """Sets the source of this BankTransaction.
 
-            
+            The source indicates how the bank transaction was created.
 
         :param source: The source of this BankTransaction.
         :type: int
@@ -410,7 +410,7 @@ class BankTransaction:
     def total_adjustment_amount_including_tax(self):
         """Gets the total_adjustment_amount_including_tax of this BankTransaction.
 
-            
+            Represents the total value of all adjustments to the bank transaction, including tax.
 
         :return: The total_adjustment_amount_including_tax of this BankTransaction.
         :rtype: float
@@ -421,7 +421,7 @@ class BankTransaction:
     def total_adjustment_amount_including_tax(self, total_adjustment_amount_including_tax):
         """Sets the total_adjustment_amount_including_tax of this BankTransaction.
 
-            
+            Represents the total value of all adjustments to the bank transaction, including tax.
 
         :param total_adjustment_amount_including_tax: The total_adjustment_amount_including_tax of this BankTransaction.
         :type: float
@@ -433,7 +433,7 @@ class BankTransaction:
     def type(self):
         """Gets the type of this BankTransaction.
 
-            
+            The bank transaction's type.
 
         :return: The type of this BankTransaction.
         :rtype: int
@@ -444,7 +444,7 @@ class BankTransaction:
     def type(self, type):
         """Sets the type of this BankTransaction.
 
-            
+            The bank transaction's type.
 
         :param type: The type of this BankTransaction.
         :type: int
@@ -456,7 +456,7 @@ class BankTransaction:
     def value_amount(self):
         """Gets the value_amount of this BankTransaction.
 
-            
+            The value amount represents the net monetary value of the transaction after applicable deductions.
 
         :return: The value_amount of this BankTransaction.
         :rtype: float
@@ -467,7 +467,7 @@ class BankTransaction:
     def value_amount(self, value_amount):
         """Sets the value_amount of this BankTransaction.
 
-            
+            The value amount represents the net monetary value of the transaction after applicable deductions.
 
         :param value_amount: The value_amount of this BankTransaction.
         :type: float
@@ -479,7 +479,7 @@ class BankTransaction:
     def value_date(self):
         """Gets the value_date of this BankTransaction.
 
-            The value date describes the date the amount is effective on the account.
+            The value date indicates the date on which the transaction amount becomes effective.
 
         :return: The value_date of this BankTransaction.
         :rtype: datetime
@@ -490,7 +490,7 @@ class BankTransaction:
     def value_date(self, value_date):
         """Sets the value_date of this BankTransaction.
 
-            The value date describes the date the amount is effective on the account.
+            The value date indicates the date on which the transaction amount becomes effective.
 
         :param value_date: The value_date of this BankTransaction.
         :type: datetime

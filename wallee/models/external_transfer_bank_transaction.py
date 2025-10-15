@@ -48,7 +48,7 @@ class ExternalTransferBankTransaction:
     def bank_transaction(self):
         """Gets the bank_transaction of this ExternalTransferBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :return: The bank_transaction of this ExternalTransferBankTransaction.
         :rtype: BankTransaction
@@ -59,7 +59,7 @@ class ExternalTransferBankTransaction:
     def bank_transaction(self, bank_transaction):
         """Sets the bank_transaction of this ExternalTransferBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :param bank_transaction: The bank_transaction of this ExternalTransferBankTransaction.
         :type: BankTransaction
@@ -71,7 +71,7 @@ class ExternalTransferBankTransaction:
     def external_account_identifier(self):
         """Gets the external_account_identifier of this ExternalTransferBankTransaction.
 
-            
+            The identifier is used to uniquely identify the external bank account.
 
         :return: The external_account_identifier of this ExternalTransferBankTransaction.
         :rtype: str
@@ -82,7 +82,7 @@ class ExternalTransferBankTransaction:
     def external_account_identifier(self, external_account_identifier):
         """Sets the external_account_identifier of this ExternalTransferBankTransaction.
 
-            
+            The identifier is used to uniquely identify the external bank account.
 
         :param external_account_identifier: The external_account_identifier of this ExternalTransferBankTransaction.
         :type: str
@@ -94,7 +94,7 @@ class ExternalTransferBankTransaction:
     def external_account_type(self):
         """Gets the external_account_type of this ExternalTransferBankTransaction.
 
-            
+            The external bank account's type.
 
         :return: The external_account_type of this ExternalTransferBankTransaction.
         :rtype: str
@@ -105,7 +105,7 @@ class ExternalTransferBankTransaction:
     def external_account_type(self, external_account_type):
         """Sets the external_account_type of this ExternalTransferBankTransaction.
 
-            
+            The external bank account's type.
 
         :param external_account_type: The external_account_type of this ExternalTransferBankTransaction.
         :type: str
@@ -117,7 +117,7 @@ class ExternalTransferBankTransaction:
     def external_bank_name(self):
         """Gets the external_bank_name of this ExternalTransferBankTransaction.
 
-            
+            The external bank account's name.
 
         :return: The external_bank_name of this ExternalTransferBankTransaction.
         :rtype: str
@@ -128,7 +128,7 @@ class ExternalTransferBankTransaction:
     def external_bank_name(self, external_bank_name):
         """Sets the external_bank_name of this ExternalTransferBankTransaction.
 
-            
+            The external bank account's name.
 
         :param external_bank_name: The external_bank_name of this ExternalTransferBankTransaction.
         :type: str

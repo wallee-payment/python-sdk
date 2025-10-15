@@ -94,7 +94,7 @@ class DebtCollectorCondition:
     def name(self):
         """Gets the name of this DebtCollectorCondition.
 
-            The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the condition.
 
         :return: The name of this DebtCollectorCondition.
         :rtype: str
@@ -105,7 +105,7 @@ class DebtCollectorCondition:
     def name(self, name):
         """Sets the name of this DebtCollectorCondition.
 
-            The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the condition.
 
         :param name: The name of this DebtCollectorCondition.
         :type: str
@@ -165,7 +165,7 @@ class DebtCollectorCondition:
     def type(self):
         """Gets the type of this DebtCollectorCondition.
 
-            The condition type determines the condition realization.
+            The condition type determines the criteria that a debt collection case must fulfill in order for a debt collector configuration to be considered for handling the case.
 
         :return: The type of this DebtCollectorCondition.
         :rtype: int
@@ -176,7 +176,7 @@ class DebtCollectorCondition:
     def type(self, type):
         """Sets the type of this DebtCollectorCondition.
 
-            The condition type determines the condition realization.
+            The condition type determines the criteria that a debt collection case must fulfill in order for a debt collector configuration to be considered for handling the case.
 
         :param type: The type of this DebtCollectorCondition.
         :type: int

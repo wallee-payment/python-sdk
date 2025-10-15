@@ -94,7 +94,7 @@ class PaymentTerminalConfiguration:
     def name(self):
         """Gets the name of this PaymentTerminalConfiguration.
 
-            The terminal configuration name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal configuration.
 
         :return: The name of this PaymentTerminalConfiguration.
         :rtype: str
@@ -105,7 +105,7 @@ class PaymentTerminalConfiguration:
     def name(self, name):
         """Sets the name of this PaymentTerminalConfiguration.
 
-            The terminal configuration name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal configuration.
 
         :param name: The name of this PaymentTerminalConfiguration.
         :type: str
@@ -165,7 +165,7 @@ class PaymentTerminalConfiguration:
     def type(self):
         """Gets the type of this PaymentTerminalConfiguration.
 
-            
+            The type of payment terminals that this configuration can be assigned to.
 
         :return: The type of this PaymentTerminalConfiguration.
         :rtype: PaymentTerminalType
@@ -176,7 +176,7 @@ class PaymentTerminalConfiguration:
     def type(self, type):
         """Sets the type of this PaymentTerminalConfiguration.
 
-            
+            The type of payment terminals that this configuration can be assigned to.
 
         :param type: The type of this PaymentTerminalConfiguration.
         :type: PaymentTerminalType

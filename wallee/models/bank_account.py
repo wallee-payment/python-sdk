@@ -51,7 +51,7 @@ class BankAccount:
     def description(self):
         """Gets the description of this BankAccount.
 
-            The optional description is shown along the identifier. The intention of the description is to give an alternative name to the bank account.
+            The description serves as an alternative name for the bank account.
 
         :return: The description of this BankAccount.
         :rtype: str
@@ -62,7 +62,7 @@ class BankAccount:
     def description(self, description):
         """Sets the description of this BankAccount.
 
-            The optional description is shown along the identifier. The intention of the description is to give an alternative name to the bank account.
+            The description serves as an alternative name for the bank account.
 
         :param description: The description of this BankAccount.
         :type: str
@@ -99,7 +99,7 @@ class BankAccount:
     def identifier(self):
         """Gets the identifier of this BankAccount.
 
-            The bank account identifier is responsible to uniquely identify the bank account.
+            The identifier is used to uniquely identify the bank account.
 
         :return: The identifier of this BankAccount.
         :rtype: str
@@ -110,7 +110,7 @@ class BankAccount:
     def identifier(self, identifier):
         """Sets the identifier of this BankAccount.
 
-            The bank account identifier is responsible to uniquely identify the bank account.
+            The identifier is used to uniquely identify the bank account.
 
         :param identifier: The identifier of this BankAccount.
         :type: str
@@ -193,7 +193,7 @@ class BankAccount:
     def type(self):
         """Gets the type of this BankAccount.
 
-            
+            The bank account's type
 
         :return: The type of this BankAccount.
         :rtype: int
@@ -204,7 +204,7 @@ class BankAccount:
     def type(self, type):
         """Sets the type of this BankAccount.
 
-            
+            The bank account's type
 
         :param type: The type of this BankAccount.
         :type: int

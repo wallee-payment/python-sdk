@@ -150,7 +150,7 @@ class TransactionCompletionRequest:
     def statement_descriptor(self):
         """Gets the statement_descriptor of this TransactionCompletionRequest.
 
-            The statement descriptor explain charges or payments on bank statements.
+            The statement descriptor that appears on a customer's bank statement, providing an explanation for charges or payments, helping customers identify the transaction.
 
         :return: The statement_descriptor of this TransactionCompletionRequest.
         :rtype: str
@@ -161,7 +161,7 @@ class TransactionCompletionRequest:
     def statement_descriptor(self, statement_descriptor):
         """Sets the statement_descriptor of this TransactionCompletionRequest.
 
-            The statement descriptor explain charges or payments on bank statements.
+            The statement descriptor that appears on a customer's bank statement, providing an explanation for charges or payments, helping customers identify the transaction.
 
         :param statement_descriptor: The statement_descriptor of this TransactionCompletionRequest.
         :type: str

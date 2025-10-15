@@ -238,7 +238,7 @@ class Feature:
     def visible(self):
         """Gets the visible of this Feature.
 
-            
+            Whether the feature is visible to the user.
 
         :return: The visible of this Feature.
         :rtype: bool
@@ -249,7 +249,7 @@ class Feature:
     def visible(self, visible):
         """Sets the visible of this Feature.
 
-            
+            Whether the feature is visible to the user.
 
         :param visible: The visible of this Feature.
         :type: bool

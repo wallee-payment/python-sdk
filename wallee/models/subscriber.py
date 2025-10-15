@@ -72,7 +72,7 @@ class Subscriber:
     def additional_allowed_payment_method_configurations(self):
         """Gets the additional_allowed_payment_method_configurations of this Subscriber.
 
-            Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
+            Allow the subscriber to use these payment methods even if subscription products do not accept them.
 
         :return: The additional_allowed_payment_method_configurations of this Subscriber.
         :rtype: list[int]
@@ -83,7 +83,7 @@ class Subscriber:
     def additional_allowed_payment_method_configurations(self, additional_allowed_payment_method_configurations):
         """Sets the additional_allowed_payment_method_configurations of this Subscriber.
 
-            Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
+            Allow the subscriber to use these payment methods even if subscription products do not accept them.
 
         :param additional_allowed_payment_method_configurations: The additional_allowed_payment_method_configurations of this Subscriber.
         :type: list[int]
@@ -95,7 +95,7 @@ class Subscriber:
     def billing_address(self):
         """Gets the billing_address of this Subscriber.
 
-            
+            The address associated with the subscriber for invoicing and transaction processing purposes.
 
         :return: The billing_address of this Subscriber.
         :rtype: Address
@@ -106,7 +106,7 @@ class Subscriber:
     def billing_address(self, billing_address):
         """Sets the billing_address of this Subscriber.
 
-            
+            The address associated with the subscriber for invoicing and transaction processing purposes.
 
         :param billing_address: The billing_address of this Subscriber.
         :type: Address
@@ -118,7 +118,7 @@ class Subscriber:
     def description(self):
         """Gets the description of this Subscriber.
 
-            The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.
+            The description used to identify the subscriber.
 
         :return: The description of this Subscriber.
         :rtype: str
@@ -129,7 +129,7 @@ class Subscriber:
     def description(self, description):
         """Sets the description of this Subscriber.
 
-            The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.
+            The description used to identify the subscriber.
 
         :param description: The description of this Subscriber.
         :type: str
@@ -143,7 +143,7 @@ class Subscriber:
     def disallowed_payment_method_configurations(self):
         """Gets the disallowed_payment_method_configurations of this Subscriber.
 
-            Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.
+            Prevent the subscriber from using these payment methods even if subscription products do accept them.
 
         :return: The disallowed_payment_method_configurations of this Subscriber.
         :rtype: list[int]
@@ -154,7 +154,7 @@ class Subscriber:
     def disallowed_payment_method_configurations(self, disallowed_payment_method_configurations):
         """Sets the disallowed_payment_method_configurations of this Subscriber.
 
-            Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.
+            Prevent the subscriber from using these payment methods even if subscription products do accept them.
 
         :param disallowed_payment_method_configurations: The disallowed_payment_method_configurations of this Subscriber.
         :type: list[int]
@@ -166,7 +166,7 @@ class Subscriber:
     def email_address(self):
         """Gets the email_address of this Subscriber.
 
-            The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
+            The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
 
         :return: The email_address of this Subscriber.
         :rtype: str
@@ -177,7 +177,7 @@ class Subscriber:
     def email_address(self, email_address):
         """Sets the email_address of this Subscriber.
 
-            The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
+            The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
 
         :param email_address: The email_address of this Subscriber.
         :type: str
@@ -191,7 +191,7 @@ class Subscriber:
     def external_id(self):
         """Gets the external_id of this Subscriber.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this Subscriber.
         :rtype: str
@@ -202,7 +202,7 @@ class Subscriber:
     def external_id(self, external_id):
         """Sets the external_id of this Subscriber.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this Subscriber.
         :type: str
@@ -237,7 +237,7 @@ class Subscriber:
     def language(self):
         """Gets the language of this Subscriber.
 
-            The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
+            The language that is used when communicating with the subscriber via emails and documents.
 
         :return: The language of this Subscriber.
         :rtype: str
@@ -248,7 +248,7 @@ class Subscriber:
     def language(self, language):
         """Sets the language of this Subscriber.
 
-            The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
+            The language that is used when communicating with the subscriber via emails and documents.
 
         :param language: The language of this Subscriber.
         :type: str
@@ -329,7 +329,7 @@ class Subscriber:
     def reference(self):
         """Gets the reference of this Subscriber.
 
-            The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
+            The merchant's reference used to identify the subscriber.
 
         :return: The reference of this Subscriber.
         :rtype: str
@@ -340,7 +340,7 @@ class Subscriber:
     def reference(self, reference):
         """Sets the reference of this Subscriber.
 
-            The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
+            The merchant's reference used to identify the subscriber.
 
         :param reference: The reference of this Subscriber.
         :type: str
@@ -354,7 +354,7 @@ class Subscriber:
     def shipping_address(self):
         """Gets the shipping_address of this Subscriber.
 
-            
+            The address to where orders will be shipped.
 
         :return: The shipping_address of this Subscriber.
         :rtype: Address
@@ -365,7 +365,7 @@ class Subscriber:
     def shipping_address(self, shipping_address):
         """Sets the shipping_address of this Subscriber.
 
-            
+            The address to where orders will be shipped.
 
         :param shipping_address: The shipping_address of this Subscriber.
         :type: Address

@@ -69,7 +69,7 @@ class PaymentTerminalConfigurationVersion:
     def configuration(self):
         """Gets the configuration of this PaymentTerminalConfigurationVersion.
 
-            
+            The payment terminal configuration that the version belongs to.
 
         :return: The configuration of this PaymentTerminalConfigurationVersion.
         :rtype: PaymentTerminalConfiguration
@@ -80,7 +80,7 @@ class PaymentTerminalConfigurationVersion:
     def configuration(self, configuration):
         """Sets the configuration of this PaymentTerminalConfigurationVersion.
 
-            
+            The payment terminal configuration that the version belongs to.
 
         :param configuration: The configuration of this PaymentTerminalConfigurationVersion.
         :type: PaymentTerminalConfiguration
@@ -92,7 +92,7 @@ class PaymentTerminalConfigurationVersion:
     def connector_configurations(self):
         """Gets the connector_configurations of this PaymentTerminalConfigurationVersion.
 
-            
+            The payment connector configurations that are available on the payment terminal.
 
         :return: The connector_configurations of this PaymentTerminalConfigurationVersion.
         :rtype: list[int]
@@ -103,7 +103,7 @@ class PaymentTerminalConfigurationVersion:
     def connector_configurations(self, connector_configurations):
         """Sets the connector_configurations of this PaymentTerminalConfigurationVersion.
 
-            
+            The payment connector configurations that are available on the payment terminal.
 
         :param connector_configurations: The connector_configurations of this PaymentTerminalConfigurationVersion.
         :type: list[int]
@@ -115,7 +115,7 @@ class PaymentTerminalConfigurationVersion:
     def created_by(self):
         """Gets the created_by of this PaymentTerminalConfigurationVersion.
 
-            
+            The ID of the user the payment terminal configuration version was created by.
 
         :return: The created_by of this PaymentTerminalConfigurationVersion.
         :rtype: int
@@ -126,7 +126,7 @@ class PaymentTerminalConfigurationVersion:
     def created_by(self, created_by):
         """Sets the created_by of this PaymentTerminalConfigurationVersion.
 
-            
+            The ID of the user the payment terminal configuration version was created by.
 
         :param created_by: The created_by of this PaymentTerminalConfigurationVersion.
         :type: int
@@ -161,7 +161,7 @@ class PaymentTerminalConfigurationVersion:
     def default_currency(self):
         """Gets the default_currency of this PaymentTerminalConfigurationVersion.
 
-            The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+            The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.
 
         :return: The default_currency of this PaymentTerminalConfigurationVersion.
         :rtype: str
@@ -172,7 +172,7 @@ class PaymentTerminalConfigurationVersion:
     def default_currency(self, default_currency):
         """Sets the default_currency of this PaymentTerminalConfigurationVersion.
 
-            The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+            The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.
 
         :param default_currency: The default_currency of this PaymentTerminalConfigurationVersion.
         :type: str
@@ -230,7 +230,7 @@ class PaymentTerminalConfigurationVersion:
     def maintenance_window_duration(self):
         """Gets the maintenance_window_duration of this PaymentTerminalConfigurationVersion.
 
-            
+            The permitted duration of the terminal's maintenance window.
 
         :return: The maintenance_window_duration of this PaymentTerminalConfigurationVersion.
         :rtype: str
@@ -241,7 +241,7 @@ class PaymentTerminalConfigurationVersion:
     def maintenance_window_duration(self, maintenance_window_duration):
         """Sets the maintenance_window_duration of this PaymentTerminalConfigurationVersion.
 
-            
+            The permitted duration of the terminal's maintenance window.
 
         :param maintenance_window_duration: The maintenance_window_duration of this PaymentTerminalConfigurationVersion.
         :type: str
@@ -253,7 +253,7 @@ class PaymentTerminalConfigurationVersion:
     def maintenance_window_start(self):
         """Gets the maintenance_window_start of this PaymentTerminalConfigurationVersion.
 
-            
+            The start time of the terminal's maintenance window.
 
         :return: The maintenance_window_start of this PaymentTerminalConfigurationVersion.
         :rtype: str
@@ -264,7 +264,7 @@ class PaymentTerminalConfigurationVersion:
     def maintenance_window_start(self, maintenance_window_start):
         """Sets the maintenance_window_start of this PaymentTerminalConfigurationVersion.
 
-            
+            The start time of the terminal's maintenance window.
 
         :param maintenance_window_start: The maintenance_window_start of this PaymentTerminalConfigurationVersion.
         :type: str
@@ -322,7 +322,7 @@ class PaymentTerminalConfigurationVersion:
     def time_zone(self):
         """Gets the time_zone of this PaymentTerminalConfigurationVersion.
 
-            
+            The time zone of the payment terminal used to determine the maintenance window.
 
         :return: The time_zone of this PaymentTerminalConfigurationVersion.
         :rtype: str
@@ -333,7 +333,7 @@ class PaymentTerminalConfigurationVersion:
     def time_zone(self, time_zone):
         """Sets the time_zone of this PaymentTerminalConfigurationVersion.
 
-            
+            The time zone of the payment terminal used to determine the maintenance window.
 
         :param time_zone: The time_zone of this PaymentTerminalConfigurationVersion.
         :type: str
@@ -368,7 +368,7 @@ class PaymentTerminalConfigurationVersion:
     def version_applied_immediately(self):
         """Gets the version_applied_immediately of this PaymentTerminalConfigurationVersion.
 
-            
+            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
 
         :return: The version_applied_immediately of this PaymentTerminalConfigurationVersion.
         :rtype: bool
@@ -379,7 +379,7 @@ class PaymentTerminalConfigurationVersion:
     def version_applied_immediately(self, version_applied_immediately):
         """Sets the version_applied_immediately of this PaymentTerminalConfigurationVersion.
 
-            
+            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
 
         :param version_applied_immediately: The version_applied_immediately of this PaymentTerminalConfigurationVersion.
         :type: bool

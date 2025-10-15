@@ -62,7 +62,7 @@ class TokenVersionType:
     def feature(self):
         """Gets the feature of this TokenVersionType.
 
-            
+            The feature that the token version type belongs to.
 
         :return: The feature of this TokenVersionType.
         :rtype: Feature
@@ -73,7 +73,7 @@ class TokenVersionType:
     def feature(self, feature):
         """Sets the feature of this TokenVersionType.
 
-            
+            The feature that the token version type belongs to.
 
         :param feature: The feature of this TokenVersionType.
         :type: Feature

@@ -94,7 +94,7 @@ class SubscriptionUpdate:
     def affiliate(self):
         """Gets the affiliate of this SubscriptionUpdate.
 
-            
+            The affiliate that led to the creation of the subscription.
 
         :return: The affiliate of this SubscriptionUpdate.
         :rtype: int
@@ -105,7 +105,7 @@ class SubscriptionUpdate:
     def affiliate(self, affiliate):
         """Sets the affiliate of this SubscriptionUpdate.
 
-            
+            The affiliate that led to the creation of the subscription.
 
         :param affiliate: The affiliate of this SubscriptionUpdate.
         :type: int
@@ -117,7 +117,7 @@ class SubscriptionUpdate:
     def description(self):
         """Gets the description of this SubscriptionUpdate.
 
-            
+            A description used to identify the subscription.
 
         :return: The description of this SubscriptionUpdate.
         :rtype: str
@@ -128,7 +128,7 @@ class SubscriptionUpdate:
     def description(self, description):
         """Sets the description of this SubscriptionUpdate.
 
-            
+            A description used to identify the subscription.
 
         :param description: The description of this SubscriptionUpdate.
         :type: str
@@ -142,7 +142,7 @@ class SubscriptionUpdate:
     def planned_termination_date(self):
         """Gets the planned_termination_date of this SubscriptionUpdate.
 
-            
+            The date and time when the subscription is planned to be terminated.
 
         :return: The planned_termination_date of this SubscriptionUpdate.
         :rtype: datetime
@@ -153,7 +153,7 @@ class SubscriptionUpdate:
     def planned_termination_date(self, planned_termination_date):
         """Sets the planned_termination_date of this SubscriptionUpdate.
 
-            
+            The date and time when the subscription is planned to be terminated.
 
         :param planned_termination_date: The planned_termination_date of this SubscriptionUpdate.
         :type: datetime

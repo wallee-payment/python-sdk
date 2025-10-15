@@ -32,7 +32,7 @@ class AuthenticatedCardData(TokenizedCardData):
     def cardholder_authentication(self):
         """Gets the cardholder_authentication of this AuthenticatedCardData.
 
-            The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+            Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
 
         :return: The cardholder_authentication of this AuthenticatedCardData.
         :rtype: CardholderAuthentication
@@ -43,7 +43,7 @@ class AuthenticatedCardData(TokenizedCardData):
     def cardholder_authentication(self, cardholder_authentication):
         """Sets the cardholder_authentication of this AuthenticatedCardData.
 
-            The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+            Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
 
         :param cardholder_authentication: The cardholder_authentication of this AuthenticatedCardData.
         :type: CardholderAuthentication

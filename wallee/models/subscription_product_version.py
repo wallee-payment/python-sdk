@@ -11,6 +11,7 @@ class SubscriptionProductVersion:
     
         'activated_on': 'datetime',
         'billing_cycle': 'str',
+        'billing_cycle_model': 'BillingCycleModel',
         'comment': 'str',
         'created_on': 'datetime',
         'default_currency': 'str',
@@ -33,12 +34,13 @@ class SubscriptionProductVersion:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','tax_calculation': 'taxCalculation','version': 'version',
+        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','billing_cycle_model': 'billingCycleModel','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','tax_calculation': 'taxCalculation','version': 'version',
     }
 
     
     _activated_on = None
     _billing_cycle = None
+    _billing_cycle_model = None
     _comment = None
     _created_on = None
     _default_currency = None
@@ -64,6 +66,7 @@ class SubscriptionProductVersion:
         
         self.activated_on = kwargs.get('activated_on', None)
         self.billing_cycle = kwargs.get('billing_cycle', None)
+        self.billing_cycle_model = kwargs.get('billing_cycle_model', None)
         self.comment = kwargs.get('comment', None)
         self.created_on = kwargs.get('created_on', None)
         self.default_currency = kwargs.get('default_currency', None)
@@ -90,7 +93,7 @@ class SubscriptionProductVersion:
     def activated_on(self):
         """Gets the activated_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was activated.
 
         :return: The activated_on of this SubscriptionProductVersion.
         :rtype: datetime
@@ -101,7 +104,7 @@ class SubscriptionProductVersion:
     def activated_on(self, activated_on):
         """Sets the activated_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was activated.
 
         :param activated_on: The activated_on of this SubscriptionProductVersion.
         :type: datetime
@@ -113,7 +116,7 @@ class SubscriptionProductVersion:
     def billing_cycle(self):
         """Gets the billing_cycle of this SubscriptionProductVersion.
 
-            The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
 
         :return: The billing_cycle of this SubscriptionProductVersion.
         :rtype: str
@@ -124,7 +127,7 @@ class SubscriptionProductVersion:
     def billing_cycle(self, billing_cycle):
         """Sets the billing_cycle of this SubscriptionProductVersion.
 
-            The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
 
         :param billing_cycle: The billing_cycle of this SubscriptionProductVersion.
         :type: str
@@ -133,10 +136,33 @@ class SubscriptionProductVersion:
         self._billing_cycle = billing_cycle
     
     @property
+    def billing_cycle_model(self):
+        """Gets the billing_cycle_model of this SubscriptionProductVersion.
+
+            
+
+        :return: The billing_cycle_model of this SubscriptionProductVersion.
+        :rtype: BillingCycleModel
+        """
+        return self._billing_cycle_model
+
+    @billing_cycle_model.setter
+    def billing_cycle_model(self, billing_cycle_model):
+        """Sets the billing_cycle_model of this SubscriptionProductVersion.
+
+            
+
+        :param billing_cycle_model: The billing_cycle_model of this SubscriptionProductVersion.
+        :type: BillingCycleModel
+        """
+
+        self._billing_cycle_model = billing_cycle_model
+    
+    @property
     def comment(self):
         """Gets the comment of this SubscriptionProductVersion.
 
-            The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
 
         :return: The comment of this SubscriptionProductVersion.
         :rtype: str
@@ -147,7 +173,7 @@ class SubscriptionProductVersion:
     def comment(self, comment):
         """Sets the comment of this SubscriptionProductVersion.
 
-            The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
 
         :param comment: The comment of this SubscriptionProductVersion.
         :type: str
@@ -159,7 +185,7 @@ class SubscriptionProductVersion:
     def created_on(self):
         """Gets the created_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was created.
 
         :return: The created_on of this SubscriptionProductVersion.
         :rtype: datetime
@@ -170,7 +196,7 @@ class SubscriptionProductVersion:
     def created_on(self, created_on):
         """Sets the created_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was created.
 
         :param created_on: The created_on of this SubscriptionProductVersion.
         :type: datetime
@@ -182,7 +208,7 @@ class SubscriptionProductVersion:
     def default_currency(self):
         """Gets the default_currency of this SubscriptionProductVersion.
 
-            The default currency has to be used in all fees.
+            The three-letter code (ISO 4217 format) of the product version's default currency.
 
         :return: The default_currency of this SubscriptionProductVersion.
         :rtype: str
@@ -193,7 +219,7 @@ class SubscriptionProductVersion:
     def default_currency(self, default_currency):
         """Sets the default_currency of this SubscriptionProductVersion.
 
-            The default currency has to be used in all fees.
+            The three-letter code (ISO 4217 format) of the product version's default currency.
 
         :param default_currency: The default_currency of this SubscriptionProductVersion.
         :type: str
@@ -205,7 +231,7 @@ class SubscriptionProductVersion:
     def enabled_currencies(self):
         """Gets the enabled_currencies of this SubscriptionProductVersion.
 
-            The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
 
         :return: The enabled_currencies of this SubscriptionProductVersion.
         :rtype: list[str]
@@ -216,7 +242,7 @@ class SubscriptionProductVersion:
     def enabled_currencies(self, enabled_currencies):
         """Sets the enabled_currencies of this SubscriptionProductVersion.
 
-            The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
 
         :param enabled_currencies: The enabled_currencies of this SubscriptionProductVersion.
         :type: list[str]
@@ -251,7 +277,7 @@ class SubscriptionProductVersion:
     def increment_number(self):
         """Gets the increment_number of this SubscriptionProductVersion.
 
-            The increment number represents the version number incremented whenever a new version is activated.
+            Whenever a new version of a product is created, the number is increased and assigned.
 
         :return: The increment_number of this SubscriptionProductVersion.
         :rtype: int
@@ -262,7 +288,7 @@ class SubscriptionProductVersion:
     def increment_number(self, increment_number):
         """Sets the increment_number of this SubscriptionProductVersion.
 
-            The increment number represents the version number incremented whenever a new version is activated.
+            Whenever a new version of a product is created, the number is increased and assigned.
 
         :param increment_number: The increment_number of this SubscriptionProductVersion.
         :type: int
@@ -297,7 +323,7 @@ class SubscriptionProductVersion:
     def minimal_number_of_periods(self):
         """Gets the minimal_number_of_periods of this SubscriptionProductVersion.
 
-            The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+            The minimum number of periods the subscription will run before it can be terminated.
 
         :return: The minimal_number_of_periods of this SubscriptionProductVersion.
         :rtype: int
@@ -308,7 +334,7 @@ class SubscriptionProductVersion:
     def minimal_number_of_periods(self, minimal_number_of_periods):
         """Sets the minimal_number_of_periods of this SubscriptionProductVersion.
 
-            The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+            The minimum number of periods the subscription will run before it can be terminated.
 
         :param minimal_number_of_periods: The minimal_number_of_periods of this SubscriptionProductVersion.
         :type: int
@@ -320,7 +346,7 @@ class SubscriptionProductVersion:
     def name(self):
         """Gets the name of this SubscriptionProductVersion.
 
-            The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+            The localized name of the product that is displayed to the customer.
 
         :return: The name of this SubscriptionProductVersion.
         :rtype: dict(str, str)
@@ -331,7 +357,7 @@ class SubscriptionProductVersion:
     def name(self, name):
         """Sets the name of this SubscriptionProductVersion.
 
-            The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+            The localized name of the product that is displayed to the customer.
 
         :param name: The name of this SubscriptionProductVersion.
         :type: dict(str, str)
@@ -343,7 +369,7 @@ class SubscriptionProductVersion:
     def number_of_notice_periods(self):
         """Gets the number_of_notice_periods of this SubscriptionProductVersion.
 
-            The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+            The number of periods the subscription will keep running after its termination was requested.
 
         :return: The number_of_notice_periods of this SubscriptionProductVersion.
         :rtype: int
@@ -354,7 +380,7 @@ class SubscriptionProductVersion:
     def number_of_notice_periods(self, number_of_notice_periods):
         """Sets the number_of_notice_periods of this SubscriptionProductVersion.
 
-            The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+            The number of periods the subscription will keep running after its termination was requested.
 
         :param number_of_notice_periods: The number_of_notice_periods of this SubscriptionProductVersion.
         :type: int
@@ -366,7 +392,7 @@ class SubscriptionProductVersion:
     def obsoleted_on(self):
         """Gets the obsoleted_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was made obsolete.
 
         :return: The obsoleted_on of this SubscriptionProductVersion.
         :rtype: datetime
@@ -377,7 +403,7 @@ class SubscriptionProductVersion:
     def obsoleted_on(self, obsoleted_on):
         """Sets the obsoleted_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was made obsolete.
 
         :param obsoleted_on: The obsoleted_on of this SubscriptionProductVersion.
         :type: datetime
@@ -412,7 +438,7 @@ class SubscriptionProductVersion:
     def product(self):
         """Gets the product of this SubscriptionProductVersion.
 
-            Each product version is linked to a product.
+            The product that the version belongs to.
 
         :return: The product of this SubscriptionProductVersion.
         :rtype: SubscriptionProduct
@@ -423,7 +449,7 @@ class SubscriptionProductVersion:
     def product(self, product):
         """Sets the product of this SubscriptionProductVersion.
 
-            Each product version is linked to a product.
+            The product that the version belongs to.
 
         :param product: The product of this SubscriptionProductVersion.
         :type: SubscriptionProduct
@@ -435,7 +461,7 @@ class SubscriptionProductVersion:
     def reference(self):
         """Gets the reference of this SubscriptionProductVersion.
 
-            The product version reference helps to identify the version. The reference is generated out of the product reference.
+            The reference used to identify the product version.
 
         :return: The reference of this SubscriptionProductVersion.
         :rtype: str
@@ -446,7 +472,7 @@ class SubscriptionProductVersion:
     def reference(self, reference):
         """Sets the reference of this SubscriptionProductVersion.
 
-            The product version reference helps to identify the version. The reference is generated out of the product reference.
+            The reference used to identify the product version.
 
         :param reference: The reference of this SubscriptionProductVersion.
         :type: str
@@ -460,7 +486,7 @@ class SubscriptionProductVersion:
     def retiring_finished_on(self):
         """Gets the retiring_finished_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was retired.
 
         :return: The retiring_finished_on of this SubscriptionProductVersion.
         :rtype: datetime
@@ -471,7 +497,7 @@ class SubscriptionProductVersion:
     def retiring_finished_on(self, retiring_finished_on):
         """Sets the retiring_finished_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version was retired.
 
         :param retiring_finished_on: The retiring_finished_on of this SubscriptionProductVersion.
         :type: datetime
@@ -483,7 +509,7 @@ class SubscriptionProductVersion:
     def retiring_started_on(self):
         """Gets the retiring_started_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version's retirement was started.
 
         :return: The retiring_started_on of this SubscriptionProductVersion.
         :rtype: datetime
@@ -494,7 +520,7 @@ class SubscriptionProductVersion:
     def retiring_started_on(self, retiring_started_on):
         """Sets the retiring_started_on of this SubscriptionProductVersion.
 
-            
+            The date and time when the product version's retirement was started.
 
         :param retiring_started_on: The retiring_started_on of this SubscriptionProductVersion.
         :type: datetime
@@ -529,7 +555,7 @@ class SubscriptionProductVersion:
     def tax_calculation(self):
         """Gets the tax_calculation of this SubscriptionProductVersion.
 
-            Strategy that is used for tax calculation in fees.
+            The way taxes are calculated for fees.
 
         :return: The tax_calculation of this SubscriptionProductVersion.
         :rtype: TaxCalculation
@@ -540,7 +566,7 @@ class SubscriptionProductVersion:
     def tax_calculation(self, tax_calculation):
         """Sets the tax_calculation of this SubscriptionProductVersion.
 
-            Strategy that is used for tax calculation in fees.
+            The way taxes are calculated for fees.
 
         :param tax_calculation: The tax_calculation of this SubscriptionProductVersion.
         :type: TaxCalculation

@@ -91,7 +91,7 @@ class SubscriptionMetricUpdate:
     def description(self):
         """Gets the description of this SubscriptionMetricUpdate.
 
-            
+            The localized description of the metric that is displayed to the customer.
 
         :return: The description of this SubscriptionMetricUpdate.
         :rtype: dict(str, str)
@@ -102,7 +102,7 @@ class SubscriptionMetricUpdate:
     def description(self, description):
         """Sets the description of this SubscriptionMetricUpdate.
 
-            
+            The localized description of the metric that is displayed to the customer.
 
         :param description: The description of this SubscriptionMetricUpdate.
         :type: dict(str, str)
@@ -114,7 +114,7 @@ class SubscriptionMetricUpdate:
     def name(self):
         """Gets the name of this SubscriptionMetricUpdate.
 
-            
+            The localized name of the metric that is displayed to the customer.
 
         :return: The name of this SubscriptionMetricUpdate.
         :rtype: dict(str, str)
@@ -125,7 +125,7 @@ class SubscriptionMetricUpdate:
     def name(self, name):
         """Sets the name of this SubscriptionMetricUpdate.
 
-            
+            The localized name of the metric that is displayed to the customer.
 
         :param name: The name of this SubscriptionMetricUpdate.
         :type: dict(str, str)

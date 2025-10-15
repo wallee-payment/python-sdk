@@ -10,19 +10,17 @@ class RestCountryState:
     swagger_types = {
     
         'code': 'str',
-        'country': 'str',
         'country_code': 'str',
         'id': 'str',
         'name': 'str',
     }
 
     attribute_map = {
-        'code': 'code','country': 'country','country_code': 'countryCode','id': 'id','name': 'name',
+        'code': 'code','country_code': 'countryCode','id': 'id','name': 'name',
     }
 
     
     _code = None
-    _country = None
     _country_code = None
     _id = None
     _name = None
@@ -31,7 +29,6 @@ class RestCountryState:
         self.discriminator = None
         
         self.code = kwargs.get('code', None)
-        self.country = kwargs.get('country', None)
         self.country_code = kwargs.get('country_code', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
@@ -60,29 +57,6 @@ class RestCountryState:
         """
 
         self._code = code
-    
-    @property
-    def country(self):
-        """Gets the country of this RestCountryState.
-
-            
-
-        :return: The country of this RestCountryState.
-        :rtype: str
-        """
-        return self._country
-
-    @country.setter
-    def country(self, country):
-        """Sets the country of this RestCountryState.
-
-            
-
-        :param country: The country of this RestCountryState.
-        :type: str
-        """
-
-        self._country = country
     
     @property
     def country_code(self):

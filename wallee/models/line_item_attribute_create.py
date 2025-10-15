@@ -35,7 +35,7 @@ class LineItemAttributeCreate:
     def label(self):
         """Gets the label of this LineItemAttributeCreate.
 
-            
+            The label describing the line item attribute.
 
         :return: The label of this LineItemAttributeCreate.
         :rtype: str
@@ -46,7 +46,7 @@ class LineItemAttributeCreate:
     def label(self, label):
         """Sets the label of this LineItemAttributeCreate.
 
-            
+            The label describing the line item attribute.
 
         :param label: The label of this LineItemAttributeCreate.
         :type: str
@@ -62,7 +62,7 @@ class LineItemAttributeCreate:
     def value(self):
         """Gets the value of this LineItemAttributeCreate.
 
-            
+            The value of the line item attribute.
 
         :return: The value of this LineItemAttributeCreate.
         :rtype: str
@@ -73,7 +73,7 @@ class LineItemAttributeCreate:
     def value(self, value):
         """Sets the value of this LineItemAttributeCreate.
 
-            
+            The value of the line item attribute.
 
         :param value: The value of this LineItemAttributeCreate.
         :type: str

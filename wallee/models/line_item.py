@@ -90,7 +90,7 @@ class LineItem:
     def aggregated_tax_rate(self):
         """Gets the aggregated_tax_rate of this LineItem.
 
-            The aggregated tax rate is the sum of all tax rates of the line item.
+            The total tax rate applied to the item, calculated from the rates of all tax lines.
 
         :return: The aggregated_tax_rate of this LineItem.
         :rtype: float
@@ -101,7 +101,7 @@ class LineItem:
     def aggregated_tax_rate(self, aggregated_tax_rate):
         """Sets the aggregated_tax_rate of this LineItem.
 
-            The aggregated tax rate is the sum of all tax rates of the line item.
+            The total tax rate applied to the item, calculated from the rates of all tax lines.
 
         :param aggregated_tax_rate: The aggregated_tax_rate of this LineItem.
         :type: float
@@ -113,7 +113,7 @@ class LineItem:
     def amount_excluding_tax(self):
         """Gets the amount_excluding_tax of this LineItem.
 
-            
+            The line item price with discounts applied, excluding taxes.
 
         :return: The amount_excluding_tax of this LineItem.
         :rtype: float
@@ -124,7 +124,7 @@ class LineItem:
     def amount_excluding_tax(self, amount_excluding_tax):
         """Sets the amount_excluding_tax of this LineItem.
 
-            
+            The line item price with discounts applied, excluding taxes.
 
         :param amount_excluding_tax: The amount_excluding_tax of this LineItem.
         :type: float
@@ -136,7 +136,7 @@ class LineItem:
     def amount_including_tax(self):
         """Gets the amount_including_tax of this LineItem.
 
-            
+            The line item price with discounts applied, including taxes.
 
         :return: The amount_including_tax of this LineItem.
         :rtype: float
@@ -147,7 +147,7 @@ class LineItem:
     def amount_including_tax(self, amount_including_tax):
         """Sets the amount_including_tax of this LineItem.
 
-            
+            The line item price with discounts applied, including taxes.
 
         :param amount_including_tax: The amount_including_tax of this LineItem.
         :type: float
@@ -159,7 +159,7 @@ class LineItem:
     def attributes(self):
         """Gets the attributes of this LineItem.
 
-            
+            A map of custom information for the item.
 
         :return: The attributes of this LineItem.
         :rtype: dict(str, LineItemAttribute)
@@ -170,7 +170,7 @@ class LineItem:
     def attributes(self, attributes):
         """Sets the attributes of this LineItem.
 
-            
+            A map of custom information for the item.
 
         :param attributes: The attributes of this LineItem.
         :type: dict(str, LineItemAttribute)
@@ -182,7 +182,7 @@ class LineItem:
     def discount_excluding_tax(self):
         """Gets the discount_excluding_tax of this LineItem.
 
-            
+            The discount allocated to the item, excluding taxes.
 
         :return: The discount_excluding_tax of this LineItem.
         :rtype: float
@@ -193,7 +193,7 @@ class LineItem:
     def discount_excluding_tax(self, discount_excluding_tax):
         """Sets the discount_excluding_tax of this LineItem.
 
-            
+            The discount allocated to the item, excluding taxes.
 
         :param discount_excluding_tax: The discount_excluding_tax of this LineItem.
         :type: float
@@ -205,7 +205,7 @@ class LineItem:
     def discount_including_tax(self):
         """Gets the discount_including_tax of this LineItem.
 
-            
+            The discount allocated to the item, including taxes.
 
         :return: The discount_including_tax of this LineItem.
         :rtype: float
@@ -216,7 +216,7 @@ class LineItem:
     def discount_including_tax(self, discount_including_tax):
         """Sets the discount_including_tax of this LineItem.
 
-            
+            The discount allocated to the item, including taxes.
 
         :param discount_including_tax: The discount_including_tax of this LineItem.
         :type: float
@@ -228,7 +228,7 @@ class LineItem:
     def name(self):
         """Gets the name of this LineItem.
 
-            
+            The name of the product, ideally in the customer's language.
 
         :return: The name of this LineItem.
         :rtype: str
@@ -239,7 +239,7 @@ class LineItem:
     def name(self, name):
         """Sets the name of this LineItem.
 
-            
+            The name of the product, ideally in the customer's language.
 
         :param name: The name of this LineItem.
         :type: str
@@ -255,7 +255,7 @@ class LineItem:
     def quantity(self):
         """Gets the quantity of this LineItem.
 
-            
+            The number of items that were purchased.
 
         :return: The quantity of this LineItem.
         :rtype: float
@@ -266,7 +266,7 @@ class LineItem:
     def quantity(self, quantity):
         """Sets the quantity of this LineItem.
 
-            
+            The number of items that were purchased.
 
         :param quantity: The quantity of this LineItem.
         :type: float
@@ -278,7 +278,7 @@ class LineItem:
     def shipping_required(self):
         """Gets the shipping_required of this LineItem.
 
-            
+            Whether the item required shipping.
 
         :return: The shipping_required of this LineItem.
         :rtype: bool
@@ -289,7 +289,7 @@ class LineItem:
     def shipping_required(self, shipping_required):
         """Sets the shipping_required of this LineItem.
 
-            
+            Whether the item required shipping.
 
         :param shipping_required: The shipping_required of this LineItem.
         :type: bool
@@ -301,7 +301,7 @@ class LineItem:
     def sku(self):
         """Gets the sku of this LineItem.
 
-            
+            The SKU (stock-keeping unit) of the product.
 
         :return: The sku of this LineItem.
         :rtype: str
@@ -312,7 +312,7 @@ class LineItem:
     def sku(self, sku):
         """Sets the sku of this LineItem.
 
-            
+            The SKU (stock-keeping unit) of the product.
 
         :param sku: The sku of this LineItem.
         :type: str
@@ -326,7 +326,7 @@ class LineItem:
     def tax_amount(self):
         """Gets the tax_amount of this LineItem.
 
-            
+            The sum of all taxes applied to the item.
 
         :return: The tax_amount of this LineItem.
         :rtype: float
@@ -337,7 +337,7 @@ class LineItem:
     def tax_amount(self, tax_amount):
         """Sets the tax_amount of this LineItem.
 
-            
+            The sum of all taxes applied to the item.
 
         :param tax_amount: The tax_amount of this LineItem.
         :type: float
@@ -349,7 +349,7 @@ class LineItem:
     def tax_amount_per_unit(self):
         """Gets the tax_amount_per_unit of this LineItem.
 
-            
+            The calculated tax amount per unit.
 
         :return: The tax_amount_per_unit of this LineItem.
         :rtype: float
@@ -360,7 +360,7 @@ class LineItem:
     def tax_amount_per_unit(self, tax_amount_per_unit):
         """Sets the tax_amount_per_unit of this LineItem.
 
-            
+            The calculated tax amount per unit.
 
         :param tax_amount_per_unit: The tax_amount_per_unit of this LineItem.
         :type: float
@@ -372,7 +372,7 @@ class LineItem:
     def taxes(self):
         """Gets the taxes of this LineItem.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the item.
 
         :return: The taxes of this LineItem.
         :rtype: list[Tax]
@@ -383,7 +383,7 @@ class LineItem:
     def taxes(self, taxes):
         """Sets the taxes of this LineItem.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the item.
 
         :param taxes: The taxes of this LineItem.
         :type: list[Tax]
@@ -395,7 +395,7 @@ class LineItem:
     def type(self):
         """Gets the type of this LineItem.
 
-            
+            The type of the line item.
 
         :return: The type of this LineItem.
         :rtype: LineItemType
@@ -406,7 +406,7 @@ class LineItem:
     def type(self, type):
         """Sets the type of this LineItem.
 
-            
+            The type of the line item.
 
         :param type: The type of this LineItem.
         :type: LineItemType
@@ -418,7 +418,7 @@ class LineItem:
     def undiscounted_amount_excluding_tax(self):
         """Gets the undiscounted_amount_excluding_tax of this LineItem.
 
-            
+            The line item price with discounts not applied, excluding taxes.
 
         :return: The undiscounted_amount_excluding_tax of this LineItem.
         :rtype: float
@@ -429,7 +429,7 @@ class LineItem:
     def undiscounted_amount_excluding_tax(self, undiscounted_amount_excluding_tax):
         """Sets the undiscounted_amount_excluding_tax of this LineItem.
 
-            
+            The line item price with discounts not applied, excluding taxes.
 
         :param undiscounted_amount_excluding_tax: The undiscounted_amount_excluding_tax of this LineItem.
         :type: float
@@ -441,7 +441,7 @@ class LineItem:
     def undiscounted_amount_including_tax(self):
         """Gets the undiscounted_amount_including_tax of this LineItem.
 
-            
+            The line item price with discounts not applied, including taxes.
 
         :return: The undiscounted_amount_including_tax of this LineItem.
         :rtype: float
@@ -452,7 +452,7 @@ class LineItem:
     def undiscounted_amount_including_tax(self, undiscounted_amount_including_tax):
         """Sets the undiscounted_amount_including_tax of this LineItem.
 
-            
+            The line item price with discounts not applied, including taxes.
 
         :param undiscounted_amount_including_tax: The undiscounted_amount_including_tax of this LineItem.
         :type: float
@@ -464,7 +464,7 @@ class LineItem:
     def undiscounted_unit_price_excluding_tax(self):
         """Gets the undiscounted_unit_price_excluding_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts not applied, excluding taxes.
 
         :return: The undiscounted_unit_price_excluding_tax of this LineItem.
         :rtype: float
@@ -475,7 +475,7 @@ class LineItem:
     def undiscounted_unit_price_excluding_tax(self, undiscounted_unit_price_excluding_tax):
         """Sets the undiscounted_unit_price_excluding_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts not applied, excluding taxes.
 
         :param undiscounted_unit_price_excluding_tax: The undiscounted_unit_price_excluding_tax of this LineItem.
         :type: float
@@ -487,7 +487,7 @@ class LineItem:
     def undiscounted_unit_price_including_tax(self):
         """Gets the undiscounted_unit_price_including_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts not applied, including taxes.
 
         :return: The undiscounted_unit_price_including_tax of this LineItem.
         :rtype: float
@@ -498,7 +498,7 @@ class LineItem:
     def undiscounted_unit_price_including_tax(self, undiscounted_unit_price_including_tax):
         """Sets the undiscounted_unit_price_including_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts not applied, including taxes.
 
         :param undiscounted_unit_price_including_tax: The undiscounted_unit_price_including_tax of this LineItem.
         :type: float
@@ -510,7 +510,7 @@ class LineItem:
     def unique_id(self):
         """Gets the unique_id of this LineItem.
 
-            The unique id identifies the line item within the set of line items associated with the transaction.
+            The unique identifier of the line item within the set of line items.
 
         :return: The unique_id of this LineItem.
         :rtype: str
@@ -521,7 +521,7 @@ class LineItem:
     def unique_id(self, unique_id):
         """Sets the unique_id of this LineItem.
 
-            The unique id identifies the line item within the set of line items associated with the transaction.
+            The unique identifier of the line item within the set of line items.
 
         :param unique_id: The unique_id of this LineItem.
         :type: str
@@ -535,7 +535,7 @@ class LineItem:
     def unit_price_excluding_tax(self):
         """Gets the unit_price_excluding_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts applied, excluding taxes.
 
         :return: The unit_price_excluding_tax of this LineItem.
         :rtype: float
@@ -546,7 +546,7 @@ class LineItem:
     def unit_price_excluding_tax(self, unit_price_excluding_tax):
         """Sets the unit_price_excluding_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts applied, excluding taxes.
 
         :param unit_price_excluding_tax: The unit_price_excluding_tax of this LineItem.
         :type: float
@@ -558,7 +558,7 @@ class LineItem:
     def unit_price_including_tax(self):
         """Gets the unit_price_including_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts applied, including taxes.
 
         :return: The unit_price_including_tax of this LineItem.
         :rtype: float
@@ -569,7 +569,7 @@ class LineItem:
     def unit_price_including_tax(self, unit_price_including_tax):
         """Sets the unit_price_including_tax of this LineItem.
 
-            
+            The calculated price per unit with discounts applied, including taxes.
 
         :param unit_price_including_tax: The unit_price_including_tax of this LineItem.
         :type: float

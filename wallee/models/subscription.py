@@ -87,7 +87,7 @@ class Subscription:
     def activated_on(self):
         """Gets the activated_on of this Subscription.
 
-            
+            The date and time when the subscription was activate.
 
         :return: The activated_on of this Subscription.
         :rtype: datetime
@@ -98,7 +98,7 @@ class Subscription:
     def activated_on(self, activated_on):
         """Sets the activated_on of this Subscription.
 
-            
+            The date and time when the subscription was activate.
 
         :param activated_on: The activated_on of this Subscription.
         :type: datetime
@@ -110,7 +110,7 @@ class Subscription:
     def affiliate(self):
         """Gets the affiliate of this Subscription.
 
-            
+            The affiliate that led to the creation of the subscription.
 
         :return: The affiliate of this Subscription.
         :rtype: SubscriptionAffiliate
@@ -121,7 +121,7 @@ class Subscription:
     def affiliate(self, affiliate):
         """Sets the affiliate of this Subscription.
 
-            
+            The affiliate that led to the creation of the subscription.
 
         :param affiliate: The affiliate of this Subscription.
         :type: SubscriptionAffiliate
@@ -133,7 +133,7 @@ class Subscription:
     def created_on(self):
         """Gets the created_on of this Subscription.
 
-            
+            The date and time when the subscription was created.
 
         :return: The created_on of this Subscription.
         :rtype: datetime
@@ -144,7 +144,7 @@ class Subscription:
     def created_on(self, created_on):
         """Sets the created_on of this Subscription.
 
-            
+            The date and time when the subscription was created.
 
         :param created_on: The created_on of this Subscription.
         :type: datetime
@@ -156,7 +156,7 @@ class Subscription:
     def current_product_version(self):
         """Gets the current_product_version of this Subscription.
 
-            
+            The version of the product that the subscription is currently linked to.
 
         :return: The current_product_version of this Subscription.
         :rtype: SubscriptionProductVersion
@@ -167,7 +167,7 @@ class Subscription:
     def current_product_version(self, current_product_version):
         """Sets the current_product_version of this Subscription.
 
-            
+            The version of the product that the subscription is currently linked to.
 
         :param current_product_version: The current_product_version of this Subscription.
         :type: SubscriptionProductVersion
@@ -179,7 +179,7 @@ class Subscription:
     def description(self):
         """Gets the description of this Subscription.
 
-            
+            A description used to identify the subscription.
 
         :return: The description of this Subscription.
         :rtype: str
@@ -190,7 +190,7 @@ class Subscription:
     def description(self, description):
         """Sets the description of this Subscription.
 
-            
+            A description used to identify the subscription.
 
         :param description: The description of this Subscription.
         :type: str
@@ -227,7 +227,7 @@ class Subscription:
     def initialized_on(self):
         """Gets the initialized_on of this Subscription.
 
-            
+            The date and time when the subscription was initialized.
 
         :return: The initialized_on of this Subscription.
         :rtype: datetime
@@ -238,7 +238,7 @@ class Subscription:
     def initialized_on(self, initialized_on):
         """Sets the initialized_on of this Subscription.
 
-            
+            The date and time when the subscription was initialized.
 
         :param initialized_on: The initialized_on of this Subscription.
         :type: datetime
@@ -319,7 +319,7 @@ class Subscription:
     def planned_termination_date(self):
         """Gets the planned_termination_date of this Subscription.
 
-            
+            The date and time when the subscription is planned to be terminated.
 
         :return: The planned_termination_date of this Subscription.
         :rtype: datetime
@@ -330,7 +330,7 @@ class Subscription:
     def planned_termination_date(self, planned_termination_date):
         """Sets the planned_termination_date of this Subscription.
 
-            
+            The date and time when the subscription is planned to be terminated.
 
         :param planned_termination_date: The planned_termination_date of this Subscription.
         :type: datetime
@@ -342,7 +342,7 @@ class Subscription:
     def reference(self):
         """Gets the reference of this Subscription.
 
-            
+            The merchant's reference used to identify the subscription.
 
         :return: The reference of this Subscription.
         :rtype: str
@@ -353,7 +353,7 @@ class Subscription:
     def reference(self, reference):
         """Sets the reference of this Subscription.
 
-            
+            The merchant's reference used to identify the subscription.
 
         :param reference: The reference of this Subscription.
         :type: str
@@ -390,7 +390,7 @@ class Subscription:
     def subscriber(self):
         """Gets the subscriber of this Subscription.
 
-            
+            The subscriber that the subscription belongs to.
 
         :return: The subscriber of this Subscription.
         :rtype: Subscriber
@@ -401,7 +401,7 @@ class Subscription:
     def subscriber(self, subscriber):
         """Sets the subscriber of this Subscription.
 
-            
+            The subscriber that the subscription belongs to.
 
         :param subscriber: The subscriber of this Subscription.
         :type: Subscriber
@@ -413,7 +413,7 @@ class Subscription:
     def terminated_by(self):
         """Gets the terminated_by of this Subscription.
 
-            
+            The ID of the user the subscription was terminated by.
 
         :return: The terminated_by of this Subscription.
         :rtype: int
@@ -424,7 +424,7 @@ class Subscription:
     def terminated_by(self, terminated_by):
         """Sets the terminated_by of this Subscription.
 
-            
+            The ID of the user the subscription was terminated by.
 
         :param terminated_by: The terminated_by of this Subscription.
         :type: int
@@ -436,7 +436,7 @@ class Subscription:
     def terminated_on(self):
         """Gets the terminated_on of this Subscription.
 
-            
+            The date and time when the subscription was terminated.
 
         :return: The terminated_on of this Subscription.
         :rtype: datetime
@@ -447,7 +447,7 @@ class Subscription:
     def terminated_on(self, terminated_on):
         """Sets the terminated_on of this Subscription.
 
-            
+            The date and time when the subscription was terminated.
 
         :param terminated_on: The terminated_on of this Subscription.
         :type: datetime
@@ -459,7 +459,7 @@ class Subscription:
     def terminating_on(self):
         """Gets the terminating_on of this Subscription.
 
-            
+            The date and time when the termination of the subscription started.
 
         :return: The terminating_on of this Subscription.
         :rtype: datetime
@@ -470,7 +470,7 @@ class Subscription:
     def terminating_on(self, terminating_on):
         """Sets the terminating_on of this Subscription.
 
-            
+            The date and time when the termination of the subscription started.
 
         :param terminating_on: The terminating_on of this Subscription.
         :type: datetime
@@ -482,7 +482,7 @@ class Subscription:
     def termination_scheduled_on(self):
         """Gets the termination_scheduled_on of this Subscription.
 
-            
+            The date and time when the subscription was scheduled to be terminated.
 
         :return: The termination_scheduled_on of this Subscription.
         :rtype: datetime
@@ -493,7 +493,7 @@ class Subscription:
     def termination_scheduled_on(self, termination_scheduled_on):
         """Sets the termination_scheduled_on of this Subscription.
 
-            
+            The date and time when the subscription was scheduled to be terminated.
 
         :param termination_scheduled_on: The termination_scheduled_on of this Subscription.
         :type: datetime
@@ -505,7 +505,7 @@ class Subscription:
     def token(self):
         """Gets the token of this Subscription.
 
-            
+            The payment token that is used to charge the customer.
 
         :return: The token of this Subscription.
         :rtype: Token
@@ -516,7 +516,7 @@ class Subscription:
     def token(self, token):
         """Sets the token of this Subscription.
 
-            
+            The payment token that is used to charge the customer.
 
         :param token: The token of this Subscription.
         :type: Token

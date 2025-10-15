@@ -119,18 +119,17 @@ class SubscriptionSuspensionServiceApi:
             _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
-    def create(self, space_id, suspension, **kwargs):
+    def create(self, suspension, **kwargs):
         """Create
 
         The create operation creates a new subscription suspension.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.create(space_id, suspension, async_req=True)
+        >>> thread = api.create(suspension, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int space_id:  (required)
         :param SubscriptionSuspensionCreate suspension:  (required)
         :return: SubscriptionSuspension
                  If the method is called asynchronously,
@@ -140,30 +139,29 @@ class SubscriptionSuspensionServiceApi:
         
         kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
-            return self.create_with_http_info(space_id, suspension, **kwargs)
+            return self.create_with_http_info(suspension, **kwargs)
         else:
-            (data) = self.create_with_http_info(space_id, suspension, **kwargs)
+            (data) = self.create_with_http_info(suspension, **kwargs)
             return data
 
-    def create_with_http_info(self, space_id, suspension, **kwargs):
+    def create_with_http_info(self, suspension, **kwargs):
         """Create
 
         The create operation creates a new subscription suspension.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.create_with_http_info(space_id, suspension, async_req=True)
+        >>> thread = api.create_with_http_info(suspension, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int space_id:  (required)
         :param SubscriptionSuspensionCreate suspension:  (required)
         :return: SubscriptionSuspension
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'suspension']
+        all_params = ['suspension']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -178,10 +176,6 @@ class SubscriptionSuspensionServiceApi:
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'space_id' is set
-        if ('space_id' not in params or
-                params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `create`")
         # verify the required parameter 'suspension' is set
         if ('suspension' not in params or
                 params['suspension'] is None):
@@ -192,8 +186,6 @@ class SubscriptionSuspensionServiceApi:
         path_params = {}
 
         query_params = []
-        if 'space_id' in params:
-            query_params.append(('spaceId', params['space_id']))
 
         header_params = {}
 
@@ -452,18 +444,17 @@ class SubscriptionSuspensionServiceApi:
             _request_timeout=params.get('request_timeout'),
             collection_formats=collection_formats)
 
-    def terminate(self, space_id, suspension_id, **kwargs):
+    def terminate(self, suspension_id, **kwargs):
         """terminate
 
-        The create operation creates a new subscription suspension.
+        Terminates an existing subscription suspension.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.terminate(space_id, suspension_id, async_req=True)
+        >>> thread = api.terminate(suspension_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int space_id:  (required)
         :param int suspension_id:  (required)
         :return: SubscriptionSuspension
                  If the method is called asynchronously,
@@ -473,30 +464,29 @@ class SubscriptionSuspensionServiceApi:
         
         kwargs['request_timeout'] = self.api_client.configuration.request_timeout
         if kwargs.get('async_req'):
-            return self.terminate_with_http_info(space_id, suspension_id, **kwargs)
+            return self.terminate_with_http_info(suspension_id, **kwargs)
         else:
-            (data) = self.terminate_with_http_info(space_id, suspension_id, **kwargs)
+            (data) = self.terminate_with_http_info(suspension_id, **kwargs)
             return data
 
-    def terminate_with_http_info(self, space_id, suspension_id, **kwargs):
+    def terminate_with_http_info(self, suspension_id, **kwargs):
         """terminate
 
-        The create operation creates a new subscription suspension.
+        Terminates an existing subscription suspension.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
-        >>> thread = api.terminate_with_http_info(space_id, suspension_id, async_req=True)
+        >>> thread = api.terminate_with_http_info(suspension_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int space_id:  (required)
         :param int suspension_id:  (required)
         :return: SubscriptionSuspension
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['space_id', 'suspension_id']
+        all_params = ['suspension_id']
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -511,10 +501,6 @@ class SubscriptionSuspensionServiceApi:
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'space_id' is set
-        if ('space_id' not in params or
-                params['space_id'] is None):
-            raise ValueError("Missing the required parameter `space_id` when calling `terminate`")
         # verify the required parameter 'suspension_id' is set
         if ('suspension_id' not in params or
                 params['suspension_id'] is None):
@@ -525,8 +511,6 @@ class SubscriptionSuspensionServiceApi:
         path_params = {}
 
         query_params = []
-        if 'space_id' in params:
-            query_params.append(('spaceId', params['space_id']))
         if 'suspension_id' in params:
             query_params.append(('suspensionId', params['suspension_id']))
 

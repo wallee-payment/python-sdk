@@ -60,7 +60,7 @@ class SubscriptionMetricUsageReport:
     def consumed_units(self):
         """Gets the consumed_units of this SubscriptionMetricUsageReport.
 
-            The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.
+            The number of resources consumed, will be charged in the next billing cycle.
 
         :return: The consumed_units of this SubscriptionMetricUsageReport.
         :rtype: float
@@ -71,7 +71,7 @@ class SubscriptionMetricUsageReport:
     def consumed_units(self, consumed_units):
         """Sets the consumed_units of this SubscriptionMetricUsageReport.
 
-            The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.
+            The number of resources consumed, will be charged in the next billing cycle.
 
         :param consumed_units: The consumed_units of this SubscriptionMetricUsageReport.
         :type: float
@@ -83,7 +83,7 @@ class SubscriptionMetricUsageReport:
     def created_by_user_id(self):
         """Gets the created_by_user_id of this SubscriptionMetricUsageReport.
 
-            
+            The ID of the user the usage report was created by.
 
         :return: The created_by_user_id of this SubscriptionMetricUsageReport.
         :rtype: int
@@ -94,7 +94,7 @@ class SubscriptionMetricUsageReport:
     def created_by_user_id(self, created_by_user_id):
         """Sets the created_by_user_id of this SubscriptionMetricUsageReport.
 
-            
+            The ID of the user the usage report was created by.
 
         :param created_by_user_id: The created_by_user_id of this SubscriptionMetricUsageReport.
         :type: int
@@ -106,7 +106,7 @@ class SubscriptionMetricUsageReport:
     def created_on(self):
         """Gets the created_on of this SubscriptionMetricUsageReport.
 
-            
+            The date and time when the usage report was created.
 
         :return: The created_on of this SubscriptionMetricUsageReport.
         :rtype: datetime
@@ -117,7 +117,7 @@ class SubscriptionMetricUsageReport:
     def created_on(self, created_on):
         """Sets the created_on of this SubscriptionMetricUsageReport.
 
-            
+            The date and time when the usage report was created.
 
         :param created_on: The created_on of this SubscriptionMetricUsageReport.
         :type: datetime
@@ -129,7 +129,7 @@ class SubscriptionMetricUsageReport:
     def description(self):
         """Gets the description of this SubscriptionMetricUsageReport.
 
-            The metric usage report description describe the reported usage. This description may be shown to the end user.
+            A description used to identify the usage report.
 
         :return: The description of this SubscriptionMetricUsageReport.
         :rtype: str
@@ -140,7 +140,7 @@ class SubscriptionMetricUsageReport:
     def description(self, description):
         """Sets the description of this SubscriptionMetricUsageReport.
 
-            The metric usage report description describe the reported usage. This description may be shown to the end user.
+            A description used to identify the usage report.
 
         :param description: The description of this SubscriptionMetricUsageReport.
         :type: str
@@ -154,7 +154,7 @@ class SubscriptionMetricUsageReport:
     def external_id(self):
         """Gets the external_id of this SubscriptionMetricUsageReport.
 
-            The external id identifies the metric usage uniquely.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionMetricUsageReport.
         :rtype: str
@@ -165,7 +165,7 @@ class SubscriptionMetricUsageReport:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionMetricUsageReport.
 
-            The external id identifies the metric usage uniquely.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionMetricUsageReport.
         :type: str
@@ -223,7 +223,7 @@ class SubscriptionMetricUsageReport:
     def metric(self):
         """Gets the metric of this SubscriptionMetricUsageReport.
 
-            The metric usage report is linked to the metric for which the usage should be recorded.
+            The metric that the usage report is recorded for.
 
         :return: The metric of this SubscriptionMetricUsageReport.
         :rtype: int
@@ -234,7 +234,7 @@ class SubscriptionMetricUsageReport:
     def metric(self, metric):
         """Sets the metric of this SubscriptionMetricUsageReport.
 
-            The metric usage report is linked to the metric for which the usage should be recorded.
+            The metric that the usage report is recorded for.
 
         :param metric: The metric of this SubscriptionMetricUsageReport.
         :type: int
@@ -269,7 +269,7 @@ class SubscriptionMetricUsageReport:
     def subscription(self):
         """Gets the subscription of this SubscriptionMetricUsageReport.
 
-            The subscription to which the usage is added to.
+            The subscription that the usage report is recorded for.
 
         :return: The subscription of this SubscriptionMetricUsageReport.
         :rtype: int
@@ -280,7 +280,7 @@ class SubscriptionMetricUsageReport:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionMetricUsageReport.
 
-            The subscription to which the usage is added to.
+            The subscription that the usage report is recorded for.
 
         :param subscription: The subscription of this SubscriptionMetricUsageReport.
         :type: int

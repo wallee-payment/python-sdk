@@ -42,7 +42,7 @@ class WebAppConfirmationResponse:
     def access_token(self):
         """Gets the access_token of this WebAppConfirmationResponse.
 
-            The access code grants permissions to the web service API according to the OAuth standard.
+            The access code granting permissions to the web service API according to the OAuth standard.
 
         :return: The access_token of this WebAppConfirmationResponse.
         :rtype: str
@@ -53,7 +53,7 @@ class WebAppConfirmationResponse:
     def access_token(self, access_token):
         """Sets the access_token of this WebAppConfirmationResponse.
 
-            The access code grants permissions to the web service API according to the OAuth standard.
+            The access code granting permissions to the web service API according to the OAuth standard.
 
         :param access_token: The access_token of this WebAppConfirmationResponse.
         :type: str
@@ -65,7 +65,7 @@ class WebAppConfirmationResponse:
     def scope(self):
         """Gets the scope of this WebAppConfirmationResponse.
 
-            The scope contains the permissions granted to the web app within the space.
+            The list of the permissions granted to the web app within the space.
 
         :return: The scope of this WebAppConfirmationResponse.
         :rtype: str
@@ -76,7 +76,7 @@ class WebAppConfirmationResponse:
     def scope(self, scope):
         """Sets the scope of this WebAppConfirmationResponse.
 
-            The scope contains the permissions granted to the web app within the space.
+            The list of the permissions granted to the web app within the space.
 
         :param scope: The scope of this WebAppConfirmationResponse.
         :type: str
@@ -88,7 +88,7 @@ class WebAppConfirmationResponse:
     def space(self):
         """Gets the space of this WebAppConfirmationResponse.
 
-            This is the space into which the web app is installed into.
+            The space that the web app was installed in.
 
         :return: The space of this WebAppConfirmationResponse.
         :rtype: Space
@@ -99,7 +99,7 @@ class WebAppConfirmationResponse:
     def space(self, space):
         """Sets the space of this WebAppConfirmationResponse.
 
-            This is the space into which the web app is installed into.
+            The space that the web app was installed in.
 
         :param space: The space of this WebAppConfirmationResponse.
         :type: Space
@@ -111,7 +111,7 @@ class WebAppConfirmationResponse:
     def state(self):
         """Gets the state of this WebAppConfirmationResponse.
 
-            The state contains the state parameter content provided when initiating the app installation.
+            The state parameter that was provided in the authorization request.
 
         :return: The state of this WebAppConfirmationResponse.
         :rtype: str
@@ -122,7 +122,7 @@ class WebAppConfirmationResponse:
     def state(self, state):
         """Sets the state of this WebAppConfirmationResponse.
 
-            The state contains the state parameter content provided when initiating the app installation.
+            The state parameter that was provided in the authorization request.
 
         :param state: The state of this WebAppConfirmationResponse.
         :type: str
@@ -134,7 +134,7 @@ class WebAppConfirmationResponse:
     def token_type(self):
         """Gets the token_type of this WebAppConfirmationResponse.
 
-            The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.
+            The type of the access token that determines the authentication mechanism to use for accessing the web service API.
 
         :return: The token_type of this WebAppConfirmationResponse.
         :rtype: str
@@ -145,7 +145,7 @@ class WebAppConfirmationResponse:
     def token_type(self, token_type):
         """Sets the token_type of this WebAppConfirmationResponse.
 
-            The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.
+            The type of the access token that determines the authentication mechanism to use for accessing the web service API.
 
         :param token_type: The token_type of this WebAppConfirmationResponse.
         :type: str

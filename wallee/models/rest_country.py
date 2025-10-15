@@ -45,7 +45,7 @@ class RestCountry:
     def address_format(self):
         """Gets the address_format of this RestCountry.
 
-            Specifies the country's way of formatting addresses.
+            The country's way of formatting addresses.
 
         :return: The address_format of this RestCountry.
         :rtype: RestAddressFormat
@@ -56,7 +56,7 @@ class RestCountry:
     def address_format(self, address_format):
         """Sets the address_format of this RestCountry.
 
-            Specifies the country's way of formatting addresses.
+            The country's way of formatting addresses.
 
         :param address_format: The address_format of this RestCountry.
         :type: RestAddressFormat

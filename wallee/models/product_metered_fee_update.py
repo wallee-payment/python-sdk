@@ -100,7 +100,7 @@ class ProductMeteredFeeUpdate:
     def component(self):
         """Gets the component of this ProductMeteredFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :return: The component of this ProductMeteredFeeUpdate.
         :rtype: int
@@ -111,7 +111,7 @@ class ProductMeteredFeeUpdate:
     def component(self, component):
         """Sets the component of this ProductMeteredFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :param component: The component of this ProductMeteredFeeUpdate.
         :type: int
@@ -123,7 +123,7 @@ class ProductMeteredFeeUpdate:
     def description(self):
         """Gets the description of this ProductMeteredFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :return: The description of this ProductMeteredFeeUpdate.
         :rtype: dict(str, str)
@@ -134,7 +134,7 @@ class ProductMeteredFeeUpdate:
     def description(self, description):
         """Sets the description of this ProductMeteredFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :param description: The description of this ProductMeteredFeeUpdate.
         :type: dict(str, str)
@@ -146,7 +146,7 @@ class ProductMeteredFeeUpdate:
     def metric(self):
         """Gets the metric of this ProductMeteredFeeUpdate.
 
-            
+            The metric used to determine the resource consumption billed to the customer.
 
         :return: The metric of this ProductMeteredFeeUpdate.
         :rtype: int
@@ -157,7 +157,7 @@ class ProductMeteredFeeUpdate:
     def metric(self, metric):
         """Sets the metric of this ProductMeteredFeeUpdate.
 
-            
+            The metric used to determine the resource consumption billed to the customer.
 
         :param metric: The metric of this ProductMeteredFeeUpdate.
         :type: int
@@ -169,7 +169,7 @@ class ProductMeteredFeeUpdate:
     def name(self):
         """Gets the name of this ProductMeteredFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :return: The name of this ProductMeteredFeeUpdate.
         :rtype: dict(str, str)
@@ -180,7 +180,7 @@ class ProductMeteredFeeUpdate:
     def name(self, name):
         """Sets the name of this ProductMeteredFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :param name: The name of this ProductMeteredFeeUpdate.
         :type: dict(str, str)
@@ -192,7 +192,7 @@ class ProductMeteredFeeUpdate:
     def tier_pricing(self):
         """Gets the tier_pricing of this ProductMeteredFeeUpdate.
 
-            The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
+            The method used to calculate the tier price.
 
         :return: The tier_pricing of this ProductMeteredFeeUpdate.
         :rtype: ProductMeteredTierPricing
@@ -203,7 +203,7 @@ class ProductMeteredFeeUpdate:
     def tier_pricing(self, tier_pricing):
         """Sets the tier_pricing of this ProductMeteredFeeUpdate.
 
-            The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
+            The method used to calculate the tier price.
 
         :param tier_pricing: The tier_pricing of this ProductMeteredFeeUpdate.
         :type: ProductMeteredTierPricing

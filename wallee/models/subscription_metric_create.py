@@ -33,7 +33,7 @@ class SubscriptionMetricCreate(AbstractSubscriptionMetricUpdate):
     def type(self):
         """Gets the type of this SubscriptionMetricCreate.
 
-            
+            The type of the metric.
 
         :return: The type of this SubscriptionMetricCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class SubscriptionMetricCreate(AbstractSubscriptionMetricUpdate):
     def type(self, type):
         """Sets the type of this SubscriptionMetricCreate.
 
-            
+            The type of the metric.
 
         :param type: The type of this SubscriptionMetricCreate.
         :type: int

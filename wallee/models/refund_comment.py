@@ -243,7 +243,7 @@ class RefundComment:
     def refund(self):
         """Gets the refund of this RefundComment.
 
-            
+            The refund that the comment belongs to.
 
         :return: The refund of this RefundComment.
         :rtype: int
@@ -254,7 +254,7 @@ class RefundComment:
     def refund(self, refund):
         """Sets the refund of this RefundComment.
 
-            
+            The refund that the comment belongs to.
 
         :param refund: The refund of this RefundComment.
         :type: int

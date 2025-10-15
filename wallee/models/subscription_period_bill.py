@@ -60,7 +60,7 @@ class SubscriptionPeriodBill:
     def created_on(self):
         """Gets the created_on of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period bill was created.
 
         :return: The created_on of this SubscriptionPeriodBill.
         :rtype: datetime
@@ -71,7 +71,7 @@ class SubscriptionPeriodBill:
     def created_on(self, created_on):
         """Sets the created_on of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period bill was created.
 
         :param created_on: The created_on of this SubscriptionPeriodBill.
         :type: datetime
@@ -83,7 +83,7 @@ class SubscriptionPeriodBill:
     def effective_period_end_date(self):
         """Gets the effective_period_end_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period actually ended.
 
         :return: The effective_period_end_date of this SubscriptionPeriodBill.
         :rtype: datetime
@@ -94,7 +94,7 @@ class SubscriptionPeriodBill:
     def effective_period_end_date(self, effective_period_end_date):
         """Sets the effective_period_end_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period actually ended.
 
         :param effective_period_end_date: The effective_period_end_date of this SubscriptionPeriodBill.
         :type: datetime
@@ -175,7 +175,7 @@ class SubscriptionPeriodBill:
     def period_start_date(self):
         """Gets the period_start_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period started.
 
         :return: The period_start_date of this SubscriptionPeriodBill.
         :rtype: datetime
@@ -186,7 +186,7 @@ class SubscriptionPeriodBill:
     def period_start_date(self, period_start_date):
         """Sets the period_start_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period started.
 
         :param period_start_date: The period_start_date of this SubscriptionPeriodBill.
         :type: datetime
@@ -198,7 +198,7 @@ class SubscriptionPeriodBill:
     def planned_period_end_date(self):
         """Gets the planned_period_end_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period is planned to end.
 
         :return: The planned_period_end_date of this SubscriptionPeriodBill.
         :rtype: datetime
@@ -209,7 +209,7 @@ class SubscriptionPeriodBill:
     def planned_period_end_date(self, planned_period_end_date):
         """Sets the planned_period_end_date of this SubscriptionPeriodBill.
 
-            
+            The date and time when the period is planned to end.
 
         :param planned_period_end_date: The planned_period_end_date of this SubscriptionPeriodBill.
         :type: datetime
@@ -267,7 +267,7 @@ class SubscriptionPeriodBill:
     def subscription_version(self):
         """Gets the subscription_version of this SubscriptionPeriodBill.
 
-            
+            The subscription version that the period bill belongs to.
 
         :return: The subscription_version of this SubscriptionPeriodBill.
         :rtype: SubscriptionVersion
@@ -278,7 +278,7 @@ class SubscriptionPeriodBill:
     def subscription_version(self, subscription_version):
         """Sets the subscription_version of this SubscriptionPeriodBill.
 
-            
+            The subscription version that the period bill belongs to.
 
         :param subscription_version: The subscription_version of this SubscriptionPeriodBill.
         :type: SubscriptionVersion

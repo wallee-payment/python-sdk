@@ -33,7 +33,7 @@ class SubscriptionProductCreate(AbstractSubscriptionProductActive):
     def reference(self):
         """Gets the reference of this SubscriptionProductCreate.
 
-            The product reference identifies the product for external systems. This field may contain the product's SKU.
+            The merchant's reference used to identify the product, e.g. the SKU.
 
         :return: The reference of this SubscriptionProductCreate.
         :rtype: str
@@ -44,7 +44,7 @@ class SubscriptionProductCreate(AbstractSubscriptionProductActive):
     def reference(self, reference):
         """Sets the reference of this SubscriptionProductCreate.
 
-            The product reference identifies the product for external systems. This field may contain the product's SKU.
+            The merchant's reference used to identify the product, e.g. the SKU.
 
         :param reference: The reference of this SubscriptionProductCreate.
         :type: str

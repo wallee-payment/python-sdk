@@ -45,7 +45,7 @@ class CurrencyBankAccount:
     def bank_account(self):
         """Gets the bank_account of this CurrencyBankAccount.
 
-            
+            The bank account this currency bank account belongs to.
 
         :return: The bank_account of this CurrencyBankAccount.
         :rtype: BankAccount
@@ -56,7 +56,7 @@ class CurrencyBankAccount:
     def bank_account(self, bank_account):
         """Sets the bank_account of this CurrencyBankAccount.
 
-            
+            The bank account this currency bank account belongs to.
 
         :param bank_account: The bank_account of this CurrencyBankAccount.
         :type: BankAccount
@@ -68,7 +68,7 @@ class CurrencyBankAccount:
     def currency(self):
         """Gets the currency of this CurrencyBankAccount.
 
-            
+            The currency associated with the bank account.
 
         :return: The currency of this CurrencyBankAccount.
         :rtype: str
@@ -79,7 +79,7 @@ class CurrencyBankAccount:
     def currency(self, currency):
         """Sets the currency of this CurrencyBankAccount.
 
-            
+            The currency associated with the bank account.
 
         :param currency: The currency of this CurrencyBankAccount.
         :type: str
@@ -91,7 +91,7 @@ class CurrencyBankAccount:
     def environment(self):
         """Gets the environment of this CurrencyBankAccount.
 
-            
+            Whether the bank account operates in a test or production environment.
 
         :return: The environment of this CurrencyBankAccount.
         :rtype: BankAccountEnvironment
@@ -102,7 +102,7 @@ class CurrencyBankAccount:
     def environment(self, environment):
         """Sets the environment of this CurrencyBankAccount.
 
-            
+            Whether the bank account operates in a test or production environment.
 
         :param environment: The environment of this CurrencyBankAccount.
         :type: BankAccountEnvironment

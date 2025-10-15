@@ -10,12 +10,12 @@ class ShopifySubscriptionCreationRequest:
     swagger_types = {
     
         'billing_address': 'ShopifySubscriptionAddressCreate',
-        'billing_configuration': 'ShopifySubscriptionModelBillingConfiguration',
+        'billing_configuration': 'BillingConfiguration',
         'currency': 'str',
         'external_id': 'str',
         'initial_execution_date': 'datetime',
         'integration': 'int',
-        'items': 'list[ShopifySubscriptionModelItem]',
+        'items': 'list[Item]',
         'language': 'str',
         'shipping_address': 'ShopifySubscriptionAddressCreate',
         'shipping_method_name': 'str',
@@ -105,7 +105,7 @@ class ShopifySubscriptionCreationRequest:
             
 
         :return: The billing_configuration of this ShopifySubscriptionCreationRequest.
-        :rtype: ShopifySubscriptionModelBillingConfiguration
+        :rtype: BillingConfiguration
         """
         return self._billing_configuration
 
@@ -116,7 +116,7 @@ class ShopifySubscriptionCreationRequest:
             
 
         :param billing_configuration: The billing_configuration of this ShopifySubscriptionCreationRequest.
-        :type: ShopifySubscriptionModelBillingConfiguration
+        :type: BillingConfiguration
         """
 
         self._billing_configuration = billing_configuration
@@ -150,7 +150,7 @@ class ShopifySubscriptionCreationRequest:
     def external_id(self):
         """Gets the external_id of this ShopifySubscriptionCreationRequest.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this ShopifySubscriptionCreationRequest.
         :rtype: str
@@ -161,7 +161,7 @@ class ShopifySubscriptionCreationRequest:
     def external_id(self, external_id):
         """Sets the external_id of this ShopifySubscriptionCreationRequest.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this ShopifySubscriptionCreationRequest.
         :type: str
@@ -226,7 +226,7 @@ class ShopifySubscriptionCreationRequest:
             
 
         :return: The items of this ShopifySubscriptionCreationRequest.
-        :rtype: list[ShopifySubscriptionModelItem]
+        :rtype: list[Item]
         """
         return self._items
 
@@ -237,7 +237,7 @@ class ShopifySubscriptionCreationRequest:
             
 
         :param items: The items of this ShopifySubscriptionCreationRequest.
-        :type: list[ShopifySubscriptionModelItem]
+        :type: list[Item]
         """
         if items is None:
             raise ValueError("Invalid value for `items`, must not be `None`")

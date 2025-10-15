@@ -51,7 +51,7 @@ class TransactionGroup:
     def begin_date(self):
         """Gets the begin_date of this TransactionGroup.
 
-            
+            The date and time when the initial transaction in the group was created.
 
         :return: The begin_date of this TransactionGroup.
         :rtype: datetime
@@ -62,7 +62,7 @@ class TransactionGroup:
     def begin_date(self, begin_date):
         """Sets the begin_date of this TransactionGroup.
 
-            
+            The date and time when the initial transaction in the group was created.
 
         :param begin_date: The begin_date of this TransactionGroup.
         :type: datetime
@@ -74,7 +74,7 @@ class TransactionGroup:
     def customer_id(self):
         """Gets the customer_id of this TransactionGroup.
 
-            
+            The unique identifier of the customer in the external system.
 
         :return: The customer_id of this TransactionGroup.
         :rtype: str
@@ -85,7 +85,7 @@ class TransactionGroup:
     def customer_id(self, customer_id):
         """Sets the customer_id of this TransactionGroup.
 
-            
+            The unique identifier of the customer in the external system.
 
         :param customer_id: The customer_id of this TransactionGroup.
         :type: str
@@ -99,7 +99,7 @@ class TransactionGroup:
     def end_date(self):
         """Gets the end_date of this TransactionGroup.
 
-            
+            The date and time when the final transaction in the group was last updated.
 
         :return: The end_date of this TransactionGroup.
         :rtype: datetime
@@ -110,7 +110,7 @@ class TransactionGroup:
     def end_date(self, end_date):
         """Sets the end_date of this TransactionGroup.
 
-            
+            The date and time when the final transaction in the group was last updated.
 
         :param end_date: The end_date of this TransactionGroup.
         :type: datetime

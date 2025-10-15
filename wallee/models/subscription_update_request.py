@@ -30,7 +30,7 @@ class SubscriptionUpdateRequest:
     def description(self):
         """Gets the description of this SubscriptionUpdateRequest.
 
-            
+            A description used to identify the subscription.
 
         :return: The description of this SubscriptionUpdateRequest.
         :rtype: str
@@ -41,7 +41,7 @@ class SubscriptionUpdateRequest:
     def description(self, description):
         """Sets the description of this SubscriptionUpdateRequest.
 
-            
+            A description used to identify the subscription.
 
         :param description: The description of this SubscriptionUpdateRequest.
         :type: str

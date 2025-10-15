@@ -243,7 +243,7 @@ class TransactionComment:
     def transaction(self):
         """Gets the transaction of this TransactionComment.
 
-            
+            The transaction that the comment belongs to.
 
         :return: The transaction of this TransactionComment.
         :rtype: int
@@ -254,7 +254,7 @@ class TransactionComment:
     def transaction(self, transaction):
         """Sets the transaction of this TransactionComment.
 
-            
+            The transaction that the comment belongs to.
 
         :param transaction: The transaction of this TransactionComment.
         :type: int

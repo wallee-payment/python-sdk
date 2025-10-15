@@ -72,7 +72,7 @@ class PaymentConnectorConfiguration:
     def applicable_for_transaction_processing(self):
         """Gets the applicable_for_transaction_processing of this PaymentConnectorConfiguration.
 
-            This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.
+            Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.
 
         :return: The applicable_for_transaction_processing of this PaymentConnectorConfiguration.
         :rtype: bool
@@ -83,7 +83,7 @@ class PaymentConnectorConfiguration:
     def applicable_for_transaction_processing(self, applicable_for_transaction_processing):
         """Sets the applicable_for_transaction_processing of this PaymentConnectorConfiguration.
 
-            This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.
+            Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.
 
         :param applicable_for_transaction_processing: The applicable_for_transaction_processing of this PaymentConnectorConfiguration.
         :type: bool
@@ -95,7 +95,7 @@ class PaymentConnectorConfiguration:
     def conditions(self):
         """Gets the conditions of this PaymentConnectorConfiguration.
 
-            If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.
+            Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.
 
         :return: The conditions of this PaymentConnectorConfiguration.
         :rtype: list[int]
@@ -106,7 +106,7 @@ class PaymentConnectorConfiguration:
     def conditions(self, conditions):
         """Sets the conditions of this PaymentConnectorConfiguration.
 
-            If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.
+            Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.
 
         :param conditions: The conditions of this PaymentConnectorConfiguration.
         :type: list[int]
@@ -118,7 +118,7 @@ class PaymentConnectorConfiguration:
     def connector(self):
         """Gets the connector of this PaymentConnectorConfiguration.
 
-            
+            The connector that the configuration is for.
 
         :return: The connector of this PaymentConnectorConfiguration.
         :rtype: int
@@ -129,7 +129,7 @@ class PaymentConnectorConfiguration:
     def connector(self, connector):
         """Sets the connector of this PaymentConnectorConfiguration.
 
-            
+            The connector that the configuration is for.
 
         :param connector: The connector of this PaymentConnectorConfiguration.
         :type: int
@@ -141,7 +141,7 @@ class PaymentConnectorConfiguration:
     def enabled_sales_channels(self):
         """Gets the enabled_sales_channels of this PaymentConnectorConfiguration.
 
-            Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.
+            The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.
 
         :return: The enabled_sales_channels of this PaymentConnectorConfiguration.
         :rtype: list[SalesChannel]
@@ -152,7 +152,7 @@ class PaymentConnectorConfiguration:
     def enabled_sales_channels(self, enabled_sales_channels):
         """Sets the enabled_sales_channels of this PaymentConnectorConfiguration.
 
-            Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.
+            The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.
 
         :param enabled_sales_channels: The enabled_sales_channels of this PaymentConnectorConfiguration.
         :type: list[SalesChannel]
@@ -164,7 +164,7 @@ class PaymentConnectorConfiguration:
     def enabled_space_views(self):
         """Gets the enabled_space_views of this PaymentConnectorConfiguration.
 
-            The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.
+            The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.
 
         :return: The enabled_space_views of this PaymentConnectorConfiguration.
         :rtype: list[int]
@@ -175,7 +175,7 @@ class PaymentConnectorConfiguration:
     def enabled_space_views(self, enabled_space_views):
         """Sets the enabled_space_views of this PaymentConnectorConfiguration.
 
-            The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.
+            The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.
 
         :param enabled_space_views: The enabled_space_views of this PaymentConnectorConfiguration.
         :type: list[int]
@@ -210,7 +210,7 @@ class PaymentConnectorConfiguration:
     def image_path(self):
         """Gets the image_path of this PaymentConnectorConfiguration.
 
-            
+            The URL to the connector's image.
 
         :return: The image_path of this PaymentConnectorConfiguration.
         :rtype: str
@@ -221,7 +221,7 @@ class PaymentConnectorConfiguration:
     def image_path(self, image_path):
         """Sets the image_path of this PaymentConnectorConfiguration.
 
-            
+            The URL to the connector's image.
 
         :param image_path: The image_path of this PaymentConnectorConfiguration.
         :type: str
@@ -256,7 +256,7 @@ class PaymentConnectorConfiguration:
     def name(self):
         """Gets the name of this PaymentConnectorConfiguration.
 
-            The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the connector configuration.
 
         :return: The name of this PaymentConnectorConfiguration.
         :rtype: str
@@ -267,7 +267,7 @@ class PaymentConnectorConfiguration:
     def name(self, name):
         """Sets the name of this PaymentConnectorConfiguration.
 
-            The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the connector configuration.
 
         :param name: The name of this PaymentConnectorConfiguration.
         :type: str
@@ -281,7 +281,7 @@ class PaymentConnectorConfiguration:
     def payment_method_configuration(self):
         """Gets the payment_method_configuration of this PaymentConnectorConfiguration.
 
-            
+            The payment method configuration that the connector configuration belongs to.
 
         :return: The payment_method_configuration of this PaymentConnectorConfiguration.
         :rtype: PaymentMethodConfiguration
@@ -292,7 +292,7 @@ class PaymentConnectorConfiguration:
     def payment_method_configuration(self, payment_method_configuration):
         """Sets the payment_method_configuration of this PaymentConnectorConfiguration.
 
-            
+            The payment method configuration that the connector configuration belongs to.
 
         :param payment_method_configuration: The payment_method_configuration of this PaymentConnectorConfiguration.
         :type: PaymentMethodConfiguration
@@ -327,7 +327,7 @@ class PaymentConnectorConfiguration:
     def priority(self):
         """Gets the priority of this PaymentConnectorConfiguration.
 
-            The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.
+            The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.
 
         :return: The priority of this PaymentConnectorConfiguration.
         :rtype: int
@@ -338,7 +338,7 @@ class PaymentConnectorConfiguration:
     def priority(self, priority):
         """Sets the priority of this PaymentConnectorConfiguration.
 
-            The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.
+            The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.
 
         :param priority: The priority of this PaymentConnectorConfiguration.
         :type: int
@@ -350,7 +350,7 @@ class PaymentConnectorConfiguration:
     def processor_configuration(self):
         """Gets the processor_configuration of this PaymentConnectorConfiguration.
 
-            
+            The processor configuration that the connector configuration belongs to.
 
         :return: The processor_configuration of this PaymentConnectorConfiguration.
         :rtype: PaymentProcessorConfiguration
@@ -361,7 +361,7 @@ class PaymentConnectorConfiguration:
     def processor_configuration(self, processor_configuration):
         """Sets the processor_configuration of this PaymentConnectorConfiguration.
 
-            
+            The processor configuration that the connector configuration belongs to.
 
         :param processor_configuration: The processor_configuration of this PaymentConnectorConfiguration.
         :type: PaymentProcessorConfiguration

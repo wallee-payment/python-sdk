@@ -33,7 +33,7 @@ class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
     def transaction_invoice(self):
         """Gets the transaction_invoice of this TransactionInvoiceCommentCreate.
 
-            
+            The transaction invoice that the comment belongs to.
 
         :return: The transaction_invoice of this TransactionInvoiceCommentCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
     def transaction_invoice(self, transaction_invoice):
         """Sets the transaction_invoice of this TransactionInvoiceCommentCreate.
 
-            
+            The transaction invoice that the comment belongs to.
 
         :param transaction_invoice: The transaction_invoice of this TransactionInvoiceCommentCreate.
         :type: int

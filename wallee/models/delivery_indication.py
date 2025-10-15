@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class DeliveryIndication(TransactionAwareEntity):
+
+class DeliveryIndication:
 
     swagger_types = {
     
@@ -13,6 +13,9 @@ class DeliveryIndication(TransactionAwareEntity):
         'automatically_decided_on': 'datetime',
         'completion': 'int',
         'created_on': 'datetime',
+        'id': 'int',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'manual_decision_timeout_on': 'datetime',
         'manually_decided_by': 'int',
         'manually_decided_on': 'datetime',
@@ -23,7 +26,7 @@ class DeliveryIndication(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'automatic_decision_reason': 'automaticDecisionReason','automatically_decided_on': 'automaticallyDecidedOn','completion': 'completion','created_on': 'createdOn','manual_decision_timeout_on': 'manualDecisionTimeoutOn','manually_decided_by': 'manuallyDecidedBy','manually_decided_on': 'manuallyDecidedOn','planned_purge_date': 'plannedPurgeDate','state': 'state','timeout_on': 'timeoutOn','transaction': 'transaction',
+        'automatic_decision_reason': 'automaticDecisionReason','automatically_decided_on': 'automaticallyDecidedOn','completion': 'completion','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','manual_decision_timeout_on': 'manualDecisionTimeoutOn','manually_decided_by': 'manuallyDecidedBy','manually_decided_on': 'manuallyDecidedOn','planned_purge_date': 'plannedPurgeDate','state': 'state','timeout_on': 'timeoutOn','transaction': 'transaction',
     }
 
     
@@ -31,6 +34,9 @@ class DeliveryIndication(TransactionAwareEntity):
     _automatically_decided_on = None
     _completion = None
     _created_on = None
+    _id = None
+    _linked_space_id = None
+    _linked_transaction = None
     _manual_decision_timeout_on = None
     _manually_decided_by = None
     _manually_decided_on = None
@@ -46,6 +52,9 @@ class DeliveryIndication(TransactionAwareEntity):
         self.automatically_decided_on = kwargs.get('automatically_decided_on', None)
         self.completion = kwargs.get('completion', None)
         self.created_on = kwargs.get('created_on', None)
+        self.id = kwargs.get('id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.manual_decision_timeout_on = kwargs.get('manual_decision_timeout_on', None)
         self.manually_decided_by = kwargs.get('manually_decided_by', None)
         self.manually_decided_on = kwargs.get('manually_decided_on', None)
@@ -53,16 +62,14 @@ class DeliveryIndication(TransactionAwareEntity):
         self.state = kwargs.get('state', None)
         self.timeout_on = kwargs.get('timeout_on', None)
         self.transaction = kwargs.get('transaction', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def automatic_decision_reason(self):
         """Gets the automatic_decision_reason of this DeliveryIndication.
 
-            
+            The reason for the automatic system decision about the delivery indication.
 
         :return: The automatic_decision_reason of this DeliveryIndication.
         :rtype: DeliveryIndicationDecisionReason
@@ -73,7 +80,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def automatic_decision_reason(self, automatic_decision_reason):
         """Sets the automatic_decision_reason of this DeliveryIndication.
 
-            
+            The reason for the automatic system decision about the delivery indication.
 
         :param automatic_decision_reason: The automatic_decision_reason of this DeliveryIndication.
         :type: DeliveryIndicationDecisionReason
@@ -85,7 +92,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def automatically_decided_on(self):
         """Gets the automatically_decided_on of this DeliveryIndication.
 
-            
+            The date and time when an automatic decision was made.
 
         :return: The automatically_decided_on of this DeliveryIndication.
         :rtype: datetime
@@ -96,7 +103,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def automatically_decided_on(self, automatically_decided_on):
         """Sets the automatically_decided_on of this DeliveryIndication.
 
-            
+            The date and time when an automatic decision was made.
 
         :param automatically_decided_on: The automatically_decided_on of this DeliveryIndication.
         :type: datetime
@@ -108,7 +115,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def completion(self):
         """Gets the completion of this DeliveryIndication.
 
-            
+            The transaction completion that the delivery indication is linked to.
 
         :return: The completion of this DeliveryIndication.
         :rtype: int
@@ -119,7 +126,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def completion(self, completion):
         """Sets the completion of this DeliveryIndication.
 
-            
+            The transaction completion that the delivery indication is linked to.
 
         :param completion: The completion of this DeliveryIndication.
         :type: int
@@ -151,10 +158,79 @@ class DeliveryIndication(TransactionAwareEntity):
         self._created_on = created_on
     
     @property
+    def id(self):
+        """Gets the id of this DeliveryIndication.
+
+            A unique identifier for the object.
+
+        :return: The id of this DeliveryIndication.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this DeliveryIndication.
+
+            A unique identifier for the object.
+
+        :param id: The id of this DeliveryIndication.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this DeliveryIndication.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this DeliveryIndication.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this DeliveryIndication.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this DeliveryIndication.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this DeliveryIndication.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this DeliveryIndication.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this DeliveryIndication.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this DeliveryIndication.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def manual_decision_timeout_on(self):
         """Gets the manual_decision_timeout_on of this DeliveryIndication.
 
-            
+            The date and time by which a decision must be made before the system automatically proceeds according to the connector's predefined settings.
 
         :return: The manual_decision_timeout_on of this DeliveryIndication.
         :rtype: datetime
@@ -165,7 +241,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def manual_decision_timeout_on(self, manual_decision_timeout_on):
         """Sets the manual_decision_timeout_on of this DeliveryIndication.
 
-            
+            The date and time by which a decision must be made before the system automatically proceeds according to the connector's predefined settings.
 
         :param manual_decision_timeout_on: The manual_decision_timeout_on of this DeliveryIndication.
         :type: datetime
@@ -177,7 +253,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def manually_decided_by(self):
         """Gets the manually_decided_by of this DeliveryIndication.
 
-            
+            The ID of the user who manually decided the delivery indication's state.
 
         :return: The manually_decided_by of this DeliveryIndication.
         :rtype: int
@@ -188,7 +264,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def manually_decided_by(self, manually_decided_by):
         """Sets the manually_decided_by of this DeliveryIndication.
 
-            
+            The ID of the user who manually decided the delivery indication's state.
 
         :param manually_decided_by: The manually_decided_by of this DeliveryIndication.
         :type: int
@@ -200,7 +276,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def manually_decided_on(self):
         """Gets the manually_decided_on of this DeliveryIndication.
 
-            
+            The date and time when a manual decision was made.
 
         :return: The manually_decided_on of this DeliveryIndication.
         :rtype: datetime
@@ -211,7 +287,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def manually_decided_on(self, manually_decided_on):
         """Sets the manually_decided_on of this DeliveryIndication.
 
-            
+            The date and time when a manual decision was made.
 
         :param manually_decided_on: The manually_decided_on of this DeliveryIndication.
         :type: datetime
@@ -269,7 +345,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def timeout_on(self):
         """Gets the timeout_on of this DeliveryIndication.
 
-            
+            The date and time when the delivery indication will expire.
 
         :return: The timeout_on of this DeliveryIndication.
         :rtype: datetime
@@ -280,7 +356,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this DeliveryIndication.
 
-            
+            The date and time when the delivery indication will expire.
 
         :param timeout_on: The timeout_on of this DeliveryIndication.
         :type: datetime
@@ -292,7 +368,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this DeliveryIndication.
 
-            
+            The payment transaction that the delivery indication is linked to.
 
         :return: The transaction of this DeliveryIndication.
         :rtype: Transaction
@@ -303,7 +379,7 @@ class DeliveryIndication(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this DeliveryIndication.
 
-            
+            The payment transaction that the delivery indication is linked to.
 
         :param transaction: The transaction of this DeliveryIndication.
         :type: Transaction

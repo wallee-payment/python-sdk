@@ -53,7 +53,7 @@ class TransactionCreate(AbstractTransactionPending):
     def auto_confirmation_enabled(self):
         """Gets the auto_confirmation_enabled of this TransactionCreate.
 
-            When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+            Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.
 
         :return: The auto_confirmation_enabled of this TransactionCreate.
         :rtype: bool
@@ -64,7 +64,7 @@ class TransactionCreate(AbstractTransactionPending):
     def auto_confirmation_enabled(self, auto_confirmation_enabled):
         """Sets the auto_confirmation_enabled of this TransactionCreate.
 
-            When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+            Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.
 
         :param auto_confirmation_enabled: The auto_confirmation_enabled of this TransactionCreate.
         :type: bool
@@ -76,7 +76,7 @@ class TransactionCreate(AbstractTransactionPending):
     def charge_retry_enabled(self):
         """Gets the charge_retry_enabled of this TransactionCreate.
 
-            When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
+            Whether the customer can make further payment attempts if the first one has failed. Default is true.
 
         :return: The charge_retry_enabled of this TransactionCreate.
         :rtype: bool
@@ -87,7 +87,7 @@ class TransactionCreate(AbstractTransactionPending):
     def charge_retry_enabled(self, charge_retry_enabled):
         """Sets the charge_retry_enabled of this TransactionCreate.
 
-            When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
+            Whether the customer can make further payment attempts if the first one has failed. Default is true.
 
         :param charge_retry_enabled: The charge_retry_enabled of this TransactionCreate.
         :type: bool
@@ -99,7 +99,7 @@ class TransactionCreate(AbstractTransactionPending):
     def customers_presence(self):
         """Gets the customers_presence of this TransactionCreate.
 
-            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates whether and in what way the transaction's customer is present. Default is VIRTUAL_PRESENT.
 
         :return: The customers_presence of this TransactionCreate.
         :rtype: CustomersPresence
@@ -110,7 +110,7 @@ class TransactionCreate(AbstractTransactionPending):
     def customers_presence(self, customers_presence):
         """Sets the customers_presence of this TransactionCreate.
 
-            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates whether and in what way the transaction's customer is present. Default is VIRTUAL_PRESENT.
 
         :param customers_presence: The customers_presence of this TransactionCreate.
         :type: CustomersPresence
@@ -122,7 +122,7 @@ class TransactionCreate(AbstractTransactionPending):
     def device_session_identifier(self):
         """Gets the device_session_identifier of this TransactionCreate.
 
-            The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+            Allows to link the transaction to the data collected from the customer's device.
 
         :return: The device_session_identifier of this TransactionCreate.
         :rtype: str
@@ -133,7 +133,7 @@ class TransactionCreate(AbstractTransactionPending):
     def device_session_identifier(self, device_session_identifier):
         """Sets the device_session_identifier of this TransactionCreate.
 
-            The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+            Allows to link the transaction to the data collected from the customer's device.
 
         :param device_session_identifier: The device_session_identifier of this TransactionCreate.
         :type: str
@@ -149,7 +149,7 @@ class TransactionCreate(AbstractTransactionPending):
     def emails_disabled(self):
         """Gets the emails_disabled of this TransactionCreate.
 
-            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+            Whether email sending is deactivated for the transaction. Default is false.
 
         :return: The emails_disabled of this TransactionCreate.
         :rtype: bool
@@ -160,7 +160,7 @@ class TransactionCreate(AbstractTransactionPending):
     def emails_disabled(self, emails_disabled):
         """Sets the emails_disabled of this TransactionCreate.
 
-            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+            Whether email sending is deactivated for the transaction. Default is false.
 
         :param emails_disabled: The emails_disabled of this TransactionCreate.
         :type: bool
@@ -172,7 +172,7 @@ class TransactionCreate(AbstractTransactionPending):
     def environment(self):
         """Gets the environment of this TransactionCreate.
 
-            
+            The environment used when rendering resources.
 
         :return: The environment of this TransactionCreate.
         :rtype: Environment
@@ -183,7 +183,7 @@ class TransactionCreate(AbstractTransactionPending):
     def environment(self, environment):
         """Sets the environment of this TransactionCreate.
 
-            
+            The environment used when rendering resources.
 
         :param environment: The environment of this TransactionCreate.
         :type: Environment
@@ -195,7 +195,7 @@ class TransactionCreate(AbstractTransactionPending):
     def environment_selection_strategy(self):
         """Gets the environment_selection_strategy of this TransactionCreate.
 
-            The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+            The strategy for determining whether the transaction is to be processed in the test or production environment.
 
         :return: The environment_selection_strategy of this TransactionCreate.
         :rtype: TransactionEnvironmentSelectionStrategy
@@ -206,7 +206,7 @@ class TransactionCreate(AbstractTransactionPending):
     def environment_selection_strategy(self, environment_selection_strategy):
         """Sets the environment_selection_strategy of this TransactionCreate.
 
-            The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+            The strategy for determining whether the transaction is to be processed in the test or production environment.
 
         :param environment_selection_strategy: The environment_selection_strategy of this TransactionCreate.
         :type: TransactionEnvironmentSelectionStrategy
@@ -218,7 +218,7 @@ class TransactionCreate(AbstractTransactionPending):
     def space_view_id(self):
         """Gets the space_view_id of this TransactionCreate.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this TransactionCreate.
         :rtype: int
@@ -229,7 +229,7 @@ class TransactionCreate(AbstractTransactionPending):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this TransactionCreate.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this TransactionCreate.
         :type: int

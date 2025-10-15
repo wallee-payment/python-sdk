@@ -336,7 +336,7 @@ class TokenServiceApi:
     def create_token(self, space_id, transaction_id, **kwargs):
         """Create Token
 
-        This operation creates a token for the given transaction.
+        This operation creates a token for the given transaction. The transaction payment information will be populated asynchronously as soon as all data becomes available.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
@@ -362,7 +362,7 @@ class TokenServiceApi:
     def create_token_with_http_info(self, space_id, transaction_id, **kwargs):
         """Create Token
 
-        This operation creates a token for the given transaction.
+        This operation creates a token for the given transaction. The transaction payment information will be populated asynchronously as soon as all data becomes available.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
@@ -437,9 +437,9 @@ class TokenServiceApi:
             collection_formats=collection_formats)
 
     def create_token_based_on_transaction(self, space_id, transaction_id, **kwargs):
-        """Create Token Based On Transaction
+        """Create Token Based On Transaction And Fill It With Stored Payment Information
 
-        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction. The payment information for the transaction will be filled in immediately, if payment information is missing, an exception will be thrown.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         
@@ -463,9 +463,9 @@ class TokenServiceApi:
             return data
 
     def create_token_based_on_transaction_with_http_info(self, space_id, transaction_id, **kwargs):
-        """Create Token Based On Transaction
+        """Create Token Based On Transaction And Fill It With Stored Payment Information
 
-        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        This operation creates a token for the given transaction and fills it with the stored payment information of the transaction. The payment information for the transaction will be filled in immediately, if payment information is missing, an exception will be thrown.
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True.
         

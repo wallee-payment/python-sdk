@@ -62,7 +62,7 @@ class StaticValue:
     def features(self):
         """Gets the features of this StaticValue.
 
-            
+            The features that this static value belongs to.
 
         :return: The features of this StaticValue.
         :rtype: list[int]
@@ -73,7 +73,7 @@ class StaticValue:
     def features(self, features):
         """Sets the features of this StaticValue.
 
-            
+            The features that this static value belongs to.
 
         :param features: The features of this StaticValue.
         :type: list[int]

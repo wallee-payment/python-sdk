@@ -69,7 +69,7 @@ class PaymentAppConnector:
     def authorization_timeout(self):
         """Gets the authorization_timeout of this PaymentAppConnector.
 
-            
+            The duration within which the authorization process for a payment should complete.
 
         :return: The authorization_timeout of this PaymentAppConnector.
         :rtype: str
@@ -80,7 +80,7 @@ class PaymentAppConnector:
     def authorization_timeout(self, authorization_timeout):
         """Sets the authorization_timeout of this PaymentAppConnector.
 
-            
+            The duration within which the authorization process for a payment should complete.
 
         :param authorization_timeout: The authorization_timeout of this PaymentAppConnector.
         :type: str
@@ -92,7 +92,7 @@ class PaymentAppConnector:
     def completion_configuration(self):
         """Gets the completion_configuration of this PaymentAppConnector.
 
-            The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.
+            The completion configuration controlling how deferred completion is processed. If not present, deferred completion is not supported for this connector.
 
         :return: The completion_configuration of this PaymentAppConnector.
         :rtype: PaymentAppCompletionConfiguration
@@ -103,7 +103,7 @@ class PaymentAppConnector:
     def completion_configuration(self, completion_configuration):
         """Sets the completion_configuration of this PaymentAppConnector.
 
-            The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.
+            The completion configuration controlling how deferred completion is processed. If not present, deferred completion is not supported for this connector.
 
         :param completion_configuration: The completion_configuration of this PaymentAppConnector.
         :type: PaymentAppCompletionConfiguration
@@ -115,7 +115,7 @@ class PaymentAppConnector:
     def connector_configuration(self):
         """Gets the connector_configuration of this PaymentAppConnector.
 
-            The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.
+            The connector configuration created alongside the connector within its designated space. This configuration is used in transactions created using this connector.
 
         :return: The connector_configuration of this PaymentAppConnector.
         :rtype: PaymentConnectorConfiguration
@@ -126,7 +126,7 @@ class PaymentAppConnector:
     def connector_configuration(self, connector_configuration):
         """Sets the connector_configuration of this PaymentAppConnector.
 
-            The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.
+            The connector configuration created alongside the connector within its designated space. This configuration is used in transactions created using this connector.
 
         :param connector_configuration: The connector_configuration of this PaymentAppConnector.
         :type: PaymentConnectorConfiguration
@@ -138,7 +138,7 @@ class PaymentAppConnector:
     def created_on(self):
         """Gets the created_on of this PaymentAppConnector.
 
-            The created on date indicates when the connector was added.
+            The date and time when the connector was created.
 
         :return: The created_on of this PaymentAppConnector.
         :rtype: datetime
@@ -149,7 +149,7 @@ class PaymentAppConnector:
     def created_on(self, created_on):
         """Sets the created_on of this PaymentAppConnector.
 
-            The created on date indicates when the connector was added.
+            The date and time when the connector was created.
 
         :param created_on: The created_on of this PaymentAppConnector.
         :type: datetime
@@ -161,7 +161,7 @@ class PaymentAppConnector:
     def external_id(self):
         """Gets the external_id of this PaymentAppConnector.
 
-            The external ID corresponds to the ID provided during inserting of the processor.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentAppConnector.
         :rtype: str
@@ -172,7 +172,7 @@ class PaymentAppConnector:
     def external_id(self, external_id):
         """Sets the external_id of this PaymentAppConnector.
 
-            The external ID corresponds to the ID provided during inserting of the processor.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentAppConnector.
         :type: str
@@ -232,7 +232,7 @@ class PaymentAppConnector:
     def name(self):
         """Gets the name of this PaymentAppConnector.
 
-            The name of the connector will be displayed within the user interfaces that the merchant is interacting with.
+            The name used to identify the connector.
 
         :return: The name of this PaymentAppConnector.
         :rtype: str
@@ -243,7 +243,7 @@ class PaymentAppConnector:
     def name(self, name):
         """Sets the name of this PaymentAppConnector.
 
-            The name of the connector will be displayed within the user interfaces that the merchant is interacting with.
+            The name used to identify the connector.
 
         :param name: The name of this PaymentAppConnector.
         :type: str
@@ -257,7 +257,7 @@ class PaymentAppConnector:
     def payment_page_endpoint(self):
         """Gets the payment_page_endpoint of this PaymentAppConnector.
 
-            The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.
+            The URL where the user is redirected to process a payment. This endpoint is provided by the external service provider.
 
         :return: The payment_page_endpoint of this PaymentAppConnector.
         :rtype: str
@@ -268,7 +268,7 @@ class PaymentAppConnector:
     def payment_page_endpoint(self, payment_page_endpoint):
         """Sets the payment_page_endpoint of this PaymentAppConnector.
 
-            The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.
+            The URL where the user is redirected to process a payment. This endpoint is provided by the external service provider.
 
         :param payment_page_endpoint: The payment_page_endpoint of this PaymentAppConnector.
         :type: str
@@ -280,7 +280,7 @@ class PaymentAppConnector:
     def processor(self):
         """Gets the processor of this PaymentAppConnector.
 
-            The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.
+            The payment app processor that the connector belongs to. This relationship is defined when the connector is created.
 
         :return: The processor of this PaymentAppConnector.
         :rtype: PaymentAppProcessor
@@ -291,7 +291,7 @@ class PaymentAppConnector:
     def processor(self, processor):
         """Sets the processor of this PaymentAppConnector.
 
-            The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.
+            The payment app processor that the connector belongs to. This relationship is defined when the connector is created.
 
         :param processor: The processor of this PaymentAppConnector.
         :type: PaymentAppProcessor
@@ -303,7 +303,7 @@ class PaymentAppConnector:
     def refund_configuration(self):
         """Gets the refund_configuration of this PaymentAppConnector.
 
-            The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.
+            The refund configuration controlling the behavior for processing refunds. If not present, refunds are not supported for this connector.
 
         :return: The refund_configuration of this PaymentAppConnector.
         :rtype: PaymentAppRefundConfiguration
@@ -314,7 +314,7 @@ class PaymentAppConnector:
     def refund_configuration(self, refund_configuration):
         """Sets the refund_configuration of this PaymentAppConnector.
 
-            The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.
+            The refund configuration controlling the behavior for processing refunds. If not present, refunds are not supported for this connector.
 
         :param refund_configuration: The refund_configuration of this PaymentAppConnector.
         :type: PaymentAppRefundConfiguration
@@ -349,7 +349,7 @@ class PaymentAppConnector:
     def updated_on(self):
         """Gets the updated_on of this PaymentAppConnector.
 
-            The updated on date indicates when the last time the connector was updated on.
+            The date and time when the connector was last updated.
 
         :return: The updated_on of this PaymentAppConnector.
         :rtype: datetime
@@ -360,7 +360,7 @@ class PaymentAppConnector:
     def updated_on(self, updated_on):
         """Sets the updated_on of this PaymentAppConnector.
 
-            The updated on date indicates when the last time the connector was updated on.
+            The date and time when the connector was last updated.
 
         :param updated_on: The updated_on of this PaymentAppConnector.
         :type: datetime

@@ -75,7 +75,7 @@ class PaymentAppProcessor:
     def configured_environment(self):
         """Gets the configured_environment of this PaymentAppProcessor.
 
-            
+            The environment (e.g., test or production) currently configured for the processor.
 
         :return: The configured_environment of this PaymentAppProcessor.
         :rtype: ChargeAttemptEnvironment
@@ -86,7 +86,7 @@ class PaymentAppProcessor:
     def configured_environment(self, configured_environment):
         """Sets the configured_environment of this PaymentAppProcessor.
 
-            
+            The environment (e.g., test or production) currently configured for the processor.
 
         :param configured_environment: The configured_environment of this PaymentAppProcessor.
         :type: ChargeAttemptEnvironment
@@ -98,7 +98,7 @@ class PaymentAppProcessor:
     def created_on(self):
         """Gets the created_on of this PaymentAppProcessor.
 
-            The created on date is the date when this processor has been added.
+            The date and time when the processor was created.
 
         :return: The created_on of this PaymentAppProcessor.
         :rtype: datetime
@@ -109,7 +109,7 @@ class PaymentAppProcessor:
     def created_on(self, created_on):
         """Sets the created_on of this PaymentAppProcessor.
 
-            The created on date is the date when this processor has been added.
+            The date and time when the processor was created.
 
         :param created_on: The created_on of this PaymentAppProcessor.
         :type: datetime
@@ -121,7 +121,7 @@ class PaymentAppProcessor:
     def documentation_url(self):
         """Gets the documentation_url of this PaymentAppProcessor.
 
-            The documentation URL points to a web site that describes how to configure and use the processor.
+            A URL pointing to the documentation that explains how to configure and use the processor.
 
         :return: The documentation_url of this PaymentAppProcessor.
         :rtype: str
@@ -132,7 +132,7 @@ class PaymentAppProcessor:
     def documentation_url(self, documentation_url):
         """Sets the documentation_url of this PaymentAppProcessor.
 
-            The documentation URL points to a web site that describes how to configure and use the processor.
+            A URL pointing to the documentation that explains how to configure and use the processor.
 
         :param documentation_url: The documentation_url of this PaymentAppProcessor.
         :type: str
@@ -144,7 +144,7 @@ class PaymentAppProcessor:
     def external_id(self):
         """Gets the external_id of this PaymentAppProcessor.
 
-            The external ID corresponds to the ID that was provided during creation of the processor.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentAppProcessor.
         :rtype: str
@@ -155,7 +155,7 @@ class PaymentAppProcessor:
     def external_id(self, external_id):
         """Sets the external_id of this PaymentAppProcessor.
 
-            The external ID corresponds to the ID that was provided during creation of the processor.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentAppProcessor.
         :type: str
@@ -238,7 +238,7 @@ class PaymentAppProcessor:
     def name(self):
         """Gets the name of this PaymentAppProcessor.
 
-            The name of the processor will be displayed within the user interfaces that the merchant is interacting with.
+            The name used to identify the processor.
 
         :return: The name of this PaymentAppProcessor.
         :rtype: str
@@ -249,7 +249,7 @@ class PaymentAppProcessor:
     def name(self, name):
         """Sets the name of this PaymentAppProcessor.
 
-            The name of the processor will be displayed within the user interfaces that the merchant is interacting with.
+            The name used to identify the processor.
 
         :param name: The name of this PaymentAppProcessor.
         :type: str
@@ -263,7 +263,7 @@ class PaymentAppProcessor:
     def processor_configuration(self):
         """Gets the processor_configuration of this PaymentAppProcessor.
 
-            This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.
+            The processor configuration created alongside the process within its designated space. This configuration is used in transactions created using this processor.
 
         :return: The processor_configuration of this PaymentAppProcessor.
         :rtype: PaymentProcessorConfiguration
@@ -274,7 +274,7 @@ class PaymentAppProcessor:
     def processor_configuration(self, processor_configuration):
         """Sets the processor_configuration of this PaymentAppProcessor.
 
-            This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.
+            The processor configuration created alongside the process within its designated space. This configuration is used in transactions created using this processor.
 
         :param processor_configuration: The processor_configuration of this PaymentAppProcessor.
         :type: PaymentProcessorConfiguration
@@ -286,7 +286,7 @@ class PaymentAppProcessor:
     def production_mode_url(self):
         """Gets the production_mode_url of this PaymentAppProcessor.
 
-            When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.
+            A URL pointing to the site where merchants can set up production mode for the processor.
 
         :return: The production_mode_url of this PaymentAppProcessor.
         :rtype: str
@@ -297,7 +297,7 @@ class PaymentAppProcessor:
     def production_mode_url(self, production_mode_url):
         """Sets the production_mode_url of this PaymentAppProcessor.
 
-            When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.
+            A URL pointing to the site where merchants can set up production mode for the processor.
 
         :param production_mode_url: The production_mode_url of this PaymentAppProcessor.
         :type: str
@@ -332,7 +332,7 @@ class PaymentAppProcessor:
     def svg_icon(self):
         """Gets the svg_icon of this PaymentAppProcessor.
 
-            
+            An SVG icon representing the processor, displayed to the user in the interface.
 
         :return: The svg_icon of this PaymentAppProcessor.
         :rtype: str
@@ -343,7 +343,7 @@ class PaymentAppProcessor:
     def svg_icon(self, svg_icon):
         """Sets the svg_icon of this PaymentAppProcessor.
 
-            
+            An SVG icon representing the processor, displayed to the user in the interface.
 
         :param svg_icon: The svg_icon of this PaymentAppProcessor.
         :type: str
@@ -357,7 +357,7 @@ class PaymentAppProcessor:
     def updated_on(self):
         """Gets the updated_on of this PaymentAppProcessor.
 
-            The updated on date indicates when the last update on the processor occurred.
+            The date and time when the processor was last updated.
 
         :return: The updated_on of this PaymentAppProcessor.
         :rtype: datetime
@@ -368,7 +368,7 @@ class PaymentAppProcessor:
     def updated_on(self, updated_on):
         """Sets the updated_on of this PaymentAppProcessor.
 
-            The updated on date indicates when the last update on the processor occurred.
+            The date and time when the processor was last updated.
 
         :param updated_on: The updated_on of this PaymentAppProcessor.
         :type: datetime
@@ -380,7 +380,7 @@ class PaymentAppProcessor:
     def usable_in_production(self):
         """Gets the usable_in_production of this PaymentAppProcessor.
 
-            When the processor is ready to be used for transactions in the production environment this flag is set to true.
+            Whether the processor is fully prepared and available for handling transactions in a production environment.
 
         :return: The usable_in_production of this PaymentAppProcessor.
         :rtype: bool
@@ -391,7 +391,7 @@ class PaymentAppProcessor:
     def usable_in_production(self, usable_in_production):
         """Sets the usable_in_production of this PaymentAppProcessor.
 
-            When the processor is ready to be used for transactions in the production environment this flag is set to true.
+            Whether the processor is fully prepared and available for handling transactions in a production environment.
 
         :param usable_in_production: The usable_in_production of this PaymentAppProcessor.
         :type: bool
@@ -403,7 +403,7 @@ class PaymentAppProcessor:
     def usable_in_production_since(self):
         """Gets the usable_in_production_since of this PaymentAppProcessor.
 
-            
+            the date and time when the processor became fully usable and available for handling transactions in a production environment.
 
         :return: The usable_in_production_since of this PaymentAppProcessor.
         :rtype: datetime
@@ -414,7 +414,7 @@ class PaymentAppProcessor:
     def usable_in_production_since(self, usable_in_production_since):
         """Sets the usable_in_production_since of this PaymentAppProcessor.
 
-            
+            the date and time when the processor became fully usable and available for handling transactions in a production environment.
 
         :param usable_in_production_since: The usable_in_production_since of this PaymentAppProcessor.
         :type: datetime

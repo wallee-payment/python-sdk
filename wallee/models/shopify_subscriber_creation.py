@@ -11,16 +11,18 @@ class ShopifySubscriberCreation:
     
         'email_address': 'str',
         'phone_number': 'str',
+        'shopify_customer_gid': 'str',
         'shopify_customer_id': 'str',
     }
 
     attribute_map = {
-        'email_address': 'emailAddress','phone_number': 'phoneNumber','shopify_customer_id': 'shopifyCustomerId',
+        'email_address': 'emailAddress','phone_number': 'phoneNumber','shopify_customer_gid': 'shopifyCustomerGid','shopify_customer_id': 'shopifyCustomerId',
     }
 
     
     _email_address = None
     _phone_number = None
+    _shopify_customer_gid = None
     _shopify_customer_id = None
 
     def __init__(self, **kwargs):
@@ -28,6 +30,7 @@ class ShopifySubscriberCreation:
         
         self.email_address = kwargs.get('email_address', None)
         self.phone_number = kwargs.get('phone_number', None)
+        self.shopify_customer_gid = kwargs.get('shopify_customer_gid', None)
         self.shopify_customer_id = kwargs.get('shopify_customer_id')
 
         
@@ -78,6 +81,29 @@ class ShopifySubscriberCreation:
         """
 
         self._phone_number = phone_number
+    
+    @property
+    def shopify_customer_gid(self):
+        """Gets the shopify_customer_gid of this ShopifySubscriberCreation.
+
+            The customer Global ID has to correspond to the Global ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.
+
+        :return: The shopify_customer_gid of this ShopifySubscriberCreation.
+        :rtype: str
+        """
+        return self._shopify_customer_gid
+
+    @shopify_customer_gid.setter
+    def shopify_customer_gid(self, shopify_customer_gid):
+        """Sets the shopify_customer_gid of this ShopifySubscriberCreation.
+
+            The customer Global ID has to correspond to the Global ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.
+
+        :param shopify_customer_gid: The shopify_customer_gid of this ShopifySubscriberCreation.
+        :type: str
+        """
+
+        self._shopify_customer_gid = shopify_customer_gid
     
     @property
     def shopify_customer_id(self):

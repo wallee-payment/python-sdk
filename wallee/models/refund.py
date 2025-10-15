@@ -123,7 +123,7 @@ class Refund:
     def amount(self):
         """Gets the amount of this Refund.
 
-            
+            The total monetary amount of the refund, representing the exact credit issued to the customer.
 
         :return: The amount of this Refund.
         :rtype: float
@@ -134,7 +134,7 @@ class Refund:
     def amount(self, amount):
         """Sets the amount of this Refund.
 
-            
+            The total monetary amount of the refund, representing the exact credit issued to the customer.
 
         :param amount: The amount of this Refund.
         :type: float
@@ -146,7 +146,7 @@ class Refund:
     def base_line_items(self):
         """Gets the base_line_items of this Refund.
 
-            
+            The original base line items from the transaction prior to the refund, serving as a reference for the refunded amounts.
 
         :return: The base_line_items of this Refund.
         :rtype: list[LineItem]
@@ -157,7 +157,7 @@ class Refund:
     def base_line_items(self, base_line_items):
         """Sets the base_line_items of this Refund.
 
-            
+            The original base line items from the transaction prior to the refund, serving as a reference for the refunded amounts.
 
         :param base_line_items: The base_line_items of this Refund.
         :type: list[LineItem]
@@ -169,7 +169,7 @@ class Refund:
     def completion(self):
         """Gets the completion of this Refund.
 
-            
+            The transaction completion that the refund belongs to.
 
         :return: The completion of this Refund.
         :rtype: int
@@ -180,7 +180,7 @@ class Refund:
     def completion(self, completion):
         """Sets the completion of this Refund.
 
-            
+            The transaction completion that the refund belongs to.
 
         :param completion: The completion of this Refund.
         :type: int
@@ -192,7 +192,7 @@ class Refund:
     def created_by(self):
         """Gets the created_by of this Refund.
 
-            
+            The ID of the user the refund was created by.
 
         :return: The created_by of this Refund.
         :rtype: int
@@ -203,7 +203,7 @@ class Refund:
     def created_by(self, created_by):
         """Sets the created_by of this Refund.
 
-            
+            The ID of the user the refund was created by.
 
         :param created_by: The created_by of this Refund.
         :type: int
@@ -238,7 +238,7 @@ class Refund:
     def environment(self):
         """Gets the environment of this Refund.
 
-            
+            The environment used when rendering resources.
 
         :return: The environment of this Refund.
         :rtype: Environment
@@ -249,7 +249,7 @@ class Refund:
     def environment(self, environment):
         """Sets the environment of this Refund.
 
-            
+            The environment used when rendering resources.
 
         :param environment: The environment of this Refund.
         :type: Environment
@@ -261,7 +261,7 @@ class Refund:
     def external_id(self):
         """Gets the external_id of this Refund.
 
-            The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this Refund.
         :rtype: str
@@ -272,7 +272,7 @@ class Refund:
     def external_id(self, external_id):
         """Sets the external_id of this Refund.
 
-            The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this Refund.
         :type: str
@@ -288,7 +288,7 @@ class Refund:
     def failed_on(self):
         """Gets the failed_on of this Refund.
 
-            
+            The date and time when the refund failed.
 
         :return: The failed_on of this Refund.
         :rtype: datetime
@@ -299,7 +299,7 @@ class Refund:
     def failed_on(self, failed_on):
         """Sets the failed_on of this Refund.
 
-            
+            The date and time when the refund failed.
 
         :param failed_on: The failed_on of this Refund.
         :type: datetime
@@ -311,7 +311,7 @@ class Refund:
     def failure_reason(self):
         """Gets the failure_reason of this Refund.
 
-            
+            The reason for the failure of the refund.
 
         :return: The failure_reason of this Refund.
         :rtype: FailureReason
@@ -322,7 +322,7 @@ class Refund:
     def failure_reason(self, failure_reason):
         """Sets the failure_reason of this Refund.
 
-            
+            The reason for the failure of the refund.
 
         :param failure_reason: The failure_reason of this Refund.
         :type: FailureReason
@@ -357,7 +357,7 @@ class Refund:
     def labels(self):
         """Gets the labels of this Refund.
 
-            
+            The labels providing additional information about the object.
 
         :return: The labels of this Refund.
         :rtype: list[Label]
@@ -368,7 +368,7 @@ class Refund:
     def labels(self, labels):
         """Sets the labels of this Refund.
 
-            
+            The labels providing additional information about the object.
 
         :param labels: The labels of this Refund.
         :type: list[Label]
@@ -403,7 +403,7 @@ class Refund:
     def line_items(self):
         """Gets the line_items of this Refund.
 
-            
+            The line items included in the refund, representing the reductions.
 
         :return: The line_items of this Refund.
         :rtype: list[LineItem]
@@ -414,7 +414,7 @@ class Refund:
     def line_items(self, line_items):
         """Sets the line_items of this Refund.
 
-            
+            The line items included in the refund, representing the reductions.
 
         :param line_items: The line_items of this Refund.
         :type: list[LineItem]
@@ -449,7 +449,7 @@ class Refund:
     def merchant_reference(self):
         """Gets the merchant_reference of this Refund.
 
-            
+            The merchant's reference used to identify the refund.
 
         :return: The merchant_reference of this Refund.
         :rtype: str
@@ -460,7 +460,7 @@ class Refund:
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this Refund.
 
-            
+            The merchant's reference used to identify the refund.
 
         :param merchant_reference: The merchant_reference of this Refund.
         :type: str
@@ -474,7 +474,7 @@ class Refund:
     def next_update_on(self):
         """Gets the next_update_on of this Refund.
 
-            
+            The date and time when the next update of the object's state is planned.
 
         :return: The next_update_on of this Refund.
         :rtype: datetime
@@ -485,7 +485,7 @@ class Refund:
     def next_update_on(self, next_update_on):
         """Sets the next_update_on of this Refund.
 
-            
+            The date and time when the next update of the object's state is planned.
 
         :param next_update_on: The next_update_on of this Refund.
         :type: datetime
@@ -520,7 +520,7 @@ class Refund:
     def processing_on(self):
         """Gets the processing_on of this Refund.
 
-            
+            The date and time when the processing of the refund was started.
 
         :return: The processing_on of this Refund.
         :rtype: datetime
@@ -531,7 +531,7 @@ class Refund:
     def processing_on(self, processing_on):
         """Sets the processing_on of this Refund.
 
-            
+            The date and time when the processing of the refund was started.
 
         :param processing_on: The processing_on of this Refund.
         :type: datetime
@@ -543,7 +543,7 @@ class Refund:
     def processor_reference(self):
         """Gets the processor_reference of this Refund.
 
-            
+            The reference ID provided by the payment processor, used to trace the refund through the external payment system.
 
         :return: The processor_reference of this Refund.
         :rtype: str
@@ -554,7 +554,7 @@ class Refund:
     def processor_reference(self, processor_reference):
         """Sets the processor_reference of this Refund.
 
-            
+            The reference ID provided by the payment processor, used to trace the refund through the external payment system.
 
         :param processor_reference: The processor_reference of this Refund.
         :type: str
@@ -568,7 +568,7 @@ class Refund:
     def reduced_line_items(self):
         """Gets the reduced_line_items of this Refund.
 
-            
+            The line items from the original transaction, adjusted to reflect any reductions applied during the refund process.
 
         :return: The reduced_line_items of this Refund.
         :rtype: list[LineItem]
@@ -579,7 +579,7 @@ class Refund:
     def reduced_line_items(self, reduced_line_items):
         """Sets the reduced_line_items of this Refund.
 
-            
+            The line items from the original transaction, adjusted to reflect any reductions applied during the refund process.
 
         :param reduced_line_items: The reduced_line_items of this Refund.
         :type: list[LineItem]
@@ -591,7 +591,7 @@ class Refund:
     def reductions(self):
         """Gets the reductions of this Refund.
 
-            
+            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
 
         :return: The reductions of this Refund.
         :rtype: list[LineItemReduction]
@@ -602,7 +602,7 @@ class Refund:
     def reductions(self, reductions):
         """Sets the reductions of this Refund.
 
-            
+            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
 
         :param reductions: The reductions of this Refund.
         :type: list[LineItemReduction]
@@ -637,7 +637,7 @@ class Refund:
     def succeeded_on(self):
         """Gets the succeeded_on of this Refund.
 
-            
+            The date and time when the refund succeeded.
 
         :return: The succeeded_on of this Refund.
         :rtype: datetime
@@ -648,7 +648,7 @@ class Refund:
     def succeeded_on(self, succeeded_on):
         """Sets the succeeded_on of this Refund.
 
-            
+            The date and time when the refund succeeded.
 
         :param succeeded_on: The succeeded_on of this Refund.
         :type: datetime
@@ -660,7 +660,7 @@ class Refund:
     def taxes(self):
         """Gets the taxes of this Refund.
 
-            
+            The tax breakdown applied to the refund amount, helping with tax calculations or reporting.
 
         :return: The taxes of this Refund.
         :rtype: list[Tax]
@@ -671,7 +671,7 @@ class Refund:
     def taxes(self, taxes):
         """Sets the taxes of this Refund.
 
-            
+            The tax breakdown applied to the refund amount, helping with tax calculations or reporting.
 
         :param taxes: The taxes of this Refund.
         :type: list[Tax]
@@ -683,7 +683,7 @@ class Refund:
     def time_zone(self):
         """Gets the time_zone of this Refund.
 
-            
+            The time zone that this object is associated with.
 
         :return: The time_zone of this Refund.
         :rtype: str
@@ -694,7 +694,7 @@ class Refund:
     def time_zone(self, time_zone):
         """Sets the time_zone of this Refund.
 
-            
+            The time zone that this object is associated with.
 
         :param time_zone: The time_zone of this Refund.
         :type: str
@@ -706,7 +706,7 @@ class Refund:
     def timeout_on(self):
         """Gets the timeout_on of this Refund.
 
-            
+            The date and time when the object will expire.
 
         :return: The timeout_on of this Refund.
         :rtype: datetime
@@ -717,7 +717,7 @@ class Refund:
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this Refund.
 
-            
+            The date and time when the object will expire.
 
         :param timeout_on: The timeout_on of this Refund.
         :type: datetime
@@ -729,7 +729,7 @@ class Refund:
     def total_applied_fees(self):
         """Gets the total_applied_fees of this Refund.
 
-            The total applied fees is the sum of all fees that have been applied so far.
+            The sum of fees applied to the refund transaction, such as processing or service charges.
 
         :return: The total_applied_fees of this Refund.
         :rtype: float
@@ -740,7 +740,7 @@ class Refund:
     def total_applied_fees(self, total_applied_fees):
         """Sets the total_applied_fees of this Refund.
 
-            The total applied fees is the sum of all fees that have been applied so far.
+            The sum of fees applied to the refund transaction, such as processing or service charges.
 
         :param total_applied_fees: The total_applied_fees of this Refund.
         :type: float
@@ -752,7 +752,7 @@ class Refund:
     def total_settled_amount(self):
         """Gets the total_settled_amount of this Refund.
 
-            The total settled amount is the total amount which has been settled so far.
+            The total amount settled for the refund, factoring in reductions, taxes, and any additional applied fees.
 
         :return: The total_settled_amount of this Refund.
         :rtype: float
@@ -763,7 +763,7 @@ class Refund:
     def total_settled_amount(self, total_settled_amount):
         """Sets the total_settled_amount of this Refund.
 
-            The total settled amount is the total amount which has been settled so far.
+            The total amount settled for the refund, factoring in reductions, taxes, and any additional applied fees.
 
         :param total_settled_amount: The total_settled_amount of this Refund.
         :type: float
@@ -775,7 +775,7 @@ class Refund:
     def transaction(self):
         """Gets the transaction of this Refund.
 
-            
+            The transaction that the refund belongs to.
 
         :return: The transaction of this Refund.
         :rtype: Transaction
@@ -786,7 +786,7 @@ class Refund:
     def transaction(self, transaction):
         """Sets the transaction of this Refund.
 
-            
+            The transaction that the refund belongs to.
 
         :param transaction: The transaction of this Refund.
         :type: Transaction
@@ -798,7 +798,7 @@ class Refund:
     def type(self):
         """Gets the type of this Refund.
 
-            
+            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
 
         :return: The type of this Refund.
         :rtype: RefundType
@@ -809,7 +809,7 @@ class Refund:
     def type(self, type):
         """Sets the type of this Refund.
 
-            
+            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
 
         :param type: The type of this Refund.
         :type: RefundType
@@ -821,7 +821,7 @@ class Refund:
     def updated_invoice(self):
         """Gets the updated_invoice of this Refund.
 
-            
+            An updated invoice reflecting adjustments made by the refund.
 
         :return: The updated_invoice of this Refund.
         :rtype: int
@@ -832,7 +832,7 @@ class Refund:
     def updated_invoice(self, updated_invoice):
         """Sets the updated_invoice of this Refund.
 
-            
+            An updated invoice reflecting adjustments made by the refund.
 
         :param updated_invoice: The updated_invoice of this Refund.
         :type: int

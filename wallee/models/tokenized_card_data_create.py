@@ -13,6 +13,7 @@ class TokenizedCardDataCreate:
         'card_verification_code': 'str',
         'cryptogram': 'CardCryptogramCreate',
         'expiry_date': 'str',
+        'pan_type': 'PanType',
         'primary_account_number': 'str',
         'recurring_indicator': 'RecurringIndicator',
         'scheme_transaction_reference': 'str',
@@ -20,7 +21,7 @@ class TokenizedCardDataCreate:
     }
 
     attribute_map = {
-        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','cryptogram': 'cryptogram','expiry_date': 'expiryDate','primary_account_number': 'primaryAccountNumber','recurring_indicator': 'recurringIndicator','scheme_transaction_reference': 'schemeTransactionReference','token_requestor_id': 'tokenRequestorId',
+        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','cryptogram': 'cryptogram','expiry_date': 'expiryDate','pan_type': 'panType','primary_account_number': 'primaryAccountNumber','recurring_indicator': 'recurringIndicator','scheme_transaction_reference': 'schemeTransactionReference','token_requestor_id': 'tokenRequestorId',
     }
 
     
@@ -28,6 +29,7 @@ class TokenizedCardDataCreate:
     _card_verification_code = None
     _cryptogram = None
     _expiry_date = None
+    _pan_type = None
     _primary_account_number = None
     _recurring_indicator = None
     _scheme_transaction_reference = None
@@ -40,6 +42,7 @@ class TokenizedCardDataCreate:
         self.card_verification_code = kwargs.get('card_verification_code', None)
         self.cryptogram = kwargs.get('cryptogram', None)
         self.expiry_date = kwargs.get('expiry_date', None)
+        self.pan_type = kwargs.get('pan_type', None)
         self.primary_account_number = kwargs.get('primary_account_number')
 
         self.recurring_indicator = kwargs.get('recurring_indicator', None)
@@ -52,7 +55,7 @@ class TokenizedCardDataCreate:
     def card_holder_name(self):
         """Gets the card_holder_name of this TokenizedCardDataCreate.
 
-            The card holder name is the name printed onto the card. It identifies the person who owns the card.
+            The name of the cardholder, as printed on the card, identifying the card owner.
 
         :return: The card_holder_name of this TokenizedCardDataCreate.
         :rtype: str
@@ -63,7 +66,7 @@ class TokenizedCardDataCreate:
     def card_holder_name(self, card_holder_name):
         """Sets the card_holder_name of this TokenizedCardDataCreate.
 
-            The card holder name is the name printed onto the card. It identifies the person who owns the card.
+            The name of the cardholder, as printed on the card, identifying the card owner.
 
         :param card_holder_name: The card_holder_name of this TokenizedCardDataCreate.
         :type: str
@@ -77,7 +80,7 @@ class TokenizedCardDataCreate:
     def card_verification_code(self):
         """Gets the card_verification_code of this TokenizedCardDataCreate.
 
-            The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
+            The security code used to validate the card during transactions.
 
         :return: The card_verification_code of this TokenizedCardDataCreate.
         :rtype: str
@@ -88,7 +91,7 @@ class TokenizedCardDataCreate:
     def card_verification_code(self, card_verification_code):
         """Sets the card_verification_code of this TokenizedCardDataCreate.
 
-            The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
+            The security code used to validate the card during transactions.
 
         :param card_verification_code: The card_verification_code of this TokenizedCardDataCreate.
         :type: str
@@ -104,7 +107,7 @@ class TokenizedCardDataCreate:
     def cryptogram(self):
         """Gets the cryptogram of this TokenizedCardDataCreate.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :return: The cryptogram of this TokenizedCardDataCreate.
         :rtype: CardCryptogramCreate
@@ -115,7 +118,7 @@ class TokenizedCardDataCreate:
     def cryptogram(self, cryptogram):
         """Sets the cryptogram of this TokenizedCardDataCreate.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :param cryptogram: The cryptogram of this TokenizedCardDataCreate.
         :type: CardCryptogramCreate
@@ -127,7 +130,7 @@ class TokenizedCardDataCreate:
     def expiry_date(self):
         """Gets the expiry_date of this TokenizedCardDataCreate.
 
-            The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
+            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
 
         :return: The expiry_date of this TokenizedCardDataCreate.
         :rtype: str
@@ -138,7 +141,7 @@ class TokenizedCardDataCreate:
     def expiry_date(self, expiry_date):
         """Sets the expiry_date of this TokenizedCardDataCreate.
 
-            The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
+            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
 
         :param expiry_date: The expiry_date of this TokenizedCardDataCreate.
         :type: str
@@ -147,10 +150,33 @@ class TokenizedCardDataCreate:
         self._expiry_date = expiry_date
     
     @property
+    def pan_type(self):
+        """Gets the pan_type of this TokenizedCardDataCreate.
+
+            The type of PAN or token, indicating the source or security method of the card information.
+
+        :return: The pan_type of this TokenizedCardDataCreate.
+        :rtype: PanType
+        """
+        return self._pan_type
+
+    @pan_type.setter
+    def pan_type(self, pan_type):
+        """Sets the pan_type of this TokenizedCardDataCreate.
+
+            The type of PAN or token, indicating the source or security method of the card information.
+
+        :param pan_type: The pan_type of this TokenizedCardDataCreate.
+        :type: PanType
+        """
+
+        self._pan_type = pan_type
+    
+    @property
     def primary_account_number(self):
         """Gets the primary_account_number of this TokenizedCardDataCreate.
 
-            The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
+            The card's primary account number (PAN), the unique identifier of the card.
 
         :return: The primary_account_number of this TokenizedCardDataCreate.
         :rtype: str
@@ -161,7 +187,7 @@ class TokenizedCardDataCreate:
     def primary_account_number(self, primary_account_number):
         """Sets the primary_account_number of this TokenizedCardDataCreate.
 
-            The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
+            The card's primary account number (PAN), the unique identifier of the card.
 
         :param primary_account_number: The primary_account_number of this TokenizedCardDataCreate.
         :type: str
@@ -179,7 +205,7 @@ class TokenizedCardDataCreate:
     def recurring_indicator(self):
         """Gets the recurring_indicator of this TokenizedCardDataCreate.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :return: The recurring_indicator of this TokenizedCardDataCreate.
         :rtype: RecurringIndicator
@@ -190,7 +216,7 @@ class TokenizedCardDataCreate:
     def recurring_indicator(self, recurring_indicator):
         """Sets the recurring_indicator of this TokenizedCardDataCreate.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :param recurring_indicator: The recurring_indicator of this TokenizedCardDataCreate.
         :type: RecurringIndicator
@@ -202,7 +228,7 @@ class TokenizedCardDataCreate:
     def scheme_transaction_reference(self):
         """Gets the scheme_transaction_reference of this TokenizedCardDataCreate.
 
-            
+            A reference specific to the card's transaction within its payment scheme.
 
         :return: The scheme_transaction_reference of this TokenizedCardDataCreate.
         :rtype: str
@@ -213,7 +239,7 @@ class TokenizedCardDataCreate:
     def scheme_transaction_reference(self, scheme_transaction_reference):
         """Sets the scheme_transaction_reference of this TokenizedCardDataCreate.
 
-            
+            A reference specific to the card's transaction within its payment scheme.
 
         :param scheme_transaction_reference: The scheme_transaction_reference of this TokenizedCardDataCreate.
         :type: str
@@ -227,7 +253,7 @@ class TokenizedCardDataCreate:
     def token_requestor_id(self):
         """Gets the token_requestor_id of this TokenizedCardDataCreate.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :return: The token_requestor_id of this TokenizedCardDataCreate.
         :rtype: str
@@ -238,7 +264,7 @@ class TokenizedCardDataCreate:
     def token_requestor_id(self, token_requestor_id):
         """Sets the token_requestor_id of this TokenizedCardDataCreate.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :param token_requestor_id: The token_requestor_id of this TokenizedCardDataCreate.
         :type: str

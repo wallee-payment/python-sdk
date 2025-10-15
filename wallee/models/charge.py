@@ -2,16 +2,18 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class Charge(TransactionAwareEntity):
+
+class Charge:
 
     swagger_types = {
     
         'created_on': 'datetime',
         'failure_reason': 'FailureReason',
+        'id': 'int',
         'language': 'str',
+        'linked_space_id': 'int',
         'planned_purge_date': 'datetime',
         'space_view_id': 'int',
         'state': 'ChargeState',
@@ -24,13 +26,15 @@ class Charge(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'created_on': 'createdOn','failure_reason': 'failureReason','language': 'language','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','time_zone': 'timeZone','timeout_on': 'timeoutOn','transaction': 'transaction','type': 'type','user_failure_message': 'userFailureMessage','version': 'version',
+        'created_on': 'createdOn','failure_reason': 'failureReason','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','space_view_id': 'spaceViewId','state': 'state','time_zone': 'timeZone','timeout_on': 'timeoutOn','transaction': 'transaction','type': 'type','user_failure_message': 'userFailureMessage','version': 'version',
     }
 
     
     _created_on = None
     _failure_reason = None
+    _id = None
     _language = None
+    _linked_space_id = None
     _planned_purge_date = None
     _space_view_id = None
     _state = None
@@ -46,7 +50,9 @@ class Charge(TransactionAwareEntity):
         
         self.created_on = kwargs.get('created_on', None)
         self.failure_reason = kwargs.get('failure_reason', None)
+        self.id = kwargs.get('id', None)
         self.language = kwargs.get('language', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.state = kwargs.get('state', None)
@@ -56,16 +62,14 @@ class Charge(TransactionAwareEntity):
         self.type = kwargs.get('type', None)
         self.user_failure_message = kwargs.get('user_failure_message', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def created_on(self):
         """Gets the created_on of this Charge.
 
-            The date on which the charge was created on.
+            The date and time when the object was created.
 
         :return: The created_on of this Charge.
         :rtype: datetime
@@ -76,7 +80,7 @@ class Charge(TransactionAwareEntity):
     def created_on(self, created_on):
         """Sets the created_on of this Charge.
 
-            The date on which the charge was created on.
+            The date and time when the object was created.
 
         :param created_on: The created_on of this Charge.
         :type: datetime
@@ -88,7 +92,7 @@ class Charge(TransactionAwareEntity):
     def failure_reason(self):
         """Gets the failure_reason of this Charge.
 
-            
+            The reason for the failure of the charge.
 
         :return: The failure_reason of this Charge.
         :rtype: FailureReason
@@ -99,13 +103,36 @@ class Charge(TransactionAwareEntity):
     def failure_reason(self, failure_reason):
         """Sets the failure_reason of this Charge.
 
-            
+            The reason for the failure of the charge.
 
         :param failure_reason: The failure_reason of this Charge.
         :type: FailureReason
         """
 
         self._failure_reason = failure_reason
+    
+    @property
+    def id(self):
+        """Gets the id of this Charge.
+
+            A unique identifier for the object.
+
+        :return: The id of this Charge.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this Charge.
+
+            A unique identifier for the object.
+
+        :param id: The id of this Charge.
+        :type: int
+        """
+
+        self._id = id
     
     @property
     def language(self):
@@ -129,6 +156,29 @@ class Charge(TransactionAwareEntity):
         """
 
         self._language = language
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this Charge.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this Charge.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this Charge.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this Charge.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
     
     @property
     def planned_purge_date(self):
@@ -157,7 +207,7 @@ class Charge(TransactionAwareEntity):
     def space_view_id(self):
         """Gets the space_view_id of this Charge.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this Charge.
         :rtype: int
@@ -168,7 +218,7 @@ class Charge(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this Charge.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this Charge.
         :type: int
@@ -203,7 +253,7 @@ class Charge(TransactionAwareEntity):
     def time_zone(self):
         """Gets the time_zone of this Charge.
 
-            
+            The time zone that this object is associated with.
 
         :return: The time_zone of this Charge.
         :rtype: str
@@ -214,7 +264,7 @@ class Charge(TransactionAwareEntity):
     def time_zone(self, time_zone):
         """Sets the time_zone of this Charge.
 
-            
+            The time zone that this object is associated with.
 
         :param time_zone: The time_zone of this Charge.
         :type: str
@@ -226,7 +276,7 @@ class Charge(TransactionAwareEntity):
     def timeout_on(self):
         """Gets the timeout_on of this Charge.
 
-            
+            The date and time when the charge will expire.
 
         :return: The timeout_on of this Charge.
         :rtype: datetime
@@ -237,7 +287,7 @@ class Charge(TransactionAwareEntity):
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this Charge.
 
-            
+            The date and time when the charge will expire.
 
         :param timeout_on: The timeout_on of this Charge.
         :type: datetime
@@ -249,7 +299,7 @@ class Charge(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this Charge.
 
-            
+            The transaction that the charge belongs to.
 
         :return: The transaction of this Charge.
         :rtype: Transaction
@@ -260,7 +310,7 @@ class Charge(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this Charge.
 
-            
+            The transaction that the charge belongs to.
 
         :param transaction: The transaction of this Charge.
         :type: Transaction
@@ -272,7 +322,7 @@ class Charge(TransactionAwareEntity):
     def type(self):
         """Gets the type of this Charge.
 
-            
+            The type specifying how the customer was charged.
 
         :return: The type of this Charge.
         :rtype: ChargeType
@@ -283,7 +333,7 @@ class Charge(TransactionAwareEntity):
     def type(self, type):
         """Sets the type of this Charge.
 
-            
+            The type specifying how the customer was charged.
 
         :param type: The type of this Charge.
         :type: ChargeType
@@ -295,7 +345,7 @@ class Charge(TransactionAwareEntity):
     def user_failure_message(self):
         """Gets the user_failure_message of this Charge.
 
-            The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.
+            The message that can be displayed to the customer explaining why the charge failed, in the customer's language.
 
         :return: The user_failure_message of this Charge.
         :rtype: str
@@ -306,7 +356,7 @@ class Charge(TransactionAwareEntity):
     def user_failure_message(self, user_failure_message):
         """Sets the user_failure_message of this Charge.
 
-            The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.
+            The message that can be displayed to the customer explaining why the charge failed, in the customer's language.
 
         :param user_failure_message: The user_failure_message of this Charge.
         :type: str

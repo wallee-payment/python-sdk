@@ -103,7 +103,7 @@ class ProductSetupFeeUpdate:
     def component(self):
         """Gets the component of this ProductSetupFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :return: The component of this ProductSetupFeeUpdate.
         :rtype: int
@@ -114,7 +114,7 @@ class ProductSetupFeeUpdate:
     def component(self, component):
         """Sets the component of this ProductSetupFeeUpdate.
 
-            
+            The product component that the fee belongs to.
 
         :param component: The component of this ProductSetupFeeUpdate.
         :type: int
@@ -126,7 +126,7 @@ class ProductSetupFeeUpdate:
     def description(self):
         """Gets the description of this ProductSetupFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :return: The description of this ProductSetupFeeUpdate.
         :rtype: dict(str, str)
@@ -137,7 +137,7 @@ class ProductSetupFeeUpdate:
     def description(self, description):
         """Sets the description of this ProductSetupFeeUpdate.
 
-            The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+            The localized description of the fee that is displayed to the customer.
 
         :param description: The description of this ProductSetupFeeUpdate.
         :type: dict(str, str)
@@ -149,7 +149,7 @@ class ProductSetupFeeUpdate:
     def name(self):
         """Gets the name of this ProductSetupFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :return: The name of this ProductSetupFeeUpdate.
         :rtype: dict(str, str)
@@ -160,7 +160,7 @@ class ProductSetupFeeUpdate:
     def name(self, name):
         """Sets the name of this ProductSetupFeeUpdate.
 
-            The name of the fee should describe for the subscriber in few words for what the fee is for.
+            The localized name of the fee that is displayed to the customer.
 
         :param name: The name of this ProductSetupFeeUpdate.
         :type: dict(str, str)
@@ -172,7 +172,7 @@ class ProductSetupFeeUpdate:
     def on_downgrade_credited_amount(self):
         """Gets the on_downgrade_credited_amount of this ProductSetupFeeUpdate.
 
-            When the subscription is changed and the change is considered as a downgrade the amount defined by this property will be credited to the subscriber.
+            The amount charged to the customer when a subscription is downgraded.
 
         :return: The on_downgrade_credited_amount of this ProductSetupFeeUpdate.
         :rtype: list[PersistableCurrencyAmountUpdate]
@@ -183,7 +183,7 @@ class ProductSetupFeeUpdate:
     def on_downgrade_credited_amount(self, on_downgrade_credited_amount):
         """Sets the on_downgrade_credited_amount of this ProductSetupFeeUpdate.
 
-            When the subscription is changed and the change is considered as a downgrade the amount defined by this property will be credited to the subscriber.
+            The amount charged to the customer when a subscription is downgraded.
 
         :param on_downgrade_credited_amount: The on_downgrade_credited_amount of this ProductSetupFeeUpdate.
         :type: list[PersistableCurrencyAmountUpdate]
@@ -195,7 +195,7 @@ class ProductSetupFeeUpdate:
     def on_upgrade_credited_amount(self):
         """Gets the on_upgrade_credited_amount of this ProductSetupFeeUpdate.
 
-            When the subscription is changed and the change is considered as a upgrade the amount defined by this property will be credited to the subscriber.
+            The amount charged to the customer when a subscription is upgraded.
 
         :return: The on_upgrade_credited_amount of this ProductSetupFeeUpdate.
         :rtype: list[PersistableCurrencyAmountUpdate]
@@ -206,7 +206,7 @@ class ProductSetupFeeUpdate:
     def on_upgrade_credited_amount(self, on_upgrade_credited_amount):
         """Sets the on_upgrade_credited_amount of this ProductSetupFeeUpdate.
 
-            When the subscription is changed and the change is considered as a upgrade the amount defined by this property will be credited to the subscriber.
+            The amount charged to the customer when a subscription is upgraded.
 
         :param on_upgrade_credited_amount: The on_upgrade_credited_amount of this ProductSetupFeeUpdate.
         :type: list[PersistableCurrencyAmountUpdate]
@@ -218,7 +218,7 @@ class ProductSetupFeeUpdate:
     def setup_fee(self):
         """Gets the setup_fee of this ProductSetupFeeUpdate.
 
-            The setup fee is charged when the subscriber subscribes to this component. The setup fee is debited with the first charge for the subscriptions.
+            The amount charged to the customer once when they subscribe to a subscription.
 
         :return: The setup_fee of this ProductSetupFeeUpdate.
         :rtype: list[PersistableCurrencyAmountUpdate]
@@ -229,7 +229,7 @@ class ProductSetupFeeUpdate:
     def setup_fee(self, setup_fee):
         """Sets the setup_fee of this ProductSetupFeeUpdate.
 
-            The setup fee is charged when the subscriber subscribes to this component. The setup fee is debited with the first charge for the subscriptions.
+            The amount charged to the customer once when they subscribe to a subscription.
 
         :param setup_fee: The setup_fee of this ProductSetupFeeUpdate.
         :type: list[PersistableCurrencyAmountUpdate]

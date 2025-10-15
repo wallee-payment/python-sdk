@@ -23,10 +23,12 @@ class ShopifySubscriptionProduct:
         'planned_purge_date': 'datetime',
         'pricing_option': 'ShopifySubscriptionProductPricingOption',
         'product_id': 'str',
+        'product_legacy_id': 'str',
         'product_name': 'str',
         'product_price': 'float',
         'product_sku': 'str',
         'product_variant_id': 'str',
+        'product_variant_legacy_id': 'str',
         'product_variant_name': 'str',
         'relative_price_adjustment': 'float',
         'shipping_required': 'bool',
@@ -41,7 +43,7 @@ class ShopifySubscriptionProduct:
     }
 
     attribute_map = {
-        'absolute_price_adjustment': 'absolutePriceAdjustment','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','fixed_price': 'fixedPrice','id': 'id','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','planned_purge_date': 'plannedPurgeDate','pricing_option': 'pricingOption','product_id': 'productId','product_name': 'productName','product_price': 'productPrice','product_sku': 'productSku','product_variant_id': 'productVariantId','product_variant_name': 'productVariantName','relative_price_adjustment': 'relativePriceAdjustment','shipping_required': 'shippingRequired','shop': 'shop','state': 'state','stock_check_required': 'stockCheckRequired','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','termination_billing_cycles': 'terminationBillingCycles','updated_at': 'updatedAt','version': 'version',
+        'absolute_price_adjustment': 'absolutePriceAdjustment','billing_day_of_month': 'billingDayOfMonth','billing_interval_amount': 'billingIntervalAmount','billing_interval_unit': 'billingIntervalUnit','billing_weekday': 'billingWeekday','fixed_price': 'fixedPrice','id': 'id','linked_space_id': 'linkedSpaceId','maximal_billing_cycles': 'maximalBillingCycles','maximal_suspendable_cycles': 'maximalSuspendableCycles','minimal_billing_cycles': 'minimalBillingCycles','planned_purge_date': 'plannedPurgeDate','pricing_option': 'pricingOption','product_id': 'productId','product_legacy_id': 'productLegacyId','product_name': 'productName','product_price': 'productPrice','product_sku': 'productSku','product_variant_id': 'productVariantId','product_variant_legacy_id': 'productVariantLegacyId','product_variant_name': 'productVariantName','relative_price_adjustment': 'relativePriceAdjustment','shipping_required': 'shippingRequired','shop': 'shop','state': 'state','stock_check_required': 'stockCheckRequired','store_order_confirmation_email_enabled': 'storeOrderConfirmationEmailEnabled','subscriber_suspension_allowed': 'subscriberSuspensionAllowed','termination_billing_cycles': 'terminationBillingCycles','updated_at': 'updatedAt','version': 'version',
     }
 
     
@@ -59,10 +61,12 @@ class ShopifySubscriptionProduct:
     _planned_purge_date = None
     _pricing_option = None
     _product_id = None
+    _product_legacy_id = None
     _product_name = None
     _product_price = None
     _product_sku = None
     _product_variant_id = None
+    _product_variant_legacy_id = None
     _product_variant_name = None
     _relative_price_adjustment = None
     _shipping_required = None
@@ -92,10 +96,12 @@ class ShopifySubscriptionProduct:
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.pricing_option = kwargs.get('pricing_option', None)
         self.product_id = kwargs.get('product_id', None)
+        self.product_legacy_id = kwargs.get('product_legacy_id', None)
         self.product_name = kwargs.get('product_name', None)
         self.product_price = kwargs.get('product_price', None)
         self.product_sku = kwargs.get('product_sku', None)
         self.product_variant_id = kwargs.get('product_variant_id', None)
+        self.product_variant_legacy_id = kwargs.get('product_variant_legacy_id', None)
         self.product_variant_name = kwargs.get('product_variant_name', None)
         self.relative_price_adjustment = kwargs.get('relative_price_adjustment', None)
         self.shipping_required = kwargs.get('shipping_required', None)
@@ -433,6 +439,29 @@ class ShopifySubscriptionProduct:
         self._product_id = product_id
     
     @property
+    def product_legacy_id(self):
+        """Gets the product_legacy_id of this ShopifySubscriptionProduct.
+
+            The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+
+        :return: The product_legacy_id of this ShopifySubscriptionProduct.
+        :rtype: str
+        """
+        return self._product_legacy_id
+
+    @product_legacy_id.setter
+    def product_legacy_id(self, product_legacy_id):
+        """Sets the product_legacy_id of this ShopifySubscriptionProduct.
+
+            The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+
+        :param product_legacy_id: The product_legacy_id of this ShopifySubscriptionProduct.
+        :type: str
+        """
+
+        self._product_legacy_id = product_legacy_id
+    
+    @property
     def product_name(self):
         """Gets the product_name of this ShopifySubscriptionProduct.
 
@@ -523,6 +552,29 @@ class ShopifySubscriptionProduct:
         """
 
         self._product_variant_id = product_variant_id
+    
+    @property
+    def product_variant_legacy_id(self):
+        """Gets the product_variant_legacy_id of this ShopifySubscriptionProduct.
+
+            
+
+        :return: The product_variant_legacy_id of this ShopifySubscriptionProduct.
+        :rtype: str
+        """
+        return self._product_variant_legacy_id
+
+    @product_variant_legacy_id.setter
+    def product_variant_legacy_id(self, product_variant_legacy_id):
+        """Sets the product_variant_legacy_id of this ShopifySubscriptionProduct.
+
+            
+
+        :param product_variant_legacy_id: The product_variant_legacy_id of this ShopifySubscriptionProduct.
+        :type: str
+        """
+
+        self._product_variant_legacy_id = product_variant_legacy_id
     
     @property
     def product_variant_name(self):

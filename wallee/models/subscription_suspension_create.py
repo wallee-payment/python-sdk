@@ -42,7 +42,7 @@ class SubscriptionSuspensionCreate:
     def end_action(self):
         """Gets the end_action of this SubscriptionSuspensionCreate.
 
-            When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+            Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
 
         :return: The end_action of this SubscriptionSuspensionCreate.
         :rtype: SubscriptionSuspensionAction
@@ -53,7 +53,7 @@ class SubscriptionSuspensionCreate:
     def end_action(self, end_action):
         """Sets the end_action of this SubscriptionSuspensionCreate.
 
-            When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+            Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
 
         :param end_action: The end_action of this SubscriptionSuspensionCreate.
         :type: SubscriptionSuspensionAction
@@ -67,7 +67,7 @@ class SubscriptionSuspensionCreate:
     def note(self):
         """Gets the note of this SubscriptionSuspensionCreate.
 
-            The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+            A note that contains details about the suspension. It is not disclosed to the subscriber.
 
         :return: The note of this SubscriptionSuspensionCreate.
         :rtype: str
@@ -78,7 +78,7 @@ class SubscriptionSuspensionCreate:
     def note(self, note):
         """Sets the note of this SubscriptionSuspensionCreate.
 
-            The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+            A note that contains details about the suspension. It is not disclosed to the subscriber.
 
         :param note: The note of this SubscriptionSuspensionCreate.
         :type: str
@@ -92,7 +92,7 @@ class SubscriptionSuspensionCreate:
     def planned_end_date(self):
         """Gets the planned_end_date of this SubscriptionSuspensionCreate.
 
-            The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+            The date and time when the suspension is planned to end.
 
         :return: The planned_end_date of this SubscriptionSuspensionCreate.
         :rtype: datetime
@@ -103,7 +103,7 @@ class SubscriptionSuspensionCreate:
     def planned_end_date(self, planned_end_date):
         """Sets the planned_end_date of this SubscriptionSuspensionCreate.
 
-            The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+            The date and time when the suspension is planned to end.
 
         :param planned_end_date: The planned_end_date of this SubscriptionSuspensionCreate.
         :type: datetime
@@ -117,7 +117,7 @@ class SubscriptionSuspensionCreate:
     def subscription(self):
         """Gets the subscription of this SubscriptionSuspensionCreate.
 
-            
+            The subscription that this suspension belongs to.
 
         :return: The subscription of this SubscriptionSuspensionCreate.
         :rtype: int
@@ -128,7 +128,7 @@ class SubscriptionSuspensionCreate:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionSuspensionCreate.
 
-            
+            The subscription that this suspension belongs to.
 
         :param subscription: The subscription of this SubscriptionSuspensionCreate.
         :type: int

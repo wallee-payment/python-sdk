@@ -2,15 +2,18 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class RefundBankTransaction(TransactionAwareEntity):
+
+class RefundBankTransaction:
 
     swagger_types = {
     
         'bank_transaction': 'BankTransaction',
+        'id': 'int',
         'language': 'str',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'refund': 'Refund',
         'refund_currency_amount': 'float',
         'refund_currency_value_amount': 'float',
@@ -19,12 +22,15 @@ class RefundBankTransaction(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'bank_transaction': 'bankTransaction','language': 'language','refund': 'refund','refund_currency_amount': 'refundCurrencyAmount','refund_currency_value_amount': 'refundCurrencyValueAmount','space_view_id': 'spaceViewId','version': 'version',
+        'bank_transaction': 'bankTransaction','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','refund': 'refund','refund_currency_amount': 'refundCurrencyAmount','refund_currency_value_amount': 'refundCurrencyValueAmount','space_view_id': 'spaceViewId','version': 'version',
     }
 
     
     _bank_transaction = None
+    _id = None
     _language = None
+    _linked_space_id = None
+    _linked_transaction = None
     _refund = None
     _refund_currency_amount = None
     _refund_currency_value_amount = None
@@ -35,22 +41,23 @@ class RefundBankTransaction(TransactionAwareEntity):
         self.discriminator = None
         
         self.bank_transaction = kwargs.get('bank_transaction', None)
+        self.id = kwargs.get('id', None)
         self.language = kwargs.get('language', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.refund = kwargs.get('refund', None)
         self.refund_currency_amount = kwargs.get('refund_currency_amount', None)
         self.refund_currency_value_amount = kwargs.get('refund_currency_value_amount', None)
         self.space_view_id = kwargs.get('space_view_id', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def bank_transaction(self):
         """Gets the bank_transaction of this RefundBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :return: The bank_transaction of this RefundBankTransaction.
         :rtype: BankTransaction
@@ -61,13 +68,36 @@ class RefundBankTransaction(TransactionAwareEntity):
     def bank_transaction(self, bank_transaction):
         """Sets the bank_transaction of this RefundBankTransaction.
 
-            
+            Provides general information about the bank transaction.
 
         :param bank_transaction: The bank_transaction of this RefundBankTransaction.
         :type: BankTransaction
         """
 
         self._bank_transaction = bank_transaction
+    
+    @property
+    def id(self):
+        """Gets the id of this RefundBankTransaction.
+
+            A unique identifier for the object.
+
+        :return: The id of this RefundBankTransaction.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this RefundBankTransaction.
+
+            A unique identifier for the object.
+
+        :param id: The id of this RefundBankTransaction.
+        :type: int
+        """
+
+        self._id = id
     
     @property
     def language(self):
@@ -93,10 +123,56 @@ class RefundBankTransaction(TransactionAwareEntity):
         self._language = language
     
     @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this RefundBankTransaction.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this RefundBankTransaction.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this RefundBankTransaction.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this RefundBankTransaction.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this RefundBankTransaction.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this RefundBankTransaction.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this RefundBankTransaction.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this RefundBankTransaction.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
+    
+    @property
     def refund(self):
         """Gets the refund of this RefundBankTransaction.
 
-            
+            The refund this bank transaction belongs to.
 
         :return: The refund of this RefundBankTransaction.
         :rtype: Refund
@@ -107,7 +183,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def refund(self, refund):
         """Sets the refund of this RefundBankTransaction.
 
-            
+            The refund this bank transaction belongs to.
 
         :param refund: The refund of this RefundBankTransaction.
         :type: Refund
@@ -119,7 +195,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def refund_currency_amount(self):
         """Gets the refund_currency_amount of this RefundBankTransaction.
 
-            Specify the posting amount in the refund's currency.
+            The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.
 
         :return: The refund_currency_amount of this RefundBankTransaction.
         :rtype: float
@@ -130,7 +206,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def refund_currency_amount(self, refund_currency_amount):
         """Sets the refund_currency_amount of this RefundBankTransaction.
 
-            Specify the posting amount in the refund's currency.
+            The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.
 
         :param refund_currency_amount: The refund_currency_amount of this RefundBankTransaction.
         :type: float
@@ -142,7 +218,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def refund_currency_value_amount(self):
         """Gets the refund_currency_value_amount of this RefundBankTransaction.
 
-            
+            The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.
 
         :return: The refund_currency_value_amount of this RefundBankTransaction.
         :rtype: float
@@ -153,7 +229,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def refund_currency_value_amount(self, refund_currency_value_amount):
         """Sets the refund_currency_value_amount of this RefundBankTransaction.
 
-            
+            The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.
 
         :param refund_currency_value_amount: The refund_currency_value_amount of this RefundBankTransaction.
         :type: float
@@ -165,7 +241,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def space_view_id(self):
         """Gets the space_view_id of this RefundBankTransaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this RefundBankTransaction.
         :rtype: int
@@ -176,7 +252,7 @@ class RefundBankTransaction(TransactionAwareEntity):
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this RefundBankTransaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this RefundBankTransaction.
         :type: int

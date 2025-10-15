@@ -243,7 +243,7 @@ class TransactionInvoiceComment:
     def transaction_invoice(self):
         """Gets the transaction_invoice of this TransactionInvoiceComment.
 
-            
+            The transaction invoice that the comment belongs to.
 
         :return: The transaction_invoice of this TransactionInvoiceComment.
         :rtype: int
@@ -254,7 +254,7 @@ class TransactionInvoiceComment:
     def transaction_invoice(self, transaction_invoice):
         """Sets the transaction_invoice of this TransactionInvoiceComment.
 
-            
+            The transaction invoice that the comment belongs to.
 
         :param transaction_invoice: The transaction_invoice of this TransactionInvoiceComment.
         :type: int

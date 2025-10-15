@@ -57,7 +57,7 @@ class ChargeFlowLevelConfiguration:
     def flow(self):
         """Gets the flow of this ChargeFlowLevelConfiguration.
 
-            The charge flow level configuration to which the flow is associated.
+            The charge flow that this level configuration belongs to.
 
         :return: The flow of this ChargeFlowLevelConfiguration.
         :rtype: ChargeFlow
@@ -68,7 +68,7 @@ class ChargeFlowLevelConfiguration:
     def flow(self, flow):
         """Sets the flow of this ChargeFlowLevelConfiguration.
 
-            The charge flow level configuration to which the flow is associated.
+            The charge flow that this level configuration belongs to.
 
         :param flow: The flow of this ChargeFlowLevelConfiguration.
         :type: ChargeFlow
@@ -126,7 +126,7 @@ class ChargeFlowLevelConfiguration:
     def name(self):
         """Gets the name of this ChargeFlowLevelConfiguration.
 
-            The charge flow level configuration name is used internally to identify the charge flow level configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the charge flow level configuration.
 
         :return: The name of this ChargeFlowLevelConfiguration.
         :rtype: str
@@ -137,7 +137,7 @@ class ChargeFlowLevelConfiguration:
     def name(self, name):
         """Sets the name of this ChargeFlowLevelConfiguration.
 
-            The charge flow level configuration name is used internally to identify the charge flow level configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the charge flow level configuration.
 
         :param name: The name of this ChargeFlowLevelConfiguration.
         :type: str
@@ -151,7 +151,7 @@ class ChargeFlowLevelConfiguration:
     def period(self):
         """Gets the period of this ChargeFlowLevelConfiguration.
 
-            The duration of the level before switching to the next one.
+            The duration specifies how long the level remains active before transitioning to the next one.
 
         :return: The period of this ChargeFlowLevelConfiguration.
         :rtype: str
@@ -162,7 +162,7 @@ class ChargeFlowLevelConfiguration:
     def period(self, period):
         """Sets the period of this ChargeFlowLevelConfiguration.
 
-            The duration of the level before switching to the next one.
+            The duration specifies how long the level remains active before transitioning to the next one.
 
         :param period: The period of this ChargeFlowLevelConfiguration.
         :type: str
@@ -197,7 +197,7 @@ class ChargeFlowLevelConfiguration:
     def priority(self):
         """Gets the priority of this ChargeFlowLevelConfiguration.
 
-            The priority indicates the sort order of the level configurations. A low value indicates that the level configuration is executed before any level with a higher value. Any change to this value affects future level configuration selections.
+            The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
 
         :return: The priority of this ChargeFlowLevelConfiguration.
         :rtype: int
@@ -208,7 +208,7 @@ class ChargeFlowLevelConfiguration:
     def priority(self, priority):
         """Sets the priority of this ChargeFlowLevelConfiguration.
 
-            The priority indicates the sort order of the level configurations. A low value indicates that the level configuration is executed before any level with a higher value. Any change to this value affects future level configuration selections.
+            The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
 
         :param priority: The priority of this ChargeFlowLevelConfiguration.
         :type: int
@@ -243,7 +243,7 @@ class ChargeFlowLevelConfiguration:
     def type(self):
         """Gets the type of this ChargeFlowLevelConfiguration.
 
-            The type determines how the payment link is delivered to the customer. Once the type is defined it cannot be changed anymore.
+            The type defines the method of delivering the payment link to the customer.
 
         :return: The type of this ChargeFlowLevelConfiguration.
         :rtype: int
@@ -254,7 +254,7 @@ class ChargeFlowLevelConfiguration:
     def type(self, type):
         """Sets the type of this ChargeFlowLevelConfiguration.
 
-            The type determines how the payment link is delivered to the customer. Once the type is defined it cannot be changed anymore.
+            The type defines the method of delivering the payment link to the customer.
 
         :param type: The type of this ChargeFlowLevelConfiguration.
         :type: int

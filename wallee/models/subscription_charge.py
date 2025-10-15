@@ -90,7 +90,7 @@ class SubscriptionCharge:
     def created_on(self):
         """Gets the created_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge was created.
 
         :return: The created_on of this SubscriptionCharge.
         :rtype: datetime
@@ -101,7 +101,7 @@ class SubscriptionCharge:
     def created_on(self, created_on):
         """Sets the created_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge was created.
 
         :param created_on: The created_on of this SubscriptionCharge.
         :type: datetime
@@ -113,7 +113,7 @@ class SubscriptionCharge:
     def discarded_by(self):
         """Gets the discarded_by of this SubscriptionCharge.
 
-            
+            The ID of the user the charge was discarded by.
 
         :return: The discarded_by of this SubscriptionCharge.
         :rtype: int
@@ -124,7 +124,7 @@ class SubscriptionCharge:
     def discarded_by(self, discarded_by):
         """Sets the discarded_by of this SubscriptionCharge.
 
-            
+            The ID of the user the charge was discarded by.
 
         :param discarded_by: The discarded_by of this SubscriptionCharge.
         :type: int
@@ -136,7 +136,7 @@ class SubscriptionCharge:
     def discarded_on(self):
         """Gets the discarded_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge was discarded.
 
         :return: The discarded_on of this SubscriptionCharge.
         :rtype: datetime
@@ -147,7 +147,7 @@ class SubscriptionCharge:
     def discarded_on(self, discarded_on):
         """Sets the discarded_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge was discarded.
 
         :param discarded_on: The discarded_on of this SubscriptionCharge.
         :type: datetime
@@ -159,7 +159,7 @@ class SubscriptionCharge:
     def external_id(self):
         """Gets the external_id of this SubscriptionCharge.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionCharge.
         :rtype: str
@@ -170,7 +170,7 @@ class SubscriptionCharge:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionCharge.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionCharge.
         :type: str
@@ -182,7 +182,7 @@ class SubscriptionCharge:
     def failed_on(self):
         """Gets the failed_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge failed.
 
         :return: The failed_on of this SubscriptionCharge.
         :rtype: datetime
@@ -193,7 +193,7 @@ class SubscriptionCharge:
     def failed_on(self, failed_on):
         """Sets the failed_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge failed.
 
         :param failed_on: The failed_on of this SubscriptionCharge.
         :type: datetime
@@ -205,7 +205,7 @@ class SubscriptionCharge:
     def failed_url(self):
         """Gets the failed_url of this SubscriptionCharge.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :return: The failed_url of this SubscriptionCharge.
         :rtype: str
@@ -216,7 +216,7 @@ class SubscriptionCharge:
     def failed_url(self, failed_url):
         """Sets the failed_url of this SubscriptionCharge.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :param failed_url: The failed_url of this SubscriptionCharge.
         :type: str
@@ -278,7 +278,7 @@ class SubscriptionCharge:
     def ledger_entries(self):
         """Gets the ledger_entries of this SubscriptionCharge.
 
-            
+            The ledger entries that belong to the charge.
 
         :return: The ledger_entries of this SubscriptionCharge.
         :rtype: list[SubscriptionLedgerEntry]
@@ -289,7 +289,7 @@ class SubscriptionCharge:
     def ledger_entries(self, ledger_entries):
         """Sets the ledger_entries of this SubscriptionCharge.
 
-            
+            The ledger entries that belong to the charge.
 
         :param ledger_entries: The ledger_entries of this SubscriptionCharge.
         :type: list[SubscriptionLedgerEntry]
@@ -324,7 +324,7 @@ class SubscriptionCharge:
     def planned_execution_date(self):
         """Gets the planned_execution_date of this SubscriptionCharge.
 
-            
+            The date and time when the execution of the charge is planned.
 
         :return: The planned_execution_date of this SubscriptionCharge.
         :rtype: datetime
@@ -335,7 +335,7 @@ class SubscriptionCharge:
     def planned_execution_date(self, planned_execution_date):
         """Sets the planned_execution_date of this SubscriptionCharge.
 
-            
+            The date and time when the execution of the charge is planned.
 
         :param planned_execution_date: The planned_execution_date of this SubscriptionCharge.
         :type: datetime
@@ -370,7 +370,7 @@ class SubscriptionCharge:
     def processing_type(self):
         """Gets the processing_type of this SubscriptionCharge.
 
-            
+            The processing type specifies how the charge is to be processed.
 
         :return: The processing_type of this SubscriptionCharge.
         :rtype: SubscriptionChargeProcessingType
@@ -381,7 +381,7 @@ class SubscriptionCharge:
     def processing_type(self, processing_type):
         """Sets the processing_type of this SubscriptionCharge.
 
-            
+            The processing type specifies how the charge is to be processed.
 
         :param processing_type: The processing_type of this SubscriptionCharge.
         :type: SubscriptionChargeProcessingType
@@ -393,7 +393,7 @@ class SubscriptionCharge:
     def reference(self):
         """Gets the reference of this SubscriptionCharge.
 
-            
+            The merchant's reference used to identify the charge.
 
         :return: The reference of this SubscriptionCharge.
         :rtype: str
@@ -404,7 +404,7 @@ class SubscriptionCharge:
     def reference(self, reference):
         """Sets the reference of this SubscriptionCharge.
 
-            
+            The merchant's reference used to identify the charge.
 
         :param reference: The reference of this SubscriptionCharge.
         :type: str
@@ -441,7 +441,7 @@ class SubscriptionCharge:
     def subscription(self):
         """Gets the subscription of this SubscriptionCharge.
 
-            The field subscription indicates the subscription to which the charge belongs to.
+            The subscription that the charge belongs to.
 
         :return: The subscription of this SubscriptionCharge.
         :rtype: Subscription
@@ -452,7 +452,7 @@ class SubscriptionCharge:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionCharge.
 
-            The field subscription indicates the subscription to which the charge belongs to.
+            The subscription that the charge belongs to.
 
         :param subscription: The subscription of this SubscriptionCharge.
         :type: Subscription
@@ -464,7 +464,7 @@ class SubscriptionCharge:
     def succeed_on(self):
         """Gets the succeed_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge succeeded.
 
         :return: The succeed_on of this SubscriptionCharge.
         :rtype: datetime
@@ -475,7 +475,7 @@ class SubscriptionCharge:
     def succeed_on(self, succeed_on):
         """Sets the succeed_on of this SubscriptionCharge.
 
-            
+            The date and time when the charge succeeded.
 
         :param succeed_on: The succeed_on of this SubscriptionCharge.
         :type: datetime
@@ -487,7 +487,7 @@ class SubscriptionCharge:
     def success_url(self):
         """Gets the success_url of this SubscriptionCharge.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :return: The success_url of this SubscriptionCharge.
         :rtype: str
@@ -498,7 +498,7 @@ class SubscriptionCharge:
     def success_url(self, success_url):
         """Sets the success_url of this SubscriptionCharge.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :param success_url: The success_url of this SubscriptionCharge.
         :type: str
@@ -514,7 +514,7 @@ class SubscriptionCharge:
     def transaction(self):
         """Gets the transaction of this SubscriptionCharge.
 
-            
+            The transaction used to process the charge.
 
         :return: The transaction of this SubscriptionCharge.
         :rtype: Transaction
@@ -525,7 +525,7 @@ class SubscriptionCharge:
     def transaction(self, transaction):
         """Sets the transaction of this SubscriptionCharge.
 
-            
+            The transaction used to process the charge.
 
         :param transaction: The transaction of this SubscriptionCharge.
         :type: Transaction
@@ -537,7 +537,7 @@ class SubscriptionCharge:
     def type(self):
         """Gets the type of this SubscriptionCharge.
 
-            
+            The type specified how the charge was initiated.
 
         :return: The type of this SubscriptionCharge.
         :rtype: SubscriptionChargeType
@@ -548,7 +548,7 @@ class SubscriptionCharge:
     def type(self, type):
         """Sets the type of this SubscriptionCharge.
 
-            
+            The type specified how the charge was initiated.
 
         :param type: The type of this SubscriptionCharge.
         :type: SubscriptionChargeType

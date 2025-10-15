@@ -237,7 +237,7 @@ class Transaction:
     def accept_header(self):
         """Gets the accept_header of this Transaction.
 
-            
+            The 'Accept' header of the customer's web browser.
 
         :return: The accept_header of this Transaction.
         :rtype: str
@@ -248,7 +248,7 @@ class Transaction:
     def accept_header(self, accept_header):
         """Sets the accept_header of this Transaction.
 
-            
+            The 'Accept' header of the customer's web browser.
 
         :param accept_header: The accept_header of this Transaction.
         :type: str
@@ -260,7 +260,7 @@ class Transaction:
     def accept_language_header(self):
         """Gets the accept_language_header of this Transaction.
 
-            The accept language contains the header which indicates the language preferences of the buyer.
+            The 'Accept Language' header of the customer's web browser.
 
         :return: The accept_language_header of this Transaction.
         :rtype: str
@@ -271,7 +271,7 @@ class Transaction:
     def accept_language_header(self, accept_language_header):
         """Sets the accept_language_header of this Transaction.
 
-            The accept language contains the header which indicates the language preferences of the buyer.
+            The 'Accept Language' header of the customer's web browser.
 
         :param accept_language_header: The accept_language_header of this Transaction.
         :type: str
@@ -283,7 +283,7 @@ class Transaction:
     def allowed_payment_method_brands(self):
         """Gets the allowed_payment_method_brands of this Transaction.
 
-            
+            The payment method brands that can be used to authorize the transaction.
 
         :return: The allowed_payment_method_brands of this Transaction.
         :rtype: list[int]
@@ -294,7 +294,7 @@ class Transaction:
     def allowed_payment_method_brands(self, allowed_payment_method_brands):
         """Sets the allowed_payment_method_brands of this Transaction.
 
-            
+            The payment method brands that can be used to authorize the transaction.
 
         :param allowed_payment_method_brands: The allowed_payment_method_brands of this Transaction.
         :type: list[int]
@@ -306,7 +306,7 @@ class Transaction:
     def allowed_payment_method_configurations(self):
         """Gets the allowed_payment_method_configurations of this Transaction.
 
-            
+            The payment method configurations that can be used to authorize the transaction.
 
         :return: The allowed_payment_method_configurations of this Transaction.
         :rtype: list[int]
@@ -317,7 +317,7 @@ class Transaction:
     def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
         """Sets the allowed_payment_method_configurations of this Transaction.
 
-            
+            The payment method configurations that can be used to authorize the transaction.
 
         :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this Transaction.
         :type: list[int]
@@ -329,7 +329,7 @@ class Transaction:
     def authorization_amount(self):
         """Gets the authorization_amount of this Transaction.
 
-            
+            The sum of all line item prices including taxes in the transaction's currency.
 
         :return: The authorization_amount of this Transaction.
         :rtype: float
@@ -340,7 +340,7 @@ class Transaction:
     def authorization_amount(self, authorization_amount):
         """Sets the authorization_amount of this Transaction.
 
-            
+            The sum of all line item prices including taxes in the transaction's currency.
 
         :param authorization_amount: The authorization_amount of this Transaction.
         :type: float
@@ -352,7 +352,7 @@ class Transaction:
     def authorization_environment(self):
         """Gets the authorization_environment of this Transaction.
 
-            The environment in which this transaction was successfully authorized.
+            The environment in which the transaction was authorized.
 
         :return: The authorization_environment of this Transaction.
         :rtype: ChargeAttemptEnvironment
@@ -363,7 +363,7 @@ class Transaction:
     def authorization_environment(self, authorization_environment):
         """Sets the authorization_environment of this Transaction.
 
-            The environment in which this transaction was successfully authorized.
+            The environment in which the transaction was authorized.
 
         :param authorization_environment: The authorization_environment of this Transaction.
         :type: ChargeAttemptEnvironment
@@ -398,7 +398,7 @@ class Transaction:
     def authorization_timeout_on(self):
         """Gets the authorization_timeout_on of this Transaction.
 
-            This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
+            The date and time when the transaction must be authorized, otherwise it will canceled.
 
         :return: The authorization_timeout_on of this Transaction.
         :rtype: datetime
@@ -409,7 +409,7 @@ class Transaction:
     def authorization_timeout_on(self, authorization_timeout_on):
         """Sets the authorization_timeout_on of this Transaction.
 
-            This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
+            The date and time when the transaction must be authorized, otherwise it will canceled.
 
         :param authorization_timeout_on: The authorization_timeout_on of this Transaction.
         :type: datetime
@@ -421,7 +421,7 @@ class Transaction:
     def authorized_on(self):
         """Gets the authorized_on of this Transaction.
 
-            
+            The date and time when the transaction was authorized.
 
         :return: The authorized_on of this Transaction.
         :rtype: datetime
@@ -432,7 +432,7 @@ class Transaction:
     def authorized_on(self, authorized_on):
         """Sets the authorized_on of this Transaction.
 
-            
+            The date and time when the transaction was authorized.
 
         :param authorized_on: The authorized_on of this Transaction.
         :type: datetime
@@ -444,7 +444,7 @@ class Transaction:
     def auto_confirmation_enabled(self):
         """Gets the auto_confirmation_enabled of this Transaction.
 
-            When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+            Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.
 
         :return: The auto_confirmation_enabled of this Transaction.
         :rtype: bool
@@ -455,7 +455,7 @@ class Transaction:
     def auto_confirmation_enabled(self, auto_confirmation_enabled):
         """Sets the auto_confirmation_enabled of this Transaction.
 
-            When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+            Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.
 
         :param auto_confirmation_enabled: The auto_confirmation_enabled of this Transaction.
         :type: bool
@@ -467,7 +467,7 @@ class Transaction:
     def billing_address(self):
         """Gets the billing_address of this Transaction.
 
-            
+            The address associated with the payment method for invoicing and transaction processing purposes.
 
         :return: The billing_address of this Transaction.
         :rtype: Address
@@ -478,7 +478,7 @@ class Transaction:
     def billing_address(self, billing_address):
         """Sets the billing_address of this Transaction.
 
-            
+            The address associated with the payment method for invoicing and transaction processing purposes.
 
         :param billing_address: The billing_address of this Transaction.
         :type: Address
@@ -490,7 +490,7 @@ class Transaction:
     def charge_retry_enabled(self):
         """Gets the charge_retry_enabled of this Transaction.
 
-            When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
+            Whether the customer can make further payment attempts if the first one has failed. Default is true.
 
         :return: The charge_retry_enabled of this Transaction.
         :rtype: bool
@@ -501,7 +501,7 @@ class Transaction:
     def charge_retry_enabled(self, charge_retry_enabled):
         """Sets the charge_retry_enabled of this Transaction.
 
-            When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
+            Whether the customer can make further payment attempts if the first one has failed. Default is true.
 
         :param charge_retry_enabled: The charge_retry_enabled of this Transaction.
         :type: bool
@@ -513,7 +513,7 @@ class Transaction:
     def completed_amount(self):
         """Gets the completed_amount of this Transaction.
 
-            The completed amount is the total amount which has been captured so far.
+            The total amount that was completed, in the transaction's currency.
 
         :return: The completed_amount of this Transaction.
         :rtype: float
@@ -524,7 +524,7 @@ class Transaction:
     def completed_amount(self, completed_amount):
         """Sets the completed_amount of this Transaction.
 
-            The completed amount is the total amount which has been captured so far.
+            The total amount that was completed, in the transaction's currency.
 
         :param completed_amount: The completed_amount of this Transaction.
         :type: float
@@ -536,7 +536,7 @@ class Transaction:
     def completed_on(self):
         """Gets the completed_on of this Transaction.
 
-            
+            The date and time when the transaction was completed.
 
         :return: The completed_on of this Transaction.
         :rtype: datetime
@@ -547,7 +547,7 @@ class Transaction:
     def completed_on(self, completed_on):
         """Sets the completed_on of this Transaction.
 
-            
+            The date and time when the transaction was completed.
 
         :param completed_on: The completed_on of this Transaction.
         :type: datetime
@@ -559,7 +559,7 @@ class Transaction:
     def completion_behavior(self):
         """Gets the completion_behavior of this Transaction.
 
-            The completion behavior controls when the transaction is completed.
+            The behavior that controls when the transaction is completed.
 
         :return: The completion_behavior of this Transaction.
         :rtype: TransactionCompletionBehavior
@@ -570,7 +570,7 @@ class Transaction:
     def completion_behavior(self, completion_behavior):
         """Sets the completion_behavior of this Transaction.
 
-            The completion behavior controls when the transaction is completed.
+            The behavior that controls when the transaction is completed.
 
         :param completion_behavior: The completion_behavior of this Transaction.
         :type: TransactionCompletionBehavior
@@ -582,7 +582,7 @@ class Transaction:
     def completion_timeout_on(self):
         """Gets the completion_timeout_on of this Transaction.
 
-            
+            The date and time when the transaction is completed automatically.
 
         :return: The completion_timeout_on of this Transaction.
         :rtype: datetime
@@ -593,7 +593,7 @@ class Transaction:
     def completion_timeout_on(self, completion_timeout_on):
         """Sets the completion_timeout_on of this Transaction.
 
-            
+            The date and time when the transaction is completed automatically.
 
         :param completion_timeout_on: The completion_timeout_on of this Transaction.
         :type: datetime
@@ -605,7 +605,7 @@ class Transaction:
     def confirmed_by(self):
         """Gets the confirmed_by of this Transaction.
 
-            
+            The ID of the user the transaction was confirmed by.
 
         :return: The confirmed_by of this Transaction.
         :rtype: int
@@ -616,7 +616,7 @@ class Transaction:
     def confirmed_by(self, confirmed_by):
         """Sets the confirmed_by of this Transaction.
 
-            
+            The ID of the user the transaction was confirmed by.
 
         :param confirmed_by: The confirmed_by of this Transaction.
         :type: int
@@ -628,7 +628,7 @@ class Transaction:
     def confirmed_on(self):
         """Gets the confirmed_on of this Transaction.
 
-            
+            The date and time when the transaction was created.
 
         :return: The confirmed_on of this Transaction.
         :rtype: datetime
@@ -639,7 +639,7 @@ class Transaction:
     def confirmed_on(self, confirmed_on):
         """Sets the confirmed_on of this Transaction.
 
-            
+            The date and time when the transaction was created.
 
         :param confirmed_on: The confirmed_on of this Transaction.
         :type: datetime
@@ -651,7 +651,7 @@ class Transaction:
     def created_by(self):
         """Gets the created_by of this Transaction.
 
-            
+            The ID of the user the transaction was created by.
 
         :return: The created_by of this Transaction.
         :rtype: int
@@ -662,7 +662,7 @@ class Transaction:
     def created_by(self, created_by):
         """Sets the created_by of this Transaction.
 
-            
+            The ID of the user the transaction was created by.
 
         :param created_by: The created_by of this Transaction.
         :type: int
@@ -697,7 +697,7 @@ class Transaction:
     def currency(self):
         """Gets the currency of this Transaction.
 
-            
+            The three-letter code (ISO 4217 format) of the transaction's currency.
 
         :return: The currency of this Transaction.
         :rtype: str
@@ -708,7 +708,7 @@ class Transaction:
     def currency(self, currency):
         """Sets the currency of this Transaction.
 
-            
+            The three-letter code (ISO 4217 format) of the transaction's currency.
 
         :param currency: The currency of this Transaction.
         :type: str
@@ -720,7 +720,7 @@ class Transaction:
     def customer_email_address(self):
         """Gets the customer_email_address of this Transaction.
 
-            The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
+            The customer's email address.
 
         :return: The customer_email_address of this Transaction.
         :rtype: str
@@ -731,7 +731,7 @@ class Transaction:
     def customer_email_address(self, customer_email_address):
         """Sets the customer_email_address of this Transaction.
 
-            The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
+            The customer's email address.
 
         :param customer_email_address: The customer_email_address of this Transaction.
         :type: str
@@ -745,7 +745,7 @@ class Transaction:
     def customer_id(self):
         """Gets the customer_id of this Transaction.
 
-            
+            The unique identifier of the customer in the external system.
 
         :return: The customer_id of this Transaction.
         :rtype: str
@@ -756,7 +756,7 @@ class Transaction:
     def customer_id(self, customer_id):
         """Sets the customer_id of this Transaction.
 
-            
+            The unique identifier of the customer in the external system.
 
         :param customer_id: The customer_id of this Transaction.
         :type: str
@@ -768,7 +768,7 @@ class Transaction:
     def customers_presence(self):
         """Gets the customers_presence of this Transaction.
 
-            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates whether and in what way the transaction's customer is present. Default is VIRTUAL_PRESENT.
 
         :return: The customers_presence of this Transaction.
         :rtype: CustomersPresence
@@ -779,7 +779,7 @@ class Transaction:
     def customers_presence(self, customers_presence):
         """Sets the customers_presence of this Transaction.
 
-            The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+            The customer's presence indicates whether and in what way the transaction's customer is present. Default is VIRTUAL_PRESENT.
 
         :param customers_presence: The customers_presence of this Transaction.
         :type: CustomersPresence
@@ -791,7 +791,7 @@ class Transaction:
     def delivery_decision_made_on(self):
         """Gets the delivery_decision_made_on of this Transaction.
 
-            This date indicates when the decision has been made if a transaction should be delivered or not.
+            This date and time when the decision was made as to whether the order should be shipped.
 
         :return: The delivery_decision_made_on of this Transaction.
         :rtype: datetime
@@ -802,7 +802,7 @@ class Transaction:
     def delivery_decision_made_on(self, delivery_decision_made_on):
         """Sets the delivery_decision_made_on of this Transaction.
 
-            This date indicates when the decision has been made if a transaction should be delivered or not.
+            This date and time when the decision was made as to whether the order should be shipped.
 
         :param delivery_decision_made_on: The delivery_decision_made_on of this Transaction.
         :type: datetime
@@ -814,7 +814,7 @@ class Transaction:
     def device_session_identifier(self):
         """Gets the device_session_identifier of this Transaction.
 
-            The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+            Allows to link the transaction to the data collected from the customer's device.
 
         :return: The device_session_identifier of this Transaction.
         :rtype: str
@@ -825,7 +825,7 @@ class Transaction:
     def device_session_identifier(self, device_session_identifier):
         """Sets the device_session_identifier of this Transaction.
 
-            The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+            Allows to link the transaction to the data collected from the customer's device.
 
         :param device_session_identifier: The device_session_identifier of this Transaction.
         :type: str
@@ -841,7 +841,7 @@ class Transaction:
     def emails_disabled(self):
         """Gets the emails_disabled of this Transaction.
 
-            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+            Whether email sending is deactivated for the transaction. Default is false.
 
         :return: The emails_disabled of this Transaction.
         :rtype: bool
@@ -852,7 +852,7 @@ class Transaction:
     def emails_disabled(self, emails_disabled):
         """Sets the emails_disabled of this Transaction.
 
-            Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+            Whether email sending is deactivated for the transaction. Default is false.
 
         :param emails_disabled: The emails_disabled of this Transaction.
         :type: bool
@@ -864,7 +864,7 @@ class Transaction:
     def end_of_life(self):
         """Gets the end_of_life of this Transaction.
 
-            The transaction's end of life indicates the date from which on no operation can be carried out anymore.
+            The date and time when the transaction reaches its end of live. No further actions can be carried out at this time.
 
         :return: The end_of_life of this Transaction.
         :rtype: datetime
@@ -875,7 +875,7 @@ class Transaction:
     def end_of_life(self, end_of_life):
         """Sets the end_of_life of this Transaction.
 
-            The transaction's end of life indicates the date from which on no operation can be carried out anymore.
+            The date and time when the transaction reaches its end of live. No further actions can be carried out at this time.
 
         :param end_of_life: The end_of_life of this Transaction.
         :type: datetime
@@ -887,7 +887,7 @@ class Transaction:
     def environment(self):
         """Gets the environment of this Transaction.
 
-            
+            The environment used when rendering resources.
 
         :return: The environment of this Transaction.
         :rtype: Environment
@@ -898,7 +898,7 @@ class Transaction:
     def environment(self, environment):
         """Sets the environment of this Transaction.
 
-            
+            The environment used when rendering resources.
 
         :param environment: The environment of this Transaction.
         :type: Environment
@@ -910,7 +910,7 @@ class Transaction:
     def environment_selection_strategy(self):
         """Gets the environment_selection_strategy of this Transaction.
 
-            The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+            The strategy for determining whether the transaction is to be processed in the test or production environment.
 
         :return: The environment_selection_strategy of this Transaction.
         :rtype: TransactionEnvironmentSelectionStrategy
@@ -921,7 +921,7 @@ class Transaction:
     def environment_selection_strategy(self, environment_selection_strategy):
         """Sets the environment_selection_strategy of this Transaction.
 
-            The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+            The strategy for determining whether the transaction is to be processed in the test or production environment.
 
         :param environment_selection_strategy: The environment_selection_strategy of this Transaction.
         :type: TransactionEnvironmentSelectionStrategy
@@ -933,7 +933,7 @@ class Transaction:
     def failed_on(self):
         """Gets the failed_on of this Transaction.
 
-            
+            The date and time when the transaction failed.
 
         :return: The failed_on of this Transaction.
         :rtype: datetime
@@ -944,7 +944,7 @@ class Transaction:
     def failed_on(self, failed_on):
         """Sets the failed_on of this Transaction.
 
-            
+            The date and time when the transaction failed.
 
         :param failed_on: The failed_on of this Transaction.
         :type: datetime
@@ -956,7 +956,7 @@ class Transaction:
     def failed_url(self):
         """Gets the failed_url of this Transaction.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :return: The failed_url of this Transaction.
         :rtype: str
@@ -967,7 +967,7 @@ class Transaction:
     def failed_url(self, failed_url):
         """Sets the failed_url of this Transaction.
 
-            The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
         :param failed_url: The failed_url of this Transaction.
         :type: str
@@ -983,7 +983,7 @@ class Transaction:
     def failure_reason(self):
         """Gets the failure_reason of this Transaction.
 
-            The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.
+            The reason for the failure of the transaction.
 
         :return: The failure_reason of this Transaction.
         :rtype: FailureReason
@@ -994,7 +994,7 @@ class Transaction:
     def failure_reason(self, failure_reason):
         """Sets the failure_reason of this Transaction.
 
-            The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.
+            The reason for the failure of the transaction.
 
         :param failure_reason: The failure_reason of this Transaction.
         :type: FailureReason
@@ -1006,7 +1006,7 @@ class Transaction:
     def group(self):
         """Gets the group of this Transaction.
 
-            
+            The group that the transaction belongs to.
 
         :return: The group of this Transaction.
         :rtype: TransactionGroup
@@ -1017,7 +1017,7 @@ class Transaction:
     def group(self, group):
         """Sets the group of this Transaction.
 
-            
+            The group that the transaction belongs to.
 
         :param group: The group of this Transaction.
         :type: TransactionGroup
@@ -1052,7 +1052,7 @@ class Transaction:
     def internet_protocol_address(self):
         """Gets the internet_protocol_address of this Transaction.
 
-            The Internet Protocol (IP) address identifies the device of the buyer.
+            The IP address of the customer's device.
 
         :return: The internet_protocol_address of this Transaction.
         :rtype: str
@@ -1063,7 +1063,7 @@ class Transaction:
     def internet_protocol_address(self, internet_protocol_address):
         """Sets the internet_protocol_address of this Transaction.
 
-            The Internet Protocol (IP) address identifies the device of the buyer.
+            The IP address of the customer's device.
 
         :param internet_protocol_address: The internet_protocol_address of this Transaction.
         :type: str
@@ -1075,7 +1075,7 @@ class Transaction:
     def internet_protocol_address_country(self):
         """Gets the internet_protocol_address_country of this Transaction.
 
-            
+            The country determined from the IP address of the customer's device.
 
         :return: The internet_protocol_address_country of this Transaction.
         :rtype: str
@@ -1086,7 +1086,7 @@ class Transaction:
     def internet_protocol_address_country(self, internet_protocol_address_country):
         """Sets the internet_protocol_address_country of this Transaction.
 
-            
+            The country determined from the IP address of the customer's device.
 
         :param internet_protocol_address_country: The internet_protocol_address_country of this Transaction.
         :type: str
@@ -1098,7 +1098,7 @@ class Transaction:
     def invoice_merchant_reference(self):
         """Gets the invoice_merchant_reference of this Transaction.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :return: The invoice_merchant_reference of this Transaction.
         :rtype: str
@@ -1109,7 +1109,7 @@ class Transaction:
     def invoice_merchant_reference(self, invoice_merchant_reference):
         """Sets the invoice_merchant_reference of this Transaction.
 
-            
+            The merchant's reference used to identify the invoice.
 
         :param invoice_merchant_reference: The invoice_merchant_reference of this Transaction.
         :type: str
@@ -1123,7 +1123,7 @@ class Transaction:
     def java_enabled(self):
         """Gets the java_enabled of this Transaction.
 
-            
+            Whether Java is enabled on the customer's web browser.
 
         :return: The java_enabled of this Transaction.
         :rtype: bool
@@ -1134,7 +1134,7 @@ class Transaction:
     def java_enabled(self, java_enabled):
         """Sets the java_enabled of this Transaction.
 
-            
+            Whether Java is enabled on the customer's web browser.
 
         :param java_enabled: The java_enabled of this Transaction.
         :type: bool
@@ -1169,7 +1169,7 @@ class Transaction:
     def line_items(self):
         """Gets the line_items of this Transaction.
 
-            
+            The line items purchased by the customer.
 
         :return: The line_items of this Transaction.
         :rtype: list[LineItem]
@@ -1180,7 +1180,7 @@ class Transaction:
     def line_items(self, line_items):
         """Sets the line_items of this Transaction.
 
-            
+            The line items purchased by the customer.
 
         :param line_items: The line_items of this Transaction.
         :type: list[LineItem]
@@ -1215,7 +1215,7 @@ class Transaction:
     def merchant_reference(self):
         """Gets the merchant_reference of this Transaction.
 
-            
+            The merchant's reference used to identify the transaction.
 
         :return: The merchant_reference of this Transaction.
         :rtype: str
@@ -1226,7 +1226,7 @@ class Transaction:
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this Transaction.
 
-            
+            The merchant's reference used to identify the transaction.
 
         :param merchant_reference: The merchant_reference of this Transaction.
         :type: str
@@ -1263,7 +1263,7 @@ class Transaction:
     def parent(self):
         """Gets the parent of this Transaction.
 
-            
+            The parent transaction which was (partially) replaced by this transaction.
 
         :return: The parent of this Transaction.
         :rtype: int
@@ -1274,7 +1274,7 @@ class Transaction:
     def parent(self, parent):
         """Sets the parent of this Transaction.
 
-            
+            The parent transaction which was (partially) replaced by this transaction.
 
         :param parent: The parent of this Transaction.
         :type: int
@@ -1286,7 +1286,7 @@ class Transaction:
     def payment_connector_configuration(self):
         """Gets the payment_connector_configuration of this Transaction.
 
-            
+            The payment connector configuration that was used to authorize the transaction.
 
         :return: The payment_connector_configuration of this Transaction.
         :rtype: PaymentConnectorConfiguration
@@ -1297,7 +1297,7 @@ class Transaction:
     def payment_connector_configuration(self, payment_connector_configuration):
         """Sets the payment_connector_configuration of this Transaction.
 
-            
+            The payment connector configuration that was used to authorize the transaction.
 
         :param payment_connector_configuration: The payment_connector_configuration of this Transaction.
         :type: PaymentConnectorConfiguration
@@ -1332,7 +1332,7 @@ class Transaction:
     def processing_on(self):
         """Gets the processing_on of this Transaction.
 
-            
+            The date and time when the processing of the transaction was started.
 
         :return: The processing_on of this Transaction.
         :rtype: datetime
@@ -1343,7 +1343,7 @@ class Transaction:
     def processing_on(self, processing_on):
         """Sets the processing_on of this Transaction.
 
-            
+            The date and time when the processing of the transaction was started.
 
         :param processing_on: The processing_on of this Transaction.
         :type: datetime
@@ -1355,7 +1355,7 @@ class Transaction:
     def refunded_amount(self):
         """Gets the refunded_amount of this Transaction.
 
-            The refunded amount is the total amount which has been refunded so far.
+            The total amount that was refunded, in the transaction's currency.
 
         :return: The refunded_amount of this Transaction.
         :rtype: float
@@ -1366,7 +1366,7 @@ class Transaction:
     def refunded_amount(self, refunded_amount):
         """Sets the refunded_amount of this Transaction.
 
-            The refunded amount is the total amount which has been refunded so far.
+            The total amount that was refunded, in the transaction's currency.
 
         :param refunded_amount: The refunded_amount of this Transaction.
         :type: float
@@ -1378,7 +1378,7 @@ class Transaction:
     def screen_color_depth(self):
         """Gets the screen_color_depth of this Transaction.
 
-            
+            The screen color depth of the customer's web browser.
 
         :return: The screen_color_depth of this Transaction.
         :rtype: str
@@ -1389,7 +1389,7 @@ class Transaction:
     def screen_color_depth(self, screen_color_depth):
         """Sets the screen_color_depth of this Transaction.
 
-            
+            The screen color depth of the customer's web browser.
 
         :param screen_color_depth: The screen_color_depth of this Transaction.
         :type: str
@@ -1401,7 +1401,7 @@ class Transaction:
     def screen_height(self):
         """Gets the screen_height of this Transaction.
 
-            
+            The screen height of the customer's web browser.
 
         :return: The screen_height of this Transaction.
         :rtype: str
@@ -1412,7 +1412,7 @@ class Transaction:
     def screen_height(self, screen_height):
         """Sets the screen_height of this Transaction.
 
-            
+            The screen height of the customer's web browser.
 
         :param screen_height: The screen_height of this Transaction.
         :type: str
@@ -1424,7 +1424,7 @@ class Transaction:
     def screen_width(self):
         """Gets the screen_width of this Transaction.
 
-            
+            The screen width of the customer's web browser.
 
         :return: The screen_width of this Transaction.
         :rtype: str
@@ -1435,7 +1435,7 @@ class Transaction:
     def screen_width(self, screen_width):
         """Sets the screen_width of this Transaction.
 
-            
+            The screen width of the customer's web browser.
 
         :param screen_width: The screen_width of this Transaction.
         :type: str
@@ -1447,7 +1447,7 @@ class Transaction:
     def shipping_address(self):
         """Gets the shipping_address of this Transaction.
 
-            
+            The address to where the order will be shipped.
 
         :return: The shipping_address of this Transaction.
         :rtype: Address
@@ -1458,7 +1458,7 @@ class Transaction:
     def shipping_address(self, shipping_address):
         """Sets the shipping_address of this Transaction.
 
-            
+            The address to where the order will be shipped.
 
         :param shipping_address: The shipping_address of this Transaction.
         :type: Address
@@ -1470,7 +1470,7 @@ class Transaction:
     def shipping_method(self):
         """Gets the shipping_method of this Transaction.
 
-            
+            The name of the shipping method used to ship the products.
 
         :return: The shipping_method of this Transaction.
         :rtype: str
@@ -1481,7 +1481,7 @@ class Transaction:
     def shipping_method(self, shipping_method):
         """Sets the shipping_method of this Transaction.
 
-            
+            The name of the shipping method used to ship the products.
 
         :param shipping_method: The shipping_method of this Transaction.
         :type: str
@@ -1495,7 +1495,7 @@ class Transaction:
     def space_view_id(self):
         """Gets the space_view_id of this Transaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :return: The space_view_id of this Transaction.
         :rtype: int
@@ -1506,7 +1506,7 @@ class Transaction:
     def space_view_id(self, space_view_id):
         """Sets the space_view_id of this Transaction.
 
-            
+            The ID of the space view this object is linked to.
 
         :param space_view_id: The space_view_id of this Transaction.
         :type: int
@@ -1541,7 +1541,7 @@ class Transaction:
     def success_url(self):
         """Gets the success_url of this Transaction.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :return: The success_url of this Transaction.
         :rtype: str
@@ -1552,7 +1552,7 @@ class Transaction:
     def success_url(self, success_url):
         """Sets the success_url of this Transaction.
 
-            The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+            The URL to redirect the customer back to after they successfully authenticated their payment.
 
         :param success_url: The success_url of this Transaction.
         :type: str
@@ -1568,7 +1568,7 @@ class Transaction:
     def terminal(self):
         """Gets the terminal of this Transaction.
 
-            The terminal on which the payment was processed.
+            The payment terminal through which the payment was processed.
 
         :return: The terminal of this Transaction.
         :rtype: PaymentTerminal
@@ -1579,7 +1579,7 @@ class Transaction:
     def terminal(self, terminal):
         """Sets the terminal of this Transaction.
 
-            The terminal on which the payment was processed.
+            The payment terminal through which the payment was processed.
 
         :param terminal: The terminal of this Transaction.
         :type: PaymentTerminal
@@ -1591,7 +1591,7 @@ class Transaction:
     def time_zone(self):
         """Gets the time_zone of this Transaction.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :return: The time_zone of this Transaction.
         :rtype: str
@@ -1602,7 +1602,7 @@ class Transaction:
     def time_zone(self, time_zone):
         """Sets the time_zone of this Transaction.
 
-            The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
 
         :param time_zone: The time_zone of this Transaction.
         :type: str
@@ -1614,7 +1614,7 @@ class Transaction:
     def token(self):
         """Gets the token of this Transaction.
 
-            
+            The payment token that should be used to charge the customer.
 
         :return: The token of this Transaction.
         :rtype: Token
@@ -1625,7 +1625,7 @@ class Transaction:
     def token(self, token):
         """Sets the token of this Transaction.
 
-            
+            The payment token that should be used to charge the customer.
 
         :param token: The token of this Transaction.
         :type: Token
@@ -1637,7 +1637,7 @@ class Transaction:
     def tokenization_mode(self):
         """Gets the tokenization_mode of this Transaction.
 
-            The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
 
         :return: The tokenization_mode of this Transaction.
         :rtype: TokenizationMode
@@ -1648,7 +1648,7 @@ class Transaction:
     def tokenization_mode(self, tokenization_mode):
         """Sets the tokenization_mode of this Transaction.
 
-            The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
 
         :param tokenization_mode: The tokenization_mode of this Transaction.
         :type: TokenizationMode
@@ -1660,7 +1660,7 @@ class Transaction:
     def total_applied_fees(self):
         """Gets the total_applied_fees of this Transaction.
 
-            The total applied fees is the sum of all fees that have been applied so far.
+            The total of all fees charged, in the transaction's currency.
 
         :return: The total_applied_fees of this Transaction.
         :rtype: float
@@ -1671,7 +1671,7 @@ class Transaction:
     def total_applied_fees(self, total_applied_fees):
         """Sets the total_applied_fees of this Transaction.
 
-            The total applied fees is the sum of all fees that have been applied so far.
+            The total of all fees charged, in the transaction's currency.
 
         :param total_applied_fees: The total_applied_fees of this Transaction.
         :type: float
@@ -1683,7 +1683,7 @@ class Transaction:
     def total_settled_amount(self):
         """Gets the total_settled_amount of this Transaction.
 
-            The total settled amount is the total amount which has been settled so far.
+            The total amount that was settled, in the transaction's currency.
 
         :return: The total_settled_amount of this Transaction.
         :rtype: float
@@ -1694,7 +1694,7 @@ class Transaction:
     def total_settled_amount(self, total_settled_amount):
         """Sets the total_settled_amount of this Transaction.
 
-            The total settled amount is the total amount which has been settled so far.
+            The total amount that was settled, in the transaction's currency.
 
         :param total_settled_amount: The total_settled_amount of this Transaction.
         :type: float
@@ -1706,7 +1706,7 @@ class Transaction:
     def user_agent_header(self):
         """Gets the user_agent_header of this Transaction.
 
-            The user agent header provides the exact string which contains the user agent of the buyer.
+            The 'User Agent' header of the customer's web browser.
 
         :return: The user_agent_header of this Transaction.
         :rtype: str
@@ -1717,7 +1717,7 @@ class Transaction:
     def user_agent_header(self, user_agent_header):
         """Sets the user_agent_header of this Transaction.
 
-            The user agent header provides the exact string which contains the user agent of the buyer.
+            The 'User Agent' header of the customer's web browser.
 
         :param user_agent_header: The user_agent_header of this Transaction.
         :type: str
@@ -1729,7 +1729,7 @@ class Transaction:
     def user_failure_message(self):
         """Gets the user_failure_message of this Transaction.
 
-            The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.
+            The message that can be displayed to the customer explaining why the transaction failed, in the customer's language.
 
         :return: The user_failure_message of this Transaction.
         :rtype: str
@@ -1740,7 +1740,7 @@ class Transaction:
     def user_failure_message(self, user_failure_message):
         """Sets the user_failure_message of this Transaction.
 
-            The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.
+            The message that can be displayed to the customer explaining why the transaction failed, in the customer's language.
 
         :param user_failure_message: The user_failure_message of this Transaction.
         :type: str
@@ -1752,7 +1752,7 @@ class Transaction:
     def user_interface_type(self):
         """Gets the user_interface_type of this Transaction.
 
-            The user interface type defines through which user interface the transaction has been processed resp. created.
+            The type of user interface the customer used to provide the payment information.
 
         :return: The user_interface_type of this Transaction.
         :rtype: TransactionUserInterfaceType
@@ -1763,7 +1763,7 @@ class Transaction:
     def user_interface_type(self, user_interface_type):
         """Sets the user_interface_type of this Transaction.
 
-            The user interface type defines through which user interface the transaction has been processed resp. created.
+            The type of user interface the customer used to provide the payment information.
 
         :param user_interface_type: The user_interface_type of this Transaction.
         :type: TransactionUserInterfaceType
@@ -1798,7 +1798,7 @@ class Transaction:
     def window_height(self):
         """Gets the window_height of this Transaction.
 
-            
+            The window height of the customer's web browser.
 
         :return: The window_height of this Transaction.
         :rtype: str
@@ -1809,7 +1809,7 @@ class Transaction:
     def window_height(self, window_height):
         """Sets the window_height of this Transaction.
 
-            
+            The window height of the customer's web browser.
 
         :param window_height: The window_height of this Transaction.
         :type: str
@@ -1821,7 +1821,7 @@ class Transaction:
     def window_width(self):
         """Gets the window_width of this Transaction.
 
-            
+            The window width of the customer's web browser.
 
         :return: The window_width of this Transaction.
         :rtype: str
@@ -1832,7 +1832,7 @@ class Transaction:
     def window_width(self, window_width):
         """Sets the window_width of this Transaction.
 
-            
+            The window width of the customer's web browser.
 
         :param window_width: The window_width of this Transaction.
         :type: str
@@ -1844,7 +1844,7 @@ class Transaction:
     def years_to_keep(self):
         """Gets the years_to_keep of this Transaction.
 
-            The number of years the transaction will be stored after it has been authorized.
+            The number of years the transaction is kept after its authorization.
 
         :return: The years_to_keep of this Transaction.
         :rtype: int
@@ -1855,7 +1855,7 @@ class Transaction:
     def years_to_keep(self, years_to_keep):
         """Sets the years_to_keep of this Transaction.
 
-            The number of years the transaction will be stored after it has been authorized.
+            The number of years the transaction is kept after its authorization.
 
         :param years_to_keep: The years_to_keep of this Transaction.
         :type: int

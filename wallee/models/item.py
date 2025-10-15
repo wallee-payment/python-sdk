@@ -5,7 +5,7 @@ from enum import Enum
 
 
 
-class ShopifySubscriptionModelItem:
+class Item:
 
     swagger_types = {
     
@@ -13,7 +13,7 @@ class ShopifySubscriptionModelItem:
         'product_id': 'int',
         'quantity': 'float',
         'recalculate_price': 'bool',
-        'tax_lines': 'list[ShopifySubscriptionModelTaxLine]',
+        'tax_lines': 'list[TaxLine]',
     }
 
     attribute_map = {
@@ -40,22 +40,22 @@ class ShopifySubscriptionModelItem:
     
     @property
     def price_including_tax(self):
-        """Gets the price_including_tax of this ShopifySubscriptionModelItem.
+        """Gets the price_including_tax of this Item.
 
             
 
-        :return: The price_including_tax of this ShopifySubscriptionModelItem.
+        :return: The price_including_tax of this Item.
         :rtype: float
         """
         return self._price_including_tax
 
     @price_including_tax.setter
     def price_including_tax(self, price_including_tax):
-        """Sets the price_including_tax of this ShopifySubscriptionModelItem.
+        """Sets the price_including_tax of this Item.
 
             
 
-        :param price_including_tax: The price_including_tax of this ShopifySubscriptionModelItem.
+        :param price_including_tax: The price_including_tax of this Item.
         :type: float
         """
 
@@ -63,22 +63,22 @@ class ShopifySubscriptionModelItem:
     
     @property
     def product_id(self):
-        """Gets the product_id of this ShopifySubscriptionModelItem.
+        """Gets the product_id of this Item.
 
             
 
-        :return: The product_id of this ShopifySubscriptionModelItem.
+        :return: The product_id of this Item.
         :rtype: int
         """
         return self._product_id
 
     @product_id.setter
     def product_id(self, product_id):
-        """Sets the product_id of this ShopifySubscriptionModelItem.
+        """Sets the product_id of this Item.
 
             
 
-        :param product_id: The product_id of this ShopifySubscriptionModelItem.
+        :param product_id: The product_id of this Item.
         :type: int
         """
 
@@ -86,22 +86,22 @@ class ShopifySubscriptionModelItem:
     
     @property
     def quantity(self):
-        """Gets the quantity of this ShopifySubscriptionModelItem.
+        """Gets the quantity of this Item.
 
             
 
-        :return: The quantity of this ShopifySubscriptionModelItem.
+        :return: The quantity of this Item.
         :rtype: float
         """
         return self._quantity
 
     @quantity.setter
     def quantity(self, quantity):
-        """Sets the quantity of this ShopifySubscriptionModelItem.
+        """Sets the quantity of this Item.
 
             
 
-        :param quantity: The quantity of this ShopifySubscriptionModelItem.
+        :param quantity: The quantity of this Item.
         :type: float
         """
 
@@ -109,22 +109,22 @@ class ShopifySubscriptionModelItem:
     
     @property
     def recalculate_price(self):
-        """Gets the recalculate_price of this ShopifySubscriptionModelItem.
+        """Gets the recalculate_price of this Item.
 
             
 
-        :return: The recalculate_price of this ShopifySubscriptionModelItem.
+        :return: The recalculate_price of this Item.
         :rtype: bool
         """
         return self._recalculate_price
 
     @recalculate_price.setter
     def recalculate_price(self, recalculate_price):
-        """Sets the recalculate_price of this ShopifySubscriptionModelItem.
+        """Sets the recalculate_price of this Item.
 
             
 
-        :param recalculate_price: The recalculate_price of this ShopifySubscriptionModelItem.
+        :param recalculate_price: The recalculate_price of this Item.
         :type: bool
         """
 
@@ -132,23 +132,23 @@ class ShopifySubscriptionModelItem:
     
     @property
     def tax_lines(self):
-        """Gets the tax_lines of this ShopifySubscriptionModelItem.
+        """Gets the tax_lines of this Item.
 
             
 
-        :return: The tax_lines of this ShopifySubscriptionModelItem.
-        :rtype: list[ShopifySubscriptionModelTaxLine]
+        :return: The tax_lines of this Item.
+        :rtype: list[TaxLine]
         """
         return self._tax_lines
 
     @tax_lines.setter
     def tax_lines(self, tax_lines):
-        """Sets the tax_lines of this ShopifySubscriptionModelItem.
+        """Sets the tax_lines of this Item.
 
             
 
-        :param tax_lines: The tax_lines of this ShopifySubscriptionModelItem.
-        :type: list[ShopifySubscriptionModelTaxLine]
+        :param tax_lines: The tax_lines of this Item.
+        :type: list[TaxLine]
         """
 
         self._tax_lines = tax_lines
@@ -176,7 +176,7 @@ class ShopifySubscriptionModelItem:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionModelItem, dict):
+        if issubclass(Item, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -189,7 +189,7 @@ class ShopifySubscriptionModelItem:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionModelItem):
+        if not isinstance(other, Item):
             return False
 
         return self.__dict__ == other.__dict__

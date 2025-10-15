@@ -115,7 +115,7 @@ class SubscriptionProductVersionPending:
     def billing_cycle(self):
         """Gets the billing_cycle of this SubscriptionProductVersionPending.
 
-            The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
 
         :return: The billing_cycle of this SubscriptionProductVersionPending.
         :rtype: str
@@ -126,7 +126,7 @@ class SubscriptionProductVersionPending:
     def billing_cycle(self, billing_cycle):
         """Sets the billing_cycle of this SubscriptionProductVersionPending.
 
-            The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
 
         :param billing_cycle: The billing_cycle of this SubscriptionProductVersionPending.
         :type: str
@@ -138,7 +138,7 @@ class SubscriptionProductVersionPending:
     def comment(self):
         """Gets the comment of this SubscriptionProductVersionPending.
 
-            The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
 
         :return: The comment of this SubscriptionProductVersionPending.
         :rtype: str
@@ -149,7 +149,7 @@ class SubscriptionProductVersionPending:
     def comment(self, comment):
         """Sets the comment of this SubscriptionProductVersionPending.
 
-            The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
 
         :param comment: The comment of this SubscriptionProductVersionPending.
         :type: str
@@ -161,7 +161,7 @@ class SubscriptionProductVersionPending:
     def default_currency(self):
         """Gets the default_currency of this SubscriptionProductVersionPending.
 
-            The default currency has to be used in all fees.
+            The three-letter code (ISO 4217 format) of the product version's default currency.
 
         :return: The default_currency of this SubscriptionProductVersionPending.
         :rtype: str
@@ -172,7 +172,7 @@ class SubscriptionProductVersionPending:
     def default_currency(self, default_currency):
         """Sets the default_currency of this SubscriptionProductVersionPending.
 
-            The default currency has to be used in all fees.
+            The three-letter code (ISO 4217 format) of the product version's default currency.
 
         :param default_currency: The default_currency of this SubscriptionProductVersionPending.
         :type: str
@@ -184,7 +184,7 @@ class SubscriptionProductVersionPending:
     def enabled_currencies(self):
         """Gets the enabled_currencies of this SubscriptionProductVersionPending.
 
-            The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
 
         :return: The enabled_currencies of this SubscriptionProductVersionPending.
         :rtype: list[str]
@@ -195,7 +195,7 @@ class SubscriptionProductVersionPending:
     def enabled_currencies(self, enabled_currencies):
         """Sets the enabled_currencies of this SubscriptionProductVersionPending.
 
-            The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
 
         :param enabled_currencies: The enabled_currencies of this SubscriptionProductVersionPending.
         :type: list[str]
@@ -207,7 +207,7 @@ class SubscriptionProductVersionPending:
     def minimal_number_of_periods(self):
         """Gets the minimal_number_of_periods of this SubscriptionProductVersionPending.
 
-            The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+            The minimum number of periods the subscription will run before it can be terminated.
 
         :return: The minimal_number_of_periods of this SubscriptionProductVersionPending.
         :rtype: int
@@ -218,7 +218,7 @@ class SubscriptionProductVersionPending:
     def minimal_number_of_periods(self, minimal_number_of_periods):
         """Sets the minimal_number_of_periods of this SubscriptionProductVersionPending.
 
-            The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+            The minimum number of periods the subscription will run before it can be terminated.
 
         :param minimal_number_of_periods: The minimal_number_of_periods of this SubscriptionProductVersionPending.
         :type: int
@@ -230,7 +230,7 @@ class SubscriptionProductVersionPending:
     def name(self):
         """Gets the name of this SubscriptionProductVersionPending.
 
-            The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+            The localized name of the product that is displayed to the customer.
 
         :return: The name of this SubscriptionProductVersionPending.
         :rtype: dict(str, str)
@@ -241,7 +241,7 @@ class SubscriptionProductVersionPending:
     def name(self, name):
         """Sets the name of this SubscriptionProductVersionPending.
 
-            The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+            The localized name of the product that is displayed to the customer.
 
         :param name: The name of this SubscriptionProductVersionPending.
         :type: dict(str, str)
@@ -253,7 +253,7 @@ class SubscriptionProductVersionPending:
     def number_of_notice_periods(self):
         """Gets the number_of_notice_periods of this SubscriptionProductVersionPending.
 
-            The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+            The number of periods the subscription will keep running after its termination was requested.
 
         :return: The number_of_notice_periods of this SubscriptionProductVersionPending.
         :rtype: int
@@ -264,7 +264,7 @@ class SubscriptionProductVersionPending:
     def number_of_notice_periods(self, number_of_notice_periods):
         """Sets the number_of_notice_periods of this SubscriptionProductVersionPending.
 
-            The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+            The number of periods the subscription will keep running after its termination was requested.
 
         :param number_of_notice_periods: The number_of_notice_periods of this SubscriptionProductVersionPending.
         :type: int
@@ -276,7 +276,7 @@ class SubscriptionProductVersionPending:
     def product(self):
         """Gets the product of this SubscriptionProductVersionPending.
 
-            Each product version is linked to a product.
+            The product that the version belongs to.
 
         :return: The product of this SubscriptionProductVersionPending.
         :rtype: int
@@ -287,7 +287,7 @@ class SubscriptionProductVersionPending:
     def product(self, product):
         """Sets the product of this SubscriptionProductVersionPending.
 
-            Each product version is linked to a product.
+            The product that the version belongs to.
 
         :param product: The product of this SubscriptionProductVersionPending.
         :type: int
@@ -322,7 +322,7 @@ class SubscriptionProductVersionPending:
     def tax_calculation(self):
         """Gets the tax_calculation of this SubscriptionProductVersionPending.
 
-            Strategy that is used for tax calculation in fees.
+            The way taxes are calculated for fees.
 
         :return: The tax_calculation of this SubscriptionProductVersionPending.
         :rtype: TaxCalculation
@@ -333,7 +333,7 @@ class SubscriptionProductVersionPending:
     def tax_calculation(self, tax_calculation):
         """Sets the tax_calculation of this SubscriptionProductVersionPending.
 
-            Strategy that is used for tax calculation in fees.
+            The way taxes are calculated for fees.
 
         :param tax_calculation: The tax_calculation of this SubscriptionProductVersionPending.
         :type: TaxCalculation

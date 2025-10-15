@@ -48,7 +48,7 @@ class PaymentTerminalLocation:
     def external_id(self):
         """Gets the external_id of this PaymentTerminalLocation.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentTerminalLocation.
         :rtype: str
@@ -59,7 +59,7 @@ class PaymentTerminalLocation:
     def external_id(self, external_id):
         """Sets the external_id of this PaymentTerminalLocation.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentTerminalLocation.
         :type: str
@@ -117,7 +117,7 @@ class PaymentTerminalLocation:
     def name(self):
         """Gets the name of this PaymentTerminalLocation.
 
-            The terminal location name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal location.
 
         :return: The name of this PaymentTerminalLocation.
         :rtype: str
@@ -128,7 +128,7 @@ class PaymentTerminalLocation:
     def name(self, name):
         """Sets the name of this PaymentTerminalLocation.
 
-            The terminal location name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal location.
 
         :param name: The name of this PaymentTerminalLocation.
         :type: str

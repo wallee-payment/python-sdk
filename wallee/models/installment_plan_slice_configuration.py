@@ -80,7 +80,7 @@ class InstallmentPlanSliceConfiguration:
     def line_item_title(self):
         """Gets the line_item_title of this InstallmentPlanSliceConfiguration.
 
-            The title of this slices line items. The title is visible to the buyer.
+            The title of this slice's line items. The title is visible to the buyer.
 
         :return: The line_item_title of this InstallmentPlanSliceConfiguration.
         :rtype: dict(str, str)
@@ -91,7 +91,7 @@ class InstallmentPlanSliceConfiguration:
     def line_item_title(self, line_item_title):
         """Sets the line_item_title of this InstallmentPlanSliceConfiguration.
 
-            The title of this slices line items. The title is visible to the buyer.
+            The title of this slice's line items. The title is visible to the buyer.
 
         :param line_item_title: The line_item_title of this InstallmentPlanSliceConfiguration.
         :type: dict(str, str)

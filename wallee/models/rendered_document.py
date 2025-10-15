@@ -39,7 +39,7 @@ class RenderedDocument:
     def data(self):
         """Gets the data of this RenderedDocument.
 
-            
+            The binary data of the document
 
         :return: The data of this RenderedDocument.
         :rtype: list[str]
@@ -50,7 +50,7 @@ class RenderedDocument:
     def data(self, data):
         """Sets the data of this RenderedDocument.
 
-            
+            The binary data of the document
 
         :param data: The data of this RenderedDocument.
         :type: list[str]
@@ -62,7 +62,7 @@ class RenderedDocument:
     def document_template_type(self):
         """Gets the document_template_type of this RenderedDocument.
 
-            
+            The document's template type
 
         :return: The document_template_type of this RenderedDocument.
         :rtype: int
@@ -73,7 +73,7 @@ class RenderedDocument:
     def document_template_type(self, document_template_type):
         """Sets the document_template_type of this RenderedDocument.
 
-            
+            The document's template type
 
         :param document_template_type: The document_template_type of this RenderedDocument.
         :type: int
@@ -85,7 +85,7 @@ class RenderedDocument:
     def mime_type(self):
         """Gets the mime_type of this RenderedDocument.
 
-            
+            The document's content type
 
         :return: The mime_type of this RenderedDocument.
         :rtype: str
@@ -96,7 +96,7 @@ class RenderedDocument:
     def mime_type(self, mime_type):
         """Sets the mime_type of this RenderedDocument.
 
-            
+            The document's content type
 
         :param mime_type: The mime_type of this RenderedDocument.
         :type: str
@@ -108,7 +108,7 @@ class RenderedDocument:
     def title(self):
         """Gets the title of this RenderedDocument.
 
-            
+            The title of the rendered document
 
         :return: The title of this RenderedDocument.
         :rtype: str
@@ -119,7 +119,7 @@ class RenderedDocument:
     def title(self, title):
         """Sets the title of this RenderedDocument.
 
-            
+            The title of the rendered document
 
         :param title: The title of this RenderedDocument.
         :type: str

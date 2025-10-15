@@ -25,6 +25,7 @@ class InvoiceReimbursement:
         'recipient_family_name': 'str',
         'recipient_given_name': 'str',
         'recipient_iban': 'str',
+        'recipient_organization_name': 'str',
         'recipient_postcode': 'str',
         'recipient_street': 'str',
         'sender_iban': 'str',
@@ -33,7 +34,7 @@ class InvoiceReimbursement:
     }
 
     attribute_map = {
-        'amount': 'amount','created_on': 'createdOn','currency': 'currency','discarded_by': 'discardedBy','discarded_on': 'discardedOn','id': 'id','linked_space_id': 'linkedSpaceId','payment_connector_configuration': 'paymentConnectorConfiguration','payment_initiation_advice_file': 'paymentInitiationAdviceFile','processed_by': 'processedBy','processed_on': 'processedOn','recipient_city': 'recipientCity','recipient_country': 'recipientCountry','recipient_family_name': 'recipientFamilyName','recipient_given_name': 'recipientGivenName','recipient_iban': 'recipientIban','recipient_postcode': 'recipientPostcode','recipient_street': 'recipientStreet','sender_iban': 'senderIban','state': 'state','version': 'version',
+        'amount': 'amount','created_on': 'createdOn','currency': 'currency','discarded_by': 'discardedBy','discarded_on': 'discardedOn','id': 'id','linked_space_id': 'linkedSpaceId','payment_connector_configuration': 'paymentConnectorConfiguration','payment_initiation_advice_file': 'paymentInitiationAdviceFile','processed_by': 'processedBy','processed_on': 'processedOn','recipient_city': 'recipientCity','recipient_country': 'recipientCountry','recipient_family_name': 'recipientFamilyName','recipient_given_name': 'recipientGivenName','recipient_iban': 'recipientIban','recipient_organization_name': 'recipientOrganizationName','recipient_postcode': 'recipientPostcode','recipient_street': 'recipientStreet','sender_iban': 'senderIban','state': 'state','version': 'version',
     }
 
     
@@ -53,6 +54,7 @@ class InvoiceReimbursement:
     _recipient_family_name = None
     _recipient_given_name = None
     _recipient_iban = None
+    _recipient_organization_name = None
     _recipient_postcode = None
     _recipient_street = None
     _sender_iban = None
@@ -78,6 +80,7 @@ class InvoiceReimbursement:
         self.recipient_family_name = kwargs.get('recipient_family_name', None)
         self.recipient_given_name = kwargs.get('recipient_given_name', None)
         self.recipient_iban = kwargs.get('recipient_iban', None)
+        self.recipient_organization_name = kwargs.get('recipient_organization_name', None)
         self.recipient_postcode = kwargs.get('recipient_postcode', None)
         self.recipient_street = kwargs.get('recipient_street', None)
         self.sender_iban = kwargs.get('sender_iban', None)
@@ -453,6 +456,29 @@ class InvoiceReimbursement:
         """
 
         self._recipient_iban = recipient_iban
+    
+    @property
+    def recipient_organization_name(self):
+        """Gets the recipient_organization_name of this InvoiceReimbursement.
+
+            
+
+        :return: The recipient_organization_name of this InvoiceReimbursement.
+        :rtype: str
+        """
+        return self._recipient_organization_name
+
+    @recipient_organization_name.setter
+    def recipient_organization_name(self, recipient_organization_name):
+        """Sets the recipient_organization_name of this InvoiceReimbursement.
+
+            
+
+        :param recipient_organization_name: The recipient_organization_name of this InvoiceReimbursement.
+        :type: str
+        """
+
+        self._recipient_organization_name = recipient_organization_name
     
     @property
     def recipient_postcode(self):

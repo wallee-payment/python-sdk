@@ -10,16 +10,18 @@ class TokenizedCardData:
     swagger_types = {
     
         'cryptogram': 'CardCryptogram',
+        'initial_recurring_transaction': 'bool',
         'recurring_indicator': 'RecurringIndicator',
         'token_requestor_id': 'str',
     }
 
     attribute_map = {
-        'cryptogram': 'cryptogram','recurring_indicator': 'recurringIndicator','token_requestor_id': 'tokenRequestorId',
+        'cryptogram': 'cryptogram','initial_recurring_transaction': 'initialRecurringTransaction','recurring_indicator': 'recurringIndicator','token_requestor_id': 'tokenRequestorId',
     }
 
     
     _cryptogram = None
+    _initial_recurring_transaction = None
     _recurring_indicator = None
     _token_requestor_id = None
 
@@ -27,6 +29,7 @@ class TokenizedCardData:
         self.discriminator = None
         
         self.cryptogram = kwargs.get('cryptogram', None)
+        self.initial_recurring_transaction = kwargs.get('initial_recurring_transaction', None)
         self.recurring_indicator = kwargs.get('recurring_indicator', None)
         self.token_requestor_id = kwargs.get('token_requestor_id', None)
         
@@ -36,7 +39,7 @@ class TokenizedCardData:
     def cryptogram(self):
         """Gets the cryptogram of this TokenizedCardData.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :return: The cryptogram of this TokenizedCardData.
         :rtype: CardCryptogram
@@ -47,7 +50,7 @@ class TokenizedCardData:
     def cryptogram(self, cryptogram):
         """Sets the cryptogram of this TokenizedCardData.
 
-            The additional authentication value used to secure the tokenized card transactions.
+            An additional authentication value that enhances the security of tokenized card transactions.
 
         :param cryptogram: The cryptogram of this TokenizedCardData.
         :type: CardCryptogram
@@ -56,10 +59,33 @@ class TokenizedCardData:
         self._cryptogram = cryptogram
     
     @property
+    def initial_recurring_transaction(self):
+        """Gets the initial_recurring_transaction of this TokenizedCardData.
+
+            Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
+
+        :return: The initial_recurring_transaction of this TokenizedCardData.
+        :rtype: bool
+        """
+        return self._initial_recurring_transaction
+
+    @initial_recurring_transaction.setter
+    def initial_recurring_transaction(self, initial_recurring_transaction):
+        """Sets the initial_recurring_transaction of this TokenizedCardData.
+
+            Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
+
+        :param initial_recurring_transaction: The initial_recurring_transaction of this TokenizedCardData.
+        :type: bool
+        """
+
+        self._initial_recurring_transaction = initial_recurring_transaction
+    
+    @property
     def recurring_indicator(self):
         """Gets the recurring_indicator of this TokenizedCardData.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :return: The recurring_indicator of this TokenizedCardData.
         :rtype: RecurringIndicator
@@ -70,7 +96,7 @@ class TokenizedCardData:
     def recurring_indicator(self, recurring_indicator):
         """Sets the recurring_indicator of this TokenizedCardData.
 
-            
+            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
 
         :param recurring_indicator: The recurring_indicator of this TokenizedCardData.
         :type: RecurringIndicator
@@ -82,7 +108,7 @@ class TokenizedCardData:
     def token_requestor_id(self):
         """Gets the token_requestor_id of this TokenizedCardData.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :return: The token_requestor_id of this TokenizedCardData.
         :rtype: str
@@ -93,7 +119,7 @@ class TokenizedCardData:
     def token_requestor_id(self, token_requestor_id):
         """Sets the token_requestor_id of this TokenizedCardData.
 
-            
+            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
 
         :param token_requestor_id: The token_requestor_id of this TokenizedCardData.
         :type: str

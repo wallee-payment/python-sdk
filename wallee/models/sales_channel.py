@@ -10,33 +10,27 @@ class SalesChannel:
     swagger_types = {
     
         'description': 'dict(str, str)',
-        'icon': 'str',
         'id': 'int',
         'name': 'dict(str, str)',
-        'parent': 'SalesChannel',
         'sort_order': 'int',
     }
 
     attribute_map = {
-        'description': 'description','icon': 'icon','id': 'id','name': 'name','parent': 'parent','sort_order': 'sortOrder',
+        'description': 'description','id': 'id','name': 'name','sort_order': 'sortOrder',
     }
 
     
     _description = None
-    _icon = None
     _id = None
     _name = None
-    _parent = None
     _sort_order = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.description = kwargs.get('description', None)
-        self.icon = kwargs.get('icon', None)
         self.id = kwargs.get('id', None)
         self.name = kwargs.get('name', None)
-        self.parent = kwargs.get('parent', None)
         self.sort_order = kwargs.get('sort_order', None)
         
 
@@ -63,29 +57,6 @@ class SalesChannel:
         """
 
         self._description = description
-    
-    @property
-    def icon(self):
-        """Gets the icon of this SalesChannel.
-
-            
-
-        :return: The icon of this SalesChannel.
-        :rtype: str
-        """
-        return self._icon
-
-    @icon.setter
-    def icon(self, icon):
-        """Sets the icon of this SalesChannel.
-
-            
-
-        :param icon: The icon of this SalesChannel.
-        :type: str
-        """
-
-        self._icon = icon
     
     @property
     def id(self):
@@ -134,33 +105,10 @@ class SalesChannel:
         self._name = name
     
     @property
-    def parent(self):
-        """Gets the parent of this SalesChannel.
-
-            
-
-        :return: The parent of this SalesChannel.
-        :rtype: SalesChannel
-        """
-        return self._parent
-
-    @parent.setter
-    def parent(self, parent):
-        """Sets the parent of this SalesChannel.
-
-            
-
-        :param parent: The parent of this SalesChannel.
-        :type: SalesChannel
-        """
-
-        self._parent = parent
-    
-    @property
     def sort_order(self):
         """Gets the sort_order of this SalesChannel.
 
-            
+            When listing sales channels, they can be sorted by this number.
 
         :return: The sort_order of this SalesChannel.
         :rtype: int
@@ -171,7 +119,7 @@ class SalesChannel:
     def sort_order(self, sort_order):
         """Sets the sort_order of this SalesChannel.
 
-            
+            When listing sales channels, they can be sorted by this number.
 
         :param sort_order: The sort_order of this SalesChannel.
         :type: int

@@ -33,7 +33,7 @@ class TransactionCommentCreate(AbstractTransactionCommentActive):
     def transaction(self):
         """Gets the transaction of this TransactionCommentCreate.
 
-            
+            The transaction that the comment belongs to.
 
         :return: The transaction of this TransactionCommentCreate.
         :rtype: int
@@ -44,7 +44,7 @@ class TransactionCommentCreate(AbstractTransactionCommentActive):
     def transaction(self, transaction):
         """Sets the transaction of this TransactionCommentCreate.
 
-            
+            The transaction that the comment belongs to.
 
         :param transaction: The transaction of this TransactionCommentCreate.
         :type: int

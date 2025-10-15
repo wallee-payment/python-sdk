@@ -2,10 +2,10 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class InvoiceReconciliationRecord(TransactionAwareEntity):
+
+class InvoiceReconciliationRecord:
 
     swagger_types = {
     
@@ -21,7 +21,10 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
         'family_name': 'str',
         'given_name': 'str',
         'iban': 'str',
+        'id': 'int',
         'last_resolution_failure': 'FailureReason',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'participant_number': 'str',
         'payment_fee_amount': 'float',
         'payment_fee_currency': 'str',
@@ -42,7 +45,7 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'address': 'address','amount': 'amount','city': 'city','country': 'country','created_on': 'createdOn','currency': 'currency','discarded_by': 'discardedBy','discarded_on': 'discardedOn','environment': 'environment','family_name': 'familyName','given_name': 'givenName','iban': 'iban','last_resolution_failure': 'lastResolutionFailure','participant_number': 'participantNumber','payment_fee_amount': 'paymentFeeAmount','payment_fee_currency': 'paymentFeeCurrency','payment_reason': 'paymentReason','planned_purge_date': 'plannedPurgeDate','post_code': 'postCode','reference_number': 'referenceNumber','rejection_status': 'rejectionStatus','resolved_by': 'resolvedBy','resolved_on': 'resolvedOn','sender_bank_account': 'senderBankAccount','state': 'state','street': 'street','type': 'type','unique_id': 'uniqueId','value_date': 'valueDate','version': 'version',
+        'address': 'address','amount': 'amount','city': 'city','country': 'country','created_on': 'createdOn','currency': 'currency','discarded_by': 'discardedBy','discarded_on': 'discardedOn','environment': 'environment','family_name': 'familyName','given_name': 'givenName','iban': 'iban','id': 'id','last_resolution_failure': 'lastResolutionFailure','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','participant_number': 'participantNumber','payment_fee_amount': 'paymentFeeAmount','payment_fee_currency': 'paymentFeeCurrency','payment_reason': 'paymentReason','planned_purge_date': 'plannedPurgeDate','post_code': 'postCode','reference_number': 'referenceNumber','rejection_status': 'rejectionStatus','resolved_by': 'resolvedBy','resolved_on': 'resolvedOn','sender_bank_account': 'senderBankAccount','state': 'state','street': 'street','type': 'type','unique_id': 'uniqueId','value_date': 'valueDate','version': 'version',
     }
 
     
@@ -58,7 +61,10 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
     _family_name = None
     _given_name = None
     _iban = None
+    _id = None
     _last_resolution_failure = None
+    _linked_space_id = None
+    _linked_transaction = None
     _participant_number = None
     _payment_fee_amount = None
     _payment_fee_currency = None
@@ -92,7 +98,10 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
         self.family_name = kwargs.get('family_name', None)
         self.given_name = kwargs.get('given_name', None)
         self.iban = kwargs.get('iban', None)
+        self.id = kwargs.get('id', None)
         self.last_resolution_failure = kwargs.get('last_resolution_failure', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.participant_number = kwargs.get('participant_number', None)
         self.payment_fee_amount = kwargs.get('payment_fee_amount', None)
         self.payment_fee_currency = kwargs.get('payment_fee_currency', None)
@@ -110,9 +119,7 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
         self.unique_id = kwargs.get('unique_id', None)
         self.value_date = kwargs.get('value_date', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
@@ -394,6 +401,29 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
         self._iban = iban
     
     @property
+    def id(self):
+        """Gets the id of this InvoiceReconciliationRecord.
+
+            A unique identifier for the object.
+
+        :return: The id of this InvoiceReconciliationRecord.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this InvoiceReconciliationRecord.
+
+            A unique identifier for the object.
+
+        :param id: The id of this InvoiceReconciliationRecord.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
     def last_resolution_failure(self):
         """Gets the last_resolution_failure of this InvoiceReconciliationRecord.
 
@@ -415,6 +445,52 @@ class InvoiceReconciliationRecord(TransactionAwareEntity):
         """
 
         self._last_resolution_failure = last_resolution_failure
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this InvoiceReconciliationRecord.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this InvoiceReconciliationRecord.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this InvoiceReconciliationRecord.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this InvoiceReconciliationRecord.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this InvoiceReconciliationRecord.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this InvoiceReconciliationRecord.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this InvoiceReconciliationRecord.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this InvoiceReconciliationRecord.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
     
     @property
     def participant_number(self):

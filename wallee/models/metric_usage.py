@@ -39,7 +39,7 @@ class MetricUsage:
     def consumed_units(self):
         """Gets the consumed_units of this MetricUsage.
 
-            The consumed units provide the value of how much has been consumed of the particular metric.
+            The number of consumed units.
 
         :return: The consumed_units of this MetricUsage.
         :rtype: float
@@ -50,7 +50,7 @@ class MetricUsage:
     def consumed_units(self, consumed_units):
         """Sets the consumed_units of this MetricUsage.
 
-            The consumed units provide the value of how much has been consumed of the particular metric.
+            The number of consumed units.
 
         :param consumed_units: The consumed_units of this MetricUsage.
         :type: float
@@ -62,7 +62,7 @@ class MetricUsage:
     def metric_description(self):
         """Gets the metric_description of this MetricUsage.
 
-            The metric description describes the metric.
+            The description of the consumed unit's metric.
 
         :return: The metric_description of this MetricUsage.
         :rtype: dict(str, str)
@@ -73,7 +73,7 @@ class MetricUsage:
     def metric_description(self, metric_description):
         """Sets the metric_description of this MetricUsage.
 
-            The metric description describes the metric.
+            The description of the consumed unit's metric.
 
         :param metric_description: The metric_description of this MetricUsage.
         :type: dict(str, str)
@@ -85,7 +85,7 @@ class MetricUsage:
     def metric_id(self):
         """Gets the metric_id of this MetricUsage.
 
-            The metric ID identifies the metric for consumed units.
+            The ID of the consumed units' metric.
 
         :return: The metric_id of this MetricUsage.
         :rtype: int
@@ -96,7 +96,7 @@ class MetricUsage:
     def metric_id(self, metric_id):
         """Sets the metric_id of this MetricUsage.
 
-            The metric ID identifies the metric for consumed units.
+            The ID of the consumed units' metric.
 
         :param metric_id: The metric_id of this MetricUsage.
         :type: int
@@ -108,7 +108,7 @@ class MetricUsage:
     def metric_name(self):
         """Gets the metric_name of this MetricUsage.
 
-            The metric name defines the name of the consumed units.
+            The name of the consumed units' metric.
 
         :return: The metric_name of this MetricUsage.
         :rtype: dict(str, str)
@@ -119,7 +119,7 @@ class MetricUsage:
     def metric_name(self, metric_name):
         """Sets the metric_name of this MetricUsage.
 
-            The metric name defines the name of the consumed units.
+            The name of the consumed units' metric.
 
         :param metric_name: The metric_name of this MetricUsage.
         :type: dict(str, str)

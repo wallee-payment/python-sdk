@@ -13,13 +13,13 @@ class SubscriptionProductRetirement:
         'id': 'int',
         'linked_space_id': 'int',
         'product': 'SubscriptionProduct',
-        'respect_terminiation_periods_enabled': 'bool',
+        'respect_termination_periods': 'bool',
         'target_product': 'SubscriptionProduct',
         'version': 'int',
     }
 
     attribute_map = {
-        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','product': 'product','respect_terminiation_periods_enabled': 'respectTerminiationPeriodsEnabled','target_product': 'targetProduct','version': 'version',
+        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','product': 'product','respect_termination_periods': 'respectTerminationPeriods','target_product': 'targetProduct','version': 'version',
     }
 
     
@@ -27,7 +27,7 @@ class SubscriptionProductRetirement:
     _id = None
     _linked_space_id = None
     _product = None
-    _respect_terminiation_periods_enabled = None
+    _respect_termination_periods = None
     _target_product = None
     _version = None
 
@@ -38,7 +38,7 @@ class SubscriptionProductRetirement:
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.product = kwargs.get('product', None)
-        self.respect_terminiation_periods_enabled = kwargs.get('respect_terminiation_periods_enabled', None)
+        self.respect_termination_periods = kwargs.get('respect_termination_periods', None)
         self.target_product = kwargs.get('target_product', None)
         self.version = kwargs.get('version', None)
         
@@ -117,7 +117,7 @@ class SubscriptionProductRetirement:
     def product(self):
         """Gets the product of this SubscriptionProductRetirement.
 
-            
+            The product that is to be retired.
 
         :return: The product of this SubscriptionProductRetirement.
         :rtype: SubscriptionProduct
@@ -128,7 +128,7 @@ class SubscriptionProductRetirement:
     def product(self, product):
         """Sets the product of this SubscriptionProductRetirement.
 
-            
+            The product that is to be retired.
 
         :param product: The product of this SubscriptionProductRetirement.
         :type: SubscriptionProduct
@@ -137,33 +137,33 @@ class SubscriptionProductRetirement:
         self._product = product
     
     @property
-    def respect_terminiation_periods_enabled(self):
-        """Gets the respect_terminiation_periods_enabled of this SubscriptionProductRetirement.
+    def respect_termination_periods(self):
+        """Gets the respect_termination_periods of this SubscriptionProductRetirement.
 
-            
+            Whether the subscriptions' termination periods should be respected.
 
-        :return: The respect_terminiation_periods_enabled of this SubscriptionProductRetirement.
+        :return: The respect_termination_periods of this SubscriptionProductRetirement.
         :rtype: bool
         """
-        return self._respect_terminiation_periods_enabled
+        return self._respect_termination_periods
 
-    @respect_terminiation_periods_enabled.setter
-    def respect_terminiation_periods_enabled(self, respect_terminiation_periods_enabled):
-        """Sets the respect_terminiation_periods_enabled of this SubscriptionProductRetirement.
+    @respect_termination_periods.setter
+    def respect_termination_periods(self, respect_termination_periods):
+        """Sets the respect_termination_periods of this SubscriptionProductRetirement.
 
-            
+            Whether the subscriptions' termination periods should be respected.
 
-        :param respect_terminiation_periods_enabled: The respect_terminiation_periods_enabled of this SubscriptionProductRetirement.
+        :param respect_termination_periods: The respect_termination_periods of this SubscriptionProductRetirement.
         :type: bool
         """
 
-        self._respect_terminiation_periods_enabled = respect_terminiation_periods_enabled
+        self._respect_termination_periods = respect_termination_periods
     
     @property
     def target_product(self):
         """Gets the target_product of this SubscriptionProductRetirement.
 
-            
+            The product to which the subscriptions with the retiring product are to be migrated. If none is defined, the subscriptions are terminated.
 
         :return: The target_product of this SubscriptionProductRetirement.
         :rtype: SubscriptionProduct
@@ -174,7 +174,7 @@ class SubscriptionProductRetirement:
     def target_product(self, target_product):
         """Sets the target_product of this SubscriptionProductRetirement.
 
-            
+            The product to which the subscriptions with the retiring product are to be migrated. If none is defined, the subscriptions are terminated.
 
         :param target_product: The target_product of this SubscriptionProductRetirement.
         :type: SubscriptionProduct

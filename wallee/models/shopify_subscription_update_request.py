@@ -9,9 +9,9 @@ class ShopifySubscriptionUpdateRequest:
 
     swagger_types = {
     
-        'billing_configuration': 'ShopifySubscriptionModelBillingConfiguration',
+        'billing_configuration': 'BillingConfiguration',
         'id': 'int',
-        'items': 'list[ShopifySubscriptionModelItem]',
+        'items': 'list[Item]',
         'store_order_confirmation_email_enabled': 'bool',
         'subscriber_suspension_allowed': 'bool',
     }
@@ -45,7 +45,7 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :return: The billing_configuration of this ShopifySubscriptionUpdateRequest.
-        :rtype: ShopifySubscriptionModelBillingConfiguration
+        :rtype: BillingConfiguration
         """
         return self._billing_configuration
 
@@ -56,7 +56,7 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :param billing_configuration: The billing_configuration of this ShopifySubscriptionUpdateRequest.
-        :type: ShopifySubscriptionModelBillingConfiguration
+        :type: BillingConfiguration
         """
 
         self._billing_configuration = billing_configuration
@@ -91,7 +91,7 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :return: The items of this ShopifySubscriptionUpdateRequest.
-        :rtype: list[ShopifySubscriptionModelItem]
+        :rtype: list[Item]
         """
         return self._items
 
@@ -102,7 +102,7 @@ class ShopifySubscriptionUpdateRequest:
             
 
         :param items: The items of this ShopifySubscriptionUpdateRequest.
-        :type: list[ShopifySubscriptionModelItem]
+        :type: list[Item]
         """
 
         self._items = items

@@ -2,16 +2,19 @@
 import pprint
 import six
 from enum import Enum
-from . import TransactionAwareEntity
 
 
-class ChargeFlowLevel(TransactionAwareEntity):
+
+class ChargeFlowLevel:
 
     swagger_types = {
     
         'asynchronous_charge': 'int',
         'configuration': 'ChargeFlowLevelConfiguration',
         'created_on': 'datetime',
+        'id': 'int',
+        'linked_space_id': 'int',
+        'linked_transaction': 'int',
         'planned_purge_date': 'datetime',
         'state': 'ChargeFlowLevelState',
         'synchronous_charge': 'int',
@@ -22,13 +25,16 @@ class ChargeFlowLevel(TransactionAwareEntity):
     }
 
     attribute_map = {
-        'asynchronous_charge': 'asynchronousCharge','configuration': 'configuration','created_on': 'createdOn','planned_purge_date': 'plannedPurgeDate','state': 'state','synchronous_charge': 'synchronousCharge','timeout_on': 'timeoutOn','token_charge': 'tokenCharge','transaction': 'transaction','version': 'version',
+        'asynchronous_charge': 'asynchronousCharge','configuration': 'configuration','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','planned_purge_date': 'plannedPurgeDate','state': 'state','synchronous_charge': 'synchronousCharge','timeout_on': 'timeoutOn','token_charge': 'tokenCharge','transaction': 'transaction','version': 'version',
     }
 
     
     _asynchronous_charge = None
     _configuration = None
     _created_on = None
+    _id = None
+    _linked_space_id = None
+    _linked_transaction = None
     _planned_purge_date = None
     _state = None
     _synchronous_charge = None
@@ -43,6 +49,9 @@ class ChargeFlowLevel(TransactionAwareEntity):
         self.asynchronous_charge = kwargs.get('asynchronous_charge', None)
         self.configuration = kwargs.get('configuration', None)
         self.created_on = kwargs.get('created_on', None)
+        self.id = kwargs.get('id', None)
+        self.linked_space_id = kwargs.get('linked_space_id', None)
+        self.linked_transaction = kwargs.get('linked_transaction', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.state = kwargs.get('state', None)
         self.synchronous_charge = kwargs.get('synchronous_charge', None)
@@ -50,16 +59,14 @@ class ChargeFlowLevel(TransactionAwareEntity):
         self.token_charge = kwargs.get('token_charge', None)
         self.transaction = kwargs.get('transaction', None)
         self.version = kwargs.get('version', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        
 
     
     @property
     def asynchronous_charge(self):
         """Gets the asynchronous_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment asynchronously.
 
         :return: The asynchronous_charge of this ChargeFlowLevel.
         :rtype: int
@@ -70,7 +77,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def asynchronous_charge(self, asynchronous_charge):
         """Sets the asynchronous_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment asynchronously.
 
         :param asynchronous_charge: The asynchronous_charge of this ChargeFlowLevel.
         :type: int
@@ -82,7 +89,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def configuration(self):
         """Gets the configuration of this ChargeFlowLevel.
 
-            
+            The configuration that was used for this charge flow level.
 
         :return: The configuration of this ChargeFlowLevel.
         :rtype: ChargeFlowLevelConfiguration
@@ -93,7 +100,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def configuration(self, configuration):
         """Sets the configuration of this ChargeFlowLevel.
 
-            
+            The configuration that was used for this charge flow level.
 
         :param configuration: The configuration of this ChargeFlowLevel.
         :type: ChargeFlowLevelConfiguration
@@ -123,6 +130,75 @@ class ChargeFlowLevel(TransactionAwareEntity):
         """
 
         self._created_on = created_on
+    
+    @property
+    def id(self):
+        """Gets the id of this ChargeFlowLevel.
+
+            A unique identifier for the object.
+
+        :return: The id of this ChargeFlowLevel.
+        :rtype: int
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this ChargeFlowLevel.
+
+            A unique identifier for the object.
+
+        :param id: The id of this ChargeFlowLevel.
+        :type: int
+        """
+
+        self._id = id
+    
+    @property
+    def linked_space_id(self):
+        """Gets the linked_space_id of this ChargeFlowLevel.
+
+            The ID of the space this object belongs to.
+
+        :return: The linked_space_id of this ChargeFlowLevel.
+        :rtype: int
+        """
+        return self._linked_space_id
+
+    @linked_space_id.setter
+    def linked_space_id(self, linked_space_id):
+        """Sets the linked_space_id of this ChargeFlowLevel.
+
+            The ID of the space this object belongs to.
+
+        :param linked_space_id: The linked_space_id of this ChargeFlowLevel.
+        :type: int
+        """
+
+        self._linked_space_id = linked_space_id
+    
+    @property
+    def linked_transaction(self):
+        """Gets the linked_transaction of this ChargeFlowLevel.
+
+            The payment transaction this object is linked to.
+
+        :return: The linked_transaction of this ChargeFlowLevel.
+        :rtype: int
+        """
+        return self._linked_transaction
+
+    @linked_transaction.setter
+    def linked_transaction(self, linked_transaction):
+        """Sets the linked_transaction of this ChargeFlowLevel.
+
+            The payment transaction this object is linked to.
+
+        :param linked_transaction: The linked_transaction of this ChargeFlowLevel.
+        :type: int
+        """
+
+        self._linked_transaction = linked_transaction
     
     @property
     def planned_purge_date(self):
@@ -174,7 +250,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def synchronous_charge(self):
         """Gets the synchronous_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment synchronously.
 
         :return: The synchronous_charge of this ChargeFlowLevel.
         :rtype: int
@@ -185,7 +261,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def synchronous_charge(self, synchronous_charge):
         """Sets the synchronous_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment synchronously.
 
         :param synchronous_charge: The synchronous_charge of this ChargeFlowLevel.
         :type: int
@@ -197,7 +273,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def timeout_on(self):
         """Gets the timeout_on of this ChargeFlowLevel.
 
-            
+            The date and time when the charge flow level will expire.
 
         :return: The timeout_on of this ChargeFlowLevel.
         :rtype: datetime
@@ -208,7 +284,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def timeout_on(self, timeout_on):
         """Sets the timeout_on of this ChargeFlowLevel.
 
-            
+            The date and time when the charge flow level will expire.
 
         :param timeout_on: The timeout_on of this ChargeFlowLevel.
         :type: datetime
@@ -220,7 +296,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def token_charge(self):
         """Gets the token_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment using a token.
 
         :return: The token_charge of this ChargeFlowLevel.
         :rtype: int
@@ -231,7 +307,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def token_charge(self, token_charge):
         """Sets the token_charge of this ChargeFlowLevel.
 
-            
+            The charge to process the payment using a token.
 
         :param token_charge: The token_charge of this ChargeFlowLevel.
         :type: int
@@ -243,7 +319,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def transaction(self):
         """Gets the transaction of this ChargeFlowLevel.
 
-            
+            The transaction that the charge flow level belongs to.
 
         :return: The transaction of this ChargeFlowLevel.
         :rtype: Transaction
@@ -254,7 +330,7 @@ class ChargeFlowLevel(TransactionAwareEntity):
     def transaction(self, transaction):
         """Sets the transaction of this ChargeFlowLevel.
 
-            
+            The transaction that the charge flow level belongs to.
 
         :param transaction: The transaction of this ChargeFlowLevel.
         :type: Transaction

@@ -97,7 +97,7 @@ class SubscriptionProductComponentGroupUpdate:
     def name(self):
         """Gets the name of this SubscriptionProductComponentGroupUpdate.
 
-            The component group name will be shown when the components are selected. This can be visible to the subscriber.
+            The localized name of the component group that is displayed to the customer.
 
         :return: The name of this SubscriptionProductComponentGroupUpdate.
         :rtype: dict(str, str)
@@ -108,7 +108,7 @@ class SubscriptionProductComponentGroupUpdate:
     def name(self, name):
         """Sets the name of this SubscriptionProductComponentGroupUpdate.
 
-            The component group name will be shown when the components are selected. This can be visible to the subscriber.
+            The localized name of the component group that is displayed to the customer.
 
         :param name: The name of this SubscriptionProductComponentGroupUpdate.
         :type: dict(str, str)
@@ -120,7 +120,7 @@ class SubscriptionProductComponentGroupUpdate:
     def optional(self):
         """Gets the optional of this SubscriptionProductComponentGroupUpdate.
 
-            The component group can be optional. This means no component has to be selected by the subscriber.
+            Whether the component group is optional, i.e. the customer does not have to select any component.
 
         :return: The optional of this SubscriptionProductComponentGroupUpdate.
         :rtype: bool
@@ -131,7 +131,7 @@ class SubscriptionProductComponentGroupUpdate:
     def optional(self, optional):
         """Sets the optional of this SubscriptionProductComponentGroupUpdate.
 
-            The component group can be optional. This means no component has to be selected by the subscriber.
+            Whether the component group is optional, i.e. the customer does not have to select any component.
 
         :param optional: The optional of this SubscriptionProductComponentGroupUpdate.
         :type: bool
@@ -143,7 +143,7 @@ class SubscriptionProductComponentGroupUpdate:
     def product_version(self):
         """Gets the product_version of this SubscriptionProductComponentGroupUpdate.
 
-            
+            The product version that the component group belongs to.
 
         :return: The product_version of this SubscriptionProductComponentGroupUpdate.
         :rtype: int
@@ -154,7 +154,7 @@ class SubscriptionProductComponentGroupUpdate:
     def product_version(self, product_version):
         """Sets the product_version of this SubscriptionProductComponentGroupUpdate.
 
-            
+            The product version that the component group belongs to.
 
         :param product_version: The product_version of this SubscriptionProductComponentGroupUpdate.
         :type: int
@@ -166,7 +166,7 @@ class SubscriptionProductComponentGroupUpdate:
     def sort_order(self):
         """Gets the sort_order of this SubscriptionProductComponentGroupUpdate.
 
-            The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.
+            When listing component groups, they can be sorted by this number.
 
         :return: The sort_order of this SubscriptionProductComponentGroupUpdate.
         :rtype: int
@@ -177,7 +177,7 @@ class SubscriptionProductComponentGroupUpdate:
     def sort_order(self, sort_order):
         """Sets the sort_order of this SubscriptionProductComponentGroupUpdate.
 
-            The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.
+            When listing component groups, they can be sorted by this number.
 
         :param sort_order: The sort_order of this SubscriptionProductComponentGroupUpdate.
         :type: int

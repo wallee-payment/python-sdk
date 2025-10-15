@@ -63,7 +63,7 @@ class WebhookListener:
     def enable_payload_signature_and_state(self):
         """Gets the enable_payload_signature_and_state of this WebhookListener.
 
-            Whether signature header and state property are enabled in webhook payload.
+            Whether signature header and 'state' property are enabled in webhook payload.
 
         :return: The enable_payload_signature_and_state of this WebhookListener.
         :rtype: bool
@@ -74,7 +74,7 @@ class WebhookListener:
     def enable_payload_signature_and_state(self, enable_payload_signature_and_state):
         """Sets the enable_payload_signature_and_state of this WebhookListener.
 
-            Whether signature header and state property are enabled in webhook payload.
+            Whether signature header and 'state' property are enabled in webhook payload.
 
         :param enable_payload_signature_and_state: The enable_payload_signature_and_state of this WebhookListener.
         :type: bool

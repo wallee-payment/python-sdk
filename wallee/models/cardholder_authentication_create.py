@@ -44,7 +44,7 @@ class CardholderAuthenticationCreate:
     def authentication_identifier(self):
         """Gets the authentication_identifier of this CardholderAuthenticationCreate.
 
-            The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).
+            The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.
 
         :return: The authentication_identifier of this CardholderAuthenticationCreate.
         :rtype: str
@@ -55,7 +55,7 @@ class CardholderAuthenticationCreate:
     def authentication_identifier(self, authentication_identifier):
         """Sets the authentication_identifier of this CardholderAuthenticationCreate.
 
-            The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).
+            The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.
 
         :param authentication_identifier: The authentication_identifier of this CardholderAuthenticationCreate.
         :type: str
@@ -67,7 +67,7 @@ class CardholderAuthenticationCreate:
     def authentication_response(self):
         """Gets the authentication_response of this CardholderAuthenticationCreate.
 
-            
+            The result of the authentication process.
 
         :return: The authentication_response of this CardholderAuthenticationCreate.
         :rtype: CardAuthenticationResponse
@@ -78,7 +78,7 @@ class CardholderAuthenticationCreate:
     def authentication_response(self, authentication_response):
         """Sets the authentication_response of this CardholderAuthenticationCreate.
 
-            
+            The result of the authentication process.
 
         :param authentication_response: The authentication_response of this CardholderAuthenticationCreate.
         :type: CardAuthenticationResponse
@@ -92,7 +92,7 @@ class CardholderAuthenticationCreate:
     def authentication_value(self):
         """Gets the authentication_value of this CardholderAuthenticationCreate.
 
-            The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).
+            The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder's identity.
 
         :return: The authentication_value of this CardholderAuthenticationCreate.
         :rtype: str
@@ -103,7 +103,7 @@ class CardholderAuthenticationCreate:
     def authentication_value(self, authentication_value):
         """Sets the authentication_value of this CardholderAuthenticationCreate.
 
-            The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).
+            The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder's identity.
 
         :param authentication_value: The authentication_value of this CardholderAuthenticationCreate.
         :type: str
@@ -115,7 +115,7 @@ class CardholderAuthenticationCreate:
     def electronic_commerce_indicator(self):
         """Gets the electronic_commerce_indicator of this CardholderAuthenticationCreate.
 
-            The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.
+            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
 
         :return: The electronic_commerce_indicator of this CardholderAuthenticationCreate.
         :rtype: str
@@ -126,7 +126,7 @@ class CardholderAuthenticationCreate:
     def electronic_commerce_indicator(self, electronic_commerce_indicator):
         """Sets the electronic_commerce_indicator of this CardholderAuthenticationCreate.
 
-            The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.
+            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
 
         :param electronic_commerce_indicator: The electronic_commerce_indicator of this CardholderAuthenticationCreate.
         :type: str
@@ -138,7 +138,7 @@ class CardholderAuthenticationCreate:
     def version(self):
         """Gets the version of this CardholderAuthenticationCreate.
 
-            
+            The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.
 
         :return: The version of this CardholderAuthenticationCreate.
         :rtype: CardAuthenticationVersion
@@ -149,7 +149,7 @@ class CardholderAuthenticationCreate:
     def version(self, version):
         """Sets the version of this CardholderAuthenticationCreate.
 
-            
+            The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.
 
         :param version: The version of this CardholderAuthenticationCreate.
         :type: CardAuthenticationVersion

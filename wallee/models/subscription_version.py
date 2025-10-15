@@ -11,6 +11,7 @@ class SubscriptionVersion:
     
         'activated_on': 'datetime',
         'billing_currency': 'str',
+        'billing_cycle_model': 'BillingCycleModel',
         'component_configurations': 'list[SubscriptionComponentConfiguration]',
         'created_on': 'datetime',
         'expected_last_period_end': 'datetime',
@@ -21,7 +22,6 @@ class SubscriptionVersion:
         'planned_purge_date': 'datetime',
         'planned_termination_date': 'datetime',
         'product_version': 'SubscriptionProductVersion',
-        'selected_components': 'list[SubscriptionProductComponent]',
         'state': 'SubscriptionVersionState',
         'subscription': 'Subscription',
         'terminated_on': 'datetime',
@@ -31,12 +31,13 @@ class SubscriptionVersion:
     }
 
     attribute_map = {
-        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','component_configurations': 'componentConfigurations','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','selected_components': 'selectedComponents','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
+        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','billing_cycle_model': 'billingCycleModel','component_configurations': 'componentConfigurations','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
     }
 
     
     _activated_on = None
     _billing_currency = None
+    _billing_cycle_model = None
     _component_configurations = None
     _created_on = None
     _expected_last_period_end = None
@@ -47,7 +48,6 @@ class SubscriptionVersion:
     _planned_purge_date = None
     _planned_termination_date = None
     _product_version = None
-    _selected_components = None
     _state = None
     _subscription = None
     _terminated_on = None
@@ -60,6 +60,7 @@ class SubscriptionVersion:
         
         self.activated_on = kwargs.get('activated_on', None)
         self.billing_currency = kwargs.get('billing_currency', None)
+        self.billing_cycle_model = kwargs.get('billing_cycle_model', None)
         self.component_configurations = kwargs.get('component_configurations', None)
         self.created_on = kwargs.get('created_on', None)
         self.expected_last_period_end = kwargs.get('expected_last_period_end', None)
@@ -70,7 +71,6 @@ class SubscriptionVersion:
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
         self.planned_termination_date = kwargs.get('planned_termination_date', None)
         self.product_version = kwargs.get('product_version', None)
-        self.selected_components = kwargs.get('selected_components', None)
         self.state = kwargs.get('state', None)
         self.subscription = kwargs.get('subscription', None)
         self.terminated_on = kwargs.get('terminated_on', None)
@@ -84,7 +84,7 @@ class SubscriptionVersion:
     def activated_on(self):
         """Gets the activated_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was activated.
 
         :return: The activated_on of this SubscriptionVersion.
         :rtype: datetime
@@ -95,7 +95,7 @@ class SubscriptionVersion:
     def activated_on(self, activated_on):
         """Sets the activated_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was activated.
 
         :param activated_on: The activated_on of this SubscriptionVersion.
         :type: datetime
@@ -107,7 +107,7 @@ class SubscriptionVersion:
     def billing_currency(self):
         """Gets the billing_currency of this SubscriptionVersion.
 
-            The subscriber is charged in the billing currency. The billing currency has to be one of the enabled currencies on the subscription product.
+            The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
 
         :return: The billing_currency of this SubscriptionVersion.
         :rtype: str
@@ -118,7 +118,7 @@ class SubscriptionVersion:
     def billing_currency(self, billing_currency):
         """Sets the billing_currency of this SubscriptionVersion.
 
-            The subscriber is charged in the billing currency. The billing currency has to be one of the enabled currencies on the subscription product.
+            The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
 
         :param billing_currency: The billing_currency of this SubscriptionVersion.
         :type: str
@@ -127,10 +127,33 @@ class SubscriptionVersion:
         self._billing_currency = billing_currency
     
     @property
+    def billing_cycle_model(self):
+        """Gets the billing_cycle_model of this SubscriptionVersion.
+
+            
+
+        :return: The billing_cycle_model of this SubscriptionVersion.
+        :rtype: BillingCycleModel
+        """
+        return self._billing_cycle_model
+
+    @billing_cycle_model.setter
+    def billing_cycle_model(self, billing_cycle_model):
+        """Sets the billing_cycle_model of this SubscriptionVersion.
+
+            
+
+        :param billing_cycle_model: The billing_cycle_model of this SubscriptionVersion.
+        :type: BillingCycleModel
+        """
+
+        self._billing_cycle_model = billing_cycle_model
+    
+    @property
     def component_configurations(self):
         """Gets the component_configurations of this SubscriptionVersion.
 
-            
+            The configurations of the subscription's components.
 
         :return: The component_configurations of this SubscriptionVersion.
         :rtype: list[SubscriptionComponentConfiguration]
@@ -141,7 +164,7 @@ class SubscriptionVersion:
     def component_configurations(self, component_configurations):
         """Sets the component_configurations of this SubscriptionVersion.
 
-            
+            The configurations of the subscription's components.
 
         :param component_configurations: The component_configurations of this SubscriptionVersion.
         :type: list[SubscriptionComponentConfiguration]
@@ -153,7 +176,7 @@ class SubscriptionVersion:
     def created_on(self):
         """Gets the created_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was created.
 
         :return: The created_on of this SubscriptionVersion.
         :rtype: datetime
@@ -164,7 +187,7 @@ class SubscriptionVersion:
     def created_on(self, created_on):
         """Sets the created_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was created.
 
         :param created_on: The created_on of this SubscriptionVersion.
         :type: datetime
@@ -176,7 +199,7 @@ class SubscriptionVersion:
     def expected_last_period_end(self):
         """Gets the expected_last_period_end of this SubscriptionVersion.
 
-            The expected last period end is the date on which the projected end date of the last period is. This is only a projection and as such the actual date may be different.
+            The date and time when the last period is expected to end.
 
         :return: The expected_last_period_end of this SubscriptionVersion.
         :rtype: datetime
@@ -187,7 +210,7 @@ class SubscriptionVersion:
     def expected_last_period_end(self, expected_last_period_end):
         """Sets the expected_last_period_end of this SubscriptionVersion.
 
-            The expected last period end is the date on which the projected end date of the last period is. This is only a projection and as such the actual date may be different.
+            The date and time when the last period is expected to end.
 
         :param expected_last_period_end: The expected_last_period_end of this SubscriptionVersion.
         :type: datetime
@@ -199,7 +222,7 @@ class SubscriptionVersion:
     def failed_on(self):
         """Gets the failed_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version failed.
 
         :return: The failed_on of this SubscriptionVersion.
         :rtype: datetime
@@ -210,7 +233,7 @@ class SubscriptionVersion:
     def failed_on(self, failed_on):
         """Sets the failed_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version failed.
 
         :param failed_on: The failed_on of this SubscriptionVersion.
         :type: datetime
@@ -314,7 +337,7 @@ class SubscriptionVersion:
     def planned_termination_date(self):
         """Gets the planned_termination_date of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version is planned.
 
         :return: The planned_termination_date of this SubscriptionVersion.
         :rtype: datetime
@@ -325,7 +348,7 @@ class SubscriptionVersion:
     def planned_termination_date(self, planned_termination_date):
         """Sets the planned_termination_date of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version is planned.
 
         :param planned_termination_date: The planned_termination_date of this SubscriptionVersion.
         :type: datetime
@@ -337,7 +360,7 @@ class SubscriptionVersion:
     def product_version(self):
         """Gets the product_version of this SubscriptionVersion.
 
-            
+            The product version that is subscribed to.
 
         :return: The product_version of this SubscriptionVersion.
         :rtype: SubscriptionProductVersion
@@ -348,36 +371,13 @@ class SubscriptionVersion:
     def product_version(self, product_version):
         """Sets the product_version of this SubscriptionVersion.
 
-            
+            The product version that is subscribed to.
 
         :param product_version: The product_version of this SubscriptionVersion.
         :type: SubscriptionProductVersion
         """
 
         self._product_version = product_version
-    
-    @property
-    def selected_components(self):
-        """Gets the selected_components of this SubscriptionVersion.
-
-            
-
-        :return: The selected_components of this SubscriptionVersion.
-        :rtype: list[SubscriptionProductComponent]
-        """
-        return self._selected_components
-
-    @selected_components.setter
-    def selected_components(self, selected_components):
-        """Sets the selected_components of this SubscriptionVersion.
-
-            
-
-        :param selected_components: The selected_components of this SubscriptionVersion.
-        :type: list[SubscriptionProductComponent]
-        """
-
-        self._selected_components = selected_components
     
     @property
     def state(self):
@@ -406,7 +406,7 @@ class SubscriptionVersion:
     def subscription(self):
         """Gets the subscription of this SubscriptionVersion.
 
-            
+            The subscription that this version belongs to.
 
         :return: The subscription of this SubscriptionVersion.
         :rtype: Subscription
@@ -417,7 +417,7 @@ class SubscriptionVersion:
     def subscription(self, subscription):
         """Sets the subscription of this SubscriptionVersion.
 
-            
+            The subscription that this version belongs to.
 
         :param subscription: The subscription of this SubscriptionVersion.
         :type: Subscription
@@ -429,7 +429,7 @@ class SubscriptionVersion:
     def terminated_on(self):
         """Gets the terminated_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was terminated.
 
         :return: The terminated_on of this SubscriptionVersion.
         :rtype: datetime
@@ -440,7 +440,7 @@ class SubscriptionVersion:
     def terminated_on(self, terminated_on):
         """Sets the terminated_on of this SubscriptionVersion.
 
-            
+            The date and time when the subscription version was terminated.
 
         :param terminated_on: The terminated_on of this SubscriptionVersion.
         :type: datetime
@@ -452,7 +452,7 @@ class SubscriptionVersion:
     def terminating_on(self):
         """Gets the terminating_on of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version started.
 
         :return: The terminating_on of this SubscriptionVersion.
         :rtype: datetime
@@ -463,7 +463,7 @@ class SubscriptionVersion:
     def terminating_on(self, terminating_on):
         """Sets the terminating_on of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version started.
 
         :param terminating_on: The terminating_on of this SubscriptionVersion.
         :type: datetime
@@ -475,7 +475,7 @@ class SubscriptionVersion:
     def termination_issued_on(self):
         """Gets the termination_issued_on of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version was issued.
 
         :return: The termination_issued_on of this SubscriptionVersion.
         :rtype: datetime
@@ -486,7 +486,7 @@ class SubscriptionVersion:
     def termination_issued_on(self, termination_issued_on):
         """Sets the termination_issued_on of this SubscriptionVersion.
 
-            
+            The date and time when the termination of the subscription version was issued.
 
         :param termination_issued_on: The termination_issued_on of this SubscriptionVersion.
         :type: datetime

@@ -88,7 +88,7 @@ class InternalTransferBankTransaction:
     def source_bank_transaction(self):
         """Gets the source_bank_transaction of this InternalTransferBankTransaction.
 
-            
+            The bank transaction from which funds are being transferred out.
 
         :return: The source_bank_transaction of this InternalTransferBankTransaction.
         :rtype: BankTransaction
@@ -99,7 +99,7 @@ class InternalTransferBankTransaction:
     def source_bank_transaction(self, source_bank_transaction):
         """Sets the source_bank_transaction of this InternalTransferBankTransaction.
 
-            
+            The bank transaction from which funds are being transferred out.
 
         :param source_bank_transaction: The source_bank_transaction of this InternalTransferBankTransaction.
         :type: BankTransaction
@@ -111,7 +111,7 @@ class InternalTransferBankTransaction:
     def target_bank_transaction(self):
         """Gets the target_bank_transaction of this InternalTransferBankTransaction.
 
-            
+            The bank transaction to which funds are being transferred in.
 
         :return: The target_bank_transaction of this InternalTransferBankTransaction.
         :rtype: BankTransaction
@@ -122,7 +122,7 @@ class InternalTransferBankTransaction:
     def target_bank_transaction(self, target_bank_transaction):
         """Sets the target_bank_transaction of this InternalTransferBankTransaction.
 
-            
+            The bank transaction to which funds are being transferred in.
 
         :param target_bank_transaction: The target_bank_transaction of this InternalTransferBankTransaction.
         :type: BankTransaction

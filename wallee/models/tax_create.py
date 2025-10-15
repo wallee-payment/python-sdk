@@ -35,7 +35,7 @@ class TaxCreate:
     def rate(self):
         """Gets the rate of this TaxCreate.
 
-            
+            The tax rate to be applied.
 
         :return: The rate of this TaxCreate.
         :rtype: float
@@ -46,7 +46,7 @@ class TaxCreate:
     def rate(self, rate):
         """Sets the rate of this TaxCreate.
 
-            
+            The tax rate to be applied.
 
         :param rate: The rate of this TaxCreate.
         :type: float
@@ -60,7 +60,7 @@ class TaxCreate:
     def title(self):
         """Gets the title of this TaxCreate.
 
-            
+            The name of the tax.
 
         :return: The title of this TaxCreate.
         :rtype: str
@@ -71,7 +71,7 @@ class TaxCreate:
     def title(self, title):
         """Sets the title of this TaxCreate.
 
-            
+            The name of the tax.
 
         :param title: The title of this TaxCreate.
         :type: str

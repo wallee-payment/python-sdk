@@ -12,15 +12,20 @@ class SubscriptionLedgerEntry:
         'aggregated_tax_rate': 'float',
         'amount_excluding_tax': 'float',
         'amount_including_tax': 'float',
+        'component_reference_name': 'str',
+        'component_reference_sku': 'str',
         'created_by': 'int',
         'created_on': 'datetime',
         'discount_including_tax': 'float',
         'external_id': 'str',
+        'fee_type': 'ProductFeeType',
         'id': 'int',
         'linked_space_id': 'int',
         'planned_purge_date': 'datetime',
+        'pro_rata_calculated': 'bool',
         'quantity': 'float',
         'state': 'SubscriptionLedgerEntryState',
+        'subscription_metric_id': 'int',
         'subscription_version': 'int',
         'tax_amount': 'float',
         'taxes': 'list[Tax]',
@@ -29,22 +34,27 @@ class SubscriptionLedgerEntry:
     }
 
     attribute_map = {
-        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','created_by': 'createdBy','created_on': 'createdOn','discount_including_tax': 'discountIncludingTax','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','quantity': 'quantity','state': 'state','subscription_version': 'subscriptionVersion','tax_amount': 'taxAmount','taxes': 'taxes','title': 'title','version': 'version',
+        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','component_reference_name': 'componentReferenceName','component_reference_sku': 'componentReferenceSku','created_by': 'createdBy','created_on': 'createdOn','discount_including_tax': 'discountIncludingTax','external_id': 'externalId','fee_type': 'feeType','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','pro_rata_calculated': 'proRataCalculated','quantity': 'quantity','state': 'state','subscription_metric_id': 'subscriptionMetricId','subscription_version': 'subscriptionVersion','tax_amount': 'taxAmount','taxes': 'taxes','title': 'title','version': 'version',
     }
 
     
     _aggregated_tax_rate = None
     _amount_excluding_tax = None
     _amount_including_tax = None
+    _component_reference_name = None
+    _component_reference_sku = None
     _created_by = None
     _created_on = None
     _discount_including_tax = None
     _external_id = None
+    _fee_type = None
     _id = None
     _linked_space_id = None
     _planned_purge_date = None
+    _pro_rata_calculated = None
     _quantity = None
     _state = None
+    _subscription_metric_id = None
     _subscription_version = None
     _tax_amount = None
     _taxes = None
@@ -57,15 +67,20 @@ class SubscriptionLedgerEntry:
         self.aggregated_tax_rate = kwargs.get('aggregated_tax_rate', None)
         self.amount_excluding_tax = kwargs.get('amount_excluding_tax', None)
         self.amount_including_tax = kwargs.get('amount_including_tax', None)
+        self.component_reference_name = kwargs.get('component_reference_name', None)
+        self.component_reference_sku = kwargs.get('component_reference_sku', None)
         self.created_by = kwargs.get('created_by', None)
         self.created_on = kwargs.get('created_on', None)
         self.discount_including_tax = kwargs.get('discount_including_tax', None)
         self.external_id = kwargs.get('external_id', None)
+        self.fee_type = kwargs.get('fee_type', None)
         self.id = kwargs.get('id', None)
         self.linked_space_id = kwargs.get('linked_space_id', None)
         self.planned_purge_date = kwargs.get('planned_purge_date', None)
+        self.pro_rata_calculated = kwargs.get('pro_rata_calculated', None)
         self.quantity = kwargs.get('quantity', None)
         self.state = kwargs.get('state', None)
+        self.subscription_metric_id = kwargs.get('subscription_metric_id', None)
         self.subscription_version = kwargs.get('subscription_version', None)
         self.tax_amount = kwargs.get('tax_amount', None)
         self.taxes = kwargs.get('taxes', None)
@@ -78,7 +93,7 @@ class SubscriptionLedgerEntry:
     def aggregated_tax_rate(self):
         """Gets the aggregated_tax_rate of this SubscriptionLedgerEntry.
 
-            
+            The total tax rate applied to the ledger entry, calculated from the rates of all tax lines.
 
         :return: The aggregated_tax_rate of this SubscriptionLedgerEntry.
         :rtype: float
@@ -89,7 +104,7 @@ class SubscriptionLedgerEntry:
     def aggregated_tax_rate(self, aggregated_tax_rate):
         """Sets the aggregated_tax_rate of this SubscriptionLedgerEntry.
 
-            
+            The total tax rate applied to the ledger entry, calculated from the rates of all tax lines.
 
         :param aggregated_tax_rate: The aggregated_tax_rate of this SubscriptionLedgerEntry.
         :type: float
@@ -101,7 +116,7 @@ class SubscriptionLedgerEntry:
     def amount_excluding_tax(self):
         """Gets the amount_excluding_tax of this SubscriptionLedgerEntry.
 
-            
+            The leger entry's amount with discounts applied, excluding taxes.
 
         :return: The amount_excluding_tax of this SubscriptionLedgerEntry.
         :rtype: float
@@ -112,7 +127,7 @@ class SubscriptionLedgerEntry:
     def amount_excluding_tax(self, amount_excluding_tax):
         """Sets the amount_excluding_tax of this SubscriptionLedgerEntry.
 
-            
+            The leger entry's amount with discounts applied, excluding taxes.
 
         :param amount_excluding_tax: The amount_excluding_tax of this SubscriptionLedgerEntry.
         :type: float
@@ -124,7 +139,7 @@ class SubscriptionLedgerEntry:
     def amount_including_tax(self):
         """Gets the amount_including_tax of this SubscriptionLedgerEntry.
 
-            
+            The leger entry's amount with discounts applied, including taxes.
 
         :return: The amount_including_tax of this SubscriptionLedgerEntry.
         :rtype: float
@@ -135,7 +150,7 @@ class SubscriptionLedgerEntry:
     def amount_including_tax(self, amount_including_tax):
         """Sets the amount_including_tax of this SubscriptionLedgerEntry.
 
-            
+            The leger entry's amount with discounts applied, including taxes.
 
         :param amount_including_tax: The amount_including_tax of this SubscriptionLedgerEntry.
         :type: float
@@ -144,10 +159,58 @@ class SubscriptionLedgerEntry:
         self._amount_including_tax = amount_including_tax
     
     @property
+    def component_reference_name(self):
+        """Gets the component_reference_name of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The component_reference_name of this SubscriptionLedgerEntry.
+        :rtype: str
+        """
+        return self._component_reference_name
+
+    @component_reference_name.setter
+    def component_reference_name(self, component_reference_name):
+        """Sets the component_reference_name of this SubscriptionLedgerEntry.
+
+            
+
+        :param component_reference_name: The component_reference_name of this SubscriptionLedgerEntry.
+        :type: str
+        """
+
+        self._component_reference_name = component_reference_name
+    
+    @property
+    def component_reference_sku(self):
+        """Gets the component_reference_sku of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The component_reference_sku of this SubscriptionLedgerEntry.
+        :rtype: str
+        """
+        return self._component_reference_sku
+
+    @component_reference_sku.setter
+    def component_reference_sku(self, component_reference_sku):
+        """Sets the component_reference_sku of this SubscriptionLedgerEntry.
+
+            
+
+        :param component_reference_sku: The component_reference_sku of this SubscriptionLedgerEntry.
+        :type: str
+        """
+        if component_reference_sku is not None and len(component_reference_sku) > 100:
+            raise ValueError("Invalid value for `component_reference_sku`, length must be less than or equal to `100`")
+
+        self._component_reference_sku = component_reference_sku
+    
+    @property
     def created_by(self):
         """Gets the created_by of this SubscriptionLedgerEntry.
 
-            
+            The ID of the user the ledger entry was created by.
 
         :return: The created_by of this SubscriptionLedgerEntry.
         :rtype: int
@@ -158,7 +221,7 @@ class SubscriptionLedgerEntry:
     def created_by(self, created_by):
         """Sets the created_by of this SubscriptionLedgerEntry.
 
-            
+            The ID of the user the ledger entry was created by.
 
         :param created_by: The created_by of this SubscriptionLedgerEntry.
         :type: int
@@ -193,7 +256,7 @@ class SubscriptionLedgerEntry:
     def discount_including_tax(self):
         """Gets the discount_including_tax of this SubscriptionLedgerEntry.
 
-            
+            The discount allocated to the ledger entry, including taxes.
 
         :return: The discount_including_tax of this SubscriptionLedgerEntry.
         :rtype: float
@@ -204,7 +267,7 @@ class SubscriptionLedgerEntry:
     def discount_including_tax(self, discount_including_tax):
         """Sets the discount_including_tax of this SubscriptionLedgerEntry.
 
-            
+            The discount allocated to the ledger entry, including taxes.
 
         :param discount_including_tax: The discount_including_tax of this SubscriptionLedgerEntry.
         :type: float
@@ -216,7 +279,7 @@ class SubscriptionLedgerEntry:
     def external_id(self):
         """Gets the external_id of this SubscriptionLedgerEntry.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionLedgerEntry.
         :rtype: str
@@ -227,13 +290,36 @@ class SubscriptionLedgerEntry:
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionLedgerEntry.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionLedgerEntry.
         :type: str
         """
 
         self._external_id = external_id
+    
+    @property
+    def fee_type(self):
+        """Gets the fee_type of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The fee_type of this SubscriptionLedgerEntry.
+        :rtype: ProductFeeType
+        """
+        return self._fee_type
+
+    @fee_type.setter
+    def fee_type(self, fee_type):
+        """Sets the fee_type of this SubscriptionLedgerEntry.
+
+            
+
+        :param fee_type: The fee_type of this SubscriptionLedgerEntry.
+        :type: ProductFeeType
+        """
+
+        self._fee_type = fee_type
     
     @property
     def id(self):
@@ -305,10 +391,33 @@ class SubscriptionLedgerEntry:
         self._planned_purge_date = planned_purge_date
     
     @property
+    def pro_rata_calculated(self):
+        """Gets the pro_rata_calculated of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The pro_rata_calculated of this SubscriptionLedgerEntry.
+        :rtype: bool
+        """
+        return self._pro_rata_calculated
+
+    @pro_rata_calculated.setter
+    def pro_rata_calculated(self, pro_rata_calculated):
+        """Sets the pro_rata_calculated of this SubscriptionLedgerEntry.
+
+            
+
+        :param pro_rata_calculated: The pro_rata_calculated of this SubscriptionLedgerEntry.
+        :type: bool
+        """
+
+        self._pro_rata_calculated = pro_rata_calculated
+    
+    @property
     def quantity(self):
         """Gets the quantity of this SubscriptionLedgerEntry.
 
-            
+            The number of items that were consumed.
 
         :return: The quantity of this SubscriptionLedgerEntry.
         :rtype: float
@@ -319,7 +428,7 @@ class SubscriptionLedgerEntry:
     def quantity(self, quantity):
         """Sets the quantity of this SubscriptionLedgerEntry.
 
-            
+            The number of items that were consumed.
 
         :param quantity: The quantity of this SubscriptionLedgerEntry.
         :type: float
@@ -351,10 +460,33 @@ class SubscriptionLedgerEntry:
         self._state = state
     
     @property
+    def subscription_metric_id(self):
+        """Gets the subscription_metric_id of this SubscriptionLedgerEntry.
+
+            
+
+        :return: The subscription_metric_id of this SubscriptionLedgerEntry.
+        :rtype: int
+        """
+        return self._subscription_metric_id
+
+    @subscription_metric_id.setter
+    def subscription_metric_id(self, subscription_metric_id):
+        """Sets the subscription_metric_id of this SubscriptionLedgerEntry.
+
+            
+
+        :param subscription_metric_id: The subscription_metric_id of this SubscriptionLedgerEntry.
+        :type: int
+        """
+
+        self._subscription_metric_id = subscription_metric_id
+    
+    @property
     def subscription_version(self):
         """Gets the subscription_version of this SubscriptionLedgerEntry.
 
-            
+            The subscription version that the ledger entry belongs to.
 
         :return: The subscription_version of this SubscriptionLedgerEntry.
         :rtype: int
@@ -365,7 +497,7 @@ class SubscriptionLedgerEntry:
     def subscription_version(self, subscription_version):
         """Sets the subscription_version of this SubscriptionLedgerEntry.
 
-            
+            The subscription version that the ledger entry belongs to.
 
         :param subscription_version: The subscription_version of this SubscriptionLedgerEntry.
         :type: int
@@ -377,7 +509,7 @@ class SubscriptionLedgerEntry:
     def tax_amount(self):
         """Gets the tax_amount of this SubscriptionLedgerEntry.
 
-            
+            The sum of all taxes applied to the ledger entry.
 
         :return: The tax_amount of this SubscriptionLedgerEntry.
         :rtype: float
@@ -388,7 +520,7 @@ class SubscriptionLedgerEntry:
     def tax_amount(self, tax_amount):
         """Sets the tax_amount of this SubscriptionLedgerEntry.
 
-            
+            The sum of all taxes applied to the ledger entry.
 
         :param tax_amount: The tax_amount of this SubscriptionLedgerEntry.
         :type: float
@@ -400,7 +532,7 @@ class SubscriptionLedgerEntry:
     def taxes(self):
         """Gets the taxes of this SubscriptionLedgerEntry.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the ledger entry.
 
         :return: The taxes of this SubscriptionLedgerEntry.
         :rtype: list[Tax]
@@ -411,7 +543,7 @@ class SubscriptionLedgerEntry:
     def taxes(self, taxes):
         """Sets the taxes of this SubscriptionLedgerEntry.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the ledger entry.
 
         :param taxes: The taxes of this SubscriptionLedgerEntry.
         :type: list[Tax]
@@ -423,7 +555,7 @@ class SubscriptionLedgerEntry:
     def title(self):
         """Gets the title of this SubscriptionLedgerEntry.
 
-            
+            The title that indicates what the ledger entry is about.
 
         :return: The title of this SubscriptionLedgerEntry.
         :rtype: str
@@ -434,7 +566,7 @@ class SubscriptionLedgerEntry:
     def title(self, title):
         """Sets the title of this SubscriptionLedgerEntry.
 
-            
+            The title that indicates what the ledger entry is about.
 
         :param title: The title of this SubscriptionLedgerEntry.
         :type: str

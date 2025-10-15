@@ -12,20 +12,16 @@ class Label:
         'content': 'object',
         'content_as_string': 'str',
         'descriptor': 'LabelDescriptor',
-        'id': 'int',
-        'version': 'int',
     }
 
     attribute_map = {
-        'content': 'content','content_as_string': 'contentAsString','descriptor': 'descriptor','id': 'id','version': 'version',
+        'content': 'content','content_as_string': 'contentAsString','descriptor': 'descriptor',
     }
 
     
     _content = None
     _content_as_string = None
     _descriptor = None
-    _id = None
-    _version = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
@@ -33,8 +29,6 @@ class Label:
         self.content = kwargs.get('content', None)
         self.content_as_string = kwargs.get('content_as_string', None)
         self.descriptor = kwargs.get('descriptor', None)
-        self.id = kwargs.get('id', None)
-        self.version = kwargs.get('version', None)
         
 
     
@@ -42,7 +36,7 @@ class Label:
     def content(self):
         """Gets the content of this Label.
 
-            
+            The label's actual content.
 
         :return: The content of this Label.
         :rtype: object
@@ -53,7 +47,7 @@ class Label:
     def content(self, content):
         """Sets the content of this Label.
 
-            
+            The label's actual content.
 
         :param content: The content of this Label.
         :type: object
@@ -65,7 +59,7 @@ class Label:
     def content_as_string(self):
         """Gets the content_as_string of this Label.
 
-            
+            The label's content formatted as string.
 
         :return: The content_as_string of this Label.
         :rtype: str
@@ -76,7 +70,7 @@ class Label:
     def content_as_string(self, content_as_string):
         """Sets the content_as_string of this Label.
 
-            
+            The label's content formatted as string.
 
         :param content_as_string: The content_as_string of this Label.
         :type: str
@@ -88,7 +82,7 @@ class Label:
     def descriptor(self):
         """Gets the descriptor of this Label.
 
-            
+            The descriptor that describes what information the label provides.
 
         :return: The descriptor of this Label.
         :rtype: LabelDescriptor
@@ -99,59 +93,13 @@ class Label:
     def descriptor(self, descriptor):
         """Sets the descriptor of this Label.
 
-            
+            The descriptor that describes what information the label provides.
 
         :param descriptor: The descriptor of this Label.
         :type: LabelDescriptor
         """
 
         self._descriptor = descriptor
-    
-    @property
-    def id(self):
-        """Gets the id of this Label.
-
-            A unique identifier for the object.
-
-        :return: The id of this Label.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Label.
-
-            A unique identifier for the object.
-
-        :param id: The id of this Label.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this Label.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this Label.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this Label.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this Label.
-        :type: int
-        """
-
-        self._version = version
     
 
     def to_dict(self):

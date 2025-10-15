@@ -39,7 +39,7 @@ class RenderedTerminalReceipt:
     def data(self):
         """Gets the data of this RenderedTerminalReceipt.
 
-            The data property contains the binary data of the receipt document encoded as base 64 encoded string.
+            The receipt document data in binary format, presented as a Base64-encoded string.
 
         :return: The data of this RenderedTerminalReceipt.
         :rtype: list[str]
@@ -50,7 +50,7 @@ class RenderedTerminalReceipt:
     def data(self, data):
         """Sets the data of this RenderedTerminalReceipt.
 
-            The data property contains the binary data of the receipt document encoded as base 64 encoded string.
+            The receipt document data in binary format, presented as a Base64-encoded string.
 
         :param data: The data of this RenderedTerminalReceipt.
         :type: list[str]
@@ -62,7 +62,7 @@ class RenderedTerminalReceipt:
     def mime_type(self):
         """Gets the mime_type of this RenderedTerminalReceipt.
 
-            The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.
+            The MIME type specifies the format of the receipt document and is determined by the requested format.
 
         :return: The mime_type of this RenderedTerminalReceipt.
         :rtype: str
@@ -73,7 +73,7 @@ class RenderedTerminalReceipt:
     def mime_type(self, mime_type):
         """Sets the mime_type of this RenderedTerminalReceipt.
 
-            The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.
+            The MIME type specifies the format of the receipt document and is determined by the requested format.
 
         :param mime_type: The mime_type of this RenderedTerminalReceipt.
         :type: str
@@ -85,7 +85,7 @@ class RenderedTerminalReceipt:
     def printed(self):
         """Gets the printed of this RenderedTerminalReceipt.
 
-            The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.
+            Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.
 
         :return: The printed of this RenderedTerminalReceipt.
         :rtype: bool
@@ -96,7 +96,7 @@ class RenderedTerminalReceipt:
     def printed(self, printed):
         """Sets the printed of this RenderedTerminalReceipt.
 
-            The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.
+            Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.
 
         :param printed: The printed of this RenderedTerminalReceipt.
         :type: bool
@@ -108,7 +108,7 @@ class RenderedTerminalReceipt:
     def receipt_type(self):
         """Gets the receipt_type of this RenderedTerminalReceipt.
 
-            Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.
+            The receipt type specifies the intended use and the target audience of the document.
 
         :return: The receipt_type of this RenderedTerminalReceipt.
         :rtype: PaymentTerminalReceiptType
@@ -119,7 +119,7 @@ class RenderedTerminalReceipt:
     def receipt_type(self, receipt_type):
         """Sets the receipt_type of this RenderedTerminalReceipt.
 
-            Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.
+            The receipt type specifies the intended use and the target audience of the document.
 
         :param receipt_type: The receipt_type of this RenderedTerminalReceipt.
         :type: PaymentTerminalReceiptType

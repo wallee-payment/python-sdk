@@ -50,7 +50,7 @@ class RefundCreate:
     def amount(self):
         """Gets the amount of this RefundCreate.
 
-            
+            The total monetary amount of the refund, representing the exact credit issued to the customer.
 
         :return: The amount of this RefundCreate.
         :rtype: float
@@ -61,7 +61,7 @@ class RefundCreate:
     def amount(self, amount):
         """Sets the amount of this RefundCreate.
 
-            
+            The total monetary amount of the refund, representing the exact credit issued to the customer.
 
         :param amount: The amount of this RefundCreate.
         :type: float
@@ -73,7 +73,7 @@ class RefundCreate:
     def completion(self):
         """Gets the completion of this RefundCreate.
 
-            
+            The transaction completion that the refund belongs to.
 
         :return: The completion of this RefundCreate.
         :rtype: int
@@ -84,7 +84,7 @@ class RefundCreate:
     def completion(self, completion):
         """Sets the completion of this RefundCreate.
 
-            
+            The transaction completion that the refund belongs to.
 
         :param completion: The completion of this RefundCreate.
         :type: int
@@ -96,7 +96,7 @@ class RefundCreate:
     def external_id(self):
         """Gets the external_id of this RefundCreate.
 
-            The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this RefundCreate.
         :rtype: str
@@ -107,7 +107,7 @@ class RefundCreate:
     def external_id(self, external_id):
         """Sets the external_id of this RefundCreate.
 
-            The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this RefundCreate.
         :type: str
@@ -125,7 +125,7 @@ class RefundCreate:
     def merchant_reference(self):
         """Gets the merchant_reference of this RefundCreate.
 
-            
+            The merchant's reference used to identify the refund.
 
         :return: The merchant_reference of this RefundCreate.
         :rtype: str
@@ -136,7 +136,7 @@ class RefundCreate:
     def merchant_reference(self, merchant_reference):
         """Sets the merchant_reference of this RefundCreate.
 
-            
+            The merchant's reference used to identify the refund.
 
         :param merchant_reference: The merchant_reference of this RefundCreate.
         :type: str
@@ -150,7 +150,7 @@ class RefundCreate:
     def reductions(self):
         """Gets the reductions of this RefundCreate.
 
-            
+            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
 
         :return: The reductions of this RefundCreate.
         :rtype: list[LineItemReductionCreate]
@@ -161,7 +161,7 @@ class RefundCreate:
     def reductions(self, reductions):
         """Sets the reductions of this RefundCreate.
 
-            
+            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
 
         :param reductions: The reductions of this RefundCreate.
         :type: list[LineItemReductionCreate]
@@ -173,7 +173,7 @@ class RefundCreate:
     def transaction(self):
         """Gets the transaction of this RefundCreate.
 
-            
+            The transaction that the refund belongs to.
 
         :return: The transaction of this RefundCreate.
         :rtype: int
@@ -184,7 +184,7 @@ class RefundCreate:
     def transaction(self, transaction):
         """Sets the transaction of this RefundCreate.
 
-            
+            The transaction that the refund belongs to.
 
         :param transaction: The transaction of this RefundCreate.
         :type: int
@@ -196,7 +196,7 @@ class RefundCreate:
     def type(self):
         """Gets the type of this RefundCreate.
 
-            
+            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
 
         :return: The type of this RefundCreate.
         :rtype: RefundType
@@ -207,7 +207,7 @@ class RefundCreate:
     def type(self, type):
         """Sets the type of this RefundCreate.
 
-            
+            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
 
         :param type: The type of this RefundCreate.
         :type: RefundType

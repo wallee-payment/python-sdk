@@ -62,7 +62,7 @@ class LineItemCreate:
     def amount_including_tax(self):
         """Gets the amount_including_tax of this LineItemCreate.
 
-            
+            The line item price with discounts applied, including taxes.
 
         :return: The amount_including_tax of this LineItemCreate.
         :rtype: float
@@ -73,7 +73,7 @@ class LineItemCreate:
     def amount_including_tax(self, amount_including_tax):
         """Sets the amount_including_tax of this LineItemCreate.
 
-            
+            The line item price with discounts applied, including taxes.
 
         :param amount_including_tax: The amount_including_tax of this LineItemCreate.
         :type: float
@@ -87,7 +87,7 @@ class LineItemCreate:
     def attributes(self):
         """Gets the attributes of this LineItemCreate.
 
-            
+            A map of custom information for the item.
 
         :return: The attributes of this LineItemCreate.
         :rtype: dict(str, LineItemAttributeCreate)
@@ -98,7 +98,7 @@ class LineItemCreate:
     def attributes(self, attributes):
         """Sets the attributes of this LineItemCreate.
 
-            
+            A map of custom information for the item.
 
         :param attributes: The attributes of this LineItemCreate.
         :type: dict(str, LineItemAttributeCreate)
@@ -110,7 +110,7 @@ class LineItemCreate:
     def discount_including_tax(self):
         """Gets the discount_including_tax of this LineItemCreate.
 
-            
+            The discount allocated to the item, including taxes.
 
         :return: The discount_including_tax of this LineItemCreate.
         :rtype: float
@@ -121,7 +121,7 @@ class LineItemCreate:
     def discount_including_tax(self, discount_including_tax):
         """Sets the discount_including_tax of this LineItemCreate.
 
-            
+            The discount allocated to the item, including taxes.
 
         :param discount_including_tax: The discount_including_tax of this LineItemCreate.
         :type: float
@@ -133,7 +133,7 @@ class LineItemCreate:
     def name(self):
         """Gets the name of this LineItemCreate.
 
-            
+            The name of the product, ideally in the customer's language.
 
         :return: The name of this LineItemCreate.
         :rtype: str
@@ -144,7 +144,7 @@ class LineItemCreate:
     def name(self, name):
         """Sets the name of this LineItemCreate.
 
-            
+            The name of the product, ideally in the customer's language.
 
         :param name: The name of this LineItemCreate.
         :type: str
@@ -162,7 +162,7 @@ class LineItemCreate:
     def quantity(self):
         """Gets the quantity of this LineItemCreate.
 
-            
+            The number of items that were purchased.
 
         :return: The quantity of this LineItemCreate.
         :rtype: float
@@ -173,7 +173,7 @@ class LineItemCreate:
     def quantity(self, quantity):
         """Sets the quantity of this LineItemCreate.
 
-            
+            The number of items that were purchased.
 
         :param quantity: The quantity of this LineItemCreate.
         :type: float
@@ -187,7 +187,7 @@ class LineItemCreate:
     def shipping_required(self):
         """Gets the shipping_required of this LineItemCreate.
 
-            
+            Whether the item required shipping.
 
         :return: The shipping_required of this LineItemCreate.
         :rtype: bool
@@ -198,7 +198,7 @@ class LineItemCreate:
     def shipping_required(self, shipping_required):
         """Sets the shipping_required of this LineItemCreate.
 
-            
+            Whether the item required shipping.
 
         :param shipping_required: The shipping_required of this LineItemCreate.
         :type: bool
@@ -210,7 +210,7 @@ class LineItemCreate:
     def sku(self):
         """Gets the sku of this LineItemCreate.
 
-            
+            The SKU (stock-keeping unit) of the product.
 
         :return: The sku of this LineItemCreate.
         :rtype: str
@@ -221,7 +221,7 @@ class LineItemCreate:
     def sku(self, sku):
         """Sets the sku of this LineItemCreate.
 
-            
+            The SKU (stock-keeping unit) of the product.
 
         :param sku: The sku of this LineItemCreate.
         :type: str
@@ -235,7 +235,7 @@ class LineItemCreate:
     def taxes(self):
         """Gets the taxes of this LineItemCreate.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the item.
 
         :return: The taxes of this LineItemCreate.
         :rtype: list[TaxCreate]
@@ -246,7 +246,7 @@ class LineItemCreate:
     def taxes(self, taxes):
         """Sets the taxes of this LineItemCreate.
 
-            
+            A set of tax lines, each of which specifies a tax applied to the item.
 
         :param taxes: The taxes of this LineItemCreate.
         :type: list[TaxCreate]
@@ -258,7 +258,7 @@ class LineItemCreate:
     def type(self):
         """Gets the type of this LineItemCreate.
 
-            
+            The type of the line item.
 
         :return: The type of this LineItemCreate.
         :rtype: LineItemType
@@ -269,7 +269,7 @@ class LineItemCreate:
     def type(self, type):
         """Sets the type of this LineItemCreate.
 
-            
+            The type of the line item.
 
         :param type: The type of this LineItemCreate.
         :type: LineItemType
@@ -283,7 +283,7 @@ class LineItemCreate:
     def unique_id(self):
         """Gets the unique_id of this LineItemCreate.
 
-            The unique id identifies the line item within the set of line items associated with the transaction.
+            The unique identifier of the line item within the set of line items.
 
         :return: The unique_id of this LineItemCreate.
         :rtype: str
@@ -294,7 +294,7 @@ class LineItemCreate:
     def unique_id(self, unique_id):
         """Sets the unique_id of this LineItemCreate.
 
-            The unique id identifies the line item within the set of line items associated with the transaction.
+            The unique identifier of the line item within the set of line items.
 
         :param unique_id: The unique_id of this LineItemCreate.
         :type: str

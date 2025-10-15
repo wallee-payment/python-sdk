@@ -10,24 +10,21 @@ class PaymentConnectorFeature:
     swagger_types = {
     
         'display_name': 'str',
-        'feature': 'Feature',
         'id': 'int',
     }
 
     attribute_map = {
-        'display_name': 'displayName','feature': 'feature','id': 'id',
+        'display_name': 'displayName','id': 'id',
     }
 
     
     _display_name = None
-    _feature = None
     _id = None
 
     def __init__(self, **kwargs):
         self.discriminator = None
         
         self.display_name = kwargs.get('display_name', None)
-        self.feature = kwargs.get('feature', None)
         self.id = kwargs.get('id', None)
         
 
@@ -36,7 +33,7 @@ class PaymentConnectorFeature:
     def display_name(self):
         """Gets the display_name of this PaymentConnectorFeature.
 
-            
+            The localized name of the feature.
 
         :return: The display_name of this PaymentConnectorFeature.
         :rtype: str
@@ -47,36 +44,13 @@ class PaymentConnectorFeature:
     def display_name(self, display_name):
         """Sets the display_name of this PaymentConnectorFeature.
 
-            
+            The localized name of the feature.
 
         :param display_name: The display_name of this PaymentConnectorFeature.
         :type: str
         """
 
         self._display_name = display_name
-    
-    @property
-    def feature(self):
-        """Gets the feature of this PaymentConnectorFeature.
-
-            
-
-        :return: The feature of this PaymentConnectorFeature.
-        :rtype: Feature
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this PaymentConnectorFeature.
-
-            
-
-        :param feature: The feature of this PaymentConnectorFeature.
-        :type: Feature
-        """
-
-        self._feature = feature
     
     @property
     def id(self):

@@ -11,7 +11,6 @@ class PaymentProcessor:
     
         'company_name': 'dict(str, str)',
         'description': 'dict(str, str)',
-        'feature': 'int',
         'headquarters_location': 'dict(str, str)',
         'id': 'int',
         'logo_path': 'str',
@@ -20,13 +19,12 @@ class PaymentProcessor:
     }
 
     attribute_map = {
-        'company_name': 'companyName','description': 'description','feature': 'feature','headquarters_location': 'headquartersLocation','id': 'id','logo_path': 'logoPath','name': 'name','product_name': 'productName',
+        'company_name': 'companyName','description': 'description','headquarters_location': 'headquartersLocation','id': 'id','logo_path': 'logoPath','name': 'name','product_name': 'productName',
     }
 
     
     _company_name = None
     _description = None
-    _feature = None
     _headquarters_location = None
     _id = None
     _logo_path = None
@@ -38,7 +36,6 @@ class PaymentProcessor:
         
         self.company_name = kwargs.get('company_name', None)
         self.description = kwargs.get('description', None)
-        self.feature = kwargs.get('feature', None)
         self.headquarters_location = kwargs.get('headquarters_location', None)
         self.id = kwargs.get('id', None)
         self.logo_path = kwargs.get('logo_path', None)
@@ -51,7 +48,7 @@ class PaymentProcessor:
     def company_name(self):
         """Gets the company_name of this PaymentProcessor.
 
-            
+            The name of the company to which the processor belongs.
 
         :return: The company_name of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -62,7 +59,7 @@ class PaymentProcessor:
     def company_name(self, company_name):
         """Sets the company_name of this PaymentProcessor.
 
-            
+            The name of the company to which the processor belongs.
 
         :param company_name: The company_name of this PaymentProcessor.
         :type: dict(str, str)
@@ -94,33 +91,10 @@ class PaymentProcessor:
         self._description = description
     
     @property
-    def feature(self):
-        """Gets the feature of this PaymentProcessor.
-
-            
-
-        :return: The feature of this PaymentProcessor.
-        :rtype: int
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this PaymentProcessor.
-
-            
-
-        :param feature: The feature of this PaymentProcessor.
-        :type: int
-        """
-
-        self._feature = feature
-    
-    @property
     def headquarters_location(self):
         """Gets the headquarters_location of this PaymentProcessor.
 
-            
+            Where the processor's headquarters are located.
 
         :return: The headquarters_location of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -131,7 +105,7 @@ class PaymentProcessor:
     def headquarters_location(self, headquarters_location):
         """Sets the headquarters_location of this PaymentProcessor.
 
-            
+            Where the processor's headquarters are located.
 
         :param headquarters_location: The headquarters_location of this PaymentProcessor.
         :type: dict(str, str)
@@ -166,7 +140,7 @@ class PaymentProcessor:
     def logo_path(self):
         """Gets the logo_path of this PaymentProcessor.
 
-            
+            The path to the logo image of the processor.
 
         :return: The logo_path of this PaymentProcessor.
         :rtype: str
@@ -177,7 +151,7 @@ class PaymentProcessor:
     def logo_path(self, logo_path):
         """Sets the logo_path of this PaymentProcessor.
 
-            
+            The path to the logo image of the processor.
 
         :param logo_path: The logo_path of this PaymentProcessor.
         :type: str
@@ -212,7 +186,7 @@ class PaymentProcessor:
     def product_name(self):
         """Gets the product_name of this PaymentProcessor.
 
-            
+            The name of the processor's product.
 
         :return: The product_name of this PaymentProcessor.
         :rtype: dict(str, str)
@@ -223,7 +197,7 @@ class PaymentProcessor:
     def product_name(self, product_name):
         """Sets the product_name of this PaymentProcessor.
 
-            
+            The name of the processor's product.
 
         :param product_name: The product_name of this PaymentProcessor.
         :type: dict(str, str)

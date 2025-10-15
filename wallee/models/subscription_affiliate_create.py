@@ -37,7 +37,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def external_id(self):
         """Gets the external_id of this SubscriptionAffiliateCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this SubscriptionAffiliateCreate.
         :rtype: str
@@ -48,7 +48,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def external_id(self, external_id):
         """Sets the external_id of this SubscriptionAffiliateCreate.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this SubscriptionAffiliateCreate.
         :type: str
@@ -62,7 +62,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def reference(self):
         """Gets the reference of this SubscriptionAffiliateCreate.
 
-            
+            The reference used to identify the affiliate.
 
         :return: The reference of this SubscriptionAffiliateCreate.
         :rtype: str
@@ -73,7 +73,7 @@ class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
     def reference(self, reference):
         """Sets the reference of this SubscriptionAffiliateCreate.
 
-            
+            The reference used to identify the affiliate.
 
         :param reference: The reference of this SubscriptionAffiliateCreate.
         :type: str

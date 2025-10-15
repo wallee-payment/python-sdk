@@ -56,7 +56,7 @@ class DocumentTemplateTypeGroup:
     def title(self):
         """Gets the title of this DocumentTemplateTypeGroup.
 
-            
+            The localized title of the group.
 
         :return: The title of this DocumentTemplateTypeGroup.
         :rtype: dict(str, str)
@@ -67,7 +67,7 @@ class DocumentTemplateTypeGroup:
     def title(self, title):
         """Sets the title of this DocumentTemplateTypeGroup.
 
-            
+            The localized title of the group.
 
         :param title: The title of this DocumentTemplateTypeGroup.
         :type: dict(str, str)

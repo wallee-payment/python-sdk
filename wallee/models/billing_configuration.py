@@ -5,7 +5,7 @@ from enum import Enum
 
 
 
-class ShopifySubscriptionModelBillingConfiguration:
+class BillingConfiguration:
 
     swagger_types = {
     
@@ -52,22 +52,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def billing_day_of_month(self):
-        """Gets the billing_day_of_month of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the billing_day_of_month of this BillingConfiguration.
 
             Define the day of the month on which the recurring orders should be created.
 
-        :return: The billing_day_of_month of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The billing_day_of_month of this BillingConfiguration.
         :rtype: int
         """
         return self._billing_day_of_month
 
     @billing_day_of_month.setter
     def billing_day_of_month(self, billing_day_of_month):
-        """Sets the billing_day_of_month of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the billing_day_of_month of this BillingConfiguration.
 
             Define the day of the month on which the recurring orders should be created.
 
-        :param billing_day_of_month: The billing_day_of_month of this ShopifySubscriptionModelBillingConfiguration.
+        :param billing_day_of_month: The billing_day_of_month of this BillingConfiguration.
         :type: int
         """
 
@@ -75,22 +75,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def billing_interval_amount(self):
-        """Gets the billing_interval_amount of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the billing_interval_amount of this BillingConfiguration.
 
             
 
-        :return: The billing_interval_amount of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The billing_interval_amount of this BillingConfiguration.
         :rtype: int
         """
         return self._billing_interval_amount
 
     @billing_interval_amount.setter
     def billing_interval_amount(self, billing_interval_amount):
-        """Sets the billing_interval_amount of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the billing_interval_amount of this BillingConfiguration.
 
             
 
-        :param billing_interval_amount: The billing_interval_amount of this ShopifySubscriptionModelBillingConfiguration.
+        :param billing_interval_amount: The billing_interval_amount of this BillingConfiguration.
         :type: int
         """
 
@@ -98,22 +98,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def billing_interval_unit(self):
-        """Gets the billing_interval_unit of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the billing_interval_unit of this BillingConfiguration.
 
             Define how frequently recurring orders should be created.
 
-        :return: The billing_interval_unit of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The billing_interval_unit of this BillingConfiguration.
         :rtype: ShopifySubscriptionBillingIntervalUnit
         """
         return self._billing_interval_unit
 
     @billing_interval_unit.setter
     def billing_interval_unit(self, billing_interval_unit):
-        """Sets the billing_interval_unit of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the billing_interval_unit of this BillingConfiguration.
 
             Define how frequently recurring orders should be created.
 
-        :param billing_interval_unit: The billing_interval_unit of this ShopifySubscriptionModelBillingConfiguration.
+        :param billing_interval_unit: The billing_interval_unit of this BillingConfiguration.
         :type: ShopifySubscriptionBillingIntervalUnit
         """
 
@@ -121,22 +121,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def billing_reference_date(self):
-        """Gets the billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the billing_reference_date of this BillingConfiguration.
 
             This date will be used as basis to calculate the dates of recurring orders.
 
-        :return: The billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The billing_reference_date of this BillingConfiguration.
         :rtype: datetime
         """
         return self._billing_reference_date
 
     @billing_reference_date.setter
     def billing_reference_date(self, billing_reference_date):
-        """Sets the billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the billing_reference_date of this BillingConfiguration.
 
             This date will be used as basis to calculate the dates of recurring orders.
 
-        :param billing_reference_date: The billing_reference_date of this ShopifySubscriptionModelBillingConfiguration.
+        :param billing_reference_date: The billing_reference_date of this BillingConfiguration.
         :type: datetime
         """
 
@@ -144,22 +144,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def billing_weekday(self):
-        """Gets the billing_weekday of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the billing_weekday of this BillingConfiguration.
 
             Define the weekday on which the recurring orders should be created.
 
-        :return: The billing_weekday of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The billing_weekday of this BillingConfiguration.
         :rtype: ShopifySubscriptionWeekday
         """
         return self._billing_weekday
 
     @billing_weekday.setter
     def billing_weekday(self, billing_weekday):
-        """Sets the billing_weekday of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the billing_weekday of this BillingConfiguration.
 
             Define the weekday on which the recurring orders should be created.
 
-        :param billing_weekday: The billing_weekday of this ShopifySubscriptionModelBillingConfiguration.
+        :param billing_weekday: The billing_weekday of this BillingConfiguration.
         :type: ShopifySubscriptionWeekday
         """
 
@@ -167,22 +167,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def maximal_billing_cycles(self):
-        """Gets the maximal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the maximal_billing_cycles of this BillingConfiguration.
 
             Define the maximum number of orders the subscription will run for.
 
-        :return: The maximal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The maximal_billing_cycles of this BillingConfiguration.
         :rtype: int
         """
         return self._maximal_billing_cycles
 
     @maximal_billing_cycles.setter
     def maximal_billing_cycles(self, maximal_billing_cycles):
-        """Sets the maximal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the maximal_billing_cycles of this BillingConfiguration.
 
             Define the maximum number of orders the subscription will run for.
 
-        :param maximal_billing_cycles: The maximal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :param maximal_billing_cycles: The maximal_billing_cycles of this BillingConfiguration.
         :type: int
         """
 
@@ -190,22 +190,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def maximal_suspendable_cycles(self):
-        """Gets the maximal_suspendable_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the maximal_suspendable_cycles of this BillingConfiguration.
 
             Define the maximum number of orders the subscription can be suspended for at a time.
 
-        :return: The maximal_suspendable_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The maximal_suspendable_cycles of this BillingConfiguration.
         :rtype: int
         """
         return self._maximal_suspendable_cycles
 
     @maximal_suspendable_cycles.setter
     def maximal_suspendable_cycles(self, maximal_suspendable_cycles):
-        """Sets the maximal_suspendable_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the maximal_suspendable_cycles of this BillingConfiguration.
 
             Define the maximum number of orders the subscription can be suspended for at a time.
 
-        :param maximal_suspendable_cycles: The maximal_suspendable_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :param maximal_suspendable_cycles: The maximal_suspendable_cycles of this BillingConfiguration.
         :type: int
         """
 
@@ -213,22 +213,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def minimal_billing_cycles(self):
-        """Gets the minimal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the minimal_billing_cycles of this BillingConfiguration.
 
             Define the minimal number of orders the subscription will run for.
 
-        :return: The minimal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The minimal_billing_cycles of this BillingConfiguration.
         :rtype: int
         """
         return self._minimal_billing_cycles
 
     @minimal_billing_cycles.setter
     def minimal_billing_cycles(self, minimal_billing_cycles):
-        """Sets the minimal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the minimal_billing_cycles of this BillingConfiguration.
 
             Define the minimal number of orders the subscription will run for.
 
-        :param minimal_billing_cycles: The minimal_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :param minimal_billing_cycles: The minimal_billing_cycles of this BillingConfiguration.
         :type: int
         """
 
@@ -236,22 +236,22 @@ class ShopifySubscriptionModelBillingConfiguration:
     
     @property
     def termination_billing_cycles(self):
-        """Gets the termination_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Gets the termination_billing_cycles of this BillingConfiguration.
 
             Define the number of orders the subscription will keep running for after its termination has been requested.
 
-        :return: The termination_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :return: The termination_billing_cycles of this BillingConfiguration.
         :rtype: int
         """
         return self._termination_billing_cycles
 
     @termination_billing_cycles.setter
     def termination_billing_cycles(self, termination_billing_cycles):
-        """Sets the termination_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        """Sets the termination_billing_cycles of this BillingConfiguration.
 
             Define the number of orders the subscription will keep running for after its termination has been requested.
 
-        :param termination_billing_cycles: The termination_billing_cycles of this ShopifySubscriptionModelBillingConfiguration.
+        :param termination_billing_cycles: The termination_billing_cycles of this BillingConfiguration.
         :type: int
         """
 
@@ -280,7 +280,7 @@ class ShopifySubscriptionModelBillingConfiguration:
                 result[attr] = value.value
             else:
                 result[attr] = value
-        if issubclass(ShopifySubscriptionModelBillingConfiguration, dict):
+        if issubclass(BillingConfiguration, dict):
             for key, value in self.items():
                 result[key] = value
 
@@ -293,7 +293,7 @@ class ShopifySubscriptionModelBillingConfiguration:
         return self.to_str()
 
     def __eq__(self, other):
-        if not isinstance(other, ShopifySubscriptionModelBillingConfiguration):
+        if not isinstance(other, BillingConfiguration):
             return False
 
         return self.__dict__ == other.__dict__

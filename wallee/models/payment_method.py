@@ -48,7 +48,7 @@ class PaymentMethod:
     def data_collection_types(self):
         """Gets the data_collection_types of this PaymentMethod.
 
-            
+            The data collection types that payment method supports.
 
         :return: The data_collection_types of this PaymentMethod.
         :rtype: list[DataCollectionType]
@@ -59,7 +59,7 @@ class PaymentMethod:
     def data_collection_types(self, data_collection_types):
         """Sets the data_collection_types of this PaymentMethod.
 
-            
+            The data collection types that payment method supports.
 
         :param data_collection_types: The data_collection_types of this PaymentMethod.
         :type: list[DataCollectionType]
@@ -117,7 +117,7 @@ class PaymentMethod:
     def image_path(self):
         """Gets the image_path of this PaymentMethod.
 
-            
+            The path to the payment method's image.
 
         :return: The image_path of this PaymentMethod.
         :rtype: str
@@ -128,7 +128,7 @@ class PaymentMethod:
     def image_path(self, image_path):
         """Sets the image_path of this PaymentMethod.
 
-            
+            The path to the payment method's image.
 
         :param image_path: The image_path of this PaymentMethod.
         :type: str
@@ -140,7 +140,7 @@ class PaymentMethod:
     def merchant_description(self):
         """Gets the merchant_description of this PaymentMethod.
 
-            
+            A merchant-focused, localized description of the payment method, providing its purpose and details.
 
         :return: The merchant_description of this PaymentMethod.
         :rtype: dict(str, str)
@@ -151,7 +151,7 @@ class PaymentMethod:
     def merchant_description(self, merchant_description):
         """Sets the merchant_description of this PaymentMethod.
 
-            
+            A merchant-focused, localized description of the payment method, providing its purpose and details.
 
         :param merchant_description: The merchant_description of this PaymentMethod.
         :type: dict(str, str)
@@ -186,7 +186,7 @@ class PaymentMethod:
     def supported_currencies(self):
         """Gets the supported_currencies of this PaymentMethod.
 
-            
+            The currencies that the payment method supports.
 
         :return: The supported_currencies of this PaymentMethod.
         :rtype: list[str]
@@ -197,7 +197,7 @@ class PaymentMethod:
     def supported_currencies(self, supported_currencies):
         """Sets the supported_currencies of this PaymentMethod.
 
-            
+            The currencies that the payment method supports.
 
         :param supported_currencies: The supported_currencies of this PaymentMethod.
         :type: list[str]

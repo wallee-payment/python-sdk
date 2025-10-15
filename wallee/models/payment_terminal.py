@@ -11,6 +11,7 @@ class PaymentTerminal:
     
         'configuration_version': 'PaymentTerminalConfigurationVersion',
         'default_currency': 'str',
+        'device_name': 'str',
         'device_serial_number': 'str',
         'external_id': 'str',
         'id': 'int',
@@ -25,12 +26,13 @@ class PaymentTerminal:
     }
 
     attribute_map = {
-        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','device_serial_number': 'deviceSerialNumber','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
+        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','device_name': 'deviceName','device_serial_number': 'deviceSerialNumber','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
     }
 
     
     _configuration_version = None
     _default_currency = None
+    _device_name = None
     _device_serial_number = None
     _external_id = None
     _id = None
@@ -48,6 +50,7 @@ class PaymentTerminal:
         
         self.configuration_version = kwargs.get('configuration_version', None)
         self.default_currency = kwargs.get('default_currency', None)
+        self.device_name = kwargs.get('device_name', None)
         self.device_serial_number = kwargs.get('device_serial_number', None)
         self.external_id = kwargs.get('external_id', None)
         self.id = kwargs.get('id', None)
@@ -66,7 +69,7 @@ class PaymentTerminal:
     def configuration_version(self):
         """Gets the configuration_version of this PaymentTerminal.
 
-            
+            The configuration that is assigned to the terminal and determines how it works.
 
         :return: The configuration_version of this PaymentTerminal.
         :rtype: PaymentTerminalConfigurationVersion
@@ -77,7 +80,7 @@ class PaymentTerminal:
     def configuration_version(self, configuration_version):
         """Sets the configuration_version of this PaymentTerminal.
 
-            
+            The configuration that is assigned to the terminal and determines how it works.
 
         :param configuration_version: The configuration_version of this PaymentTerminal.
         :type: PaymentTerminalConfigurationVersion
@@ -89,7 +92,7 @@ class PaymentTerminal:
     def default_currency(self):
         """Gets the default_currency of this PaymentTerminal.
 
-            
+            The default currency of the terminal.
 
         :return: The default_currency of this PaymentTerminal.
         :rtype: str
@@ -100,7 +103,7 @@ class PaymentTerminal:
     def default_currency(self, default_currency):
         """Sets the default_currency of this PaymentTerminal.
 
-            
+            The default currency of the terminal.
 
         :param default_currency: The default_currency of this PaymentTerminal.
         :type: str
@@ -109,10 +112,33 @@ class PaymentTerminal:
         self._default_currency = default_currency
     
     @property
+    def device_name(self):
+        """Gets the device_name of this PaymentTerminal.
+
+            The name of the device that is currently linked to the payment terminal.
+
+        :return: The device_name of this PaymentTerminal.
+        :rtype: str
+        """
+        return self._device_name
+
+    @device_name.setter
+    def device_name(self, device_name):
+        """Sets the device_name of this PaymentTerminal.
+
+            The name of the device that is currently linked to the payment terminal.
+
+        :param device_name: The device_name of this PaymentTerminal.
+        :type: str
+        """
+
+        self._device_name = device_name
+    
+    @property
     def device_serial_number(self):
         """Gets the device_serial_number of this PaymentTerminal.
 
-            
+            The serial number of the device that is currently linked to the payment terminal.
 
         :return: The device_serial_number of this PaymentTerminal.
         :rtype: str
@@ -123,7 +149,7 @@ class PaymentTerminal:
     def device_serial_number(self, device_serial_number):
         """Sets the device_serial_number of this PaymentTerminal.
 
-            
+            The serial number of the device that is currently linked to the payment terminal.
 
         :param device_serial_number: The device_serial_number of this PaymentTerminal.
         :type: str
@@ -135,7 +161,7 @@ class PaymentTerminal:
     def external_id(self):
         """Gets the external_id of this PaymentTerminal.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :return: The external_id of this PaymentTerminal.
         :rtype: str
@@ -146,7 +172,7 @@ class PaymentTerminal:
     def external_id(self, external_id):
         """Sets the external_id of this PaymentTerminal.
 
-            A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
 
         :param external_id: The external_id of this PaymentTerminal.
         :type: str
@@ -181,7 +207,7 @@ class PaymentTerminal:
     def identifier(self):
         """Gets the identifier of this PaymentTerminal.
 
-            The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.
+            The unique identifier of the terminal, that is displayed on the device.
 
         :return: The identifier of this PaymentTerminal.
         :rtype: str
@@ -192,7 +218,7 @@ class PaymentTerminal:
     def identifier(self, identifier):
         """Sets the identifier of this PaymentTerminal.
 
-            The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.
+            The unique identifier of the terminal, that is displayed on the device.
 
         :param identifier: The identifier of this PaymentTerminal.
         :type: str
@@ -227,7 +253,7 @@ class PaymentTerminal:
     def location_version(self):
         """Gets the location_version of this PaymentTerminal.
 
-            
+            The physical location where the terminal is used.
 
         :return: The location_version of this PaymentTerminal.
         :rtype: PaymentTerminalLocationVersion
@@ -238,7 +264,7 @@ class PaymentTerminal:
     def location_version(self, location_version):
         """Sets the location_version of this PaymentTerminal.
 
-            
+            The physical location where the terminal is used.
 
         :param location_version: The location_version of this PaymentTerminal.
         :type: PaymentTerminalLocationVersion
@@ -250,7 +276,7 @@ class PaymentTerminal:
     def name(self):
         """Gets the name of this PaymentTerminal.
 
-            The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal.
 
         :return: The name of this PaymentTerminal.
         :rtype: str
@@ -261,7 +287,7 @@ class PaymentTerminal:
     def name(self, name):
         """Sets the name of this PaymentTerminal.
 
-            The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+            The name used to identify the payment terminal.
 
         :param name: The name of this PaymentTerminal.
         :type: str
@@ -321,7 +347,7 @@ class PaymentTerminal:
     def type(self):
         """Gets the type of this PaymentTerminal.
 
-            
+            The type of the payment terminal.
 
         :return: The type of this PaymentTerminal.
         :rtype: PaymentTerminalType
@@ -332,7 +358,7 @@ class PaymentTerminal:
     def type(self, type):
         """Sets the type of this PaymentTerminal.
 
-            
+            The type of the payment terminal.
 
         :param type: The type of this PaymentTerminal.
         :type: PaymentTerminalType
