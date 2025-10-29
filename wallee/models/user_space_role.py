@@ -1,198 +1,116 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class UserSpaceRole(BaseModel):
+    """
+    UserSpaceRole
+    """
+    role: Optional[StrictInt] = Field(default=None, description="The role that is assigned to the user.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    user: Optional[StrictInt] = Field(default=None, description="The user whose role this defines.")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    space: Optional[StrictInt] = Field(default=None, description="The space in which the role is assigned to the user.")
+    __properties: ClassVar[List[str]] = ["role", "id", "user", "version", "space"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class UserSpaceRole:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'role': 'int',
-        'space': 'int',
-        'user': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of UserSpaceRole from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','role': 'role','space': 'space','user': 'user','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _role = None
-    _space = None
-    _user = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id', None)
-        self.role = kwargs.get('role', None)
-        self.space = kwargs.get('space', None)
-        self.user = kwargs.get('user', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this UserSpaceRole.
-
-            A unique identifier for the object.
-
-        :return: The id of this UserSpaceRole.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+            "role",
+            "id",
+            "user",
+            "version",
+            "space",
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this UserSpaceRole.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            A unique identifier for the object.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of UserSpaceRole from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this UserSpaceRole.
-        :type: int
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def role(self):
-        """Gets the role of this UserSpaceRole.
+        _obj = cls.model_validate({
+            "role": obj.get("role"),
+            "id": obj.get("id"),
+            "user": obj.get("user"),
+            "version": obj.get("version"),
+            "space": obj.get("space")
+        })
+        return _obj
 
-            The role that is assigned to the user.
 
-        :return: The role of this UserSpaceRole.
-        :rtype: int
-        """
-        return self._role
-
-    @role.setter
-    def role(self, role):
-        """Sets the role of this UserSpaceRole.
-
-            The role that is assigned to the user.
-
-        :param role: The role of this UserSpaceRole.
-        :type: int
-        """
-
-        self._role = role
-    
-    @property
-    def space(self):
-        """Gets the space of this UserSpaceRole.
-
-            The space in which the role is assigned to the user.
-
-        :return: The space of this UserSpaceRole.
-        :rtype: int
-        """
-        return self._space
-
-    @space.setter
-    def space(self, space):
-        """Sets the space of this UserSpaceRole.
-
-            The space in which the role is assigned to the user.
-
-        :param space: The space of this UserSpaceRole.
-        :type: int
-        """
-
-        self._space = space
-    
-    @property
-    def user(self):
-        """Gets the user of this UserSpaceRole.
-
-            The user whose role this defines.
-
-        :return: The user of this UserSpaceRole.
-        :rtype: int
-        """
-        return self._user
-
-    @user.setter
-    def user(self, user):
-        """Sets the user of this UserSpaceRole.
-
-            The user whose role this defines.
-
-        :param user: The user of this UserSpaceRole.
-        :type: int
-        """
-
-        self._user = user
-    
-    @property
-    def version(self):
-        """Gets the version of this UserSpaceRole.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this UserSpaceRole.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this UserSpaceRole.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this UserSpaceRole.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(UserSpaceRole, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, UserSpaceRole):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

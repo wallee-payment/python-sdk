@@ -1,330 +1,139 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.charge_flow import ChargeFlow
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ChargeFlowLevelConfiguration(BaseModel):
+    """
+    ChargeFlowLevelConfiguration
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    period: Optional[StrictStr] = Field(default=None, description="The duration specifies how long the level remains active before transitioning to the next one.")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the charge flow level configuration.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    priority: Optional[StrictInt] = Field(default=None, description="The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.")
+    type: Optional[StrictInt] = Field(default=None, description="The type defines the method of delivering the payment link to the customer.")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    flow: Optional[ChargeFlow] = None
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "period", "name", "plannedPurgeDate", "id", "state", "priority", "type", "version", "flow"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ChargeFlowLevelConfiguration:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'flow': 'ChargeFlow',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'name': 'str',
-        'period': 'str',
-        'planned_purge_date': 'datetime',
-        'priority': 'int',
-        'state': 'CreationEntityState',
-        'type': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ChargeFlowLevelConfiguration from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'flow': 'flow','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','period': 'period','planned_purge_date': 'plannedPurgeDate','priority': 'priority','state': 'state','type': 'type','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _flow = None
-    _id = None
-    _linked_space_id = None
-    _name = None
-    _period = None
-    _planned_purge_date = None
-    _priority = None
-    _state = None
-    _type = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.flow = kwargs.get('flow', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.period = kwargs.get('period', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.priority = kwargs.get('priority', None)
-        self.state = kwargs.get('state', None)
-        self.type = kwargs.get('type', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def flow(self):
-        """Gets the flow of this ChargeFlowLevelConfiguration.
-
-            The charge flow that this level configuration belongs to.
-
-        :return: The flow of this ChargeFlowLevelConfiguration.
-        :rtype: ChargeFlow
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._flow
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "period",
+            "name",
+            "planned_purge_date",
+            "id",
+            "priority",
+            "type",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of flow
+        if self.flow:
+            _dict['flow'] = self.flow.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ChargeFlowLevelConfiguration from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "period": obj.get("period"),
+            "name": obj.get("name"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "priority": obj.get("priority"),
+            "type": obj.get("type"),
+            "version": obj.get("version"),
+            "flow": ChargeFlow.from_dict(obj["flow"]) if obj.get("flow") is not None else None
+        })
+        return _obj
 
-    @flow.setter
-    def flow(self, flow):
-        """Sets the flow of this ChargeFlowLevelConfiguration.
 
-            The charge flow that this level configuration belongs to.
-
-        :param flow: The flow of this ChargeFlowLevelConfiguration.
-        :type: ChargeFlow
-        """
-
-        self._flow = flow
-    
-    @property
-    def id(self):
-        """Gets the id of this ChargeFlowLevelConfiguration.
-
-            A unique identifier for the object.
-
-        :return: The id of this ChargeFlowLevelConfiguration.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ChargeFlowLevelConfiguration.
-
-            A unique identifier for the object.
-
-        :param id: The id of this ChargeFlowLevelConfiguration.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this ChargeFlowLevelConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this ChargeFlowLevelConfiguration.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this ChargeFlowLevelConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this ChargeFlowLevelConfiguration.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this ChargeFlowLevelConfiguration.
-
-            The name used to identify the charge flow level configuration.
-
-        :return: The name of this ChargeFlowLevelConfiguration.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ChargeFlowLevelConfiguration.
-
-            The name used to identify the charge flow level configuration.
-
-        :param name: The name of this ChargeFlowLevelConfiguration.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def period(self):
-        """Gets the period of this ChargeFlowLevelConfiguration.
-
-            The duration specifies how long the level remains active before transitioning to the next one.
-
-        :return: The period of this ChargeFlowLevelConfiguration.
-        :rtype: str
-        """
-        return self._period
-
-    @period.setter
-    def period(self, period):
-        """Sets the period of this ChargeFlowLevelConfiguration.
-
-            The duration specifies how long the level remains active before transitioning to the next one.
-
-        :param period: The period of this ChargeFlowLevelConfiguration.
-        :type: str
-        """
-
-        self._period = period
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this ChargeFlowLevelConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this ChargeFlowLevelConfiguration.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this ChargeFlowLevelConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this ChargeFlowLevelConfiguration.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def priority(self):
-        """Gets the priority of this ChargeFlowLevelConfiguration.
-
-            The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
-
-        :return: The priority of this ChargeFlowLevelConfiguration.
-        :rtype: int
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, priority):
-        """Sets the priority of this ChargeFlowLevelConfiguration.
-
-            The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
-
-        :param priority: The priority of this ChargeFlowLevelConfiguration.
-        :type: int
-        """
-
-        self._priority = priority
-    
-    @property
-    def state(self):
-        """Gets the state of this ChargeFlowLevelConfiguration.
-
-            The object's current state.
-
-        :return: The state of this ChargeFlowLevelConfiguration.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this ChargeFlowLevelConfiguration.
-
-            The object's current state.
-
-        :param state: The state of this ChargeFlowLevelConfiguration.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def type(self):
-        """Gets the type of this ChargeFlowLevelConfiguration.
-
-            The type defines the method of delivering the payment link to the customer.
-
-        :return: The type of this ChargeFlowLevelConfiguration.
-        :rtype: int
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ChargeFlowLevelConfiguration.
-
-            The type defines the method of delivering the payment link to the customer.
-
-        :param type: The type of this ChargeFlowLevelConfiguration.
-        :type: int
-        """
-
-        self._type = type
-    
-    @property
-    def version(self):
-        """Gets the version of this ChargeFlowLevelConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this ChargeFlowLevelConfiguration.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this ChargeFlowLevelConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this ChargeFlowLevelConfiguration.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ChargeFlowLevelConfiguration, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ChargeFlowLevelConfiguration):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

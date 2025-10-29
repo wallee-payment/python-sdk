@@ -1,176 +1,106 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractSubscriptionAffiliateUpdate(BaseModel):
+    """
+    AbstractSubscriptionAffiliateUpdate
+    """
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=255)]] = Field(default=None, description="The name used to identify the affiliate.")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    state: Optional[CreationEntityState] = None
+    __properties: ClassVar[List[str]] = ["metaData", "name", "language", "state"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractSubscriptionAffiliateUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'language': 'str',
-        'meta_data': 'dict(str, str)',
-        'name': 'str',
-        'state': 'CreationEntityState',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractSubscriptionAffiliateUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'language': 'language','meta_data': 'metaData','name': 'name','state': 'state',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _language = None
-    _meta_data = None
-    _name = None
-    _state = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.language = kwargs.get('language', None)
-        self.meta_data = kwargs.get('meta_data', None)
-        self.name = kwargs.get('name', None)
-        self.state = kwargs.get('state', None)
-        
-
-    
-    @property
-    def language(self):
-        """Gets the language of this AbstractSubscriptionAffiliateUpdate.
-
-            The language that is linked to the object.
-
-        :return: The language of this AbstractSubscriptionAffiliateUpdate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._language
+        excluded_fields: Set[str] = set([
+        ])
 
-    @language.setter
-    def language(self, language):
-        """Sets the language of this AbstractSubscriptionAffiliateUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The language that is linked to the object.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractSubscriptionAffiliateUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param language: The language of this AbstractSubscriptionAffiliateUpdate.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._language = language
-    
-    @property
-    def meta_data(self):
-        """Gets the meta_data of this AbstractSubscriptionAffiliateUpdate.
+        _obj = cls.model_validate({
+            "metaData": obj.get("metaData"),
+            "name": obj.get("name"),
+            "language": obj.get("language"),
+            "state": obj.get("state")
+        })
+        return _obj
 
-            Allow to store additional information about the object.
 
-        :return: The meta_data of this AbstractSubscriptionAffiliateUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._meta_data
-
-    @meta_data.setter
-    def meta_data(self, meta_data):
-        """Sets the meta_data of this AbstractSubscriptionAffiliateUpdate.
-
-            Allow to store additional information about the object.
-
-        :param meta_data: The meta_data of this AbstractSubscriptionAffiliateUpdate.
-        :type: dict(str, str)
-        """
-
-        self._meta_data = meta_data
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractSubscriptionAffiliateUpdate.
-
-            The name used to identify the affiliate.
-
-        :return: The name of this AbstractSubscriptionAffiliateUpdate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractSubscriptionAffiliateUpdate.
-
-            The name used to identify the affiliate.
-
-        :param name: The name of this AbstractSubscriptionAffiliateUpdate.
-        :type: str
-        """
-        if name is not None and len(name) > 255:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `255`")
-        if name is not None and len(name) < 3:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
-
-        self._name = name
-    
-    @property
-    def state(self):
-        """Gets the state of this AbstractSubscriptionAffiliateUpdate.
-
-            The object's current state.
-
-        :return: The state of this AbstractSubscriptionAffiliateUpdate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this AbstractSubscriptionAffiliateUpdate.
-
-            The object's current state.
-
-        :param state: The state of this AbstractSubscriptionAffiliateUpdate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractSubscriptionAffiliateUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractSubscriptionAffiliateUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

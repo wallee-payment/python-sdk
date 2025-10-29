@@ -1,250 +1,129 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.subscription_product import SubscriptionProduct
+from wallee.models.subscription_product_version import SubscriptionProductVersion
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionProductVersionRetirement(BaseModel):
+    """
+    SubscriptionProductVersionRetirement
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    respect_termination_periods: Optional[StrictBool] = Field(default=None, description="Whether the subscriptions' termination periods should be respected.", alias="respectTerminationPeriods")
+    product_version: Optional[SubscriptionProductVersion] = Field(default=None, alias="productVersion")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    target_product: Optional[SubscriptionProduct] = Field(default=None, alias="targetProduct")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "respectTerminationPeriods", "productVersion", "id", "createdOn", "version", "targetProduct"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionProductVersionRetirement:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'created_on': 'datetime',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'product_version': 'SubscriptionProductVersion',
-        'respect_termination_periods': 'bool',
-        'target_product': 'SubscriptionProduct',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersionRetirement from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','product_version': 'productVersion','respect_termination_periods': 'respectTerminationPeriods','target_product': 'targetProduct','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _created_on = None
-    _id = None
-    _linked_space_id = None
-    _product_version = None
-    _respect_termination_periods = None
-    _target_product = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.created_on = kwargs.get('created_on', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.product_version = kwargs.get('product_version', None)
-        self.respect_termination_periods = kwargs.get('respect_termination_periods', None)
-        self.target_product = kwargs.get('target_product', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this SubscriptionProductVersionRetirement.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this SubscriptionProductVersionRetirement.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._created_on
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "respect_termination_periods",
+            "id",
+            "created_on",
+            "version",
+        ])
 
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this SubscriptionProductVersionRetirement.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of product_version
+        if self.product_version:
+            _dict['productVersion'] = self.product_version.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of target_product
+        if self.target_product:
+            _dict['targetProduct'] = self.target_product.to_dict()
+        return _dict
 
-            The date and time when the object was created.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersionRetirement from a dict"""
+        if obj is None:
+            return None
 
-        :param created_on: The created_on of this SubscriptionProductVersionRetirement.
-        :type: datetime
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._created_on = created_on
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionProductVersionRetirement.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "respectTerminationPeriods": obj.get("respectTerminationPeriods"),
+            "productVersion": SubscriptionProductVersion.from_dict(obj["productVersion"]) if obj.get("productVersion") is not None else None,
+            "id": obj.get("id"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "targetProduct": SubscriptionProduct.from_dict(obj["targetProduct"]) if obj.get("targetProduct") is not None else None
+        })
+        return _obj
 
-            A unique identifier for the object.
 
-        :return: The id of this SubscriptionProductVersionRetirement.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionProductVersionRetirement.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionProductVersionRetirement.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionProductVersionRetirement.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionProductVersionRetirement.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionProductVersionRetirement.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionProductVersionRetirement.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def product_version(self):
-        """Gets the product_version of this SubscriptionProductVersionRetirement.
-
-            The product version that is to be retired.
-
-        :return: The product_version of this SubscriptionProductVersionRetirement.
-        :rtype: SubscriptionProductVersion
-        """
-        return self._product_version
-
-    @product_version.setter
-    def product_version(self, product_version):
-        """Sets the product_version of this SubscriptionProductVersionRetirement.
-
-            The product version that is to be retired.
-
-        :param product_version: The product_version of this SubscriptionProductVersionRetirement.
-        :type: SubscriptionProductVersion
-        """
-
-        self._product_version = product_version
-    
-    @property
-    def respect_termination_periods(self):
-        """Gets the respect_termination_periods of this SubscriptionProductVersionRetirement.
-
-            Whether the subscriptions' termination periods should be respected.
-
-        :return: The respect_termination_periods of this SubscriptionProductVersionRetirement.
-        :rtype: bool
-        """
-        return self._respect_termination_periods
-
-    @respect_termination_periods.setter
-    def respect_termination_periods(self, respect_termination_periods):
-        """Sets the respect_termination_periods of this SubscriptionProductVersionRetirement.
-
-            Whether the subscriptions' termination periods should be respected.
-
-        :param respect_termination_periods: The respect_termination_periods of this SubscriptionProductVersionRetirement.
-        :type: bool
-        """
-
-        self._respect_termination_periods = respect_termination_periods
-    
-    @property
-    def target_product(self):
-        """Gets the target_product of this SubscriptionProductVersionRetirement.
-
-            The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.
-
-        :return: The target_product of this SubscriptionProductVersionRetirement.
-        :rtype: SubscriptionProduct
-        """
-        return self._target_product
-
-    @target_product.setter
-    def target_product(self, target_product):
-        """Sets the target_product of this SubscriptionProductVersionRetirement.
-
-            The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.
-
-        :param target_product: The target_product of this SubscriptionProductVersionRetirement.
-        :type: SubscriptionProduct
-        """
-
-        self._target_product = target_product
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionProductVersionRetirement.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionProductVersionRetirement.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionProductVersionRetirement.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionProductVersionRetirement.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionProductVersionRetirement, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionProductVersionRetirement):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

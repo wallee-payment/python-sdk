@@ -1,148 +1,109 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class LineItemReduction(BaseModel):
+    """
+    LineItemReduction
+    """
+    quantity_reduction: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.", alias="quantityReduction")
+    unit_price_reduction: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.", alias="unitPriceReduction")
+    line_item_unique_id: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.", alias="lineItemUniqueId")
+    __properties: ClassVar[List[str]] = ["quantityReduction", "unitPriceReduction", "lineItemUniqueId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class LineItemReduction:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'line_item_unique_id': 'str',
-        'quantity_reduction': 'float',
-        'unit_price_reduction': 'float',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of LineItemReduction from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'line_item_unique_id': 'lineItemUniqueId','quantity_reduction': 'quantityReduction','unit_price_reduction': 'unitPriceReduction',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _line_item_unique_id = None
-    _quantity_reduction = None
-    _unit_price_reduction = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.line_item_unique_id = kwargs.get('line_item_unique_id', None)
-        self.quantity_reduction = kwargs.get('quantity_reduction', None)
-        self.unit_price_reduction = kwargs.get('unit_price_reduction', None)
-        
-
-    
-    @property
-    def line_item_unique_id(self):
-        """Gets the line_item_unique_id of this LineItemReduction.
-
-            The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.
-
-        :return: The line_item_unique_id of this LineItemReduction.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._line_item_unique_id
+        excluded_fields: Set[str] = set([
+            "quantity_reduction",
+            "unit_price_reduction",
+            "line_item_unique_id",
+        ])
 
-    @line_item_unique_id.setter
-    def line_item_unique_id(self, line_item_unique_id):
-        """Sets the line_item_unique_id of this LineItemReduction.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of LineItemReduction from a dict"""
+        if obj is None:
+            return None
 
-        :param line_item_unique_id: The line_item_unique_id of this LineItemReduction.
-        :type: str
-        """
-        if line_item_unique_id is not None and len(line_item_unique_id) > 200:
-            raise ValueError("Invalid value for `line_item_unique_id`, length must be less than or equal to `200`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._line_item_unique_id = line_item_unique_id
-    
-    @property
-    def quantity_reduction(self):
-        """Gets the quantity_reduction of this LineItemReduction.
+        _obj = cls.model_validate({
+            "quantityReduction": obj.get("quantityReduction"),
+            "unitPriceReduction": obj.get("unitPriceReduction"),
+            "lineItemUniqueId": obj.get("lineItemUniqueId")
+        })
+        return _obj
 
-            The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.
 
-        :return: The quantity_reduction of this LineItemReduction.
-        :rtype: float
-        """
-        return self._quantity_reduction
-
-    @quantity_reduction.setter
-    def quantity_reduction(self, quantity_reduction):
-        """Sets the quantity_reduction of this LineItemReduction.
-
-            The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.
-
-        :param quantity_reduction: The quantity_reduction of this LineItemReduction.
-        :type: float
-        """
-
-        self._quantity_reduction = quantity_reduction
-    
-    @property
-    def unit_price_reduction(self):
-        """Gets the unit_price_reduction of this LineItemReduction.
-
-            The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.
-
-        :return: The unit_price_reduction of this LineItemReduction.
-        :rtype: float
-        """
-        return self._unit_price_reduction
-
-    @unit_price_reduction.setter
-    def unit_price_reduction(self, unit_price_reduction):
-        """Sets the unit_price_reduction of this LineItemReduction.
-
-            The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.
-
-        :param unit_price_reduction: The unit_price_reduction of this LineItemReduction.
-        :type: float
-        """
-
-        self._unit_price_reduction = unit_price_reduction
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(LineItemReduction, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, LineItemReduction):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,406 +1,161 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.customers_presence import CustomersPresence
+from wallee.models.data_collection_type import DataCollectionType
+from wallee.models.payment_connector_feature import PaymentConnectorFeature
+from wallee.models.payment_method import PaymentMethod
+from wallee.models.payment_method_brand import PaymentMethodBrand
+from wallee.models.payment_primary_risk_taker import PaymentPrimaryRiskTaker
+from wallee.models.payment_processor import PaymentProcessor
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentConnector(BaseModel):
+    """
+    PaymentConnector
+    """
+    supported_features: Optional[List[PaymentConnectorFeature]] = Field(default=None, description="The features that are supported by the connector.", alias="supportedFeatures")
+    supported_customers_presences: Optional[List[CustomersPresence]] = Field(default=None, description="The types of customer's presence that are supported by the connector.", alias="supportedCustomersPresences")
+    data_collection_type: Optional[DataCollectionType] = Field(default=None, alias="dataCollectionType")
+    deprecated: Optional[StrictBool] = Field(default=None, description="Whether the object was deprecated.")
+    primary_risk_taker: Optional[PaymentPrimaryRiskTaker] = Field(default=None, alias="primaryRiskTaker")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
+    payment_method_brand: Optional[PaymentMethodBrand] = Field(default=None, alias="paymentMethodBrand")
+    processor: Optional[PaymentProcessor] = None
+    deprecation_reason: Optional[Dict[str, StrictStr]] = Field(default=None, description="The deprecation reason describes why the object was deprecated.", alias="deprecationReason")
+    supported_currencies: Optional[List[StrictStr]] = Field(default=None, description="The currencies that are supported by the connector.", alias="supportedCurrencies")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    payment_method: Optional[PaymentMethod] = Field(default=None, alias="paymentMethod")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    __properties: ClassVar[List[str]] = ["supportedFeatures", "supportedCustomersPresences", "dataCollectionType", "deprecated", "primaryRiskTaker", "description", "paymentMethodBrand", "processor", "deprecationReason", "supportedCurrencies", "name", "paymentMethod", "id"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentConnector:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'data_collection_type': 'DataCollectionType',
-        'deprecated': 'bool',
-        'deprecation_reason': 'dict(str, str)',
-        'description': 'dict(str, str)',
-        'id': 'int',
-        'name': 'dict(str, str)',
-        'payment_method': 'int',
-        'payment_method_brand': 'PaymentMethodBrand',
-        'primary_risk_taker': 'PaymentPrimaryRiskTaker',
-        'processor': 'int',
-        'supported_currencies': 'list[str]',
-        'supported_customers_presences': 'list[CustomersPresence]',
-        'supported_features': 'list[int]',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentConnector from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'data_collection_type': 'dataCollectionType','deprecated': 'deprecated','deprecation_reason': 'deprecationReason','description': 'description','id': 'id','name': 'name','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','primary_risk_taker': 'primaryRiskTaker','processor': 'processor','supported_currencies': 'supportedCurrencies','supported_customers_presences': 'supportedCustomersPresences','supported_features': 'supportedFeatures',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _data_collection_type = None
-    _deprecated = None
-    _deprecation_reason = None
-    _description = None
-    _id = None
-    _name = None
-    _payment_method = None
-    _payment_method_brand = None
-    _primary_risk_taker = None
-    _processor = None
-    _supported_currencies = None
-    _supported_customers_presences = None
-    _supported_features = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.data_collection_type = kwargs.get('data_collection_type', None)
-        self.deprecated = kwargs.get('deprecated', None)
-        self.deprecation_reason = kwargs.get('deprecation_reason', None)
-        self.description = kwargs.get('description', None)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.payment_method = kwargs.get('payment_method', None)
-        self.payment_method_brand = kwargs.get('payment_method_brand', None)
-        self.primary_risk_taker = kwargs.get('primary_risk_taker', None)
-        self.processor = kwargs.get('processor', None)
-        self.supported_currencies = kwargs.get('supported_currencies', None)
-        self.supported_customers_presences = kwargs.get('supported_customers_presences', None)
-        self.supported_features = kwargs.get('supported_features', None)
-        
-
-    
-    @property
-    def data_collection_type(self):
-        """Gets the data_collection_type of this PaymentConnector.
-
-            The data collection type specifies how the payment information is collected.
-
-        :return: The data_collection_type of this PaymentConnector.
-        :rtype: DataCollectionType
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._data_collection_type
+        excluded_fields: Set[str] = set([
+            "supported_features",
+            "supported_customers_presences",
+            "deprecated",
+            "description",
+            "deprecation_reason",
+            "supported_currencies",
+            "name",
+            "id",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in supported_features (list)
+        _items = []
+        if self.supported_features:
+            for _item_supported_features in self.supported_features:
+                if _item_supported_features:
+                    _items.append(_item_supported_features.to_dict())
+            _dict['supportedFeatures'] = _items
+        # override the default output from pydantic by calling `to_dict()` of payment_method_brand
+        if self.payment_method_brand:
+            _dict['paymentMethodBrand'] = self.payment_method_brand.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of processor
+        if self.processor:
+            _dict['processor'] = self.processor.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of payment_method
+        if self.payment_method:
+            _dict['paymentMethod'] = self.payment_method.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentConnector from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "supportedFeatures": [PaymentConnectorFeature.from_dict(_item) for _item in obj["supportedFeatures"]] if obj.get("supportedFeatures") is not None else None,
+            "supportedCustomersPresences": obj.get("supportedCustomersPresences"),
+            "dataCollectionType": obj.get("dataCollectionType"),
+            "deprecated": obj.get("deprecated"),
+            "primaryRiskTaker": obj.get("primaryRiskTaker"),
+            "description": obj.get("description"),
+            "paymentMethodBrand": PaymentMethodBrand.from_dict(obj["paymentMethodBrand"]) if obj.get("paymentMethodBrand") is not None else None,
+            "processor": PaymentProcessor.from_dict(obj["processor"]) if obj.get("processor") is not None else None,
+            "deprecationReason": obj.get("deprecationReason"),
+            "supportedCurrencies": obj.get("supportedCurrencies"),
+            "name": obj.get("name"),
+            "paymentMethod": PaymentMethod.from_dict(obj["paymentMethod"]) if obj.get("paymentMethod") is not None else None,
+            "id": obj.get("id")
+        })
+        return _obj
 
-    @data_collection_type.setter
-    def data_collection_type(self, data_collection_type):
-        """Sets the data_collection_type of this PaymentConnector.
 
-            The data collection type specifies how the payment information is collected.
-
-        :param data_collection_type: The data_collection_type of this PaymentConnector.
-        :type: DataCollectionType
-        """
-
-        self._data_collection_type = data_collection_type
-    
-    @property
-    def deprecated(self):
-        """Gets the deprecated of this PaymentConnector.
-
-            Whether the object was deprecated.
-
-        :return: The deprecated of this PaymentConnector.
-        :rtype: bool
-        """
-        return self._deprecated
-
-    @deprecated.setter
-    def deprecated(self, deprecated):
-        """Sets the deprecated of this PaymentConnector.
-
-            Whether the object was deprecated.
-
-        :param deprecated: The deprecated of this PaymentConnector.
-        :type: bool
-        """
-
-        self._deprecated = deprecated
-    
-    @property
-    def deprecation_reason(self):
-        """Gets the deprecation_reason of this PaymentConnector.
-
-            The deprecation reason describes why the object was deprecated.
-
-        :return: The deprecation_reason of this PaymentConnector.
-        :rtype: dict(str, str)
-        """
-        return self._deprecation_reason
-
-    @deprecation_reason.setter
-    def deprecation_reason(self, deprecation_reason):
-        """Sets the deprecation_reason of this PaymentConnector.
-
-            The deprecation reason describes why the object was deprecated.
-
-        :param deprecation_reason: The deprecation_reason of this PaymentConnector.
-        :type: dict(str, str)
-        """
-
-        self._deprecation_reason = deprecation_reason
-    
-    @property
-    def description(self):
-        """Gets the description of this PaymentConnector.
-
-            The localized description of the object.
-
-        :return: The description of this PaymentConnector.
-        :rtype: dict(str, str)
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this PaymentConnector.
-
-            The localized description of the object.
-
-        :param description: The description of this PaymentConnector.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentConnector.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentConnector.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentConnector.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentConnector.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def name(self):
-        """Gets the name of this PaymentConnector.
-
-            The localized name of the object.
-
-        :return: The name of this PaymentConnector.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PaymentConnector.
-
-            The localized name of the object.
-
-        :param name: The name of this PaymentConnector.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def payment_method(self):
-        """Gets the payment_method of this PaymentConnector.
-
-            The payment method that the connector supports.
-
-        :return: The payment_method of this PaymentConnector.
-        :rtype: int
-        """
-        return self._payment_method
-
-    @payment_method.setter
-    def payment_method(self, payment_method):
-        """Sets the payment_method of this PaymentConnector.
-
-            The payment method that the connector supports.
-
-        :param payment_method: The payment_method of this PaymentConnector.
-        :type: int
-        """
-
-        self._payment_method = payment_method
-    
-    @property
-    def payment_method_brand(self):
-        """Gets the payment_method_brand of this PaymentConnector.
-
-            The specific brand that this payment connector supports.
-
-        :return: The payment_method_brand of this PaymentConnector.
-        :rtype: PaymentMethodBrand
-        """
-        return self._payment_method_brand
-
-    @payment_method_brand.setter
-    def payment_method_brand(self, payment_method_brand):
-        """Sets the payment_method_brand of this PaymentConnector.
-
-            The specific brand that this payment connector supports.
-
-        :param payment_method_brand: The payment_method_brand of this PaymentConnector.
-        :type: PaymentMethodBrand
-        """
-
-        self._payment_method_brand = payment_method_brand
-    
-    @property
-    def primary_risk_taker(self):
-        """Gets the primary_risk_taker of this PaymentConnector.
-
-            The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
-
-        :return: The primary_risk_taker of this PaymentConnector.
-        :rtype: PaymentPrimaryRiskTaker
-        """
-        return self._primary_risk_taker
-
-    @primary_risk_taker.setter
-    def primary_risk_taker(self, primary_risk_taker):
-        """Sets the primary_risk_taker of this PaymentConnector.
-
-            The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
-
-        :param primary_risk_taker: The primary_risk_taker of this PaymentConnector.
-        :type: PaymentPrimaryRiskTaker
-        """
-
-        self._primary_risk_taker = primary_risk_taker
-    
-    @property
-    def processor(self):
-        """Gets the processor of this PaymentConnector.
-
-            The processor that the connector belongs to.
-
-        :return: The processor of this PaymentConnector.
-        :rtype: int
-        """
-        return self._processor
-
-    @processor.setter
-    def processor(self, processor):
-        """Sets the processor of this PaymentConnector.
-
-            The processor that the connector belongs to.
-
-        :param processor: The processor of this PaymentConnector.
-        :type: int
-        """
-
-        self._processor = processor
-    
-    @property
-    def supported_currencies(self):
-        """Gets the supported_currencies of this PaymentConnector.
-
-            The currencies that are supported by the connector.
-
-        :return: The supported_currencies of this PaymentConnector.
-        :rtype: list[str]
-        """
-        return self._supported_currencies
-
-    @supported_currencies.setter
-    def supported_currencies(self, supported_currencies):
-        """Sets the supported_currencies of this PaymentConnector.
-
-            The currencies that are supported by the connector.
-
-        :param supported_currencies: The supported_currencies of this PaymentConnector.
-        :type: list[str]
-        """
-
-        self._supported_currencies = supported_currencies
-    
-    @property
-    def supported_customers_presences(self):
-        """Gets the supported_customers_presences of this PaymentConnector.
-
-            The types of customer's presence that are supported by the connector.
-
-        :return: The supported_customers_presences of this PaymentConnector.
-        :rtype: list[CustomersPresence]
-        """
-        return self._supported_customers_presences
-
-    @supported_customers_presences.setter
-    def supported_customers_presences(self, supported_customers_presences):
-        """Sets the supported_customers_presences of this PaymentConnector.
-
-            The types of customer's presence that are supported by the connector.
-
-        :param supported_customers_presences: The supported_customers_presences of this PaymentConnector.
-        :type: list[CustomersPresence]
-        """
-
-        self._supported_customers_presences = supported_customers_presences
-    
-    @property
-    def supported_features(self):
-        """Gets the supported_features of this PaymentConnector.
-
-            The features that are supported by the connector.
-
-        :return: The supported_features of this PaymentConnector.
-        :rtype: list[int]
-        """
-        return self._supported_features
-
-    @supported_features.setter
-    def supported_features(self, supported_features):
-        """Sets the supported_features of this PaymentConnector.
-
-            The features that are supported by the connector.
-
-        :param supported_features: The supported_features of this PaymentConnector.
-        :type: list[int]
-        """
-
-        self._supported_features = supported_features
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentConnector, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentConnector):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,280 +1,116 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.space_address_create import SpaceAddressCreate
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractSpaceUpdate(BaseModel):
+    """
+    AbstractSpaceUpdate
+    """
+    request_limit: Optional[StrictInt] = Field(default=None, description="The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.", alias="requestLimit")
+    postal_address: Optional[SpaceAddressCreate] = Field(default=None, alias="postalAddress")
+    name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=200)]] = Field(default=None, description="The name used to identify the space.")
+    technical_contact_addresses: Optional[List[StrictStr]] = Field(default=None, description="The email address that will receive messages about technical issues and errors that occur in the space.", alias="technicalContactAddresses")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.", alias="timeZone")
+    state: Optional[CreationEntityState] = None
+    primary_currency: Optional[StrictStr] = Field(default=None, description="The currency that is used to display aggregated amounts in the space.", alias="primaryCurrency")
+    __properties: ClassVar[List[str]] = ["requestLimit", "postalAddress", "name", "technicalContactAddresses", "timeZone", "state", "primaryCurrency"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractSpaceUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'last_modified_date': 'datetime',
-        'name': 'str',
-        'postal_address': 'SpaceAddressCreate',
-        'primary_currency': 'str',
-        'request_limit': 'int',
-        'state': 'CreationEntityState',
-        'technical_contact_addresses': 'list[str]',
-        'time_zone': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractSpaceUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'last_modified_date': 'lastModifiedDate','name': 'name','postal_address': 'postalAddress','primary_currency': 'primaryCurrency','request_limit': 'requestLimit','state': 'state','technical_contact_addresses': 'technicalContactAddresses','time_zone': 'timeZone',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _last_modified_date = None
-    _name = None
-    _postal_address = None
-    _primary_currency = None
-    _request_limit = None
-    _state = None
-    _technical_contact_addresses = None
-    _time_zone = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.last_modified_date = kwargs.get('last_modified_date', None)
-        self.name = kwargs.get('name', None)
-        self.postal_address = kwargs.get('postal_address', None)
-        self.primary_currency = kwargs.get('primary_currency', None)
-        self.request_limit = kwargs.get('request_limit', None)
-        self.state = kwargs.get('state', None)
-        self.technical_contact_addresses = kwargs.get('technical_contact_addresses', None)
-        self.time_zone = kwargs.get('time_zone', None)
-        
-
-    
-    @property
-    def last_modified_date(self):
-        """Gets the last_modified_date of this AbstractSpaceUpdate.
-
-            The date and time when the object was last modified.
-
-        :return: The last_modified_date of this AbstractSpaceUpdate.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._last_modified_date
+        excluded_fields: Set[str] = set([
+        ])
 
-    @last_modified_date.setter
-    def last_modified_date(self, last_modified_date):
-        """Sets the last_modified_date of this AbstractSpaceUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of postal_address
+        if self.postal_address:
+            _dict['postalAddress'] = self.postal_address.to_dict()
+        return _dict
 
-            The date and time when the object was last modified.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractSpaceUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param last_modified_date: The last_modified_date of this AbstractSpaceUpdate.
-        :type: datetime
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._last_modified_date = last_modified_date
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractSpaceUpdate.
+        _obj = cls.model_validate({
+            "requestLimit": obj.get("requestLimit"),
+            "postalAddress": SpaceAddressCreate.from_dict(obj["postalAddress"]) if obj.get("postalAddress") is not None else None,
+            "name": obj.get("name"),
+            "technicalContactAddresses": obj.get("technicalContactAddresses"),
+            "timeZone": obj.get("timeZone"),
+            "state": obj.get("state"),
+            "primaryCurrency": obj.get("primaryCurrency")
+        })
+        return _obj
 
-            The name used to identify the space.
 
-        :return: The name of this AbstractSpaceUpdate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractSpaceUpdate.
-
-            The name used to identify the space.
-
-        :param name: The name of this AbstractSpaceUpdate.
-        :type: str
-        """
-        if name is not None and len(name) > 200:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `200`")
-        if name is not None and len(name) < 3:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
-
-        self._name = name
-    
-    @property
-    def postal_address(self):
-        """Gets the postal_address of this AbstractSpaceUpdate.
-
-            The address that is used in communication with clients for example in emails, documents, etc.
-
-        :return: The postal_address of this AbstractSpaceUpdate.
-        :rtype: SpaceAddressCreate
-        """
-        return self._postal_address
-
-    @postal_address.setter
-    def postal_address(self, postal_address):
-        """Sets the postal_address of this AbstractSpaceUpdate.
-
-            The address that is used in communication with clients for example in emails, documents, etc.
-
-        :param postal_address: The postal_address of this AbstractSpaceUpdate.
-        :type: SpaceAddressCreate
-        """
-
-        self._postal_address = postal_address
-    
-    @property
-    def primary_currency(self):
-        """Gets the primary_currency of this AbstractSpaceUpdate.
-
-            The currency that is used to display aggregated amounts in the space.
-
-        :return: The primary_currency of this AbstractSpaceUpdate.
-        :rtype: str
-        """
-        return self._primary_currency
-
-    @primary_currency.setter
-    def primary_currency(self, primary_currency):
-        """Sets the primary_currency of this AbstractSpaceUpdate.
-
-            The currency that is used to display aggregated amounts in the space.
-
-        :param primary_currency: The primary_currency of this AbstractSpaceUpdate.
-        :type: str
-        """
-
-        self._primary_currency = primary_currency
-    
-    @property
-    def request_limit(self):
-        """Gets the request_limit of this AbstractSpaceUpdate.
-
-            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
-
-        :return: The request_limit of this AbstractSpaceUpdate.
-        :rtype: int
-        """
-        return self._request_limit
-
-    @request_limit.setter
-    def request_limit(self, request_limit):
-        """Sets the request_limit of this AbstractSpaceUpdate.
-
-            The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
-
-        :param request_limit: The request_limit of this AbstractSpaceUpdate.
-        :type: int
-        """
-
-        self._request_limit = request_limit
-    
-    @property
-    def state(self):
-        """Gets the state of this AbstractSpaceUpdate.
-
-            The object's current state.
-
-        :return: The state of this AbstractSpaceUpdate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this AbstractSpaceUpdate.
-
-            The object's current state.
-
-        :param state: The state of this AbstractSpaceUpdate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def technical_contact_addresses(self):
-        """Gets the technical_contact_addresses of this AbstractSpaceUpdate.
-
-            The email address that will receive messages about technical issues and errors that occur in the space.
-
-        :return: The technical_contact_addresses of this AbstractSpaceUpdate.
-        :rtype: list[str]
-        """
-        return self._technical_contact_addresses
-
-    @technical_contact_addresses.setter
-    def technical_contact_addresses(self, technical_contact_addresses):
-        """Sets the technical_contact_addresses of this AbstractSpaceUpdate.
-
-            The email address that will receive messages about technical issues and errors that occur in the space.
-
-        :param technical_contact_addresses: The technical_contact_addresses of this AbstractSpaceUpdate.
-        :type: list[str]
-        """
-
-        self._technical_contact_addresses = technical_contact_addresses
-    
-    @property
-    def time_zone(self):
-        """Gets the time_zone of this AbstractSpaceUpdate.
-
-            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
-
-        :return: The time_zone of this AbstractSpaceUpdate.
-        :rtype: str
-        """
-        return self._time_zone
-
-    @time_zone.setter
-    def time_zone(self, time_zone):
-        """Sets the time_zone of this AbstractSpaceUpdate.
-
-            The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
-
-        :param time_zone: The time_zone of this AbstractSpaceUpdate.
-        :type: str
-        """
-
-        self._time_zone = time_zone
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractSpaceUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractSpaceUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,432 +1,154 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.payment_terminal_configuration import PaymentTerminalConfiguration
+from wallee.models.payment_terminal_configuration_version_state import PaymentTerminalConfigurationVersionState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentTerminalConfigurationVersion(BaseModel):
+    """
+    PaymentTerminalConfigurationVersion
+    """
+    maintenance_window_start: Optional[StrictStr] = Field(default=None, description="The start time of the terminal's maintenance window.", alias="maintenanceWindowStart")
+    configuration: Optional[PaymentTerminalConfiguration] = None
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The time zone of the payment terminal used to determine the maintenance window.", alias="timeZone")
+    version_applied_immediately: Optional[StrictBool] = Field(default=None, description="Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.", alias="versionAppliedImmediately")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    connector_configurations: Optional[List[StrictInt]] = Field(default=None, description="The payment connector configurations that are available on the payment terminal.", alias="connectorConfigurations")
+    created_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the payment terminal configuration version was created by.", alias="createdBy")
+    default_currency: Optional[StrictStr] = Field(default=None, description="The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.", alias="defaultCurrency")
+    maintenance_window_duration: Optional[StrictStr] = Field(default=None, description="The permitted duration of the terminal's maintenance window.", alias="maintenanceWindowDuration")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[PaymentTerminalConfigurationVersionState] = None
+    __properties: ClassVar[List[str]] = ["maintenanceWindowStart", "configuration", "plannedPurgeDate", "timeZone", "versionAppliedImmediately", "createdOn", "version", "linkedSpaceId", "connectorConfigurations", "createdBy", "defaultCurrency", "maintenanceWindowDuration", "id", "state"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentTerminalConfigurationVersion:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'configuration': 'PaymentTerminalConfiguration',
-        'connector_configurations': 'list[int]',
-        'created_by': 'int',
-        'created_on': 'datetime',
-        'default_currency': 'str',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'maintenance_window_duration': 'str',
-        'maintenance_window_start': 'str',
-        'planned_purge_date': 'datetime',
-        'state': 'PaymentTerminalConfigurationVersionState',
-        'time_zone': 'str',
-        'version': 'int',
-        'version_applied_immediately': 'bool',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentTerminalConfigurationVersion from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'configuration': 'configuration','connector_configurations': 'connectorConfigurations','created_by': 'createdBy','created_on': 'createdOn','default_currency': 'defaultCurrency','id': 'id','linked_space_id': 'linkedSpaceId','maintenance_window_duration': 'maintenanceWindowDuration','maintenance_window_start': 'maintenanceWindowStart','planned_purge_date': 'plannedPurgeDate','state': 'state','time_zone': 'timeZone','version': 'version','version_applied_immediately': 'versionAppliedImmediately',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _configuration = None
-    _connector_configurations = None
-    _created_by = None
-    _created_on = None
-    _default_currency = None
-    _id = None
-    _linked_space_id = None
-    _maintenance_window_duration = None
-    _maintenance_window_start = None
-    _planned_purge_date = None
-    _state = None
-    _time_zone = None
-    _version = None
-    _version_applied_immediately = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.configuration = kwargs.get('configuration', None)
-        self.connector_configurations = kwargs.get('connector_configurations', None)
-        self.created_by = kwargs.get('created_by', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.default_currency = kwargs.get('default_currency', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.maintenance_window_duration = kwargs.get('maintenance_window_duration', None)
-        self.maintenance_window_start = kwargs.get('maintenance_window_start', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.state = kwargs.get('state', None)
-        self.time_zone = kwargs.get('time_zone', None)
-        self.version = kwargs.get('version', None)
-        self.version_applied_immediately = kwargs.get('version_applied_immediately', None)
-        
-
-    
-    @property
-    def configuration(self):
-        """Gets the configuration of this PaymentTerminalConfigurationVersion.
-
-            The payment terminal configuration that the version belongs to.
-
-        :return: The configuration of this PaymentTerminalConfigurationVersion.
-        :rtype: PaymentTerminalConfiguration
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._configuration
+        excluded_fields: Set[str] = set([
+            "maintenance_window_start",
+            "planned_purge_date",
+            "time_zone",
+            "version_applied_immediately",
+            "created_on",
+            "version",
+            "linked_space_id",
+            "connector_configurations",
+            "created_by",
+            "default_currency",
+            "maintenance_window_duration",
+            "id",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of configuration
+        if self.configuration:
+            _dict['configuration'] = self.configuration.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentTerminalConfigurationVersion from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "maintenanceWindowStart": obj.get("maintenanceWindowStart"),
+            "configuration": PaymentTerminalConfiguration.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None,
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "timeZone": obj.get("timeZone"),
+            "versionAppliedImmediately": obj.get("versionAppliedImmediately"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "connectorConfigurations": obj.get("connectorConfigurations"),
+            "createdBy": obj.get("createdBy"),
+            "defaultCurrency": obj.get("defaultCurrency"),
+            "maintenanceWindowDuration": obj.get("maintenanceWindowDuration"),
+            "id": obj.get("id"),
+            "state": obj.get("state")
+        })
+        return _obj
 
-    @configuration.setter
-    def configuration(self, configuration):
-        """Sets the configuration of this PaymentTerminalConfigurationVersion.
 
-            The payment terminal configuration that the version belongs to.
-
-        :param configuration: The configuration of this PaymentTerminalConfigurationVersion.
-        :type: PaymentTerminalConfiguration
-        """
-
-        self._configuration = configuration
-    
-    @property
-    def connector_configurations(self):
-        """Gets the connector_configurations of this PaymentTerminalConfigurationVersion.
-
-            The payment connector configurations that are available on the payment terminal.
-
-        :return: The connector_configurations of this PaymentTerminalConfigurationVersion.
-        :rtype: list[int]
-        """
-        return self._connector_configurations
-
-    @connector_configurations.setter
-    def connector_configurations(self, connector_configurations):
-        """Sets the connector_configurations of this PaymentTerminalConfigurationVersion.
-
-            The payment connector configurations that are available on the payment terminal.
-
-        :param connector_configurations: The connector_configurations of this PaymentTerminalConfigurationVersion.
-        :type: list[int]
-        """
-
-        self._connector_configurations = connector_configurations
-    
-    @property
-    def created_by(self):
-        """Gets the created_by of this PaymentTerminalConfigurationVersion.
-
-            The ID of the user the payment terminal configuration version was created by.
-
-        :return: The created_by of this PaymentTerminalConfigurationVersion.
-        :rtype: int
-        """
-        return self._created_by
-
-    @created_by.setter
-    def created_by(self, created_by):
-        """Sets the created_by of this PaymentTerminalConfigurationVersion.
-
-            The ID of the user the payment terminal configuration version was created by.
-
-        :param created_by: The created_by of this PaymentTerminalConfigurationVersion.
-        :type: int
-        """
-
-        self._created_by = created_by
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this PaymentTerminalConfigurationVersion.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this PaymentTerminalConfigurationVersion.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this PaymentTerminalConfigurationVersion.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this PaymentTerminalConfigurationVersion.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def default_currency(self):
-        """Gets the default_currency of this PaymentTerminalConfigurationVersion.
-
-            The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.
-
-        :return: The default_currency of this PaymentTerminalConfigurationVersion.
-        :rtype: str
-        """
-        return self._default_currency
-
-    @default_currency.setter
-    def default_currency(self, default_currency):
-        """Sets the default_currency of this PaymentTerminalConfigurationVersion.
-
-            The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.
-
-        :param default_currency: The default_currency of this PaymentTerminalConfigurationVersion.
-        :type: str
-        """
-
-        self._default_currency = default_currency
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentTerminalConfigurationVersion.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentTerminalConfigurationVersion.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentTerminalConfigurationVersion.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentTerminalConfigurationVersion.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this PaymentTerminalConfigurationVersion.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this PaymentTerminalConfigurationVersion.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this PaymentTerminalConfigurationVersion.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this PaymentTerminalConfigurationVersion.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def maintenance_window_duration(self):
-        """Gets the maintenance_window_duration of this PaymentTerminalConfigurationVersion.
-
-            The permitted duration of the terminal's maintenance window.
-
-        :return: The maintenance_window_duration of this PaymentTerminalConfigurationVersion.
-        :rtype: str
-        """
-        return self._maintenance_window_duration
-
-    @maintenance_window_duration.setter
-    def maintenance_window_duration(self, maintenance_window_duration):
-        """Sets the maintenance_window_duration of this PaymentTerminalConfigurationVersion.
-
-            The permitted duration of the terminal's maintenance window.
-
-        :param maintenance_window_duration: The maintenance_window_duration of this PaymentTerminalConfigurationVersion.
-        :type: str
-        """
-
-        self._maintenance_window_duration = maintenance_window_duration
-    
-    @property
-    def maintenance_window_start(self):
-        """Gets the maintenance_window_start of this PaymentTerminalConfigurationVersion.
-
-            The start time of the terminal's maintenance window.
-
-        :return: The maintenance_window_start of this PaymentTerminalConfigurationVersion.
-        :rtype: str
-        """
-        return self._maintenance_window_start
-
-    @maintenance_window_start.setter
-    def maintenance_window_start(self, maintenance_window_start):
-        """Sets the maintenance_window_start of this PaymentTerminalConfigurationVersion.
-
-            The start time of the terminal's maintenance window.
-
-        :param maintenance_window_start: The maintenance_window_start of this PaymentTerminalConfigurationVersion.
-        :type: str
-        """
-
-        self._maintenance_window_start = maintenance_window_start
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this PaymentTerminalConfigurationVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this PaymentTerminalConfigurationVersion.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this PaymentTerminalConfigurationVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this PaymentTerminalConfigurationVersion.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def state(self):
-        """Gets the state of this PaymentTerminalConfigurationVersion.
-
-            The object's current state.
-
-        :return: The state of this PaymentTerminalConfigurationVersion.
-        :rtype: PaymentTerminalConfigurationVersionState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this PaymentTerminalConfigurationVersion.
-
-            The object's current state.
-
-        :param state: The state of this PaymentTerminalConfigurationVersion.
-        :type: PaymentTerminalConfigurationVersionState
-        """
-
-        self._state = state
-    
-    @property
-    def time_zone(self):
-        """Gets the time_zone of this PaymentTerminalConfigurationVersion.
-
-            The time zone of the payment terminal used to determine the maintenance window.
-
-        :return: The time_zone of this PaymentTerminalConfigurationVersion.
-        :rtype: str
-        """
-        return self._time_zone
-
-    @time_zone.setter
-    def time_zone(self, time_zone):
-        """Sets the time_zone of this PaymentTerminalConfigurationVersion.
-
-            The time zone of the payment terminal used to determine the maintenance window.
-
-        :param time_zone: The time_zone of this PaymentTerminalConfigurationVersion.
-        :type: str
-        """
-
-        self._time_zone = time_zone
-    
-    @property
-    def version(self):
-        """Gets the version of this PaymentTerminalConfigurationVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this PaymentTerminalConfigurationVersion.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this PaymentTerminalConfigurationVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this PaymentTerminalConfigurationVersion.
-        :type: int
-        """
-
-        self._version = version
-    
-    @property
-    def version_applied_immediately(self):
-        """Gets the version_applied_immediately of this PaymentTerminalConfigurationVersion.
-
-            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
-
-        :return: The version_applied_immediately of this PaymentTerminalConfigurationVersion.
-        :rtype: bool
-        """
-        return self._version_applied_immediately
-
-    @version_applied_immediately.setter
-    def version_applied_immediately(self, version_applied_immediately):
-        """Sets the version_applied_immediately of this PaymentTerminalConfigurationVersion.
-
-            Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
-
-        :param version_applied_immediately: The version_applied_immediately of this PaymentTerminalConfigurationVersion.
-        :type: bool
-        """
-
-        self._version_applied_immediately = version_applied_immediately
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentTerminalConfigurationVersion, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentTerminalConfigurationVersion):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

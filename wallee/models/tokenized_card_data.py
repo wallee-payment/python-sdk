@@ -1,172 +1,113 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.card_cryptogram import CardCryptogram
+from wallee.models.recurring_indicator import RecurringIndicator
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TokenizedCardData(BaseModel):
+    """
+    TokenizedCardData
+    """
+    initial_recurring_transaction: Optional[StrictBool] = Field(default=None, description="Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.", alias="initialRecurringTransaction")
+    recurring_indicator: Optional[RecurringIndicator] = Field(default=None, alias="recurringIndicator")
+    token_requestor_id: Optional[StrictStr] = Field(default=None, description="The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.", alias="tokenRequestorId")
+    cryptogram: Optional[CardCryptogram] = None
+    __properties: ClassVar[List[str]] = ["initialRecurringTransaction", "recurringIndicator", "tokenRequestorId", "cryptogram"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TokenizedCardData:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'cryptogram': 'CardCryptogram',
-        'initial_recurring_transaction': 'bool',
-        'recurring_indicator': 'RecurringIndicator',
-        'token_requestor_id': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TokenizedCardData from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'cryptogram': 'cryptogram','initial_recurring_transaction': 'initialRecurringTransaction','recurring_indicator': 'recurringIndicator','token_requestor_id': 'tokenRequestorId',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _cryptogram = None
-    _initial_recurring_transaction = None
-    _recurring_indicator = None
-    _token_requestor_id = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.cryptogram = kwargs.get('cryptogram', None)
-        self.initial_recurring_transaction = kwargs.get('initial_recurring_transaction', None)
-        self.recurring_indicator = kwargs.get('recurring_indicator', None)
-        self.token_requestor_id = kwargs.get('token_requestor_id', None)
-        
-
-    
-    @property
-    def cryptogram(self):
-        """Gets the cryptogram of this TokenizedCardData.
-
-            An additional authentication value that enhances the security of tokenized card transactions.
-
-        :return: The cryptogram of this TokenizedCardData.
-        :rtype: CardCryptogram
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._cryptogram
+        excluded_fields: Set[str] = set([
+            "initial_recurring_transaction",
+            "token_requestor_id",
+        ])
 
-    @cryptogram.setter
-    def cryptogram(self, cryptogram):
-        """Sets the cryptogram of this TokenizedCardData.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of cryptogram
+        if self.cryptogram:
+            _dict['cryptogram'] = self.cryptogram.to_dict()
+        return _dict
 
-            An additional authentication value that enhances the security of tokenized card transactions.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TokenizedCardData from a dict"""
+        if obj is None:
+            return None
 
-        :param cryptogram: The cryptogram of this TokenizedCardData.
-        :type: CardCryptogram
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._cryptogram = cryptogram
-    
-    @property
-    def initial_recurring_transaction(self):
-        """Gets the initial_recurring_transaction of this TokenizedCardData.
+        _obj = cls.model_validate({
+            "initialRecurringTransaction": obj.get("initialRecurringTransaction"),
+            "recurringIndicator": obj.get("recurringIndicator"),
+            "tokenRequestorId": obj.get("tokenRequestorId"),
+            "cryptogram": CardCryptogram.from_dict(obj["cryptogram"]) if obj.get("cryptogram") is not None else None
+        })
+        return _obj
 
-            Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
 
-        :return: The initial_recurring_transaction of this TokenizedCardData.
-        :rtype: bool
-        """
-        return self._initial_recurring_transaction
-
-    @initial_recurring_transaction.setter
-    def initial_recurring_transaction(self, initial_recurring_transaction):
-        """Sets the initial_recurring_transaction of this TokenizedCardData.
-
-            Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
-
-        :param initial_recurring_transaction: The initial_recurring_transaction of this TokenizedCardData.
-        :type: bool
-        """
-
-        self._initial_recurring_transaction = initial_recurring_transaction
-    
-    @property
-    def recurring_indicator(self):
-        """Gets the recurring_indicator of this TokenizedCardData.
-
-            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
-
-        :return: The recurring_indicator of this TokenizedCardData.
-        :rtype: RecurringIndicator
-        """
-        return self._recurring_indicator
-
-    @recurring_indicator.setter
-    def recurring_indicator(self, recurring_indicator):
-        """Sets the recurring_indicator of this TokenizedCardData.
-
-            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
-
-        :param recurring_indicator: The recurring_indicator of this TokenizedCardData.
-        :type: RecurringIndicator
-        """
-
-        self._recurring_indicator = recurring_indicator
-    
-    @property
-    def token_requestor_id(self):
-        """Gets the token_requestor_id of this TokenizedCardData.
-
-            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
-
-        :return: The token_requestor_id of this TokenizedCardData.
-        :rtype: str
-        """
-        return self._token_requestor_id
-
-    @token_requestor_id.setter
-    def token_requestor_id(self, token_requestor_id):
-        """Sets the token_requestor_id of this TokenizedCardData.
-
-            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
-
-        :param token_requestor_id: The token_requestor_id of this TokenizedCardData.
-        :type: str
-        """
-
-        self._token_requestor_id = token_requestor_id
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TokenizedCardData, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TokenizedCardData):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

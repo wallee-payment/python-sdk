@@ -1,484 +1,160 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.failure_reason import FailureReason
+from wallee.models.payment_contract_state import PaymentContractState
+from wallee.models.payment_contract_type import PaymentContractType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentContract(BaseModel):
+    """
+    PaymentContract
+    """
+    contract_type: Optional[PaymentContractType] = Field(default=None, alias="contractType")
+    terminated_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the contract was terminated by.", alias="terminatedBy")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    terminated_on: Optional[datetime] = Field(default=None, description="The date and time when the contract was terminated.", alias="terminatedOn")
+    activated_on: Optional[datetime] = Field(default=None, description="The date and time when the contract was activated.", alias="activatedOn")
+    start_terminating_on: Optional[datetime] = Field(default=None, description="The date and time when the termination process of the contract was started.", alias="startTerminatingOn")
+    created_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the contract was created by.", alias="createdBy")
+    contract_identifier: Optional[StrictStr] = Field(default=None, description="The identifier of the contract.", alias="contractIdentifier")
+    rejected_on: Optional[datetime] = Field(default=None, description="The date and time when the contract was rejected.", alias="rejectedOn")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[PaymentContractState] = None
+    rejection_reason: Optional[FailureReason] = Field(default=None, alias="rejectionReason")
+    account: Optional[StrictInt] = Field(default=None, description="This account that the contract belongs to.")
+    __properties: ClassVar[List[str]] = ["contractType", "terminatedBy", "externalId", "createdOn", "version", "terminatedOn", "activatedOn", "startTerminatingOn", "createdBy", "contractIdentifier", "rejectedOn", "id", "state", "rejectionReason", "account"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentContract:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'account': 'int',
-        'activated_on': 'datetime',
-        'contract_identifier': 'str',
-        'contract_type': 'PaymentContractType',
-        'created_by': 'int',
-        'created_on': 'datetime',
-        'external_id': 'str',
-        'id': 'int',
-        'last_modified_date': 'datetime',
-        'rejected_on': 'datetime',
-        'rejection_reason': 'FailureReason',
-        'start_terminating_on': 'datetime',
-        'state': 'PaymentContractState',
-        'terminated_by': 'int',
-        'terminated_on': 'datetime',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentContract from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'account': 'account','activated_on': 'activatedOn','contract_identifier': 'contractIdentifier','contract_type': 'contractType','created_by': 'createdBy','created_on': 'createdOn','external_id': 'externalId','id': 'id','last_modified_date': 'lastModifiedDate','rejected_on': 'rejectedOn','rejection_reason': 'rejectionReason','start_terminating_on': 'startTerminatingOn','state': 'state','terminated_by': 'terminatedBy','terminated_on': 'terminatedOn','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _account = None
-    _activated_on = None
-    _contract_identifier = None
-    _contract_type = None
-    _created_by = None
-    _created_on = None
-    _external_id = None
-    _id = None
-    _last_modified_date = None
-    _rejected_on = None
-    _rejection_reason = None
-    _start_terminating_on = None
-    _state = None
-    _terminated_by = None
-    _terminated_on = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.account = kwargs.get('account', None)
-        self.activated_on = kwargs.get('activated_on', None)
-        self.contract_identifier = kwargs.get('contract_identifier', None)
-        self.contract_type = kwargs.get('contract_type', None)
-        self.created_by = kwargs.get('created_by', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.last_modified_date = kwargs.get('last_modified_date', None)
-        self.rejected_on = kwargs.get('rejected_on', None)
-        self.rejection_reason = kwargs.get('rejection_reason', None)
-        self.start_terminating_on = kwargs.get('start_terminating_on', None)
-        self.state = kwargs.get('state', None)
-        self.terminated_by = kwargs.get('terminated_by', None)
-        self.terminated_on = kwargs.get('terminated_on', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def account(self):
-        """Gets the account of this PaymentContract.
-
-            This account that the contract belongs to.
-
-        :return: The account of this PaymentContract.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._account
+        excluded_fields: Set[str] = set([
+            "terminated_by",
+            "external_id",
+            "created_on",
+            "version",
+            "terminated_on",
+            "activated_on",
+            "start_terminating_on",
+            "created_by",
+            "contract_identifier",
+            "rejected_on",
+            "id",
+            "account",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of contract_type
+        if self.contract_type:
+            _dict['contractType'] = self.contract_type.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of rejection_reason
+        if self.rejection_reason:
+            _dict['rejectionReason'] = self.rejection_reason.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentContract from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "contractType": PaymentContractType.from_dict(obj["contractType"]) if obj.get("contractType") is not None else None,
+            "terminatedBy": obj.get("terminatedBy"),
+            "externalId": obj.get("externalId"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "terminatedOn": obj.get("terminatedOn"),
+            "activatedOn": obj.get("activatedOn"),
+            "startTerminatingOn": obj.get("startTerminatingOn"),
+            "createdBy": obj.get("createdBy"),
+            "contractIdentifier": obj.get("contractIdentifier"),
+            "rejectedOn": obj.get("rejectedOn"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "rejectionReason": FailureReason.from_dict(obj["rejectionReason"]) if obj.get("rejectionReason") is not None else None,
+            "account": obj.get("account")
+        })
+        return _obj
 
-    @account.setter
-    def account(self, account):
-        """Sets the account of this PaymentContract.
 
-            This account that the contract belongs to.
-
-        :param account: The account of this PaymentContract.
-        :type: int
-        """
-
-        self._account = account
-    
-    @property
-    def activated_on(self):
-        """Gets the activated_on of this PaymentContract.
-
-            The date and time when the contract was activated.
-
-        :return: The activated_on of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._activated_on
-
-    @activated_on.setter
-    def activated_on(self, activated_on):
-        """Sets the activated_on of this PaymentContract.
-
-            The date and time when the contract was activated.
-
-        :param activated_on: The activated_on of this PaymentContract.
-        :type: datetime
-        """
-
-        self._activated_on = activated_on
-    
-    @property
-    def contract_identifier(self):
-        """Gets the contract_identifier of this PaymentContract.
-
-            The identifier of the contract.
-
-        :return: The contract_identifier of this PaymentContract.
-        :rtype: str
-        """
-        return self._contract_identifier
-
-    @contract_identifier.setter
-    def contract_identifier(self, contract_identifier):
-        """Sets the contract_identifier of this PaymentContract.
-
-            The identifier of the contract.
-
-        :param contract_identifier: The contract_identifier of this PaymentContract.
-        :type: str
-        """
-
-        self._contract_identifier = contract_identifier
-    
-    @property
-    def contract_type(self):
-        """Gets the contract_type of this PaymentContract.
-
-            The type of the contract.
-
-        :return: The contract_type of this PaymentContract.
-        :rtype: PaymentContractType
-        """
-        return self._contract_type
-
-    @contract_type.setter
-    def contract_type(self, contract_type):
-        """Sets the contract_type of this PaymentContract.
-
-            The type of the contract.
-
-        :param contract_type: The contract_type of this PaymentContract.
-        :type: PaymentContractType
-        """
-
-        self._contract_type = contract_type
-    
-    @property
-    def created_by(self):
-        """Gets the created_by of this PaymentContract.
-
-            The ID of the user the contract was created by.
-
-        :return: The created_by of this PaymentContract.
-        :rtype: int
-        """
-        return self._created_by
-
-    @created_by.setter
-    def created_by(self, created_by):
-        """Sets the created_by of this PaymentContract.
-
-            The ID of the user the contract was created by.
-
-        :param created_by: The created_by of this PaymentContract.
-        :type: int
-        """
-
-        self._created_by = created_by
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this PaymentContract.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this PaymentContract.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this PaymentContract.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this PaymentContract.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this PaymentContract.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this PaymentContract.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this PaymentContract.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentContract.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentContract.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentContract.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentContract.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def last_modified_date(self):
-        """Gets the last_modified_date of this PaymentContract.
-
-            The date and time when the object was last modified.
-
-        :return: The last_modified_date of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._last_modified_date
-
-    @last_modified_date.setter
-    def last_modified_date(self, last_modified_date):
-        """Sets the last_modified_date of this PaymentContract.
-
-            The date and time when the object was last modified.
-
-        :param last_modified_date: The last_modified_date of this PaymentContract.
-        :type: datetime
-        """
-
-        self._last_modified_date = last_modified_date
-    
-    @property
-    def rejected_on(self):
-        """Gets the rejected_on of this PaymentContract.
-
-            The date and time when the contract was rejected.
-
-        :return: The rejected_on of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._rejected_on
-
-    @rejected_on.setter
-    def rejected_on(self, rejected_on):
-        """Sets the rejected_on of this PaymentContract.
-
-            The date and time when the contract was rejected.
-
-        :param rejected_on: The rejected_on of this PaymentContract.
-        :type: datetime
-        """
-
-        self._rejected_on = rejected_on
-    
-    @property
-    def rejection_reason(self):
-        """Gets the rejection_reason of this PaymentContract.
-
-            The reason for rejecting the contract.
-
-        :return: The rejection_reason of this PaymentContract.
-        :rtype: FailureReason
-        """
-        return self._rejection_reason
-
-    @rejection_reason.setter
-    def rejection_reason(self, rejection_reason):
-        """Sets the rejection_reason of this PaymentContract.
-
-            The reason for rejecting the contract.
-
-        :param rejection_reason: The rejection_reason of this PaymentContract.
-        :type: FailureReason
-        """
-
-        self._rejection_reason = rejection_reason
-    
-    @property
-    def start_terminating_on(self):
-        """Gets the start_terminating_on of this PaymentContract.
-
-            The date and time when the termination process of the contract was started.
-
-        :return: The start_terminating_on of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._start_terminating_on
-
-    @start_terminating_on.setter
-    def start_terminating_on(self, start_terminating_on):
-        """Sets the start_terminating_on of this PaymentContract.
-
-            The date and time when the termination process of the contract was started.
-
-        :param start_terminating_on: The start_terminating_on of this PaymentContract.
-        :type: datetime
-        """
-
-        self._start_terminating_on = start_terminating_on
-    
-    @property
-    def state(self):
-        """Gets the state of this PaymentContract.
-
-            The object's current state.
-
-        :return: The state of this PaymentContract.
-        :rtype: PaymentContractState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this PaymentContract.
-
-            The object's current state.
-
-        :param state: The state of this PaymentContract.
-        :type: PaymentContractState
-        """
-
-        self._state = state
-    
-    @property
-    def terminated_by(self):
-        """Gets the terminated_by of this PaymentContract.
-
-            The ID of the user the contract was terminated by.
-
-        :return: The terminated_by of this PaymentContract.
-        :rtype: int
-        """
-        return self._terminated_by
-
-    @terminated_by.setter
-    def terminated_by(self, terminated_by):
-        """Sets the terminated_by of this PaymentContract.
-
-            The ID of the user the contract was terminated by.
-
-        :param terminated_by: The terminated_by of this PaymentContract.
-        :type: int
-        """
-
-        self._terminated_by = terminated_by
-    
-    @property
-    def terminated_on(self):
-        """Gets the terminated_on of this PaymentContract.
-
-            The date and time when the contract was terminated.
-
-        :return: The terminated_on of this PaymentContract.
-        :rtype: datetime
-        """
-        return self._terminated_on
-
-    @terminated_on.setter
-    def terminated_on(self, terminated_on):
-        """Sets the terminated_on of this PaymentContract.
-
-            The date and time when the contract was terminated.
-
-        :param terminated_on: The terminated_on of this PaymentContract.
-        :type: datetime
-        """
-
-        self._terminated_on = terminated_on
-    
-    @property
-    def version(self):
-        """Gets the version of this PaymentContract.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this PaymentContract.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this PaymentContract.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this PaymentContract.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentContract, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentContract):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

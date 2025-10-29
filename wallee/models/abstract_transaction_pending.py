@@ -1,578 +1,172 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.address_create import AddressCreate
+from wallee.models.line_item_create import LineItemCreate
+from wallee.models.tokenization_mode import TokenizationMode
+from wallee.models.transaction_completion_behavior import TransactionCompletionBehavior
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractTransactionPending(BaseModel):
+    """
+    AbstractTransactionPending
+    """
+    customer_email_address: Optional[Annotated[str, Field(strict=True, max_length=254)]] = Field(default=None, description="The customer's email address.", alias="customerEmailAddress")
+    shipping_method: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The name of the shipping method used to ship the products.", alias="shippingMethod")
+    invoice_merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the invoice.", alias="invoiceMerchantReference")
+    success_url: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=2000)]] = Field(default=None, description="The URL to redirect the customer back to after they successfully authenticated their payment.", alias="successUrl")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The customer's time zone, which affects how dates and times are formatted when communicating with the customer.", alias="timeZone")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    tokenization_mode: Optional[TokenizationMode] = Field(default=None, alias="tokenizationMode")
+    allowed_payment_method_brands: Optional[List[StrictInt]] = Field(default=None, description="The payment method brands that can be used to authorize the transaction.", alias="allowedPaymentMethodBrands")
+    completion_behavior: Optional[TransactionCompletionBehavior] = Field(default=None, alias="completionBehavior")
+    token: Optional[StrictInt] = Field(default=None, description="The payment token that should be used to charge the customer.")
+    line_items: Optional[List[LineItemCreate]] = Field(default=None, description="The line items purchased by the customer.", alias="lineItems")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    customer_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the customer in the external system.", alias="customerId")
+    shipping_address: Optional[AddressCreate] = Field(default=None, alias="shippingAddress")
+    currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the transaction's currency.")
+    billing_address: Optional[AddressCreate] = Field(default=None, alias="billingAddress")
+    merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the transaction.", alias="merchantReference")
+    allowed_payment_method_configurations: Optional[List[StrictInt]] = Field(default=None, description="The payment method configurations that can be used to authorize the transaction.", alias="allowedPaymentMethodConfigurations")
+    failed_url: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=2000)]] = Field(default=None, description="The URL to redirect the customer back to after they canceled or failed to authenticated their payment.", alias="failedUrl")
+    __properties: ClassVar[List[str]] = ["customerEmailAddress", "shippingMethod", "invoiceMerchantReference", "successUrl", "timeZone", "language", "tokenizationMode", "allowedPaymentMethodBrands", "completionBehavior", "token", "lineItems", "metaData", "customerId", "shippingAddress", "currency", "billingAddress", "merchantReference", "allowedPaymentMethodConfigurations", "failedUrl"]
+
+    @field_validator('invoice_merchant_reference')
+    def invoice_merchant_reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    @field_validator('merchant_reference')
+    def merchant_reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractTransactionPending:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'allowed_payment_method_brands': 'list[int]',
-        'allowed_payment_method_configurations': 'list[int]',
-        'billing_address': 'AddressCreate',
-        'completion_behavior': 'TransactionCompletionBehavior',
-        'currency': 'str',
-        'customer_email_address': 'str',
-        'customer_id': 'str',
-        'failed_url': 'str',
-        'invoice_merchant_reference': 'str',
-        'language': 'str',
-        'line_items': 'list[LineItemCreate]',
-        'merchant_reference': 'str',
-        'meta_data': 'dict(str, str)',
-        'shipping_address': 'AddressCreate',
-        'shipping_method': 'str',
-        'success_url': 'str',
-        'time_zone': 'str',
-        'token': 'int',
-        'tokenization_mode': 'TokenizationMode',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractTransactionPending from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'allowed_payment_method_brands': 'allowedPaymentMethodBrands','allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','billing_address': 'billingAddress','completion_behavior': 'completionBehavior','currency': 'currency','customer_email_address': 'customerEmailAddress','customer_id': 'customerId','failed_url': 'failedUrl','invoice_merchant_reference': 'invoiceMerchantReference','language': 'language','line_items': 'lineItems','merchant_reference': 'merchantReference','meta_data': 'metaData','shipping_address': 'shippingAddress','shipping_method': 'shippingMethod','success_url': 'successUrl','time_zone': 'timeZone','token': 'token','tokenization_mode': 'tokenizationMode',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _allowed_payment_method_brands = None
-    _allowed_payment_method_configurations = None
-    _billing_address = None
-    _completion_behavior = None
-    _currency = None
-    _customer_email_address = None
-    _customer_id = None
-    _failed_url = None
-    _invoice_merchant_reference = None
-    _language = None
-    _line_items = None
-    _merchant_reference = None
-    _meta_data = None
-    _shipping_address = None
-    _shipping_method = None
-    _success_url = None
-    _time_zone = None
-    _token = None
-    _tokenization_mode = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.allowed_payment_method_brands = kwargs.get('allowed_payment_method_brands', None)
-        self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
-        self.billing_address = kwargs.get('billing_address', None)
-        self.completion_behavior = kwargs.get('completion_behavior', None)
-        self.currency = kwargs.get('currency', None)
-        self.customer_email_address = kwargs.get('customer_email_address', None)
-        self.customer_id = kwargs.get('customer_id', None)
-        self.failed_url = kwargs.get('failed_url', None)
-        self.invoice_merchant_reference = kwargs.get('invoice_merchant_reference', None)
-        self.language = kwargs.get('language', None)
-        self.line_items = kwargs.get('line_items', None)
-        self.merchant_reference = kwargs.get('merchant_reference', None)
-        self.meta_data = kwargs.get('meta_data', None)
-        self.shipping_address = kwargs.get('shipping_address', None)
-        self.shipping_method = kwargs.get('shipping_method', None)
-        self.success_url = kwargs.get('success_url', None)
-        self.time_zone = kwargs.get('time_zone', None)
-        self.token = kwargs.get('token', None)
-        self.tokenization_mode = kwargs.get('tokenization_mode', None)
-        
-
-    
-    @property
-    def allowed_payment_method_brands(self):
-        """Gets the allowed_payment_method_brands of this AbstractTransactionPending.
-
-            The payment method brands that can be used to authorize the transaction.
-
-        :return: The allowed_payment_method_brands of this AbstractTransactionPending.
-        :rtype: list[int]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._allowed_payment_method_brands
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of shipping_address
+        if self.shipping_address:
+            _dict['shippingAddress'] = self.shipping_address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractTransactionPending from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "customerEmailAddress": obj.get("customerEmailAddress"),
+            "shippingMethod": obj.get("shippingMethod"),
+            "invoiceMerchantReference": obj.get("invoiceMerchantReference"),
+            "successUrl": obj.get("successUrl"),
+            "timeZone": obj.get("timeZone"),
+            "language": obj.get("language"),
+            "tokenizationMode": obj.get("tokenizationMode"),
+            "allowedPaymentMethodBrands": obj.get("allowedPaymentMethodBrands"),
+            "completionBehavior": obj.get("completionBehavior"),
+            "token": obj.get("token"),
+            "lineItems": [LineItemCreate.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "metaData": obj.get("metaData"),
+            "customerId": obj.get("customerId"),
+            "shippingAddress": AddressCreate.from_dict(obj["shippingAddress"]) if obj.get("shippingAddress") is not None else None,
+            "currency": obj.get("currency"),
+            "billingAddress": AddressCreate.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "merchantReference": obj.get("merchantReference"),
+            "allowedPaymentMethodConfigurations": obj.get("allowedPaymentMethodConfigurations"),
+            "failedUrl": obj.get("failedUrl")
+        })
+        return _obj
 
-    @allowed_payment_method_brands.setter
-    def allowed_payment_method_brands(self, allowed_payment_method_brands):
-        """Sets the allowed_payment_method_brands of this AbstractTransactionPending.
 
-            The payment method brands that can be used to authorize the transaction.
-
-        :param allowed_payment_method_brands: The allowed_payment_method_brands of this AbstractTransactionPending.
-        :type: list[int]
-        """
-
-        self._allowed_payment_method_brands = allowed_payment_method_brands
-    
-    @property
-    def allowed_payment_method_configurations(self):
-        """Gets the allowed_payment_method_configurations of this AbstractTransactionPending.
-
-            The payment method configurations that can be used to authorize the transaction.
-
-        :return: The allowed_payment_method_configurations of this AbstractTransactionPending.
-        :rtype: list[int]
-        """
-        return self._allowed_payment_method_configurations
-
-    @allowed_payment_method_configurations.setter
-    def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
-        """Sets the allowed_payment_method_configurations of this AbstractTransactionPending.
-
-            The payment method configurations that can be used to authorize the transaction.
-
-        :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this AbstractTransactionPending.
-        :type: list[int]
-        """
-
-        self._allowed_payment_method_configurations = allowed_payment_method_configurations
-    
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this AbstractTransactionPending.
-
-            The address associated with the payment method for invoicing and transaction processing purposes.
-
-        :return: The billing_address of this AbstractTransactionPending.
-        :rtype: AddressCreate
-        """
-        return self._billing_address
-
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this AbstractTransactionPending.
-
-            The address associated with the payment method for invoicing and transaction processing purposes.
-
-        :param billing_address: The billing_address of this AbstractTransactionPending.
-        :type: AddressCreate
-        """
-
-        self._billing_address = billing_address
-    
-    @property
-    def completion_behavior(self):
-        """Gets the completion_behavior of this AbstractTransactionPending.
-
-            The behavior that controls when the transaction is completed.
-
-        :return: The completion_behavior of this AbstractTransactionPending.
-        :rtype: TransactionCompletionBehavior
-        """
-        return self._completion_behavior
-
-    @completion_behavior.setter
-    def completion_behavior(self, completion_behavior):
-        """Sets the completion_behavior of this AbstractTransactionPending.
-
-            The behavior that controls when the transaction is completed.
-
-        :param completion_behavior: The completion_behavior of this AbstractTransactionPending.
-        :type: TransactionCompletionBehavior
-        """
-
-        self._completion_behavior = completion_behavior
-    
-    @property
-    def currency(self):
-        """Gets the currency of this AbstractTransactionPending.
-
-            The three-letter code (ISO 4217 format) of the transaction's currency.
-
-        :return: The currency of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        """Sets the currency of this AbstractTransactionPending.
-
-            The three-letter code (ISO 4217 format) of the transaction's currency.
-
-        :param currency: The currency of this AbstractTransactionPending.
-        :type: str
-        """
-
-        self._currency = currency
-    
-    @property
-    def customer_email_address(self):
-        """Gets the customer_email_address of this AbstractTransactionPending.
-
-            The customer's email address.
-
-        :return: The customer_email_address of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._customer_email_address
-
-    @customer_email_address.setter
-    def customer_email_address(self, customer_email_address):
-        """Sets the customer_email_address of this AbstractTransactionPending.
-
-            The customer's email address.
-
-        :param customer_email_address: The customer_email_address of this AbstractTransactionPending.
-        :type: str
-        """
-        if customer_email_address is not None and len(customer_email_address) > 254:
-            raise ValueError("Invalid value for `customer_email_address`, length must be less than or equal to `254`")
-
-        self._customer_email_address = customer_email_address
-    
-    @property
-    def customer_id(self):
-        """Gets the customer_id of this AbstractTransactionPending.
-
-            The unique identifier of the customer in the external system.
-
-        :return: The customer_id of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._customer_id
-
-    @customer_id.setter
-    def customer_id(self, customer_id):
-        """Sets the customer_id of this AbstractTransactionPending.
-
-            The unique identifier of the customer in the external system.
-
-        :param customer_id: The customer_id of this AbstractTransactionPending.
-        :type: str
-        """
-
-        self._customer_id = customer_id
-    
-    @property
-    def failed_url(self):
-        """Gets the failed_url of this AbstractTransactionPending.
-
-            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
-
-        :return: The failed_url of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._failed_url
-
-    @failed_url.setter
-    def failed_url(self, failed_url):
-        """Sets the failed_url of this AbstractTransactionPending.
-
-            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
-
-        :param failed_url: The failed_url of this AbstractTransactionPending.
-        :type: str
-        """
-        if failed_url is not None and len(failed_url) > 2000:
-            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `2000`")
-        if failed_url is not None and len(failed_url) < 9:
-            raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
-
-        self._failed_url = failed_url
-    
-    @property
-    def invoice_merchant_reference(self):
-        """Gets the invoice_merchant_reference of this AbstractTransactionPending.
-
-            The merchant's reference used to identify the invoice.
-
-        :return: The invoice_merchant_reference of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._invoice_merchant_reference
-
-    @invoice_merchant_reference.setter
-    def invoice_merchant_reference(self, invoice_merchant_reference):
-        """Sets the invoice_merchant_reference of this AbstractTransactionPending.
-
-            The merchant's reference used to identify the invoice.
-
-        :param invoice_merchant_reference: The invoice_merchant_reference of this AbstractTransactionPending.
-        :type: str
-        """
-        if invoice_merchant_reference is not None and len(invoice_merchant_reference) > 100:
-            raise ValueError("Invalid value for `invoice_merchant_reference`, length must be less than or equal to `100`")
-
-        self._invoice_merchant_reference = invoice_merchant_reference
-    
-    @property
-    def language(self):
-        """Gets the language of this AbstractTransactionPending.
-
-            The language that is linked to the object.
-
-        :return: The language of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this AbstractTransactionPending.
-
-            The language that is linked to the object.
-
-        :param language: The language of this AbstractTransactionPending.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this AbstractTransactionPending.
-
-            The line items purchased by the customer.
-
-        :return: The line_items of this AbstractTransactionPending.
-        :rtype: list[LineItemCreate]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this AbstractTransactionPending.
-
-            The line items purchased by the customer.
-
-        :param line_items: The line_items of this AbstractTransactionPending.
-        :type: list[LineItemCreate]
-        """
-
-        self._line_items = line_items
-    
-    @property
-    def merchant_reference(self):
-        """Gets the merchant_reference of this AbstractTransactionPending.
-
-            The merchant's reference used to identify the transaction.
-
-        :return: The merchant_reference of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._merchant_reference
-
-    @merchant_reference.setter
-    def merchant_reference(self, merchant_reference):
-        """Sets the merchant_reference of this AbstractTransactionPending.
-
-            The merchant's reference used to identify the transaction.
-
-        :param merchant_reference: The merchant_reference of this AbstractTransactionPending.
-        :type: str
-        """
-        if merchant_reference is not None and len(merchant_reference) > 100:
-            raise ValueError("Invalid value for `merchant_reference`, length must be less than or equal to `100`")
-
-        self._merchant_reference = merchant_reference
-    
-    @property
-    def meta_data(self):
-        """Gets the meta_data of this AbstractTransactionPending.
-
-            Allow to store additional information about the object.
-
-        :return: The meta_data of this AbstractTransactionPending.
-        :rtype: dict(str, str)
-        """
-        return self._meta_data
-
-    @meta_data.setter
-    def meta_data(self, meta_data):
-        """Sets the meta_data of this AbstractTransactionPending.
-
-            Allow to store additional information about the object.
-
-        :param meta_data: The meta_data of this AbstractTransactionPending.
-        :type: dict(str, str)
-        """
-
-        self._meta_data = meta_data
-    
-    @property
-    def shipping_address(self):
-        """Gets the shipping_address of this AbstractTransactionPending.
-
-            The address to where the order will be shipped.
-
-        :return: The shipping_address of this AbstractTransactionPending.
-        :rtype: AddressCreate
-        """
-        return self._shipping_address
-
-    @shipping_address.setter
-    def shipping_address(self, shipping_address):
-        """Sets the shipping_address of this AbstractTransactionPending.
-
-            The address to where the order will be shipped.
-
-        :param shipping_address: The shipping_address of this AbstractTransactionPending.
-        :type: AddressCreate
-        """
-
-        self._shipping_address = shipping_address
-    
-    @property
-    def shipping_method(self):
-        """Gets the shipping_method of this AbstractTransactionPending.
-
-            The name of the shipping method used to ship the products.
-
-        :return: The shipping_method of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._shipping_method
-
-    @shipping_method.setter
-    def shipping_method(self, shipping_method):
-        """Sets the shipping_method of this AbstractTransactionPending.
-
-            The name of the shipping method used to ship the products.
-
-        :param shipping_method: The shipping_method of this AbstractTransactionPending.
-        :type: str
-        """
-        if shipping_method is not None and len(shipping_method) > 200:
-            raise ValueError("Invalid value for `shipping_method`, length must be less than or equal to `200`")
-
-        self._shipping_method = shipping_method
-    
-    @property
-    def success_url(self):
-        """Gets the success_url of this AbstractTransactionPending.
-
-            The URL to redirect the customer back to after they successfully authenticated their payment.
-
-        :return: The success_url of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._success_url
-
-    @success_url.setter
-    def success_url(self, success_url):
-        """Sets the success_url of this AbstractTransactionPending.
-
-            The URL to redirect the customer back to after they successfully authenticated their payment.
-
-        :param success_url: The success_url of this AbstractTransactionPending.
-        :type: str
-        """
-        if success_url is not None and len(success_url) > 2000:
-            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `2000`")
-        if success_url is not None and len(success_url) < 9:
-            raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
-
-        self._success_url = success_url
-    
-    @property
-    def time_zone(self):
-        """Gets the time_zone of this AbstractTransactionPending.
-
-            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
-
-        :return: The time_zone of this AbstractTransactionPending.
-        :rtype: str
-        """
-        return self._time_zone
-
-    @time_zone.setter
-    def time_zone(self, time_zone):
-        """Sets the time_zone of this AbstractTransactionPending.
-
-            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
-
-        :param time_zone: The time_zone of this AbstractTransactionPending.
-        :type: str
-        """
-
-        self._time_zone = time_zone
-    
-    @property
-    def token(self):
-        """Gets the token of this AbstractTransactionPending.
-
-            The payment token that should be used to charge the customer.
-
-        :return: The token of this AbstractTransactionPending.
-        :rtype: int
-        """
-        return self._token
-
-    @token.setter
-    def token(self, token):
-        """Sets the token of this AbstractTransactionPending.
-
-            The payment token that should be used to charge the customer.
-
-        :param token: The token of this AbstractTransactionPending.
-        :type: int
-        """
-
-        self._token = token
-    
-    @property
-    def tokenization_mode(self):
-        """Gets the tokenization_mode of this AbstractTransactionPending.
-
-            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
-
-        :return: The tokenization_mode of this AbstractTransactionPending.
-        :rtype: TokenizationMode
-        """
-        return self._tokenization_mode
-
-    @tokenization_mode.setter
-    def tokenization_mode(self, tokenization_mode):
-        """Sets the tokenization_mode of this AbstractTransactionPending.
-
-            The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
-
-        :param tokenization_mode: The tokenization_mode of this AbstractTransactionPending.
-        :type: TokenizationMode
-        """
-
-        self._tokenization_mode = tokenization_mode
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractTransactionPending, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractTransactionPending):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

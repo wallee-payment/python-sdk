@@ -1,172 +1,120 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.feature import Feature
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ManualTaskType(BaseModel):
+    """
+    The manual task type indicates what kind of manual task is required to be executed by the human.
+    """
+    features: Optional[List[Feature]] = Field(default=None, description="The features that this type belongs to.")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    __properties: ClassVar[List[str]] = ["features", "name", "description", "id"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ManualTaskType:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'description': 'dict(str, str)',
-        'features': 'list[int]',
-        'id': 'int',
-        'name': 'dict(str, str)',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ManualTaskType from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'description': 'description','features': 'features','id': 'id','name': 'name',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _description = None
-    _features = None
-    _id = None
-    _name = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.description = kwargs.get('description', None)
-        self.features = kwargs.get('features', None)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        
-
-    
-    @property
-    def description(self):
-        """Gets the description of this ManualTaskType.
-
-            The localized description of the object.
-
-        :return: The description of this ManualTaskType.
-        :rtype: dict(str, str)
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._description
+        excluded_fields: Set[str] = set([
+            "features",
+            "name",
+            "description",
+            "id",
+        ])
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ManualTaskType.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in features (list)
+        _items = []
+        if self.features:
+            for _item_features in self.features:
+                if _item_features:
+                    _items.append(_item_features.to_dict())
+            _dict['features'] = _items
+        return _dict
 
-            The localized description of the object.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ManualTaskType from a dict"""
+        if obj is None:
+            return None
 
-        :param description: The description of this ManualTaskType.
-        :type: dict(str, str)
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._description = description
-    
-    @property
-    def features(self):
-        """Gets the features of this ManualTaskType.
+        _obj = cls.model_validate({
+            "features": [Feature.from_dict(_item) for _item in obj["features"]] if obj.get("features") is not None else None,
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "id": obj.get("id")
+        })
+        return _obj
 
-            The features that this type belongs to.
 
-        :return: The features of this ManualTaskType.
-        :rtype: list[int]
-        """
-        return self._features
-
-    @features.setter
-    def features(self, features):
-        """Sets the features of this ManualTaskType.
-
-            The features that this type belongs to.
-
-        :param features: The features of this ManualTaskType.
-        :type: list[int]
-        """
-
-        self._features = features
-    
-    @property
-    def id(self):
-        """Gets the id of this ManualTaskType.
-
-            A unique identifier for the object.
-
-        :return: The id of this ManualTaskType.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ManualTaskType.
-
-            A unique identifier for the object.
-
-        :param id: The id of this ManualTaskType.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def name(self):
-        """Gets the name of this ManualTaskType.
-
-            The localized name of the object.
-
-        :return: The name of this ManualTaskType.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ManualTaskType.
-
-            The localized name of the object.
-
-        :param name: The name of this ManualTaskType.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ManualTaskType, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ManualTaskType):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

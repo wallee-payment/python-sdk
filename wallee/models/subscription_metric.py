@@ -1,276 +1,130 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.subscription_metric_type import SubscriptionMetricType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionMetric(BaseModel):
+    """
+    A metric represents the usage of a resource that can be measured.
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the metric that is displayed to the customer.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the metric that is displayed to the customer.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    type: Optional[SubscriptionMetricType] = None
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "name", "plannedPurgeDate", "description", "id", "state", "type", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionMetric:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'description': 'dict(str, str)',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'name': 'dict(str, str)',
-        'planned_purge_date': 'datetime',
-        'state': 'CreationEntityState',
-        'type': 'SubscriptionMetricType',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionMetric from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'description': 'description','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _description = None
-    _id = None
-    _linked_space_id = None
-    _name = None
-    _planned_purge_date = None
-    _state = None
-    _type = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.description = kwargs.get('description', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.state = kwargs.get('state', None)
-        self.type = kwargs.get('type', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def description(self):
-        """Gets the description of this SubscriptionMetric.
-
-            The localized description of the metric that is displayed to the customer.
-
-        :return: The description of this SubscriptionMetric.
-        :rtype: dict(str, str)
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._description
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "name",
+            "planned_purge_date",
+            "description",
+            "id",
+            "version",
+        ])
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this SubscriptionMetric.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        return _dict
 
-            The localized description of the metric that is displayed to the customer.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionMetric from a dict"""
+        if obj is None:
+            return None
 
-        :param description: The description of this SubscriptionMetric.
-        :type: dict(str, str)
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._description = description
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionMetric.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "name": obj.get("name"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "type": SubscriptionMetricType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "version": obj.get("version")
+        })
+        return _obj
 
-            A unique identifier for the object.
 
-        :return: The id of this SubscriptionMetric.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionMetric.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionMetric.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionMetric.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionMetric.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionMetric.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionMetric.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionMetric.
-
-            The localized name of the metric that is displayed to the customer.
-
-        :return: The name of this SubscriptionMetric.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionMetric.
-
-            The localized name of the metric that is displayed to the customer.
-
-        :param name: The name of this SubscriptionMetric.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this SubscriptionMetric.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this SubscriptionMetric.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this SubscriptionMetric.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this SubscriptionMetric.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionMetric.
-
-            The object's current state.
-
-        :return: The state of this SubscriptionMetric.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionMetric.
-
-            The object's current state.
-
-        :param state: The state of this SubscriptionMetric.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def type(self):
-        """Gets the type of this SubscriptionMetric.
-
-            The type of the metric.
-
-        :return: The type of this SubscriptionMetric.
-        :rtype: SubscriptionMetricType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this SubscriptionMetric.
-
-            The type of the metric.
-
-        :param type: The type of this SubscriptionMetric.
-        :type: SubscriptionMetricType
-        """
-
-        self._type = type
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionMetric.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionMetric.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionMetric.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionMetric.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionMetric, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionMetric):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,412 +1,120 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionProductComponentUpdate(BaseModel):
+    """
+    SubscriptionProductComponentUpdate
+    """
+    reference: Optional[StrictInt] = Field(default=None, description="The reference is used to link components across different product versions.")
+    tax_class: Optional[StrictInt] = Field(default=None, description="The tax class to be applied to fees.", alias="taxClass")
+    quantity_step: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity step determines the interval in which the quantity can be increased.", alias="quantityStep")
+    sort_order: Optional[StrictInt] = Field(default=None, description="When listing components, they can be sorted by this number.", alias="sortOrder")
+    component_group: Optional[StrictInt] = Field(default=None, description="The group that the component belongs to.", alias="componentGroup")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the component that is displayed to the customer.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the component that is displayed to the customer.")
+    component_change_weight: Optional[StrictInt] = Field(default=None, description="If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.", alias="componentChangeWeight")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    maximal_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="A maximum of the defined quantity can be selected for this component.", alias="maximalQuantity")
+    default_component: Optional[StrictBool] = Field(default=None, description="Whether this is the default component in its group and preselected.", alias="defaultComponent")
+    minimal_quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="A minimum of the defined quantity must be selected for this component.", alias="minimalQuantity")
+    __properties: ClassVar[List[str]] = ["reference", "taxClass", "quantityStep", "sortOrder", "componentGroup", "name", "description", "componentChangeWeight", "version", "maximalQuantity", "defaultComponent", "minimalQuantity"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionProductComponentUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'component_change_weight': 'int',
-        'component_group': 'int',
-        'default_component': 'bool',
-        'description': 'dict(str, str)',
-        'maximal_quantity': 'float',
-        'minimal_quantity': 'float',
-        'name': 'dict(str, str)',
-        'quantity_step': 'float',
-        'reference': 'int',
-        'sort_order': 'int',
-        'tax_class': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionProductComponentUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','component_change_weight': 'componentChangeWeight','component_group': 'componentGroup','default_component': 'defaultComponent','description': 'description','maximal_quantity': 'maximalQuantity','minimal_quantity': 'minimalQuantity','name': 'name','quantity_step': 'quantityStep','reference': 'reference','sort_order': 'sortOrder','tax_class': 'taxClass',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _component_change_weight = None
-    _component_group = None
-    _default_component = None
-    _description = None
-    _maximal_quantity = None
-    _minimal_quantity = None
-    _name = None
-    _quantity_step = None
-    _reference = None
-    _sort_order = None
-    _tax_class = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.component_change_weight = kwargs.get('component_change_weight', None)
-        self.component_group = kwargs.get('component_group', None)
-        self.default_component = kwargs.get('default_component', None)
-        self.description = kwargs.get('description', None)
-        self.maximal_quantity = kwargs.get('maximal_quantity', None)
-        self.minimal_quantity = kwargs.get('minimal_quantity', None)
-        self.name = kwargs.get('name', None)
-        self.quantity_step = kwargs.get('quantity_step', None)
-        self.reference = kwargs.get('reference', None)
-        self.sort_order = kwargs.get('sort_order', None)
-        self.tax_class = kwargs.get('tax_class', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionProductComponentUpdate.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this SubscriptionProductComponentUpdate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionProductComponentUpdate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "reference": obj.get("reference"),
+            "taxClass": obj.get("taxClass"),
+            "quantityStep": obj.get("quantityStep"),
+            "sortOrder": obj.get("sortOrder"),
+            "componentGroup": obj.get("componentGroup"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "componentChangeWeight": obj.get("componentChangeWeight"),
+            "version": obj.get("version"),
+            "maximalQuantity": obj.get("maximalQuantity"),
+            "defaultComponent": obj.get("defaultComponent"),
+            "minimalQuantity": obj.get("minimalQuantity")
+        })
+        return _obj
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionProductComponentUpdate.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :param id: The id of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
-
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionProductComponentUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :return: The version of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionProductComponentUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def component_change_weight(self):
-        """Gets the component_change_weight of this SubscriptionProductComponentUpdate.
-
-            If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.
-
-        :return: The component_change_weight of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._component_change_weight
-
-    @component_change_weight.setter
-    def component_change_weight(self, component_change_weight):
-        """Sets the component_change_weight of this SubscriptionProductComponentUpdate.
-
-            If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.
-
-        :param component_change_weight: The component_change_weight of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-
-        self._component_change_weight = component_change_weight
-    
-    @property
-    def component_group(self):
-        """Gets the component_group of this SubscriptionProductComponentUpdate.
-
-            The group that the component belongs to.
-
-        :return: The component_group of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._component_group
-
-    @component_group.setter
-    def component_group(self, component_group):
-        """Sets the component_group of this SubscriptionProductComponentUpdate.
-
-            The group that the component belongs to.
-
-        :param component_group: The component_group of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-
-        self._component_group = component_group
-    
-    @property
-    def default_component(self):
-        """Gets the default_component of this SubscriptionProductComponentUpdate.
-
-            Whether this is the default component in its group and preselected.
-
-        :return: The default_component of this SubscriptionProductComponentUpdate.
-        :rtype: bool
-        """
-        return self._default_component
-
-    @default_component.setter
-    def default_component(self, default_component):
-        """Sets the default_component of this SubscriptionProductComponentUpdate.
-
-            Whether this is the default component in its group and preselected.
-
-        :param default_component: The default_component of this SubscriptionProductComponentUpdate.
-        :type: bool
-        """
-
-        self._default_component = default_component
-    
-    @property
-    def description(self):
-        """Gets the description of this SubscriptionProductComponentUpdate.
-
-            The localized description of the component that is displayed to the customer.
-
-        :return: The description of this SubscriptionProductComponentUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this SubscriptionProductComponentUpdate.
-
-            The localized description of the component that is displayed to the customer.
-
-        :param description: The description of this SubscriptionProductComponentUpdate.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def maximal_quantity(self):
-        """Gets the maximal_quantity of this SubscriptionProductComponentUpdate.
-
-            A maximum of the defined quantity can be selected for this component.
-
-        :return: The maximal_quantity of this SubscriptionProductComponentUpdate.
-        :rtype: float
-        """
-        return self._maximal_quantity
-
-    @maximal_quantity.setter
-    def maximal_quantity(self, maximal_quantity):
-        """Sets the maximal_quantity of this SubscriptionProductComponentUpdate.
-
-            A maximum of the defined quantity can be selected for this component.
-
-        :param maximal_quantity: The maximal_quantity of this SubscriptionProductComponentUpdate.
-        :type: float
-        """
-
-        self._maximal_quantity = maximal_quantity
-    
-    @property
-    def minimal_quantity(self):
-        """Gets the minimal_quantity of this SubscriptionProductComponentUpdate.
-
-            A minimum of the defined quantity must be selected for this component.
-
-        :return: The minimal_quantity of this SubscriptionProductComponentUpdate.
-        :rtype: float
-        """
-        return self._minimal_quantity
-
-    @minimal_quantity.setter
-    def minimal_quantity(self, minimal_quantity):
-        """Sets the minimal_quantity of this SubscriptionProductComponentUpdate.
-
-            A minimum of the defined quantity must be selected for this component.
-
-        :param minimal_quantity: The minimal_quantity of this SubscriptionProductComponentUpdate.
-        :type: float
-        """
-
-        self._minimal_quantity = minimal_quantity
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionProductComponentUpdate.
-
-            The localized name of the component that is displayed to the customer.
-
-        :return: The name of this SubscriptionProductComponentUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionProductComponentUpdate.
-
-            The localized name of the component that is displayed to the customer.
-
-        :param name: The name of this SubscriptionProductComponentUpdate.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def quantity_step(self):
-        """Gets the quantity_step of this SubscriptionProductComponentUpdate.
-
-            The quantity step determines the interval in which the quantity can be increased.
-
-        :return: The quantity_step of this SubscriptionProductComponentUpdate.
-        :rtype: float
-        """
-        return self._quantity_step
-
-    @quantity_step.setter
-    def quantity_step(self, quantity_step):
-        """Sets the quantity_step of this SubscriptionProductComponentUpdate.
-
-            The quantity step determines the interval in which the quantity can be increased.
-
-        :param quantity_step: The quantity_step of this SubscriptionProductComponentUpdate.
-        :type: float
-        """
-
-        self._quantity_step = quantity_step
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionProductComponentUpdate.
-
-            The reference is used to link components across different product versions.
-
-        :return: The reference of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionProductComponentUpdate.
-
-            The reference is used to link components across different product versions.
-
-        :param reference: The reference of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-
-        self._reference = reference
-    
-    @property
-    def sort_order(self):
-        """Gets the sort_order of this SubscriptionProductComponentUpdate.
-
-            When listing components, they can be sorted by this number.
-
-        :return: The sort_order of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._sort_order
-
-    @sort_order.setter
-    def sort_order(self, sort_order):
-        """Sets the sort_order of this SubscriptionProductComponentUpdate.
-
-            When listing components, they can be sorted by this number.
-
-        :param sort_order: The sort_order of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-
-        self._sort_order = sort_order
-    
-    @property
-    def tax_class(self):
-        """Gets the tax_class of this SubscriptionProductComponentUpdate.
-
-            The tax class to be applied to fees.
-
-        :return: The tax_class of this SubscriptionProductComponentUpdate.
-        :rtype: int
-        """
-        return self._tax_class
-
-    @tax_class.setter
-    def tax_class(self, tax_class):
-        """Sets the tax_class of this SubscriptionProductComponentUpdate.
-
-            The tax class to be applied to fees.
-
-        :param tax_class: The tax_class of this SubscriptionProductComponentUpdate.
-        :type: int
-        """
-
-        self._tax_class = tax_class
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionProductComponentUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionProductComponentUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

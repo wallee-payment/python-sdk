@@ -1,336 +1,137 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionAffiliate(BaseModel):
+    """
+    SubscriptionAffiliate
+    """
+    reference: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=100)]] = Field(default=None, description="The reference used to identify the affiliate.")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=255)]] = Field(default=None, description="The name used to identify the affiliate.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["reference", "linkedSpaceId", "metaData", "name", "plannedPurgeDate", "externalId", "language", "id", "state", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionAffiliate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'external_id': 'str',
-        'id': 'int',
-        'language': 'str',
-        'linked_space_id': 'int',
-        'meta_data': 'dict(str, str)',
-        'name': 'str',
-        'planned_purge_date': 'datetime',
-        'reference': 'str',
-        'state': 'CreationEntityState',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionAffiliate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'external_id': 'externalId','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','meta_data': 'metaData','name': 'name','planned_purge_date': 'plannedPurgeDate','reference': 'reference','state': 'state','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _external_id = None
-    _id = None
-    _language = None
-    _linked_space_id = None
-    _meta_data = None
-    _name = None
-    _planned_purge_date = None
-    _reference = None
-    _state = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.language = kwargs.get('language', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.meta_data = kwargs.get('meta_data', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.reference = kwargs.get('reference', None)
-        self.state = kwargs.get('state', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this SubscriptionAffiliate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this SubscriptionAffiliate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._external_id
+        excluded_fields: Set[str] = set([
+            "reference",
+            "linked_space_id",
+            "meta_data",
+            "name",
+            "planned_purge_date",
+            "external_id",
+            "language",
+            "id",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionAffiliate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "reference": obj.get("reference"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "metaData": obj.get("metaData"),
+            "name": obj.get("name"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "externalId": obj.get("externalId"),
+            "language": obj.get("language"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this SubscriptionAffiliate.
 
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this SubscriptionAffiliate.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionAffiliate.
-
-            A unique identifier for the object.
-
-        :return: The id of this SubscriptionAffiliate.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionAffiliate.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionAffiliate.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def language(self):
-        """Gets the language of this SubscriptionAffiliate.
-
-            The language that is linked to the object.
-
-        :return: The language of this SubscriptionAffiliate.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this SubscriptionAffiliate.
-
-            The language that is linked to the object.
-
-        :param language: The language of this SubscriptionAffiliate.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionAffiliate.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionAffiliate.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionAffiliate.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionAffiliate.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def meta_data(self):
-        """Gets the meta_data of this SubscriptionAffiliate.
-
-            Allow to store additional information about the object.
-
-        :return: The meta_data of this SubscriptionAffiliate.
-        :rtype: dict(str, str)
-        """
-        return self._meta_data
-
-    @meta_data.setter
-    def meta_data(self, meta_data):
-        """Sets the meta_data of this SubscriptionAffiliate.
-
-            Allow to store additional information about the object.
-
-        :param meta_data: The meta_data of this SubscriptionAffiliate.
-        :type: dict(str, str)
-        """
-
-        self._meta_data = meta_data
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionAffiliate.
-
-            The name used to identify the affiliate.
-
-        :return: The name of this SubscriptionAffiliate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionAffiliate.
-
-            The name used to identify the affiliate.
-
-        :param name: The name of this SubscriptionAffiliate.
-        :type: str
-        """
-        if name is not None and len(name) > 255:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `255`")
-        if name is not None and len(name) < 3:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this SubscriptionAffiliate.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this SubscriptionAffiliate.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this SubscriptionAffiliate.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this SubscriptionAffiliate.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionAffiliate.
-
-            The reference used to identify the affiliate.
-
-        :return: The reference of this SubscriptionAffiliate.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionAffiliate.
-
-            The reference used to identify the affiliate.
-
-        :param reference: The reference of this SubscriptionAffiliate.
-        :type: str
-        """
-        if reference is not None and len(reference) > 100:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
-        if reference is not None and len(reference) < 3:
-            raise ValueError("Invalid value for `reference`, length must be greater than or equal to `3`")
-
-        self._reference = reference
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionAffiliate.
-
-            The object's current state.
-
-        :return: The state of this SubscriptionAffiliate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionAffiliate.
-
-            The object's current state.
-
-        :param state: The state of this SubscriptionAffiliate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionAffiliate.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionAffiliate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionAffiliate.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionAffiliate.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionAffiliate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionAffiliate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,230 +1,106 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionProductComponentGroupUpdate(BaseModel):
+    """
+    SubscriptionProductComponentGroupUpdate
+    """
+    product_version: Optional[StrictInt] = Field(default=None, description="The product version that the component group belongs to.", alias="productVersion")
+    sort_order: Optional[StrictInt] = Field(default=None, description="When listing component groups, they can be sorted by this number.", alias="sortOrder")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the component group that is displayed to the customer.")
+    optional: Optional[StrictBool] = Field(default=None, description="Whether the component group is optional, i.e. the customer does not have to select any component.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["productVersion", "sortOrder", "name", "optional", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionProductComponentGroupUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'name': 'dict(str, str)',
-        'optional': 'bool',
-        'product_version': 'int',
-        'sort_order': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionProductComponentGroupUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','name': 'name','optional': 'optional','product_version': 'productVersion','sort_order': 'sortOrder',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _name = None
-    _optional = None
-    _product_version = None
-    _sort_order = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.name = kwargs.get('name', None)
-        self.optional = kwargs.get('optional', None)
-        self.product_version = kwargs.get('product_version', None)
-        self.sort_order = kwargs.get('sort_order', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionProductComponentGroupUpdate.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this SubscriptionProductComponentGroupUpdate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionProductComponentGroupUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionProductComponentGroupUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this SubscriptionProductComponentGroupUpdate.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionProductComponentGroupUpdate.
+        _obj = cls.model_validate({
+            "productVersion": obj.get("productVersion"),
+            "sortOrder": obj.get("sortOrder"),
+            "name": obj.get("name"),
+            "optional": obj.get("optional"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this SubscriptionProductComponentGroupUpdate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionProductComponentGroupUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this SubscriptionProductComponentGroupUpdate.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionProductComponentGroupUpdate.
-
-            The localized name of the component group that is displayed to the customer.
-
-        :return: The name of this SubscriptionProductComponentGroupUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionProductComponentGroupUpdate.
-
-            The localized name of the component group that is displayed to the customer.
-
-        :param name: The name of this SubscriptionProductComponentGroupUpdate.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def optional(self):
-        """Gets the optional of this SubscriptionProductComponentGroupUpdate.
-
-            Whether the component group is optional, i.e. the customer does not have to select any component.
-
-        :return: The optional of this SubscriptionProductComponentGroupUpdate.
-        :rtype: bool
-        """
-        return self._optional
-
-    @optional.setter
-    def optional(self, optional):
-        """Sets the optional of this SubscriptionProductComponentGroupUpdate.
-
-            Whether the component group is optional, i.e. the customer does not have to select any component.
-
-        :param optional: The optional of this SubscriptionProductComponentGroupUpdate.
-        :type: bool
-        """
-
-        self._optional = optional
-    
-    @property
-    def product_version(self):
-        """Gets the product_version of this SubscriptionProductComponentGroupUpdate.
-
-            The product version that the component group belongs to.
-
-        :return: The product_version of this SubscriptionProductComponentGroupUpdate.
-        :rtype: int
-        """
-        return self._product_version
-
-    @product_version.setter
-    def product_version(self, product_version):
-        """Sets the product_version of this SubscriptionProductComponentGroupUpdate.
-
-            The product version that the component group belongs to.
-
-        :param product_version: The product_version of this SubscriptionProductComponentGroupUpdate.
-        :type: int
-        """
-
-        self._product_version = product_version
-    
-    @property
-    def sort_order(self):
-        """Gets the sort_order of this SubscriptionProductComponentGroupUpdate.
-
-            When listing component groups, they can be sorted by this number.
-
-        :return: The sort_order of this SubscriptionProductComponentGroupUpdate.
-        :rtype: int
-        """
-        return self._sort_order
-
-    @sort_order.setter
-    def sort_order(self, sort_order):
-        """Sets the sort_order of this SubscriptionProductComponentGroupUpdate.
-
-            When listing component groups, they can be sorted by this number.
-
-        :param sort_order: The sort_order of this SubscriptionProductComponentGroupUpdate.
-        :type: int
-        """
-
-        self._sort_order = sort_order
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionProductComponentGroupUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionProductComponentGroupUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

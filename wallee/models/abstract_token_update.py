@@ -1,228 +1,119 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractTokenUpdate(BaseModel):
+    """
+    AbstractTokenUpdate
+    """
+    enabled_for_one_click_payment: Optional[StrictBool] = Field(default=None, description="Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.", alias="enabledForOneClickPayment")
+    customer_email_address: Optional[Annotated[str, Field(strict=True, max_length=150)]] = Field(default=None, description="The customer's email address.", alias="customerEmailAddress")
+    token_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The reference used to identify the payment token (e.g. the customer's ID or email address).", alias="tokenReference")
+    customer_id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the customer in the external system.", alias="customerId")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The customer's time zone, which affects how dates and times are formatted when communicating with the customer.", alias="timeZone")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    __properties: ClassVar[List[str]] = ["enabledForOneClickPayment", "customerEmailAddress", "tokenReference", "customerId", "timeZone", "language"]
+
+    @field_validator('token_reference')
+    def token_reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractTokenUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'customer_email_address': 'str',
-        'customer_id': 'str',
-        'enabled_for_one_click_payment': 'bool',
-        'language': 'str',
-        'time_zone': 'str',
-        'token_reference': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractTokenUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'customer_email_address': 'customerEmailAddress','customer_id': 'customerId','enabled_for_one_click_payment': 'enabledForOneClickPayment','language': 'language','time_zone': 'timeZone','token_reference': 'tokenReference',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _customer_email_address = None
-    _customer_id = None
-    _enabled_for_one_click_payment = None
-    _language = None
-    _time_zone = None
-    _token_reference = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.customer_email_address = kwargs.get('customer_email_address', None)
-        self.customer_id = kwargs.get('customer_id', None)
-        self.enabled_for_one_click_payment = kwargs.get('enabled_for_one_click_payment', None)
-        self.language = kwargs.get('language', None)
-        self.time_zone = kwargs.get('time_zone', None)
-        self.token_reference = kwargs.get('token_reference', None)
-        
-
-    
-    @property
-    def customer_email_address(self):
-        """Gets the customer_email_address of this AbstractTokenUpdate.
-
-            The customer's email address.
-
-        :return: The customer_email_address of this AbstractTokenUpdate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._customer_email_address
+        excluded_fields: Set[str] = set([
+        ])
 
-    @customer_email_address.setter
-    def customer_email_address(self, customer_email_address):
-        """Sets the customer_email_address of this AbstractTokenUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The customer's email address.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractTokenUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param customer_email_address: The customer_email_address of this AbstractTokenUpdate.
-        :type: str
-        """
-        if customer_email_address is not None and len(customer_email_address) > 150:
-            raise ValueError("Invalid value for `customer_email_address`, length must be less than or equal to `150`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._customer_email_address = customer_email_address
-    
-    @property
-    def customer_id(self):
-        """Gets the customer_id of this AbstractTokenUpdate.
+        _obj = cls.model_validate({
+            "enabledForOneClickPayment": obj.get("enabledForOneClickPayment"),
+            "customerEmailAddress": obj.get("customerEmailAddress"),
+            "tokenReference": obj.get("tokenReference"),
+            "customerId": obj.get("customerId"),
+            "timeZone": obj.get("timeZone"),
+            "language": obj.get("language")
+        })
+        return _obj
 
-            The unique identifier of the customer in the external system.
 
-        :return: The customer_id of this AbstractTokenUpdate.
-        :rtype: str
-        """
-        return self._customer_id
-
-    @customer_id.setter
-    def customer_id(self, customer_id):
-        """Sets the customer_id of this AbstractTokenUpdate.
-
-            The unique identifier of the customer in the external system.
-
-        :param customer_id: The customer_id of this AbstractTokenUpdate.
-        :type: str
-        """
-
-        self._customer_id = customer_id
-    
-    @property
-    def enabled_for_one_click_payment(self):
-        """Gets the enabled_for_one_click_payment of this AbstractTokenUpdate.
-
-            Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
-
-        :return: The enabled_for_one_click_payment of this AbstractTokenUpdate.
-        :rtype: bool
-        """
-        return self._enabled_for_one_click_payment
-
-    @enabled_for_one_click_payment.setter
-    def enabled_for_one_click_payment(self, enabled_for_one_click_payment):
-        """Sets the enabled_for_one_click_payment of this AbstractTokenUpdate.
-
-            Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
-
-        :param enabled_for_one_click_payment: The enabled_for_one_click_payment of this AbstractTokenUpdate.
-        :type: bool
-        """
-
-        self._enabled_for_one_click_payment = enabled_for_one_click_payment
-    
-    @property
-    def language(self):
-        """Gets the language of this AbstractTokenUpdate.
-
-            The language that is linked to the object.
-
-        :return: The language of this AbstractTokenUpdate.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this AbstractTokenUpdate.
-
-            The language that is linked to the object.
-
-        :param language: The language of this AbstractTokenUpdate.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def time_zone(self):
-        """Gets the time_zone of this AbstractTokenUpdate.
-
-            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
-
-        :return: The time_zone of this AbstractTokenUpdate.
-        :rtype: str
-        """
-        return self._time_zone
-
-    @time_zone.setter
-    def time_zone(self, time_zone):
-        """Sets the time_zone of this AbstractTokenUpdate.
-
-            The customer's time zone, which affects how dates and times are formatted when communicating with the customer.
-
-        :param time_zone: The time_zone of this AbstractTokenUpdate.
-        :type: str
-        """
-
-        self._time_zone = time_zone
-    
-    @property
-    def token_reference(self):
-        """Gets the token_reference of this AbstractTokenUpdate.
-
-            The reference used to identify the payment token (e.g. the customer's ID or email address).
-
-        :return: The token_reference of this AbstractTokenUpdate.
-        :rtype: str
-        """
-        return self._token_reference
-
-    @token_reference.setter
-    def token_reference(self, token_reference):
-        """Sets the token_reference of this AbstractTokenUpdate.
-
-            The reference used to identify the payment token (e.g. the customer's ID or email address).
-
-        :param token_reference: The token_reference of this AbstractTokenUpdate.
-        :type: str
-        """
-        if token_reference is not None and len(token_reference) > 100:
-            raise ValueError("Invalid value for `token_reference`, length must be less than or equal to `100`")
-
-        self._token_reference = token_reference
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractTokenUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractTokenUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

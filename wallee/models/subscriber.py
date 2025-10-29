@@ -1,464 +1,170 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.address import Address
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class Subscriber(BaseModel):
+    """
+    A subscriber represents everyone who is subscribed to a product.
+    """
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The description used to identify the subscriber.")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is used when communicating with the subscriber via emails and documents.")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the subscriber.")
+    additional_allowed_payment_method_configurations: Optional[List[StrictInt]] = Field(default=None, description="Allow the subscriber to use these payment methods even if subscription products do not accept them.", alias="additionalAllowedPaymentMethodConfigurations")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    email_address: Optional[Annotated[str, Field(strict=True, max_length=254)]] = Field(default=None, description="The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.", alias="emailAddress")
+    disallowed_payment_method_configurations: Optional[List[StrictInt]] = Field(default=None, description="Prevent the subscriber from using these payment methods even if subscription products do accept them.", alias="disallowedPaymentMethodConfigurations")
+    shipping_address: Optional[Address] = Field(default=None, alias="shippingAddress")
+    billing_address: Optional[Address] = Field(default=None, alias="billingAddress")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    __properties: ClassVar[List[str]] = ["plannedPurgeDate", "description", "externalId", "language", "version", "reference", "additionalAllowedPaymentMethodConfigurations", "linkedSpaceId", "metaData", "emailAddress", "disallowedPaymentMethodConfigurations", "shippingAddress", "billingAddress", "id", "state"]
+
+    @field_validator('reference')
+    def reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class Subscriber:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'additional_allowed_payment_method_configurations': 'list[int]',
-        'billing_address': 'Address',
-        'description': 'str',
-        'disallowed_payment_method_configurations': 'list[int]',
-        'email_address': 'str',
-        'external_id': 'str',
-        'id': 'int',
-        'language': 'str',
-        'linked_space_id': 'int',
-        'meta_data': 'dict(str, str)',
-        'planned_purge_date': 'datetime',
-        'reference': 'str',
-        'shipping_address': 'Address',
-        'state': 'CreationEntityState',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of Subscriber from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'additional_allowed_payment_method_configurations': 'additionalAllowedPaymentMethodConfigurations','billing_address': 'billingAddress','description': 'description','disallowed_payment_method_configurations': 'disallowedPaymentMethodConfigurations','email_address': 'emailAddress','external_id': 'externalId','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','meta_data': 'metaData','planned_purge_date': 'plannedPurgeDate','reference': 'reference','shipping_address': 'shippingAddress','state': 'state','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _additional_allowed_payment_method_configurations = None
-    _billing_address = None
-    _description = None
-    _disallowed_payment_method_configurations = None
-    _email_address = None
-    _external_id = None
-    _id = None
-    _language = None
-    _linked_space_id = None
-    _meta_data = None
-    _planned_purge_date = None
-    _reference = None
-    _shipping_address = None
-    _state = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.additional_allowed_payment_method_configurations = kwargs.get('additional_allowed_payment_method_configurations', None)
-        self.billing_address = kwargs.get('billing_address', None)
-        self.description = kwargs.get('description', None)
-        self.disallowed_payment_method_configurations = kwargs.get('disallowed_payment_method_configurations', None)
-        self.email_address = kwargs.get('email_address', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.language = kwargs.get('language', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.meta_data = kwargs.get('meta_data', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.reference = kwargs.get('reference', None)
-        self.shipping_address = kwargs.get('shipping_address', None)
-        self.state = kwargs.get('state', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def additional_allowed_payment_method_configurations(self):
-        """Gets the additional_allowed_payment_method_configurations of this Subscriber.
-
-            Allow the subscriber to use these payment methods even if subscription products do not accept them.
-
-        :return: The additional_allowed_payment_method_configurations of this Subscriber.
-        :rtype: list[int]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._additional_allowed_payment_method_configurations
+        excluded_fields: Set[str] = set([
+            "planned_purge_date",
+            "description",
+            "external_id",
+            "language",
+            "version",
+            "reference",
+            "additional_allowed_payment_method_configurations",
+            "linked_space_id",
+            "meta_data",
+            "email_address",
+            "disallowed_payment_method_configurations",
+            "id",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of shipping_address
+        if self.shipping_address:
+            _dict['shippingAddress'] = self.shipping_address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of Subscriber from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "description": obj.get("description"),
+            "externalId": obj.get("externalId"),
+            "language": obj.get("language"),
+            "version": obj.get("version"),
+            "reference": obj.get("reference"),
+            "additionalAllowedPaymentMethodConfigurations": obj.get("additionalAllowedPaymentMethodConfigurations"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "metaData": obj.get("metaData"),
+            "emailAddress": obj.get("emailAddress"),
+            "disallowedPaymentMethodConfigurations": obj.get("disallowedPaymentMethodConfigurations"),
+            "shippingAddress": Address.from_dict(obj["shippingAddress"]) if obj.get("shippingAddress") is not None else None,
+            "billingAddress": Address.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "id": obj.get("id"),
+            "state": obj.get("state")
+        })
+        return _obj
 
-    @additional_allowed_payment_method_configurations.setter
-    def additional_allowed_payment_method_configurations(self, additional_allowed_payment_method_configurations):
-        """Sets the additional_allowed_payment_method_configurations of this Subscriber.
 
-            Allow the subscriber to use these payment methods even if subscription products do not accept them.
-
-        :param additional_allowed_payment_method_configurations: The additional_allowed_payment_method_configurations of this Subscriber.
-        :type: list[int]
-        """
-
-        self._additional_allowed_payment_method_configurations = additional_allowed_payment_method_configurations
-    
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this Subscriber.
-
-            The address associated with the subscriber for invoicing and transaction processing purposes.
-
-        :return: The billing_address of this Subscriber.
-        :rtype: Address
-        """
-        return self._billing_address
-
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this Subscriber.
-
-            The address associated with the subscriber for invoicing and transaction processing purposes.
-
-        :param billing_address: The billing_address of this Subscriber.
-        :type: Address
-        """
-
-        self._billing_address = billing_address
-    
-    @property
-    def description(self):
-        """Gets the description of this Subscriber.
-
-            The description used to identify the subscriber.
-
-        :return: The description of this Subscriber.
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this Subscriber.
-
-            The description used to identify the subscriber.
-
-        :param description: The description of this Subscriber.
-        :type: str
-        """
-        if description is not None and len(description) > 200:
-            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
-
-        self._description = description
-    
-    @property
-    def disallowed_payment_method_configurations(self):
-        """Gets the disallowed_payment_method_configurations of this Subscriber.
-
-            Prevent the subscriber from using these payment methods even if subscription products do accept them.
-
-        :return: The disallowed_payment_method_configurations of this Subscriber.
-        :rtype: list[int]
-        """
-        return self._disallowed_payment_method_configurations
-
-    @disallowed_payment_method_configurations.setter
-    def disallowed_payment_method_configurations(self, disallowed_payment_method_configurations):
-        """Sets the disallowed_payment_method_configurations of this Subscriber.
-
-            Prevent the subscriber from using these payment methods even if subscription products do accept them.
-
-        :param disallowed_payment_method_configurations: The disallowed_payment_method_configurations of this Subscriber.
-        :type: list[int]
-        """
-
-        self._disallowed_payment_method_configurations = disallowed_payment_method_configurations
-    
-    @property
-    def email_address(self):
-        """Gets the email_address of this Subscriber.
-
-            The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
-
-        :return: The email_address of this Subscriber.
-        :rtype: str
-        """
-        return self._email_address
-
-    @email_address.setter
-    def email_address(self, email_address):
-        """Sets the email_address of this Subscriber.
-
-            The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
-
-        :param email_address: The email_address of this Subscriber.
-        :type: str
-        """
-        if email_address is not None and len(email_address) > 254:
-            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `254`")
-
-        self._email_address = email_address
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this Subscriber.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this Subscriber.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this Subscriber.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this Subscriber.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this Subscriber.
-
-            A unique identifier for the object.
-
-        :return: The id of this Subscriber.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Subscriber.
-
-            A unique identifier for the object.
-
-        :param id: The id of this Subscriber.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def language(self):
-        """Gets the language of this Subscriber.
-
-            The language that is used when communicating with the subscriber via emails and documents.
-
-        :return: The language of this Subscriber.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this Subscriber.
-
-            The language that is used when communicating with the subscriber via emails and documents.
-
-        :param language: The language of this Subscriber.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this Subscriber.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this Subscriber.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this Subscriber.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this Subscriber.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def meta_data(self):
-        """Gets the meta_data of this Subscriber.
-
-            Allow to store additional information about the object.
-
-        :return: The meta_data of this Subscriber.
-        :rtype: dict(str, str)
-        """
-        return self._meta_data
-
-    @meta_data.setter
-    def meta_data(self, meta_data):
-        """Sets the meta_data of this Subscriber.
-
-            Allow to store additional information about the object.
-
-        :param meta_data: The meta_data of this Subscriber.
-        :type: dict(str, str)
-        """
-
-        self._meta_data = meta_data
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this Subscriber.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this Subscriber.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this Subscriber.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this Subscriber.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def reference(self):
-        """Gets the reference of this Subscriber.
-
-            The merchant's reference used to identify the subscriber.
-
-        :return: The reference of this Subscriber.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this Subscriber.
-
-            The merchant's reference used to identify the subscriber.
-
-        :param reference: The reference of this Subscriber.
-        :type: str
-        """
-        if reference is not None and len(reference) > 100:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
-
-        self._reference = reference
-    
-    @property
-    def shipping_address(self):
-        """Gets the shipping_address of this Subscriber.
-
-            The address to where orders will be shipped.
-
-        :return: The shipping_address of this Subscriber.
-        :rtype: Address
-        """
-        return self._shipping_address
-
-    @shipping_address.setter
-    def shipping_address(self, shipping_address):
-        """Sets the shipping_address of this Subscriber.
-
-            The address to where orders will be shipped.
-
-        :param shipping_address: The shipping_address of this Subscriber.
-        :type: Address
-        """
-
-        self._shipping_address = shipping_address
-    
-    @property
-    def state(self):
-        """Gets the state of this Subscriber.
-
-            The object's current state.
-
-        :return: The state of this Subscriber.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this Subscriber.
-
-            The object's current state.
-
-        :param state: The state of this Subscriber.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def version(self):
-        """Gets the version of this Subscriber.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this Subscriber.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this Subscriber.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this Subscriber.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(Subscriber, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, Subscriber):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

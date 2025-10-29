@@ -1,354 +1,146 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from wallee.models.bank_transaction import BankTransaction
+from wallee.models.transaction import Transaction
+from wallee.models.transaction_completion import TransactionCompletion
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ChargeBankTransaction(BaseModel):
+    """
+    ChargeBankTransaction
+    """
+    transaction_currency_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The posting amount represents the monetary value of the bank transaction, recorded in the payment transaction's currency, before applying any adjustments.", alias="transactionCurrencyAmount")
+    completion: Optional[TransactionCompletion] = None
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    space_view_id: Optional[StrictInt] = Field(default=None, description="The ID of the space view this object is linked to.", alias="spaceViewId")
+    linked_transaction: Optional[StrictInt] = Field(default=None, description="The payment transaction this object is linked to.", alias="linkedTransaction")
+    bank_transaction: Optional[BankTransaction] = Field(default=None, alias="bankTransaction")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    transaction: Optional[Transaction] = None
+    transaction_currency_value_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value amount represents the net monetary value of the bank transaction, recorded in the payment transaction's currency, after applicable deductions.", alias="transactionCurrencyValueAmount")
+    __properties: ClassVar[List[str]] = ["transactionCurrencyAmount", "completion", "linkedSpaceId", "language", "id", "spaceViewId", "linkedTransaction", "bankTransaction", "version", "transaction", "transactionCurrencyValueAmount"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ChargeBankTransaction:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'bank_transaction': 'BankTransaction',
-        'completion': 'int',
-        'id': 'int',
-        'language': 'str',
-        'linked_space_id': 'int',
-        'linked_transaction': 'int',
-        'space_view_id': 'int',
-        'transaction': 'Transaction',
-        'transaction_currency_amount': 'float',
-        'transaction_currency_value_amount': 'float',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ChargeBankTransaction from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'bank_transaction': 'bankTransaction','completion': 'completion','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','space_view_id': 'spaceViewId','transaction': 'transaction','transaction_currency_amount': 'transactionCurrencyAmount','transaction_currency_value_amount': 'transactionCurrencyValueAmount','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _bank_transaction = None
-    _completion = None
-    _id = None
-    _language = None
-    _linked_space_id = None
-    _linked_transaction = None
-    _space_view_id = None
-    _transaction = None
-    _transaction_currency_amount = None
-    _transaction_currency_value_amount = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.bank_transaction = kwargs.get('bank_transaction', None)
-        self.completion = kwargs.get('completion', None)
-        self.id = kwargs.get('id', None)
-        self.language = kwargs.get('language', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.linked_transaction = kwargs.get('linked_transaction', None)
-        self.space_view_id = kwargs.get('space_view_id', None)
-        self.transaction = kwargs.get('transaction', None)
-        self.transaction_currency_amount = kwargs.get('transaction_currency_amount', None)
-        self.transaction_currency_value_amount = kwargs.get('transaction_currency_value_amount', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def bank_transaction(self):
-        """Gets the bank_transaction of this ChargeBankTransaction.
-
-            Provides general information about the bank transaction.
-
-        :return: The bank_transaction of this ChargeBankTransaction.
-        :rtype: BankTransaction
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._bank_transaction
+        excluded_fields: Set[str] = set([
+            "transaction_currency_amount",
+            "linked_space_id",
+            "language",
+            "id",
+            "space_view_id",
+            "linked_transaction",
+            "version",
+            "transaction_currency_value_amount",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of completion
+        if self.completion:
+            _dict['completion'] = self.completion.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of bank_transaction
+        if self.bank_transaction:
+            _dict['bankTransaction'] = self.bank_transaction.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of transaction
+        if self.transaction:
+            _dict['transaction'] = self.transaction.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ChargeBankTransaction from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "transactionCurrencyAmount": obj.get("transactionCurrencyAmount"),
+            "completion": TransactionCompletion.from_dict(obj["completion"]) if obj.get("completion") is not None else None,
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "language": obj.get("language"),
+            "id": obj.get("id"),
+            "spaceViewId": obj.get("spaceViewId"),
+            "linkedTransaction": obj.get("linkedTransaction"),
+            "bankTransaction": BankTransaction.from_dict(obj["bankTransaction"]) if obj.get("bankTransaction") is not None else None,
+            "version": obj.get("version"),
+            "transaction": Transaction.from_dict(obj["transaction"]) if obj.get("transaction") is not None else None,
+            "transactionCurrencyValueAmount": obj.get("transactionCurrencyValueAmount")
+        })
+        return _obj
 
-    @bank_transaction.setter
-    def bank_transaction(self, bank_transaction):
-        """Sets the bank_transaction of this ChargeBankTransaction.
 
-            Provides general information about the bank transaction.
-
-        :param bank_transaction: The bank_transaction of this ChargeBankTransaction.
-        :type: BankTransaction
-        """
-
-        self._bank_transaction = bank_transaction
-    
-    @property
-    def completion(self):
-        """Gets the completion of this ChargeBankTransaction.
-
-            The transaction completion this bank transaction is belongs to.
-
-        :return: The completion of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._completion
-
-    @completion.setter
-    def completion(self, completion):
-        """Sets the completion of this ChargeBankTransaction.
-
-            The transaction completion this bank transaction is belongs to.
-
-        :param completion: The completion of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._completion = completion
-    
-    @property
-    def id(self):
-        """Gets the id of this ChargeBankTransaction.
-
-            A unique identifier for the object.
-
-        :return: The id of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ChargeBankTransaction.
-
-            A unique identifier for the object.
-
-        :param id: The id of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def language(self):
-        """Gets the language of this ChargeBankTransaction.
-
-            The language that is linked to the object.
-
-        :return: The language of this ChargeBankTransaction.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this ChargeBankTransaction.
-
-            The language that is linked to the object.
-
-        :param language: The language of this ChargeBankTransaction.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this ChargeBankTransaction.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this ChargeBankTransaction.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def linked_transaction(self):
-        """Gets the linked_transaction of this ChargeBankTransaction.
-
-            The payment transaction this object is linked to.
-
-        :return: The linked_transaction of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._linked_transaction
-
-    @linked_transaction.setter
-    def linked_transaction(self, linked_transaction):
-        """Sets the linked_transaction of this ChargeBankTransaction.
-
-            The payment transaction this object is linked to.
-
-        :param linked_transaction: The linked_transaction of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._linked_transaction = linked_transaction
-    
-    @property
-    def space_view_id(self):
-        """Gets the space_view_id of this ChargeBankTransaction.
-
-            The ID of the space view this object is linked to.
-
-        :return: The space_view_id of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._space_view_id
-
-    @space_view_id.setter
-    def space_view_id(self, space_view_id):
-        """Sets the space_view_id of this ChargeBankTransaction.
-
-            The ID of the space view this object is linked to.
-
-        :param space_view_id: The space_view_id of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._space_view_id = space_view_id
-    
-    @property
-    def transaction(self):
-        """Gets the transaction of this ChargeBankTransaction.
-
-            The payment transaction this bank transaction belongs to.
-
-        :return: The transaction of this ChargeBankTransaction.
-        :rtype: Transaction
-        """
-        return self._transaction
-
-    @transaction.setter
-    def transaction(self, transaction):
-        """Sets the transaction of this ChargeBankTransaction.
-
-            The payment transaction this bank transaction belongs to.
-
-        :param transaction: The transaction of this ChargeBankTransaction.
-        :type: Transaction
-        """
-
-        self._transaction = transaction
-    
-    @property
-    def transaction_currency_amount(self):
-        """Gets the transaction_currency_amount of this ChargeBankTransaction.
-
-            The posting amount represents the monetary value of the bank transaction, recorded in the payment transaction's currency, before applying any adjustments.
-
-        :return: The transaction_currency_amount of this ChargeBankTransaction.
-        :rtype: float
-        """
-        return self._transaction_currency_amount
-
-    @transaction_currency_amount.setter
-    def transaction_currency_amount(self, transaction_currency_amount):
-        """Sets the transaction_currency_amount of this ChargeBankTransaction.
-
-            The posting amount represents the monetary value of the bank transaction, recorded in the payment transaction's currency, before applying any adjustments.
-
-        :param transaction_currency_amount: The transaction_currency_amount of this ChargeBankTransaction.
-        :type: float
-        """
-
-        self._transaction_currency_amount = transaction_currency_amount
-    
-    @property
-    def transaction_currency_value_amount(self):
-        """Gets the transaction_currency_value_amount of this ChargeBankTransaction.
-
-            The value amount represents the net monetary value of the bank transaction, recorded in the payment transaction's currency, after applicable deductions.
-
-        :return: The transaction_currency_value_amount of this ChargeBankTransaction.
-        :rtype: float
-        """
-        return self._transaction_currency_value_amount
-
-    @transaction_currency_value_amount.setter
-    def transaction_currency_value_amount(self, transaction_currency_value_amount):
-        """Sets the transaction_currency_value_amount of this ChargeBankTransaction.
-
-            The value amount represents the net monetary value of the bank transaction, recorded in the payment transaction's currency, after applicable deductions.
-
-        :param transaction_currency_value_amount: The transaction_currency_value_amount of this ChargeBankTransaction.
-        :type: float
-        """
-
-        self._transaction_currency_value_amount = transaction_currency_value_amount
-    
-    @property
-    def version(self):
-        """Gets the version of this ChargeBankTransaction.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this ChargeBankTransaction.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this ChargeBankTransaction.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this ChargeBankTransaction.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ChargeBankTransaction, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ChargeBankTransaction):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

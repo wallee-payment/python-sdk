@@ -1,874 +1,243 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from wallee.models.address import Address
+from wallee.models.debt_collection_case_source import DebtCollectionCaseSource
+from wallee.models.debt_collection_case_state import DebtCollectionCaseState
+from wallee.models.debt_collection_environment import DebtCollectionEnvironment
+from wallee.models.debt_collector_configuration import DebtCollectorConfiguration
+from wallee.models.failure_reason import FailureReason
+from wallee.models.label import Label
+from wallee.models.line_item import LineItem
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DebtCollectionCase(BaseModel):
+    """
+    The debt collection case represents a try to collect the money from the debtor.
+    """
+    contract_date: Optional[datetime] = Field(default=None, description="The date and time when the contract with the debtor was signed.", alias="contractDate")
+    due_date: Optional[datetime] = Field(default=None, description="The date and time when the claim was due.", alias="dueDate")
+    closed_on: Optional[datetime] = Field(default=None, description="The date and time when the case was closed.", alias="closedOn")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    source: Optional[DebtCollectionCaseSource] = None
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    line_items: Optional[List[LineItem]] = Field(default=None, description="The line items that are subject of this debt collection case.", alias="lineItems")
+    reference: Optional[StrictStr] = Field(default=None, description="A unique reference to identify the debt collection case in communication with the debtor.")
+    currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the case's currency.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[DebtCollectionCaseState] = None
+    processing_timeout_on: Optional[datetime] = Field(default=None, description="The date and time when the processing of the case times out.", alias="processingTimeoutOn")
+    amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The sum of all unpaid item prices in the case's currency. The amount can no longer be changed once the case has been reviewed.")
+    creator: Optional[StrictInt] = Field(default=None, description="The ID of the user the case was created by.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    collector_configuration: Optional[DebtCollectorConfiguration] = Field(default=None, alias="collectorConfiguration")
+    reviewer: Optional[StrictInt] = Field(default=None, description="The ID of the user the case was reviewed by.")
+    space_view_id: Optional[StrictInt] = Field(default=None, description="The ID of the space view this object is linked to.", alias="spaceViewId")
+    review_started_on: Optional[datetime] = Field(default=None, description="The date and time when the review of the case was started.", alias="reviewStartedOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    labels: Optional[List[Label]] = Field(default=None, description="The labels providing additional information about the object.")
+    processing_started_on: Optional[datetime] = Field(default=None, description="The date and time when the processing of the case was started.", alias="processingStartedOn")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    environment: Optional[DebtCollectionEnvironment] = None
+    reviewed_on: Optional[datetime] = Field(default=None, description="The date and time when the case was reviewed.", alias="reviewedOn")
+    source_entity_id: Optional[StrictInt] = Field(default=None, description="The ID of the object that is the source of the case. Only defined if the case was created by an internal process.", alias="sourceEntityId")
+    failure_reason: Optional[FailureReason] = Field(default=None, alias="failureReason")
+    billing_address: Optional[Address] = Field(default=None, alias="billingAddress")
+    failed_on: Optional[datetime] = Field(default=None, description="The date and time when the case failed.", alias="failedOn")
+    next_attempt_on: Optional[datetime] = Field(default=None, description="The date and time when the next attempt at processing the case will be made.", alias="nextAttemptOn")
+    __properties: ClassVar[List[str]] = ["contractDate", "dueDate", "closedOn", "language", "source", "createdOn", "lineItems", "reference", "currency", "id", "state", "processingTimeoutOn", "amount", "creator", "plannedPurgeDate", "externalId", "collectorConfiguration", "reviewer", "spaceViewId", "reviewStartedOn", "version", "labels", "processingStartedOn", "linkedSpaceId", "environment", "reviewedOn", "sourceEntityId", "failureReason", "billingAddress", "failedOn", "nextAttemptOn"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DebtCollectionCase:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount': 'float',
-        'billing_address': 'Address',
-        'closed_on': 'datetime',
-        'collector_configuration': 'DebtCollectorConfiguration',
-        'contract_date': 'datetime',
-        'created_on': 'datetime',
-        'creator': 'int',
-        'currency': 'str',
-        'due_date': 'datetime',
-        'environment': 'DebtCollectionEnvironment',
-        'external_id': 'str',
-        'failed_on': 'datetime',
-        'failure_reason': 'FailureReason',
-        'id': 'int',
-        'labels': 'list[Label]',
-        'language': 'str',
-        'line_items': 'list[LineItem]',
-        'linked_space_id': 'int',
-        'next_attempt_on': 'datetime',
-        'planned_purge_date': 'datetime',
-        'processing_started_on': 'datetime',
-        'processing_timeout_on': 'datetime',
-        'reference': 'str',
-        'review_started_on': 'datetime',
-        'reviewed_on': 'datetime',
-        'reviewer': 'int',
-        'source': 'DebtCollectionCaseSource',
-        'source_entity_id': 'int',
-        'space_view_id': 'int',
-        'state': 'DebtCollectionCaseState',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DebtCollectionCase from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount': 'amount','billing_address': 'billingAddress','closed_on': 'closedOn','collector_configuration': 'collectorConfiguration','contract_date': 'contractDate','created_on': 'createdOn','creator': 'creator','currency': 'currency','due_date': 'dueDate','environment': 'environment','external_id': 'externalId','failed_on': 'failedOn','failure_reason': 'failureReason','id': 'id','labels': 'labels','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','next_attempt_on': 'nextAttemptOn','planned_purge_date': 'plannedPurgeDate','processing_started_on': 'processingStartedOn','processing_timeout_on': 'processingTimeoutOn','reference': 'reference','review_started_on': 'reviewStartedOn','reviewed_on': 'reviewedOn','reviewer': 'reviewer','source': 'source','source_entity_id': 'sourceEntityId','space_view_id': 'spaceViewId','state': 'state','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount = None
-    _billing_address = None
-    _closed_on = None
-    _collector_configuration = None
-    _contract_date = None
-    _created_on = None
-    _creator = None
-    _currency = None
-    _due_date = None
-    _environment = None
-    _external_id = None
-    _failed_on = None
-    _failure_reason = None
-    _id = None
-    _labels = None
-    _language = None
-    _line_items = None
-    _linked_space_id = None
-    _next_attempt_on = None
-    _planned_purge_date = None
-    _processing_started_on = None
-    _processing_timeout_on = None
-    _reference = None
-    _review_started_on = None
-    _reviewed_on = None
-    _reviewer = None
-    _source = None
-    _source_entity_id = None
-    _space_view_id = None
-    _state = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount = kwargs.get('amount', None)
-        self.billing_address = kwargs.get('billing_address', None)
-        self.closed_on = kwargs.get('closed_on', None)
-        self.collector_configuration = kwargs.get('collector_configuration', None)
-        self.contract_date = kwargs.get('contract_date', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.creator = kwargs.get('creator', None)
-        self.currency = kwargs.get('currency', None)
-        self.due_date = kwargs.get('due_date', None)
-        self.environment = kwargs.get('environment', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.failed_on = kwargs.get('failed_on', None)
-        self.failure_reason = kwargs.get('failure_reason', None)
-        self.id = kwargs.get('id', None)
-        self.labels = kwargs.get('labels', None)
-        self.language = kwargs.get('language', None)
-        self.line_items = kwargs.get('line_items', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.next_attempt_on = kwargs.get('next_attempt_on', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.processing_started_on = kwargs.get('processing_started_on', None)
-        self.processing_timeout_on = kwargs.get('processing_timeout_on', None)
-        self.reference = kwargs.get('reference', None)
-        self.review_started_on = kwargs.get('review_started_on', None)
-        self.reviewed_on = kwargs.get('reviewed_on', None)
-        self.reviewer = kwargs.get('reviewer', None)
-        self.source = kwargs.get('source', None)
-        self.source_entity_id = kwargs.get('source_entity_id', None)
-        self.space_view_id = kwargs.get('space_view_id', None)
-        self.state = kwargs.get('state', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def amount(self):
-        """Gets the amount of this DebtCollectionCase.
-
-            The sum of all unpaid item prices in the case's currency. The amount can no longer be changed once the case has been reviewed.
-
-        :return: The amount of this DebtCollectionCase.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._amount
+        excluded_fields: Set[str] = set([
+            "contract_date",
+            "due_date",
+            "closed_on",
+            "language",
+            "created_on",
+            "line_items",
+            "reference",
+            "currency",
+            "id",
+            "processing_timeout_on",
+            "amount",
+            "creator",
+            "planned_purge_date",
+            "external_id",
+            "reviewer",
+            "space_view_id",
+            "review_started_on",
+            "version",
+            "labels",
+            "processing_started_on",
+            "linked_space_id",
+            "reviewed_on",
+            "source_entity_id",
+            "failed_on",
+            "next_attempt_on",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of source
+        if self.source:
+            _dict['source'] = self.source.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of collector_configuration
+        if self.collector_configuration:
+            _dict['collectorConfiguration'] = self.collector_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in labels (list)
+        _items = []
+        if self.labels:
+            for _item_labels in self.labels:
+                if _item_labels:
+                    _items.append(_item_labels.to_dict())
+            _dict['labels'] = _items
+        # override the default output from pydantic by calling `to_dict()` of failure_reason
+        if self.failure_reason:
+            _dict['failureReason'] = self.failure_reason.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DebtCollectionCase from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "contractDate": obj.get("contractDate"),
+            "dueDate": obj.get("dueDate"),
+            "closedOn": obj.get("closedOn"),
+            "language": obj.get("language"),
+            "source": DebtCollectionCaseSource.from_dict(obj["source"]) if obj.get("source") is not None else None,
+            "createdOn": obj.get("createdOn"),
+            "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "reference": obj.get("reference"),
+            "currency": obj.get("currency"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "processingTimeoutOn": obj.get("processingTimeoutOn"),
+            "amount": obj.get("amount"),
+            "creator": obj.get("creator"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "externalId": obj.get("externalId"),
+            "collectorConfiguration": DebtCollectorConfiguration.from_dict(obj["collectorConfiguration"]) if obj.get("collectorConfiguration") is not None else None,
+            "reviewer": obj.get("reviewer"),
+            "spaceViewId": obj.get("spaceViewId"),
+            "reviewStartedOn": obj.get("reviewStartedOn"),
+            "version": obj.get("version"),
+            "labels": [Label.from_dict(_item) for _item in obj["labels"]] if obj.get("labels") is not None else None,
+            "processingStartedOn": obj.get("processingStartedOn"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "environment": obj.get("environment"),
+            "reviewedOn": obj.get("reviewedOn"),
+            "sourceEntityId": obj.get("sourceEntityId"),
+            "failureReason": FailureReason.from_dict(obj["failureReason"]) if obj.get("failureReason") is not None else None,
+            "billingAddress": Address.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "failedOn": obj.get("failedOn"),
+            "nextAttemptOn": obj.get("nextAttemptOn")
+        })
+        return _obj
 
-    @amount.setter
-    def amount(self, amount):
-        """Sets the amount of this DebtCollectionCase.
 
-            The sum of all unpaid item prices in the case's currency. The amount can no longer be changed once the case has been reviewed.
-
-        :param amount: The amount of this DebtCollectionCase.
-        :type: float
-        """
-
-        self._amount = amount
-    
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this DebtCollectionCase.
-
-            The billing address that identifies the debtor.
-
-        :return: The billing_address of this DebtCollectionCase.
-        :rtype: Address
-        """
-        return self._billing_address
-
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this DebtCollectionCase.
-
-            The billing address that identifies the debtor.
-
-        :param billing_address: The billing_address of this DebtCollectionCase.
-        :type: Address
-        """
-
-        self._billing_address = billing_address
-    
-    @property
-    def closed_on(self):
-        """Gets the closed_on of this DebtCollectionCase.
-
-            The date and time when the case was closed.
-
-        :return: The closed_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._closed_on
-
-    @closed_on.setter
-    def closed_on(self, closed_on):
-        """Sets the closed_on of this DebtCollectionCase.
-
-            The date and time when the case was closed.
-
-        :param closed_on: The closed_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._closed_on = closed_on
-    
-    @property
-    def collector_configuration(self):
-        """Gets the collector_configuration of this DebtCollectionCase.
-
-            The configuration that the case is processed with.
-
-        :return: The collector_configuration of this DebtCollectionCase.
-        :rtype: DebtCollectorConfiguration
-        """
-        return self._collector_configuration
-
-    @collector_configuration.setter
-    def collector_configuration(self, collector_configuration):
-        """Sets the collector_configuration of this DebtCollectionCase.
-
-            The configuration that the case is processed with.
-
-        :param collector_configuration: The collector_configuration of this DebtCollectionCase.
-        :type: DebtCollectorConfiguration
-        """
-
-        self._collector_configuration = collector_configuration
-    
-    @property
-    def contract_date(self):
-        """Gets the contract_date of this DebtCollectionCase.
-
-            The date and time when the contract with the debtor was signed.
-
-        :return: The contract_date of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._contract_date
-
-    @contract_date.setter
-    def contract_date(self, contract_date):
-        """Sets the contract_date of this DebtCollectionCase.
-
-            The date and time when the contract with the debtor was signed.
-
-        :param contract_date: The contract_date of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._contract_date = contract_date
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this DebtCollectionCase.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this DebtCollectionCase.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def creator(self):
-        """Gets the creator of this DebtCollectionCase.
-
-            The ID of the user the case was created by.
-
-        :return: The creator of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._creator
-
-    @creator.setter
-    def creator(self, creator):
-        """Sets the creator of this DebtCollectionCase.
-
-            The ID of the user the case was created by.
-
-        :param creator: The creator of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._creator = creator
-    
-    @property
-    def currency(self):
-        """Gets the currency of this DebtCollectionCase.
-
-            The three-letter code (ISO 4217 format) of the case's currency.
-
-        :return: The currency of this DebtCollectionCase.
-        :rtype: str
-        """
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        """Sets the currency of this DebtCollectionCase.
-
-            The three-letter code (ISO 4217 format) of the case's currency.
-
-        :param currency: The currency of this DebtCollectionCase.
-        :type: str
-        """
-
-        self._currency = currency
-    
-    @property
-    def due_date(self):
-        """Gets the due_date of this DebtCollectionCase.
-
-            The date and time when the claim was due.
-
-        :return: The due_date of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._due_date
-
-    @due_date.setter
-    def due_date(self, due_date):
-        """Sets the due_date of this DebtCollectionCase.
-
-            The date and time when the claim was due.
-
-        :param due_date: The due_date of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._due_date = due_date
-    
-    @property
-    def environment(self):
-        """Gets the environment of this DebtCollectionCase.
-
-            The environment in which the case is processed.
-
-        :return: The environment of this DebtCollectionCase.
-        :rtype: DebtCollectionEnvironment
-        """
-        return self._environment
-
-    @environment.setter
-    def environment(self, environment):
-        """Sets the environment of this DebtCollectionCase.
-
-            The environment in which the case is processed.
-
-        :param environment: The environment of this DebtCollectionCase.
-        :type: DebtCollectionEnvironment
-        """
-
-        self._environment = environment
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this DebtCollectionCase.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this DebtCollectionCase.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this DebtCollectionCase.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this DebtCollectionCase.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def failed_on(self):
-        """Gets the failed_on of this DebtCollectionCase.
-
-            The date and time when the case failed.
-
-        :return: The failed_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._failed_on
-
-    @failed_on.setter
-    def failed_on(self, failed_on):
-        """Sets the failed_on of this DebtCollectionCase.
-
-            The date and time when the case failed.
-
-        :param failed_on: The failed_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._failed_on = failed_on
-    
-    @property
-    def failure_reason(self):
-        """Gets the failure_reason of this DebtCollectionCase.
-
-            The reason for the failure of the case.
-
-        :return: The failure_reason of this DebtCollectionCase.
-        :rtype: FailureReason
-        """
-        return self._failure_reason
-
-    @failure_reason.setter
-    def failure_reason(self, failure_reason):
-        """Sets the failure_reason of this DebtCollectionCase.
-
-            The reason for the failure of the case.
-
-        :param failure_reason: The failure_reason of this DebtCollectionCase.
-        :type: FailureReason
-        """
-
-        self._failure_reason = failure_reason
-    
-    @property
-    def id(self):
-        """Gets the id of this DebtCollectionCase.
-
-            A unique identifier for the object.
-
-        :return: The id of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DebtCollectionCase.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def labels(self):
-        """Gets the labels of this DebtCollectionCase.
-
-            The labels providing additional information about the object.
-
-        :return: The labels of this DebtCollectionCase.
-        :rtype: list[Label]
-        """
-        return self._labels
-
-    @labels.setter
-    def labels(self, labels):
-        """Sets the labels of this DebtCollectionCase.
-
-            The labels providing additional information about the object.
-
-        :param labels: The labels of this DebtCollectionCase.
-        :type: list[Label]
-        """
-
-        self._labels = labels
-    
-    @property
-    def language(self):
-        """Gets the language of this DebtCollectionCase.
-
-            The language that is linked to the object.
-
-        :return: The language of this DebtCollectionCase.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this DebtCollectionCase.
-
-            The language that is linked to the object.
-
-        :param language: The language of this DebtCollectionCase.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this DebtCollectionCase.
-
-            The line items that are subject of this debt collection case.
-
-        :return: The line_items of this DebtCollectionCase.
-        :rtype: list[LineItem]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this DebtCollectionCase.
-
-            The line items that are subject of this debt collection case.
-
-        :param line_items: The line_items of this DebtCollectionCase.
-        :type: list[LineItem]
-        """
-
-        self._line_items = line_items
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this DebtCollectionCase.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this DebtCollectionCase.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def next_attempt_on(self):
-        """Gets the next_attempt_on of this DebtCollectionCase.
-
-            The date and time when the next attempt at processing the case will be made.
-
-        :return: The next_attempt_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._next_attempt_on
-
-    @next_attempt_on.setter
-    def next_attempt_on(self, next_attempt_on):
-        """Sets the next_attempt_on of this DebtCollectionCase.
-
-            The date and time when the next attempt at processing the case will be made.
-
-        :param next_attempt_on: The next_attempt_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._next_attempt_on = next_attempt_on
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this DebtCollectionCase.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this DebtCollectionCase.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def processing_started_on(self):
-        """Gets the processing_started_on of this DebtCollectionCase.
-
-            The date and time when the processing of the case was started.
-
-        :return: The processing_started_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._processing_started_on
-
-    @processing_started_on.setter
-    def processing_started_on(self, processing_started_on):
-        """Sets the processing_started_on of this DebtCollectionCase.
-
-            The date and time when the processing of the case was started.
-
-        :param processing_started_on: The processing_started_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._processing_started_on = processing_started_on
-    
-    @property
-    def processing_timeout_on(self):
-        """Gets the processing_timeout_on of this DebtCollectionCase.
-
-            The date and time when the processing of the case times out.
-
-        :return: The processing_timeout_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._processing_timeout_on
-
-    @processing_timeout_on.setter
-    def processing_timeout_on(self, processing_timeout_on):
-        """Sets the processing_timeout_on of this DebtCollectionCase.
-
-            The date and time when the processing of the case times out.
-
-        :param processing_timeout_on: The processing_timeout_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._processing_timeout_on = processing_timeout_on
-    
-    @property
-    def reference(self):
-        """Gets the reference of this DebtCollectionCase.
-
-            A unique reference to identify the debt collection case in communication with the debtor.
-
-        :return: The reference of this DebtCollectionCase.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this DebtCollectionCase.
-
-            A unique reference to identify the debt collection case in communication with the debtor.
-
-        :param reference: The reference of this DebtCollectionCase.
-        :type: str
-        """
-
-        self._reference = reference
-    
-    @property
-    def review_started_on(self):
-        """Gets the review_started_on of this DebtCollectionCase.
-
-            The date and time when the review of the case was started.
-
-        :return: The review_started_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._review_started_on
-
-    @review_started_on.setter
-    def review_started_on(self, review_started_on):
-        """Sets the review_started_on of this DebtCollectionCase.
-
-            The date and time when the review of the case was started.
-
-        :param review_started_on: The review_started_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._review_started_on = review_started_on
-    
-    @property
-    def reviewed_on(self):
-        """Gets the reviewed_on of this DebtCollectionCase.
-
-            The date and time when the case was reviewed.
-
-        :return: The reviewed_on of this DebtCollectionCase.
-        :rtype: datetime
-        """
-        return self._reviewed_on
-
-    @reviewed_on.setter
-    def reviewed_on(self, reviewed_on):
-        """Sets the reviewed_on of this DebtCollectionCase.
-
-            The date and time when the case was reviewed.
-
-        :param reviewed_on: The reviewed_on of this DebtCollectionCase.
-        :type: datetime
-        """
-
-        self._reviewed_on = reviewed_on
-    
-    @property
-    def reviewer(self):
-        """Gets the reviewer of this DebtCollectionCase.
-
-            The ID of the user the case was reviewed by.
-
-        :return: The reviewer of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._reviewer
-
-    @reviewer.setter
-    def reviewer(self, reviewer):
-        """Sets the reviewer of this DebtCollectionCase.
-
-            The ID of the user the case was reviewed by.
-
-        :param reviewer: The reviewer of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._reviewer = reviewer
-    
-    @property
-    def source(self):
-        """Gets the source of this DebtCollectionCase.
-
-            The source of the case stating the origin of the claim.
-
-        :return: The source of this DebtCollectionCase.
-        :rtype: DebtCollectionCaseSource
-        """
-        return self._source
-
-    @source.setter
-    def source(self, source):
-        """Sets the source of this DebtCollectionCase.
-
-            The source of the case stating the origin of the claim.
-
-        :param source: The source of this DebtCollectionCase.
-        :type: DebtCollectionCaseSource
-        """
-
-        self._source = source
-    
-    @property
-    def source_entity_id(self):
-        """Gets the source_entity_id of this DebtCollectionCase.
-
-            The ID of the object that is the source of the case. Only defined if the case was created by an internal process.
-
-        :return: The source_entity_id of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._source_entity_id
-
-    @source_entity_id.setter
-    def source_entity_id(self, source_entity_id):
-        """Sets the source_entity_id of this DebtCollectionCase.
-
-            The ID of the object that is the source of the case. Only defined if the case was created by an internal process.
-
-        :param source_entity_id: The source_entity_id of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._source_entity_id = source_entity_id
-    
-    @property
-    def space_view_id(self):
-        """Gets the space_view_id of this DebtCollectionCase.
-
-            The ID of the space view this object is linked to.
-
-        :return: The space_view_id of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._space_view_id
-
-    @space_view_id.setter
-    def space_view_id(self, space_view_id):
-        """Sets the space_view_id of this DebtCollectionCase.
-
-            The ID of the space view this object is linked to.
-
-        :param space_view_id: The space_view_id of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._space_view_id = space_view_id
-    
-    @property
-    def state(self):
-        """Gets the state of this DebtCollectionCase.
-
-            The object's current state.
-
-        :return: The state of this DebtCollectionCase.
-        :rtype: DebtCollectionCaseState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this DebtCollectionCase.
-
-            The object's current state.
-
-        :param state: The state of this DebtCollectionCase.
-        :type: DebtCollectionCaseState
-        """
-
-        self._state = state
-    
-    @property
-    def version(self):
-        """Gets the version of this DebtCollectionCase.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this DebtCollectionCase.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this DebtCollectionCase.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this DebtCollectionCase.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DebtCollectionCase, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DebtCollectionCase):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

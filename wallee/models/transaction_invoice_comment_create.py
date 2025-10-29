@@ -1,99 +1,101 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import AbstractTransactionInvoiceCommentActive
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TransactionInvoiceCommentCreate(BaseModel):
+    """
+    TransactionInvoiceCommentCreate
+    """
+    content: Optional[Annotated[str, Field(strict=True, max_length=262144)]] = Field(default=None, description="The comment's actual content.")
+    transaction_invoice: StrictInt = Field(description="The transaction invoice that the comment belongs to.", alias="transactionInvoice")
+    __properties: ClassVar[List[str]] = ["content", "transactionInvoice"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class TransactionInvoiceCommentCreate(AbstractTransactionInvoiceCommentActive):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'transaction_invoice': 'int',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'transaction_invoice': 'transactionInvoice',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TransactionInvoiceCommentCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _transaction_invoice = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.transaction_invoice = kwargs.get('transaction_invoice')
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
-
-    
-    @property
-    def transaction_invoice(self):
-        """Gets the transaction_invoice of this TransactionInvoiceCommentCreate.
-
-            The transaction invoice that the comment belongs to.
-
-        :return: The transaction_invoice of this TransactionInvoiceCommentCreate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._transaction_invoice
+        excluded_fields: Set[str] = set([
+        ])
 
-    @transaction_invoice.setter
-    def transaction_invoice(self, transaction_invoice):
-        """Sets the transaction_invoice of this TransactionInvoiceCommentCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The transaction invoice that the comment belongs to.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TransactionInvoiceCommentCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param transaction_invoice: The transaction_invoice of this TransactionInvoiceCommentCreate.
-        :type: int
-        """
-        if transaction_invoice is None:
-            raise ValueError("Invalid value for `transaction_invoice`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._transaction_invoice = transaction_invoice
-    
+        _obj = cls.model_validate({
+            "content": obj.get("content"),
+            "transactionInvoice": obj.get("transactionInvoice")
+        })
+        return _obj
 
-    def to_dict(self):
-        result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TransactionInvoiceCommentCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TransactionInvoiceCommentCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

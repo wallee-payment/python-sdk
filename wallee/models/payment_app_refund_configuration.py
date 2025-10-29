@@ -1,146 +1,108 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentAppRefundConfiguration(BaseModel):
+    """
+    PaymentAppRefundConfiguration
+    """
+    refund_timeout_in_minutes: Optional[StrictInt] = Field(default=None, description="The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.", alias="refundTimeoutInMinutes")
+    multiple_refunds_supported: Optional[StrictBool] = Field(default=None, description="Whether the payment connector can process multiple refunds for a single transaction.", alias="multipleRefundsSupported")
+    refund_endpoint: Optional[StrictStr] = Field(default=None, description="The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.", alias="refundEndpoint")
+    __properties: ClassVar[List[str]] = ["refundTimeoutInMinutes", "multipleRefundsSupported", "refundEndpoint"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentAppRefundConfiguration:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'multiple_refunds_supported': 'bool',
-        'refund_endpoint': 'str',
-        'refund_timeout_in_minutes': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentAppRefundConfiguration from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'multiple_refunds_supported': 'multipleRefundsSupported','refund_endpoint': 'refundEndpoint','refund_timeout_in_minutes': 'refundTimeoutInMinutes',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _multiple_refunds_supported = None
-    _refund_endpoint = None
-    _refund_timeout_in_minutes = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.multiple_refunds_supported = kwargs.get('multiple_refunds_supported', None)
-        self.refund_endpoint = kwargs.get('refund_endpoint', None)
-        self.refund_timeout_in_minutes = kwargs.get('refund_timeout_in_minutes', None)
-        
-
-    
-    @property
-    def multiple_refunds_supported(self):
-        """Gets the multiple_refunds_supported of this PaymentAppRefundConfiguration.
-
-            Whether the payment connector can process multiple refunds for a single transaction.
-
-        :return: The multiple_refunds_supported of this PaymentAppRefundConfiguration.
-        :rtype: bool
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._multiple_refunds_supported
+        excluded_fields: Set[str] = set([
+            "refund_timeout_in_minutes",
+            "multiple_refunds_supported",
+            "refund_endpoint",
+        ])
 
-    @multiple_refunds_supported.setter
-    def multiple_refunds_supported(self, multiple_refunds_supported):
-        """Sets the multiple_refunds_supported of this PaymentAppRefundConfiguration.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            Whether the payment connector can process multiple refunds for a single transaction.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentAppRefundConfiguration from a dict"""
+        if obj is None:
+            return None
 
-        :param multiple_refunds_supported: The multiple_refunds_supported of this PaymentAppRefundConfiguration.
-        :type: bool
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._multiple_refunds_supported = multiple_refunds_supported
-    
-    @property
-    def refund_endpoint(self):
-        """Gets the refund_endpoint of this PaymentAppRefundConfiguration.
+        _obj = cls.model_validate({
+            "refundTimeoutInMinutes": obj.get("refundTimeoutInMinutes"),
+            "multipleRefundsSupported": obj.get("multipleRefundsSupported"),
+            "refundEndpoint": obj.get("refundEndpoint")
+        })
+        return _obj
 
-            The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
 
-        :return: The refund_endpoint of this PaymentAppRefundConfiguration.
-        :rtype: str
-        """
-        return self._refund_endpoint
-
-    @refund_endpoint.setter
-    def refund_endpoint(self, refund_endpoint):
-        """Sets the refund_endpoint of this PaymentAppRefundConfiguration.
-
-            The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
-
-        :param refund_endpoint: The refund_endpoint of this PaymentAppRefundConfiguration.
-        :type: str
-        """
-
-        self._refund_endpoint = refund_endpoint
-    
-    @property
-    def refund_timeout_in_minutes(self):
-        """Gets the refund_timeout_in_minutes of this PaymentAppRefundConfiguration.
-
-            The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
-
-        :return: The refund_timeout_in_minutes of this PaymentAppRefundConfiguration.
-        :rtype: int
-        """
-        return self._refund_timeout_in_minutes
-
-    @refund_timeout_in_minutes.setter
-    def refund_timeout_in_minutes(self, refund_timeout_in_minutes):
-        """Sets the refund_timeout_in_minutes of this PaymentAppRefundConfiguration.
-
-            The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
-
-        :param refund_timeout_in_minutes: The refund_timeout_in_minutes of this PaymentAppRefundConfiguration.
-        :type: int
-        """
-
-        self._refund_timeout_in_minutes = refund_timeout_in_minutes
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentAppRefundConfiguration, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentAppRefundConfiguration):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

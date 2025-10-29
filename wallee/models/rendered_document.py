@@ -1,172 +1,112 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RenderedDocument(BaseModel):
+    """
+    RenderedDocument
+    """
+    document_template_type: Optional[StrictInt] = Field(default=None, description="The document's template type", alias="documentTemplateType")
+    data: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The binary data of the document")
+    mime_type: Optional[StrictStr] = Field(default=None, description="The document's content type", alias="mimeType")
+    title: Optional[StrictStr] = Field(default=None, description="The title of the rendered document")
+    __properties: ClassVar[List[str]] = ["documentTemplateType", "data", "mimeType", "title"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RenderedDocument:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'data': 'list[str]',
-        'document_template_type': 'int',
-        'mime_type': 'str',
-        'title': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RenderedDocument from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'data': 'data','document_template_type': 'documentTemplateType','mime_type': 'mimeType','title': 'title',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _data = None
-    _document_template_type = None
-    _mime_type = None
-    _title = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.data = kwargs.get('data', None)
-        self.document_template_type = kwargs.get('document_template_type', None)
-        self.mime_type = kwargs.get('mime_type', None)
-        self.title = kwargs.get('title', None)
-        
-
-    
-    @property
-    def data(self):
-        """Gets the data of this RenderedDocument.
-
-            The binary data of the document
-
-        :return: The data of this RenderedDocument.
-        :rtype: list[str]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._data
+        excluded_fields: Set[str] = set([
+            "document_template_type",
+            "data",
+            "mime_type",
+            "title",
+        ])
 
-    @data.setter
-    def data(self, data):
-        """Sets the data of this RenderedDocument.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The binary data of the document
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RenderedDocument from a dict"""
+        if obj is None:
+            return None
 
-        :param data: The data of this RenderedDocument.
-        :type: list[str]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._data = data
-    
-    @property
-    def document_template_type(self):
-        """Gets the document_template_type of this RenderedDocument.
+        _obj = cls.model_validate({
+            "documentTemplateType": obj.get("documentTemplateType"),
+            "data": obj.get("data"),
+            "mimeType": obj.get("mimeType"),
+            "title": obj.get("title")
+        })
+        return _obj
 
-            The document's template type
 
-        :return: The document_template_type of this RenderedDocument.
-        :rtype: int
-        """
-        return self._document_template_type
-
-    @document_template_type.setter
-    def document_template_type(self, document_template_type):
-        """Sets the document_template_type of this RenderedDocument.
-
-            The document's template type
-
-        :param document_template_type: The document_template_type of this RenderedDocument.
-        :type: int
-        """
-
-        self._document_template_type = document_template_type
-    
-    @property
-    def mime_type(self):
-        """Gets the mime_type of this RenderedDocument.
-
-            The document's content type
-
-        :return: The mime_type of this RenderedDocument.
-        :rtype: str
-        """
-        return self._mime_type
-
-    @mime_type.setter
-    def mime_type(self, mime_type):
-        """Sets the mime_type of this RenderedDocument.
-
-            The document's content type
-
-        :param mime_type: The mime_type of this RenderedDocument.
-        :type: str
-        """
-
-        self._mime_type = mime_type
-    
-    @property
-    def title(self):
-        """Gets the title of this RenderedDocument.
-
-            The title of the rendered document
-
-        :return: The title of this RenderedDocument.
-        :rtype: str
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """Sets the title of this RenderedDocument.
-
-            The title of the rendered document
-
-        :param title: The title of this RenderedDocument.
-        :type: str
-        """
-
-        self._title = title
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RenderedDocument, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RenderedDocument):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

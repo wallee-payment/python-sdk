@@ -1,356 +1,143 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.document_template_type import DocumentTemplateType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DocumentTemplate(BaseModel):
+    """
+    A document template contains the customizations for a particular document template type.
+    """
+    delivery_enabled: Optional[StrictBool] = Field(default=None, description="Whether documents of this template should be delivered.", alias="deliveryEnabled")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="spaceId")
+    default_template: Optional[StrictBool] = Field(default=None, description="Whether this is the default document template which is used whenever no specific template is specified for the same template type.", alias="defaultTemplate")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the document template.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    template_resource: Optional[StrictStr] = Field(default=None, description="The resource path to a custom template to be used to generate PDF documents.", alias="templateResource")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    type: Optional[DocumentTemplateType] = None
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["deliveryEnabled", "linkedSpaceId", "spaceId", "defaultTemplate", "name", "plannedPurgeDate", "templateResource", "id", "state", "type", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DocumentTemplate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'default_template': 'bool',
-        'delivery_enabled': 'bool',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'name': 'str',
-        'planned_purge_date': 'datetime',
-        'space_id': 'int',
-        'state': 'CreationEntityState',
-        'template_resource': 'ResourcePath',
-        'type': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DocumentTemplate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'default_template': 'defaultTemplate','delivery_enabled': 'deliveryEnabled','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','space_id': 'spaceId','state': 'state','template_resource': 'templateResource','type': 'type','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _default_template = None
-    _delivery_enabled = None
-    _id = None
-    _linked_space_id = None
-    _name = None
-    _planned_purge_date = None
-    _space_id = None
-    _state = None
-    _template_resource = None
-    _type = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.default_template = kwargs.get('default_template', None)
-        self.delivery_enabled = kwargs.get('delivery_enabled', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.space_id = kwargs.get('space_id', None)
-        self.state = kwargs.get('state', None)
-        self.template_resource = kwargs.get('template_resource', None)
-        self.type = kwargs.get('type', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def default_template(self):
-        """Gets the default_template of this DocumentTemplate.
-
-            Whether this is the default document template which is used whenever no specific template is specified for the same template type.
-
-        :return: The default_template of this DocumentTemplate.
-        :rtype: bool
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._default_template
+        excluded_fields: Set[str] = set([
+            "delivery_enabled",
+            "linked_space_id",
+            "space_id",
+            "default_template",
+            "name",
+            "planned_purge_date",
+            "template_resource",
+            "id",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DocumentTemplate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "deliveryEnabled": obj.get("deliveryEnabled"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "spaceId": obj.get("spaceId"),
+            "defaultTemplate": obj.get("defaultTemplate"),
+            "name": obj.get("name"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "templateResource": obj.get("templateResource"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "type": DocumentTemplateType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "version": obj.get("version")
+        })
+        return _obj
 
-    @default_template.setter
-    def default_template(self, default_template):
-        """Sets the default_template of this DocumentTemplate.
 
-            Whether this is the default document template which is used whenever no specific template is specified for the same template type.
-
-        :param default_template: The default_template of this DocumentTemplate.
-        :type: bool
-        """
-
-        self._default_template = default_template
-    
-    @property
-    def delivery_enabled(self):
-        """Gets the delivery_enabled of this DocumentTemplate.
-
-            Whether documents of this template should be delivered.
-
-        :return: The delivery_enabled of this DocumentTemplate.
-        :rtype: bool
-        """
-        return self._delivery_enabled
-
-    @delivery_enabled.setter
-    def delivery_enabled(self, delivery_enabled):
-        """Sets the delivery_enabled of this DocumentTemplate.
-
-            Whether documents of this template should be delivered.
-
-        :param delivery_enabled: The delivery_enabled of this DocumentTemplate.
-        :type: bool
-        """
-
-        self._delivery_enabled = delivery_enabled
-    
-    @property
-    def id(self):
-        """Gets the id of this DocumentTemplate.
-
-            A unique identifier for the object.
-
-        :return: The id of this DocumentTemplate.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DocumentTemplate.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DocumentTemplate.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this DocumentTemplate.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this DocumentTemplate.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this DocumentTemplate.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this DocumentTemplate.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this DocumentTemplate.
-
-            The name used to identify the document template.
-
-        :return: The name of this DocumentTemplate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this DocumentTemplate.
-
-            The name used to identify the document template.
-
-        :param name: The name of this DocumentTemplate.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this DocumentTemplate.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this DocumentTemplate.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this DocumentTemplate.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this DocumentTemplate.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def space_id(self):
-        """Gets the space_id of this DocumentTemplate.
-
-            The ID of the space this object belongs to.
-
-        :return: The space_id of this DocumentTemplate.
-        :rtype: int
-        """
-        return self._space_id
-
-    @space_id.setter
-    def space_id(self, space_id):
-        """Sets the space_id of this DocumentTemplate.
-
-            The ID of the space this object belongs to.
-
-        :param space_id: The space_id of this DocumentTemplate.
-        :type: int
-        """
-
-        self._space_id = space_id
-    
-    @property
-    def state(self):
-        """Gets the state of this DocumentTemplate.
-
-            The object's current state.
-
-        :return: The state of this DocumentTemplate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this DocumentTemplate.
-
-            The object's current state.
-
-        :param state: The state of this DocumentTemplate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def template_resource(self):
-        """Gets the template_resource of this DocumentTemplate.
-
-            The resource path to a custom template to be used to generate PDF documents.
-
-        :return: The template_resource of this DocumentTemplate.
-        :rtype: ResourcePath
-        """
-        return self._template_resource
-
-    @template_resource.setter
-    def template_resource(self, template_resource):
-        """Sets the template_resource of this DocumentTemplate.
-
-            The resource path to a custom template to be used to generate PDF documents.
-
-        :param template_resource: The template_resource of this DocumentTemplate.
-        :type: ResourcePath
-        """
-
-        self._template_resource = template_resource
-    
-    @property
-    def type(self):
-        """Gets the type of this DocumentTemplate.
-
-            The document template's type.
-
-        :return: The type of this DocumentTemplate.
-        :rtype: int
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this DocumentTemplate.
-
-            The document template's type.
-
-        :param type: The type of this DocumentTemplate.
-        :type: int
-        """
-
-        self._type = type
-    
-    @property
-    def version(self):
-        """Gets the version of this DocumentTemplate.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this DocumentTemplate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this DocumentTemplate.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this DocumentTemplate.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DocumentTemplate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DocumentTemplate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

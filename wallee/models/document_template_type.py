@@ -1,198 +1,120 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.document_template_type_group import DocumentTemplateTypeGroup
+from wallee.models.feature import Feature
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DocumentTemplateType(BaseModel):
+    """
+    DocumentTemplateType
+    """
+    feature: Optional[Feature] = None
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the document template type.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    title: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized title of the document template type.")
+    group: Optional[DocumentTemplateTypeGroup] = None
+    __properties: ClassVar[List[str]] = ["feature", "description", "id", "title", "group"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DocumentTemplateType:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'description': 'dict(str, str)',
-        'feature': 'int',
-        'group': 'DocumentTemplateTypeGroup',
-        'id': 'int',
-        'title': 'dict(str, str)',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DocumentTemplateType from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'description': 'description','feature': 'feature','group': 'group','id': 'id','title': 'title',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _description = None
-    _feature = None
-    _group = None
-    _id = None
-    _title = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.description = kwargs.get('description', None)
-        self.feature = kwargs.get('feature', None)
-        self.group = kwargs.get('group', None)
-        self.id = kwargs.get('id', None)
-        self.title = kwargs.get('title', None)
-        
-
-    
-    @property
-    def description(self):
-        """Gets the description of this DocumentTemplateType.
-
-            The localized description of the document template type.
-
-        :return: The description of this DocumentTemplateType.
-        :rtype: dict(str, str)
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._description
+        excluded_fields: Set[str] = set([
+            "description",
+            "id",
+            "title",
+        ])
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this DocumentTemplateType.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of feature
+        if self.feature:
+            _dict['feature'] = self.feature.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of group
+        if self.group:
+            _dict['group'] = self.group.to_dict()
+        return _dict
 
-            The localized description of the document template type.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DocumentTemplateType from a dict"""
+        if obj is None:
+            return None
 
-        :param description: The description of this DocumentTemplateType.
-        :type: dict(str, str)
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._description = description
-    
-    @property
-    def feature(self):
-        """Gets the feature of this DocumentTemplateType.
+        _obj = cls.model_validate({
+            "feature": Feature.from_dict(obj["feature"]) if obj.get("feature") is not None else None,
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "title": obj.get("title"),
+            "group": DocumentTemplateTypeGroup.from_dict(obj["group"]) if obj.get("group") is not None else None
+        })
+        return _obj
 
-            The feature that this document template type belongs to.
 
-        :return: The feature of this DocumentTemplateType.
-        :rtype: int
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this DocumentTemplateType.
-
-            The feature that this document template type belongs to.
-
-        :param feature: The feature of this DocumentTemplateType.
-        :type: int
-        """
-
-        self._feature = feature
-    
-    @property
-    def group(self):
-        """Gets the group of this DocumentTemplateType.
-
-            The group that this document template type belongs to.
-
-        :return: The group of this DocumentTemplateType.
-        :rtype: DocumentTemplateTypeGroup
-        """
-        return self._group
-
-    @group.setter
-    def group(self, group):
-        """Sets the group of this DocumentTemplateType.
-
-            The group that this document template type belongs to.
-
-        :param group: The group of this DocumentTemplateType.
-        :type: DocumentTemplateTypeGroup
-        """
-
-        self._group = group
-    
-    @property
-    def id(self):
-        """Gets the id of this DocumentTemplateType.
-
-            A unique identifier for the object.
-
-        :return: The id of this DocumentTemplateType.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DocumentTemplateType.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DocumentTemplateType.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def title(self):
-        """Gets the title of this DocumentTemplateType.
-
-            The localized title of the document template type.
-
-        :return: The title of this DocumentTemplateType.
-        :rtype: dict(str, str)
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """Sets the title of this DocumentTemplateType.
-
-            The localized title of the document template type.
-
-        :param title: The title of this DocumentTemplateType.
-        :type: dict(str, str)
-        """
-
-        self._title = title
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DocumentTemplateType, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DocumentTemplateType):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,230 +1,113 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.billing_cycle_type import BillingCycleType
+from wallee.models.billing_day_customization import BillingDayCustomization
+from wallee.models.displayable_day_of_week import DisplayableDayOfWeek
+from wallee.models.displayable_month import DisplayableMonth
+from typing import Optional, Set
+from typing_extensions import Self
+
+class BillingCycleModel(BaseModel):
+    """
+    BillingCycleModel
+    """
+    month: Optional[DisplayableMonth] = None
+    customization: Optional[BillingDayCustomization] = None
+    day_of_month: Optional[StrictInt] = Field(default=None, alias="dayOfMonth")
+    weekly_day: Optional[DisplayableDayOfWeek] = Field(default=None, alias="weeklyDay")
+    number_of_periods: Annotated[int, Field(strict=True, ge=1)] = Field(description="Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30.", alias="numberOfPeriods")
+    billing_cycle_type: BillingCycleType = Field(alias="billingCycleType")
+    __properties: ClassVar[List[str]] = ["month", "customization", "dayOfMonth", "weeklyDay", "numberOfPeriods", "billingCycleType"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class BillingCycleModel:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'billing_cycle_type': 'BillingCycleType',
-        'customization': 'BillingDayCustomization',
-        'day_of_month': 'int',
-        'month': 'DisplayableMonth',
-        'number_of_periods': 'int',
-        'weekly_day': 'DisplayableDayOfWeek',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of BillingCycleModel from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'billing_cycle_type': 'billingCycleType','customization': 'customization','day_of_month': 'dayOfMonth','month': 'month','number_of_periods': 'numberOfPeriods','weekly_day': 'weeklyDay',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _billing_cycle_type = None
-    _customization = None
-    _day_of_month = None
-    _month = None
-    _number_of_periods = None
-    _weekly_day = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.billing_cycle_type = kwargs.get('billing_cycle_type')
-
-        self.customization = kwargs.get('customization', None)
-        self.day_of_month = kwargs.get('day_of_month', None)
-        self.month = kwargs.get('month', None)
-        self.number_of_periods = kwargs.get('number_of_periods')
-
-        self.weekly_day = kwargs.get('weekly_day', None)
-        
-
-    
-    @property
-    def billing_cycle_type(self):
-        """Gets the billing_cycle_type of this BillingCycleModel.
-
-            
-
-        :return: The billing_cycle_type of this BillingCycleModel.
-        :rtype: BillingCycleType
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._billing_cycle_type
+        excluded_fields: Set[str] = set([
+        ])
 
-    @billing_cycle_type.setter
-    def billing_cycle_type(self, billing_cycle_type):
-        """Sets the billing_cycle_type of this BillingCycleModel.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of BillingCycleModel from a dict"""
+        if obj is None:
+            return None
 
-        :param billing_cycle_type: The billing_cycle_type of this BillingCycleModel.
-        :type: BillingCycleType
-        """
-        if billing_cycle_type is None:
-            raise ValueError("Invalid value for `billing_cycle_type`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._billing_cycle_type = billing_cycle_type
-    
-    @property
-    def customization(self):
-        """Gets the customization of this BillingCycleModel.
+        _obj = cls.model_validate({
+            "month": obj.get("month"),
+            "customization": obj.get("customization"),
+            "dayOfMonth": obj.get("dayOfMonth"),
+            "weeklyDay": obj.get("weeklyDay"),
+            "numberOfPeriods": obj.get("numberOfPeriods"),
+            "billingCycleType": obj.get("billingCycleType")
+        })
+        return _obj
 
-            
 
-        :return: The customization of this BillingCycleModel.
-        :rtype: BillingDayCustomization
-        """
-        return self._customization
-
-    @customization.setter
-    def customization(self, customization):
-        """Sets the customization of this BillingCycleModel.
-
-            
-
-        :param customization: The customization of this BillingCycleModel.
-        :type: BillingDayCustomization
-        """
-
-        self._customization = customization
-    
-    @property
-    def day_of_month(self):
-        """Gets the day_of_month of this BillingCycleModel.
-
-            
-
-        :return: The day_of_month of this BillingCycleModel.
-        :rtype: int
-        """
-        return self._day_of_month
-
-    @day_of_month.setter
-    def day_of_month(self, day_of_month):
-        """Sets the day_of_month of this BillingCycleModel.
-
-            
-
-        :param day_of_month: The day_of_month of this BillingCycleModel.
-        :type: int
-        """
-
-        self._day_of_month = day_of_month
-    
-    @property
-    def month(self):
-        """Gets the month of this BillingCycleModel.
-
-            
-
-        :return: The month of this BillingCycleModel.
-        :rtype: DisplayableMonth
-        """
-        return self._month
-
-    @month.setter
-    def month(self, month):
-        """Sets the month of this BillingCycleModel.
-
-            
-
-        :param month: The month of this BillingCycleModel.
-        :type: DisplayableMonth
-        """
-
-        self._month = month
-    
-    @property
-    def number_of_periods(self):
-        """Gets the number_of_periods of this BillingCycleModel.
-
-            Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30.
-
-        :return: The number_of_periods of this BillingCycleModel.
-        :rtype: int
-        """
-        return self._number_of_periods
-
-    @number_of_periods.setter
-    def number_of_periods(self, number_of_periods):
-        """Sets the number_of_periods of this BillingCycleModel.
-
-            Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30.
-
-        :param number_of_periods: The number_of_periods of this BillingCycleModel.
-        :type: int
-        """
-        if number_of_periods is None:
-            raise ValueError("Invalid value for `number_of_periods`, must not be `None`")
-
-        self._number_of_periods = number_of_periods
-    
-    @property
-    def weekly_day(self):
-        """Gets the weekly_day of this BillingCycleModel.
-
-            
-
-        :return: The weekly_day of this BillingCycleModel.
-        :rtype: DisplayableDayOfWeek
-        """
-        return self._weekly_day
-
-    @weekly_day.setter
-    def weekly_day(self, weekly_day):
-        """Sets the weekly_day of this BillingCycleModel.
-
-            
-
-        :param weekly_day: The weekly_day of this BillingCycleModel.
-        :type: DisplayableDayOfWeek
-        """
-
-        self._weekly_day = weekly_day
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(BillingCycleModel, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, BillingCycleModel):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,262 +1,137 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from wallee.models.line_item_reduction_create import LineItemReductionCreate
+from wallee.models.refund_type import RefundType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RefundCreate(BaseModel):
+    """
+    A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
+    """
+    completion: Optional[StrictInt] = Field(default=None, description="The transaction completion that the refund belongs to.")
+    amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total monetary amount of the refund, representing the exact credit issued to the customer.")
+    reductions: Optional[List[LineItemReductionCreate]] = Field(default=None, description="The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.")
+    external_id: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    type: RefundType
+    merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the refund.", alias="merchantReference")
+    transaction: Optional[StrictInt] = Field(default=None, description="The transaction that the refund belongs to.")
+    __properties: ClassVar[List[str]] = ["completion", "amount", "reductions", "externalId", "type", "merchantReference", "transaction"]
+
+    @field_validator('external_id')
+    def external_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    @field_validator('merchant_reference')
+    def merchant_reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RefundCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount': 'float',
-        'completion': 'int',
-        'external_id': 'str',
-        'merchant_reference': 'str',
-        'reductions': 'list[LineItemReductionCreate]',
-        'transaction': 'int',
-        'type': 'RefundType',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RefundCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount': 'amount','completion': 'completion','external_id': 'externalId','merchant_reference': 'merchantReference','reductions': 'reductions','transaction': 'transaction','type': 'type',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount = None
-    _completion = None
-    _external_id = None
-    _merchant_reference = None
-    _reductions = None
-    _transaction = None
-    _type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount = kwargs.get('amount', None)
-        self.completion = kwargs.get('completion', None)
-        self.external_id = kwargs.get('external_id')
-
-        self.merchant_reference = kwargs.get('merchant_reference', None)
-        self.reductions = kwargs.get('reductions', None)
-        self.transaction = kwargs.get('transaction', None)
-        self.type = kwargs.get('type')
-
-        
-
-    
-    @property
-    def amount(self):
-        """Gets the amount of this RefundCreate.
-
-            The total monetary amount of the refund, representing the exact credit issued to the customer.
-
-        :return: The amount of this RefundCreate.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._amount
+        excluded_fields: Set[str] = set([
+        ])
 
-    @amount.setter
-    def amount(self, amount):
-        """Sets the amount of this RefundCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in reductions (list)
+        _items = []
+        if self.reductions:
+            for _item_reductions in self.reductions:
+                if _item_reductions:
+                    _items.append(_item_reductions.to_dict())
+            _dict['reductions'] = _items
+        return _dict
 
-            The total monetary amount of the refund, representing the exact credit issued to the customer.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RefundCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param amount: The amount of this RefundCreate.
-        :type: float
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._amount = amount
-    
-    @property
-    def completion(self):
-        """Gets the completion of this RefundCreate.
+        _obj = cls.model_validate({
+            "completion": obj.get("completion"),
+            "amount": obj.get("amount"),
+            "reductions": [LineItemReductionCreate.from_dict(_item) for _item in obj["reductions"]] if obj.get("reductions") is not None else None,
+            "externalId": obj.get("externalId"),
+            "type": obj.get("type"),
+            "merchantReference": obj.get("merchantReference"),
+            "transaction": obj.get("transaction")
+        })
+        return _obj
 
-            The transaction completion that the refund belongs to.
 
-        :return: The completion of this RefundCreate.
-        :rtype: int
-        """
-        return self._completion
-
-    @completion.setter
-    def completion(self, completion):
-        """Sets the completion of this RefundCreate.
-
-            The transaction completion that the refund belongs to.
-
-        :param completion: The completion of this RefundCreate.
-        :type: int
-        """
-
-        self._completion = completion
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this RefundCreate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this RefundCreate.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this RefundCreate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this RefundCreate.
-        :type: str
-        """
-        if external_id is None:
-            raise ValueError("Invalid value for `external_id`, must not be `None`")
-        if external_id is not None and len(external_id) > 100:
-            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
-        if external_id is not None and len(external_id) < 1:
-            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
-
-        self._external_id = external_id
-    
-    @property
-    def merchant_reference(self):
-        """Gets the merchant_reference of this RefundCreate.
-
-            The merchant's reference used to identify the refund.
-
-        :return: The merchant_reference of this RefundCreate.
-        :rtype: str
-        """
-        return self._merchant_reference
-
-    @merchant_reference.setter
-    def merchant_reference(self, merchant_reference):
-        """Sets the merchant_reference of this RefundCreate.
-
-            The merchant's reference used to identify the refund.
-
-        :param merchant_reference: The merchant_reference of this RefundCreate.
-        :type: str
-        """
-        if merchant_reference is not None and len(merchant_reference) > 100:
-            raise ValueError("Invalid value for `merchant_reference`, length must be less than or equal to `100`")
-
-        self._merchant_reference = merchant_reference
-    
-    @property
-    def reductions(self):
-        """Gets the reductions of this RefundCreate.
-
-            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
-
-        :return: The reductions of this RefundCreate.
-        :rtype: list[LineItemReductionCreate]
-        """
-        return self._reductions
-
-    @reductions.setter
-    def reductions(self, reductions):
-        """Sets the reductions of this RefundCreate.
-
-            The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
-
-        :param reductions: The reductions of this RefundCreate.
-        :type: list[LineItemReductionCreate]
-        """
-
-        self._reductions = reductions
-    
-    @property
-    def transaction(self):
-        """Gets the transaction of this RefundCreate.
-
-            The transaction that the refund belongs to.
-
-        :return: The transaction of this RefundCreate.
-        :rtype: int
-        """
-        return self._transaction
-
-    @transaction.setter
-    def transaction(self, transaction):
-        """Sets the transaction of this RefundCreate.
-
-            The transaction that the refund belongs to.
-
-        :param transaction: The transaction of this RefundCreate.
-        :type: int
-        """
-
-        self._transaction = transaction
-    
-    @property
-    def type(self):
-        """Gets the type of this RefundCreate.
-
-            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
-
-        :return: The type of this RefundCreate.
-        :rtype: RefundType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this RefundCreate.
-
-            The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
-
-        :param type: The type of this RefundCreate.
-        :type: RefundType
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
-
-        self._type = type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RefundCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RefundCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

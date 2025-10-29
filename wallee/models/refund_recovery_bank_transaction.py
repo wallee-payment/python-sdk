@@ -1,354 +1,152 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from wallee.models.bank_transaction import BankTransaction
+from wallee.models.line_item import LineItem
+from wallee.models.refund import Refund
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RefundRecoveryBankTransaction(BaseModel):
+    """
+    RefundRecoveryBankTransaction
+    """
+    line_items: Optional[List[LineItem]] = Field(default=None, description="The line items that were recovered.", alias="lineItems")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    refund_currency_value_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.", alias="refundCurrencyValueAmount")
+    refund_currency_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.", alias="refundCurrencyAmount")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    space_view_id: Optional[StrictInt] = Field(default=None, description="The ID of the space view this object is linked to.", alias="spaceViewId")
+    linked_transaction: Optional[StrictInt] = Field(default=None, description="The payment transaction this object is linked to.", alias="linkedTransaction")
+    bank_transaction: Optional[BankTransaction] = Field(default=None, alias="bankTransaction")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    refund: Optional[Refund] = None
+    __properties: ClassVar[List[str]] = ["lineItems", "linkedSpaceId", "refundCurrencyValueAmount", "refundCurrencyAmount", "language", "id", "spaceViewId", "linkedTransaction", "bankTransaction", "version", "refund"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RefundRecoveryBankTransaction:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'bank_transaction': 'BankTransaction',
-        'id': 'int',
-        'language': 'str',
-        'line_items': 'list[LineItem]',
-        'linked_space_id': 'int',
-        'linked_transaction': 'int',
-        'refund': 'Refund',
-        'refund_currency_amount': 'float',
-        'refund_currency_value_amount': 'float',
-        'space_view_id': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RefundRecoveryBankTransaction from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'bank_transaction': 'bankTransaction','id': 'id','language': 'language','line_items': 'lineItems','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','refund': 'refund','refund_currency_amount': 'refundCurrencyAmount','refund_currency_value_amount': 'refundCurrencyValueAmount','space_view_id': 'spaceViewId','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _bank_transaction = None
-    _id = None
-    _language = None
-    _line_items = None
-    _linked_space_id = None
-    _linked_transaction = None
-    _refund = None
-    _refund_currency_amount = None
-    _refund_currency_value_amount = None
-    _space_view_id = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.bank_transaction = kwargs.get('bank_transaction', None)
-        self.id = kwargs.get('id', None)
-        self.language = kwargs.get('language', None)
-        self.line_items = kwargs.get('line_items', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.linked_transaction = kwargs.get('linked_transaction', None)
-        self.refund = kwargs.get('refund', None)
-        self.refund_currency_amount = kwargs.get('refund_currency_amount', None)
-        self.refund_currency_value_amount = kwargs.get('refund_currency_value_amount', None)
-        self.space_view_id = kwargs.get('space_view_id', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def bank_transaction(self):
-        """Gets the bank_transaction of this RefundRecoveryBankTransaction.
-
-            Provides general information about the bank transaction.
-
-        :return: The bank_transaction of this RefundRecoveryBankTransaction.
-        :rtype: BankTransaction
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._bank_transaction
+        excluded_fields: Set[str] = set([
+            "line_items",
+            "linked_space_id",
+            "refund_currency_value_amount",
+            "refund_currency_amount",
+            "language",
+            "id",
+            "space_view_id",
+            "linked_transaction",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of bank_transaction
+        if self.bank_transaction:
+            _dict['bankTransaction'] = self.bank_transaction.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of refund
+        if self.refund:
+            _dict['refund'] = self.refund.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RefundRecoveryBankTransaction from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "refundCurrencyValueAmount": obj.get("refundCurrencyValueAmount"),
+            "refundCurrencyAmount": obj.get("refundCurrencyAmount"),
+            "language": obj.get("language"),
+            "id": obj.get("id"),
+            "spaceViewId": obj.get("spaceViewId"),
+            "linkedTransaction": obj.get("linkedTransaction"),
+            "bankTransaction": BankTransaction.from_dict(obj["bankTransaction"]) if obj.get("bankTransaction") is not None else None,
+            "version": obj.get("version"),
+            "refund": Refund.from_dict(obj["refund"]) if obj.get("refund") is not None else None
+        })
+        return _obj
 
-    @bank_transaction.setter
-    def bank_transaction(self, bank_transaction):
-        """Sets the bank_transaction of this RefundRecoveryBankTransaction.
 
-            Provides general information about the bank transaction.
-
-        :param bank_transaction: The bank_transaction of this RefundRecoveryBankTransaction.
-        :type: BankTransaction
-        """
-
-        self._bank_transaction = bank_transaction
-    
-    @property
-    def id(self):
-        """Gets the id of this RefundRecoveryBankTransaction.
-
-            A unique identifier for the object.
-
-        :return: The id of this RefundRecoveryBankTransaction.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this RefundRecoveryBankTransaction.
-
-            A unique identifier for the object.
-
-        :param id: The id of this RefundRecoveryBankTransaction.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def language(self):
-        """Gets the language of this RefundRecoveryBankTransaction.
-
-            The language that is linked to the object.
-
-        :return: The language of this RefundRecoveryBankTransaction.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this RefundRecoveryBankTransaction.
-
-            The language that is linked to the object.
-
-        :param language: The language of this RefundRecoveryBankTransaction.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this RefundRecoveryBankTransaction.
-
-            The line items that were recovered.
-
-        :return: The line_items of this RefundRecoveryBankTransaction.
-        :rtype: list[LineItem]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this RefundRecoveryBankTransaction.
-
-            The line items that were recovered.
-
-        :param line_items: The line_items of this RefundRecoveryBankTransaction.
-        :type: list[LineItem]
-        """
-
-        self._line_items = line_items
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this RefundRecoveryBankTransaction.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this RefundRecoveryBankTransaction.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this RefundRecoveryBankTransaction.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this RefundRecoveryBankTransaction.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def linked_transaction(self):
-        """Gets the linked_transaction of this RefundRecoveryBankTransaction.
-
-            The payment transaction this object is linked to.
-
-        :return: The linked_transaction of this RefundRecoveryBankTransaction.
-        :rtype: int
-        """
-        return self._linked_transaction
-
-    @linked_transaction.setter
-    def linked_transaction(self, linked_transaction):
-        """Sets the linked_transaction of this RefundRecoveryBankTransaction.
-
-            The payment transaction this object is linked to.
-
-        :param linked_transaction: The linked_transaction of this RefundRecoveryBankTransaction.
-        :type: int
-        """
-
-        self._linked_transaction = linked_transaction
-    
-    @property
-    def refund(self):
-        """Gets the refund of this RefundRecoveryBankTransaction.
-
-            The refund this bank transaction belongs to.
-
-        :return: The refund of this RefundRecoveryBankTransaction.
-        :rtype: Refund
-        """
-        return self._refund
-
-    @refund.setter
-    def refund(self, refund):
-        """Sets the refund of this RefundRecoveryBankTransaction.
-
-            The refund this bank transaction belongs to.
-
-        :param refund: The refund of this RefundRecoveryBankTransaction.
-        :type: Refund
-        """
-
-        self._refund = refund
-    
-    @property
-    def refund_currency_amount(self):
-        """Gets the refund_currency_amount of this RefundRecoveryBankTransaction.
-
-            The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.
-
-        :return: The refund_currency_amount of this RefundRecoveryBankTransaction.
-        :rtype: float
-        """
-        return self._refund_currency_amount
-
-    @refund_currency_amount.setter
-    def refund_currency_amount(self, refund_currency_amount):
-        """Sets the refund_currency_amount of this RefundRecoveryBankTransaction.
-
-            The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.
-
-        :param refund_currency_amount: The refund_currency_amount of this RefundRecoveryBankTransaction.
-        :type: float
-        """
-
-        self._refund_currency_amount = refund_currency_amount
-    
-    @property
-    def refund_currency_value_amount(self):
-        """Gets the refund_currency_value_amount of this RefundRecoveryBankTransaction.
-
-            The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.
-
-        :return: The refund_currency_value_amount of this RefundRecoveryBankTransaction.
-        :rtype: float
-        """
-        return self._refund_currency_value_amount
-
-    @refund_currency_value_amount.setter
-    def refund_currency_value_amount(self, refund_currency_value_amount):
-        """Sets the refund_currency_value_amount of this RefundRecoveryBankTransaction.
-
-            The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.
-
-        :param refund_currency_value_amount: The refund_currency_value_amount of this RefundRecoveryBankTransaction.
-        :type: float
-        """
-
-        self._refund_currency_value_amount = refund_currency_value_amount
-    
-    @property
-    def space_view_id(self):
-        """Gets the space_view_id of this RefundRecoveryBankTransaction.
-
-            The ID of the space view this object is linked to.
-
-        :return: The space_view_id of this RefundRecoveryBankTransaction.
-        :rtype: int
-        """
-        return self._space_view_id
-
-    @space_view_id.setter
-    def space_view_id(self, space_view_id):
-        """Sets the space_view_id of this RefundRecoveryBankTransaction.
-
-            The ID of the space view this object is linked to.
-
-        :param space_view_id: The space_view_id of this RefundRecoveryBankTransaction.
-        :type: int
-        """
-
-        self._space_view_id = space_view_id
-    
-    @property
-    def version(self):
-        """Gets the version of this RefundRecoveryBankTransaction.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this RefundRecoveryBankTransaction.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this RefundRecoveryBankTransaction.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this RefundRecoveryBankTransaction.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RefundRecoveryBankTransaction, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RefundRecoveryBankTransaction):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

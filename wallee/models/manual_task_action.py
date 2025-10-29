@@ -1,172 +1,111 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.manual_task_action_style import ManualTaskActionStyle
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ManualTaskAction(BaseModel):
+    """
+    ManualTaskAction
+    """
+    task_type: Optional[StrictInt] = Field(default=None, description="The type of manual tasks this action belongs to.", alias="taskType")
+    style: Optional[ManualTaskActionStyle] = None
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    label: Optional[Dict[str, StrictStr]] = Field(default=None, description="The action's label.")
+    __properties: ClassVar[List[str]] = ["taskType", "style", "id", "label"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ManualTaskAction:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'label': 'dict(str, str)',
-        'style': 'ManualTaskActionStyle',
-        'task_type': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ManualTaskAction from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','label': 'label','style': 'style','task_type': 'taskType',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _label = None
-    _style = None
-    _task_type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id', None)
-        self.label = kwargs.get('label', None)
-        self.style = kwargs.get('style', None)
-        self.task_type = kwargs.get('task_type', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this ManualTaskAction.
-
-            A unique identifier for the object.
-
-        :return: The id of this ManualTaskAction.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+            "task_type",
+            "id",
+            "label",
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ManualTaskAction.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            A unique identifier for the object.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ManualTaskAction from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this ManualTaskAction.
-        :type: int
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def label(self):
-        """Gets the label of this ManualTaskAction.
+        _obj = cls.model_validate({
+            "taskType": obj.get("taskType"),
+            "style": obj.get("style"),
+            "id": obj.get("id"),
+            "label": obj.get("label")
+        })
+        return _obj
 
-            The action's label.
 
-        :return: The label of this ManualTaskAction.
-        :rtype: dict(str, str)
-        """
-        return self._label
-
-    @label.setter
-    def label(self, label):
-        """Sets the label of this ManualTaskAction.
-
-            The action's label.
-
-        :param label: The label of this ManualTaskAction.
-        :type: dict(str, str)
-        """
-
-        self._label = label
-    
-    @property
-    def style(self):
-        """Gets the style of this ManualTaskAction.
-
-            The action's style.
-
-        :return: The style of this ManualTaskAction.
-        :rtype: ManualTaskActionStyle
-        """
-        return self._style
-
-    @style.setter
-    def style(self, style):
-        """Sets the style of this ManualTaskAction.
-
-            The action's style.
-
-        :param style: The style of this ManualTaskAction.
-        :type: ManualTaskActionStyle
-        """
-
-        self._style = style
-    
-    @property
-    def task_type(self):
-        """Gets the task_type of this ManualTaskAction.
-
-            The type of manual tasks this action belongs to.
-
-        :return: The task_type of this ManualTaskAction.
-        :rtype: int
-        """
-        return self._task_type
-
-    @task_type.setter
-    def task_type(self, task_type):
-        """Sets the task_type of this ManualTaskAction.
-
-            The type of manual tasks this action belongs to.
-
-        :param task_type: The task_type of this ManualTaskAction.
-        :type: int
-        """
-
-        self._task_type = task_type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ManualTaskAction, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ManualTaskAction):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

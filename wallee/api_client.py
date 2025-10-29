@@ -1,85 +1,107 @@
 # coding: utf-8
+
 """
-    wallee
+Wallee AG Python SDK
 
-    Python SDK
+This library allows to interact with the Wallee AG payment service.
 
-    OpenAPI spec version: 5.2.2
-    
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
 
-from __future__ import absolute_import
 
-import time
-import hashlib
-import hmac
 import base64
-from urllib.parse import urlencode
 import datetime
-import json
-import mimetypes
-from multiprocessing.pool import ThreadPool
-import os
-import re
-import tempfile
+from dateutil.parser import parse
 from enum import Enum
-import six
+import decimal
+import json
+import jwt
+import mimetypes
+import os
 import platform
-
-from six.moves.urllib.parse import quote
-from dateutil.parser import parse as date_util_parse
+import re
 import sys
+import tempfile
+import time
 
+from dateutil.parser import parse as date_util_parse
+from urllib.parse import quote
+from typing import Tuple, Optional, List, Dict, Union
+from pydantic import SecretStr
 
 from wallee.configuration import Configuration
+from wallee.api_response import ApiResponse, T as ApiResponseT
 import wallee.models
 from wallee import rest
+from wallee.exceptions import (
+    ApiValueError,
+    ApiException,
+    BadRequestException,
+    UnauthorizedException,
+    ForbiddenException,
+    NotFoundException,
+    ServiceException
+)
 
+RequestSerialized = Tuple[str, str, Dict[str, str], Optional[str], List[str]]
 
 class ApiClient:
 
-    PRIMITIVE_TYPES = (float, bool, bytes, six.text_type) + six.integer_types
+    API_PATH = "/api/v2.0"
+    PRIMITIVE_TYPES = (float, bool, bytes, str, int)
     NATIVE_TYPES_MAPPING = {
         'int': int,
-        'long': int if six.PY3 else long,
+        'long': int,
         'float': float,
         'str': str,
         'bool': bool,
         'date': datetime.date,
         'datetime': datetime.datetime,
+        'decimal': decimal.Decimal,
         'object': object,
     }
+    _pool = None
 
-    def __init__(self, configuration=None, header_name=None, header_value=None,
-                 cookie=None):
+    def __init__(
+        self,
+        configuration=None,
+        header_name=None,
+        header_value=None,
+        cookie=None
+    ) -> None:
+        # use default configuration if none is provided
         if configuration is None:
-            configuration = Configuration()
+            configuration = Configuration.get_default()
         self.configuration = configuration
 
-        # Use the pool property to lazily initialize the ThreadPool.
-        self._pool = None
         self.rest_client = rest.RESTClientObject(configuration)
         self.default_headers = {}
-
-        for name, value in configuration.default_headers.items():
-            self.default_headers[name] = value
-
         if header_name is not None:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'wallee/5.2.2/python'
+        self.user_agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36'
+        self.client_side_validation = configuration.client_side_validation
 
-    def __del__(self):
-        if self._pool is not None:
-            self._pool.close()
-            self._pool.join()
+    def __enter__(self):
+        return self
 
-    @property
-    def pool(self):
-        if self._pool is None:
-            self._pool = ThreadPool()
-        return self._pool
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
 
     @property
     def user_agent(self):
@@ -93,12 +115,64 @@ class ApiClient:
     def set_default_header(self, header_name, header_value):
         self.default_headers[header_name] = header_value
 
-    def __call_api(
-            self, resource_path, method, path_params=None,
-            query_params=None, header_params=None, body=None, post_params=None,
-            files=None, response_type=None, auth_settings=None,
-            _return_http_data_only=None, collection_formats=None,
-            _preload_content=True, _request_timeout=None):
+
+    _default = None
+
+    @classmethod
+    def get_default(cls):
+        """Return new instance of ApiClient.
+
+        This method returns newly created, based on default constructor,
+        object of ApiClient class or returns a copy of default
+        ApiClient.
+
+        :return: The ApiClient object.
+        """
+        if cls._default is None:
+            cls._default = ApiClient()
+        return cls._default
+
+    @classmethod
+    def set_default(cls, default):
+        """Set default instance of ApiClient.
+
+        It stores default ApiClient.
+
+        :param default: object of ApiClient.
+        """
+        cls._default = default
+
+    def param_serialize(
+        self,
+        method,
+        resource_path,
+        path_params=None,
+        query_params=None,
+        header_params=None,
+        body=None,
+        post_params=None,
+        files=None,
+        collection_formats=None,
+        _host=None
+    ) -> RequestSerialized:
+
+        """Builds the HTTP request params needed by the request.
+        :param method: Method to call.
+        :param resource_path: Path to method endpoint.
+        :param path_params: Path parameters in the url.
+        :param query_params: Query parameters in the url.
+        :param header_params: Header parameters to be
+            placed in the request header.
+        :param body: Request body.
+        :param post_params dict: Request post form parameters,
+            for `application/x-www-form-urlencoded`, `multipart/form-data`.
+        :param files dict: key -> filename, value -> filepath,
+            for `multipart/form-data`.
+        :param collection_formats: dict of collection formats for path, query,
+            header, and post parameters.
+        :return: tuple of form (path, http_method, query_params, header_params,
+            body, post_params, files)
+        """
 
         config = self.configuration
 
@@ -107,7 +181,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '5.2.2',
+            'x-meta-sdk-version': '6.0.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()
@@ -115,20 +189,22 @@ class ApiClient:
 
         header_params.update(self.default_headers)
         header_params.update(default_headers)
-        header_params.update(self.get_auth_headers(resource_path=resource_path, query_params=query_params, method=method))
 
         if self.cookie:
             header_params['Cookie'] = self.cookie
         if header_params:
             header_params = self.sanitize_for_serialization(header_params)
-            header_params = dict(self.parameters_to_tuples(header_params,
-                                                           collection_formats))
+            header_params = dict(
+                self.parameters_to_tuples(header_params, collection_formats)
+            )
 
         # path parameters
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
-            path_params = self.parameters_to_tuples(path_params,
-                                                    collection_formats)
+            path_params = self.parameters_to_tuples(
+                path_params,
+                collection_formats
+            )
             for k, v in path_params:
                 # specified safe chars, encode everything
                 resource_path = resource_path.replace(
@@ -136,67 +212,145 @@ class ApiClient:
                     quote(str(v), safe=config.safe_chars_for_path_param)
                 )
 
-        # query parameters
-        if query_params:
-            query_params = self.sanitize_for_serialization(query_params)
-            query_params = self.parameters_to_tuples(query_params,
-                                                     collection_formats)
-
         # post parameters
         if post_params or files:
-            post_params = self.prepare_post_parameters(post_params, files)
+            post_params = post_params if post_params else []
             post_params = self.sanitize_for_serialization(post_params)
-            post_params = self.parameters_to_tuples(post_params,
-                                                    collection_formats)
-
-        # auth setting
-        self.update_params_for_auth(header_params, query_params, auth_settings)
+            post_params = self.parameters_to_tuples(
+                post_params,
+                collection_formats
+            )
+            if files:
+                post_params.extend(self.files_parameters(files))
 
         # body
         if body:
             body = self.sanitize_for_serialization(body)
 
         # request url
-        url = self.configuration.host + resource_path
-
-        # perform request and return response
-        response_data = self.request(
-            method, url, query_params=query_params, headers=header_params,
-            post_params=post_params, body=body,
-            _preload_content=_preload_content,
-            _request_timeout=_request_timeout)
-
-        self.last_response = response_data
-
-        return_data = response_data
-        if _preload_content:
-            # deserialize response data
-            if response_type:
-                return_data = self.deserialize(response_data, response_type)
-            else:
-                return_data = None
-
-        if response_type is not None and hasattr(wallee.models, response_type):
-            if all(value is None for value in return_data.__dict__.values()):
-                return_data = None
-
-        if _return_http_data_only:
-            return (return_data)
+        if _host is None or self.configuration.ignore_operation_servers:
+            url = self.configuration.host + resource_path
         else:
-            return (return_data, response_data.status,
-                    response_data.getheaders())
+            # use server/host defined in path or operation instead
+            url = _host + resource_path
+
+        # query parameters
+        if query_params:
+            query_params = self.sanitize_for_serialization(query_params)
+            url_query = self.parameters_to_url_query(
+                query_params,
+                collection_formats
+            )
+            url += "?" + url_query
+
+        # apply auth params
+        header_params.update(
+            self._apply_auth_params(url, self.configuration.host, method)
+        )
+
+        return method, url, header_params, body, post_params
+
+
+    def call_api(
+        self,
+        method,
+        url,
+        header_params=None,
+        body=None,
+        post_params=None,
+        _request_timeout=None
+    ) -> rest.RESTResponse:
+        """Makes the HTTP request (synchronous)
+        :param method: Method to call.
+        :param url: Path to method endpoint.
+        :param header_params: Header parameters to be
+            placed in the request header.
+        :param body: Request body.
+        :param post_params dict: Request post form parameters,
+            for `application/x-www-form-urlencoded`, `multipart/form-data`.
+        :param _request_timeout: timeout setting for this request.
+        :return: RESTResponse
+        """
+
+        try:
+            # perform request and return response
+            response_data = self.rest_client.request(
+                method, url,
+                headers=header_params,
+                body=body, post_params=post_params,
+                # Prioritizes the request timeout specified by the API service,
+                # falling back to the configuration as a secondary option.
+                _request_timeout=_request_timeout if _request_timeout is not None else self.configuration.request_timeout
+            )
+
+        except ApiException as e:
+            raise e
+
+        return response_data
+
+    def response_deserialize(
+        self,
+        response_data: rest.RESTResponse,
+        response_types_map: Optional[Dict[str, ApiResponseT]]=None
+    ) -> ApiResponse[ApiResponseT]:
+        """Deserializes response into an object.
+        :param response_data: RESTResponse object to be deserialized.
+        :param response_types_map: dict of response types.
+        :return: ApiResponse
+        """
+
+        msg = "RESTResponse.read() must be called before passing it to response_deserialize()"
+        assert response_data.data is not None, msg
+
+        response_type = response_types_map.get(str(response_data.status), None)
+        if not response_type and isinstance(response_data.status, int) and 100 <= response_data.status <= 599:
+            # if not found, look for '1XX', '2XX', etc.
+            response_type = response_types_map.get(str(response_data.status)[0] + "XX", None)
+
+        # deserialize response data
+        response_text = None
+        return_data = None
+        try:
+            if response_type == "bytearray":
+                return_data = response_data.data
+            elif response_type == "file":
+                return_data = self.__deserialize_file(response_data)
+            elif response_type is not None:
+                match = None
+                content_type = response_data.getheader('content-type')
+                if content_type is not None:
+                    match = re.search(r"charset=([a-zA-Z\-\d]+)[\s;]?", content_type)
+                encoding = match.group(1) if match else "utf-8"
+                response_text = response_data.data.decode(encoding)
+                return_data = self.deserialize(response_text, response_type, content_type)
+        finally:
+            if not 200 <= response_data.status <= 299:
+                raise ApiException.from_response(
+                    http_resp=response_data,
+                    body=response_text,
+                    data=return_data,
+                )
+
+        return ApiResponse(
+            status_code = response_data.status,
+            data = return_data,
+            headers = response_data.getheaders(),
+            raw_data = response_data.data
+        )
 
     def sanitize_for_serialization(self, obj):
         """Builds a JSON POST object.
 
         If obj is None, return None.
         If obj is Enum, return obj.value
+        If obj is SecretStr, return obj.get_secret_value()
         If obj is str, int, long, float, bool, return directly.
         If obj is datetime.datetime, datetime.date
             convert to string in iso8601 format.
+        If obj is decimal.Decimal return string representation.
         If obj is list, sanitize each element in the list.
         If obj is dict, return the dict.
-        If obj is swagger model, return the properties dict.
+        If obj is OpenAPI model, return the properties dict.
 
         :param obj: The data to serialize.
         :return: The serialized form of data.
@@ -205,46 +359,65 @@ class ApiClient:
             return None
         elif isinstance(obj, Enum):
             return obj.value
+        elif isinstance(obj, SecretStr):
+            return obj.get_secret_value()
         elif isinstance(obj, self.PRIMITIVE_TYPES):
             return obj
         elif isinstance(obj, list):
-            return [self.sanitize_for_serialization(sub_obj)
-                    for sub_obj in obj]
+            return [
+                self.sanitize_for_serialization(sub_obj) for sub_obj in obj
+            ]
         elif isinstance(obj, tuple):
-            return tuple(self.sanitize_for_serialization(sub_obj)
-                         for sub_obj in obj)
+            return tuple(
+                self.sanitize_for_serialization(sub_obj) for sub_obj in obj
+            )
         elif isinstance(obj, (datetime.datetime, datetime.date)):
             return obj.isoformat()
+        elif isinstance(obj, decimal.Decimal):
+            return str(obj)
 
-        if isinstance(obj, dict):
+        elif isinstance(obj, dict):
             obj_dict = obj
         else:
-            obj_dict = {obj.attribute_map[attr]: getattr(obj, attr)
-                        for attr, _ in six.iteritems(obj.swagger_types)
-                        if getattr(obj, attr) is not None}
+            if hasattr(obj, 'to_dict') and callable(getattr(obj, 'to_dict')):
+                obj_dict = obj.to_dict()
+            else:
+                obj_dict = obj.__dict__
 
-        return {key: self.sanitize_for_serialization(val)
-                for key, val in six.iteritems(obj_dict)}
+        return {
+            key: self.sanitize_for_serialization(val)
+            for key, val in obj_dict.items()
+        }
 
-    def deserialize(self, response, response_type):
+    def deserialize(self, response_text: str, response_type: str, content_type: Optional[str]):
         """Deserializes response into an object.
 
         :param response: RESTResponse object to be deserialized.
         :param response_type: class literal for
             deserialized object, or string of class name.
+        :param content_type: content type of response.
 
         :return: deserialized object.
         """
-        # handle file downloading
-        # save response body into a tmp file and return the instance
-        if response_type == "file":
-            return self.__deserialize_file(response)
 
         # fetch data from response object
-        try:
-            data = json.loads(response.data)
-        except ValueError:
-            data = response.data
+        if content_type is None:
+            try:
+                data = json.loads(response_text)
+            except ValueError:
+                data = response_text
+        elif re.match(r'^application/(json|[\w!#$&.+-^_]+\+json)\s*(;|$)', content_type, re.IGNORECASE):
+            if response_text == "":
+                data = ""
+            else:
+                data = json.loads(response_text)
+        elif re.match(r'^text/plain\s*(;|$)', content_type, re.IGNORECASE):
+            data = response_text
+        else:
+            raise ApiException(
+                status=0,
+                reason="Unsupported content type: {0}".format(content_type)
+            )
 
         return self.__deserialize(data, response_type)
 
@@ -259,16 +432,20 @@ class ApiClient:
         if data is None:
             return None
 
-        if type(klass) == str:
-            if klass.startswith('list['):
-                sub_kls = re.match(r'list\[(.*)\]', klass).group(1)
+        if isinstance(klass, str):
+            if klass.startswith('List['):
+                m = re.match(r'List\[(.*)]', klass)
+                assert m is not None, "Malformed List type definition"
+                sub_kls = m.group(1)
                 return [self.__deserialize(sub_data, sub_kls)
                         for sub_data in data]
 
-            if klass.startswith('dict('):
-                sub_kls = re.match(r'dict\(([^,]*), (.*)\)', klass).group(2)
+            if klass.startswith('Dict['):
+                m = re.match(r'Dict\[([^,]*), (.*)]', klass)
+                assert m is not None, "Malformed Dict type definition"
+                sub_kls = m.group(2)
                 return {k: self.__deserialize(v, sub_kls)
-                        for k, v in six.iteritems(data)}
+                        for k, v in data.items()}
 
             # convert str to class
             if klass in self.NATIVE_TYPES_MAPPING:
@@ -283,130 +460,13 @@ class ApiClient:
         elif klass == datetime.date:
             return self.__deserialize_date(data)
         elif klass == datetime.datetime:
-            return self.__deserialize_datatime(data)
+            return self.__deserialize_datetime(data)
+        elif klass == decimal.Decimal:
+            return decimal.Decimal(data)
+        elif issubclass(klass, Enum):
+            return self.__deserialize_enum(data, klass)
         else:
             return self.__deserialize_model(data, klass)
-
-    def call_api(self, resource_path, method,
-                 path_params=None, query_params=None, header_params=None,
-                 body=None, post_params=None, files=None,
-                 response_type=None, auth_settings=None, async_req=None,
-                 _return_http_data_only=None, collection_formats=None,
-                 _preload_content=True, _request_timeout=None):
-        """Makes the HTTP request (synchronous) and returns deserialized data.
-
-        To make an async request, set the async_req parameter.
-
-        :param resource_path: Path to method endpoint.
-        :param method: Method to call.
-        :param path_params: Path parameters in the url.
-        :param query_params: Query parameters in the url.
-        :param header_params: Header parameters to be
-            placed in the request header.
-        :param body: Request body.
-        :param post_params dict: Request post form parameters,
-            for `application/x-www-form-urlencoded`, `multipart/form-data`.
-        :param auth_settings list: Auth Settings names for the request.
-        :param response: Response data type.
-        :param files dict: key -> filename, value -> filepath,
-            for `multipart/form-data`.
-        :param async_req bool: execute request asynchronously
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param collection_formats: dict of collection formats for path, query,
-            header, and post parameters.
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return:
-            If async_req parameter is True,
-            the request will be called asynchronously.
-            The method will return the request thread.
-            If parameter async_req is False or missing,
-            then the method will return the response directly.
-        """
-        if not async_req:
-            return self.__call_api(resource_path, method,
-                                   path_params, query_params, header_params,
-                                   body, post_params, files,
-                                   response_type, auth_settings,
-                                   _return_http_data_only, collection_formats,
-                                   _preload_content, _request_timeout)
-        else:
-            thread = self.pool.apply_async(self.__call_api, (resource_path,
-                                           method, path_params, query_params,
-                                           header_params, body,
-                                           post_params, files,
-                                           response_type, auth_settings,
-                                           _return_http_data_only,
-                                           collection_formats,
-                                           _preload_content, _request_timeout))
-        return thread
-
-    def request(self, method, url, query_params=None, headers=None,
-                post_params=None, body=None, _preload_content=True,
-                _request_timeout=None):
-        """Makes the HTTP request using RESTClient."""
-        if method == "GET":
-            return self.rest_client.GET(url,
-                                        query_params=query_params,
-                                        _preload_content=_preload_content,
-                                        _request_timeout=_request_timeout,
-                                        headers=headers)
-        elif method == "HEAD":
-            return self.rest_client.HEAD(url,
-                                         query_params=query_params,
-                                         _preload_content=_preload_content,
-                                         _request_timeout=_request_timeout,
-                                         headers=headers)
-        elif method == "OPTIONS":
-            return self.rest_client.OPTIONS(url,
-                                            query_params=query_params,
-                                            headers=headers,
-                                            post_params=post_params,
-                                            _preload_content=_preload_content,
-                                            _request_timeout=_request_timeout,
-                                            body=body)
-        elif method == "POST":
-            return self.rest_client.POST(url,
-                                         query_params=query_params,
-                                         headers=headers,
-                                         post_params=post_params,
-                                         _preload_content=_preload_content,
-                                         _request_timeout=_request_timeout,
-                                         body=body)
-        elif method == "PUT":
-            return self.rest_client.PUT(url,
-                                        query_params=query_params,
-                                        headers=headers,
-                                        post_params=post_params,
-                                        _preload_content=_preload_content,
-                                        _request_timeout=_request_timeout,
-                                        body=body)
-        elif method == "PATCH":
-            return self.rest_client.PATCH(url,
-                                          query_params=query_params,
-                                          headers=headers,
-                                          post_params=post_params,
-                                          _preload_content=_preload_content,
-                                          _request_timeout=_request_timeout,
-                                          body=body)
-        elif method == "DELETE":
-            return self.rest_client.DELETE(url,
-                                           query_params=query_params,
-                                           headers=headers,
-                                           _preload_content=_preload_content,
-                                           _request_timeout=_request_timeout,
-                                           body=body)
-        else:
-            raise ValueError(
-                "http method must be `GET`, `HEAD`, `OPTIONS`,"
-                " `POST`, `PATCH`, `PUT` or `DELETE`."
-            )
 
     def parameters_to_tuples(self, params, collection_formats):
         """Get parameters as list of tuples, formatting collections.
@@ -415,10 +475,10 @@ class ApiClient:
         :param dict collection_formats: Parameter collection formats
         :return: Parameters as list of tuples, collections formatted
         """
-        new_params = []
+        new_params: List[Tuple[str, str]] = []
         if collection_formats is None:
             collection_formats = {}
-        for k, v in six.iteritems(params) if isinstance(params, dict) else params:
+        for k, v in params.items() if isinstance(params, dict) else params:
             if k in collection_formats:
                 collection_format = collection_formats[k]
                 if collection_format == 'multi':
@@ -438,49 +498,90 @@ class ApiClient:
                 new_params.append((k, v))
         return new_params
 
-    def prepare_post_parameters(self, post_params=None, files=None):
+    def parameters_to_url_query(self, params, collection_formats):
+        """Get parameters as list of tuples, formatting collections.
+
+        :param params: Parameters as dict or list of two-tuples
+        :param dict collection_formats: Parameter collection formats
+        :return: URL query string (e.g. a=Hello%20World&b=123)
+        """
+        new_params: List[Tuple[str, str]] = []
+        if collection_formats is None:
+            collection_formats = {}
+        for k, v in params.items() if isinstance(params, dict) else params:
+            if isinstance(v, bool):
+                v = str(v).lower()
+            if isinstance(v, (int, float)):
+                v = str(v)
+            if isinstance(v, dict):
+                v = json.dumps(v)
+
+            if k in collection_formats:
+                collection_format = collection_formats[k]
+                if collection_format == 'multi':
+                    new_params.extend((k, str(value)) for value in v)
+                else:
+                    if collection_format == 'ssv':
+                        delimiter = ' '
+                    elif collection_format == 'tsv':
+                        delimiter = '\t'
+                    elif collection_format == 'pipes':
+                        delimiter = '|'
+                    else:  # csv is the default
+                        delimiter = ','
+                    new_params.append(
+                        (k, delimiter.join(quote(str(value)) for value in v))
+                    )
+            else:
+                new_params.append((k, quote(str(v))))
+
+        return "&".join(["=".join(map(str, item)) for item in new_params])
+
+    def files_parameters(
+        self,
+        files: Dict[str, Union[str, bytes, List[str], List[bytes], Tuple[str, bytes]]],
+    ):
         """Builds form parameters.
 
-        :param post_params: Normal form parameters.
         :param files: File parameters.
         :return: Form parameters with files.
         """
         params = []
-
-        if post_params:
-            params = post_params
-
-        if files:
-            for k, v in six.iteritems(files):
-                if not v:
-                    continue
-                file_names = v if type(v) is list else [v]
-                for n in file_names:
-                    with open(n, 'rb', encoding="utf8") as f:
-                        filename = os.path.basename(f.name)
-                        filedata = f.read()
-                        mimetype = (mimetypes.guess_type(filename)[0] or
-                                    'application/octet-stream')
-                        params.append(
-                            tuple([k, tuple([filename, filedata, mimetype])]))
-
+        for k, v in files.items():
+            if isinstance(v, str):
+                with open(v, 'rb', encoding="utf8") as f:
+                    filename = os.path.basename(f.name)
+                    filedata = f.read()
+            elif isinstance(v, bytes):
+                filename = k
+                filedata = v
+            elif isinstance(v, tuple):
+                filename, filedata = v
+            elif isinstance(v, list):
+                for file_param in v:
+                    params.extend(self.files_parameters({k: file_param}))
+                continue
+            else:
+                raise ValueError("Unsupported file value")
+            mimetype = (
+                mimetypes.guess_type(filename)[0]
+                or 'application/octet-stream'
+            )
+            params.append(
+                tuple([k, tuple([filename, filedata, mimetype])])
+            )
         return params
 
-    def select_header_accept(self, accepts):
+    def select_header_accept(self, accepts: List[str]) -> Optional[str]:
         """Returns `Accept` based on an array of accepts provided.
 
         :param accepts: List of headers.
-        :return: Accept (e.g. application/json).
+        :return: Accept (e.g. "application/json,text/plain").
         """
         if not accepts:
-            return
+            return None
 
-        accepts = [x.lower() for x in accepts]
-
-        if 'application/json' in accepts:
-            return 'application/json'
-        else:
-            return ', '.join(accepts)
+        return ','.join(accepts)
 
     def select_header_content_type(self, content_types):
         """Returns `Content-Type` based on an array of content_types provided.
@@ -491,42 +592,20 @@ class ApiClient:
         if not content_types:
             return 'application/json'
 
-        content_types = [x.lower() for x in content_types]
+        for content_type in content_types:
+            if re.search('json', content_type, re.IGNORECASE):
+                return content_type
 
-        if 'application/json' in content_types or '*/*' in content_types:
-            return 'application/json'
-        else:
-            return content_types[0]
-
-    def update_params_for_auth(self, headers, querys, auth_settings):
-        """Updates header and query params based on authentication setting.
-
-        :param headers: Header parameters dict to be updated.
-        :param querys: Query parameters tuple list to be updated.
-        :param auth_settings: Authentication setting identifiers list.
-        """
-        if not auth_settings:
-            return
-
-        for auth in auth_settings:
-            auth_setting = self.configuration.auth_settings().get(auth)
-            if auth_setting:
-                if not auth_setting['value']:
-                    continue
-                elif auth_setting['in'] == 'header':
-                    headers[auth_setting['key']] = auth_setting['value']
-                elif auth_setting['in'] == 'query':
-                    querys.append((auth_setting['key'], auth_setting['value']))
-                else:
-                    raise ValueError(
-                        'Authentication token must be in `query` or `header`'
-                    )
+        return content_types[0]
 
     def __deserialize_file(self, response):
         """Deserializes body to file
 
         Saves response body into a file in a temporary folder,
         using the filename from the `Content-Disposition` header if provided.
+
+        handle file downloading
+        save response body into a tmp file and return the instance
 
         :param response:  RESTResponse.
         :return: file path.
@@ -537,8 +616,12 @@ class ApiClient:
 
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?',
-                                 content_disposition).group(1)
+            m = re.search(
+                r'filename=[\'"]?([^\'"\s]+)[\'"]?',
+                content_disposition
+            )
+            assert m is not None, "Unexpected 'content-disposition' header value"
+            filename = m.group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
         with open(path, "wb", encoding="utf8") as f:
@@ -557,7 +640,7 @@ class ApiClient:
         try:
             return klass(data)
         except UnicodeEncodeError:
-            return six.text_type(data)
+            return str(data)
         except TypeError:
             return data
 
@@ -568,7 +651,7 @@ class ApiClient:
         """
         return value
 
-    # TODO remove when the lowest supported Python version is 3.11+ . Then - also remove "python_dateutil" dependency from pip installs
+    # TODO remove when the lowest supported Python version is 3.11+ . Then - also remove "python-dateutil" dependency from pip installs
     # https://stackoverflow.com/questions/55542280
     def __parse_iso_date(self, string):
         if (sys.version_info < (3, 11)):
@@ -592,7 +675,7 @@ class ApiClient:
                 reason="Failed to parse `{0}` as date object".format(string)
             )
 
-    def __deserialize_datatime(self, string):
+    def __deserialize_datetime(self, string):
         """Deserializes string to datetime.
 
         The string should be in iso8601 datetime format.
@@ -613,8 +696,23 @@ class ApiClient:
                 )
             )
 
-    def __hasattr(self, object, name):
-        return name in object.__class__.__dict__
+    def __deserialize_enum(self, data, klass):
+        """Deserializes primitive type to enum.
+
+        :param data: primitive type.
+        :param klass: class literal.
+        :return: enum value.
+        """
+        try:
+            return klass(data)
+        except ValueError:
+            raise rest.ApiException(
+                status=0,
+                reason=(
+                    "Failed to parse `{0}` as `{1}`"
+                    .format(data, klass)
+                )
+            )
 
     def __deserialize_model(self, data, klass):
         """Deserializes list or dict to model.
@@ -624,64 +722,42 @@ class ApiClient:
         :return: model object.
         """
 
-        if issubclass(klass, Enum):
-            return getattr(klass, data)
+        return klass.from_dict(data)
+
+    def _apply_auth_params(
+        self, 
+        url, 
+        base_url, 
+        method
+    ) -> Dict[str, str]:
+        """Updates the request headers by adding the authorization bearer token
+
+        :param url: Path to method endpoint.
+        :param base_url: The base URL of the API, shared across all API endpoints' services.
+        :param method: Method to call.
+        :return: RESTResponse
+        """
+        auth = {}
+    
+        request_path = self.API_PATH + re.sub(base_url, "", url, count=1)
         
-        class_instance = klass()
-        swagger_types = class_instance.swagger_types
-        attribute_map = class_instance.attribute_map
-
-        if (not swagger_types and
-                not self.__hasattr(klass, 'get_real_child_model')):
-            return data
-
-        kwargs = {}
-        if swagger_types is not None:
-            for attr, attr_type in six.iteritems(swagger_types):
-                if (data is not None and
-                        attribute_map[attr] in data and
-                        isinstance(data, (list, dict))):
-                    value = data[attribute_map[attr]]
-                    kwargs[attr] = self.__deserialize(value, attr_type)
-
-        instance = klass(**kwargs)
-
-        if (isinstance(instance, dict) and
-                swagger_types is not None and
-                isinstance(data, dict)):
-            for key, value in data.items():
-                if key not in swagger_types:
-                    instance[key] = value
-        if self.__hasattr(instance, 'get_real_child_model'):
-            klass_name = instance.get_real_child_model(data)
-            if klass_name:
-                instance = self.__deserialize(data, klass_name)
-        return instance
-
-    def get_auth_headers(self, method, resource_path, query_params):
-
-        if query_params:
-            resource_path += '?' + urlencode(query_params)
-
-        resource_path = '/api' + resource_path
-
-        timestamp = int(time.time())
-
-        headers = {
-            'x-mac-userid': self.configuration.user_id,
-            'x-mac-version': self.configuration.mac_version,
-            'x-mac-timestamp': timestamp,
-            'x-mac-value': self.get_signature(method=method, resource_path=resource_path, timestamp=timestamp)
+        payload = {
+            'sub': self.configuration.user_id,
+            'iat': int(time.time()),
+            'requestPath': request_path,
+            'requestMethod': method,
         }
-        return headers
 
-    def get_signature(self, method, resource_path, timestamp):
-        data = '|'.join(map(str, [
-            self.configuration.mac_version,
-            self.configuration.user_id,
-            timestamp,
-            method,
-            resource_path
-        ]))
+        decoded_secret = base64.b64decode(self.configuration.authentication_key)
 
-        return base64.b64encode(hmac.new(base64.b64decode(self.configuration.api_secret), data.encode('utf-8'), hashlib.sha512).digest()).decode('utf-8')
+        custom_headers = {
+            'alg': 'HS256',
+            'typ': 'JWT',
+            'ver': 1,
+        }
+
+        access_token = jwt.encode(payload, decoded_secret, algorithm='HS256', headers=custom_headers)
+        if access_token:
+            auth['Authorization'] = f'Bearer {access_token}'
+
+        return auth

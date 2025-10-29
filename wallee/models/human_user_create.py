@@ -1,96 +1,116 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import AbstractHumanUserUpdate
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class HumanUserCreate(BaseModel):
+    """
+    HumanUserCreate
+    """
+    mobile_phone_number: Optional[Annotated[str, Field(strict=True, max_length=30)]] = Field(default=None, description="The user's mobile phone number.", alias="mobilePhoneNumber")
+    two_factor_enabled: Optional[StrictBool] = Field(default=None, description="Whether two-factor authentication is enabled for this user.", alias="twoFactorEnabled")
+    email_address: Optional[Annotated[str, Field(strict=True, max_length=128)]] = Field(default=None, description="The user's email address.", alias="emailAddress")
+    firstname: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The user's first name.")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The user's time zone. If none is specified, the one provided by the browser will be used.", alias="timeZone")
+    language: Optional[StrictStr] = Field(default=None, description="The user's preferred language.")
+    state: Optional[CreationEntityState] = None
+    lastname: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The user's last name.")
+    primary_account: Optional[StrictInt] = Field(default=None, description="The primary account that the user belongs to.", alias="primaryAccount")
+    __properties: ClassVar[List[str]] = ["mobilePhoneNumber", "twoFactorEnabled", "emailAddress", "firstname", "timeZone", "language", "state", "lastname", "primaryAccount"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class HumanUserCreate(AbstractHumanUserUpdate):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'primary_account': 'int',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'primary_account': 'primaryAccount',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of HumanUserCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _primary_account = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.primary_account = kwargs.get('primary_account', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    
-    @property
-    def primary_account(self):
-        """Gets the primary_account of this HumanUserCreate.
-
-            The primary account that the user belongs to.
-
-        :return: The primary_account of this HumanUserCreate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._primary_account
+        excluded_fields: Set[str] = set([
+        ])
 
-    @primary_account.setter
-    def primary_account(self, primary_account):
-        """Sets the primary_account of this HumanUserCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The primary account that the user belongs to.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of HumanUserCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param primary_account: The primary_account of this HumanUserCreate.
-        :type: int
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._primary_account = primary_account
-    
+        _obj = cls.model_validate({
+            "mobilePhoneNumber": obj.get("mobilePhoneNumber"),
+            "twoFactorEnabled": obj.get("twoFactorEnabled"),
+            "emailAddress": obj.get("emailAddress"),
+            "firstname": obj.get("firstname"),
+            "timeZone": obj.get("timeZone"),
+            "language": obj.get("language"),
+            "state": obj.get("state"),
+            "lastname": obj.get("lastname"),
+            "primaryAccount": obj.get("primaryAccount")
+        })
+        return _obj
 
-    def to_dict(self):
-        result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(HumanUserCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, HumanUserCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

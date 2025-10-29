@@ -1,198 +1,131 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.localized_string import LocalizedString
+from typing import Optional, Set
+from typing_extensions import Self
+
+class LegalOrganizationForm(BaseModel):
+    """
+    LegalOrganizationForm
+    """
+    country: Optional[StrictStr] = Field(default=None, description="The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).")
+    shortcut: Optional[List[LocalizedString]] = Field(default=None, description="The localized shortcuts of the legal organization form.")
+    english_description: Optional[StrictStr] = Field(default=None, description="The English name of the legal organization form.", alias="englishDescription")
+    description: Optional[List[LocalizedString]] = Field(default=None, description="The localized descriptions of the legal organization form.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    __properties: ClassVar[List[str]] = ["country", "shortcut", "englishDescription", "description", "id"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class LegalOrganizationForm:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'country': 'str',
-        'description': 'list[LocalizedString]',
-        'english_description': 'str',
-        'id': 'int',
-        'shortcut': 'list[LocalizedString]',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of LegalOrganizationForm from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'country': 'country','description': 'description','english_description': 'englishDescription','id': 'id','shortcut': 'shortcut',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _country = None
-    _description = None
-    _english_description = None
-    _id = None
-    _shortcut = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.country = kwargs.get('country', None)
-        self.description = kwargs.get('description', None)
-        self.english_description = kwargs.get('english_description', None)
-        self.id = kwargs.get('id', None)
-        self.shortcut = kwargs.get('shortcut', None)
-        
-
-    
-    @property
-    def country(self):
-        """Gets the country of this LegalOrganizationForm.
-
-            The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).
-
-        :return: The country of this LegalOrganizationForm.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._country
+        excluded_fields: Set[str] = set([
+            "country",
+            "shortcut",
+            "english_description",
+            "description",
+            "id",
+        ])
 
-    @country.setter
-    def country(self, country):
-        """Sets the country of this LegalOrganizationForm.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in shortcut (list)
+        _items = []
+        if self.shortcut:
+            for _item_shortcut in self.shortcut:
+                if _item_shortcut:
+                    _items.append(_item_shortcut.to_dict())
+            _dict['shortcut'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in description (list)
+        _items = []
+        if self.description:
+            for _item_description in self.description:
+                if _item_description:
+                    _items.append(_item_description.to_dict())
+            _dict['description'] = _items
+        return _dict
 
-            The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of LegalOrganizationForm from a dict"""
+        if obj is None:
+            return None
 
-        :param country: The country of this LegalOrganizationForm.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._country = country
-    
-    @property
-    def description(self):
-        """Gets the description of this LegalOrganizationForm.
+        _obj = cls.model_validate({
+            "country": obj.get("country"),
+            "shortcut": [LocalizedString.from_dict(_item) for _item in obj["shortcut"]] if obj.get("shortcut") is not None else None,
+            "englishDescription": obj.get("englishDescription"),
+            "description": [LocalizedString.from_dict(_item) for _item in obj["description"]] if obj.get("description") is not None else None,
+            "id": obj.get("id")
+        })
+        return _obj
 
-            The localized descriptions of the legal organization form.
 
-        :return: The description of this LegalOrganizationForm.
-        :rtype: list[LocalizedString]
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this LegalOrganizationForm.
-
-            The localized descriptions of the legal organization form.
-
-        :param description: The description of this LegalOrganizationForm.
-        :type: list[LocalizedString]
-        """
-
-        self._description = description
-    
-    @property
-    def english_description(self):
-        """Gets the english_description of this LegalOrganizationForm.
-
-            The English name of the legal organization form.
-
-        :return: The english_description of this LegalOrganizationForm.
-        :rtype: str
-        """
-        return self._english_description
-
-    @english_description.setter
-    def english_description(self, english_description):
-        """Sets the english_description of this LegalOrganizationForm.
-
-            The English name of the legal organization form.
-
-        :param english_description: The english_description of this LegalOrganizationForm.
-        :type: str
-        """
-
-        self._english_description = english_description
-    
-    @property
-    def id(self):
-        """Gets the id of this LegalOrganizationForm.
-
-            A unique identifier for the object.
-
-        :return: The id of this LegalOrganizationForm.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this LegalOrganizationForm.
-
-            A unique identifier for the object.
-
-        :param id: The id of this LegalOrganizationForm.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def shortcut(self):
-        """Gets the shortcut of this LegalOrganizationForm.
-
-            The localized shortcuts of the legal organization form.
-
-        :return: The shortcut of this LegalOrganizationForm.
-        :rtype: list[LocalizedString]
-        """
-        return self._shortcut
-
-    @shortcut.setter
-    def shortcut(self, shortcut):
-        """Sets the shortcut of this LegalOrganizationForm.
-
-            The localized shortcuts of the legal organization form.
-
-        :param shortcut: The shortcut of this LegalOrganizationForm.
-        :type: list[LocalizedString]
-        """
-
-        self._shortcut = shortcut
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(LegalOrganizationForm, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, LegalOrganizationForm):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

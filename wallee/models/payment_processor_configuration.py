@@ -1,304 +1,135 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.payment_processor import PaymentProcessor
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentProcessorConfiguration(BaseModel):
+    """
+    PaymentProcessorConfiguration
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    application_managed: Optional[StrictBool] = Field(default=None, description="Whether the processor configuration is managed by the application and therefore cannot be changed.", alias="applicationManaged")
+    contract_id: Optional[StrictInt] = Field(default=None, description="The ID of the payment contract the processor configuration is linked to.", alias="contractId")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment method configuration.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    processor: Optional[PaymentProcessor] = None
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "applicationManaged", "contractId", "name", "plannedPurgeDate", "id", "state", "processor", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentProcessorConfiguration:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'application_managed': 'bool',
-        'contract_id': 'int',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'name': 'str',
-        'planned_purge_date': 'datetime',
-        'processor': 'int',
-        'state': 'CreationEntityState',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentProcessorConfiguration from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'application_managed': 'applicationManaged','contract_id': 'contractId','id': 'id','linked_space_id': 'linkedSpaceId','name': 'name','planned_purge_date': 'plannedPurgeDate','processor': 'processor','state': 'state','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _application_managed = None
-    _contract_id = None
-    _id = None
-    _linked_space_id = None
-    _name = None
-    _planned_purge_date = None
-    _processor = None
-    _state = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.application_managed = kwargs.get('application_managed', None)
-        self.contract_id = kwargs.get('contract_id', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.processor = kwargs.get('processor', None)
-        self.state = kwargs.get('state', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def application_managed(self):
-        """Gets the application_managed of this PaymentProcessorConfiguration.
-
-            Whether the processor configuration is managed by the application and therefore cannot be changed.
-
-        :return: The application_managed of this PaymentProcessorConfiguration.
-        :rtype: bool
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._application_managed
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "application_managed",
+            "contract_id",
+            "name",
+            "planned_purge_date",
+            "id",
+            "version",
+        ])
 
-    @application_managed.setter
-    def application_managed(self, application_managed):
-        """Sets the application_managed of this PaymentProcessorConfiguration.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of processor
+        if self.processor:
+            _dict['processor'] = self.processor.to_dict()
+        return _dict
 
-            Whether the processor configuration is managed by the application and therefore cannot be changed.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentProcessorConfiguration from a dict"""
+        if obj is None:
+            return None
 
-        :param application_managed: The application_managed of this PaymentProcessorConfiguration.
-        :type: bool
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._application_managed = application_managed
-    
-    @property
-    def contract_id(self):
-        """Gets the contract_id of this PaymentProcessorConfiguration.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "applicationManaged": obj.get("applicationManaged"),
+            "contractId": obj.get("contractId"),
+            "name": obj.get("name"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "processor": PaymentProcessor.from_dict(obj["processor"]) if obj.get("processor") is not None else None,
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The ID of the payment contract the processor configuration is linked to.
 
-        :return: The contract_id of this PaymentProcessorConfiguration.
-        :rtype: int
-        """
-        return self._contract_id
-
-    @contract_id.setter
-    def contract_id(self, contract_id):
-        """Sets the contract_id of this PaymentProcessorConfiguration.
-
-            The ID of the payment contract the processor configuration is linked to.
-
-        :param contract_id: The contract_id of this PaymentProcessorConfiguration.
-        :type: int
-        """
-
-        self._contract_id = contract_id
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentProcessorConfiguration.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentProcessorConfiguration.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentProcessorConfiguration.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentProcessorConfiguration.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this PaymentProcessorConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this PaymentProcessorConfiguration.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this PaymentProcessorConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this PaymentProcessorConfiguration.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this PaymentProcessorConfiguration.
-
-            The name used to identify the payment method configuration.
-
-        :return: The name of this PaymentProcessorConfiguration.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PaymentProcessorConfiguration.
-
-            The name used to identify the payment method configuration.
-
-        :param name: The name of this PaymentProcessorConfiguration.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this PaymentProcessorConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this PaymentProcessorConfiguration.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this PaymentProcessorConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this PaymentProcessorConfiguration.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def processor(self):
-        """Gets the processor of this PaymentProcessorConfiguration.
-
-            The payment processor that the configuration is for.
-
-        :return: The processor of this PaymentProcessorConfiguration.
-        :rtype: int
-        """
-        return self._processor
-
-    @processor.setter
-    def processor(self, processor):
-        """Sets the processor of this PaymentProcessorConfiguration.
-
-            The payment processor that the configuration is for.
-
-        :param processor: The processor of this PaymentProcessorConfiguration.
-        :type: int
-        """
-
-        self._processor = processor
-    
-    @property
-    def state(self):
-        """Gets the state of this PaymentProcessorConfiguration.
-
-            The object's current state.
-
-        :return: The state of this PaymentProcessorConfiguration.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this PaymentProcessorConfiguration.
-
-            The object's current state.
-
-        :param state: The state of this PaymentProcessorConfiguration.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def version(self):
-        """Gets the version of this PaymentProcessorConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this PaymentProcessorConfiguration.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this PaymentProcessorConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this PaymentProcessorConfiguration.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentProcessorConfiguration, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentProcessorConfiguration):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

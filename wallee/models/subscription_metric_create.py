@@ -1,99 +1,102 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import AbstractSubscriptionMetricUpdate
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionMetricCreate(BaseModel):
+    """
+    A metric represents the usage of a resource that can be measured.
+    """
+    name: Dict[str, StrictStr] = Field(description="The localized name of the metric that is displayed to the customer.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the metric that is displayed to the customer.")
+    type: StrictInt = Field(description="The type of the metric.")
+    __properties: ClassVar[List[str]] = ["name", "description", "type"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class SubscriptionMetricCreate(AbstractSubscriptionMetricUpdate):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'type': 'int',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'type': 'type',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionMetricCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _type = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.type = kwargs.get('type')
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
-
-    
-    @property
-    def type(self):
-        """Gets the type of this SubscriptionMetricCreate.
-
-            The type of the metric.
-
-        :return: The type of this SubscriptionMetricCreate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._type
+        excluded_fields: Set[str] = set([
+        ])
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this SubscriptionMetricCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The type of the metric.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionMetricCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param type: The type of this SubscriptionMetricCreate.
-        :type: int
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._type = type
-    
+        _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type")
+        })
+        return _obj
 
-    def to_dict(self):
-        result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionMetricCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionMetricCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

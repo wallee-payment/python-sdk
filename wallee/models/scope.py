@@ -1,442 +1,171 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.feature import Feature
+from typing import Optional, Set
+from typing_extensions import Self
+
+class Scope(BaseModel):
+    """
+    Scope
+    """
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    ssl_active: Optional[StrictBool] = Field(default=None, description="Whether the scope supports SSL.", alias="sslActive")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    machine_name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name identifying the scope in e.g. URLs.", alias="machineName")
+    url: Optional[StrictStr] = Field(default=None, description="The URL where the scope can be accessed.")
+    features: Optional[List[Feature]] = Field(default=None, description="The list of features that are active in the scope.")
+    themes: Optional[List[StrictStr]] = Field(default=None, description="The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.")
+    port: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="The port where the scope can be accessed.")
+    preprod_domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The preprod domain name that belongs to the scope.", alias="preprodDomainName")
+    domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The domain name that belongs to the scope.", alias="domainName")
+    name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name used to identify the scope.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    sandbox_domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The sandbox domain name that belongs to the scope.", alias="sandboxDomainName")
+    __properties: ClassVar[List[str]] = ["plannedPurgeDate", "sslActive", "version", "machineName", "url", "features", "themes", "port", "preprodDomainName", "domainName", "name", "id", "state", "sandboxDomainName"]
+
+    @field_validator('machine_name')
+    def machine_name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"([A-Z][A-Za-z0-9]+)(_([A-Z][A-Za-z0-9]+))*", value):
+            raise ValueError(r"must validate the regular expression /([A-Z][A-Za-z0-9]+)(_([A-Z][A-Za-z0-9]+))*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class Scope:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'domain_name': 'str',
-        'features': 'list[Feature]',
-        'id': 'int',
-        'machine_name': 'str',
-        'name': 'str',
-        'planned_purge_date': 'datetime',
-        'port': 'int',
-        'preprod_domain_name': 'str',
-        'sandbox_domain_name': 'str',
-        'ssl_active': 'bool',
-        'state': 'CreationEntityState',
-        'themes': 'list[str]',
-        'url': 'str',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of Scope from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'domain_name': 'domainName','features': 'features','id': 'id','machine_name': 'machineName','name': 'name','planned_purge_date': 'plannedPurgeDate','port': 'port','preprod_domain_name': 'preprodDomainName','sandbox_domain_name': 'sandboxDomainName','ssl_active': 'sslActive','state': 'state','themes': 'themes','url': 'url','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _domain_name = None
-    _features = None
-    _id = None
-    _machine_name = None
-    _name = None
-    _planned_purge_date = None
-    _port = None
-    _preprod_domain_name = None
-    _sandbox_domain_name = None
-    _ssl_active = None
-    _state = None
-    _themes = None
-    _url = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.domain_name = kwargs.get('domain_name', None)
-        self.features = kwargs.get('features', None)
-        self.id = kwargs.get('id', None)
-        self.machine_name = kwargs.get('machine_name', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.port = kwargs.get('port', None)
-        self.preprod_domain_name = kwargs.get('preprod_domain_name', None)
-        self.sandbox_domain_name = kwargs.get('sandbox_domain_name', None)
-        self.ssl_active = kwargs.get('ssl_active', None)
-        self.state = kwargs.get('state', None)
-        self.themes = kwargs.get('themes', None)
-        self.url = kwargs.get('url', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def domain_name(self):
-        """Gets the domain_name of this Scope.
-
-            The domain name that belongs to the scope.
-
-        :return: The domain_name of this Scope.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._domain_name
+        excluded_fields: Set[str] = set([
+            "planned_purge_date",
+            "ssl_active",
+            "version",
+            "machine_name",
+            "url",
+            "features",
+            "themes",
+            "port",
+            "preprod_domain_name",
+            "domain_name",
+            "name",
+            "id",
+            "sandbox_domain_name",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in features (list)
+        _items = []
+        if self.features:
+            for _item_features in self.features:
+                if _item_features:
+                    _items.append(_item_features.to_dict())
+            _dict['features'] = _items
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of Scope from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "sslActive": obj.get("sslActive"),
+            "version": obj.get("version"),
+            "machineName": obj.get("machineName"),
+            "url": obj.get("url"),
+            "features": [Feature.from_dict(_item) for _item in obj["features"]] if obj.get("features") is not None else None,
+            "themes": obj.get("themes"),
+            "port": obj.get("port"),
+            "preprodDomainName": obj.get("preprodDomainName"),
+            "domainName": obj.get("domainName"),
+            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "sandboxDomainName": obj.get("sandboxDomainName")
+        })
+        return _obj
 
-    @domain_name.setter
-    def domain_name(self, domain_name):
-        """Sets the domain_name of this Scope.
 
-            The domain name that belongs to the scope.
-
-        :param domain_name: The domain_name of this Scope.
-        :type: str
-        """
-        if domain_name is not None and len(domain_name) > 40:
-            raise ValueError("Invalid value for `domain_name`, length must be less than or equal to `40`")
-
-        self._domain_name = domain_name
-    
-    @property
-    def features(self):
-        """Gets the features of this Scope.
-
-            The list of features that are active in the scope.
-
-        :return: The features of this Scope.
-        :rtype: list[Feature]
-        """
-        return self._features
-
-    @features.setter
-    def features(self, features):
-        """Sets the features of this Scope.
-
-            The list of features that are active in the scope.
-
-        :param features: The features of this Scope.
-        :type: list[Feature]
-        """
-
-        self._features = features
-    
-    @property
-    def id(self):
-        """Gets the id of this Scope.
-
-            A unique identifier for the object.
-
-        :return: The id of this Scope.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Scope.
-
-            A unique identifier for the object.
-
-        :param id: The id of this Scope.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def machine_name(self):
-        """Gets the machine_name of this Scope.
-
-            The name identifying the scope in e.g. URLs.
-
-        :return: The machine_name of this Scope.
-        :rtype: str
-        """
-        return self._machine_name
-
-    @machine_name.setter
-    def machine_name(self, machine_name):
-        """Sets the machine_name of this Scope.
-
-            The name identifying the scope in e.g. URLs.
-
-        :param machine_name: The machine_name of this Scope.
-        :type: str
-        """
-        if machine_name is not None and len(machine_name) > 50:
-            raise ValueError("Invalid value for `machine_name`, length must be less than or equal to `50`")
-
-        self._machine_name = machine_name
-    
-    @property
-    def name(self):
-        """Gets the name of this Scope.
-
-            The name used to identify the scope.
-
-        :return: The name of this Scope.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this Scope.
-
-            The name used to identify the scope.
-
-        :param name: The name of this Scope.
-        :type: str
-        """
-        if name is not None and len(name) > 50:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `50`")
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this Scope.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this Scope.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this Scope.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this Scope.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def port(self):
-        """Gets the port of this Scope.
-
-            The port where the scope can be accessed.
-
-        :return: The port of this Scope.
-        :rtype: int
-        """
-        return self._port
-
-    @port.setter
-    def port(self, port):
-        """Sets the port of this Scope.
-
-            The port where the scope can be accessed.
-
-        :param port: The port of this Scope.
-        :type: int
-        """
-
-        self._port = port
-    
-    @property
-    def preprod_domain_name(self):
-        """Gets the preprod_domain_name of this Scope.
-
-            The preprod domain name that belongs to the scope.
-
-        :return: The preprod_domain_name of this Scope.
-        :rtype: str
-        """
-        return self._preprod_domain_name
-
-    @preprod_domain_name.setter
-    def preprod_domain_name(self, preprod_domain_name):
-        """Sets the preprod_domain_name of this Scope.
-
-            The preprod domain name that belongs to the scope.
-
-        :param preprod_domain_name: The preprod_domain_name of this Scope.
-        :type: str
-        """
-        if preprod_domain_name is not None and len(preprod_domain_name) > 40:
-            raise ValueError("Invalid value for `preprod_domain_name`, length must be less than or equal to `40`")
-
-        self._preprod_domain_name = preprod_domain_name
-    
-    @property
-    def sandbox_domain_name(self):
-        """Gets the sandbox_domain_name of this Scope.
-
-            The sandbox domain name that belongs to the scope.
-
-        :return: The sandbox_domain_name of this Scope.
-        :rtype: str
-        """
-        return self._sandbox_domain_name
-
-    @sandbox_domain_name.setter
-    def sandbox_domain_name(self, sandbox_domain_name):
-        """Sets the sandbox_domain_name of this Scope.
-
-            The sandbox domain name that belongs to the scope.
-
-        :param sandbox_domain_name: The sandbox_domain_name of this Scope.
-        :type: str
-        """
-        if sandbox_domain_name is not None and len(sandbox_domain_name) > 40:
-            raise ValueError("Invalid value for `sandbox_domain_name`, length must be less than or equal to `40`")
-
-        self._sandbox_domain_name = sandbox_domain_name
-    
-    @property
-    def ssl_active(self):
-        """Gets the ssl_active of this Scope.
-
-            Whether the scope supports SSL.
-
-        :return: The ssl_active of this Scope.
-        :rtype: bool
-        """
-        return self._ssl_active
-
-    @ssl_active.setter
-    def ssl_active(self, ssl_active):
-        """Sets the ssl_active of this Scope.
-
-            Whether the scope supports SSL.
-
-        :param ssl_active: The ssl_active of this Scope.
-        :type: bool
-        """
-
-        self._ssl_active = ssl_active
-    
-    @property
-    def state(self):
-        """Gets the state of this Scope.
-
-            The object's current state.
-
-        :return: The state of this Scope.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this Scope.
-
-            The object's current state.
-
-        :param state: The state of this Scope.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def themes(self):
-        """Gets the themes of this Scope.
-
-            The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.
-
-        :return: The themes of this Scope.
-        :rtype: list[str]
-        """
-        return self._themes
-
-    @themes.setter
-    def themes(self, themes):
-        """Sets the themes of this Scope.
-
-            The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.
-
-        :param themes: The themes of this Scope.
-        :type: list[str]
-        """
-
-        self._themes = themes
-    
-    @property
-    def url(self):
-        """Gets the url of this Scope.
-
-            The URL where the scope can be accessed.
-
-        :return: The url of this Scope.
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url):
-        """Sets the url of this Scope.
-
-            The URL where the scope can be accessed.
-
-        :param url: The url of this Scope.
-        :type: str
-        """
-
-        self._url = url
-    
-    @property
-    def version(self):
-        """Gets the version of this Scope.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this Scope.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this Scope.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this Scope.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(Scope, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, Scope):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,332 +1,148 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DebtCollectionReceipt(BaseModel):
+    """
+    DebtCollectionReceipt
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The amount that was collected.")
+    created_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the receipt was created by.", alias="createdBy")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    external_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = Field(default=None, description="A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.", alias="externalId")
+    debt_collection_case: Optional[StrictInt] = Field(default=None, description="The debt collection case that this document belongs to.", alias="debtCollectionCase")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    source: Optional[StrictInt] = Field(default=None, description="The source stating where the receipt is coming from.")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "amount", "createdBy", "plannedPurgeDate", "externalId", "debtCollectionCase", "id", "source", "createdOn", "version"]
+
+    @field_validator('external_id')
+    def external_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DebtCollectionReceipt:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount': 'float',
-        'created_by': 'int',
-        'created_on': 'datetime',
-        'debt_collection_case': 'int',
-        'external_id': 'str',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'planned_purge_date': 'datetime',
-        'source': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DebtCollectionReceipt from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount': 'amount','created_by': 'createdBy','created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','source': 'source','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount = None
-    _created_by = None
-    _created_on = None
-    _debt_collection_case = None
-    _external_id = None
-    _id = None
-    _linked_space_id = None
-    _planned_purge_date = None
-    _source = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount = kwargs.get('amount', None)
-        self.created_by = kwargs.get('created_by', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.debt_collection_case = kwargs.get('debt_collection_case', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.source = kwargs.get('source', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def amount(self):
-        """Gets the amount of this DebtCollectionReceipt.
-
-            The amount that was collected.
-
-        :return: The amount of this DebtCollectionReceipt.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._amount
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "amount",
+            "created_by",
+            "planned_purge_date",
+            "external_id",
+            "debt_collection_case",
+            "id",
+            "source",
+            "created_on",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DebtCollectionReceipt from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "amount": obj.get("amount"),
+            "createdBy": obj.get("createdBy"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "externalId": obj.get("externalId"),
+            "debtCollectionCase": obj.get("debtCollectionCase"),
+            "id": obj.get("id"),
+            "source": obj.get("source"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-    @amount.setter
-    def amount(self, amount):
-        """Sets the amount of this DebtCollectionReceipt.
 
-            The amount that was collected.
-
-        :param amount: The amount of this DebtCollectionReceipt.
-        :type: float
-        """
-
-        self._amount = amount
-    
-    @property
-    def created_by(self):
-        """Gets the created_by of this DebtCollectionReceipt.
-
-            The ID of the user the receipt was created by.
-
-        :return: The created_by of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._created_by
-
-    @created_by.setter
-    def created_by(self, created_by):
-        """Sets the created_by of this DebtCollectionReceipt.
-
-            The ID of the user the receipt was created by.
-
-        :param created_by: The created_by of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._created_by = created_by
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this DebtCollectionReceipt.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this DebtCollectionReceipt.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this DebtCollectionReceipt.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this DebtCollectionReceipt.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def debt_collection_case(self):
-        """Gets the debt_collection_case of this DebtCollectionReceipt.
-
-            The debt collection case that this document belongs to.
-
-        :return: The debt_collection_case of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._debt_collection_case
-
-    @debt_collection_case.setter
-    def debt_collection_case(self, debt_collection_case):
-        """Sets the debt_collection_case of this DebtCollectionReceipt.
-
-            The debt collection case that this document belongs to.
-
-        :param debt_collection_case: The debt_collection_case of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._debt_collection_case = debt_collection_case
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this DebtCollectionReceipt.
-
-            A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.
-
-        :return: The external_id of this DebtCollectionReceipt.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this DebtCollectionReceipt.
-
-            A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.
-
-        :param external_id: The external_id of this DebtCollectionReceipt.
-        :type: str
-        """
-        if external_id is not None and len(external_id) > 100:
-            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
-        if external_id is not None and len(external_id) < 1:
-            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this DebtCollectionReceipt.
-
-            A unique identifier for the object.
-
-        :return: The id of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DebtCollectionReceipt.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this DebtCollectionReceipt.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this DebtCollectionReceipt.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this DebtCollectionReceipt.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this DebtCollectionReceipt.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this DebtCollectionReceipt.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this DebtCollectionReceipt.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def source(self):
-        """Gets the source of this DebtCollectionReceipt.
-
-            The source stating where the receipt is coming from.
-
-        :return: The source of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._source
-
-    @source.setter
-    def source(self, source):
-        """Sets the source of this DebtCollectionReceipt.
-
-            The source stating where the receipt is coming from.
-
-        :param source: The source of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._source = source
-    
-    @property
-    def version(self):
-        """Gets the version of this DebtCollectionReceipt.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this DebtCollectionReceipt.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this DebtCollectionReceipt.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this DebtCollectionReceipt.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DebtCollectionReceipt, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DebtCollectionReceipt):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

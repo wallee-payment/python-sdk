@@ -1,670 +1,228 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.address import Address
+from wallee.models.charge_attempt_environment import ChargeAttemptEnvironment
+from wallee.models.label import Label
+from wallee.models.payment_connector_configuration import PaymentConnectorConfiguration
+from wallee.models.payment_information_hash import PaymentInformationHash
+from wallee.models.payment_method import PaymentMethod
+from wallee.models.payment_method_brand import PaymentMethodBrand
+from wallee.models.token import Token
+from wallee.models.token_version_retry_strategy import TokenVersionRetryStrategy
+from wallee.models.token_version_state import TokenVersionState
+from wallee.models.token_version_type import TokenVersionType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TokenVersion(BaseModel):
+    """
+    TokenVersion
+    """
+    payment_information_hashes: Optional[List[PaymentInformationHash]] = Field(default=None, description="The hashed payment information that the token version represents.", alias="paymentInformationHashes")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    type: Optional[TokenVersionType] = None
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    retry_in: Optional[StrictStr] = Field(default=None, description="Retry interval when the strategy advises retrying later.", alias="retryIn")
+    payment_connector_configuration: Optional[PaymentConnectorConfiguration] = Field(default=None, alias="paymentConnectorConfiguration")
+    obsoleted_on: Optional[datetime] = Field(default=None, description="The date and time when the token version was marked obsolete.", alias="obsoletedOn")
+    expires_on: Optional[datetime] = Field(default=None, description="The date and time when the token version is set to expire, after which it will be marked as obsolete.", alias="expiresOn")
+    icon_url: Optional[StrictStr] = Field(default=None, description="The URL to the token's icon displayed to the customer.", alias="iconUrl")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[TokenVersionState] = None
+    processor_token: Optional[Annotated[str, Field(strict=True, max_length=150)]] = Field(default=None, description="The token name as specified by the processor.", alias="processorToken")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    payment_method_brand: Optional[PaymentMethodBrand] = Field(default=None, alias="paymentMethodBrand")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    last_retried_on: Optional[datetime] = Field(default=None, description="The date and time when the system last attempted a retry for this token version.", alias="lastRetriedOn")
+    labels: Optional[List[Label]] = Field(default=None, description="The labels providing additional information about the object.")
+    token: Optional[Token] = None
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    environment: Optional[ChargeAttemptEnvironment] = None
+    activated_on: Optional[datetime] = Field(default=None, description="The date and time when the token version was activated.", alias="activatedOn")
+    name: Optional[Annotated[str, Field(strict=True, max_length=150)]] = Field(default=None, description="The name used to identify the token.")
+    payment_method: Optional[PaymentMethod] = Field(default=None, alias="paymentMethod")
+    shipping_address: Optional[Address] = Field(default=None, alias="shippingAddress")
+    billing_address: Optional[Address] = Field(default=None, alias="billingAddress")
+    retry_strategy: Optional[TokenVersionRetryStrategy] = Field(default=None, alias="retryStrategy")
+    __properties: ClassVar[List[str]] = ["paymentInformationHashes", "language", "type", "createdOn", "retryIn", "paymentConnectorConfiguration", "obsoletedOn", "expiresOn", "iconUrl", "id", "state", "processorToken", "plannedPurgeDate", "paymentMethodBrand", "version", "lastRetriedOn", "labels", "token", "linkedSpaceId", "environment", "activatedOn", "name", "paymentMethod", "shippingAddress", "billingAddress", "retryStrategy"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TokenVersion:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'activated_on': 'datetime',
-        'billing_address': 'Address',
-        'created_on': 'datetime',
-        'environment': 'ChargeAttemptEnvironment',
-        'expires_on': 'datetime',
-        'icon_url': 'str',
-        'id': 'int',
-        'labels': 'list[Label]',
-        'language': 'str',
-        'linked_space_id': 'int',
-        'name': 'str',
-        'obsoleted_on': 'datetime',
-        'payment_connector_configuration': 'PaymentConnectorConfiguration',
-        'payment_information_hashes': 'list[PaymentInformationHash]',
-        'payment_method': 'int',
-        'payment_method_brand': 'int',
-        'planned_purge_date': 'datetime',
-        'processor_token': 'str',
-        'shipping_address': 'Address',
-        'state': 'TokenVersionState',
-        'token': 'Token',
-        'type': 'TokenVersionType',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TokenVersion from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'activated_on': 'activatedOn','billing_address': 'billingAddress','created_on': 'createdOn','environment': 'environment','expires_on': 'expiresOn','icon_url': 'iconUrl','id': 'id','labels': 'labels','language': 'language','linked_space_id': 'linkedSpaceId','name': 'name','obsoleted_on': 'obsoletedOn','payment_connector_configuration': 'paymentConnectorConfiguration','payment_information_hashes': 'paymentInformationHashes','payment_method': 'paymentMethod','payment_method_brand': 'paymentMethodBrand','planned_purge_date': 'plannedPurgeDate','processor_token': 'processorToken','shipping_address': 'shippingAddress','state': 'state','token': 'token','type': 'type','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _activated_on = None
-    _billing_address = None
-    _created_on = None
-    _environment = None
-    _expires_on = None
-    _icon_url = None
-    _id = None
-    _labels = None
-    _language = None
-    _linked_space_id = None
-    _name = None
-    _obsoleted_on = None
-    _payment_connector_configuration = None
-    _payment_information_hashes = None
-    _payment_method = None
-    _payment_method_brand = None
-    _planned_purge_date = None
-    _processor_token = None
-    _shipping_address = None
-    _state = None
-    _token = None
-    _type = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.activated_on = kwargs.get('activated_on', None)
-        self.billing_address = kwargs.get('billing_address', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.environment = kwargs.get('environment', None)
-        self.expires_on = kwargs.get('expires_on', None)
-        self.icon_url = kwargs.get('icon_url', None)
-        self.id = kwargs.get('id', None)
-        self.labels = kwargs.get('labels', None)
-        self.language = kwargs.get('language', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.obsoleted_on = kwargs.get('obsoleted_on', None)
-        self.payment_connector_configuration = kwargs.get('payment_connector_configuration', None)
-        self.payment_information_hashes = kwargs.get('payment_information_hashes', None)
-        self.payment_method = kwargs.get('payment_method', None)
-        self.payment_method_brand = kwargs.get('payment_method_brand', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.processor_token = kwargs.get('processor_token', None)
-        self.shipping_address = kwargs.get('shipping_address', None)
-        self.state = kwargs.get('state', None)
-        self.token = kwargs.get('token', None)
-        self.type = kwargs.get('type', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def activated_on(self):
-        """Gets the activated_on of this TokenVersion.
-
-            The date and time when the token version was activated.
-
-        :return: The activated_on of this TokenVersion.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._activated_on
+        excluded_fields: Set[str] = set([
+            "payment_information_hashes",
+            "language",
+            "created_on",
+            "retry_in",
+            "obsoleted_on",
+            "expires_on",
+            "icon_url",
+            "id",
+            "processor_token",
+            "planned_purge_date",
+            "version",
+            "last_retried_on",
+            "labels",
+            "linked_space_id",
+            "activated_on",
+            "name",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in payment_information_hashes (list)
+        _items = []
+        if self.payment_information_hashes:
+            for _item_payment_information_hashes in self.payment_information_hashes:
+                if _item_payment_information_hashes:
+                    _items.append(_item_payment_information_hashes.to_dict())
+            _dict['paymentInformationHashes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of payment_connector_configuration
+        if self.payment_connector_configuration:
+            _dict['paymentConnectorConfiguration'] = self.payment_connector_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of payment_method_brand
+        if self.payment_method_brand:
+            _dict['paymentMethodBrand'] = self.payment_method_brand.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in labels (list)
+        _items = []
+        if self.labels:
+            for _item_labels in self.labels:
+                if _item_labels:
+                    _items.append(_item_labels.to_dict())
+            _dict['labels'] = _items
+        # override the default output from pydantic by calling `to_dict()` of token
+        if self.token:
+            _dict['token'] = self.token.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of payment_method
+        if self.payment_method:
+            _dict['paymentMethod'] = self.payment_method.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of shipping_address
+        if self.shipping_address:
+            _dict['shippingAddress'] = self.shipping_address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TokenVersion from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "paymentInformationHashes": [PaymentInformationHash.from_dict(_item) for _item in obj["paymentInformationHashes"]] if obj.get("paymentInformationHashes") is not None else None,
+            "language": obj.get("language"),
+            "type": TokenVersionType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "createdOn": obj.get("createdOn"),
+            "retryIn": obj.get("retryIn"),
+            "paymentConnectorConfiguration": PaymentConnectorConfiguration.from_dict(obj["paymentConnectorConfiguration"]) if obj.get("paymentConnectorConfiguration") is not None else None,
+            "obsoletedOn": obj.get("obsoletedOn"),
+            "expiresOn": obj.get("expiresOn"),
+            "iconUrl": obj.get("iconUrl"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "processorToken": obj.get("processorToken"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "paymentMethodBrand": PaymentMethodBrand.from_dict(obj["paymentMethodBrand"]) if obj.get("paymentMethodBrand") is not None else None,
+            "version": obj.get("version"),
+            "lastRetriedOn": obj.get("lastRetriedOn"),
+            "labels": [Label.from_dict(_item) for _item in obj["labels"]] if obj.get("labels") is not None else None,
+            "token": Token.from_dict(obj["token"]) if obj.get("token") is not None else None,
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "environment": obj.get("environment"),
+            "activatedOn": obj.get("activatedOn"),
+            "name": obj.get("name"),
+            "paymentMethod": PaymentMethod.from_dict(obj["paymentMethod"]) if obj.get("paymentMethod") is not None else None,
+            "shippingAddress": Address.from_dict(obj["shippingAddress"]) if obj.get("shippingAddress") is not None else None,
+            "billingAddress": Address.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "retryStrategy": obj.get("retryStrategy")
+        })
+        return _obj
 
-    @activated_on.setter
-    def activated_on(self, activated_on):
-        """Sets the activated_on of this TokenVersion.
 
-            The date and time when the token version was activated.
-
-        :param activated_on: The activated_on of this TokenVersion.
-        :type: datetime
-        """
-
-        self._activated_on = activated_on
-    
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this TokenVersion.
-
-            The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
-
-        :return: The billing_address of this TokenVersion.
-        :rtype: Address
-        """
-        return self._billing_address
-
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this TokenVersion.
-
-            The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
-
-        :param billing_address: The billing_address of this TokenVersion.
-        :type: Address
-        """
-
-        self._billing_address = billing_address
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this TokenVersion.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this TokenVersion.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this TokenVersion.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this TokenVersion.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def environment(self):
-        """Gets the environment of this TokenVersion.
-
-            The environment in which the token version was created.
-
-        :return: The environment of this TokenVersion.
-        :rtype: ChargeAttemptEnvironment
-        """
-        return self._environment
-
-    @environment.setter
-    def environment(self, environment):
-        """Sets the environment of this TokenVersion.
-
-            The environment in which the token version was created.
-
-        :param environment: The environment of this TokenVersion.
-        :type: ChargeAttemptEnvironment
-        """
-
-        self._environment = environment
-    
-    @property
-    def expires_on(self):
-        """Gets the expires_on of this TokenVersion.
-
-            The date and time when the token version is set to expire, after which it will be marked as obsolete.
-
-        :return: The expires_on of this TokenVersion.
-        :rtype: datetime
-        """
-        return self._expires_on
-
-    @expires_on.setter
-    def expires_on(self, expires_on):
-        """Sets the expires_on of this TokenVersion.
-
-            The date and time when the token version is set to expire, after which it will be marked as obsolete.
-
-        :param expires_on: The expires_on of this TokenVersion.
-        :type: datetime
-        """
-
-        self._expires_on = expires_on
-    
-    @property
-    def icon_url(self):
-        """Gets the icon_url of this TokenVersion.
-
-            The URL to the token's icon displayed to the customer.
-
-        :return: The icon_url of this TokenVersion.
-        :rtype: str
-        """
-        return self._icon_url
-
-    @icon_url.setter
-    def icon_url(self, icon_url):
-        """Sets the icon_url of this TokenVersion.
-
-            The URL to the token's icon displayed to the customer.
-
-        :param icon_url: The icon_url of this TokenVersion.
-        :type: str
-        """
-
-        self._icon_url = icon_url
-    
-    @property
-    def id(self):
-        """Gets the id of this TokenVersion.
-
-            A unique identifier for the object.
-
-        :return: The id of this TokenVersion.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this TokenVersion.
-
-            A unique identifier for the object.
-
-        :param id: The id of this TokenVersion.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def labels(self):
-        """Gets the labels of this TokenVersion.
-
-            The labels providing additional information about the object.
-
-        :return: The labels of this TokenVersion.
-        :rtype: list[Label]
-        """
-        return self._labels
-
-    @labels.setter
-    def labels(self, labels):
-        """Sets the labels of this TokenVersion.
-
-            The labels providing additional information about the object.
-
-        :param labels: The labels of this TokenVersion.
-        :type: list[Label]
-        """
-
-        self._labels = labels
-    
-    @property
-    def language(self):
-        """Gets the language of this TokenVersion.
-
-            The language that is linked to the object.
-
-        :return: The language of this TokenVersion.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this TokenVersion.
-
-            The language that is linked to the object.
-
-        :param language: The language of this TokenVersion.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this TokenVersion.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this TokenVersion.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this TokenVersion.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this TokenVersion.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this TokenVersion.
-
-            The name used to identify the token.
-
-        :return: The name of this TokenVersion.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this TokenVersion.
-
-            The name used to identify the token.
-
-        :param name: The name of this TokenVersion.
-        :type: str
-        """
-        if name is not None and len(name) > 150:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
-
-        self._name = name
-    
-    @property
-    def obsoleted_on(self):
-        """Gets the obsoleted_on of this TokenVersion.
-
-            The date and time when the token version was marked obsolete.
-
-        :return: The obsoleted_on of this TokenVersion.
-        :rtype: datetime
-        """
-        return self._obsoleted_on
-
-    @obsoleted_on.setter
-    def obsoleted_on(self, obsoleted_on):
-        """Sets the obsoleted_on of this TokenVersion.
-
-            The date and time when the token version was marked obsolete.
-
-        :param obsoleted_on: The obsoleted_on of this TokenVersion.
-        :type: datetime
-        """
-
-        self._obsoleted_on = obsoleted_on
-    
-    @property
-    def payment_connector_configuration(self):
-        """Gets the payment_connector_configuration of this TokenVersion.
-
-            The payment connector configuration that initialized the token version.
-
-        :return: The payment_connector_configuration of this TokenVersion.
-        :rtype: PaymentConnectorConfiguration
-        """
-        return self._payment_connector_configuration
-
-    @payment_connector_configuration.setter
-    def payment_connector_configuration(self, payment_connector_configuration):
-        """Sets the payment_connector_configuration of this TokenVersion.
-
-            The payment connector configuration that initialized the token version.
-
-        :param payment_connector_configuration: The payment_connector_configuration of this TokenVersion.
-        :type: PaymentConnectorConfiguration
-        """
-
-        self._payment_connector_configuration = payment_connector_configuration
-    
-    @property
-    def payment_information_hashes(self):
-        """Gets the payment_information_hashes of this TokenVersion.
-
-            The hashed payment information that the token version represents.
-
-        :return: The payment_information_hashes of this TokenVersion.
-        :rtype: list[PaymentInformationHash]
-        """
-        return self._payment_information_hashes
-
-    @payment_information_hashes.setter
-    def payment_information_hashes(self, payment_information_hashes):
-        """Sets the payment_information_hashes of this TokenVersion.
-
-            The hashed payment information that the token version represents.
-
-        :param payment_information_hashes: The payment_information_hashes of this TokenVersion.
-        :type: list[PaymentInformationHash]
-        """
-
-        self._payment_information_hashes = payment_information_hashes
-    
-    @property
-    def payment_method(self):
-        """Gets the payment_method of this TokenVersion.
-
-            The payment method that initialized the token version.
-
-        :return: The payment_method of this TokenVersion.
-        :rtype: int
-        """
-        return self._payment_method
-
-    @payment_method.setter
-    def payment_method(self, payment_method):
-        """Sets the payment_method of this TokenVersion.
-
-            The payment method that initialized the token version.
-
-        :param payment_method: The payment_method of this TokenVersion.
-        :type: int
-        """
-
-        self._payment_method = payment_method
-    
-    @property
-    def payment_method_brand(self):
-        """Gets the payment_method_brand of this TokenVersion.
-
-            The payment method brand that initialized the token version.
-
-        :return: The payment_method_brand of this TokenVersion.
-        :rtype: int
-        """
-        return self._payment_method_brand
-
-    @payment_method_brand.setter
-    def payment_method_brand(self, payment_method_brand):
-        """Sets the payment_method_brand of this TokenVersion.
-
-            The payment method brand that initialized the token version.
-
-        :param payment_method_brand: The payment_method_brand of this TokenVersion.
-        :type: int
-        """
-
-        self._payment_method_brand = payment_method_brand
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this TokenVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this TokenVersion.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this TokenVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this TokenVersion.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def processor_token(self):
-        """Gets the processor_token of this TokenVersion.
-
-            The token name as specified by the processor.
-
-        :return: The processor_token of this TokenVersion.
-        :rtype: str
-        """
-        return self._processor_token
-
-    @processor_token.setter
-    def processor_token(self, processor_token):
-        """Sets the processor_token of this TokenVersion.
-
-            The token name as specified by the processor.
-
-        :param processor_token: The processor_token of this TokenVersion.
-        :type: str
-        """
-        if processor_token is not None and len(processor_token) > 150:
-            raise ValueError("Invalid value for `processor_token`, length must be less than or equal to `150`")
-
-        self._processor_token = processor_token
-    
-    @property
-    def shipping_address(self):
-        """Gets the shipping_address of this TokenVersion.
-
-            The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
-
-        :return: The shipping_address of this TokenVersion.
-        :rtype: Address
-        """
-        return self._shipping_address
-
-    @shipping_address.setter
-    def shipping_address(self, shipping_address):
-        """Sets the shipping_address of this TokenVersion.
-
-            The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
-
-        :param shipping_address: The shipping_address of this TokenVersion.
-        :type: Address
-        """
-
-        self._shipping_address = shipping_address
-    
-    @property
-    def state(self):
-        """Gets the state of this TokenVersion.
-
-            The object's current state.
-
-        :return: The state of this TokenVersion.
-        :rtype: TokenVersionState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this TokenVersion.
-
-            The object's current state.
-
-        :param state: The state of this TokenVersion.
-        :type: TokenVersionState
-        """
-
-        self._state = state
-    
-    @property
-    def token(self):
-        """Gets the token of this TokenVersion.
-
-            The token that the token version belongs to.
-
-        :return: The token of this TokenVersion.
-        :rtype: Token
-        """
-        return self._token
-
-    @token.setter
-    def token(self, token):
-        """Sets the token of this TokenVersion.
-
-            The token that the token version belongs to.
-
-        :param token: The token of this TokenVersion.
-        :type: Token
-        """
-
-        self._token = token
-    
-    @property
-    def type(self):
-        """Gets the type of this TokenVersion.
-
-            The type specifies the nature of the token and identifies the payment connector capable of processing it.
-
-        :return: The type of this TokenVersion.
-        :rtype: TokenVersionType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this TokenVersion.
-
-            The type specifies the nature of the token and identifies the payment connector capable of processing it.
-
-        :param type: The type of this TokenVersion.
-        :type: TokenVersionType
-        """
-
-        self._type = type
-    
-    @property
-    def version(self):
-        """Gets the version of this TokenVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this TokenVersion.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this TokenVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this TokenVersion.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TokenVersion, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TokenVersion):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

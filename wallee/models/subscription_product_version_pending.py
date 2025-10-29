@@ -1,386 +1,120 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.subscription_product_version_state import SubscriptionProductVersionState
+from wallee.models.tax_calculation import TaxCalculation
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionProductVersionPending(BaseModel):
+    """
+    SubscriptionProductVersionPending
+    """
+    enabled_currencies: Optional[List[StrictStr]] = Field(default=None, description="The three-letter codes (ISO 4217 format) of the currencies that the product version supports.", alias="enabledCurrencies")
+    product: Optional[StrictInt] = Field(default=None, description="The product that the version belongs to.")
+    tax_calculation: Optional[TaxCalculation] = Field(default=None, alias="taxCalculation")
+    billing_cycle: Optional[StrictStr] = Field(default=None, description="The recurring period of time, typically monthly or annually, for which a subscriber is charged.", alias="billingCycle")
+    default_currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the product version's default currency.", alias="defaultCurrency")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the product that is displayed to the customer.")
+    minimal_number_of_periods: Optional[StrictInt] = Field(default=None, description="The minimum number of periods the subscription will run before it can be terminated.", alias="minimalNumberOfPeriods")
+    comment: Optional[StrictStr] = Field(default=None, description="A comment that describes the product version and why it was created. It is not disclosed to the subscriber.")
+    state: Optional[SubscriptionProductVersionState] = None
+    number_of_notice_periods: Optional[StrictInt] = Field(default=None, description="The number of periods the subscription will keep running after its termination was requested.", alias="numberOfNoticePeriods")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["enabledCurrencies", "product", "taxCalculation", "billingCycle", "defaultCurrency", "name", "minimalNumberOfPeriods", "comment", "state", "numberOfNoticePeriods", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionProductVersionPending:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'billing_cycle': 'str',
-        'comment': 'str',
-        'default_currency': 'str',
-        'enabled_currencies': 'list[str]',
-        'minimal_number_of_periods': 'int',
-        'name': 'dict(str, str)',
-        'number_of_notice_periods': 'int',
-        'product': 'int',
-        'state': 'SubscriptionProductVersionState',
-        'tax_calculation': 'TaxCalculation',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersionPending from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','billing_cycle': 'billingCycle','comment': 'comment','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','product': 'product','state': 'state','tax_calculation': 'taxCalculation',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _billing_cycle = None
-    _comment = None
-    _default_currency = None
-    _enabled_currencies = None
-    _minimal_number_of_periods = None
-    _name = None
-    _number_of_notice_periods = None
-    _product = None
-    _state = None
-    _tax_calculation = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.billing_cycle = kwargs.get('billing_cycle', None)
-        self.comment = kwargs.get('comment', None)
-        self.default_currency = kwargs.get('default_currency', None)
-        self.enabled_currencies = kwargs.get('enabled_currencies', None)
-        self.minimal_number_of_periods = kwargs.get('minimal_number_of_periods', None)
-        self.name = kwargs.get('name', None)
-        self.number_of_notice_periods = kwargs.get('number_of_notice_periods', None)
-        self.product = kwargs.get('product', None)
-        self.state = kwargs.get('state', None)
-        self.tax_calculation = kwargs.get('tax_calculation', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionProductVersionPending.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this SubscriptionProductVersionPending.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersionPending from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "enabledCurrencies": obj.get("enabledCurrencies"),
+            "product": obj.get("product"),
+            "taxCalculation": obj.get("taxCalculation"),
+            "billingCycle": obj.get("billingCycle"),
+            "defaultCurrency": obj.get("defaultCurrency"),
+            "name": obj.get("name"),
+            "minimalNumberOfPeriods": obj.get("minimalNumberOfPeriods"),
+            "comment": obj.get("comment"),
+            "state": obj.get("state"),
+            "numberOfNoticePeriods": obj.get("numberOfNoticePeriods"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionProductVersionPending.
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :param id: The id of this SubscriptionProductVersionPending.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
-
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionProductVersionPending.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :return: The version of this SubscriptionProductVersionPending.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionProductVersionPending.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this SubscriptionProductVersionPending.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def billing_cycle(self):
-        """Gets the billing_cycle of this SubscriptionProductVersionPending.
-
-            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
-
-        :return: The billing_cycle of this SubscriptionProductVersionPending.
-        :rtype: str
-        """
-        return self._billing_cycle
-
-    @billing_cycle.setter
-    def billing_cycle(self, billing_cycle):
-        """Sets the billing_cycle of this SubscriptionProductVersionPending.
-
-            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
-
-        :param billing_cycle: The billing_cycle of this SubscriptionProductVersionPending.
-        :type: str
-        """
-
-        self._billing_cycle = billing_cycle
-    
-    @property
-    def comment(self):
-        """Gets the comment of this SubscriptionProductVersionPending.
-
-            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
-
-        :return: The comment of this SubscriptionProductVersionPending.
-        :rtype: str
-        """
-        return self._comment
-
-    @comment.setter
-    def comment(self, comment):
-        """Sets the comment of this SubscriptionProductVersionPending.
-
-            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
-
-        :param comment: The comment of this SubscriptionProductVersionPending.
-        :type: str
-        """
-
-        self._comment = comment
-    
-    @property
-    def default_currency(self):
-        """Gets the default_currency of this SubscriptionProductVersionPending.
-
-            The three-letter code (ISO 4217 format) of the product version's default currency.
-
-        :return: The default_currency of this SubscriptionProductVersionPending.
-        :rtype: str
-        """
-        return self._default_currency
-
-    @default_currency.setter
-    def default_currency(self, default_currency):
-        """Sets the default_currency of this SubscriptionProductVersionPending.
-
-            The three-letter code (ISO 4217 format) of the product version's default currency.
-
-        :param default_currency: The default_currency of this SubscriptionProductVersionPending.
-        :type: str
-        """
-
-        self._default_currency = default_currency
-    
-    @property
-    def enabled_currencies(self):
-        """Gets the enabled_currencies of this SubscriptionProductVersionPending.
-
-            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
-
-        :return: The enabled_currencies of this SubscriptionProductVersionPending.
-        :rtype: list[str]
-        """
-        return self._enabled_currencies
-
-    @enabled_currencies.setter
-    def enabled_currencies(self, enabled_currencies):
-        """Sets the enabled_currencies of this SubscriptionProductVersionPending.
-
-            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
-
-        :param enabled_currencies: The enabled_currencies of this SubscriptionProductVersionPending.
-        :type: list[str]
-        """
-
-        self._enabled_currencies = enabled_currencies
-    
-    @property
-    def minimal_number_of_periods(self):
-        """Gets the minimal_number_of_periods of this SubscriptionProductVersionPending.
-
-            The minimum number of periods the subscription will run before it can be terminated.
-
-        :return: The minimal_number_of_periods of this SubscriptionProductVersionPending.
-        :rtype: int
-        """
-        return self._minimal_number_of_periods
-
-    @minimal_number_of_periods.setter
-    def minimal_number_of_periods(self, minimal_number_of_periods):
-        """Sets the minimal_number_of_periods of this SubscriptionProductVersionPending.
-
-            The minimum number of periods the subscription will run before it can be terminated.
-
-        :param minimal_number_of_periods: The minimal_number_of_periods of this SubscriptionProductVersionPending.
-        :type: int
-        """
-
-        self._minimal_number_of_periods = minimal_number_of_periods
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionProductVersionPending.
-
-            The localized name of the product that is displayed to the customer.
-
-        :return: The name of this SubscriptionProductVersionPending.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionProductVersionPending.
-
-            The localized name of the product that is displayed to the customer.
-
-        :param name: The name of this SubscriptionProductVersionPending.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def number_of_notice_periods(self):
-        """Gets the number_of_notice_periods of this SubscriptionProductVersionPending.
-
-            The number of periods the subscription will keep running after its termination was requested.
-
-        :return: The number_of_notice_periods of this SubscriptionProductVersionPending.
-        :rtype: int
-        """
-        return self._number_of_notice_periods
-
-    @number_of_notice_periods.setter
-    def number_of_notice_periods(self, number_of_notice_periods):
-        """Sets the number_of_notice_periods of this SubscriptionProductVersionPending.
-
-            The number of periods the subscription will keep running after its termination was requested.
-
-        :param number_of_notice_periods: The number_of_notice_periods of this SubscriptionProductVersionPending.
-        :type: int
-        """
-
-        self._number_of_notice_periods = number_of_notice_periods
-    
-    @property
-    def product(self):
-        """Gets the product of this SubscriptionProductVersionPending.
-
-            The product that the version belongs to.
-
-        :return: The product of this SubscriptionProductVersionPending.
-        :rtype: int
-        """
-        return self._product
-
-    @product.setter
-    def product(self, product):
-        """Sets the product of this SubscriptionProductVersionPending.
-
-            The product that the version belongs to.
-
-        :param product: The product of this SubscriptionProductVersionPending.
-        :type: int
-        """
-
-        self._product = product
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionProductVersionPending.
-
-            The object's current state.
-
-        :return: The state of this SubscriptionProductVersionPending.
-        :rtype: SubscriptionProductVersionState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionProductVersionPending.
-
-            The object's current state.
-
-        :param state: The state of this SubscriptionProductVersionPending.
-        :type: SubscriptionProductVersionState
-        """
-
-        self._state = state
-    
-    @property
-    def tax_calculation(self):
-        """Gets the tax_calculation of this SubscriptionProductVersionPending.
-
-            The way taxes are calculated for fees.
-
-        :return: The tax_calculation of this SubscriptionProductVersionPending.
-        :rtype: TaxCalculation
-        """
-        return self._tax_calculation
-
-    @tax_calculation.setter
-    def tax_calculation(self, tax_calculation):
-        """Sets the tax_calculation of this SubscriptionProductVersionPending.
-
-            The way taxes are calculated for fees.
-
-        :param tax_calculation: The tax_calculation of this SubscriptionProductVersionPending.
-        :type: TaxCalculation
-        """
-
-        self._tax_calculation = tax_calculation
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionProductVersionPending, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionProductVersionPending):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

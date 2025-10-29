@@ -1,198 +1,118 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.space import Space
+from typing import Optional, Set
+from typing_extensions import Self
+
+class WebAppConfirmationResponse(BaseModel):
+    """
+    The confirmation response provides details about the installation of the web app.
+    """
+    access_token: Optional[StrictStr] = Field(default=None, description="The access code granting permissions to the web service API according to the OAuth standard.")
+    scope: Optional[StrictStr] = Field(default=None, description="The list of the permissions granted to the web app within the space.")
+    state: Optional[StrictStr] = Field(default=None, description="The state parameter that was provided in the authorization request.")
+    token_type: Optional[StrictStr] = Field(default=None, description="The type of the access token that determines the authentication mechanism to use for accessing the web service API.")
+    space: Optional[Space] = None
+    __properties: ClassVar[List[str]] = ["access_token", "scope", "state", "token_type", "space"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class WebAppConfirmationResponse:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'access_token': 'str',
-        'scope': 'str',
-        'space': 'Space',
-        'state': 'str',
-        'token_type': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of WebAppConfirmationResponse from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'access_token': 'access_token','scope': 'scope','space': 'space','state': 'state','token_type': 'token_type',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _access_token = None
-    _scope = None
-    _space = None
-    _state = None
-    _token_type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.access_token = kwargs.get('access_token', None)
-        self.scope = kwargs.get('scope', None)
-        self.space = kwargs.get('space', None)
-        self.state = kwargs.get('state', None)
-        self.token_type = kwargs.get('token_type', None)
-        
-
-    
-    @property
-    def access_token(self):
-        """Gets the access_token of this WebAppConfirmationResponse.
-
-            The access code granting permissions to the web service API according to the OAuth standard.
-
-        :return: The access_token of this WebAppConfirmationResponse.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._access_token
+        excluded_fields: Set[str] = set([
+            "access_token",
+            "scope",
+            "state",
+            "token_type",
+        ])
 
-    @access_token.setter
-    def access_token(self, access_token):
-        """Sets the access_token of this WebAppConfirmationResponse.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of space
+        if self.space:
+            _dict['space'] = self.space.to_dict()
+        return _dict
 
-            The access code granting permissions to the web service API according to the OAuth standard.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of WebAppConfirmationResponse from a dict"""
+        if obj is None:
+            return None
 
-        :param access_token: The access_token of this WebAppConfirmationResponse.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._access_token = access_token
-    
-    @property
-    def scope(self):
-        """Gets the scope of this WebAppConfirmationResponse.
+        _obj = cls.model_validate({
+            "access_token": obj.get("access_token"),
+            "scope": obj.get("scope"),
+            "state": obj.get("state"),
+            "token_type": obj.get("token_type"),
+            "space": Space.from_dict(obj["space"]) if obj.get("space") is not None else None
+        })
+        return _obj
 
-            The list of the permissions granted to the web app within the space.
 
-        :return: The scope of this WebAppConfirmationResponse.
-        :rtype: str
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, scope):
-        """Sets the scope of this WebAppConfirmationResponse.
-
-            The list of the permissions granted to the web app within the space.
-
-        :param scope: The scope of this WebAppConfirmationResponse.
-        :type: str
-        """
-
-        self._scope = scope
-    
-    @property
-    def space(self):
-        """Gets the space of this WebAppConfirmationResponse.
-
-            The space that the web app was installed in.
-
-        :return: The space of this WebAppConfirmationResponse.
-        :rtype: Space
-        """
-        return self._space
-
-    @space.setter
-    def space(self, space):
-        """Sets the space of this WebAppConfirmationResponse.
-
-            The space that the web app was installed in.
-
-        :param space: The space of this WebAppConfirmationResponse.
-        :type: Space
-        """
-
-        self._space = space
-    
-    @property
-    def state(self):
-        """Gets the state of this WebAppConfirmationResponse.
-
-            The state parameter that was provided in the authorization request.
-
-        :return: The state of this WebAppConfirmationResponse.
-        :rtype: str
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this WebAppConfirmationResponse.
-
-            The state parameter that was provided in the authorization request.
-
-        :param state: The state of this WebAppConfirmationResponse.
-        :type: str
-        """
-
-        self._state = state
-    
-    @property
-    def token_type(self):
-        """Gets the token_type of this WebAppConfirmationResponse.
-
-            The type of the access token that determines the authentication mechanism to use for accessing the web service API.
-
-        :return: The token_type of this WebAppConfirmationResponse.
-        :rtype: str
-        """
-        return self._token_type
-
-    @token_type.setter
-    def token_type(self, token_type):
-        """Sets the token_type of this WebAppConfirmationResponse.
-
-            The type of the access token that determines the authentication mechanism to use for accessing the web service API.
-
-        :param token_type: The token_type of this WebAppConfirmationResponse.
-        :type: str
-        """
-
-        self._token_type = token_type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(WebAppConfirmationResponse, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, WebAppConfirmationResponse):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

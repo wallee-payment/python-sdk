@@ -1,317 +1,148 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.card_cryptogram_create import CardCryptogramCreate
+from wallee.models.pan_type import PanType
+from wallee.models.recurring_indicator import RecurringIndicator
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TokenizedCardDataCreate(BaseModel):
+    """
+    TokenizedCardDataCreate
+    """
+    expiry_date: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).", alias="expiryDate")
+    pan_type: Optional[PanType] = Field(default=None, alias="panType")
+    card_holder_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name of the cardholder, as printed on the card, identifying the card owner.", alias="cardHolderName")
+    card_verification_code: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=4)]] = Field(default=None, description="The security code used to validate the card during transactions.", alias="cardVerificationCode")
+    primary_account_number: Annotated[str, Field(min_length=10, strict=True, max_length=30)] = Field(description="The card's primary account number (PAN), the unique identifier of the card.", alias="primaryAccountNumber")
+    recurring_indicator: Optional[RecurringIndicator] = Field(default=None, alias="recurringIndicator")
+    scheme_transaction_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="A reference specific to the card's transaction within its payment scheme.", alias="schemeTransactionReference")
+    token_requestor_id: Optional[StrictStr] = Field(default=None, description="The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.", alias="tokenRequestorId")
+    cryptogram: Optional[CardCryptogramCreate] = None
+    __properties: ClassVar[List[str]] = ["expiryDate", "panType", "cardHolderName", "cardVerificationCode", "primaryAccountNumber", "recurringIndicator", "schemeTransactionReference", "tokenRequestorId", "cryptogram"]
+
+    @field_validator('expiry_date')
+    def expiry_date_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"(\d{4})-(11|12|10|0[1-9])", value):
+            raise ValueError(r"must validate the regular expression /(\d{4})-(11|12|10|0[1-9])/")
+        return value
+
+    @field_validator('card_verification_code')
+    def card_verification_code_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"([0-9 ]+)", value):
+            raise ValueError(r"must validate the regular expression /([0-9 ]+)/")
+        return value
+
+    @field_validator('primary_account_number')
+    def primary_account_number_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"([0-9 ]+)", value):
+            raise ValueError(r"must validate the regular expression /([0-9 ]+)/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TokenizedCardDataCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'card_holder_name': 'str',
-        'card_verification_code': 'str',
-        'cryptogram': 'CardCryptogramCreate',
-        'expiry_date': 'str',
-        'pan_type': 'PanType',
-        'primary_account_number': 'str',
-        'recurring_indicator': 'RecurringIndicator',
-        'scheme_transaction_reference': 'str',
-        'token_requestor_id': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TokenizedCardDataCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'card_holder_name': 'cardHolderName','card_verification_code': 'cardVerificationCode','cryptogram': 'cryptogram','expiry_date': 'expiryDate','pan_type': 'panType','primary_account_number': 'primaryAccountNumber','recurring_indicator': 'recurringIndicator','scheme_transaction_reference': 'schemeTransactionReference','token_requestor_id': 'tokenRequestorId',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _card_holder_name = None
-    _card_verification_code = None
-    _cryptogram = None
-    _expiry_date = None
-    _pan_type = None
-    _primary_account_number = None
-    _recurring_indicator = None
-    _scheme_transaction_reference = None
-    _token_requestor_id = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.card_holder_name = kwargs.get('card_holder_name', None)
-        self.card_verification_code = kwargs.get('card_verification_code', None)
-        self.cryptogram = kwargs.get('cryptogram', None)
-        self.expiry_date = kwargs.get('expiry_date', None)
-        self.pan_type = kwargs.get('pan_type', None)
-        self.primary_account_number = kwargs.get('primary_account_number')
-
-        self.recurring_indicator = kwargs.get('recurring_indicator', None)
-        self.scheme_transaction_reference = kwargs.get('scheme_transaction_reference', None)
-        self.token_requestor_id = kwargs.get('token_requestor_id', None)
-        
-
-    
-    @property
-    def card_holder_name(self):
-        """Gets the card_holder_name of this TokenizedCardDataCreate.
-
-            The name of the cardholder, as printed on the card, identifying the card owner.
-
-        :return: The card_holder_name of this TokenizedCardDataCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._card_holder_name
+        excluded_fields: Set[str] = set([
+        ])
 
-    @card_holder_name.setter
-    def card_holder_name(self, card_holder_name):
-        """Sets the card_holder_name of this TokenizedCardDataCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of cryptogram
+        if self.cryptogram:
+            _dict['cryptogram'] = self.cryptogram.to_dict()
+        return _dict
 
-            The name of the cardholder, as printed on the card, identifying the card owner.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TokenizedCardDataCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param card_holder_name: The card_holder_name of this TokenizedCardDataCreate.
-        :type: str
-        """
-        if card_holder_name is not None and len(card_holder_name) > 100:
-            raise ValueError("Invalid value for `card_holder_name`, length must be less than or equal to `100`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._card_holder_name = card_holder_name
-    
-    @property
-    def card_verification_code(self):
-        """Gets the card_verification_code of this TokenizedCardDataCreate.
+        _obj = cls.model_validate({
+            "expiryDate": obj.get("expiryDate"),
+            "panType": obj.get("panType"),
+            "cardHolderName": obj.get("cardHolderName"),
+            "cardVerificationCode": obj.get("cardVerificationCode"),
+            "primaryAccountNumber": obj.get("primaryAccountNumber"),
+            "recurringIndicator": obj.get("recurringIndicator"),
+            "schemeTransactionReference": obj.get("schemeTransactionReference"),
+            "tokenRequestorId": obj.get("tokenRequestorId"),
+            "cryptogram": CardCryptogramCreate.from_dict(obj["cryptogram"]) if obj.get("cryptogram") is not None else None
+        })
+        return _obj
 
-            The security code used to validate the card during transactions.
 
-        :return: The card_verification_code of this TokenizedCardDataCreate.
-        :rtype: str
-        """
-        return self._card_verification_code
-
-    @card_verification_code.setter
-    def card_verification_code(self, card_verification_code):
-        """Sets the card_verification_code of this TokenizedCardDataCreate.
-
-            The security code used to validate the card during transactions.
-
-        :param card_verification_code: The card_verification_code of this TokenizedCardDataCreate.
-        :type: str
-        """
-        if card_verification_code is not None and len(card_verification_code) > 4:
-            raise ValueError("Invalid value for `card_verification_code`, length must be less than or equal to `4`")
-        if card_verification_code is not None and len(card_verification_code) < 3:
-            raise ValueError("Invalid value for `card_verification_code`, length must be greater than or equal to `3`")
-
-        self._card_verification_code = card_verification_code
-    
-    @property
-    def cryptogram(self):
-        """Gets the cryptogram of this TokenizedCardDataCreate.
-
-            An additional authentication value that enhances the security of tokenized card transactions.
-
-        :return: The cryptogram of this TokenizedCardDataCreate.
-        :rtype: CardCryptogramCreate
-        """
-        return self._cryptogram
-
-    @cryptogram.setter
-    def cryptogram(self, cryptogram):
-        """Sets the cryptogram of this TokenizedCardDataCreate.
-
-            An additional authentication value that enhances the security of tokenized card transactions.
-
-        :param cryptogram: The cryptogram of this TokenizedCardDataCreate.
-        :type: CardCryptogramCreate
-        """
-
-        self._cryptogram = cryptogram
-    
-    @property
-    def expiry_date(self):
-        """Gets the expiry_date of this TokenizedCardDataCreate.
-
-            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
-
-        :return: The expiry_date of this TokenizedCardDataCreate.
-        :rtype: str
-        """
-        return self._expiry_date
-
-    @expiry_date.setter
-    def expiry_date(self, expiry_date):
-        """Sets the expiry_date of this TokenizedCardDataCreate.
-
-            The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
-
-        :param expiry_date: The expiry_date of this TokenizedCardDataCreate.
-        :type: str
-        """
-
-        self._expiry_date = expiry_date
-    
-    @property
-    def pan_type(self):
-        """Gets the pan_type of this TokenizedCardDataCreate.
-
-            The type of PAN or token, indicating the source or security method of the card information.
-
-        :return: The pan_type of this TokenizedCardDataCreate.
-        :rtype: PanType
-        """
-        return self._pan_type
-
-    @pan_type.setter
-    def pan_type(self, pan_type):
-        """Sets the pan_type of this TokenizedCardDataCreate.
-
-            The type of PAN or token, indicating the source or security method of the card information.
-
-        :param pan_type: The pan_type of this TokenizedCardDataCreate.
-        :type: PanType
-        """
-
-        self._pan_type = pan_type
-    
-    @property
-    def primary_account_number(self):
-        """Gets the primary_account_number of this TokenizedCardDataCreate.
-
-            The card's primary account number (PAN), the unique identifier of the card.
-
-        :return: The primary_account_number of this TokenizedCardDataCreate.
-        :rtype: str
-        """
-        return self._primary_account_number
-
-    @primary_account_number.setter
-    def primary_account_number(self, primary_account_number):
-        """Sets the primary_account_number of this TokenizedCardDataCreate.
-
-            The card's primary account number (PAN), the unique identifier of the card.
-
-        :param primary_account_number: The primary_account_number of this TokenizedCardDataCreate.
-        :type: str
-        """
-        if primary_account_number is None:
-            raise ValueError("Invalid value for `primary_account_number`, must not be `None`")
-        if primary_account_number is not None and len(primary_account_number) > 30:
-            raise ValueError("Invalid value for `primary_account_number`, length must be less than or equal to `30`")
-        if primary_account_number is not None and len(primary_account_number) < 10:
-            raise ValueError("Invalid value for `primary_account_number`, length must be greater than or equal to `10`")
-
-        self._primary_account_number = primary_account_number
-    
-    @property
-    def recurring_indicator(self):
-        """Gets the recurring_indicator of this TokenizedCardDataCreate.
-
-            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
-
-        :return: The recurring_indicator of this TokenizedCardDataCreate.
-        :rtype: RecurringIndicator
-        """
-        return self._recurring_indicator
-
-    @recurring_indicator.setter
-    def recurring_indicator(self, recurring_indicator):
-        """Sets the recurring_indicator of this TokenizedCardDataCreate.
-
-            The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction's properties.
-
-        :param recurring_indicator: The recurring_indicator of this TokenizedCardDataCreate.
-        :type: RecurringIndicator
-        """
-
-        self._recurring_indicator = recurring_indicator
-    
-    @property
-    def scheme_transaction_reference(self):
-        """Gets the scheme_transaction_reference of this TokenizedCardDataCreate.
-
-            A reference specific to the card's transaction within its payment scheme.
-
-        :return: The scheme_transaction_reference of this TokenizedCardDataCreate.
-        :rtype: str
-        """
-        return self._scheme_transaction_reference
-
-    @scheme_transaction_reference.setter
-    def scheme_transaction_reference(self, scheme_transaction_reference):
-        """Sets the scheme_transaction_reference of this TokenizedCardDataCreate.
-
-            A reference specific to the card's transaction within its payment scheme.
-
-        :param scheme_transaction_reference: The scheme_transaction_reference of this TokenizedCardDataCreate.
-        :type: str
-        """
-        if scheme_transaction_reference is not None and len(scheme_transaction_reference) > 100:
-            raise ValueError("Invalid value for `scheme_transaction_reference`, length must be less than or equal to `100`")
-
-        self._scheme_transaction_reference = scheme_transaction_reference
-    
-    @property
-    def token_requestor_id(self):
-        """Gets the token_requestor_id of this TokenizedCardDataCreate.
-
-            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
-
-        :return: The token_requestor_id of this TokenizedCardDataCreate.
-        :rtype: str
-        """
-        return self._token_requestor_id
-
-    @token_requestor_id.setter
-    def token_requestor_id(self, token_requestor_id):
-        """Sets the token_requestor_id of this TokenizedCardDataCreate.
-
-            The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
-
-        :param token_requestor_id: The token_requestor_id of this TokenizedCardDataCreate.
-        :type: str
-        """
-
-        self._token_requestor_id = token_requestor_id
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TokenizedCardDataCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TokenizedCardDataCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,226 +1,110 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.subscription_product_state import SubscriptionProductState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractSubscriptionProductActive(BaseModel):
+    """
+    AbstractSubscriptionProductActive
+    """
+    sort_order: Optional[StrictInt] = Field(default=None, description="When listing products, they can be sorted by this number.", alias="sortOrder")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the product.")
+    product_locked: Optional[StrictBool] = Field(default=None, description="Whether subscriptions can be switched to or from this product, or whether they are locked in.", alias="productLocked")
+    state: Optional[SubscriptionProductState] = None
+    failed_payment_suspension_period: Optional[StrictStr] = Field(default=None, description="The period after which a subscription that has been suspended due to a failed payment is terminated.", alias="failedPaymentSuspensionPeriod")
+    allowed_payment_method_configurations: Optional[List[StrictInt]] = Field(default=None, description="The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.", alias="allowedPaymentMethodConfigurations")
+    __properties: ClassVar[List[str]] = ["sortOrder", "name", "productLocked", "state", "failedPaymentSuspensionPeriod", "allowedPaymentMethodConfigurations"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractSubscriptionProductActive:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'allowed_payment_method_configurations': 'list[int]',
-        'failed_payment_suspension_period': 'str',
-        'name': 'str',
-        'product_locked': 'bool',
-        'sort_order': 'int',
-        'state': 'SubscriptionProductState',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractSubscriptionProductActive from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','failed_payment_suspension_period': 'failedPaymentSuspensionPeriod','name': 'name','product_locked': 'productLocked','sort_order': 'sortOrder','state': 'state',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _allowed_payment_method_configurations = None
-    _failed_payment_suspension_period = None
-    _name = None
-    _product_locked = None
-    _sort_order = None
-    _state = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
-        self.failed_payment_suspension_period = kwargs.get('failed_payment_suspension_period', None)
-        self.name = kwargs.get('name', None)
-        self.product_locked = kwargs.get('product_locked', None)
-        self.sort_order = kwargs.get('sort_order', None)
-        self.state = kwargs.get('state', None)
-        
-
-    
-    @property
-    def allowed_payment_method_configurations(self):
-        """Gets the allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
-
-            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
-
-        :return: The allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
-        :rtype: list[int]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._allowed_payment_method_configurations
+        excluded_fields: Set[str] = set([
+        ])
 
-    @allowed_payment_method_configurations.setter
-    def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
-        """Sets the allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractSubscriptionProductActive from a dict"""
+        if obj is None:
+            return None
 
-        :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this AbstractSubscriptionProductActive.
-        :type: list[int]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._allowed_payment_method_configurations = allowed_payment_method_configurations
-    
-    @property
-    def failed_payment_suspension_period(self):
-        """Gets the failed_payment_suspension_period of this AbstractSubscriptionProductActive.
+        _obj = cls.model_validate({
+            "sortOrder": obj.get("sortOrder"),
+            "name": obj.get("name"),
+            "productLocked": obj.get("productLocked"),
+            "state": obj.get("state"),
+            "failedPaymentSuspensionPeriod": obj.get("failedPaymentSuspensionPeriod"),
+            "allowedPaymentMethodConfigurations": obj.get("allowedPaymentMethodConfigurations")
+        })
+        return _obj
 
-            The period after which a subscription that has been suspended due to a failed payment is terminated.
 
-        :return: The failed_payment_suspension_period of this AbstractSubscriptionProductActive.
-        :rtype: str
-        """
-        return self._failed_payment_suspension_period
-
-    @failed_payment_suspension_period.setter
-    def failed_payment_suspension_period(self, failed_payment_suspension_period):
-        """Sets the failed_payment_suspension_period of this AbstractSubscriptionProductActive.
-
-            The period after which a subscription that has been suspended due to a failed payment is terminated.
-
-        :param failed_payment_suspension_period: The failed_payment_suspension_period of this AbstractSubscriptionProductActive.
-        :type: str
-        """
-
-        self._failed_payment_suspension_period = failed_payment_suspension_period
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractSubscriptionProductActive.
-
-            The name used to identify the product.
-
-        :return: The name of this AbstractSubscriptionProductActive.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractSubscriptionProductActive.
-
-            The name used to identify the product.
-
-        :param name: The name of this AbstractSubscriptionProductActive.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def product_locked(self):
-        """Gets the product_locked of this AbstractSubscriptionProductActive.
-
-            Whether subscriptions can be switched to or from this product, or whether they are locked in.
-
-        :return: The product_locked of this AbstractSubscriptionProductActive.
-        :rtype: bool
-        """
-        return self._product_locked
-
-    @product_locked.setter
-    def product_locked(self, product_locked):
-        """Sets the product_locked of this AbstractSubscriptionProductActive.
-
-            Whether subscriptions can be switched to or from this product, or whether they are locked in.
-
-        :param product_locked: The product_locked of this AbstractSubscriptionProductActive.
-        :type: bool
-        """
-
-        self._product_locked = product_locked
-    
-    @property
-    def sort_order(self):
-        """Gets the sort_order of this AbstractSubscriptionProductActive.
-
-            When listing products, they can be sorted by this number.
-
-        :return: The sort_order of this AbstractSubscriptionProductActive.
-        :rtype: int
-        """
-        return self._sort_order
-
-    @sort_order.setter
-    def sort_order(self, sort_order):
-        """Sets the sort_order of this AbstractSubscriptionProductActive.
-
-            When listing products, they can be sorted by this number.
-
-        :param sort_order: The sort_order of this AbstractSubscriptionProductActive.
-        :type: int
-        """
-
-        self._sort_order = sort_order
-    
-    @property
-    def state(self):
-        """Gets the state of this AbstractSubscriptionProductActive.
-
-            The object's current state.
-
-        :return: The state of this AbstractSubscriptionProductActive.
-        :rtype: SubscriptionProductState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this AbstractSubscriptionProductActive.
-
-            The object's current state.
-
-        :param state: The state of this AbstractSubscriptionProductActive.
-        :type: SubscriptionProductState
-        """
-
-        self._state = state
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractSubscriptionProductActive, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractSubscriptionProductActive):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

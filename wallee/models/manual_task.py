@@ -1,302 +1,140 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.manual_task_action import ManualTaskAction
+from wallee.models.manual_task_state import ManualTaskState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ManualTask(BaseModel):
+    """
+    A manual task requires the manual intervention of a human.
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    context_entity_id: Optional[StrictInt] = Field(default=None, description="The ID of the entity the manual task is linked to.", alias="contextEntityId")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    expires_on: Optional[datetime] = Field(default=None, description="The date and time until when the manual task has to be handled.", alias="expiresOn")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[ManualTaskState] = None
+    type: Optional[StrictInt] = Field(default=None, description="The manual task's type.")
+    actions: Optional[List[ManualTaskAction]] = Field(default=None, description="The actions that can be triggered to handle the manual task.")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "contextEntityId", "plannedPurgeDate", "expiresOn", "id", "state", "type", "actions", "createdOn"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ManualTask:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'actions': 'list[int]',
-        'context_entity_id': 'int',
-        'created_on': 'datetime',
-        'expires_on': 'datetime',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'planned_purge_date': 'datetime',
-        'state': 'ManualTaskState',
-        'type': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ManualTask from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'actions': 'actions','context_entity_id': 'contextEntityId','created_on': 'createdOn','expires_on': 'expiresOn','id': 'id','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _actions = None
-    _context_entity_id = None
-    _created_on = None
-    _expires_on = None
-    _id = None
-    _linked_space_id = None
-    _planned_purge_date = None
-    _state = None
-    _type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.actions = kwargs.get('actions', None)
-        self.context_entity_id = kwargs.get('context_entity_id', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.expires_on = kwargs.get('expires_on', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.state = kwargs.get('state', None)
-        self.type = kwargs.get('type', None)
-        
-
-    
-    @property
-    def actions(self):
-        """Gets the actions of this ManualTask.
-
-            The actions that can be triggered to handle the manual task.
-
-        :return: The actions of this ManualTask.
-        :rtype: list[int]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._actions
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "context_entity_id",
+            "planned_purge_date",
+            "expires_on",
+            "id",
+            "type",
+            "actions",
+            "created_on",
+        ])
 
-    @actions.setter
-    def actions(self, actions):
-        """Sets the actions of this ManualTask.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in actions (list)
+        _items = []
+        if self.actions:
+            for _item_actions in self.actions:
+                if _item_actions:
+                    _items.append(_item_actions.to_dict())
+            _dict['actions'] = _items
+        return _dict
 
-            The actions that can be triggered to handle the manual task.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ManualTask from a dict"""
+        if obj is None:
+            return None
 
-        :param actions: The actions of this ManualTask.
-        :type: list[int]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._actions = actions
-    
-    @property
-    def context_entity_id(self):
-        """Gets the context_entity_id of this ManualTask.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "contextEntityId": obj.get("contextEntityId"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "expiresOn": obj.get("expiresOn"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "type": obj.get("type"),
+            "actions": [ManualTaskAction.from_dict(_item) for _item in obj["actions"]] if obj.get("actions") is not None else None,
+            "createdOn": obj.get("createdOn")
+        })
+        return _obj
 
-            The ID of the entity the manual task is linked to.
 
-        :return: The context_entity_id of this ManualTask.
-        :rtype: int
-        """
-        return self._context_entity_id
-
-    @context_entity_id.setter
-    def context_entity_id(self, context_entity_id):
-        """Sets the context_entity_id of this ManualTask.
-
-            The ID of the entity the manual task is linked to.
-
-        :param context_entity_id: The context_entity_id of this ManualTask.
-        :type: int
-        """
-
-        self._context_entity_id = context_entity_id
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this ManualTask.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this ManualTask.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this ManualTask.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this ManualTask.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def expires_on(self):
-        """Gets the expires_on of this ManualTask.
-
-            The date and time until when the manual task has to be handled.
-
-        :return: The expires_on of this ManualTask.
-        :rtype: datetime
-        """
-        return self._expires_on
-
-    @expires_on.setter
-    def expires_on(self, expires_on):
-        """Sets the expires_on of this ManualTask.
-
-            The date and time until when the manual task has to be handled.
-
-        :param expires_on: The expires_on of this ManualTask.
-        :type: datetime
-        """
-
-        self._expires_on = expires_on
-    
-    @property
-    def id(self):
-        """Gets the id of this ManualTask.
-
-            A unique identifier for the object.
-
-        :return: The id of this ManualTask.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ManualTask.
-
-            A unique identifier for the object.
-
-        :param id: The id of this ManualTask.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this ManualTask.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this ManualTask.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this ManualTask.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this ManualTask.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this ManualTask.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this ManualTask.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this ManualTask.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this ManualTask.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def state(self):
-        """Gets the state of this ManualTask.
-
-            The object's current state.
-
-        :return: The state of this ManualTask.
-        :rtype: ManualTaskState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this ManualTask.
-
-            The object's current state.
-
-        :param state: The state of this ManualTask.
-        :type: ManualTaskState
-        """
-
-        self._state = state
-    
-    @property
-    def type(self):
-        """Gets the type of this ManualTask.
-
-            The manual task's type.
-
-        :return: The type of this ManualTask.
-        :rtype: int
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this ManualTask.
-
-            The manual task's type.
-
-        :param type: The type of this ManualTask.
-        :type: int
-        """
-
-        self._type = type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ManualTask, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ManualTask):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

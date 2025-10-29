@@ -1,204 +1,108 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.card_authentication_response import CardAuthenticationResponse
+from wallee.models.card_authentication_version import CardAuthenticationVersion
+from typing import Optional, Set
+from typing_extensions import Self
+
+class CardholderAuthenticationCreate(BaseModel):
+    """
+    CardholderAuthenticationCreate
+    """
+    authentication_identifier: Optional[StrictStr] = Field(default=None, description="The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.", alias="authenticationIdentifier")
+    authentication_response: CardAuthenticationResponse = Field(alias="authenticationResponse")
+    electronic_commerce_indicator: Optional[StrictStr] = Field(default=None, description="The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.", alias="electronicCommerceIndicator")
+    authentication_value: Optional[StrictStr] = Field(default=None, description="The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder's identity.", alias="authenticationValue")
+    version: CardAuthenticationVersion
+    __properties: ClassVar[List[str]] = ["authenticationIdentifier", "authenticationResponse", "electronicCommerceIndicator", "authenticationValue", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class CardholderAuthenticationCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'authentication_identifier': 'str',
-        'authentication_response': 'CardAuthenticationResponse',
-        'authentication_value': 'str',
-        'electronic_commerce_indicator': 'str',
-        'version': 'CardAuthenticationVersion',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of CardholderAuthenticationCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'authentication_identifier': 'authenticationIdentifier','authentication_response': 'authenticationResponse','authentication_value': 'authenticationValue','electronic_commerce_indicator': 'electronicCommerceIndicator','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _authentication_identifier = None
-    _authentication_response = None
-    _authentication_value = None
-    _electronic_commerce_indicator = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.authentication_identifier = kwargs.get('authentication_identifier', None)
-        self.authentication_response = kwargs.get('authentication_response')
-
-        self.authentication_value = kwargs.get('authentication_value', None)
-        self.electronic_commerce_indicator = kwargs.get('electronic_commerce_indicator', None)
-        self.version = kwargs.get('version')
-
-        
-
-    
-    @property
-    def authentication_identifier(self):
-        """Gets the authentication_identifier of this CardholderAuthenticationCreate.
-
-            The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.
-
-        :return: The authentication_identifier of this CardholderAuthenticationCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._authentication_identifier
+        excluded_fields: Set[str] = set([
+        ])
 
-    @authentication_identifier.setter
-    def authentication_identifier(self, authentication_identifier):
-        """Sets the authentication_identifier of this CardholderAuthenticationCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of CardholderAuthenticationCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param authentication_identifier: The authentication_identifier of this CardholderAuthenticationCreate.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._authentication_identifier = authentication_identifier
-    
-    @property
-    def authentication_response(self):
-        """Gets the authentication_response of this CardholderAuthenticationCreate.
+        _obj = cls.model_validate({
+            "authenticationIdentifier": obj.get("authenticationIdentifier"),
+            "authenticationResponse": obj.get("authenticationResponse"),
+            "electronicCommerceIndicator": obj.get("electronicCommerceIndicator"),
+            "authenticationValue": obj.get("authenticationValue"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The result of the authentication process.
 
-        :return: The authentication_response of this CardholderAuthenticationCreate.
-        :rtype: CardAuthenticationResponse
-        """
-        return self._authentication_response
-
-    @authentication_response.setter
-    def authentication_response(self, authentication_response):
-        """Sets the authentication_response of this CardholderAuthenticationCreate.
-
-            The result of the authentication process.
-
-        :param authentication_response: The authentication_response of this CardholderAuthenticationCreate.
-        :type: CardAuthenticationResponse
-        """
-        if authentication_response is None:
-            raise ValueError("Invalid value for `authentication_response`, must not be `None`")
-
-        self._authentication_response = authentication_response
-    
-    @property
-    def authentication_value(self):
-        """Gets the authentication_value of this CardholderAuthenticationCreate.
-
-            The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder's identity.
-
-        :return: The authentication_value of this CardholderAuthenticationCreate.
-        :rtype: str
-        """
-        return self._authentication_value
-
-    @authentication_value.setter
-    def authentication_value(self, authentication_value):
-        """Sets the authentication_value of this CardholderAuthenticationCreate.
-
-            The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder's identity.
-
-        :param authentication_value: The authentication_value of this CardholderAuthenticationCreate.
-        :type: str
-        """
-
-        self._authentication_value = authentication_value
-    
-    @property
-    def electronic_commerce_indicator(self):
-        """Gets the electronic_commerce_indicator of this CardholderAuthenticationCreate.
-
-            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
-
-        :return: The electronic_commerce_indicator of this CardholderAuthenticationCreate.
-        :rtype: str
-        """
-        return self._electronic_commerce_indicator
-
-    @electronic_commerce_indicator.setter
-    def electronic_commerce_indicator(self, electronic_commerce_indicator):
-        """Sets the electronic_commerce_indicator of this CardholderAuthenticationCreate.
-
-            The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
-
-        :param electronic_commerce_indicator: The electronic_commerce_indicator of this CardholderAuthenticationCreate.
-        :type: str
-        """
-
-        self._electronic_commerce_indicator = electronic_commerce_indicator
-    
-    @property
-    def version(self):
-        """Gets the version of this CardholderAuthenticationCreate.
-
-            The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.
-
-        :return: The version of this CardholderAuthenticationCreate.
-        :rtype: CardAuthenticationVersion
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this CardholderAuthenticationCreate.
-
-            The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.
-
-        :param version: The version of this CardholderAuthenticationCreate.
-        :type: CardAuthenticationVersion
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(CardholderAuthenticationCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, CardholderAuthenticationCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

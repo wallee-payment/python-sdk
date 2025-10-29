@@ -1,206 +1,106 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionUpdate(BaseModel):
+    """
+    SubscriptionUpdate
+    """
+    description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="A description used to identify the subscription.")
+    planned_termination_date: Optional[datetime] = Field(default=None, description="The date and time when the subscription is planned to be terminated.", alias="plannedTerminationDate")
+    affiliate: Optional[StrictInt] = Field(default=None, description="The affiliate that led to the creation of the subscription.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["description", "plannedTerminationDate", "affiliate", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'affiliate': 'int',
-        'description': 'str',
-        'planned_termination_date': 'datetime',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','affiliate': 'affiliate','description': 'description','planned_termination_date': 'plannedTerminationDate',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _affiliate = None
-    _description = None
-    _planned_termination_date = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.affiliate = kwargs.get('affiliate', None)
-        self.description = kwargs.get('description', None)
-        self.planned_termination_date = kwargs.get('planned_termination_date', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionUpdate.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this SubscriptionUpdate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this SubscriptionUpdate.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionUpdate.
+        _obj = cls.model_validate({
+            "description": obj.get("description"),
+            "plannedTerminationDate": obj.get("plannedTerminationDate"),
+            "affiliate": obj.get("affiliate"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this SubscriptionUpdate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this SubscriptionUpdate.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def affiliate(self):
-        """Gets the affiliate of this SubscriptionUpdate.
-
-            The affiliate that led to the creation of the subscription.
-
-        :return: The affiliate of this SubscriptionUpdate.
-        :rtype: int
-        """
-        return self._affiliate
-
-    @affiliate.setter
-    def affiliate(self, affiliate):
-        """Sets the affiliate of this SubscriptionUpdate.
-
-            The affiliate that led to the creation of the subscription.
-
-        :param affiliate: The affiliate of this SubscriptionUpdate.
-        :type: int
-        """
-
-        self._affiliate = affiliate
-    
-    @property
-    def description(self):
-        """Gets the description of this SubscriptionUpdate.
-
-            A description used to identify the subscription.
-
-        :return: The description of this SubscriptionUpdate.
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this SubscriptionUpdate.
-
-            A description used to identify the subscription.
-
-        :param description: The description of this SubscriptionUpdate.
-        :type: str
-        """
-        if description is not None and len(description) > 200:
-            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")
-
-        self._description = description
-    
-    @property
-    def planned_termination_date(self):
-        """Gets the planned_termination_date of this SubscriptionUpdate.
-
-            The date and time when the subscription is planned to be terminated.
-
-        :return: The planned_termination_date of this SubscriptionUpdate.
-        :rtype: datetime
-        """
-        return self._planned_termination_date
-
-    @planned_termination_date.setter
-    def planned_termination_date(self, planned_termination_date):
-        """Sets the planned_termination_date of this SubscriptionUpdate.
-
-            The date and time when the subscription is planned to be terminated.
-
-        :param planned_termination_date: The planned_termination_date of this SubscriptionUpdate.
-        :type: datetime
-        """
-
-        self._planned_termination_date = planned_termination_date
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

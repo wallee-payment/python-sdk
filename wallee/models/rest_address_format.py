@@ -1,172 +1,113 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.rest_address_format_field import RestAddressFormatField
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RestAddressFormat(BaseModel):
+    """
+    RestAddressFormat
+    """
+    post_code_examples: Optional[List[StrictStr]] = Field(default=None, description="A list of sample post codes.", alias="postCodeExamples")
+    required_fields: Optional[List[RestAddressFormatField]] = Field(default=None, description="The fields that are required in the address format.", alias="requiredFields")
+    used_fields: Optional[List[RestAddressFormatField]] = Field(default=None, description="The fields that are used in the address format.", alias="usedFields")
+    post_code_regex: Optional[StrictStr] = Field(default=None, description="The regular expression to validate post codes.", alias="postCodeRegex")
+    __properties: ClassVar[List[str]] = ["postCodeExamples", "requiredFields", "usedFields", "postCodeRegex"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RestAddressFormat:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'post_code_examples': 'list[str]',
-        'post_code_regex': 'str',
-        'required_fields': 'list[RestAddressFormatField]',
-        'used_fields': 'list[RestAddressFormatField]',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RestAddressFormat from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'post_code_examples': 'postCodeExamples','post_code_regex': 'postCodeRegex','required_fields': 'requiredFields','used_fields': 'usedFields',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _post_code_examples = None
-    _post_code_regex = None
-    _required_fields = None
-    _used_fields = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.post_code_examples = kwargs.get('post_code_examples', None)
-        self.post_code_regex = kwargs.get('post_code_regex', None)
-        self.required_fields = kwargs.get('required_fields', None)
-        self.used_fields = kwargs.get('used_fields', None)
-        
-
-    
-    @property
-    def post_code_examples(self):
-        """Gets the post_code_examples of this RestAddressFormat.
-
-            A list of sample post codes.
-
-        :return: The post_code_examples of this RestAddressFormat.
-        :rtype: list[str]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._post_code_examples
+        excluded_fields: Set[str] = set([
+            "post_code_examples",
+            "required_fields",
+            "used_fields",
+            "post_code_regex",
+        ])
 
-    @post_code_examples.setter
-    def post_code_examples(self, post_code_examples):
-        """Sets the post_code_examples of this RestAddressFormat.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            A list of sample post codes.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RestAddressFormat from a dict"""
+        if obj is None:
+            return None
 
-        :param post_code_examples: The post_code_examples of this RestAddressFormat.
-        :type: list[str]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._post_code_examples = post_code_examples
-    
-    @property
-    def post_code_regex(self):
-        """Gets the post_code_regex of this RestAddressFormat.
+        _obj = cls.model_validate({
+            "postCodeExamples": obj.get("postCodeExamples"),
+            "requiredFields": obj.get("requiredFields"),
+            "usedFields": obj.get("usedFields"),
+            "postCodeRegex": obj.get("postCodeRegex")
+        })
+        return _obj
 
-            The regular expression to validate post codes.
 
-        :return: The post_code_regex of this RestAddressFormat.
-        :rtype: str
-        """
-        return self._post_code_regex
-
-    @post_code_regex.setter
-    def post_code_regex(self, post_code_regex):
-        """Sets the post_code_regex of this RestAddressFormat.
-
-            The regular expression to validate post codes.
-
-        :param post_code_regex: The post_code_regex of this RestAddressFormat.
-        :type: str
-        """
-
-        self._post_code_regex = post_code_regex
-    
-    @property
-    def required_fields(self):
-        """Gets the required_fields of this RestAddressFormat.
-
-            The fields that are required in the address format.
-
-        :return: The required_fields of this RestAddressFormat.
-        :rtype: list[RestAddressFormatField]
-        """
-        return self._required_fields
-
-    @required_fields.setter
-    def required_fields(self, required_fields):
-        """Sets the required_fields of this RestAddressFormat.
-
-            The fields that are required in the address format.
-
-        :param required_fields: The required_fields of this RestAddressFormat.
-        :type: list[RestAddressFormatField]
-        """
-
-        self._required_fields = required_fields
-    
-    @property
-    def used_fields(self):
-        """Gets the used_fields of this RestAddressFormat.
-
-            The fields that are used in the address format.
-
-        :return: The used_fields of this RestAddressFormat.
-        :rtype: list[RestAddressFormatField]
-        """
-        return self._used_fields
-
-    @used_fields.setter
-    def used_fields(self, used_fields):
-        """Sets the used_fields of this RestAddressFormat.
-
-            The fields that are used in the address format.
-
-        :param used_fields: The used_fields of this RestAddressFormat.
-        :type: list[RestAddressFormatField]
-        """
-
-        self._used_fields = used_fields
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RestAddressFormat, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RestAddressFormat):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

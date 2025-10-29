@@ -1,302 +1,134 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.feature_category import FeatureCategory
+from typing import Optional, Set
+from typing_extensions import Self
+
+class Feature(BaseModel):
+    """
+    Feature
+    """
+    required_features: Optional[List[StrictInt]] = Field(default=None, description="The features that must be enabled for this feature to work properly.", alias="requiredFeatures")
+    visible: Optional[StrictBool] = Field(default=None, description="Whether the feature is visible to the user.")
+    logo_path: Optional[StrictStr] = Field(default=None, description="The path to the feature's logo image.", alias="logoPath")
+    sort_order: Optional[StrictInt] = Field(default=None, description="When listing features, they can be sorted by this number.", alias="sortOrder")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    category: Optional[FeatureCategory] = None
+    beta: Optional[StrictBool] = Field(default=None, description="Whether the feature is in beta stage and there may still be some issues.")
+    __properties: ClassVar[List[str]] = ["requiredFeatures", "visible", "logoPath", "sortOrder", "name", "description", "id", "category", "beta"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class Feature:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'beta': 'bool',
-        'category': 'FeatureCategory',
-        'description': 'dict(str, str)',
-        'id': 'int',
-        'logo_path': 'str',
-        'name': 'dict(str, str)',
-        'required_features': 'list[int]',
-        'sort_order': 'int',
-        'visible': 'bool',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of Feature from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'beta': 'beta','category': 'category','description': 'description','id': 'id','logo_path': 'logoPath','name': 'name','required_features': 'requiredFeatures','sort_order': 'sortOrder','visible': 'visible',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _beta = None
-    _category = None
-    _description = None
-    _id = None
-    _logo_path = None
-    _name = None
-    _required_features = None
-    _sort_order = None
-    _visible = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.beta = kwargs.get('beta', None)
-        self.category = kwargs.get('category', None)
-        self.description = kwargs.get('description', None)
-        self.id = kwargs.get('id', None)
-        self.logo_path = kwargs.get('logo_path', None)
-        self.name = kwargs.get('name', None)
-        self.required_features = kwargs.get('required_features', None)
-        self.sort_order = kwargs.get('sort_order', None)
-        self.visible = kwargs.get('visible', None)
-        
-
-    
-    @property
-    def beta(self):
-        """Gets the beta of this Feature.
-
-            Whether the feature is in beta stage and there may still be some issues.
-
-        :return: The beta of this Feature.
-        :rtype: bool
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._beta
+        excluded_fields: Set[str] = set([
+            "required_features",
+            "visible",
+            "logo_path",
+            "sort_order",
+            "name",
+            "description",
+            "id",
+            "beta",
+        ])
 
-    @beta.setter
-    def beta(self, beta):
-        """Sets the beta of this Feature.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of category
+        if self.category:
+            _dict['category'] = self.category.to_dict()
+        return _dict
 
-            Whether the feature is in beta stage and there may still be some issues.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of Feature from a dict"""
+        if obj is None:
+            return None
 
-        :param beta: The beta of this Feature.
-        :type: bool
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._beta = beta
-    
-    @property
-    def category(self):
-        """Gets the category of this Feature.
+        _obj = cls.model_validate({
+            "requiredFeatures": obj.get("requiredFeatures"),
+            "visible": obj.get("visible"),
+            "logoPath": obj.get("logoPath"),
+            "sortOrder": obj.get("sortOrder"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "category": FeatureCategory.from_dict(obj["category"]) if obj.get("category") is not None else None,
+            "beta": obj.get("beta")
+        })
+        return _obj
 
-            The category that the feature belongs to.
 
-        :return: The category of this Feature.
-        :rtype: FeatureCategory
-        """
-        return self._category
-
-    @category.setter
-    def category(self, category):
-        """Sets the category of this Feature.
-
-            The category that the feature belongs to.
-
-        :param category: The category of this Feature.
-        :type: FeatureCategory
-        """
-
-        self._category = category
-    
-    @property
-    def description(self):
-        """Gets the description of this Feature.
-
-            The localized description of the object.
-
-        :return: The description of this Feature.
-        :rtype: dict(str, str)
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this Feature.
-
-            The localized description of the object.
-
-        :param description: The description of this Feature.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def id(self):
-        """Gets the id of this Feature.
-
-            A unique identifier for the object.
-
-        :return: The id of this Feature.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Feature.
-
-            A unique identifier for the object.
-
-        :param id: The id of this Feature.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def logo_path(self):
-        """Gets the logo_path of this Feature.
-
-            The path to the feature's logo image.
-
-        :return: The logo_path of this Feature.
-        :rtype: str
-        """
-        return self._logo_path
-
-    @logo_path.setter
-    def logo_path(self, logo_path):
-        """Sets the logo_path of this Feature.
-
-            The path to the feature's logo image.
-
-        :param logo_path: The logo_path of this Feature.
-        :type: str
-        """
-
-        self._logo_path = logo_path
-    
-    @property
-    def name(self):
-        """Gets the name of this Feature.
-
-            The localized name of the object.
-
-        :return: The name of this Feature.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this Feature.
-
-            The localized name of the object.
-
-        :param name: The name of this Feature.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def required_features(self):
-        """Gets the required_features of this Feature.
-
-            The features that must be enabled for this feature to work properly.
-
-        :return: The required_features of this Feature.
-        :rtype: list[int]
-        """
-        return self._required_features
-
-    @required_features.setter
-    def required_features(self, required_features):
-        """Sets the required_features of this Feature.
-
-            The features that must be enabled for this feature to work properly.
-
-        :param required_features: The required_features of this Feature.
-        :type: list[int]
-        """
-
-        self._required_features = required_features
-    
-    @property
-    def sort_order(self):
-        """Gets the sort_order of this Feature.
-
-            When listing features, they can be sorted by this number.
-
-        :return: The sort_order of this Feature.
-        :rtype: int
-        """
-        return self._sort_order
-
-    @sort_order.setter
-    def sort_order(self, sort_order):
-        """Sets the sort_order of this Feature.
-
-            When listing features, they can be sorted by this number.
-
-        :param sort_order: The sort_order of this Feature.
-        :type: int
-        """
-
-        self._sort_order = sort_order
-    
-    @property
-    def visible(self):
-        """Gets the visible of this Feature.
-
-            Whether the feature is visible to the user.
-
-        :return: The visible of this Feature.
-        :rtype: bool
-        """
-        return self._visible
-
-    @visible.setter
-    def visible(self, visible):
-        """Sets the visible of this Feature.
-
-            Whether the feature is visible to the user.
-
-        :param visible: The visible of this Feature.
-        :type: bool
-        """
-
-        self._visible = visible
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(Feature, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, Feature):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,250 +1,125 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.data_collection_type import DataCollectionType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentMethod(BaseModel):
+    """
+    PaymentMethod
+    """
+    supported_currencies: Optional[List[StrictStr]] = Field(default=None, description="The currencies that the payment method supports.", alias="supportedCurrencies")
+    data_collection_types: Optional[List[DataCollectionType]] = Field(default=None, description="The data collection types that payment method supports.", alias="dataCollectionTypes")
+    image_path: Optional[StrictStr] = Field(default=None, description="The path to the payment method's image.", alias="imagePath")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
+    merchant_description: Optional[Dict[str, StrictStr]] = Field(default=None, description="A merchant-focused, localized description of the payment method, providing its purpose and details.", alias="merchantDescription")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    __properties: ClassVar[List[str]] = ["supportedCurrencies", "dataCollectionTypes", "imagePath", "name", "description", "merchantDescription", "id"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentMethod:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'data_collection_types': 'list[DataCollectionType]',
-        'description': 'dict(str, str)',
-        'id': 'int',
-        'image_path': 'str',
-        'merchant_description': 'dict(str, str)',
-        'name': 'dict(str, str)',
-        'supported_currencies': 'list[str]',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentMethod from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'data_collection_types': 'dataCollectionTypes','description': 'description','id': 'id','image_path': 'imagePath','merchant_description': 'merchantDescription','name': 'name','supported_currencies': 'supportedCurrencies',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _data_collection_types = None
-    _description = None
-    _id = None
-    _image_path = None
-    _merchant_description = None
-    _name = None
-    _supported_currencies = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.data_collection_types = kwargs.get('data_collection_types', None)
-        self.description = kwargs.get('description', None)
-        self.id = kwargs.get('id', None)
-        self.image_path = kwargs.get('image_path', None)
-        self.merchant_description = kwargs.get('merchant_description', None)
-        self.name = kwargs.get('name', None)
-        self.supported_currencies = kwargs.get('supported_currencies', None)
-        
-
-    
-    @property
-    def data_collection_types(self):
-        """Gets the data_collection_types of this PaymentMethod.
-
-            The data collection types that payment method supports.
-
-        :return: The data_collection_types of this PaymentMethod.
-        :rtype: list[DataCollectionType]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._data_collection_types
+        excluded_fields: Set[str] = set([
+            "supported_currencies",
+            "data_collection_types",
+            "image_path",
+            "name",
+            "description",
+            "merchant_description",
+            "id",
+        ])
 
-    @data_collection_types.setter
-    def data_collection_types(self, data_collection_types):
-        """Sets the data_collection_types of this PaymentMethod.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The data collection types that payment method supports.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentMethod from a dict"""
+        if obj is None:
+            return None
 
-        :param data_collection_types: The data_collection_types of this PaymentMethod.
-        :type: list[DataCollectionType]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._data_collection_types = data_collection_types
-    
-    @property
-    def description(self):
-        """Gets the description of this PaymentMethod.
+        _obj = cls.model_validate({
+            "supportedCurrencies": obj.get("supportedCurrencies"),
+            "dataCollectionTypes": obj.get("dataCollectionTypes"),
+            "imagePath": obj.get("imagePath"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "merchantDescription": obj.get("merchantDescription"),
+            "id": obj.get("id")
+        })
+        return _obj
 
-            The localized description of the object.
 
-        :return: The description of this PaymentMethod.
-        :rtype: dict(str, str)
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this PaymentMethod.
-
-            The localized description of the object.
-
-        :param description: The description of this PaymentMethod.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentMethod.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentMethod.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentMethod.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentMethod.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def image_path(self):
-        """Gets the image_path of this PaymentMethod.
-
-            The path to the payment method's image.
-
-        :return: The image_path of this PaymentMethod.
-        :rtype: str
-        """
-        return self._image_path
-
-    @image_path.setter
-    def image_path(self, image_path):
-        """Sets the image_path of this PaymentMethod.
-
-            The path to the payment method's image.
-
-        :param image_path: The image_path of this PaymentMethod.
-        :type: str
-        """
-
-        self._image_path = image_path
-    
-    @property
-    def merchant_description(self):
-        """Gets the merchant_description of this PaymentMethod.
-
-            A merchant-focused, localized description of the payment method, providing its purpose and details.
-
-        :return: The merchant_description of this PaymentMethod.
-        :rtype: dict(str, str)
-        """
-        return self._merchant_description
-
-    @merchant_description.setter
-    def merchant_description(self, merchant_description):
-        """Sets the merchant_description of this PaymentMethod.
-
-            A merchant-focused, localized description of the payment method, providing its purpose and details.
-
-        :param merchant_description: The merchant_description of this PaymentMethod.
-        :type: dict(str, str)
-        """
-
-        self._merchant_description = merchant_description
-    
-    @property
-    def name(self):
-        """Gets the name of this PaymentMethod.
-
-            The localized name of the object.
-
-        :return: The name of this PaymentMethod.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PaymentMethod.
-
-            The localized name of the object.
-
-        :param name: The name of this PaymentMethod.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def supported_currencies(self):
-        """Gets the supported_currencies of this PaymentMethod.
-
-            The currencies that the payment method supports.
-
-        :return: The supported_currencies of this PaymentMethod.
-        :rtype: list[str]
-        """
-        return self._supported_currencies
-
-    @supported_currencies.setter
-    def supported_currencies(self, supported_currencies):
-        """Sets the supported_currencies of this PaymentMethod.
-
-            The currencies that the payment method supports.
-
-        :param supported_currencies: The supported_currencies of this PaymentMethod.
-        :type: list[str]
-        """
-
-        self._supported_currencies = supported_currencies
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentMethod, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentMethod):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

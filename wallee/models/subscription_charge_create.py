@@ -1,269 +1,123 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.subscription_charge_processing_type import SubscriptionChargeProcessingType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionChargeCreate(BaseModel):
+    """
+    The subscription charge represents a single charge carried out for a particular subscription.
+    """
+    reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the charge.")
+    planned_execution_date: Optional[datetime] = Field(default=None, description="The date and time when the execution of the charge is planned.", alias="plannedExecutionDate")
+    processing_type: SubscriptionChargeProcessingType = Field(alias="processingType")
+    external_id: StrictStr = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    success_url: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=500)]] = Field(default=None, description="The URL to redirect the customer back to after they successfully authenticated their payment.", alias="successUrl")
+    subscription: StrictInt = Field(description="The subscription that the charge belongs to.")
+    failed_url: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=500)]] = Field(default=None, description="The URL to redirect the customer back to after they canceled or failed to authenticated their payment.", alias="failedUrl")
+    __properties: ClassVar[List[str]] = ["reference", "plannedExecutionDate", "processingType", "externalId", "successUrl", "subscription", "failedUrl"]
+
+    @field_validator('reference')
+    def reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionChargeCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'external_id': 'str',
-        'failed_url': 'str',
-        'planned_execution_date': 'datetime',
-        'processing_type': 'SubscriptionChargeProcessingType',
-        'reference': 'str',
-        'subscription': 'int',
-        'success_url': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionChargeCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'external_id': 'externalId','failed_url': 'failedUrl','planned_execution_date': 'plannedExecutionDate','processing_type': 'processingType','reference': 'reference','subscription': 'subscription','success_url': 'successUrl',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _external_id = None
-    _failed_url = None
-    _planned_execution_date = None
-    _processing_type = None
-    _reference = None
-    _subscription = None
-    _success_url = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.external_id = kwargs.get('external_id')
-
-        self.failed_url = kwargs.get('failed_url', None)
-        self.planned_execution_date = kwargs.get('planned_execution_date', None)
-        self.processing_type = kwargs.get('processing_type')
-
-        self.reference = kwargs.get('reference', None)
-        self.subscription = kwargs.get('subscription')
-
-        self.success_url = kwargs.get('success_url', None)
-        
-
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this SubscriptionChargeCreate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this SubscriptionChargeCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._external_id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this SubscriptionChargeCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionChargeCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param external_id: The external_id of this SubscriptionChargeCreate.
-        :type: str
-        """
-        if external_id is None:
-            raise ValueError("Invalid value for `external_id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._external_id = external_id
-    
-    @property
-    def failed_url(self):
-        """Gets the failed_url of this SubscriptionChargeCreate.
+        _obj = cls.model_validate({
+            "reference": obj.get("reference"),
+            "plannedExecutionDate": obj.get("plannedExecutionDate"),
+            "processingType": obj.get("processingType"),
+            "externalId": obj.get("externalId"),
+            "successUrl": obj.get("successUrl"),
+            "subscription": obj.get("subscription"),
+            "failedUrl": obj.get("failedUrl")
+        })
+        return _obj
 
-            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
 
-        :return: The failed_url of this SubscriptionChargeCreate.
-        :rtype: str
-        """
-        return self._failed_url
-
-    @failed_url.setter
-    def failed_url(self, failed_url):
-        """Sets the failed_url of this SubscriptionChargeCreate.
-
-            The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
-
-        :param failed_url: The failed_url of this SubscriptionChargeCreate.
-        :type: str
-        """
-        if failed_url is not None and len(failed_url) > 500:
-            raise ValueError("Invalid value for `failed_url`, length must be less than or equal to `500`")
-        if failed_url is not None and len(failed_url) < 9:
-            raise ValueError("Invalid value for `failed_url`, length must be greater than or equal to `9`")
-
-        self._failed_url = failed_url
-    
-    @property
-    def planned_execution_date(self):
-        """Gets the planned_execution_date of this SubscriptionChargeCreate.
-
-            The date and time when the execution of the charge is planned.
-
-        :return: The planned_execution_date of this SubscriptionChargeCreate.
-        :rtype: datetime
-        """
-        return self._planned_execution_date
-
-    @planned_execution_date.setter
-    def planned_execution_date(self, planned_execution_date):
-        """Sets the planned_execution_date of this SubscriptionChargeCreate.
-
-            The date and time when the execution of the charge is planned.
-
-        :param planned_execution_date: The planned_execution_date of this SubscriptionChargeCreate.
-        :type: datetime
-        """
-
-        self._planned_execution_date = planned_execution_date
-    
-    @property
-    def processing_type(self):
-        """Gets the processing_type of this SubscriptionChargeCreate.
-
-            The processing type specifies how the charge is to be processed.
-
-        :return: The processing_type of this SubscriptionChargeCreate.
-        :rtype: SubscriptionChargeProcessingType
-        """
-        return self._processing_type
-
-    @processing_type.setter
-    def processing_type(self, processing_type):
-        """Sets the processing_type of this SubscriptionChargeCreate.
-
-            The processing type specifies how the charge is to be processed.
-
-        :param processing_type: The processing_type of this SubscriptionChargeCreate.
-        :type: SubscriptionChargeProcessingType
-        """
-        if processing_type is None:
-            raise ValueError("Invalid value for `processing_type`, must not be `None`")
-
-        self._processing_type = processing_type
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionChargeCreate.
-
-            The merchant's reference used to identify the charge.
-
-        :return: The reference of this SubscriptionChargeCreate.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionChargeCreate.
-
-            The merchant's reference used to identify the charge.
-
-        :param reference: The reference of this SubscriptionChargeCreate.
-        :type: str
-        """
-        if reference is not None and len(reference) > 100:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
-
-        self._reference = reference
-    
-    @property
-    def subscription(self):
-        """Gets the subscription of this SubscriptionChargeCreate.
-
-            The subscription that the charge belongs to.
-
-        :return: The subscription of this SubscriptionChargeCreate.
-        :rtype: int
-        """
-        return self._subscription
-
-    @subscription.setter
-    def subscription(self, subscription):
-        """Sets the subscription of this SubscriptionChargeCreate.
-
-            The subscription that the charge belongs to.
-
-        :param subscription: The subscription of this SubscriptionChargeCreate.
-        :type: int
-        """
-        if subscription is None:
-            raise ValueError("Invalid value for `subscription`, must not be `None`")
-
-        self._subscription = subscription
-    
-    @property
-    def success_url(self):
-        """Gets the success_url of this SubscriptionChargeCreate.
-
-            The URL to redirect the customer back to after they successfully authenticated their payment.
-
-        :return: The success_url of this SubscriptionChargeCreate.
-        :rtype: str
-        """
-        return self._success_url
-
-    @success_url.setter
-    def success_url(self, success_url):
-        """Sets the success_url of this SubscriptionChargeCreate.
-
-            The URL to redirect the customer back to after they successfully authenticated their payment.
-
-        :param success_url: The success_url of this SubscriptionChargeCreate.
-        :type: str
-        """
-        if success_url is not None and len(success_url) > 500:
-            raise ValueError("Invalid value for `success_url`, length must be less than or equal to `500`")
-        if success_url is not None and len(success_url) < 9:
-            raise ValueError("Invalid value for `success_url`, length must be greater than or equal to `9`")
-
-        self._success_url = success_url
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionChargeCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionChargeCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

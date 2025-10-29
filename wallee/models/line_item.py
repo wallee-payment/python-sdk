@@ -1,622 +1,201 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from wallee.models.line_item_attribute import LineItemAttribute
+from wallee.models.line_item_type import LineItemType
+from wallee.models.tax import Tax
+from typing import Optional, Set
+from typing_extensions import Self
+
+class LineItem(BaseModel):
+    """
+    LineItem
+    """
+    tax_amount_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated tax amount per unit.", alias="taxAmountPerUnit")
+    undiscounted_amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The line item price with discounts not applied, excluding taxes.", alias="undiscountedAmountExcludingTax")
+    quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of items that were purchased.")
+    undiscounted_unit_price_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated price per unit with discounts not applied, including taxes.", alias="undiscountedUnitPriceIncludingTax")
+    amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The line item price with discounts applied, excluding taxes.", alias="amountExcludingTax")
+    undiscounted_amount_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The line item price with discounts not applied, including taxes.", alias="undiscountedAmountIncludingTax")
+    taxes: Optional[List[Tax]] = Field(default=None, description="A set of tax lines, each of which specifies a tax applied to the item.")
+    type: Optional[LineItemType] = None
+    unit_price_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated price per unit with discounts applied, including taxes.", alias="unitPriceIncludingTax")
+    discount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The discount allocated to the item, excluding taxes.", alias="discountExcludingTax")
+    shipping_required: Optional[StrictBool] = Field(default=None, description="Whether the item required shipping.", alias="shippingRequired")
+    unit_price_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated price per unit with discounts applied, excluding taxes.", alias="unitPriceExcludingTax")
+    name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=150)]] = Field(default=None, description="The name of the product, ideally in the customer's language.")
+    attributes: Optional[Dict[str, LineItemAttribute]] = Field(default=None, description="A map of custom information for the item.")
+    undiscounted_unit_price_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated price per unit with discounts not applied, excluding taxes.", alias="undiscountedUnitPriceExcludingTax")
+    amount_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The line item price with discounts applied, including taxes.", alias="amountIncludingTax")
+    discount_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The discount allocated to the item, including taxes.", alias="discountIncludingTax")
+    sku: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The SKU (stock-keeping unit) of the product.")
+    tax_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The sum of all taxes applied to the item.", alias="taxAmount")
+    aggregated_tax_rate: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total tax rate applied to the item, calculated from the rates of all tax lines.", alias="aggregatedTaxRate")
+    unique_id: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The unique identifier of the line item within the set of line items.", alias="uniqueId")
+    __properties: ClassVar[List[str]] = ["taxAmountPerUnit", "undiscountedAmountExcludingTax", "quantity", "undiscountedUnitPriceIncludingTax", "amountExcludingTax", "undiscountedAmountIncludingTax", "taxes", "type", "unitPriceIncludingTax", "discountExcludingTax", "shippingRequired", "unitPriceExcludingTax", "name", "attributes", "undiscountedUnitPriceExcludingTax", "amountIncludingTax", "discountIncludingTax", "sku", "taxAmount", "aggregatedTaxRate", "uniqueId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class LineItem:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'aggregated_tax_rate': 'float',
-        'amount_excluding_tax': 'float',
-        'amount_including_tax': 'float',
-        'attributes': 'dict(str, LineItemAttribute)',
-        'discount_excluding_tax': 'float',
-        'discount_including_tax': 'float',
-        'name': 'str',
-        'quantity': 'float',
-        'shipping_required': 'bool',
-        'sku': 'str',
-        'tax_amount': 'float',
-        'tax_amount_per_unit': 'float',
-        'taxes': 'list[Tax]',
-        'type': 'LineItemType',
-        'undiscounted_amount_excluding_tax': 'float',
-        'undiscounted_amount_including_tax': 'float',
-        'undiscounted_unit_price_excluding_tax': 'float',
-        'undiscounted_unit_price_including_tax': 'float',
-        'unique_id': 'str',
-        'unit_price_excluding_tax': 'float',
-        'unit_price_including_tax': 'float',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of LineItem from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'aggregated_tax_rate': 'aggregatedTaxRate','amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','attributes': 'attributes','discount_excluding_tax': 'discountExcludingTax','discount_including_tax': 'discountIncludingTax','name': 'name','quantity': 'quantity','shipping_required': 'shippingRequired','sku': 'sku','tax_amount': 'taxAmount','tax_amount_per_unit': 'taxAmountPerUnit','taxes': 'taxes','type': 'type','undiscounted_amount_excluding_tax': 'undiscountedAmountExcludingTax','undiscounted_amount_including_tax': 'undiscountedAmountIncludingTax','undiscounted_unit_price_excluding_tax': 'undiscountedUnitPriceExcludingTax','undiscounted_unit_price_including_tax': 'undiscountedUnitPriceIncludingTax','unique_id': 'uniqueId','unit_price_excluding_tax': 'unitPriceExcludingTax','unit_price_including_tax': 'unitPriceIncludingTax',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _aggregated_tax_rate = None
-    _amount_excluding_tax = None
-    _amount_including_tax = None
-    _attributes = None
-    _discount_excluding_tax = None
-    _discount_including_tax = None
-    _name = None
-    _quantity = None
-    _shipping_required = None
-    _sku = None
-    _tax_amount = None
-    _tax_amount_per_unit = None
-    _taxes = None
-    _type = None
-    _undiscounted_amount_excluding_tax = None
-    _undiscounted_amount_including_tax = None
-    _undiscounted_unit_price_excluding_tax = None
-    _undiscounted_unit_price_including_tax = None
-    _unique_id = None
-    _unit_price_excluding_tax = None
-    _unit_price_including_tax = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.aggregated_tax_rate = kwargs.get('aggregated_tax_rate', None)
-        self.amount_excluding_tax = kwargs.get('amount_excluding_tax', None)
-        self.amount_including_tax = kwargs.get('amount_including_tax', None)
-        self.attributes = kwargs.get('attributes', None)
-        self.discount_excluding_tax = kwargs.get('discount_excluding_tax', None)
-        self.discount_including_tax = kwargs.get('discount_including_tax', None)
-        self.name = kwargs.get('name', None)
-        self.quantity = kwargs.get('quantity', None)
-        self.shipping_required = kwargs.get('shipping_required', None)
-        self.sku = kwargs.get('sku', None)
-        self.tax_amount = kwargs.get('tax_amount', None)
-        self.tax_amount_per_unit = kwargs.get('tax_amount_per_unit', None)
-        self.taxes = kwargs.get('taxes', None)
-        self.type = kwargs.get('type', None)
-        self.undiscounted_amount_excluding_tax = kwargs.get('undiscounted_amount_excluding_tax', None)
-        self.undiscounted_amount_including_tax = kwargs.get('undiscounted_amount_including_tax', None)
-        self.undiscounted_unit_price_excluding_tax = kwargs.get('undiscounted_unit_price_excluding_tax', None)
-        self.undiscounted_unit_price_including_tax = kwargs.get('undiscounted_unit_price_including_tax', None)
-        self.unique_id = kwargs.get('unique_id', None)
-        self.unit_price_excluding_tax = kwargs.get('unit_price_excluding_tax', None)
-        self.unit_price_including_tax = kwargs.get('unit_price_including_tax', None)
-        
-
-    
-    @property
-    def aggregated_tax_rate(self):
-        """Gets the aggregated_tax_rate of this LineItem.
-
-            The total tax rate applied to the item, calculated from the rates of all tax lines.
-
-        :return: The aggregated_tax_rate of this LineItem.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._aggregated_tax_rate
+        excluded_fields: Set[str] = set([
+            "tax_amount_per_unit",
+            "undiscounted_amount_excluding_tax",
+            "quantity",
+            "undiscounted_unit_price_including_tax",
+            "amount_excluding_tax",
+            "undiscounted_amount_including_tax",
+            "taxes",
+            "unit_price_including_tax",
+            "discount_excluding_tax",
+            "shipping_required",
+            "unit_price_excluding_tax",
+            "name",
+            "attributes",
+            "undiscounted_unit_price_excluding_tax",
+            "amount_including_tax",
+            "discount_including_tax",
+            "sku",
+            "tax_amount",
+            "aggregated_tax_rate",
+            "unique_id",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in taxes (list)
+        _items = []
+        if self.taxes:
+            for _item_taxes in self.taxes:
+                if _item_taxes:
+                    _items.append(_item_taxes.to_dict())
+            _dict['taxes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each value in attributes (dict)
+        _field_dict = {}
+        if self.attributes:
+            for _key_attributes in self.attributes:
+                if self.attributes[_key_attributes]:
+                    _field_dict[_key_attributes] = self.attributes[_key_attributes].to_dict()
+            _dict['attributes'] = _field_dict
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of LineItem from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "taxAmountPerUnit": obj.get("taxAmountPerUnit"),
+            "undiscountedAmountExcludingTax": obj.get("undiscountedAmountExcludingTax"),
+            "quantity": obj.get("quantity"),
+            "undiscountedUnitPriceIncludingTax": obj.get("undiscountedUnitPriceIncludingTax"),
+            "amountExcludingTax": obj.get("amountExcludingTax"),
+            "undiscountedAmountIncludingTax": obj.get("undiscountedAmountIncludingTax"),
+            "taxes": [Tax.from_dict(_item) for _item in obj["taxes"]] if obj.get("taxes") is not None else None,
+            "type": obj.get("type"),
+            "unitPriceIncludingTax": obj.get("unitPriceIncludingTax"),
+            "discountExcludingTax": obj.get("discountExcludingTax"),
+            "shippingRequired": obj.get("shippingRequired"),
+            "unitPriceExcludingTax": obj.get("unitPriceExcludingTax"),
+            "name": obj.get("name"),
+            "attributes": dict(
+                (_k, LineItemAttribute.from_dict(_v))
+                for _k, _v in obj["attributes"].items()
+            )
+            if obj.get("attributes") is not None
+            else None,
+            "undiscountedUnitPriceExcludingTax": obj.get("undiscountedUnitPriceExcludingTax"),
+            "amountIncludingTax": obj.get("amountIncludingTax"),
+            "discountIncludingTax": obj.get("discountIncludingTax"),
+            "sku": obj.get("sku"),
+            "taxAmount": obj.get("taxAmount"),
+            "aggregatedTaxRate": obj.get("aggregatedTaxRate"),
+            "uniqueId": obj.get("uniqueId")
+        })
+        return _obj
 
-    @aggregated_tax_rate.setter
-    def aggregated_tax_rate(self, aggregated_tax_rate):
-        """Sets the aggregated_tax_rate of this LineItem.
 
-            The total tax rate applied to the item, calculated from the rates of all tax lines.
-
-        :param aggregated_tax_rate: The aggregated_tax_rate of this LineItem.
-        :type: float
-        """
-
-        self._aggregated_tax_rate = aggregated_tax_rate
-    
-    @property
-    def amount_excluding_tax(self):
-        """Gets the amount_excluding_tax of this LineItem.
-
-            The line item price with discounts applied, excluding taxes.
-
-        :return: The amount_excluding_tax of this LineItem.
-        :rtype: float
-        """
-        return self._amount_excluding_tax
-
-    @amount_excluding_tax.setter
-    def amount_excluding_tax(self, amount_excluding_tax):
-        """Sets the amount_excluding_tax of this LineItem.
-
-            The line item price with discounts applied, excluding taxes.
-
-        :param amount_excluding_tax: The amount_excluding_tax of this LineItem.
-        :type: float
-        """
-
-        self._amount_excluding_tax = amount_excluding_tax
-    
-    @property
-    def amount_including_tax(self):
-        """Gets the amount_including_tax of this LineItem.
-
-            The line item price with discounts applied, including taxes.
-
-        :return: The amount_including_tax of this LineItem.
-        :rtype: float
-        """
-        return self._amount_including_tax
-
-    @amount_including_tax.setter
-    def amount_including_tax(self, amount_including_tax):
-        """Sets the amount_including_tax of this LineItem.
-
-            The line item price with discounts applied, including taxes.
-
-        :param amount_including_tax: The amount_including_tax of this LineItem.
-        :type: float
-        """
-
-        self._amount_including_tax = amount_including_tax
-    
-    @property
-    def attributes(self):
-        """Gets the attributes of this LineItem.
-
-            A map of custom information for the item.
-
-        :return: The attributes of this LineItem.
-        :rtype: dict(str, LineItemAttribute)
-        """
-        return self._attributes
-
-    @attributes.setter
-    def attributes(self, attributes):
-        """Sets the attributes of this LineItem.
-
-            A map of custom information for the item.
-
-        :param attributes: The attributes of this LineItem.
-        :type: dict(str, LineItemAttribute)
-        """
-
-        self._attributes = attributes
-    
-    @property
-    def discount_excluding_tax(self):
-        """Gets the discount_excluding_tax of this LineItem.
-
-            The discount allocated to the item, excluding taxes.
-
-        :return: The discount_excluding_tax of this LineItem.
-        :rtype: float
-        """
-        return self._discount_excluding_tax
-
-    @discount_excluding_tax.setter
-    def discount_excluding_tax(self, discount_excluding_tax):
-        """Sets the discount_excluding_tax of this LineItem.
-
-            The discount allocated to the item, excluding taxes.
-
-        :param discount_excluding_tax: The discount_excluding_tax of this LineItem.
-        :type: float
-        """
-
-        self._discount_excluding_tax = discount_excluding_tax
-    
-    @property
-    def discount_including_tax(self):
-        """Gets the discount_including_tax of this LineItem.
-
-            The discount allocated to the item, including taxes.
-
-        :return: The discount_including_tax of this LineItem.
-        :rtype: float
-        """
-        return self._discount_including_tax
-
-    @discount_including_tax.setter
-    def discount_including_tax(self, discount_including_tax):
-        """Sets the discount_including_tax of this LineItem.
-
-            The discount allocated to the item, including taxes.
-
-        :param discount_including_tax: The discount_including_tax of this LineItem.
-        :type: float
-        """
-
-        self._discount_including_tax = discount_including_tax
-    
-    @property
-    def name(self):
-        """Gets the name of this LineItem.
-
-            The name of the product, ideally in the customer's language.
-
-        :return: The name of this LineItem.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this LineItem.
-
-            The name of the product, ideally in the customer's language.
-
-        :param name: The name of this LineItem.
-        :type: str
-        """
-        if name is not None and len(name) > 150:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
-        if name is not None and len(name) < 1:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")
-
-        self._name = name
-    
-    @property
-    def quantity(self):
-        """Gets the quantity of this LineItem.
-
-            The number of items that were purchased.
-
-        :return: The quantity of this LineItem.
-        :rtype: float
-        """
-        return self._quantity
-
-    @quantity.setter
-    def quantity(self, quantity):
-        """Sets the quantity of this LineItem.
-
-            The number of items that were purchased.
-
-        :param quantity: The quantity of this LineItem.
-        :type: float
-        """
-
-        self._quantity = quantity
-    
-    @property
-    def shipping_required(self):
-        """Gets the shipping_required of this LineItem.
-
-            Whether the item required shipping.
-
-        :return: The shipping_required of this LineItem.
-        :rtype: bool
-        """
-        return self._shipping_required
-
-    @shipping_required.setter
-    def shipping_required(self, shipping_required):
-        """Sets the shipping_required of this LineItem.
-
-            Whether the item required shipping.
-
-        :param shipping_required: The shipping_required of this LineItem.
-        :type: bool
-        """
-
-        self._shipping_required = shipping_required
-    
-    @property
-    def sku(self):
-        """Gets the sku of this LineItem.
-
-            The SKU (stock-keeping unit) of the product.
-
-        :return: The sku of this LineItem.
-        :rtype: str
-        """
-        return self._sku
-
-    @sku.setter
-    def sku(self, sku):
-        """Sets the sku of this LineItem.
-
-            The SKU (stock-keeping unit) of the product.
-
-        :param sku: The sku of this LineItem.
-        :type: str
-        """
-        if sku is not None and len(sku) > 200:
-            raise ValueError("Invalid value for `sku`, length must be less than or equal to `200`")
-
-        self._sku = sku
-    
-    @property
-    def tax_amount(self):
-        """Gets the tax_amount of this LineItem.
-
-            The sum of all taxes applied to the item.
-
-        :return: The tax_amount of this LineItem.
-        :rtype: float
-        """
-        return self._tax_amount
-
-    @tax_amount.setter
-    def tax_amount(self, tax_amount):
-        """Sets the tax_amount of this LineItem.
-
-            The sum of all taxes applied to the item.
-
-        :param tax_amount: The tax_amount of this LineItem.
-        :type: float
-        """
-
-        self._tax_amount = tax_amount
-    
-    @property
-    def tax_amount_per_unit(self):
-        """Gets the tax_amount_per_unit of this LineItem.
-
-            The calculated tax amount per unit.
-
-        :return: The tax_amount_per_unit of this LineItem.
-        :rtype: float
-        """
-        return self._tax_amount_per_unit
-
-    @tax_amount_per_unit.setter
-    def tax_amount_per_unit(self, tax_amount_per_unit):
-        """Sets the tax_amount_per_unit of this LineItem.
-
-            The calculated tax amount per unit.
-
-        :param tax_amount_per_unit: The tax_amount_per_unit of this LineItem.
-        :type: float
-        """
-
-        self._tax_amount_per_unit = tax_amount_per_unit
-    
-    @property
-    def taxes(self):
-        """Gets the taxes of this LineItem.
-
-            A set of tax lines, each of which specifies a tax applied to the item.
-
-        :return: The taxes of this LineItem.
-        :rtype: list[Tax]
-        """
-        return self._taxes
-
-    @taxes.setter
-    def taxes(self, taxes):
-        """Sets the taxes of this LineItem.
-
-            A set of tax lines, each of which specifies a tax applied to the item.
-
-        :param taxes: The taxes of this LineItem.
-        :type: list[Tax]
-        """
-
-        self._taxes = taxes
-    
-    @property
-    def type(self):
-        """Gets the type of this LineItem.
-
-            The type of the line item.
-
-        :return: The type of this LineItem.
-        :rtype: LineItemType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this LineItem.
-
-            The type of the line item.
-
-        :param type: The type of this LineItem.
-        :type: LineItemType
-        """
-
-        self._type = type
-    
-    @property
-    def undiscounted_amount_excluding_tax(self):
-        """Gets the undiscounted_amount_excluding_tax of this LineItem.
-
-            The line item price with discounts not applied, excluding taxes.
-
-        :return: The undiscounted_amount_excluding_tax of this LineItem.
-        :rtype: float
-        """
-        return self._undiscounted_amount_excluding_tax
-
-    @undiscounted_amount_excluding_tax.setter
-    def undiscounted_amount_excluding_tax(self, undiscounted_amount_excluding_tax):
-        """Sets the undiscounted_amount_excluding_tax of this LineItem.
-
-            The line item price with discounts not applied, excluding taxes.
-
-        :param undiscounted_amount_excluding_tax: The undiscounted_amount_excluding_tax of this LineItem.
-        :type: float
-        """
-
-        self._undiscounted_amount_excluding_tax = undiscounted_amount_excluding_tax
-    
-    @property
-    def undiscounted_amount_including_tax(self):
-        """Gets the undiscounted_amount_including_tax of this LineItem.
-
-            The line item price with discounts not applied, including taxes.
-
-        :return: The undiscounted_amount_including_tax of this LineItem.
-        :rtype: float
-        """
-        return self._undiscounted_amount_including_tax
-
-    @undiscounted_amount_including_tax.setter
-    def undiscounted_amount_including_tax(self, undiscounted_amount_including_tax):
-        """Sets the undiscounted_amount_including_tax of this LineItem.
-
-            The line item price with discounts not applied, including taxes.
-
-        :param undiscounted_amount_including_tax: The undiscounted_amount_including_tax of this LineItem.
-        :type: float
-        """
-
-        self._undiscounted_amount_including_tax = undiscounted_amount_including_tax
-    
-    @property
-    def undiscounted_unit_price_excluding_tax(self):
-        """Gets the undiscounted_unit_price_excluding_tax of this LineItem.
-
-            The calculated price per unit with discounts not applied, excluding taxes.
-
-        :return: The undiscounted_unit_price_excluding_tax of this LineItem.
-        :rtype: float
-        """
-        return self._undiscounted_unit_price_excluding_tax
-
-    @undiscounted_unit_price_excluding_tax.setter
-    def undiscounted_unit_price_excluding_tax(self, undiscounted_unit_price_excluding_tax):
-        """Sets the undiscounted_unit_price_excluding_tax of this LineItem.
-
-            The calculated price per unit with discounts not applied, excluding taxes.
-
-        :param undiscounted_unit_price_excluding_tax: The undiscounted_unit_price_excluding_tax of this LineItem.
-        :type: float
-        """
-
-        self._undiscounted_unit_price_excluding_tax = undiscounted_unit_price_excluding_tax
-    
-    @property
-    def undiscounted_unit_price_including_tax(self):
-        """Gets the undiscounted_unit_price_including_tax of this LineItem.
-
-            The calculated price per unit with discounts not applied, including taxes.
-
-        :return: The undiscounted_unit_price_including_tax of this LineItem.
-        :rtype: float
-        """
-        return self._undiscounted_unit_price_including_tax
-
-    @undiscounted_unit_price_including_tax.setter
-    def undiscounted_unit_price_including_tax(self, undiscounted_unit_price_including_tax):
-        """Sets the undiscounted_unit_price_including_tax of this LineItem.
-
-            The calculated price per unit with discounts not applied, including taxes.
-
-        :param undiscounted_unit_price_including_tax: The undiscounted_unit_price_including_tax of this LineItem.
-        :type: float
-        """
-
-        self._undiscounted_unit_price_including_tax = undiscounted_unit_price_including_tax
-    
-    @property
-    def unique_id(self):
-        """Gets the unique_id of this LineItem.
-
-            The unique identifier of the line item within the set of line items.
-
-        :return: The unique_id of this LineItem.
-        :rtype: str
-        """
-        return self._unique_id
-
-    @unique_id.setter
-    def unique_id(self, unique_id):
-        """Sets the unique_id of this LineItem.
-
-            The unique identifier of the line item within the set of line items.
-
-        :param unique_id: The unique_id of this LineItem.
-        :type: str
-        """
-        if unique_id is not None and len(unique_id) > 200:
-            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
-
-        self._unique_id = unique_id
-    
-    @property
-    def unit_price_excluding_tax(self):
-        """Gets the unit_price_excluding_tax of this LineItem.
-
-            The calculated price per unit with discounts applied, excluding taxes.
-
-        :return: The unit_price_excluding_tax of this LineItem.
-        :rtype: float
-        """
-        return self._unit_price_excluding_tax
-
-    @unit_price_excluding_tax.setter
-    def unit_price_excluding_tax(self, unit_price_excluding_tax):
-        """Sets the unit_price_excluding_tax of this LineItem.
-
-            The calculated price per unit with discounts applied, excluding taxes.
-
-        :param unit_price_excluding_tax: The unit_price_excluding_tax of this LineItem.
-        :type: float
-        """
-
-        self._unit_price_excluding_tax = unit_price_excluding_tax
-    
-    @property
-    def unit_price_including_tax(self):
-        """Gets the unit_price_including_tax of this LineItem.
-
-            The calculated price per unit with discounts applied, including taxes.
-
-        :return: The unit_price_including_tax of this LineItem.
-        :rtype: float
-        """
-        return self._unit_price_including_tax
-
-    @unit_price_including_tax.setter
-    def unit_price_including_tax(self, unit_price_including_tax):
-        """Sets the unit_price_including_tax of this LineItem.
-
-            The calculated price per unit with discounts applied, including taxes.
-
-        :param unit_price_including_tax: The unit_price_including_tax of this LineItem.
-        :type: float
-        """
-
-        self._unit_price_including_tax = unit_price_including_tax
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(LineItem, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, LineItem):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

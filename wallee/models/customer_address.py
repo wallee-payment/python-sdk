@@ -1,276 +1,132 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.customer import Customer
+from wallee.models.customer_address_type import CustomerAddressType
+from wallee.models.customer_postal_address import CustomerPostalAddress
+from typing import Optional, Set
+from typing_extensions import Self
+
+class CustomerAddress(BaseModel):
+    """
+    CustomerAddress
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    address: Optional[CustomerPostalAddress] = None
+    address_type: Optional[CustomerAddressType] = Field(default=None, alias="addressType")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    customer: Optional[Customer] = None
+    default_address: Optional[StrictBool] = Field(default=None, description="Whether this is the customer's default address.", alias="defaultAddress")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "address", "addressType", "id", "createdOn", "version", "customer", "defaultAddress"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class CustomerAddress:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'address': 'CustomerPostalAddress',
-        'address_type': 'CustomerAddressType',
-        'created_on': 'datetime',
-        'customer': 'Customer',
-        'default_address': 'bool',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of CustomerAddress from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'address': 'address','address_type': 'addressType','created_on': 'createdOn','customer': 'customer','default_address': 'defaultAddress','id': 'id','linked_space_id': 'linkedSpaceId','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _address = None
-    _address_type = None
-    _created_on = None
-    _customer = None
-    _default_address = None
-    _id = None
-    _linked_space_id = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.address = kwargs.get('address', None)
-        self.address_type = kwargs.get('address_type', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.customer = kwargs.get('customer', None)
-        self.default_address = kwargs.get('default_address', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def address(self):
-        """Gets the address of this CustomerAddress.
-
-            The actual postal address.
-
-        :return: The address of this CustomerAddress.
-        :rtype: CustomerPostalAddress
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._address
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "id",
+            "created_on",
+            "version",
+            "default_address",
+        ])
 
-    @address.setter
-    def address(self, address):
-        """Sets the address of this CustomerAddress.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of address
+        if self.address:
+            _dict['address'] = self.address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of customer
+        if self.customer:
+            _dict['customer'] = self.customer.to_dict()
+        return _dict
 
-            The actual postal address.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of CustomerAddress from a dict"""
+        if obj is None:
+            return None
 
-        :param address: The address of this CustomerAddress.
-        :type: CustomerPostalAddress
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._address = address
-    
-    @property
-    def address_type(self):
-        """Gets the address_type of this CustomerAddress.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "address": CustomerPostalAddress.from_dict(obj["address"]) if obj.get("address") is not None else None,
+            "addressType": obj.get("addressType"),
+            "id": obj.get("id"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "customer": Customer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "defaultAddress": obj.get("defaultAddress")
+        })
+        return _obj
 
-            Whether the address is for billing or shipping or both.
 
-        :return: The address_type of this CustomerAddress.
-        :rtype: CustomerAddressType
-        """
-        return self._address_type
-
-    @address_type.setter
-    def address_type(self, address_type):
-        """Sets the address_type of this CustomerAddress.
-
-            Whether the address is for billing or shipping or both.
-
-        :param address_type: The address_type of this CustomerAddress.
-        :type: CustomerAddressType
-        """
-
-        self._address_type = address_type
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this CustomerAddress.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this CustomerAddress.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this CustomerAddress.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this CustomerAddress.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def customer(self):
-        """Gets the customer of this CustomerAddress.
-
-            The customer that the object belongs to.
-
-        :return: The customer of this CustomerAddress.
-        :rtype: Customer
-        """
-        return self._customer
-
-    @customer.setter
-    def customer(self, customer):
-        """Sets the customer of this CustomerAddress.
-
-            The customer that the object belongs to.
-
-        :param customer: The customer of this CustomerAddress.
-        :type: Customer
-        """
-
-        self._customer = customer
-    
-    @property
-    def default_address(self):
-        """Gets the default_address of this CustomerAddress.
-
-            Whether this is the customer's default address.
-
-        :return: The default_address of this CustomerAddress.
-        :rtype: bool
-        """
-        return self._default_address
-
-    @default_address.setter
-    def default_address(self, default_address):
-        """Sets the default_address of this CustomerAddress.
-
-            Whether this is the customer's default address.
-
-        :param default_address: The default_address of this CustomerAddress.
-        :type: bool
-        """
-
-        self._default_address = default_address
-    
-    @property
-    def id(self):
-        """Gets the id of this CustomerAddress.
-
-            A unique identifier for the object.
-
-        :return: The id of this CustomerAddress.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this CustomerAddress.
-
-            A unique identifier for the object.
-
-        :param id: The id of this CustomerAddress.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this CustomerAddress.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this CustomerAddress.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this CustomerAddress.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this CustomerAddress.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def version(self):
-        """Gets the version of this CustomerAddress.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this CustomerAddress.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this CustomerAddress.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this CustomerAddress.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(CustomerAddress, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, CustomerAddress):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

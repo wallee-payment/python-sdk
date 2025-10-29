@@ -1,150 +1,101 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractAccountUpdate(BaseModel):
+    """
+    AbstractAccountUpdate
+    """
+    name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=200)]] = Field(default=None, description="The name used to identify the account.")
+    subaccount_limit: Optional[StrictInt] = Field(default=None, description="The number of sub-accounts that can be created within this account.", alias="subaccountLimit")
+    __properties: ClassVar[List[str]] = ["name", "subaccountLimit"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractAccountUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'last_modified_date': 'datetime',
-        'name': 'str',
-        'subaccount_limit': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractAccountUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'last_modified_date': 'lastModifiedDate','name': 'name','subaccount_limit': 'subaccountLimit',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _last_modified_date = None
-    _name = None
-    _subaccount_limit = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.last_modified_date = kwargs.get('last_modified_date', None)
-        self.name = kwargs.get('name', None)
-        self.subaccount_limit = kwargs.get('subaccount_limit', None)
-        
-
-    
-    @property
-    def last_modified_date(self):
-        """Gets the last_modified_date of this AbstractAccountUpdate.
-
-            The date and time when the object was last modified.
-
-        :return: The last_modified_date of this AbstractAccountUpdate.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._last_modified_date
+        excluded_fields: Set[str] = set([
+        ])
 
-    @last_modified_date.setter
-    def last_modified_date(self, last_modified_date):
-        """Sets the last_modified_date of this AbstractAccountUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The date and time when the object was last modified.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractAccountUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param last_modified_date: The last_modified_date of this AbstractAccountUpdate.
-        :type: datetime
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._last_modified_date = last_modified_date
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractAccountUpdate.
+        _obj = cls.model_validate({
+            "name": obj.get("name"),
+            "subaccountLimit": obj.get("subaccountLimit")
+        })
+        return _obj
 
-            The name used to identify the account.
 
-        :return: The name of this AbstractAccountUpdate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractAccountUpdate.
-
-            The name used to identify the account.
-
-        :param name: The name of this AbstractAccountUpdate.
-        :type: str
-        """
-        if name is not None and len(name) > 200:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `200`")
-        if name is not None and len(name) < 3:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `3`")
-
-        self._name = name
-    
-    @property
-    def subaccount_limit(self):
-        """Gets the subaccount_limit of this AbstractAccountUpdate.
-
-            The number of sub-accounts that can be created within this account.
-
-        :return: The subaccount_limit of this AbstractAccountUpdate.
-        :rtype: int
-        """
-        return self._subaccount_limit
-
-    @subaccount_limit.setter
-    def subaccount_limit(self, subaccount_limit):
-        """Sets the subaccount_limit of this AbstractAccountUpdate.
-
-            The number of sub-accounts that can be created within this account.
-
-        :param subaccount_limit: The subaccount_limit of this AbstractAccountUpdate.
-        :type: int
-        """
-
-        self._subaccount_limit = subaccount_limit
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractAccountUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractAccountUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

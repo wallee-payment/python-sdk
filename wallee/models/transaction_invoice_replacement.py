@@ -1,236 +1,139 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.address_create import AddressCreate
+from wallee.models.line_item_create import LineItemCreate
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TransactionInvoiceReplacement(BaseModel):
+    """
+    TransactionInvoiceReplacement
+    """
+    line_items: List[LineItemCreate] = Field(description="The invoiced line items that will appear on the invoice document.", alias="lineItems")
+    due_on: Optional[datetime] = Field(default=None, description="The due date for payment of the invoice.", alias="dueOn")
+    external_id: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    billing_address: Optional[AddressCreate] = Field(default=None, alias="billingAddress")
+    sent_to_customer: Optional[StrictBool] = Field(default=None, description="Whether the invoice will be sent to the customer via email.", alias="sentToCustomer")
+    merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the invoice.", alias="merchantReference")
+    __properties: ClassVar[List[str]] = ["lineItems", "dueOn", "externalId", "billingAddress", "sentToCustomer", "merchantReference"]
+
+    @field_validator('external_id')
+    def external_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    @field_validator('merchant_reference')
+    def merchant_reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TransactionInvoiceReplacement:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'billing_address': 'AddressCreate',
-        'due_on': 'datetime',
-        'external_id': 'str',
-        'line_items': 'list[LineItemCreate]',
-        'merchant_reference': 'str',
-        'sent_to_customer': 'bool',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TransactionInvoiceReplacement from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'billing_address': 'billingAddress','due_on': 'dueOn','external_id': 'externalId','line_items': 'lineItems','merchant_reference': 'merchantReference','sent_to_customer': 'sentToCustomer',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _billing_address = None
-    _due_on = None
-    _external_id = None
-    _line_items = None
-    _merchant_reference = None
-    _sent_to_customer = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.billing_address = kwargs.get('billing_address', None)
-        self.due_on = kwargs.get('due_on', None)
-        self.external_id = kwargs.get('external_id')
-
-        self.line_items = kwargs.get('line_items')
-
-        self.merchant_reference = kwargs.get('merchant_reference', None)
-        self.sent_to_customer = kwargs.get('sent_to_customer', None)
-        
-
-    
-    @property
-    def billing_address(self):
-        """Gets the billing_address of this TransactionInvoiceReplacement.
-
-            The address associated with the invoice, used for billing purposes.
-
-        :return: The billing_address of this TransactionInvoiceReplacement.
-        :rtype: AddressCreate
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._billing_address
+        excluded_fields: Set[str] = set([
+        ])
 
-    @billing_address.setter
-    def billing_address(self, billing_address):
-        """Sets the billing_address of this TransactionInvoiceReplacement.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
+        return _dict
 
-            The address associated with the invoice, used for billing purposes.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TransactionInvoiceReplacement from a dict"""
+        if obj is None:
+            return None
 
-        :param billing_address: The billing_address of this TransactionInvoiceReplacement.
-        :type: AddressCreate
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._billing_address = billing_address
-    
-    @property
-    def due_on(self):
-        """Gets the due_on of this TransactionInvoiceReplacement.
+        _obj = cls.model_validate({
+            "lineItems": [LineItemCreate.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "dueOn": obj.get("dueOn"),
+            "externalId": obj.get("externalId"),
+            "billingAddress": AddressCreate.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
+            "sentToCustomer": obj.get("sentToCustomer"),
+            "merchantReference": obj.get("merchantReference")
+        })
+        return _obj
 
-            The due date for payment of the invoice.
 
-        :return: The due_on of this TransactionInvoiceReplacement.
-        :rtype: datetime
-        """
-        return self._due_on
-
-    @due_on.setter
-    def due_on(self, due_on):
-        """Sets the due_on of this TransactionInvoiceReplacement.
-
-            The due date for payment of the invoice.
-
-        :param due_on: The due_on of this TransactionInvoiceReplacement.
-        :type: datetime
-        """
-
-        self._due_on = due_on
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this TransactionInvoiceReplacement.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this TransactionInvoiceReplacement.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this TransactionInvoiceReplacement.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this TransactionInvoiceReplacement.
-        :type: str
-        """
-        if external_id is None:
-            raise ValueError("Invalid value for `external_id`, must not be `None`")
-        if external_id is not None and len(external_id) > 100:
-            raise ValueError("Invalid value for `external_id`, length must be less than or equal to `100`")
-        if external_id is not None and len(external_id) < 1:
-            raise ValueError("Invalid value for `external_id`, length must be greater than or equal to `1`")
-
-        self._external_id = external_id
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this TransactionInvoiceReplacement.
-
-            The invoiced line items that will appear on the invoice document.
-
-        :return: The line_items of this TransactionInvoiceReplacement.
-        :rtype: list[LineItemCreate]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this TransactionInvoiceReplacement.
-
-            The invoiced line items that will appear on the invoice document.
-
-        :param line_items: The line_items of this TransactionInvoiceReplacement.
-        :type: list[LineItemCreate]
-        """
-        if line_items is None:
-            raise ValueError("Invalid value for `line_items`, must not be `None`")
-
-        self._line_items = line_items
-    
-    @property
-    def merchant_reference(self):
-        """Gets the merchant_reference of this TransactionInvoiceReplacement.
-
-            The merchant's reference used to identify the invoice.
-
-        :return: The merchant_reference of this TransactionInvoiceReplacement.
-        :rtype: str
-        """
-        return self._merchant_reference
-
-    @merchant_reference.setter
-    def merchant_reference(self, merchant_reference):
-        """Sets the merchant_reference of this TransactionInvoiceReplacement.
-
-            The merchant's reference used to identify the invoice.
-
-        :param merchant_reference: The merchant_reference of this TransactionInvoiceReplacement.
-        :type: str
-        """
-        if merchant_reference is not None and len(merchant_reference) > 100:
-            raise ValueError("Invalid value for `merchant_reference`, length must be less than or equal to `100`")
-
-        self._merchant_reference = merchant_reference
-    
-    @property
-    def sent_to_customer(self):
-        """Gets the sent_to_customer of this TransactionInvoiceReplacement.
-
-            Whether the invoice will be sent to the customer via email.
-
-        :return: The sent_to_customer of this TransactionInvoiceReplacement.
-        :rtype: bool
-        """
-        return self._sent_to_customer
-
-    @sent_to_customer.setter
-    def sent_to_customer(self, sent_to_customer):
-        """Sets the sent_to_customer of this TransactionInvoiceReplacement.
-
-            Whether the invoice will be sent to the customer via email.
-
-        :param sent_to_customer: The sent_to_customer of this TransactionInvoiceReplacement.
-        :type: bool
-        """
-
-        self._sent_to_customer = sent_to_customer
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TransactionInvoiceReplacement, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TransactionInvoiceReplacement):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

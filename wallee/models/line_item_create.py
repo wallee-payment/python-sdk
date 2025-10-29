@@ -1,351 +1,139 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from wallee.models.line_item_attribute_create import LineItemAttributeCreate
+from wallee.models.line_item_type import LineItemType
+from wallee.models.tax_create import TaxCreate
+from typing import Optional, Set
+from typing_extensions import Self
+
+class LineItemCreate(BaseModel):
+    """
+    LineItemCreate
+    """
+    shipping_required: Optional[StrictBool] = Field(default=None, description="Whether the item required shipping.", alias="shippingRequired")
+    quantity: Union[StrictFloat, StrictInt] = Field(description="The number of items that were purchased.")
+    name: Annotated[str, Field(min_length=1, strict=True, max_length=150)] = Field(description="The name of the product, ideally in the customer's language.")
+    taxes: Optional[List[TaxCreate]] = Field(default=None, description="A set of tax lines, each of which specifies a tax applied to the item.")
+    attributes: Optional[Dict[str, LineItemAttributeCreate]] = Field(default=None, description="A map of custom information for the item.")
+    amount_including_tax: Union[StrictFloat, StrictInt] = Field(description="The line item price with discounts applied, including taxes.", alias="amountIncludingTax")
+    discount_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The discount allocated to the item, including taxes.", alias="discountIncludingTax")
+    sku: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The SKU (stock-keeping unit) of the product.")
+    type: LineItemType
+    unique_id: Annotated[str, Field(strict=True, max_length=200)] = Field(description="The unique identifier of the line item within the set of line items.", alias="uniqueId")
+    __properties: ClassVar[List[str]] = ["shippingRequired", "quantity", "name", "taxes", "attributes", "amountIncludingTax", "discountIncludingTax", "sku", "type", "uniqueId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class LineItemCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount_including_tax': 'float',
-        'attributes': 'dict(str, LineItemAttributeCreate)',
-        'discount_including_tax': 'float',
-        'name': 'str',
-        'quantity': 'float',
-        'shipping_required': 'bool',
-        'sku': 'str',
-        'taxes': 'list[TaxCreate]',
-        'type': 'LineItemType',
-        'unique_id': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of LineItemCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount_including_tax': 'amountIncludingTax','attributes': 'attributes','discount_including_tax': 'discountIncludingTax','name': 'name','quantity': 'quantity','shipping_required': 'shippingRequired','sku': 'sku','taxes': 'taxes','type': 'type','unique_id': 'uniqueId',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount_including_tax = None
-    _attributes = None
-    _discount_including_tax = None
-    _name = None
-    _quantity = None
-    _shipping_required = None
-    _sku = None
-    _taxes = None
-    _type = None
-    _unique_id = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount_including_tax = kwargs.get('amount_including_tax')
-
-        self.attributes = kwargs.get('attributes', None)
-        self.discount_including_tax = kwargs.get('discount_including_tax', None)
-        self.name = kwargs.get('name')
-
-        self.quantity = kwargs.get('quantity')
-
-        self.shipping_required = kwargs.get('shipping_required', None)
-        self.sku = kwargs.get('sku', None)
-        self.taxes = kwargs.get('taxes', None)
-        self.type = kwargs.get('type')
-
-        self.unique_id = kwargs.get('unique_id')
-
-        
-
-    
-    @property
-    def amount_including_tax(self):
-        """Gets the amount_including_tax of this LineItemCreate.
-
-            The line item price with discounts applied, including taxes.
-
-        :return: The amount_including_tax of this LineItemCreate.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._amount_including_tax
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in taxes (list)
+        _items = []
+        if self.taxes:
+            for _item_taxes in self.taxes:
+                if _item_taxes:
+                    _items.append(_item_taxes.to_dict())
+            _dict['taxes'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each value in attributes (dict)
+        _field_dict = {}
+        if self.attributes:
+            for _key_attributes in self.attributes:
+                if self.attributes[_key_attributes]:
+                    _field_dict[_key_attributes] = self.attributes[_key_attributes].to_dict()
+            _dict['attributes'] = _field_dict
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of LineItemCreate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "shippingRequired": obj.get("shippingRequired"),
+            "quantity": obj.get("quantity"),
+            "name": obj.get("name"),
+            "taxes": [TaxCreate.from_dict(_item) for _item in obj["taxes"]] if obj.get("taxes") is not None else None,
+            "attributes": dict(
+                (_k, LineItemAttributeCreate.from_dict(_v))
+                for _k, _v in obj["attributes"].items()
+            )
+            if obj.get("attributes") is not None
+            else None,
+            "amountIncludingTax": obj.get("amountIncludingTax"),
+            "discountIncludingTax": obj.get("discountIncludingTax"),
+            "sku": obj.get("sku"),
+            "type": obj.get("type"),
+            "uniqueId": obj.get("uniqueId")
+        })
+        return _obj
 
-    @amount_including_tax.setter
-    def amount_including_tax(self, amount_including_tax):
-        """Sets the amount_including_tax of this LineItemCreate.
 
-            The line item price with discounts applied, including taxes.
-
-        :param amount_including_tax: The amount_including_tax of this LineItemCreate.
-        :type: float
-        """
-        if amount_including_tax is None:
-            raise ValueError("Invalid value for `amount_including_tax`, must not be `None`")
-
-        self._amount_including_tax = amount_including_tax
-    
-    @property
-    def attributes(self):
-        """Gets the attributes of this LineItemCreate.
-
-            A map of custom information for the item.
-
-        :return: The attributes of this LineItemCreate.
-        :rtype: dict(str, LineItemAttributeCreate)
-        """
-        return self._attributes
-
-    @attributes.setter
-    def attributes(self, attributes):
-        """Sets the attributes of this LineItemCreate.
-
-            A map of custom information for the item.
-
-        :param attributes: The attributes of this LineItemCreate.
-        :type: dict(str, LineItemAttributeCreate)
-        """
-
-        self._attributes = attributes
-    
-    @property
-    def discount_including_tax(self):
-        """Gets the discount_including_tax of this LineItemCreate.
-
-            The discount allocated to the item, including taxes.
-
-        :return: The discount_including_tax of this LineItemCreate.
-        :rtype: float
-        """
-        return self._discount_including_tax
-
-    @discount_including_tax.setter
-    def discount_including_tax(self, discount_including_tax):
-        """Sets the discount_including_tax of this LineItemCreate.
-
-            The discount allocated to the item, including taxes.
-
-        :param discount_including_tax: The discount_including_tax of this LineItemCreate.
-        :type: float
-        """
-
-        self._discount_including_tax = discount_including_tax
-    
-    @property
-    def name(self):
-        """Gets the name of this LineItemCreate.
-
-            The name of the product, ideally in the customer's language.
-
-        :return: The name of this LineItemCreate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this LineItemCreate.
-
-            The name of the product, ideally in the customer's language.
-
-        :param name: The name of this LineItemCreate.
-        :type: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")
-        if name is not None and len(name) > 150:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `150`")
-        if name is not None and len(name) < 1:
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")
-
-        self._name = name
-    
-    @property
-    def quantity(self):
-        """Gets the quantity of this LineItemCreate.
-
-            The number of items that were purchased.
-
-        :return: The quantity of this LineItemCreate.
-        :rtype: float
-        """
-        return self._quantity
-
-    @quantity.setter
-    def quantity(self, quantity):
-        """Sets the quantity of this LineItemCreate.
-
-            The number of items that were purchased.
-
-        :param quantity: The quantity of this LineItemCreate.
-        :type: float
-        """
-        if quantity is None:
-            raise ValueError("Invalid value for `quantity`, must not be `None`")
-
-        self._quantity = quantity
-    
-    @property
-    def shipping_required(self):
-        """Gets the shipping_required of this LineItemCreate.
-
-            Whether the item required shipping.
-
-        :return: The shipping_required of this LineItemCreate.
-        :rtype: bool
-        """
-        return self._shipping_required
-
-    @shipping_required.setter
-    def shipping_required(self, shipping_required):
-        """Sets the shipping_required of this LineItemCreate.
-
-            Whether the item required shipping.
-
-        :param shipping_required: The shipping_required of this LineItemCreate.
-        :type: bool
-        """
-
-        self._shipping_required = shipping_required
-    
-    @property
-    def sku(self):
-        """Gets the sku of this LineItemCreate.
-
-            The SKU (stock-keeping unit) of the product.
-
-        :return: The sku of this LineItemCreate.
-        :rtype: str
-        """
-        return self._sku
-
-    @sku.setter
-    def sku(self, sku):
-        """Sets the sku of this LineItemCreate.
-
-            The SKU (stock-keeping unit) of the product.
-
-        :param sku: The sku of this LineItemCreate.
-        :type: str
-        """
-        if sku is not None and len(sku) > 200:
-            raise ValueError("Invalid value for `sku`, length must be less than or equal to `200`")
-
-        self._sku = sku
-    
-    @property
-    def taxes(self):
-        """Gets the taxes of this LineItemCreate.
-
-            A set of tax lines, each of which specifies a tax applied to the item.
-
-        :return: The taxes of this LineItemCreate.
-        :rtype: list[TaxCreate]
-        """
-        return self._taxes
-
-    @taxes.setter
-    def taxes(self, taxes):
-        """Sets the taxes of this LineItemCreate.
-
-            A set of tax lines, each of which specifies a tax applied to the item.
-
-        :param taxes: The taxes of this LineItemCreate.
-        :type: list[TaxCreate]
-        """
-
-        self._taxes = taxes
-    
-    @property
-    def type(self):
-        """Gets the type of this LineItemCreate.
-
-            The type of the line item.
-
-        :return: The type of this LineItemCreate.
-        :rtype: LineItemType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this LineItemCreate.
-
-            The type of the line item.
-
-        :param type: The type of this LineItemCreate.
-        :type: LineItemType
-        """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")
-
-        self._type = type
-    
-    @property
-    def unique_id(self):
-        """Gets the unique_id of this LineItemCreate.
-
-            The unique identifier of the line item within the set of line items.
-
-        :return: The unique_id of this LineItemCreate.
-        :rtype: str
-        """
-        return self._unique_id
-
-    @unique_id.setter
-    def unique_id(self, unique_id):
-        """Sets the unique_id of this LineItemCreate.
-
-            The unique identifier of the line item within the set of line items.
-
-        :param unique_id: The unique_id of this LineItemCreate.
-        :type: str
-        """
-        if unique_id is None:
-            raise ValueError("Invalid value for `unique_id`, must not be `None`")
-        if unique_id is not None and len(unique_id) > 200:
-            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
-
-        self._unique_id = unique_id
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(LineItemCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, LineItemCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

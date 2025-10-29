@@ -1,130 +1,101 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TaxCreate(BaseModel):
+    """
+    TaxCreate
+    """
+    rate: Union[Annotated[float, Field(le=100, strict=True)], Annotated[int, Field(le=100, strict=True)]] = Field(description="The tax rate to be applied.")
+    title: Annotated[str, Field(min_length=2, strict=True, max_length=40)] = Field(description="The name of the tax.")
+    __properties: ClassVar[List[str]] = ["rate", "title"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TaxCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'rate': 'float',
-        'title': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TaxCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'rate': 'rate','title': 'title',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _rate = None
-    _title = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.rate = kwargs.get('rate')
-
-        self.title = kwargs.get('title')
-
-        
-
-    
-    @property
-    def rate(self):
-        """Gets the rate of this TaxCreate.
-
-            The tax rate to be applied.
-
-        :return: The rate of this TaxCreate.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._rate
+        excluded_fields: Set[str] = set([
+        ])
 
-    @rate.setter
-    def rate(self, rate):
-        """Sets the rate of this TaxCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The tax rate to be applied.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TaxCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param rate: The rate of this TaxCreate.
-        :type: float
-        """
-        if rate is None:
-            raise ValueError("Invalid value for `rate`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._rate = rate
-    
-    @property
-    def title(self):
-        """Gets the title of this TaxCreate.
+        _obj = cls.model_validate({
+            "rate": obj.get("rate"),
+            "title": obj.get("title")
+        })
+        return _obj
 
-            The name of the tax.
 
-        :return: The title of this TaxCreate.
-        :rtype: str
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """Sets the title of this TaxCreate.
-
-            The name of the tax.
-
-        :param title: The title of this TaxCreate.
-        :type: str
-        """
-        if title is None:
-            raise ValueError("Invalid value for `title`, must not be `None`")
-        if title is not None and len(title) > 40:
-            raise ValueError("Invalid value for `title`, length must be less than or equal to `40`")
-        if title is not None and len(title) < 2:
-            raise ValueError("Invalid value for `title`, length must be greater than or equal to `2`")
-
-        self._title = title
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TaxCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TaxCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

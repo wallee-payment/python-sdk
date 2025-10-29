@@ -1,356 +1,142 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionMetricUsageReport(BaseModel):
+    """
+    The metric usage is the actual usage of a metric for a particular subscription as collected by an external application.
+    """
+    consumed_units: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of resources consumed, will be charged in the next billing cycle.", alias="consumedUnits")
+    created_by_user_id: Optional[StrictInt] = Field(default=None, description="The ID of the user the usage report was created by.", alias="createdByUserId")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    metric: Optional[StrictInt] = Field(default=None, description="The metric that the usage report is recorded for.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    description: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="A description used to identify the usage report.")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    subscription: Optional[StrictInt] = Field(default=None, description="The subscription that the usage report is recorded for.")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the usage report was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    __properties: ClassVar[List[str]] = ["consumedUnits", "createdByUserId", "linkedSpaceId", "metric", "plannedPurgeDate", "description", "externalId", "id", "subscription", "createdOn", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionMetricUsageReport:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'consumed_units': 'float',
-        'created_by_user_id': 'int',
-        'created_on': 'datetime',
-        'description': 'str',
-        'external_id': 'str',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'metric': 'int',
-        'planned_purge_date': 'datetime',
-        'subscription': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionMetricUsageReport from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'consumed_units': 'consumedUnits','created_by_user_id': 'createdByUserId','created_on': 'createdOn','description': 'description','external_id': 'externalId','id': 'id','linked_space_id': 'linkedSpaceId','metric': 'metric','planned_purge_date': 'plannedPurgeDate','subscription': 'subscription','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _consumed_units = None
-    _created_by_user_id = None
-    _created_on = None
-    _description = None
-    _external_id = None
-    _id = None
-    _linked_space_id = None
-    _metric = None
-    _planned_purge_date = None
-    _subscription = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.consumed_units = kwargs.get('consumed_units', None)
-        self.created_by_user_id = kwargs.get('created_by_user_id', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.description = kwargs.get('description', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.metric = kwargs.get('metric', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.subscription = kwargs.get('subscription', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def consumed_units(self):
-        """Gets the consumed_units of this SubscriptionMetricUsageReport.
-
-            The number of resources consumed, will be charged in the next billing cycle.
-
-        :return: The consumed_units of this SubscriptionMetricUsageReport.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._consumed_units
+        excluded_fields: Set[str] = set([
+            "consumed_units",
+            "created_by_user_id",
+            "linked_space_id",
+            "metric",
+            "planned_purge_date",
+            "description",
+            "external_id",
+            "id",
+            "subscription",
+            "created_on",
+            "version",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionMetricUsageReport from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "consumedUnits": obj.get("consumedUnits"),
+            "createdByUserId": obj.get("createdByUserId"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "metric": obj.get("metric"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "description": obj.get("description"),
+            "externalId": obj.get("externalId"),
+            "id": obj.get("id"),
+            "subscription": obj.get("subscription"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-    @consumed_units.setter
-    def consumed_units(self, consumed_units):
-        """Sets the consumed_units of this SubscriptionMetricUsageReport.
 
-            The number of resources consumed, will be charged in the next billing cycle.
-
-        :param consumed_units: The consumed_units of this SubscriptionMetricUsageReport.
-        :type: float
-        """
-
-        self._consumed_units = consumed_units
-    
-    @property
-    def created_by_user_id(self):
-        """Gets the created_by_user_id of this SubscriptionMetricUsageReport.
-
-            The ID of the user the usage report was created by.
-
-        :return: The created_by_user_id of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._created_by_user_id
-
-    @created_by_user_id.setter
-    def created_by_user_id(self, created_by_user_id):
-        """Sets the created_by_user_id of this SubscriptionMetricUsageReport.
-
-            The ID of the user the usage report was created by.
-
-        :param created_by_user_id: The created_by_user_id of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._created_by_user_id = created_by_user_id
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this SubscriptionMetricUsageReport.
-
-            The date and time when the usage report was created.
-
-        :return: The created_on of this SubscriptionMetricUsageReport.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this SubscriptionMetricUsageReport.
-
-            The date and time when the usage report was created.
-
-        :param created_on: The created_on of this SubscriptionMetricUsageReport.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def description(self):
-        """Gets the description of this SubscriptionMetricUsageReport.
-
-            A description used to identify the usage report.
-
-        :return: The description of this SubscriptionMetricUsageReport.
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this SubscriptionMetricUsageReport.
-
-            A description used to identify the usage report.
-
-        :param description: The description of this SubscriptionMetricUsageReport.
-        :type: str
-        """
-        if description is not None and len(description) > 100:
-            raise ValueError("Invalid value for `description`, length must be less than or equal to `100`")
-
-        self._description = description
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this SubscriptionMetricUsageReport.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this SubscriptionMetricUsageReport.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this SubscriptionMetricUsageReport.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this SubscriptionMetricUsageReport.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionMetricUsageReport.
-
-            A unique identifier for the object.
-
-        :return: The id of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionMetricUsageReport.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionMetricUsageReport.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionMetricUsageReport.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def metric(self):
-        """Gets the metric of this SubscriptionMetricUsageReport.
-
-            The metric that the usage report is recorded for.
-
-        :return: The metric of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._metric
-
-    @metric.setter
-    def metric(self, metric):
-        """Sets the metric of this SubscriptionMetricUsageReport.
-
-            The metric that the usage report is recorded for.
-
-        :param metric: The metric of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._metric = metric
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this SubscriptionMetricUsageReport.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this SubscriptionMetricUsageReport.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this SubscriptionMetricUsageReport.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this SubscriptionMetricUsageReport.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def subscription(self):
-        """Gets the subscription of this SubscriptionMetricUsageReport.
-
-            The subscription that the usage report is recorded for.
-
-        :return: The subscription of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._subscription
-
-    @subscription.setter
-    def subscription(self, subscription):
-        """Sets the subscription of this SubscriptionMetricUsageReport.
-
-            The subscription that the usage report is recorded for.
-
-        :param subscription: The subscription of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._subscription = subscription
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionMetricUsageReport.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionMetricUsageReport.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionMetricUsageReport.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionMetricUsageReport.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionMetricUsageReport, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionMetricUsageReport):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

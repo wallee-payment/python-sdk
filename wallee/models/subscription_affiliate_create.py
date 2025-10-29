@@ -1,132 +1,110 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import AbstractSubscriptionAffiliateUpdate
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionAffiliateCreate(BaseModel):
+    """
+    SubscriptionAffiliateCreate
+    """
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=255)]] = Field(default=None, description="The name used to identify the affiliate.")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    state: Optional[CreationEntityState] = None
+    reference: Annotated[str, Field(min_length=3, strict=True, max_length=100)] = Field(description="The reference used to identify the affiliate.")
+    external_id: StrictStr = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    __properties: ClassVar[List[str]] = ["metaData", "name", "language", "state", "reference", "externalId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class SubscriptionAffiliateCreate(AbstractSubscriptionAffiliateUpdate):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'external_id': 'str',
-        'reference': 'str',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'external_id': 'externalId','reference': 'reference',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionAffiliateCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _external_id = None
-    _reference = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.external_id = kwargs.get('external_id')
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-        self.reference = kwargs.get('reference')
-
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
-
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this SubscriptionAffiliateCreate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this SubscriptionAffiliateCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._external_id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this SubscriptionAffiliateCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionAffiliateCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param external_id: The external_id of this SubscriptionAffiliateCreate.
-        :type: str
-        """
-        if external_id is None:
-            raise ValueError("Invalid value for `external_id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._external_id = external_id
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionAffiliateCreate.
+        _obj = cls.model_validate({
+            "metaData": obj.get("metaData"),
+            "name": obj.get("name"),
+            "language": obj.get("language"),
+            "state": obj.get("state"),
+            "reference": obj.get("reference"),
+            "externalId": obj.get("externalId")
+        })
+        return _obj
 
-            The reference used to identify the affiliate.
 
-        :return: The reference of this SubscriptionAffiliateCreate.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionAffiliateCreate.
-
-            The reference used to identify the affiliate.
-
-        :param reference: The reference of this SubscriptionAffiliateCreate.
-        :type: str
-        """
-        if reference is None:
-            raise ValueError("Invalid value for `reference`, must not be `None`")
-        if reference is not None and len(reference) > 100:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
-        if reference is not None and len(reference) < 3:
-            raise ValueError("Invalid value for `reference`, length must be greater than or equal to `3`")
-
-        self._reference = reference
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionAffiliateCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionAffiliateCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

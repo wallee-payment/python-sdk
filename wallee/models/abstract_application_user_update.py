@@ -1,148 +1,104 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.creation_entity_state import CreationEntityState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractApplicationUserUpdate(BaseModel):
+    """
+    AbstractApplicationUserUpdate
+    """
+    request_limit: Optional[StrictInt] = Field(default=None, description="The maximum number of API requests that are accepted every 2 minutes.", alias="requestLimit")
+    name: Optional[Annotated[str, Field(strict=True, max_length=256)]] = Field(default=None, description="The name used to identify the application user.")
+    state: Optional[CreationEntityState] = None
+    __properties: ClassVar[List[str]] = ["requestLimit", "name", "state"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractApplicationUserUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'name': 'str',
-        'request_limit': 'int',
-        'state': 'CreationEntityState',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractApplicationUserUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'name': 'name','request_limit': 'requestLimit','state': 'state',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _name = None
-    _request_limit = None
-    _state = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.name = kwargs.get('name', None)
-        self.request_limit = kwargs.get('request_limit', None)
-        self.state = kwargs.get('state', None)
-        
-
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractApplicationUserUpdate.
-
-            The name used to identify the application user.
-
-        :return: The name of this AbstractApplicationUserUpdate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._name
+        excluded_fields: Set[str] = set([
+        ])
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractApplicationUserUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The name used to identify the application user.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractApplicationUserUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param name: The name of this AbstractApplicationUserUpdate.
-        :type: str
-        """
-        if name is not None and len(name) > 256:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `256`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._name = name
-    
-    @property
-    def request_limit(self):
-        """Gets the request_limit of this AbstractApplicationUserUpdate.
+        _obj = cls.model_validate({
+            "requestLimit": obj.get("requestLimit"),
+            "name": obj.get("name"),
+            "state": obj.get("state")
+        })
+        return _obj
 
-            The maximum number of API requests that are accepted every 2 minutes.
 
-        :return: The request_limit of this AbstractApplicationUserUpdate.
-        :rtype: int
-        """
-        return self._request_limit
-
-    @request_limit.setter
-    def request_limit(self, request_limit):
-        """Sets the request_limit of this AbstractApplicationUserUpdate.
-
-            The maximum number of API requests that are accepted every 2 minutes.
-
-        :param request_limit: The request_limit of this AbstractApplicationUserUpdate.
-        :type: int
-        """
-
-        self._request_limit = request_limit
-    
-    @property
-    def state(self):
-        """Gets the state of this AbstractApplicationUserUpdate.
-
-            The object's current state.
-
-        :return: The state of this AbstractApplicationUserUpdate.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this AbstractApplicationUserUpdate.
-
-            The object's current state.
-
-        :param state: The state of this AbstractApplicationUserUpdate.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractApplicationUserUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractApplicationUserUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

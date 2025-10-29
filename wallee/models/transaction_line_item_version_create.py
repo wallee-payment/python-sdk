@@ -1,155 +1,110 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
+from wallee.models.line_item_create import LineItemCreate
+from typing import Optional, Set
+from typing_extensions import Self
+
+class TransactionLineItemVersionCreate(BaseModel):
+    """
+    TransactionLineItemVersionCreate
+    """
+    line_items: List[LineItemCreate] = Field(description="The line items that replace the original line items in the transaction.", alias="lineItems")
+    external_id: StrictStr = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    transaction: StrictInt = Field(description="The transaction that the line item version belongs to.")
+    __properties: ClassVar[List[str]] = ["lineItems", "externalId", "transaction"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class TransactionLineItemVersionCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'external_id': 'str',
-        'line_items': 'list[LineItemCreate]',
-        'transaction': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of TransactionLineItemVersionCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'external_id': 'externalId','line_items': 'lineItems','transaction': 'transaction',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _external_id = None
-    _line_items = None
-    _transaction = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.external_id = kwargs.get('external_id')
-
-        self.line_items = kwargs.get('line_items')
-
-        self.transaction = kwargs.get('transaction')
-
-        
-
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this TransactionLineItemVersionCreate.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this TransactionLineItemVersionCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._external_id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this TransactionLineItemVersionCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        return _dict
 
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of TransactionLineItemVersionCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param external_id: The external_id of this TransactionLineItemVersionCreate.
-        :type: str
-        """
-        if external_id is None:
-            raise ValueError("Invalid value for `external_id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._external_id = external_id
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this TransactionLineItemVersionCreate.
+        _obj = cls.model_validate({
+            "lineItems": [LineItemCreate.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "externalId": obj.get("externalId"),
+            "transaction": obj.get("transaction")
+        })
+        return _obj
 
-            The line items that replace the original line items in the transaction.
 
-        :return: The line_items of this TransactionLineItemVersionCreate.
-        :rtype: list[LineItemCreate]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this TransactionLineItemVersionCreate.
-
-            The line items that replace the original line items in the transaction.
-
-        :param line_items: The line_items of this TransactionLineItemVersionCreate.
-        :type: list[LineItemCreate]
-        """
-        if line_items is None:
-            raise ValueError("Invalid value for `line_items`, must not be `None`")
-
-        self._line_items = line_items
-    
-    @property
-    def transaction(self):
-        """Gets the transaction of this TransactionLineItemVersionCreate.
-
-            The transaction that the line item version belongs to.
-
-        :return: The transaction of this TransactionLineItemVersionCreate.
-        :rtype: int
-        """
-        return self._transaction
-
-    @transaction.setter
-    def transaction(self, transaction):
-        """Sets the transaction of this TransactionLineItemVersionCreate.
-
-            The transaction that the line item version belongs to.
-
-        :param transaction: The transaction of this TransactionLineItemVersionCreate.
-        :type: int
-        """
-        if transaction is None:
-            raise ValueError("Invalid value for `transaction`, must not be `None`")
-
-        self._transaction = transaction
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(TransactionLineItemVersionCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, TransactionLineItemVersionCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

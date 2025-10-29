@@ -1,388 +1,147 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.two_factor_authentication_type import TwoFactorAuthenticationType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class HumanUser(BaseModel):
+    """
+    HumanUser
+    """
+    mobile_phone_number: Optional[Annotated[str, Field(strict=True, max_length=30)]] = Field(default=None, description="The user's mobile phone number.", alias="mobilePhoneNumber")
+    two_factor_enabled: Optional[StrictBool] = Field(default=None, description="Whether two-factor authentication is enabled for this user.", alias="twoFactorEnabled")
+    email_address: Optional[Annotated[str, Field(strict=True, max_length=128)]] = Field(default=None, description="The user's email address.", alias="emailAddress")
+    firstname: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The user's first name.")
+    email_address_verified: Optional[StrictBool] = Field(default=None, description="Whether the user's email address has been verified.", alias="emailAddressVerified")
+    scope: Optional[StrictInt] = Field(default=None, description="The scope that the user belongs to.")
+    time_zone: Optional[StrictStr] = Field(default=None, description="The user's time zone. If none is specified, the one provided by the browser will be used.", alias="timeZone")
+    language: Optional[StrictStr] = Field(default=None, description="The user's preferred language.")
+    two_factor_type: Optional[TwoFactorAuthenticationType] = Field(default=None, alias="twoFactorType")
+    mobile_phone_verified: Optional[StrictBool] = Field(default=None, description="Whether the user's mobile phone number has been verified.", alias="mobilePhoneVerified")
+    primary_account: Optional[StrictInt] = Field(default=None, description="The primary account that the user belongs to.", alias="primaryAccount")
+    lastname: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The user's last name.")
+    __properties: ClassVar[List[str]] = ["mobilePhoneNumber", "twoFactorEnabled", "emailAddress", "firstname", "emailAddressVerified", "scope", "timeZone", "language", "twoFactorType", "mobilePhoneVerified", "primaryAccount", "lastname"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class HumanUser:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'email_address': 'str',
-        'email_address_verified': 'bool',
-        'firstname': 'str',
-        'language': 'str',
-        'lastname': 'str',
-        'mobile_phone_number': 'str',
-        'mobile_phone_verified': 'bool',
-        'primary_account': 'int',
-        'scope': 'int',
-        'time_zone': 'str',
-        'two_factor_enabled': 'bool',
-        'two_factor_type': 'TwoFactorAuthenticationType',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of HumanUser from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'email_address': 'emailAddress','email_address_verified': 'emailAddressVerified','firstname': 'firstname','language': 'language','lastname': 'lastname','mobile_phone_number': 'mobilePhoneNumber','mobile_phone_verified': 'mobilePhoneVerified','primary_account': 'primaryAccount','scope': 'scope','time_zone': 'timeZone','two_factor_enabled': 'twoFactorEnabled','two_factor_type': 'twoFactorType',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _email_address = None
-    _email_address_verified = None
-    _firstname = None
-    _language = None
-    _lastname = None
-    _mobile_phone_number = None
-    _mobile_phone_verified = None
-    _primary_account = None
-    _scope = None
-    _time_zone = None
-    _two_factor_enabled = None
-    _two_factor_type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.email_address = kwargs.get('email_address', None)
-        self.email_address_verified = kwargs.get('email_address_verified', None)
-        self.firstname = kwargs.get('firstname', None)
-        self.language = kwargs.get('language', None)
-        self.lastname = kwargs.get('lastname', None)
-        self.mobile_phone_number = kwargs.get('mobile_phone_number', None)
-        self.mobile_phone_verified = kwargs.get('mobile_phone_verified', None)
-        self.primary_account = kwargs.get('primary_account', None)
-        self.scope = kwargs.get('scope', None)
-        self.time_zone = kwargs.get('time_zone', None)
-        self.two_factor_enabled = kwargs.get('two_factor_enabled', None)
-        self.two_factor_type = kwargs.get('two_factor_type', None)
-        
-
-    
-    @property
-    def email_address(self):
-        """Gets the email_address of this HumanUser.
-
-            The user's email address.
-
-        :return: The email_address of this HumanUser.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._email_address
+        excluded_fields: Set[str] = set([
+            "mobile_phone_number",
+            "two_factor_enabled",
+            "email_address",
+            "firstname",
+            "email_address_verified",
+            "scope",
+            "time_zone",
+            "language",
+            "mobile_phone_verified",
+            "primary_account",
+            "lastname",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of two_factor_type
+        if self.two_factor_type:
+            _dict['twoFactorType'] = self.two_factor_type.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of HumanUser from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "mobilePhoneNumber": obj.get("mobilePhoneNumber"),
+            "twoFactorEnabled": obj.get("twoFactorEnabled"),
+            "emailAddress": obj.get("emailAddress"),
+            "firstname": obj.get("firstname"),
+            "emailAddressVerified": obj.get("emailAddressVerified"),
+            "scope": obj.get("scope"),
+            "timeZone": obj.get("timeZone"),
+            "language": obj.get("language"),
+            "twoFactorType": TwoFactorAuthenticationType.from_dict(obj["twoFactorType"]) if obj.get("twoFactorType") is not None else None,
+            "mobilePhoneVerified": obj.get("mobilePhoneVerified"),
+            "primaryAccount": obj.get("primaryAccount"),
+            "lastname": obj.get("lastname")
+        })
+        return _obj
 
-    @email_address.setter
-    def email_address(self, email_address):
-        """Sets the email_address of this HumanUser.
 
-            The user's email address.
-
-        :param email_address: The email_address of this HumanUser.
-        :type: str
-        """
-        if email_address is not None and len(email_address) > 128:
-            raise ValueError("Invalid value for `email_address`, length must be less than or equal to `128`")
-
-        self._email_address = email_address
-    
-    @property
-    def email_address_verified(self):
-        """Gets the email_address_verified of this HumanUser.
-
-            Whether the user's email address has been verified.
-
-        :return: The email_address_verified of this HumanUser.
-        :rtype: bool
-        """
-        return self._email_address_verified
-
-    @email_address_verified.setter
-    def email_address_verified(self, email_address_verified):
-        """Sets the email_address_verified of this HumanUser.
-
-            Whether the user's email address has been verified.
-
-        :param email_address_verified: The email_address_verified of this HumanUser.
-        :type: bool
-        """
-
-        self._email_address_verified = email_address_verified
-    
-    @property
-    def firstname(self):
-        """Gets the firstname of this HumanUser.
-
-            The user's first name.
-
-        :return: The firstname of this HumanUser.
-        :rtype: str
-        """
-        return self._firstname
-
-    @firstname.setter
-    def firstname(self, firstname):
-        """Sets the firstname of this HumanUser.
-
-            The user's first name.
-
-        :param firstname: The firstname of this HumanUser.
-        :type: str
-        """
-        if firstname is not None and len(firstname) > 100:
-            raise ValueError("Invalid value for `firstname`, length must be less than or equal to `100`")
-
-        self._firstname = firstname
-    
-    @property
-    def language(self):
-        """Gets the language of this HumanUser.
-
-            The user's preferred language.
-
-        :return: The language of this HumanUser.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this HumanUser.
-
-            The user's preferred language.
-
-        :param language: The language of this HumanUser.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def lastname(self):
-        """Gets the lastname of this HumanUser.
-
-            The user's last name.
-
-        :return: The lastname of this HumanUser.
-        :rtype: str
-        """
-        return self._lastname
-
-    @lastname.setter
-    def lastname(self, lastname):
-        """Sets the lastname of this HumanUser.
-
-            The user's last name.
-
-        :param lastname: The lastname of this HumanUser.
-        :type: str
-        """
-        if lastname is not None and len(lastname) > 100:
-            raise ValueError("Invalid value for `lastname`, length must be less than or equal to `100`")
-
-        self._lastname = lastname
-    
-    @property
-    def mobile_phone_number(self):
-        """Gets the mobile_phone_number of this HumanUser.
-
-            The user's mobile phone number.
-
-        :return: The mobile_phone_number of this HumanUser.
-        :rtype: str
-        """
-        return self._mobile_phone_number
-
-    @mobile_phone_number.setter
-    def mobile_phone_number(self, mobile_phone_number):
-        """Sets the mobile_phone_number of this HumanUser.
-
-            The user's mobile phone number.
-
-        :param mobile_phone_number: The mobile_phone_number of this HumanUser.
-        :type: str
-        """
-        if mobile_phone_number is not None and len(mobile_phone_number) > 30:
-            raise ValueError("Invalid value for `mobile_phone_number`, length must be less than or equal to `30`")
-
-        self._mobile_phone_number = mobile_phone_number
-    
-    @property
-    def mobile_phone_verified(self):
-        """Gets the mobile_phone_verified of this HumanUser.
-
-            Whether the user's mobile phone number has been verified.
-
-        :return: The mobile_phone_verified of this HumanUser.
-        :rtype: bool
-        """
-        return self._mobile_phone_verified
-
-    @mobile_phone_verified.setter
-    def mobile_phone_verified(self, mobile_phone_verified):
-        """Sets the mobile_phone_verified of this HumanUser.
-
-            Whether the user's mobile phone number has been verified.
-
-        :param mobile_phone_verified: The mobile_phone_verified of this HumanUser.
-        :type: bool
-        """
-
-        self._mobile_phone_verified = mobile_phone_verified
-    
-    @property
-    def primary_account(self):
-        """Gets the primary_account of this HumanUser.
-
-            The primary account that the user belongs to.
-
-        :return: The primary_account of this HumanUser.
-        :rtype: int
-        """
-        return self._primary_account
-
-    @primary_account.setter
-    def primary_account(self, primary_account):
-        """Sets the primary_account of this HumanUser.
-
-            The primary account that the user belongs to.
-
-        :param primary_account: The primary_account of this HumanUser.
-        :type: int
-        """
-
-        self._primary_account = primary_account
-    
-    @property
-    def scope(self):
-        """Gets the scope of this HumanUser.
-
-            The scope that the user belongs to.
-
-        :return: The scope of this HumanUser.
-        :rtype: int
-        """
-        return self._scope
-
-    @scope.setter
-    def scope(self, scope):
-        """Sets the scope of this HumanUser.
-
-            The scope that the user belongs to.
-
-        :param scope: The scope of this HumanUser.
-        :type: int
-        """
-
-        self._scope = scope
-    
-    @property
-    def time_zone(self):
-        """Gets the time_zone of this HumanUser.
-
-            The user's time zone. If none is specified, the one provided by the browser will be used.
-
-        :return: The time_zone of this HumanUser.
-        :rtype: str
-        """
-        return self._time_zone
-
-    @time_zone.setter
-    def time_zone(self, time_zone):
-        """Sets the time_zone of this HumanUser.
-
-            The user's time zone. If none is specified, the one provided by the browser will be used.
-
-        :param time_zone: The time_zone of this HumanUser.
-        :type: str
-        """
-
-        self._time_zone = time_zone
-    
-    @property
-    def two_factor_enabled(self):
-        """Gets the two_factor_enabled of this HumanUser.
-
-            Whether two-factor authentication is enabled for this user.
-
-        :return: The two_factor_enabled of this HumanUser.
-        :rtype: bool
-        """
-        return self._two_factor_enabled
-
-    @two_factor_enabled.setter
-    def two_factor_enabled(self, two_factor_enabled):
-        """Sets the two_factor_enabled of this HumanUser.
-
-            Whether two-factor authentication is enabled for this user.
-
-        :param two_factor_enabled: The two_factor_enabled of this HumanUser.
-        :type: bool
-        """
-
-        self._two_factor_enabled = two_factor_enabled
-    
-    @property
-    def two_factor_type(self):
-        """Gets the two_factor_type of this HumanUser.
-
-            The type of two-factor authentication that is enabled for the user.
-
-        :return: The two_factor_type of this HumanUser.
-        :rtype: TwoFactorAuthenticationType
-        """
-        return self._two_factor_type
-
-    @two_factor_type.setter
-    def two_factor_type(self, two_factor_type):
-        """Sets the two_factor_type of this HumanUser.
-
-            The type of two-factor authentication that is enabled for the user.
-
-        :param two_factor_type: The two_factor_type of this HumanUser.
-        :type: TwoFactorAuthenticationType
-        """
-
-        self._two_factor_type = two_factor_type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(HumanUser, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, HumanUser):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

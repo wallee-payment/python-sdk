@@ -1,150 +1,122 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import SubscriptionUpdate
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionPending(BaseModel):
+    """
+    SubscriptionPending
+    """
+    description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="A description used to identify the subscription.")
+    planned_termination_date: Optional[datetime] = Field(default=None, description="The date and time when the subscription is planned to be terminated.", alias="plannedTerminationDate")
+    affiliate: Optional[StrictInt] = Field(default=None, description="The affiliate that led to the creation of the subscription.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the subscription.")
+    subscriber: Optional[StrictInt] = Field(default=None, description="The subscriber that the subscription belongs to.")
+    token: Optional[StrictInt] = Field(default=None, description="The payment token that is used to charge the customer.")
+    __properties: ClassVar[List[str]] = ["description", "plannedTerminationDate", "affiliate", "version", "reference", "subscriber", "token"]
+
+    @field_validator('reference')
+    def reference_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class SubscriptionPending(SubscriptionUpdate):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'reference': 'str',
-        'subscriber': 'int',
-        'token': 'int',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'reference': 'reference','subscriber': 'subscriber','token': 'token',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionPending from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _reference = None
-    _subscriber = None
-    _token = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.reference = kwargs.get('reference', None)
-        self.subscriber = kwargs.get('subscriber', None)
-        self.token = kwargs.get('token', None)
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionPending.
-
-            The merchant's reference used to identify the subscription.
-
-        :return: The reference of this SubscriptionPending.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._reference
+        excluded_fields: Set[str] = set([
+        ])
 
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionPending.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The merchant's reference used to identify the subscription.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionPending from a dict"""
+        if obj is None:
+            return None
 
-        :param reference: The reference of this SubscriptionPending.
-        :type: str
-        """
-        if reference is not None and len(reference) > 100:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `100`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._reference = reference
-    
-    @property
-    def subscriber(self):
-        """Gets the subscriber of this SubscriptionPending.
+        _obj = cls.model_validate({
+            "description": obj.get("description"),
+            "plannedTerminationDate": obj.get("plannedTerminationDate"),
+            "affiliate": obj.get("affiliate"),
+            "version": obj.get("version"),
+            "reference": obj.get("reference"),
+            "subscriber": obj.get("subscriber"),
+            "token": obj.get("token")
+        })
+        return _obj
 
-            The subscriber that the subscription belongs to.
 
-        :return: The subscriber of this SubscriptionPending.
-        :rtype: int
-        """
-        return self._subscriber
-
-    @subscriber.setter
-    def subscriber(self, subscriber):
-        """Sets the subscriber of this SubscriptionPending.
-
-            The subscriber that the subscription belongs to.
-
-        :param subscriber: The subscriber of this SubscriptionPending.
-        :type: int
-        """
-
-        self._subscriber = subscriber
-    
-    @property
-    def token(self):
-        """Gets the token of this SubscriptionPending.
-
-            The payment token that is used to charge the customer.
-
-        :return: The token of this SubscriptionPending.
-        :rtype: int
-        """
-        return self._token
-
-    @token.setter
-    def token(self, token):
-        """Sets the token of this SubscriptionPending.
-
-            The payment token that is used to charge the customer.
-
-        :param token: The token of this SubscriptionPending.
-        :type: int
-        """
-
-        self._token = token
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionPending, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionPending):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

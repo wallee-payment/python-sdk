@@ -1,224 +1,120 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class UserAccountRole(BaseModel):
+    """
+    UserAccountRole
+    """
+    role: Optional[StrictInt] = Field(default=None, description="The role that is assigned to the user.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    applies_on_sub_account: Optional[StrictBool] = Field(default=None, description="Whether the role is assigned to the user in subaccounts only.", alias="appliesOnSubAccount")
+    user: Optional[StrictInt] = Field(default=None, description="The user whose role this defines.")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    account: Optional[StrictInt] = Field(default=None, description="The account in which the role is assigned to the user.")
+    __properties: ClassVar[List[str]] = ["role", "id", "appliesOnSubAccount", "user", "version", "account"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class UserAccountRole:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'account': 'int',
-        'applies_on_sub_account': 'bool',
-        'id': 'int',
-        'role': 'int',
-        'user': 'int',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of UserAccountRole from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'account': 'account','applies_on_sub_account': 'appliesOnSubAccount','id': 'id','role': 'role','user': 'user','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _account = None
-    _applies_on_sub_account = None
-    _id = None
-    _role = None
-    _user = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.account = kwargs.get('account', None)
-        self.applies_on_sub_account = kwargs.get('applies_on_sub_account', None)
-        self.id = kwargs.get('id', None)
-        self.role = kwargs.get('role', None)
-        self.user = kwargs.get('user', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def account(self):
-        """Gets the account of this UserAccountRole.
-
-            The account in which the role is assigned to the user.
-
-        :return: The account of this UserAccountRole.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._account
+        excluded_fields: Set[str] = set([
+            "role",
+            "id",
+            "applies_on_sub_account",
+            "user",
+            "version",
+            "account",
+        ])
 
-    @account.setter
-    def account(self, account):
-        """Sets the account of this UserAccountRole.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The account in which the role is assigned to the user.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of UserAccountRole from a dict"""
+        if obj is None:
+            return None
 
-        :param account: The account of this UserAccountRole.
-        :type: int
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._account = account
-    
-    @property
-    def applies_on_sub_account(self):
-        """Gets the applies_on_sub_account of this UserAccountRole.
+        _obj = cls.model_validate({
+            "role": obj.get("role"),
+            "id": obj.get("id"),
+            "appliesOnSubAccount": obj.get("appliesOnSubAccount"),
+            "user": obj.get("user"),
+            "version": obj.get("version"),
+            "account": obj.get("account")
+        })
+        return _obj
 
-            Whether the role is assigned to the user in subaccounts only.
 
-        :return: The applies_on_sub_account of this UserAccountRole.
-        :rtype: bool
-        """
-        return self._applies_on_sub_account
-
-    @applies_on_sub_account.setter
-    def applies_on_sub_account(self, applies_on_sub_account):
-        """Sets the applies_on_sub_account of this UserAccountRole.
-
-            Whether the role is assigned to the user in subaccounts only.
-
-        :param applies_on_sub_account: The applies_on_sub_account of this UserAccountRole.
-        :type: bool
-        """
-
-        self._applies_on_sub_account = applies_on_sub_account
-    
-    @property
-    def id(self):
-        """Gets the id of this UserAccountRole.
-
-            A unique identifier for the object.
-
-        :return: The id of this UserAccountRole.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this UserAccountRole.
-
-            A unique identifier for the object.
-
-        :param id: The id of this UserAccountRole.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def role(self):
-        """Gets the role of this UserAccountRole.
-
-            The role that is assigned to the user.
-
-        :return: The role of this UserAccountRole.
-        :rtype: int
-        """
-        return self._role
-
-    @role.setter
-    def role(self, role):
-        """Sets the role of this UserAccountRole.
-
-            The role that is assigned to the user.
-
-        :param role: The role of this UserAccountRole.
-        :type: int
-        """
-
-        self._role = role
-    
-    @property
-    def user(self):
-        """Gets the user of this UserAccountRole.
-
-            The user whose role this defines.
-
-        :return: The user of this UserAccountRole.
-        :rtype: int
-        """
-        return self._user
-
-    @user.setter
-    def user(self, user):
-        """Sets the user of this UserAccountRole.
-
-            The user whose role this defines.
-
-        :param user: The user of this UserAccountRole.
-        :type: int
-        """
-
-        self._user = user
-    
-    @property
-    def version(self):
-        """Gets the version of this UserAccountRole.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this UserAccountRole.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this UserAccountRole.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this UserAccountRole.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(UserAccountRole, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, UserAccountRole):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

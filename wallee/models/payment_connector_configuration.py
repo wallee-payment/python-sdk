@@ -1,460 +1,179 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.condition import Condition
+from wallee.models.creation_entity_state import CreationEntityState
+from wallee.models.payment_connector import PaymentConnector
+from wallee.models.payment_method_configuration import PaymentMethodConfiguration
+from wallee.models.payment_processor_configuration import PaymentProcessorConfiguration
+from wallee.models.sales_channel import SalesChannel
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentConnectorConfiguration(BaseModel):
+    """
+    PaymentConnectorConfiguration
+    """
+    payment_method_configuration: Optional[PaymentMethodConfiguration] = Field(default=None, alias="paymentMethodConfiguration")
+    image_path: Optional[StrictStr] = Field(default=None, description="The URL to the connector's image.", alias="imagePath")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    priority: Optional[StrictInt] = Field(default=None, description="The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.")
+    enabled_sales_channels: Optional[List[SalesChannel]] = Field(default=None, description="The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.", alias="enabledSalesChannels")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    processor_configuration: Optional[PaymentProcessorConfiguration] = Field(default=None, alias="processorConfiguration")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    connector: Optional[PaymentConnector] = None
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the connector configuration.")
+    enabled_space_views: Optional[List[StrictInt]] = Field(default=None, description="The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.", alias="enabledSpaceViews")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[CreationEntityState] = None
+    applicable_for_transaction_processing: Optional[StrictBool] = Field(default=None, description="Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.", alias="applicableForTransactionProcessing")
+    conditions: Optional[List[Condition]] = Field(default=None, description="Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.")
+    __properties: ClassVar[List[str]] = ["paymentMethodConfiguration", "imagePath", "plannedPurgeDate", "priority", "enabledSalesChannels", "version", "processorConfiguration", "linkedSpaceId", "connector", "name", "enabledSpaceViews", "id", "state", "applicableForTransactionProcessing", "conditions"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentConnectorConfiguration:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'applicable_for_transaction_processing': 'bool',
-        'conditions': 'list[int]',
-        'connector': 'int',
-        'enabled_sales_channels': 'list[SalesChannel]',
-        'enabled_space_views': 'list[int]',
-        'id': 'int',
-        'image_path': 'str',
-        'linked_space_id': 'int',
-        'name': 'str',
-        'payment_method_configuration': 'PaymentMethodConfiguration',
-        'planned_purge_date': 'datetime',
-        'priority': 'int',
-        'processor_configuration': 'PaymentProcessorConfiguration',
-        'state': 'CreationEntityState',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentConnectorConfiguration from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'applicable_for_transaction_processing': 'applicableForTransactionProcessing','conditions': 'conditions','connector': 'connector','enabled_sales_channels': 'enabledSalesChannels','enabled_space_views': 'enabledSpaceViews','id': 'id','image_path': 'imagePath','linked_space_id': 'linkedSpaceId','name': 'name','payment_method_configuration': 'paymentMethodConfiguration','planned_purge_date': 'plannedPurgeDate','priority': 'priority','processor_configuration': 'processorConfiguration','state': 'state','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _applicable_for_transaction_processing = None
-    _conditions = None
-    _connector = None
-    _enabled_sales_channels = None
-    _enabled_space_views = None
-    _id = None
-    _image_path = None
-    _linked_space_id = None
-    _name = None
-    _payment_method_configuration = None
-    _planned_purge_date = None
-    _priority = None
-    _processor_configuration = None
-    _state = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.applicable_for_transaction_processing = kwargs.get('applicable_for_transaction_processing', None)
-        self.conditions = kwargs.get('conditions', None)
-        self.connector = kwargs.get('connector', None)
-        self.enabled_sales_channels = kwargs.get('enabled_sales_channels', None)
-        self.enabled_space_views = kwargs.get('enabled_space_views', None)
-        self.id = kwargs.get('id', None)
-        self.image_path = kwargs.get('image_path', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.name = kwargs.get('name', None)
-        self.payment_method_configuration = kwargs.get('payment_method_configuration', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.priority = kwargs.get('priority', None)
-        self.processor_configuration = kwargs.get('processor_configuration', None)
-        self.state = kwargs.get('state', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def applicable_for_transaction_processing(self):
-        """Gets the applicable_for_transaction_processing of this PaymentConnectorConfiguration.
-
-            Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.
-
-        :return: The applicable_for_transaction_processing of this PaymentConnectorConfiguration.
-        :rtype: bool
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._applicable_for_transaction_processing
+        excluded_fields: Set[str] = set([
+            "image_path",
+            "planned_purge_date",
+            "priority",
+            "enabled_sales_channels",
+            "version",
+            "linked_space_id",
+            "name",
+            "enabled_space_views",
+            "id",
+            "applicable_for_transaction_processing",
+            "conditions",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of payment_method_configuration
+        if self.payment_method_configuration:
+            _dict['paymentMethodConfiguration'] = self.payment_method_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in enabled_sales_channels (list)
+        _items = []
+        if self.enabled_sales_channels:
+            for _item_enabled_sales_channels in self.enabled_sales_channels:
+                if _item_enabled_sales_channels:
+                    _items.append(_item_enabled_sales_channels.to_dict())
+            _dict['enabledSalesChannels'] = _items
+        # override the default output from pydantic by calling `to_dict()` of processor_configuration
+        if self.processor_configuration:
+            _dict['processorConfiguration'] = self.processor_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of connector
+        if self.connector:
+            _dict['connector'] = self.connector.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in conditions (list)
+        _items = []
+        if self.conditions:
+            for _item_conditions in self.conditions:
+                if _item_conditions:
+                    _items.append(_item_conditions.to_dict())
+            _dict['conditions'] = _items
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentConnectorConfiguration from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "paymentMethodConfiguration": PaymentMethodConfiguration.from_dict(obj["paymentMethodConfiguration"]) if obj.get("paymentMethodConfiguration") is not None else None,
+            "imagePath": obj.get("imagePath"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "priority": obj.get("priority"),
+            "enabledSalesChannels": [SalesChannel.from_dict(_item) for _item in obj["enabledSalesChannels"]] if obj.get("enabledSalesChannels") is not None else None,
+            "version": obj.get("version"),
+            "processorConfiguration": PaymentProcessorConfiguration.from_dict(obj["processorConfiguration"]) if obj.get("processorConfiguration") is not None else None,
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "connector": PaymentConnector.from_dict(obj["connector"]) if obj.get("connector") is not None else None,
+            "name": obj.get("name"),
+            "enabledSpaceViews": obj.get("enabledSpaceViews"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "applicableForTransactionProcessing": obj.get("applicableForTransactionProcessing"),
+            "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None
+        })
+        return _obj
 
-    @applicable_for_transaction_processing.setter
-    def applicable_for_transaction_processing(self, applicable_for_transaction_processing):
-        """Sets the applicable_for_transaction_processing of this PaymentConnectorConfiguration.
 
-            Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.
-
-        :param applicable_for_transaction_processing: The applicable_for_transaction_processing of this PaymentConnectorConfiguration.
-        :type: bool
-        """
-
-        self._applicable_for_transaction_processing = applicable_for_transaction_processing
-    
-    @property
-    def conditions(self):
-        """Gets the conditions of this PaymentConnectorConfiguration.
-
-            Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.
-
-        :return: The conditions of this PaymentConnectorConfiguration.
-        :rtype: list[int]
-        """
-        return self._conditions
-
-    @conditions.setter
-    def conditions(self, conditions):
-        """Sets the conditions of this PaymentConnectorConfiguration.
-
-            Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.
-
-        :param conditions: The conditions of this PaymentConnectorConfiguration.
-        :type: list[int]
-        """
-
-        self._conditions = conditions
-    
-    @property
-    def connector(self):
-        """Gets the connector of this PaymentConnectorConfiguration.
-
-            The connector that the configuration is for.
-
-        :return: The connector of this PaymentConnectorConfiguration.
-        :rtype: int
-        """
-        return self._connector
-
-    @connector.setter
-    def connector(self, connector):
-        """Sets the connector of this PaymentConnectorConfiguration.
-
-            The connector that the configuration is for.
-
-        :param connector: The connector of this PaymentConnectorConfiguration.
-        :type: int
-        """
-
-        self._connector = connector
-    
-    @property
-    def enabled_sales_channels(self):
-        """Gets the enabled_sales_channels of this PaymentConnectorConfiguration.
-
-            The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.
-
-        :return: The enabled_sales_channels of this PaymentConnectorConfiguration.
-        :rtype: list[SalesChannel]
-        """
-        return self._enabled_sales_channels
-
-    @enabled_sales_channels.setter
-    def enabled_sales_channels(self, enabled_sales_channels):
-        """Sets the enabled_sales_channels of this PaymentConnectorConfiguration.
-
-            The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.
-
-        :param enabled_sales_channels: The enabled_sales_channels of this PaymentConnectorConfiguration.
-        :type: list[SalesChannel]
-        """
-
-        self._enabled_sales_channels = enabled_sales_channels
-    
-    @property
-    def enabled_space_views(self):
-        """Gets the enabled_space_views of this PaymentConnectorConfiguration.
-
-            The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.
-
-        :return: The enabled_space_views of this PaymentConnectorConfiguration.
-        :rtype: list[int]
-        """
-        return self._enabled_space_views
-
-    @enabled_space_views.setter
-    def enabled_space_views(self, enabled_space_views):
-        """Sets the enabled_space_views of this PaymentConnectorConfiguration.
-
-            The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.
-
-        :param enabled_space_views: The enabled_space_views of this PaymentConnectorConfiguration.
-        :type: list[int]
-        """
-
-        self._enabled_space_views = enabled_space_views
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentConnectorConfiguration.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentConnectorConfiguration.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentConnectorConfiguration.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentConnectorConfiguration.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def image_path(self):
-        """Gets the image_path of this PaymentConnectorConfiguration.
-
-            The URL to the connector's image.
-
-        :return: The image_path of this PaymentConnectorConfiguration.
-        :rtype: str
-        """
-        return self._image_path
-
-    @image_path.setter
-    def image_path(self, image_path):
-        """Sets the image_path of this PaymentConnectorConfiguration.
-
-            The URL to the connector's image.
-
-        :param image_path: The image_path of this PaymentConnectorConfiguration.
-        :type: str
-        """
-
-        self._image_path = image_path
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this PaymentConnectorConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this PaymentConnectorConfiguration.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this PaymentConnectorConfiguration.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this PaymentConnectorConfiguration.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def name(self):
-        """Gets the name of this PaymentConnectorConfiguration.
-
-            The name used to identify the connector configuration.
-
-        :return: The name of this PaymentConnectorConfiguration.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PaymentConnectorConfiguration.
-
-            The name used to identify the connector configuration.
-
-        :param name: The name of this PaymentConnectorConfiguration.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def payment_method_configuration(self):
-        """Gets the payment_method_configuration of this PaymentConnectorConfiguration.
-
-            The payment method configuration that the connector configuration belongs to.
-
-        :return: The payment_method_configuration of this PaymentConnectorConfiguration.
-        :rtype: PaymentMethodConfiguration
-        """
-        return self._payment_method_configuration
-
-    @payment_method_configuration.setter
-    def payment_method_configuration(self, payment_method_configuration):
-        """Sets the payment_method_configuration of this PaymentConnectorConfiguration.
-
-            The payment method configuration that the connector configuration belongs to.
-
-        :param payment_method_configuration: The payment_method_configuration of this PaymentConnectorConfiguration.
-        :type: PaymentMethodConfiguration
-        """
-
-        self._payment_method_configuration = payment_method_configuration
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this PaymentConnectorConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this PaymentConnectorConfiguration.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this PaymentConnectorConfiguration.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this PaymentConnectorConfiguration.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def priority(self):
-        """Gets the priority of this PaymentConnectorConfiguration.
-
-            The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.
-
-        :return: The priority of this PaymentConnectorConfiguration.
-        :rtype: int
-        """
-        return self._priority
-
-    @priority.setter
-    def priority(self, priority):
-        """Sets the priority of this PaymentConnectorConfiguration.
-
-            The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.
-
-        :param priority: The priority of this PaymentConnectorConfiguration.
-        :type: int
-        """
-
-        self._priority = priority
-    
-    @property
-    def processor_configuration(self):
-        """Gets the processor_configuration of this PaymentConnectorConfiguration.
-
-            The processor configuration that the connector configuration belongs to.
-
-        :return: The processor_configuration of this PaymentConnectorConfiguration.
-        :rtype: PaymentProcessorConfiguration
-        """
-        return self._processor_configuration
-
-    @processor_configuration.setter
-    def processor_configuration(self, processor_configuration):
-        """Sets the processor_configuration of this PaymentConnectorConfiguration.
-
-            The processor configuration that the connector configuration belongs to.
-
-        :param processor_configuration: The processor_configuration of this PaymentConnectorConfiguration.
-        :type: PaymentProcessorConfiguration
-        """
-
-        self._processor_configuration = processor_configuration
-    
-    @property
-    def state(self):
-        """Gets the state of this PaymentConnectorConfiguration.
-
-            The object's current state.
-
-        :return: The state of this PaymentConnectorConfiguration.
-        :rtype: CreationEntityState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this PaymentConnectorConfiguration.
-
-            The object's current state.
-
-        :param state: The state of this PaymentConnectorConfiguration.
-        :type: CreationEntityState
-        """
-
-        self._state = state
-    
-    @property
-    def version(self):
-        """Gets the version of this PaymentConnectorConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this PaymentConnectorConfiguration.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this PaymentConnectorConfiguration.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this PaymentConnectorConfiguration.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentConnectorConfiguration, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentConnectorConfiguration):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,382 +1,139 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.line_item_create import LineItemCreate
+from wallee.models.payment_link_address_handling_mode import PaymentLinkAddressHandlingMode
+from wallee.models.payment_method_configuration import PaymentMethodConfiguration
+from typing import Optional, Set
+from typing_extensions import Self
+
+class AbstractPaymentLinkUpdate(BaseModel):
+    """
+    AbstractPaymentLinkUpdate
+    """
+    line_items: Optional[List[LineItemCreate]] = Field(default=None, description="The line items representing what is being sold. If not specified, they can be supplied via request parameters.", alias="lineItems")
+    available_until: Optional[datetime] = Field(default=None, description="The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.", alias="availableUntil")
+    shipping_address_handling_mode: Optional[PaymentLinkAddressHandlingMode] = Field(default=None, alias="shippingAddressHandlingMode")
+    allowed_redirection_domains: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. ", alias="allowedRedirectionDomains")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment link.")
+    currency: Optional[StrictStr] = Field(default=None, description="The three-letter currency code (ISO 4217). If not specified, it must be provided in the 'currency' request parameter.")
+    language: Optional[StrictStr] = Field(default=None, description="The language for displaying the payment page. If not specified, it can be supplied via the 'language' request parameter.")
+    maximal_number_of_transactions: Optional[StrictInt] = Field(default=None, description="The maximum number of transactions that can be initiated using the payment link.", alias="maximalNumberOfTransactions")
+    available_from: Optional[datetime] = Field(default=None, description="The earliest date the payment link can be used to initiate a transaction. If no date is provided, the link will be available immediately.", alias="availableFrom")
+    allowed_payment_method_configurations: Optional[List[PaymentMethodConfiguration]] = Field(default=None, description="The payment method configurations that customers can use for making payments.", alias="allowedPaymentMethodConfigurations")
+    applied_space_view: Optional[StrictInt] = Field(default=None, description="The payment link can be used within a specific space view, which may apply a customized design to the payment page.", alias="appliedSpaceView")
+    billing_address_handling_mode: Optional[PaymentLinkAddressHandlingMode] = Field(default=None, alias="billingAddressHandlingMode")
+    __properties: ClassVar[List[str]] = ["lineItems", "availableUntil", "shippingAddressHandlingMode", "allowedRedirectionDomains", "name", "currency", "language", "maximalNumberOfTransactions", "availableFrom", "allowedPaymentMethodConfigurations", "appliedSpaceView", "billingAddressHandlingMode"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class AbstractPaymentLinkUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'allowed_payment_method_configurations': 'list[PaymentMethodConfiguration]',
-        'allowed_redirection_domains': 'list[str]',
-        'applied_space_view': 'int',
-        'available_from': 'datetime',
-        'available_until': 'datetime',
-        'billing_address_handling_mode': 'PaymentLinkAddressHandlingMode',
-        'currency': 'str',
-        'language': 'str',
-        'line_items': 'list[LineItemCreate]',
-        'maximal_number_of_transactions': 'int',
-        'name': 'str',
-        'shipping_address_handling_mode': 'PaymentLinkAddressHandlingMode',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of AbstractPaymentLinkUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'allowed_payment_method_configurations': 'allowedPaymentMethodConfigurations','allowed_redirection_domains': 'allowedRedirectionDomains','applied_space_view': 'appliedSpaceView','available_from': 'availableFrom','available_until': 'availableUntil','billing_address_handling_mode': 'billingAddressHandlingMode','currency': 'currency','language': 'language','line_items': 'lineItems','maximal_number_of_transactions': 'maximalNumberOfTransactions','name': 'name','shipping_address_handling_mode': 'shippingAddressHandlingMode',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _allowed_payment_method_configurations = None
-    _allowed_redirection_domains = None
-    _applied_space_view = None
-    _available_from = None
-    _available_until = None
-    _billing_address_handling_mode = None
-    _currency = None
-    _language = None
-    _line_items = None
-    _maximal_number_of_transactions = None
-    _name = None
-    _shipping_address_handling_mode = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.allowed_payment_method_configurations = kwargs.get('allowed_payment_method_configurations', None)
-        self.allowed_redirection_domains = kwargs.get('allowed_redirection_domains', None)
-        self.applied_space_view = kwargs.get('applied_space_view', None)
-        self.available_from = kwargs.get('available_from', None)
-        self.available_until = kwargs.get('available_until', None)
-        self.billing_address_handling_mode = kwargs.get('billing_address_handling_mode', None)
-        self.currency = kwargs.get('currency', None)
-        self.language = kwargs.get('language', None)
-        self.line_items = kwargs.get('line_items', None)
-        self.maximal_number_of_transactions = kwargs.get('maximal_number_of_transactions', None)
-        self.name = kwargs.get('name', None)
-        self.shipping_address_handling_mode = kwargs.get('shipping_address_handling_mode', None)
-        
-
-    
-    @property
-    def allowed_payment_method_configurations(self):
-        """Gets the allowed_payment_method_configurations of this AbstractPaymentLinkUpdate.
-
-            The payment method configurations that customers can use for making payments.
-
-        :return: The allowed_payment_method_configurations of this AbstractPaymentLinkUpdate.
-        :rtype: list[PaymentMethodConfiguration]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._allowed_payment_method_configurations
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in line_items (list)
+        _items = []
+        if self.line_items:
+            for _item_line_items in self.line_items:
+                if _item_line_items:
+                    _items.append(_item_line_items.to_dict())
+            _dict['lineItems'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in allowed_payment_method_configurations (list)
+        _items = []
+        if self.allowed_payment_method_configurations:
+            for _item_allowed_payment_method_configurations in self.allowed_payment_method_configurations:
+                if _item_allowed_payment_method_configurations:
+                    _items.append(_item_allowed_payment_method_configurations.to_dict())
+            _dict['allowedPaymentMethodConfigurations'] = _items
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of AbstractPaymentLinkUpdate from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "lineItems": [LineItemCreate.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "availableUntil": obj.get("availableUntil"),
+            "shippingAddressHandlingMode": obj.get("shippingAddressHandlingMode"),
+            "allowedRedirectionDomains": obj.get("allowedRedirectionDomains"),
+            "name": obj.get("name"),
+            "currency": obj.get("currency"),
+            "language": obj.get("language"),
+            "maximalNumberOfTransactions": obj.get("maximalNumberOfTransactions"),
+            "availableFrom": obj.get("availableFrom"),
+            "allowedPaymentMethodConfigurations": [PaymentMethodConfiguration.from_dict(_item) for _item in obj["allowedPaymentMethodConfigurations"]] if obj.get("allowedPaymentMethodConfigurations") is not None else None,
+            "appliedSpaceView": obj.get("appliedSpaceView"),
+            "billingAddressHandlingMode": obj.get("billingAddressHandlingMode")
+        })
+        return _obj
 
-    @allowed_payment_method_configurations.setter
-    def allowed_payment_method_configurations(self, allowed_payment_method_configurations):
-        """Sets the allowed_payment_method_configurations of this AbstractPaymentLinkUpdate.
 
-            The payment method configurations that customers can use for making payments.
-
-        :param allowed_payment_method_configurations: The allowed_payment_method_configurations of this AbstractPaymentLinkUpdate.
-        :type: list[PaymentMethodConfiguration]
-        """
-
-        self._allowed_payment_method_configurations = allowed_payment_method_configurations
-    
-    @property
-    def allowed_redirection_domains(self):
-        """Gets the allowed_redirection_domains of this AbstractPaymentLinkUpdate.
-
-            The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. 
-
-        :return: The allowed_redirection_domains of this AbstractPaymentLinkUpdate.
-        :rtype: list[str]
-        """
-        return self._allowed_redirection_domains
-
-    @allowed_redirection_domains.setter
-    def allowed_redirection_domains(self, allowed_redirection_domains):
-        """Sets the allowed_redirection_domains of this AbstractPaymentLinkUpdate.
-
-            The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. 
-
-        :param allowed_redirection_domains: The allowed_redirection_domains of this AbstractPaymentLinkUpdate.
-        :type: list[str]
-        """
-
-        self._allowed_redirection_domains = allowed_redirection_domains
-    
-    @property
-    def applied_space_view(self):
-        """Gets the applied_space_view of this AbstractPaymentLinkUpdate.
-
-            The payment link can be used within a specific space view, which may apply a customized design to the payment page.
-
-        :return: The applied_space_view of this AbstractPaymentLinkUpdate.
-        :rtype: int
-        """
-        return self._applied_space_view
-
-    @applied_space_view.setter
-    def applied_space_view(self, applied_space_view):
-        """Sets the applied_space_view of this AbstractPaymentLinkUpdate.
-
-            The payment link can be used within a specific space view, which may apply a customized design to the payment page.
-
-        :param applied_space_view: The applied_space_view of this AbstractPaymentLinkUpdate.
-        :type: int
-        """
-
-        self._applied_space_view = applied_space_view
-    
-    @property
-    def available_from(self):
-        """Gets the available_from of this AbstractPaymentLinkUpdate.
-
-            The earliest date the payment link can be used to initiate a transaction. If no date is provided, the link will be available immediately.
-
-        :return: The available_from of this AbstractPaymentLinkUpdate.
-        :rtype: datetime
-        """
-        return self._available_from
-
-    @available_from.setter
-    def available_from(self, available_from):
-        """Sets the available_from of this AbstractPaymentLinkUpdate.
-
-            The earliest date the payment link can be used to initiate a transaction. If no date is provided, the link will be available immediately.
-
-        :param available_from: The available_from of this AbstractPaymentLinkUpdate.
-        :type: datetime
-        """
-
-        self._available_from = available_from
-    
-    @property
-    def available_until(self):
-        """Gets the available_until of this AbstractPaymentLinkUpdate.
-
-            The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.
-
-        :return: The available_until of this AbstractPaymentLinkUpdate.
-        :rtype: datetime
-        """
-        return self._available_until
-
-    @available_until.setter
-    def available_until(self, available_until):
-        """Sets the available_until of this AbstractPaymentLinkUpdate.
-
-            The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.
-
-        :param available_until: The available_until of this AbstractPaymentLinkUpdate.
-        :type: datetime
-        """
-
-        self._available_until = available_until
-    
-    @property
-    def billing_address_handling_mode(self):
-        """Gets the billing_address_handling_mode of this AbstractPaymentLinkUpdate.
-
-            The handling mode defines whether a billing address is required and specifies how it should be provided.
-
-        :return: The billing_address_handling_mode of this AbstractPaymentLinkUpdate.
-        :rtype: PaymentLinkAddressHandlingMode
-        """
-        return self._billing_address_handling_mode
-
-    @billing_address_handling_mode.setter
-    def billing_address_handling_mode(self, billing_address_handling_mode):
-        """Sets the billing_address_handling_mode of this AbstractPaymentLinkUpdate.
-
-            The handling mode defines whether a billing address is required and specifies how it should be provided.
-
-        :param billing_address_handling_mode: The billing_address_handling_mode of this AbstractPaymentLinkUpdate.
-        :type: PaymentLinkAddressHandlingMode
-        """
-
-        self._billing_address_handling_mode = billing_address_handling_mode
-    
-    @property
-    def currency(self):
-        """Gets the currency of this AbstractPaymentLinkUpdate.
-
-            The three-letter currency code (ISO 4217). If not specified, it must be provided in the 'currency' request parameter.
-
-        :return: The currency of this AbstractPaymentLinkUpdate.
-        :rtype: str
-        """
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        """Sets the currency of this AbstractPaymentLinkUpdate.
-
-            The three-letter currency code (ISO 4217). If not specified, it must be provided in the 'currency' request parameter.
-
-        :param currency: The currency of this AbstractPaymentLinkUpdate.
-        :type: str
-        """
-
-        self._currency = currency
-    
-    @property
-    def language(self):
-        """Gets the language of this AbstractPaymentLinkUpdate.
-
-            The language for displaying the payment page. If not specified, it can be supplied via the 'language' request parameter.
-
-        :return: The language of this AbstractPaymentLinkUpdate.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this AbstractPaymentLinkUpdate.
-
-            The language for displaying the payment page. If not specified, it can be supplied via the 'language' request parameter.
-
-        :param language: The language of this AbstractPaymentLinkUpdate.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def line_items(self):
-        """Gets the line_items of this AbstractPaymentLinkUpdate.
-
-            The line items representing what is being sold. If not specified, they can be supplied via request parameters.
-
-        :return: The line_items of this AbstractPaymentLinkUpdate.
-        :rtype: list[LineItemCreate]
-        """
-        return self._line_items
-
-    @line_items.setter
-    def line_items(self, line_items):
-        """Sets the line_items of this AbstractPaymentLinkUpdate.
-
-            The line items representing what is being sold. If not specified, they can be supplied via request parameters.
-
-        :param line_items: The line_items of this AbstractPaymentLinkUpdate.
-        :type: list[LineItemCreate]
-        """
-
-        self._line_items = line_items
-    
-    @property
-    def maximal_number_of_transactions(self):
-        """Gets the maximal_number_of_transactions of this AbstractPaymentLinkUpdate.
-
-            The maximum number of transactions that can be initiated using the payment link.
-
-        :return: The maximal_number_of_transactions of this AbstractPaymentLinkUpdate.
-        :rtype: int
-        """
-        return self._maximal_number_of_transactions
-
-    @maximal_number_of_transactions.setter
-    def maximal_number_of_transactions(self, maximal_number_of_transactions):
-        """Sets the maximal_number_of_transactions of this AbstractPaymentLinkUpdate.
-
-            The maximum number of transactions that can be initiated using the payment link.
-
-        :param maximal_number_of_transactions: The maximal_number_of_transactions of this AbstractPaymentLinkUpdate.
-        :type: int
-        """
-
-        self._maximal_number_of_transactions = maximal_number_of_transactions
-    
-    @property
-    def name(self):
-        """Gets the name of this AbstractPaymentLinkUpdate.
-
-            The name used to identify the payment link.
-
-        :return: The name of this AbstractPaymentLinkUpdate.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this AbstractPaymentLinkUpdate.
-
-            The name used to identify the payment link.
-
-        :param name: The name of this AbstractPaymentLinkUpdate.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def shipping_address_handling_mode(self):
-        """Gets the shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
-
-            The handling mode defines whether a shipping address is required and specifies how it should be provided.
-
-        :return: The shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
-        :rtype: PaymentLinkAddressHandlingMode
-        """
-        return self._shipping_address_handling_mode
-
-    @shipping_address_handling_mode.setter
-    def shipping_address_handling_mode(self, shipping_address_handling_mode):
-        """Sets the shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
-
-            The handling mode defines whether a shipping address is required and specifies how it should be provided.
-
-        :param shipping_address_handling_mode: The shipping_address_handling_mode of this AbstractPaymentLinkUpdate.
-        :type: PaymentLinkAddressHandlingMode
-        """
-
-        self._shipping_address_handling_mode = shipping_address_handling_mode
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(AbstractPaymentLinkUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, AbstractPaymentLinkUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

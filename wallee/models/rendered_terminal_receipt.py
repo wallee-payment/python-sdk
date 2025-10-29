@@ -1,172 +1,114 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictBytes, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from wallee.models.payment_terminal_receipt_type import PaymentTerminalReceiptType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RenderedTerminalReceipt(BaseModel):
+    """
+    RenderedTerminalReceipt
+    """
+    printed: Optional[StrictBool] = Field(default=None, description="Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.")
+    data: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The receipt document data in binary format, presented as a Base64-encoded string.")
+    receipt_type: Optional[PaymentTerminalReceiptType] = Field(default=None, alias="receiptType")
+    mime_type: Optional[StrictStr] = Field(default=None, description="The MIME type specifies the format of the receipt document and is determined by the requested format.", alias="mimeType")
+    __properties: ClassVar[List[str]] = ["printed", "data", "receiptType", "mimeType"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RenderedTerminalReceipt:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'data': 'list[str]',
-        'mime_type': 'str',
-        'printed': 'bool',
-        'receipt_type': 'PaymentTerminalReceiptType',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RenderedTerminalReceipt from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'data': 'data','mime_type': 'mimeType','printed': 'printed','receipt_type': 'receiptType',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _data = None
-    _mime_type = None
-    _printed = None
-    _receipt_type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.data = kwargs.get('data', None)
-        self.mime_type = kwargs.get('mime_type', None)
-        self.printed = kwargs.get('printed', None)
-        self.receipt_type = kwargs.get('receipt_type', None)
-        
-
-    
-    @property
-    def data(self):
-        """Gets the data of this RenderedTerminalReceipt.
-
-            The receipt document data in binary format, presented as a Base64-encoded string.
-
-        :return: The data of this RenderedTerminalReceipt.
-        :rtype: list[str]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._data
+        excluded_fields: Set[str] = set([
+            "printed",
+            "data",
+            "mime_type",
+        ])
 
-    @data.setter
-    def data(self, data):
-        """Sets the data of this RenderedTerminalReceipt.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of receipt_type
+        if self.receipt_type:
+            _dict['receiptType'] = self.receipt_type.to_dict()
+        return _dict
 
-            The receipt document data in binary format, presented as a Base64-encoded string.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RenderedTerminalReceipt from a dict"""
+        if obj is None:
+            return None
 
-        :param data: The data of this RenderedTerminalReceipt.
-        :type: list[str]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._data = data
-    
-    @property
-    def mime_type(self):
-        """Gets the mime_type of this RenderedTerminalReceipt.
+        _obj = cls.model_validate({
+            "printed": obj.get("printed"),
+            "data": obj.get("data"),
+            "receiptType": PaymentTerminalReceiptType.from_dict(obj["receiptType"]) if obj.get("receiptType") is not None else None,
+            "mimeType": obj.get("mimeType")
+        })
+        return _obj
 
-            The MIME type specifies the format of the receipt document and is determined by the requested format.
 
-        :return: The mime_type of this RenderedTerminalReceipt.
-        :rtype: str
-        """
-        return self._mime_type
-
-    @mime_type.setter
-    def mime_type(self, mime_type):
-        """Sets the mime_type of this RenderedTerminalReceipt.
-
-            The MIME type specifies the format of the receipt document and is determined by the requested format.
-
-        :param mime_type: The mime_type of this RenderedTerminalReceipt.
-        :type: str
-        """
-
-        self._mime_type = mime_type
-    
-    @property
-    def printed(self):
-        """Gets the printed of this RenderedTerminalReceipt.
-
-            Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.
-
-        :return: The printed of this RenderedTerminalReceipt.
-        :rtype: bool
-        """
-        return self._printed
-
-    @printed.setter
-    def printed(self, printed):
-        """Sets the printed of this RenderedTerminalReceipt.
-
-            Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.
-
-        :param printed: The printed of this RenderedTerminalReceipt.
-        :type: bool
-        """
-
-        self._printed = printed
-    
-    @property
-    def receipt_type(self):
-        """Gets the receipt_type of this RenderedTerminalReceipt.
-
-            The receipt type specifies the intended use and the target audience of the document.
-
-        :return: The receipt_type of this RenderedTerminalReceipt.
-        :rtype: PaymentTerminalReceiptType
-        """
-        return self._receipt_type
-
-    @receipt_type.setter
-    def receipt_type(self, receipt_type):
-        """Sets the receipt_type of this RenderedTerminalReceipt.
-
-            The receipt type specifies the intended use and the target audience of the document.
-
-        :param receipt_type: The receipt_type of this RenderedTerminalReceipt.
-        :type: PaymentTerminalReceiptType
-        """
-
-        self._receipt_type = receipt_type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RenderedTerminalReceipt, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RenderedTerminalReceipt):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

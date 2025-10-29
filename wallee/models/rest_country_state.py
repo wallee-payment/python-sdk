@@ -1,172 +1,112 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RestCountryState(BaseModel):
+    """
+    RestCountryState
+    """
+    code: Optional[StrictStr] = Field(default=None, description="The state's code used within addresses.")
+    country_code: Optional[StrictStr] = Field(default=None, description="The two-letter code of the state's country (ISO 3166-1 alpha-2 format).", alias="countryCode")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the state.")
+    id: Optional[StrictStr] = Field(default=None, description="The state's code in ISO 3166-2 format.")
+    __properties: ClassVar[List[str]] = ["code", "countryCode", "name", "id"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RestCountryState:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'code': 'str',
-        'country_code': 'str',
-        'id': 'str',
-        'name': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RestCountryState from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'code': 'code','country_code': 'countryCode','id': 'id','name': 'name',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _code = None
-    _country_code = None
-    _id = None
-    _name = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.code = kwargs.get('code', None)
-        self.country_code = kwargs.get('country_code', None)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        
-
-    
-    @property
-    def code(self):
-        """Gets the code of this RestCountryState.
-
-            The state's code used within addresses.
-
-        :return: The code of this RestCountryState.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._code
+        excluded_fields: Set[str] = set([
+            "code",
+            "country_code",
+            "name",
+            "id",
+        ])
 
-    @code.setter
-    def code(self, code):
-        """Sets the code of this RestCountryState.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The state's code used within addresses.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RestCountryState from a dict"""
+        if obj is None:
+            return None
 
-        :param code: The code of this RestCountryState.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._code = code
-    
-    @property
-    def country_code(self):
-        """Gets the country_code of this RestCountryState.
+        _obj = cls.model_validate({
+            "code": obj.get("code"),
+            "countryCode": obj.get("countryCode"),
+            "name": obj.get("name"),
+            "id": obj.get("id")
+        })
+        return _obj
 
-            The two-letter code of the state's country (ISO 3166-1 alpha-2 format).
 
-        :return: The country_code of this RestCountryState.
-        :rtype: str
-        """
-        return self._country_code
-
-    @country_code.setter
-    def country_code(self, country_code):
-        """Sets the country_code of this RestCountryState.
-
-            The two-letter code of the state's country (ISO 3166-1 alpha-2 format).
-
-        :param country_code: The country_code of this RestCountryState.
-        :type: str
-        """
-
-        self._country_code = country_code
-    
-    @property
-    def id(self):
-        """Gets the id of this RestCountryState.
-
-            The state's code in ISO 3166-2 format.
-
-        :return: The id of this RestCountryState.
-        :rtype: str
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this RestCountryState.
-
-            The state's code in ISO 3166-2 format.
-
-        :param id: The id of this RestCountryState.
-        :type: str
-        """
-
-        self._id = id
-    
-    @property
-    def name(self):
-        """Gets the name of this RestCountryState.
-
-            The name of the state.
-
-        :return: The name of this RestCountryState.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this RestCountryState.
-
-            The name of the state.
-
-        :param name: The name of this RestCountryState.
-        :type: str
-        """
-
-        self._name = name
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RestCountryState, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RestCountryState):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

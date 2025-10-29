@@ -1,172 +1,112 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
+
+class MetricUsage(BaseModel):
+    """
+    The metric usage provides details about the consumption of a particular metric.
+    """
+    consumed_units: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of consumed units.", alias="consumedUnits")
+    metric_description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The description of the consumed unit's metric.", alias="metricDescription")
+    metric_name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name of the consumed units' metric.", alias="metricName")
+    metric_id: Optional[StrictInt] = Field(default=None, description="The ID of the consumed units' metric.", alias="metricId")
+    __properties: ClassVar[List[str]] = ["consumedUnits", "metricDescription", "metricName", "metricId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class MetricUsage:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'consumed_units': 'float',
-        'metric_description': 'dict(str, str)',
-        'metric_id': 'int',
-        'metric_name': 'dict(str, str)',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of MetricUsage from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'consumed_units': 'consumedUnits','metric_description': 'metricDescription','metric_id': 'metricId','metric_name': 'metricName',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _consumed_units = None
-    _metric_description = None
-    _metric_id = None
-    _metric_name = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.consumed_units = kwargs.get('consumed_units', None)
-        self.metric_description = kwargs.get('metric_description', None)
-        self.metric_id = kwargs.get('metric_id', None)
-        self.metric_name = kwargs.get('metric_name', None)
-        
-
-    
-    @property
-    def consumed_units(self):
-        """Gets the consumed_units of this MetricUsage.
-
-            The number of consumed units.
-
-        :return: The consumed_units of this MetricUsage.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._consumed_units
+        excluded_fields: Set[str] = set([
+            "consumed_units",
+            "metric_description",
+            "metric_name",
+            "metric_id",
+        ])
 
-    @consumed_units.setter
-    def consumed_units(self, consumed_units):
-        """Sets the consumed_units of this MetricUsage.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The number of consumed units.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of MetricUsage from a dict"""
+        if obj is None:
+            return None
 
-        :param consumed_units: The consumed_units of this MetricUsage.
-        :type: float
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._consumed_units = consumed_units
-    
-    @property
-    def metric_description(self):
-        """Gets the metric_description of this MetricUsage.
+        _obj = cls.model_validate({
+            "consumedUnits": obj.get("consumedUnits"),
+            "metricDescription": obj.get("metricDescription"),
+            "metricName": obj.get("metricName"),
+            "metricId": obj.get("metricId")
+        })
+        return _obj
 
-            The description of the consumed unit's metric.
 
-        :return: The metric_description of this MetricUsage.
-        :rtype: dict(str, str)
-        """
-        return self._metric_description
-
-    @metric_description.setter
-    def metric_description(self, metric_description):
-        """Sets the metric_description of this MetricUsage.
-
-            The description of the consumed unit's metric.
-
-        :param metric_description: The metric_description of this MetricUsage.
-        :type: dict(str, str)
-        """
-
-        self._metric_description = metric_description
-    
-    @property
-    def metric_id(self):
-        """Gets the metric_id of this MetricUsage.
-
-            The ID of the consumed units' metric.
-
-        :return: The metric_id of this MetricUsage.
-        :rtype: int
-        """
-        return self._metric_id
-
-    @metric_id.setter
-    def metric_id(self, metric_id):
-        """Sets the metric_id of this MetricUsage.
-
-            The ID of the consumed units' metric.
-
-        :param metric_id: The metric_id of this MetricUsage.
-        :type: int
-        """
-
-        self._metric_id = metric_id
-    
-    @property
-    def metric_name(self):
-        """Gets the metric_name of this MetricUsage.
-
-            The name of the consumed units' metric.
-
-        :return: The metric_name of this MetricUsage.
-        :rtype: dict(str, str)
-        """
-        return self._metric_name
-
-    @metric_name.setter
-    def metric_name(self, metric_name):
-        """Sets the metric_name of this MetricUsage.
-
-            The name of the consumed units' metric.
-
-        :param metric_name: The metric_name of this MetricUsage.
-        :type: dict(str, str)
-        """
-
-        self._metric_name = metric_name
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(MetricUsage, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, MetricUsage):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

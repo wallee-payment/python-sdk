@@ -1,562 +1,186 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.billing_cycle_model import BillingCycleModel
+from wallee.models.subscription import Subscription
+from wallee.models.subscription_component_configuration import SubscriptionComponentConfiguration
+from wallee.models.subscription_product_version import SubscriptionProductVersion
+from wallee.models.subscription_version_state import SubscriptionVersionState
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionVersion(BaseModel):
+    """
+    SubscriptionVersion
+    """
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    subscription: Optional[Subscription] = None
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the subscription version was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    terminated_on: Optional[datetime] = Field(default=None, description="The date and time when the subscription version was terminated.", alias="terminatedOn")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    termination_issued_on: Optional[datetime] = Field(default=None, description="The date and time when the termination of the subscription version was issued.", alias="terminationIssuedOn")
+    component_configurations: Optional[List[SubscriptionComponentConfiguration]] = Field(default=None, description="The configurations of the subscription's components.", alias="componentConfigurations")
+    product_version: Optional[SubscriptionProductVersion] = Field(default=None, alias="productVersion")
+    activated_on: Optional[datetime] = Field(default=None, description="The date and time when the subscription version was activated.", alias="activatedOn")
+    terminating_on: Optional[datetime] = Field(default=None, description="The date and time when the termination of the subscription version started.", alias="terminatingOn")
+    billing_currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.", alias="billingCurrency")
+    expected_last_period_end: Optional[datetime] = Field(default=None, description="The date and time when the last period is expected to end.", alias="expectedLastPeriodEnd")
+    billing_cycle_model: Optional[BillingCycleModel] = Field(default=None, alias="billingCycleModel")
+    planned_termination_date: Optional[datetime] = Field(default=None, description="The date and time when the termination of the subscription version is planned.", alias="plannedTerminationDate")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[SubscriptionVersionState] = None
+    failed_on: Optional[datetime] = Field(default=None, description="The date and time when the subscription version failed.", alias="failedOn")
+    __properties: ClassVar[List[str]] = ["plannedPurgeDate", "language", "subscription", "createdOn", "version", "terminatedOn", "linkedSpaceId", "terminationIssuedOn", "componentConfigurations", "productVersion", "activatedOn", "terminatingOn", "billingCurrency", "expectedLastPeriodEnd", "billingCycleModel", "plannedTerminationDate", "id", "state", "failedOn"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionVersion:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'activated_on': 'datetime',
-        'billing_currency': 'str',
-        'billing_cycle_model': 'BillingCycleModel',
-        'component_configurations': 'list[SubscriptionComponentConfiguration]',
-        'created_on': 'datetime',
-        'expected_last_period_end': 'datetime',
-        'failed_on': 'datetime',
-        'id': 'int',
-        'language': 'str',
-        'linked_space_id': 'int',
-        'planned_purge_date': 'datetime',
-        'planned_termination_date': 'datetime',
-        'product_version': 'SubscriptionProductVersion',
-        'state': 'SubscriptionVersionState',
-        'subscription': 'Subscription',
-        'terminated_on': 'datetime',
-        'terminating_on': 'datetime',
-        'termination_issued_on': 'datetime',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionVersion from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'activated_on': 'activatedOn','billing_currency': 'billingCurrency','billing_cycle_model': 'billingCycleModel','component_configurations': 'componentConfigurations','created_on': 'createdOn','expected_last_period_end': 'expectedLastPeriodEnd','failed_on': 'failedOn','id': 'id','language': 'language','linked_space_id': 'linkedSpaceId','planned_purge_date': 'plannedPurgeDate','planned_termination_date': 'plannedTerminationDate','product_version': 'productVersion','state': 'state','subscription': 'subscription','terminated_on': 'terminatedOn','terminating_on': 'terminatingOn','termination_issued_on': 'terminationIssuedOn','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _activated_on = None
-    _billing_currency = None
-    _billing_cycle_model = None
-    _component_configurations = None
-    _created_on = None
-    _expected_last_period_end = None
-    _failed_on = None
-    _id = None
-    _language = None
-    _linked_space_id = None
-    _planned_purge_date = None
-    _planned_termination_date = None
-    _product_version = None
-    _state = None
-    _subscription = None
-    _terminated_on = None
-    _terminating_on = None
-    _termination_issued_on = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.activated_on = kwargs.get('activated_on', None)
-        self.billing_currency = kwargs.get('billing_currency', None)
-        self.billing_cycle_model = kwargs.get('billing_cycle_model', None)
-        self.component_configurations = kwargs.get('component_configurations', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.expected_last_period_end = kwargs.get('expected_last_period_end', None)
-        self.failed_on = kwargs.get('failed_on', None)
-        self.id = kwargs.get('id', None)
-        self.language = kwargs.get('language', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.planned_termination_date = kwargs.get('planned_termination_date', None)
-        self.product_version = kwargs.get('product_version', None)
-        self.state = kwargs.get('state', None)
-        self.subscription = kwargs.get('subscription', None)
-        self.terminated_on = kwargs.get('terminated_on', None)
-        self.terminating_on = kwargs.get('terminating_on', None)
-        self.termination_issued_on = kwargs.get('termination_issued_on', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def activated_on(self):
-        """Gets the activated_on of this SubscriptionVersion.
-
-            The date and time when the subscription version was activated.
-
-        :return: The activated_on of this SubscriptionVersion.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._activated_on
+        excluded_fields: Set[str] = set([
+            "planned_purge_date",
+            "language",
+            "created_on",
+            "version",
+            "terminated_on",
+            "linked_space_id",
+            "termination_issued_on",
+            "component_configurations",
+            "activated_on",
+            "terminating_on",
+            "billing_currency",
+            "expected_last_period_end",
+            "planned_termination_date",
+            "id",
+            "failed_on",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of subscription
+        if self.subscription:
+            _dict['subscription'] = self.subscription.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in component_configurations (list)
+        _items = []
+        if self.component_configurations:
+            for _item_component_configurations in self.component_configurations:
+                if _item_component_configurations:
+                    _items.append(_item_component_configurations.to_dict())
+            _dict['componentConfigurations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of product_version
+        if self.product_version:
+            _dict['productVersion'] = self.product_version.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_cycle_model
+        if self.billing_cycle_model:
+            _dict['billingCycleModel'] = self.billing_cycle_model.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionVersion from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "language": obj.get("language"),
+            "subscription": Subscription.from_dict(obj["subscription"]) if obj.get("subscription") is not None else None,
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "terminatedOn": obj.get("terminatedOn"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "terminationIssuedOn": obj.get("terminationIssuedOn"),
+            "componentConfigurations": [SubscriptionComponentConfiguration.from_dict(_item) for _item in obj["componentConfigurations"]] if obj.get("componentConfigurations") is not None else None,
+            "productVersion": SubscriptionProductVersion.from_dict(obj["productVersion"]) if obj.get("productVersion") is not None else None,
+            "activatedOn": obj.get("activatedOn"),
+            "terminatingOn": obj.get("terminatingOn"),
+            "billingCurrency": obj.get("billingCurrency"),
+            "expectedLastPeriodEnd": obj.get("expectedLastPeriodEnd"),
+            "billingCycleModel": BillingCycleModel.from_dict(obj["billingCycleModel"]) if obj.get("billingCycleModel") is not None else None,
+            "plannedTerminationDate": obj.get("plannedTerminationDate"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "failedOn": obj.get("failedOn")
+        })
+        return _obj
 
-    @activated_on.setter
-    def activated_on(self, activated_on):
-        """Sets the activated_on of this SubscriptionVersion.
 
-            The date and time when the subscription version was activated.
-
-        :param activated_on: The activated_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._activated_on = activated_on
-    
-    @property
-    def billing_currency(self):
-        """Gets the billing_currency of this SubscriptionVersion.
-
-            The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
-
-        :return: The billing_currency of this SubscriptionVersion.
-        :rtype: str
-        """
-        return self._billing_currency
-
-    @billing_currency.setter
-    def billing_currency(self, billing_currency):
-        """Sets the billing_currency of this SubscriptionVersion.
-
-            The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
-
-        :param billing_currency: The billing_currency of this SubscriptionVersion.
-        :type: str
-        """
-
-        self._billing_currency = billing_currency
-    
-    @property
-    def billing_cycle_model(self):
-        """Gets the billing_cycle_model of this SubscriptionVersion.
-
-            
-
-        :return: The billing_cycle_model of this SubscriptionVersion.
-        :rtype: BillingCycleModel
-        """
-        return self._billing_cycle_model
-
-    @billing_cycle_model.setter
-    def billing_cycle_model(self, billing_cycle_model):
-        """Sets the billing_cycle_model of this SubscriptionVersion.
-
-            
-
-        :param billing_cycle_model: The billing_cycle_model of this SubscriptionVersion.
-        :type: BillingCycleModel
-        """
-
-        self._billing_cycle_model = billing_cycle_model
-    
-    @property
-    def component_configurations(self):
-        """Gets the component_configurations of this SubscriptionVersion.
-
-            The configurations of the subscription's components.
-
-        :return: The component_configurations of this SubscriptionVersion.
-        :rtype: list[SubscriptionComponentConfiguration]
-        """
-        return self._component_configurations
-
-    @component_configurations.setter
-    def component_configurations(self, component_configurations):
-        """Sets the component_configurations of this SubscriptionVersion.
-
-            The configurations of the subscription's components.
-
-        :param component_configurations: The component_configurations of this SubscriptionVersion.
-        :type: list[SubscriptionComponentConfiguration]
-        """
-
-        self._component_configurations = component_configurations
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this SubscriptionVersion.
-
-            The date and time when the subscription version was created.
-
-        :return: The created_on of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this SubscriptionVersion.
-
-            The date and time when the subscription version was created.
-
-        :param created_on: The created_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def expected_last_period_end(self):
-        """Gets the expected_last_period_end of this SubscriptionVersion.
-
-            The date and time when the last period is expected to end.
-
-        :return: The expected_last_period_end of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._expected_last_period_end
-
-    @expected_last_period_end.setter
-    def expected_last_period_end(self, expected_last_period_end):
-        """Sets the expected_last_period_end of this SubscriptionVersion.
-
-            The date and time when the last period is expected to end.
-
-        :param expected_last_period_end: The expected_last_period_end of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._expected_last_period_end = expected_last_period_end
-    
-    @property
-    def failed_on(self):
-        """Gets the failed_on of this SubscriptionVersion.
-
-            The date and time when the subscription version failed.
-
-        :return: The failed_on of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._failed_on
-
-    @failed_on.setter
-    def failed_on(self, failed_on):
-        """Sets the failed_on of this SubscriptionVersion.
-
-            The date and time when the subscription version failed.
-
-        :param failed_on: The failed_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._failed_on = failed_on
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionVersion.
-
-            A unique identifier for the object.
-
-        :return: The id of this SubscriptionVersion.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionVersion.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionVersion.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def language(self):
-        """Gets the language of this SubscriptionVersion.
-
-            The language that is linked to the object.
-
-        :return: The language of this SubscriptionVersion.
-        :rtype: str
-        """
-        return self._language
-
-    @language.setter
-    def language(self, language):
-        """Sets the language of this SubscriptionVersion.
-
-            The language that is linked to the object.
-
-        :param language: The language of this SubscriptionVersion.
-        :type: str
-        """
-
-        self._language = language
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionVersion.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionVersion.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionVersion.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionVersion.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this SubscriptionVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this SubscriptionVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def planned_termination_date(self):
-        """Gets the planned_termination_date of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version is planned.
-
-        :return: The planned_termination_date of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._planned_termination_date
-
-    @planned_termination_date.setter
-    def planned_termination_date(self, planned_termination_date):
-        """Sets the planned_termination_date of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version is planned.
-
-        :param planned_termination_date: The planned_termination_date of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._planned_termination_date = planned_termination_date
-    
-    @property
-    def product_version(self):
-        """Gets the product_version of this SubscriptionVersion.
-
-            The product version that is subscribed to.
-
-        :return: The product_version of this SubscriptionVersion.
-        :rtype: SubscriptionProductVersion
-        """
-        return self._product_version
-
-    @product_version.setter
-    def product_version(self, product_version):
-        """Sets the product_version of this SubscriptionVersion.
-
-            The product version that is subscribed to.
-
-        :param product_version: The product_version of this SubscriptionVersion.
-        :type: SubscriptionProductVersion
-        """
-
-        self._product_version = product_version
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionVersion.
-
-            The object's current state.
-
-        :return: The state of this SubscriptionVersion.
-        :rtype: SubscriptionVersionState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionVersion.
-
-            The object's current state.
-
-        :param state: The state of this SubscriptionVersion.
-        :type: SubscriptionVersionState
-        """
-
-        self._state = state
-    
-    @property
-    def subscription(self):
-        """Gets the subscription of this SubscriptionVersion.
-
-            The subscription that this version belongs to.
-
-        :return: The subscription of this SubscriptionVersion.
-        :rtype: Subscription
-        """
-        return self._subscription
-
-    @subscription.setter
-    def subscription(self, subscription):
-        """Sets the subscription of this SubscriptionVersion.
-
-            The subscription that this version belongs to.
-
-        :param subscription: The subscription of this SubscriptionVersion.
-        :type: Subscription
-        """
-
-        self._subscription = subscription
-    
-    @property
-    def terminated_on(self):
-        """Gets the terminated_on of this SubscriptionVersion.
-
-            The date and time when the subscription version was terminated.
-
-        :return: The terminated_on of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._terminated_on
-
-    @terminated_on.setter
-    def terminated_on(self, terminated_on):
-        """Sets the terminated_on of this SubscriptionVersion.
-
-            The date and time when the subscription version was terminated.
-
-        :param terminated_on: The terminated_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._terminated_on = terminated_on
-    
-    @property
-    def terminating_on(self):
-        """Gets the terminating_on of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version started.
-
-        :return: The terminating_on of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._terminating_on
-
-    @terminating_on.setter
-    def terminating_on(self, terminating_on):
-        """Sets the terminating_on of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version started.
-
-        :param terminating_on: The terminating_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._terminating_on = terminating_on
-    
-    @property
-    def termination_issued_on(self):
-        """Gets the termination_issued_on of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version was issued.
-
-        :return: The termination_issued_on of this SubscriptionVersion.
-        :rtype: datetime
-        """
-        return self._termination_issued_on
-
-    @termination_issued_on.setter
-    def termination_issued_on(self, termination_issued_on):
-        """Sets the termination_issued_on of this SubscriptionVersion.
-
-            The date and time when the termination of the subscription version was issued.
-
-        :param termination_issued_on: The termination_issued_on of this SubscriptionVersion.
-        :type: datetime
-        """
-
-        self._termination_issued_on = termination_issued_on
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionVersion.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionVersion.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionVersion, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionVersion):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

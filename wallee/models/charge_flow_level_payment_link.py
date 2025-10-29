@@ -1,172 +1,114 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.charge_flow_level import ChargeFlowLevel
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ChargeFlowLevelPaymentLink(BaseModel):
+    """
+    ChargeFlowLevelPaymentLink
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    charge_flow_level: Optional[ChargeFlowLevel] = Field(default=None, alias="chargeFlowLevel")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    payment_link: Optional[StrictStr] = Field(default=None, description="The URL provided to the customer for entering their payment details and completing the transaction.", alias="paymentLink")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "chargeFlowLevel", "id", "paymentLink"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ChargeFlowLevelPaymentLink:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'charge_flow_level': 'ChargeFlowLevel',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'payment_link': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ChargeFlowLevelPaymentLink from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'charge_flow_level': 'chargeFlowLevel','id': 'id','linked_space_id': 'linkedSpaceId','payment_link': 'paymentLink',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _charge_flow_level = None
-    _id = None
-    _linked_space_id = None
-    _payment_link = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.charge_flow_level = kwargs.get('charge_flow_level', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.payment_link = kwargs.get('payment_link', None)
-        
-
-    
-    @property
-    def charge_flow_level(self):
-        """Gets the charge_flow_level of this ChargeFlowLevelPaymentLink.
-
-            The charge flow level that the payment link belongs to.
-
-        :return: The charge_flow_level of this ChargeFlowLevelPaymentLink.
-        :rtype: ChargeFlowLevel
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._charge_flow_level
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "id",
+            "payment_link",
+        ])
 
-    @charge_flow_level.setter
-    def charge_flow_level(self, charge_flow_level):
-        """Sets the charge_flow_level of this ChargeFlowLevelPaymentLink.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of charge_flow_level
+        if self.charge_flow_level:
+            _dict['chargeFlowLevel'] = self.charge_flow_level.to_dict()
+        return _dict
 
-            The charge flow level that the payment link belongs to.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ChargeFlowLevelPaymentLink from a dict"""
+        if obj is None:
+            return None
 
-        :param charge_flow_level: The charge_flow_level of this ChargeFlowLevelPaymentLink.
-        :type: ChargeFlowLevel
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._charge_flow_level = charge_flow_level
-    
-    @property
-    def id(self):
-        """Gets the id of this ChargeFlowLevelPaymentLink.
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "chargeFlowLevel": ChargeFlowLevel.from_dict(obj["chargeFlowLevel"]) if obj.get("chargeFlowLevel") is not None else None,
+            "id": obj.get("id"),
+            "paymentLink": obj.get("paymentLink")
+        })
+        return _obj
 
-            A unique identifier for the object.
 
-        :return: The id of this ChargeFlowLevelPaymentLink.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ChargeFlowLevelPaymentLink.
-
-            A unique identifier for the object.
-
-        :param id: The id of this ChargeFlowLevelPaymentLink.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this ChargeFlowLevelPaymentLink.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this ChargeFlowLevelPaymentLink.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this ChargeFlowLevelPaymentLink.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this ChargeFlowLevelPaymentLink.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def payment_link(self):
-        """Gets the payment_link of this ChargeFlowLevelPaymentLink.
-
-            The URL provided to the customer for entering their payment details and completing the transaction.
-
-        :return: The payment_link of this ChargeFlowLevelPaymentLink.
-        :rtype: str
-        """
-        return self._payment_link
-
-    @payment_link.setter
-    def payment_link(self, payment_link):
-        """Sets the payment_link of this ChargeFlowLevelPaymentLink.
-
-            The URL provided to the customer for entering their payment details and completing the transaction.
-
-        :param payment_link: The payment_link of this ChargeFlowLevelPaymentLink.
-        :type: str
-        """
-
-        self._payment_link = payment_link
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ChargeFlowLevelPaymentLink, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ChargeFlowLevelPaymentLink):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

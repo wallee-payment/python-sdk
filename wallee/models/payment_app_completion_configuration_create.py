@@ -1,198 +1,106 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentAppCompletionConfigurationCreate(BaseModel):
+    """
+    PaymentAppCompletionConfigurationCreate
+    """
+    multiple_completions_supported: Optional[StrictBool] = Field(default=None, description="Whether the payment connector can process multiple completions for a single transaction.", alias="multipleCompletionsSupported")
+    maximal_completion_delay_in_days: Optional[StrictInt] = Field(default=None, description="The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.", alias="maximalCompletionDelayInDays")
+    completion_endpoint: Optional[StrictStr] = Field(default=None, description="The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.", alias="completionEndpoint")
+    completion_timeout_in_minutes: Optional[StrictInt] = Field(default=None, description="The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.", alias="completionTimeoutInMinutes")
+    void_endpoint: Optional[StrictStr] = Field(default=None, description="The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.", alias="voidEndpoint")
+    __properties: ClassVar[List[str]] = ["multipleCompletionsSupported", "maximalCompletionDelayInDays", "completionEndpoint", "completionTimeoutInMinutes", "voidEndpoint"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentAppCompletionConfigurationCreate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'completion_endpoint': 'str',
-        'completion_timeout_in_minutes': 'int',
-        'maximal_completion_delay_in_days': 'int',
-        'multiple_completions_supported': 'bool',
-        'void_endpoint': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentAppCompletionConfigurationCreate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'completion_endpoint': 'completionEndpoint','completion_timeout_in_minutes': 'completionTimeoutInMinutes','maximal_completion_delay_in_days': 'maximalCompletionDelayInDays','multiple_completions_supported': 'multipleCompletionsSupported','void_endpoint': 'voidEndpoint',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _completion_endpoint = None
-    _completion_timeout_in_minutes = None
-    _maximal_completion_delay_in_days = None
-    _multiple_completions_supported = None
-    _void_endpoint = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.completion_endpoint = kwargs.get('completion_endpoint', None)
-        self.completion_timeout_in_minutes = kwargs.get('completion_timeout_in_minutes', None)
-        self.maximal_completion_delay_in_days = kwargs.get('maximal_completion_delay_in_days', None)
-        self.multiple_completions_supported = kwargs.get('multiple_completions_supported', None)
-        self.void_endpoint = kwargs.get('void_endpoint', None)
-        
-
-    
-    @property
-    def completion_endpoint(self):
-        """Gets the completion_endpoint of this PaymentAppCompletionConfigurationCreate.
-
-            The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.
-
-        :return: The completion_endpoint of this PaymentAppCompletionConfigurationCreate.
-        :rtype: str
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._completion_endpoint
+        excluded_fields: Set[str] = set([
+        ])
 
-    @completion_endpoint.setter
-    def completion_endpoint(self, completion_endpoint):
-        """Sets the completion_endpoint of this PaymentAppCompletionConfigurationCreate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentAppCompletionConfigurationCreate from a dict"""
+        if obj is None:
+            return None
 
-        :param completion_endpoint: The completion_endpoint of this PaymentAppCompletionConfigurationCreate.
-        :type: str
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._completion_endpoint = completion_endpoint
-    
-    @property
-    def completion_timeout_in_minutes(self):
-        """Gets the completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
+        _obj = cls.model_validate({
+            "multipleCompletionsSupported": obj.get("multipleCompletionsSupported"),
+            "maximalCompletionDelayInDays": obj.get("maximalCompletionDelayInDays"),
+            "completionEndpoint": obj.get("completionEndpoint"),
+            "completionTimeoutInMinutes": obj.get("completionTimeoutInMinutes"),
+            "voidEndpoint": obj.get("voidEndpoint")
+        })
+        return _obj
 
-            The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.
 
-        :return: The completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
-        :rtype: int
-        """
-        return self._completion_timeout_in_minutes
-
-    @completion_timeout_in_minutes.setter
-    def completion_timeout_in_minutes(self, completion_timeout_in_minutes):
-        """Sets the completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
-
-            The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.
-
-        :param completion_timeout_in_minutes: The completion_timeout_in_minutes of this PaymentAppCompletionConfigurationCreate.
-        :type: int
-        """
-
-        self._completion_timeout_in_minutes = completion_timeout_in_minutes
-    
-    @property
-    def maximal_completion_delay_in_days(self):
-        """Gets the maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
-
-            The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.
-
-        :return: The maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
-        :rtype: int
-        """
-        return self._maximal_completion_delay_in_days
-
-    @maximal_completion_delay_in_days.setter
-    def maximal_completion_delay_in_days(self, maximal_completion_delay_in_days):
-        """Sets the maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
-
-            The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.
-
-        :param maximal_completion_delay_in_days: The maximal_completion_delay_in_days of this PaymentAppCompletionConfigurationCreate.
-        :type: int
-        """
-
-        self._maximal_completion_delay_in_days = maximal_completion_delay_in_days
-    
-    @property
-    def multiple_completions_supported(self):
-        """Gets the multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
-
-            Whether the payment connector can process multiple completions for a single transaction.
-
-        :return: The multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
-        :rtype: bool
-        """
-        return self._multiple_completions_supported
-
-    @multiple_completions_supported.setter
-    def multiple_completions_supported(self, multiple_completions_supported):
-        """Sets the multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
-
-            Whether the payment connector can process multiple completions for a single transaction.
-
-        :param multiple_completions_supported: The multiple_completions_supported of this PaymentAppCompletionConfigurationCreate.
-        :type: bool
-        """
-
-        self._multiple_completions_supported = multiple_completions_supported
-    
-    @property
-    def void_endpoint(self):
-        """Gets the void_endpoint of this PaymentAppCompletionConfigurationCreate.
-
-            The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.
-
-        :return: The void_endpoint of this PaymentAppCompletionConfigurationCreate.
-        :rtype: str
-        """
-        return self._void_endpoint
-
-    @void_endpoint.setter
-    def void_endpoint(self, void_endpoint):
-        """Sets the void_endpoint of this PaymentAppCompletionConfigurationCreate.
-
-            The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.
-
-        :param void_endpoint: The void_endpoint of this PaymentAppCompletionConfigurationCreate.
-        :type: str
-        """
-
-        self._void_endpoint = void_endpoint
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentAppCompletionConfigurationCreate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentAppCompletionConfigurationCreate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,224 +1,123 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from wallee.models.tax import Tax
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentAdjustment(BaseModel):
+    """
+    PaymentAdjustment
+    """
+    amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The adjustment's amount, excluding taxes.", alias="amountExcludingTax")
+    rate_in_percentage: Optional[Union[Annotated[float, Field(le=100, strict=True)], Annotated[int, Field(le=100, strict=True)]]] = Field(default=None, description="The percentage rate used to calculate the adjustment amount.", alias="rateInPercentage")
+    tax: Optional[Tax] = None
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    amount_including_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The adjustment's amount, including taxes.", alias="amountIncludingTax")
+    type: Optional[StrictInt] = Field(default=None, description="The type of the adjustment.")
+    __properties: ClassVar[List[str]] = ["amountExcludingTax", "rateInPercentage", "tax", "id", "amountIncludingTax", "type"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentAdjustment:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount_excluding_tax': 'float',
-        'amount_including_tax': 'float',
-        'id': 'int',
-        'rate_in_percentage': 'float',
-        'tax': 'Tax',
-        'type': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentAdjustment from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount_excluding_tax': 'amountExcludingTax','amount_including_tax': 'amountIncludingTax','id': 'id','rate_in_percentage': 'rateInPercentage','tax': 'tax','type': 'type',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount_excluding_tax = None
-    _amount_including_tax = None
-    _id = None
-    _rate_in_percentage = None
-    _tax = None
-    _type = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount_excluding_tax = kwargs.get('amount_excluding_tax', None)
-        self.amount_including_tax = kwargs.get('amount_including_tax', None)
-        self.id = kwargs.get('id', None)
-        self.rate_in_percentage = kwargs.get('rate_in_percentage', None)
-        self.tax = kwargs.get('tax', None)
-        self.type = kwargs.get('type', None)
-        
-
-    
-    @property
-    def amount_excluding_tax(self):
-        """Gets the amount_excluding_tax of this PaymentAdjustment.
-
-            The adjustment's amount, excluding taxes.
-
-        :return: The amount_excluding_tax of this PaymentAdjustment.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._amount_excluding_tax
+        excluded_fields: Set[str] = set([
+            "amount_excluding_tax",
+            "rate_in_percentage",
+            "id",
+            "amount_including_tax",
+            "type",
+        ])
 
-    @amount_excluding_tax.setter
-    def amount_excluding_tax(self, amount_excluding_tax):
-        """Sets the amount_excluding_tax of this PaymentAdjustment.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of tax
+        if self.tax:
+            _dict['tax'] = self.tax.to_dict()
+        return _dict
 
-            The adjustment's amount, excluding taxes.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentAdjustment from a dict"""
+        if obj is None:
+            return None
 
-        :param amount_excluding_tax: The amount_excluding_tax of this PaymentAdjustment.
-        :type: float
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._amount_excluding_tax = amount_excluding_tax
-    
-    @property
-    def amount_including_tax(self):
-        """Gets the amount_including_tax of this PaymentAdjustment.
+        _obj = cls.model_validate({
+            "amountExcludingTax": obj.get("amountExcludingTax"),
+            "rateInPercentage": obj.get("rateInPercentage"),
+            "tax": Tax.from_dict(obj["tax"]) if obj.get("tax") is not None else None,
+            "id": obj.get("id"),
+            "amountIncludingTax": obj.get("amountIncludingTax"),
+            "type": obj.get("type")
+        })
+        return _obj
 
-            The adjustment's amount, including taxes.
 
-        :return: The amount_including_tax of this PaymentAdjustment.
-        :rtype: float
-        """
-        return self._amount_including_tax
-
-    @amount_including_tax.setter
-    def amount_including_tax(self, amount_including_tax):
-        """Sets the amount_including_tax of this PaymentAdjustment.
-
-            The adjustment's amount, including taxes.
-
-        :param amount_including_tax: The amount_including_tax of this PaymentAdjustment.
-        :type: float
-        """
-
-        self._amount_including_tax = amount_including_tax
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentAdjustment.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentAdjustment.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentAdjustment.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentAdjustment.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def rate_in_percentage(self):
-        """Gets the rate_in_percentage of this PaymentAdjustment.
-
-            The percentage rate used to calculate the adjustment amount.
-
-        :return: The rate_in_percentage of this PaymentAdjustment.
-        :rtype: float
-        """
-        return self._rate_in_percentage
-
-    @rate_in_percentage.setter
-    def rate_in_percentage(self, rate_in_percentage):
-        """Sets the rate_in_percentage of this PaymentAdjustment.
-
-            The percentage rate used to calculate the adjustment amount.
-
-        :param rate_in_percentage: The rate_in_percentage of this PaymentAdjustment.
-        :type: float
-        """
-
-        self._rate_in_percentage = rate_in_percentage
-    
-    @property
-    def tax(self):
-        """Gets the tax of this PaymentAdjustment.
-
-            The tax applied to the adjustment.
-
-        :return: The tax of this PaymentAdjustment.
-        :rtype: Tax
-        """
-        return self._tax
-
-    @tax.setter
-    def tax(self, tax):
-        """Sets the tax of this PaymentAdjustment.
-
-            The tax applied to the adjustment.
-
-        :param tax: The tax of this PaymentAdjustment.
-        :type: Tax
-        """
-
-        self._tax = tax
-    
-    @property
-    def type(self):
-        """Gets the type of this PaymentAdjustment.
-
-            The type of the adjustment.
-
-        :return: The type of this PaymentAdjustment.
-        :rtype: int
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this PaymentAdjustment.
-
-            The type of the adjustment.
-
-        :param type: The type of this PaymentAdjustment.
-        :type: int
-        """
-
-        self._type = type
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentAdjustment, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentAdjustment):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

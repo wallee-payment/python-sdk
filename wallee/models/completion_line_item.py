@@ -1,148 +1,109 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class CompletionLineItem(BaseModel):
+    """
+    CompletionLineItem
+    """
+    amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total amount of the line item to be captured, including taxes.")
+    quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of items to be captured.")
+    unique_id: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The unique identifier of the line item within the set of line items.", alias="uniqueId")
+    __properties: ClassVar[List[str]] = ["amount", "quantity", "uniqueId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class CompletionLineItem:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'amount': 'float',
-        'quantity': 'float',
-        'unique_id': 'str',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of CompletionLineItem from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'amount': 'amount','quantity': 'quantity','unique_id': 'uniqueId',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _amount = None
-    _quantity = None
-    _unique_id = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.amount = kwargs.get('amount', None)
-        self.quantity = kwargs.get('quantity', None)
-        self.unique_id = kwargs.get('unique_id', None)
-        
-
-    
-    @property
-    def amount(self):
-        """Gets the amount of this CompletionLineItem.
-
-            The total amount of the line item to be captured, including taxes.
-
-        :return: The amount of this CompletionLineItem.
-        :rtype: float
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._amount
+        excluded_fields: Set[str] = set([
+            "amount",
+            "quantity",
+            "unique_id",
+        ])
 
-    @amount.setter
-    def amount(self, amount):
-        """Sets the amount of this CompletionLineItem.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The total amount of the line item to be captured, including taxes.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of CompletionLineItem from a dict"""
+        if obj is None:
+            return None
 
-        :param amount: The amount of this CompletionLineItem.
-        :type: float
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._amount = amount
-    
-    @property
-    def quantity(self):
-        """Gets the quantity of this CompletionLineItem.
+        _obj = cls.model_validate({
+            "amount": obj.get("amount"),
+            "quantity": obj.get("quantity"),
+            "uniqueId": obj.get("uniqueId")
+        })
+        return _obj
 
-            The number of items to be captured.
 
-        :return: The quantity of this CompletionLineItem.
-        :rtype: float
-        """
-        return self._quantity
-
-    @quantity.setter
-    def quantity(self, quantity):
-        """Sets the quantity of this CompletionLineItem.
-
-            The number of items to be captured.
-
-        :param quantity: The quantity of this CompletionLineItem.
-        :type: float
-        """
-
-        self._quantity = quantity
-    
-    @property
-    def unique_id(self):
-        """Gets the unique_id of this CompletionLineItem.
-
-            The unique identifier of the line item within the set of line items.
-
-        :return: The unique_id of this CompletionLineItem.
-        :rtype: str
-        """
-        return self._unique_id
-
-    @unique_id.setter
-    def unique_id(self, unique_id):
-        """Sets the unique_id of this CompletionLineItem.
-
-            The unique identifier of the line item within the set of line items.
-
-        :param unique_id: The unique_id of this CompletionLineItem.
-        :type: str
-        """
-        if unique_id is not None and len(unique_id) > 200:
-            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `200`")
-
-        self._unique_id = unique_id
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(CompletionLineItem, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, CompletionLineItem):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

@@ -1,434 +1,159 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.payment_terminal_configuration_version import PaymentTerminalConfigurationVersion
+from wallee.models.payment_terminal_location_version import PaymentTerminalLocationVersion
+from wallee.models.payment_terminal_state import PaymentTerminalState
+from wallee.models.payment_terminal_type import PaymentTerminalType
+from typing import Optional, Set
+from typing_extensions import Self
+
+class PaymentTerminal(BaseModel):
+    """
+    PaymentTerminal
+    """
+    identifier: Optional[StrictStr] = Field(default=None, description="The unique identifier of the terminal, that is displayed on the device.")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
+    type: Optional[PaymentTerminalType] = None
+    device_name: Optional[StrictStr] = Field(default=None, description="The name of the device that is currently linked to the payment terminal.", alias="deviceName")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    device_serial_number: Optional[StrictStr] = Field(default=None, description="The serial number of the device that is currently linked to the payment terminal.", alias="deviceSerialNumber")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    configuration_version: Optional[PaymentTerminalConfigurationVersion] = Field(default=None, alias="configurationVersion")
+    location_version: Optional[PaymentTerminalLocationVersion] = Field(default=None, alias="locationVersion")
+    default_currency: Optional[StrictStr] = Field(default=None, description="The default currency of the terminal.", alias="defaultCurrency")
+    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[PaymentTerminalState] = None
+    __properties: ClassVar[List[str]] = ["identifier", "plannedPurgeDate", "externalId", "type", "deviceName", "version", "deviceSerialNumber", "linkedSpaceId", "configurationVersion", "locationVersion", "defaultCurrency", "name", "id", "state"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class PaymentTerminal:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'configuration_version': 'PaymentTerminalConfigurationVersion',
-        'default_currency': 'str',
-        'device_name': 'str',
-        'device_serial_number': 'str',
-        'external_id': 'str',
-        'id': 'int',
-        'identifier': 'str',
-        'linked_space_id': 'int',
-        'location_version': 'PaymentTerminalLocationVersion',
-        'name': 'str',
-        'planned_purge_date': 'datetime',
-        'state': 'PaymentTerminalState',
-        'type': 'PaymentTerminalType',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PaymentTerminal from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'configuration_version': 'configurationVersion','default_currency': 'defaultCurrency','device_name': 'deviceName','device_serial_number': 'deviceSerialNumber','external_id': 'externalId','id': 'id','identifier': 'identifier','linked_space_id': 'linkedSpaceId','location_version': 'locationVersion','name': 'name','planned_purge_date': 'plannedPurgeDate','state': 'state','type': 'type','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _configuration_version = None
-    _default_currency = None
-    _device_name = None
-    _device_serial_number = None
-    _external_id = None
-    _id = None
-    _identifier = None
-    _linked_space_id = None
-    _location_version = None
-    _name = None
-    _planned_purge_date = None
-    _state = None
-    _type = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.configuration_version = kwargs.get('configuration_version', None)
-        self.default_currency = kwargs.get('default_currency', None)
-        self.device_name = kwargs.get('device_name', None)
-        self.device_serial_number = kwargs.get('device_serial_number', None)
-        self.external_id = kwargs.get('external_id', None)
-        self.id = kwargs.get('id', None)
-        self.identifier = kwargs.get('identifier', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.location_version = kwargs.get('location_version', None)
-        self.name = kwargs.get('name', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.state = kwargs.get('state', None)
-        self.type = kwargs.get('type', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def configuration_version(self):
-        """Gets the configuration_version of this PaymentTerminal.
-
-            The configuration that is assigned to the terminal and determines how it works.
-
-        :return: The configuration_version of this PaymentTerminal.
-        :rtype: PaymentTerminalConfigurationVersion
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._configuration_version
+        excluded_fields: Set[str] = set([
+            "identifier",
+            "planned_purge_date",
+            "external_id",
+            "device_name",
+            "version",
+            "device_serial_number",
+            "linked_space_id",
+            "default_currency",
+            "name",
+            "id",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of type
+        if self.type:
+            _dict['type'] = self.type.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of configuration_version
+        if self.configuration_version:
+            _dict['configurationVersion'] = self.configuration_version.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of location_version
+        if self.location_version:
+            _dict['locationVersion'] = self.location_version.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PaymentTerminal from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "identifier": obj.get("identifier"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "externalId": obj.get("externalId"),
+            "type": PaymentTerminalType.from_dict(obj["type"]) if obj.get("type") is not None else None,
+            "deviceName": obj.get("deviceName"),
+            "version": obj.get("version"),
+            "deviceSerialNumber": obj.get("deviceSerialNumber"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "configurationVersion": PaymentTerminalConfigurationVersion.from_dict(obj["configurationVersion"]) if obj.get("configurationVersion") is not None else None,
+            "locationVersion": PaymentTerminalLocationVersion.from_dict(obj["locationVersion"]) if obj.get("locationVersion") is not None else None,
+            "defaultCurrency": obj.get("defaultCurrency"),
+            "name": obj.get("name"),
+            "id": obj.get("id"),
+            "state": obj.get("state")
+        })
+        return _obj
 
-    @configuration_version.setter
-    def configuration_version(self, configuration_version):
-        """Sets the configuration_version of this PaymentTerminal.
 
-            The configuration that is assigned to the terminal and determines how it works.
-
-        :param configuration_version: The configuration_version of this PaymentTerminal.
-        :type: PaymentTerminalConfigurationVersion
-        """
-
-        self._configuration_version = configuration_version
-    
-    @property
-    def default_currency(self):
-        """Gets the default_currency of this PaymentTerminal.
-
-            The default currency of the terminal.
-
-        :return: The default_currency of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._default_currency
-
-    @default_currency.setter
-    def default_currency(self, default_currency):
-        """Sets the default_currency of this PaymentTerminal.
-
-            The default currency of the terminal.
-
-        :param default_currency: The default_currency of this PaymentTerminal.
-        :type: str
-        """
-
-        self._default_currency = default_currency
-    
-    @property
-    def device_name(self):
-        """Gets the device_name of this PaymentTerminal.
-
-            The name of the device that is currently linked to the payment terminal.
-
-        :return: The device_name of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._device_name
-
-    @device_name.setter
-    def device_name(self, device_name):
-        """Sets the device_name of this PaymentTerminal.
-
-            The name of the device that is currently linked to the payment terminal.
-
-        :param device_name: The device_name of this PaymentTerminal.
-        :type: str
-        """
-
-        self._device_name = device_name
-    
-    @property
-    def device_serial_number(self):
-        """Gets the device_serial_number of this PaymentTerminal.
-
-            The serial number of the device that is currently linked to the payment terminal.
-
-        :return: The device_serial_number of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._device_serial_number
-
-    @device_serial_number.setter
-    def device_serial_number(self, device_serial_number):
-        """Sets the device_serial_number of this PaymentTerminal.
-
-            The serial number of the device that is currently linked to the payment terminal.
-
-        :param device_serial_number: The device_serial_number of this PaymentTerminal.
-        :type: str
-        """
-
-        self._device_serial_number = device_serial_number
-    
-    @property
-    def external_id(self):
-        """Gets the external_id of this PaymentTerminal.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :return: The external_id of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._external_id
-
-    @external_id.setter
-    def external_id(self, external_id):
-        """Sets the external_id of this PaymentTerminal.
-
-            A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-
-        :param external_id: The external_id of this PaymentTerminal.
-        :type: str
-        """
-
-        self._external_id = external_id
-    
-    @property
-    def id(self):
-        """Gets the id of this PaymentTerminal.
-
-            A unique identifier for the object.
-
-        :return: The id of this PaymentTerminal.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this PaymentTerminal.
-
-            A unique identifier for the object.
-
-        :param id: The id of this PaymentTerminal.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def identifier(self):
-        """Gets the identifier of this PaymentTerminal.
-
-            The unique identifier of the terminal, that is displayed on the device.
-
-        :return: The identifier of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._identifier
-
-    @identifier.setter
-    def identifier(self, identifier):
-        """Sets the identifier of this PaymentTerminal.
-
-            The unique identifier of the terminal, that is displayed on the device.
-
-        :param identifier: The identifier of this PaymentTerminal.
-        :type: str
-        """
-
-        self._identifier = identifier
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this PaymentTerminal.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this PaymentTerminal.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this PaymentTerminal.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this PaymentTerminal.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def location_version(self):
-        """Gets the location_version of this PaymentTerminal.
-
-            The physical location where the terminal is used.
-
-        :return: The location_version of this PaymentTerminal.
-        :rtype: PaymentTerminalLocationVersion
-        """
-        return self._location_version
-
-    @location_version.setter
-    def location_version(self, location_version):
-        """Sets the location_version of this PaymentTerminal.
-
-            The physical location where the terminal is used.
-
-        :param location_version: The location_version of this PaymentTerminal.
-        :type: PaymentTerminalLocationVersion
-        """
-
-        self._location_version = location_version
-    
-    @property
-    def name(self):
-        """Gets the name of this PaymentTerminal.
-
-            The name used to identify the payment terminal.
-
-        :return: The name of this PaymentTerminal.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this PaymentTerminal.
-
-            The name used to identify the payment terminal.
-
-        :param name: The name of this PaymentTerminal.
-        :type: str
-        """
-        if name is not None and len(name) > 100:
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `100`")
-
-        self._name = name
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this PaymentTerminal.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this PaymentTerminal.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this PaymentTerminal.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this PaymentTerminal.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def state(self):
-        """Gets the state of this PaymentTerminal.
-
-            The object's current state.
-
-        :return: The state of this PaymentTerminal.
-        :rtype: PaymentTerminalState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this PaymentTerminal.
-
-            The object's current state.
-
-        :param state: The state of this PaymentTerminal.
-        :type: PaymentTerminalState
-        """
-
-        self._state = state
-    
-    @property
-    def type(self):
-        """Gets the type of this PaymentTerminal.
-
-            The type of the payment terminal.
-
-        :return: The type of this PaymentTerminal.
-        :rtype: PaymentTerminalType
-        """
-        return self._type
-
-    @type.setter
-    def type(self, type):
-        """Sets the type of this PaymentTerminal.
-
-            The type of the payment terminal.
-
-        :param type: The type of this PaymentTerminal.
-        :type: PaymentTerminalType
-        """
-
-        self._type = type
-    
-    @property
-    def version(self):
-        """Gets the version of this PaymentTerminal.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this PaymentTerminal.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this PaymentTerminal.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this PaymentTerminal.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(PaymentTerminal, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, PaymentTerminal):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

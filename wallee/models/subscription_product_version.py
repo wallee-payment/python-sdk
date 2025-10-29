@@ -1,642 +1,188 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.billing_cycle_model import BillingCycleModel
+from wallee.models.subscription_product import SubscriptionProduct
+from wallee.models.subscription_product_version_state import SubscriptionProductVersionState
+from wallee.models.tax_calculation import TaxCalculation
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionProductVersion(BaseModel):
+    """
+    SubscriptionProductVersion
+    """
+    retiring_finished_on: Optional[datetime] = Field(default=None, description="The date and time when the product version was retired.", alias="retiringFinishedOn")
+    enabled_currencies: Optional[List[StrictStr]] = Field(default=None, description="The three-letter codes (ISO 4217 format) of the currencies that the product version supports.", alias="enabledCurrencies")
+    product: Optional[SubscriptionProduct] = None
+    retiring_started_on: Optional[datetime] = Field(default=None, description="The date and time when the product version's retirement was started.", alias="retiringStartedOn")
+    tax_calculation: Optional[TaxCalculation] = Field(default=None, alias="taxCalculation")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the product version was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    reference: Optional[Annotated[str, Field(strict=True, max_length=125)]] = Field(default=None, description="The reference used to identify the product version.")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    activated_on: Optional[datetime] = Field(default=None, description="The date and time when the product version was activated.", alias="activatedOn")
+    billing_cycle: Optional[StrictStr] = Field(default=None, description="The recurring period of time, typically monthly or annually, for which a subscriber is charged.", alias="billingCycle")
+    default_currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the product version's default currency.", alias="defaultCurrency")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the product that is displayed to the customer.")
+    minimal_number_of_periods: Optional[StrictInt] = Field(default=None, description="The minimum number of periods the subscription will run before it can be terminated.", alias="minimalNumberOfPeriods")
+    obsoleted_on: Optional[datetime] = Field(default=None, description="The date and time when the product version was made obsolete.", alias="obsoletedOn")
+    billing_cycle_model: Optional[BillingCycleModel] = Field(default=None, alias="billingCycleModel")
+    comment: Optional[StrictStr] = Field(default=None, description="A comment that describes the product version and why it was created. It is not disclosed to the subscriber.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    increment_number: Optional[StrictInt] = Field(default=None, description="Whenever a new version of a product is created, the number is increased and assigned.", alias="incrementNumber")
+    state: Optional[SubscriptionProductVersionState] = None
+    number_of_notice_periods: Optional[StrictInt] = Field(default=None, description="The number of periods the subscription will keep running after its termination was requested.", alias="numberOfNoticePeriods")
+    __properties: ClassVar[List[str]] = ["retiringFinishedOn", "enabledCurrencies", "product", "retiringStartedOn", "taxCalculation", "plannedPurgeDate", "createdOn", "version", "reference", "linkedSpaceId", "activatedOn", "billingCycle", "defaultCurrency", "name", "minimalNumberOfPeriods", "obsoletedOn", "billingCycleModel", "comment", "id", "incrementNumber", "state", "numberOfNoticePeriods"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionProductVersion:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'activated_on': 'datetime',
-        'billing_cycle': 'str',
-        'billing_cycle_model': 'BillingCycleModel',
-        'comment': 'str',
-        'created_on': 'datetime',
-        'default_currency': 'str',
-        'enabled_currencies': 'list[str]',
-        'id': 'int',
-        'increment_number': 'int',
-        'linked_space_id': 'int',
-        'minimal_number_of_periods': 'int',
-        'name': 'dict(str, str)',
-        'number_of_notice_periods': 'int',
-        'obsoleted_on': 'datetime',
-        'planned_purge_date': 'datetime',
-        'product': 'SubscriptionProduct',
-        'reference': 'str',
-        'retiring_finished_on': 'datetime',
-        'retiring_started_on': 'datetime',
-        'state': 'SubscriptionProductVersionState',
-        'tax_calculation': 'TaxCalculation',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersion from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'activated_on': 'activatedOn','billing_cycle': 'billingCycle','billing_cycle_model': 'billingCycleModel','comment': 'comment','created_on': 'createdOn','default_currency': 'defaultCurrency','enabled_currencies': 'enabledCurrencies','id': 'id','increment_number': 'incrementNumber','linked_space_id': 'linkedSpaceId','minimal_number_of_periods': 'minimalNumberOfPeriods','name': 'name','number_of_notice_periods': 'numberOfNoticePeriods','obsoleted_on': 'obsoletedOn','planned_purge_date': 'plannedPurgeDate','product': 'product','reference': 'reference','retiring_finished_on': 'retiringFinishedOn','retiring_started_on': 'retiringStartedOn','state': 'state','tax_calculation': 'taxCalculation','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _activated_on = None
-    _billing_cycle = None
-    _billing_cycle_model = None
-    _comment = None
-    _created_on = None
-    _default_currency = None
-    _enabled_currencies = None
-    _id = None
-    _increment_number = None
-    _linked_space_id = None
-    _minimal_number_of_periods = None
-    _name = None
-    _number_of_notice_periods = None
-    _obsoleted_on = None
-    _planned_purge_date = None
-    _product = None
-    _reference = None
-    _retiring_finished_on = None
-    _retiring_started_on = None
-    _state = None
-    _tax_calculation = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.activated_on = kwargs.get('activated_on', None)
-        self.billing_cycle = kwargs.get('billing_cycle', None)
-        self.billing_cycle_model = kwargs.get('billing_cycle_model', None)
-        self.comment = kwargs.get('comment', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.default_currency = kwargs.get('default_currency', None)
-        self.enabled_currencies = kwargs.get('enabled_currencies', None)
-        self.id = kwargs.get('id', None)
-        self.increment_number = kwargs.get('increment_number', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.minimal_number_of_periods = kwargs.get('minimal_number_of_periods', None)
-        self.name = kwargs.get('name', None)
-        self.number_of_notice_periods = kwargs.get('number_of_notice_periods', None)
-        self.obsoleted_on = kwargs.get('obsoleted_on', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.product = kwargs.get('product', None)
-        self.reference = kwargs.get('reference', None)
-        self.retiring_finished_on = kwargs.get('retiring_finished_on', None)
-        self.retiring_started_on = kwargs.get('retiring_started_on', None)
-        self.state = kwargs.get('state', None)
-        self.tax_calculation = kwargs.get('tax_calculation', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def activated_on(self):
-        """Gets the activated_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was activated.
-
-        :return: The activated_on of this SubscriptionProductVersion.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._activated_on
+        excluded_fields: Set[str] = set([
+            "retiring_finished_on",
+            "enabled_currencies",
+            "retiring_started_on",
+            "planned_purge_date",
+            "created_on",
+            "version",
+            "reference",
+            "linked_space_id",
+            "activated_on",
+            "billing_cycle",
+            "default_currency",
+            "name",
+            "minimal_number_of_periods",
+            "obsoleted_on",
+            "comment",
+            "id",
+            "increment_number",
+            "number_of_notice_periods",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of product
+        if self.product:
+            _dict['product'] = self.product.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_cycle_model
+        if self.billing_cycle_model:
+            _dict['billingCycleModel'] = self.billing_cycle_model.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionProductVersion from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "retiringFinishedOn": obj.get("retiringFinishedOn"),
+            "enabledCurrencies": obj.get("enabledCurrencies"),
+            "product": SubscriptionProduct.from_dict(obj["product"]) if obj.get("product") is not None else None,
+            "retiringStartedOn": obj.get("retiringStartedOn"),
+            "taxCalculation": obj.get("taxCalculation"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "reference": obj.get("reference"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "activatedOn": obj.get("activatedOn"),
+            "billingCycle": obj.get("billingCycle"),
+            "defaultCurrency": obj.get("defaultCurrency"),
+            "name": obj.get("name"),
+            "minimalNumberOfPeriods": obj.get("minimalNumberOfPeriods"),
+            "obsoletedOn": obj.get("obsoletedOn"),
+            "billingCycleModel": BillingCycleModel.from_dict(obj["billingCycleModel"]) if obj.get("billingCycleModel") is not None else None,
+            "comment": obj.get("comment"),
+            "id": obj.get("id"),
+            "incrementNumber": obj.get("incrementNumber"),
+            "state": obj.get("state"),
+            "numberOfNoticePeriods": obj.get("numberOfNoticePeriods")
+        })
+        return _obj
 
-    @activated_on.setter
-    def activated_on(self, activated_on):
-        """Sets the activated_on of this SubscriptionProductVersion.
 
-            The date and time when the product version was activated.
-
-        :param activated_on: The activated_on of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._activated_on = activated_on
-    
-    @property
-    def billing_cycle(self):
-        """Gets the billing_cycle of this SubscriptionProductVersion.
-
-            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
-
-        :return: The billing_cycle of this SubscriptionProductVersion.
-        :rtype: str
-        """
-        return self._billing_cycle
-
-    @billing_cycle.setter
-    def billing_cycle(self, billing_cycle):
-        """Sets the billing_cycle of this SubscriptionProductVersion.
-
-            The recurring period of time, typically monthly or annually, for which a subscriber is charged.
-
-        :param billing_cycle: The billing_cycle of this SubscriptionProductVersion.
-        :type: str
-        """
-
-        self._billing_cycle = billing_cycle
-    
-    @property
-    def billing_cycle_model(self):
-        """Gets the billing_cycle_model of this SubscriptionProductVersion.
-
-            
-
-        :return: The billing_cycle_model of this SubscriptionProductVersion.
-        :rtype: BillingCycleModel
-        """
-        return self._billing_cycle_model
-
-    @billing_cycle_model.setter
-    def billing_cycle_model(self, billing_cycle_model):
-        """Sets the billing_cycle_model of this SubscriptionProductVersion.
-
-            
-
-        :param billing_cycle_model: The billing_cycle_model of this SubscriptionProductVersion.
-        :type: BillingCycleModel
-        """
-
-        self._billing_cycle_model = billing_cycle_model
-    
-    @property
-    def comment(self):
-        """Gets the comment of this SubscriptionProductVersion.
-
-            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
-
-        :return: The comment of this SubscriptionProductVersion.
-        :rtype: str
-        """
-        return self._comment
-
-    @comment.setter
-    def comment(self, comment):
-        """Sets the comment of this SubscriptionProductVersion.
-
-            A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
-
-        :param comment: The comment of this SubscriptionProductVersion.
-        :type: str
-        """
-
-        self._comment = comment
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was created.
-
-        :return: The created_on of this SubscriptionProductVersion.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was created.
-
-        :param created_on: The created_on of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def default_currency(self):
-        """Gets the default_currency of this SubscriptionProductVersion.
-
-            The three-letter code (ISO 4217 format) of the product version's default currency.
-
-        :return: The default_currency of this SubscriptionProductVersion.
-        :rtype: str
-        """
-        return self._default_currency
-
-    @default_currency.setter
-    def default_currency(self, default_currency):
-        """Sets the default_currency of this SubscriptionProductVersion.
-
-            The three-letter code (ISO 4217 format) of the product version's default currency.
-
-        :param default_currency: The default_currency of this SubscriptionProductVersion.
-        :type: str
-        """
-
-        self._default_currency = default_currency
-    
-    @property
-    def enabled_currencies(self):
-        """Gets the enabled_currencies of this SubscriptionProductVersion.
-
-            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
-
-        :return: The enabled_currencies of this SubscriptionProductVersion.
-        :rtype: list[str]
-        """
-        return self._enabled_currencies
-
-    @enabled_currencies.setter
-    def enabled_currencies(self, enabled_currencies):
-        """Sets the enabled_currencies of this SubscriptionProductVersion.
-
-            The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
-
-        :param enabled_currencies: The enabled_currencies of this SubscriptionProductVersion.
-        :type: list[str]
-        """
-
-        self._enabled_currencies = enabled_currencies
-    
-    @property
-    def id(self):
-        """Gets the id of this SubscriptionProductVersion.
-
-            A unique identifier for the object.
-
-        :return: The id of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this SubscriptionProductVersion.
-
-            A unique identifier for the object.
-
-        :param id: The id of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def increment_number(self):
-        """Gets the increment_number of this SubscriptionProductVersion.
-
-            Whenever a new version of a product is created, the number is increased and assigned.
-
-        :return: The increment_number of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._increment_number
-
-    @increment_number.setter
-    def increment_number(self, increment_number):
-        """Sets the increment_number of this SubscriptionProductVersion.
-
-            Whenever a new version of a product is created, the number is increased and assigned.
-
-        :param increment_number: The increment_number of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._increment_number = increment_number
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this SubscriptionProductVersion.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this SubscriptionProductVersion.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def minimal_number_of_periods(self):
-        """Gets the minimal_number_of_periods of this SubscriptionProductVersion.
-
-            The minimum number of periods the subscription will run before it can be terminated.
-
-        :return: The minimal_number_of_periods of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._minimal_number_of_periods
-
-    @minimal_number_of_periods.setter
-    def minimal_number_of_periods(self, minimal_number_of_periods):
-        """Sets the minimal_number_of_periods of this SubscriptionProductVersion.
-
-            The minimum number of periods the subscription will run before it can be terminated.
-
-        :param minimal_number_of_periods: The minimal_number_of_periods of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._minimal_number_of_periods = minimal_number_of_periods
-    
-    @property
-    def name(self):
-        """Gets the name of this SubscriptionProductVersion.
-
-            The localized name of the product that is displayed to the customer.
-
-        :return: The name of this SubscriptionProductVersion.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this SubscriptionProductVersion.
-
-            The localized name of the product that is displayed to the customer.
-
-        :param name: The name of this SubscriptionProductVersion.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def number_of_notice_periods(self):
-        """Gets the number_of_notice_periods of this SubscriptionProductVersion.
-
-            The number of periods the subscription will keep running after its termination was requested.
-
-        :return: The number_of_notice_periods of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._number_of_notice_periods
-
-    @number_of_notice_periods.setter
-    def number_of_notice_periods(self, number_of_notice_periods):
-        """Sets the number_of_notice_periods of this SubscriptionProductVersion.
-
-            The number of periods the subscription will keep running after its termination was requested.
-
-        :param number_of_notice_periods: The number_of_notice_periods of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._number_of_notice_periods = number_of_notice_periods
-    
-    @property
-    def obsoleted_on(self):
-        """Gets the obsoleted_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was made obsolete.
-
-        :return: The obsoleted_on of this SubscriptionProductVersion.
-        :rtype: datetime
-        """
-        return self._obsoleted_on
-
-    @obsoleted_on.setter
-    def obsoleted_on(self, obsoleted_on):
-        """Sets the obsoleted_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was made obsolete.
-
-        :param obsoleted_on: The obsoleted_on of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._obsoleted_on = obsoleted_on
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this SubscriptionProductVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this SubscriptionProductVersion.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this SubscriptionProductVersion.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def product(self):
-        """Gets the product of this SubscriptionProductVersion.
-
-            The product that the version belongs to.
-
-        :return: The product of this SubscriptionProductVersion.
-        :rtype: SubscriptionProduct
-        """
-        return self._product
-
-    @product.setter
-    def product(self, product):
-        """Sets the product of this SubscriptionProductVersion.
-
-            The product that the version belongs to.
-
-        :param product: The product of this SubscriptionProductVersion.
-        :type: SubscriptionProduct
-        """
-
-        self._product = product
-    
-    @property
-    def reference(self):
-        """Gets the reference of this SubscriptionProductVersion.
-
-            The reference used to identify the product version.
-
-        :return: The reference of this SubscriptionProductVersion.
-        :rtype: str
-        """
-        return self._reference
-
-    @reference.setter
-    def reference(self, reference):
-        """Sets the reference of this SubscriptionProductVersion.
-
-            The reference used to identify the product version.
-
-        :param reference: The reference of this SubscriptionProductVersion.
-        :type: str
-        """
-        if reference is not None and len(reference) > 125:
-            raise ValueError("Invalid value for `reference`, length must be less than or equal to `125`")
-
-        self._reference = reference
-    
-    @property
-    def retiring_finished_on(self):
-        """Gets the retiring_finished_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was retired.
-
-        :return: The retiring_finished_on of this SubscriptionProductVersion.
-        :rtype: datetime
-        """
-        return self._retiring_finished_on
-
-    @retiring_finished_on.setter
-    def retiring_finished_on(self, retiring_finished_on):
-        """Sets the retiring_finished_on of this SubscriptionProductVersion.
-
-            The date and time when the product version was retired.
-
-        :param retiring_finished_on: The retiring_finished_on of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._retiring_finished_on = retiring_finished_on
-    
-    @property
-    def retiring_started_on(self):
-        """Gets the retiring_started_on of this SubscriptionProductVersion.
-
-            The date and time when the product version's retirement was started.
-
-        :return: The retiring_started_on of this SubscriptionProductVersion.
-        :rtype: datetime
-        """
-        return self._retiring_started_on
-
-    @retiring_started_on.setter
-    def retiring_started_on(self, retiring_started_on):
-        """Sets the retiring_started_on of this SubscriptionProductVersion.
-
-            The date and time when the product version's retirement was started.
-
-        :param retiring_started_on: The retiring_started_on of this SubscriptionProductVersion.
-        :type: datetime
-        """
-
-        self._retiring_started_on = retiring_started_on
-    
-    @property
-    def state(self):
-        """Gets the state of this SubscriptionProductVersion.
-
-            The object's current state.
-
-        :return: The state of this SubscriptionProductVersion.
-        :rtype: SubscriptionProductVersionState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this SubscriptionProductVersion.
-
-            The object's current state.
-
-        :param state: The state of this SubscriptionProductVersion.
-        :type: SubscriptionProductVersionState
-        """
-
-        self._state = state
-    
-    @property
-    def tax_calculation(self):
-        """Gets the tax_calculation of this SubscriptionProductVersion.
-
-            The way taxes are calculated for fees.
-
-        :return: The tax_calculation of this SubscriptionProductVersion.
-        :rtype: TaxCalculation
-        """
-        return self._tax_calculation
-
-    @tax_calculation.setter
-    def tax_calculation(self, tax_calculation):
-        """Sets the tax_calculation of this SubscriptionProductVersion.
-
-            The way taxes are calculated for fees.
-
-        :param tax_calculation: The tax_calculation of this SubscriptionProductVersion.
-        :type: TaxCalculation
-        """
-
-        self._tax_calculation = tax_calculation
-    
-    @property
-    def version(self):
-        """Gets the version of this SubscriptionProductVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this SubscriptionProductVersion.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this SubscriptionProductVersion.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this SubscriptionProductVersion.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionProductVersion, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionProductVersion):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

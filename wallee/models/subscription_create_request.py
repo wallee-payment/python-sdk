@@ -1,207 +1,116 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.subscription_component_reference_configuration import SubscriptionComponentReferenceConfiguration
+from wallee.models.subscription_pending import SubscriptionPending
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionCreateRequest(BaseModel):
+    """
+    SubscriptionCreateRequest
+    """
+    component_configurations: Optional[List[SubscriptionComponentReferenceConfiguration]] = Field(default=None, description="The configurations of the subscription's components.", alias="componentConfigurations")
+    product: Optional[StrictInt] = Field(default=None, description="The product to subscribe to.")
+    currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.")
+    subscription: Optional[SubscriptionPending] = None
+    __properties: ClassVar[List[str]] = ["componentConfigurations", "product", "currency", "subscription"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionCreateRequest:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'component_configurations': 'list[SubscriptionComponentReferenceConfiguration]',
-        'currency': 'str',
-        'product': 'int',
-        'selected_components': 'list[SubscriptionProductComponentReference]',
-        'subscription': 'SubscriptionPending',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionCreateRequest from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'component_configurations': 'componentConfigurations','currency': 'currency','product': 'product','selected_components': 'selectedComponents','subscription': 'subscription',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _component_configurations = None
-    _currency = None
-    _product = None
-    _selected_components = None
-    _subscription = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.component_configurations = kwargs.get('component_configurations', None)
-        self.currency = kwargs.get('currency')
-
-        self.product = kwargs.get('product')
-
-        self.selected_components = kwargs.get('selected_components', None)
-        self.subscription = kwargs.get('subscription')
-
-        
-
-    
-    @property
-    def component_configurations(self):
-        """Gets the component_configurations of this SubscriptionCreateRequest.
-
-            
-
-        :return: The component_configurations of this SubscriptionCreateRequest.
-        :rtype: list[SubscriptionComponentReferenceConfiguration]
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._component_configurations
+        excluded_fields: Set[str] = set([
+        ])
 
-    @component_configurations.setter
-    def component_configurations(self, component_configurations):
-        """Sets the component_configurations of this SubscriptionCreateRequest.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in component_configurations (list)
+        _items = []
+        if self.component_configurations:
+            for _item_component_configurations in self.component_configurations:
+                if _item_component_configurations:
+                    _items.append(_item_component_configurations.to_dict())
+            _dict['componentConfigurations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of subscription
+        if self.subscription:
+            _dict['subscription'] = self.subscription.to_dict()
+        return _dict
 
-            
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionCreateRequest from a dict"""
+        if obj is None:
+            return None
 
-        :param component_configurations: The component_configurations of this SubscriptionCreateRequest.
-        :type: list[SubscriptionComponentReferenceConfiguration]
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._component_configurations = component_configurations
-    
-    @property
-    def currency(self):
-        """Gets the currency of this SubscriptionCreateRequest.
+        _obj = cls.model_validate({
+            "componentConfigurations": [SubscriptionComponentReferenceConfiguration.from_dict(_item) for _item in obj["componentConfigurations"]] if obj.get("componentConfigurations") is not None else None,
+            "product": obj.get("product"),
+            "currency": obj.get("currency"),
+            "subscription": SubscriptionPending.from_dict(obj["subscription"]) if obj.get("subscription") is not None else None
+        })
+        return _obj
 
-            
 
-        :return: The currency of this SubscriptionCreateRequest.
-        :rtype: str
-        """
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        """Sets the currency of this SubscriptionCreateRequest.
-
-            
-
-        :param currency: The currency of this SubscriptionCreateRequest.
-        :type: str
-        """
-        if currency is None:
-            raise ValueError("Invalid value for `currency`, must not be `None`")
-
-        self._currency = currency
-    
-    @property
-    def product(self):
-        """Gets the product of this SubscriptionCreateRequest.
-
-            The subscription has to be linked with a product.
-
-        :return: The product of this SubscriptionCreateRequest.
-        :rtype: int
-        """
-        return self._product
-
-    @product.setter
-    def product(self, product):
-        """Sets the product of this SubscriptionCreateRequest.
-
-            The subscription has to be linked with a product.
-
-        :param product: The product of this SubscriptionCreateRequest.
-        :type: int
-        """
-        if product is None:
-            raise ValueError("Invalid value for `product`, must not be `None`")
-
-        self._product = product
-    
-    @property
-    def selected_components(self):
-        """Gets the selected_components of this SubscriptionCreateRequest.
-
-            
-
-        :return: The selected_components of this SubscriptionCreateRequest.
-        :rtype: list[SubscriptionProductComponentReference]
-        """
-        return self._selected_components
-
-    @selected_components.setter
-    def selected_components(self, selected_components):
-        """Sets the selected_components of this SubscriptionCreateRequest.
-
-            
-
-        :param selected_components: The selected_components of this SubscriptionCreateRequest.
-        :type: list[SubscriptionProductComponentReference]
-        """
-
-        self._selected_components = selected_components
-    
-    @property
-    def subscription(self):
-        """Gets the subscription of this SubscriptionCreateRequest.
-
-            
-
-        :return: The subscription of this SubscriptionCreateRequest.
-        :rtype: SubscriptionPending
-        """
-        return self._subscription
-
-    @subscription.setter
-    def subscription(self, subscription):
-        """Sets the subscription of this SubscriptionCreateRequest.
-
-            
-
-        :param subscription: The subscription of this SubscriptionCreateRequest.
-        :type: SubscriptionPending
-        """
-        if subscription is None:
-            raise ValueError("Invalid value for `subscription`, must not be `None`")
-
-        self._subscription = subscription
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionCreateRequest, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionCreateRequest):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

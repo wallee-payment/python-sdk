@@ -1,128 +1,123 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
-from . import AbstractCustomerActive
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+
+class CustomerActive(BaseModel):
+    """
+    CustomerActive
+    """
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
+    email_address: Optional[Annotated[str, Field(strict=True, max_length=254)]] = Field(default=None, description="The customer's email address.", alias="emailAddress")
+    family_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The customer's family or last name.", alias="familyName")
+    given_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The customer's given or first name.", alias="givenName")
+    preferred_currency: Optional[StrictStr] = Field(default=None, description="The customer's preferred currency.", alias="preferredCurrency")
+    customer_id: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The customer's ID in the merchant's system.", alias="customerId")
+    language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["metaData", "emailAddress", "familyName", "givenName", "preferredCurrency", "customerId", "language", "version"]
+
+    @field_validator('customer_id')
+    def customer_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"[	\x20-\x7e]*", value):
+            raise ValueError(r"must validate the regular expression /[	\x20-\x7e]*/")
+        return value
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
-class CustomerActive(AbstractCustomerActive):
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-    }
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    attribute_map = {
-        'id': 'id','version': 'version',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of CustomerActive from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    
-    _id = None
-    _version = None
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-        self.version = kwargs.get('version')
-
-        super().__init__(**kwargs)
-        self.swagger_types.update(super().swagger_types)
-        self.attribute_map.update(super().attribute_map)
-
-    
-    @property
-    def id(self):
-        """Gets the id of this CustomerActive.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this CustomerActive.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this CustomerActive.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of CustomerActive from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this CustomerActive.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this CustomerActive.
+        _obj = cls.model_validate({
+            "metaData": obj.get("metaData"),
+            "emailAddress": obj.get("emailAddress"),
+            "familyName": obj.get("familyName"),
+            "givenName": obj.get("givenName"),
+            "preferredCurrency": obj.get("preferredCurrency"),
+            "customerId": obj.get("customerId"),
+            "language": obj.get("language"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this CustomerActive.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this CustomerActive.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this CustomerActive.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(CustomerActive, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, CustomerActive):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

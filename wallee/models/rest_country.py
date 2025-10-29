@@ -1,224 +1,122 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.rest_address_format import RestAddressFormat
+from typing import Optional, Set
+from typing_extensions import Self
+
+class RestCountry(BaseModel):
+    """
+    RestCountry
+    """
+    iso_code2: Optional[StrictStr] = Field(default=None, description="The country's two-letter code (ISO 3166-1 alpha-2 format).", alias="isoCode2")
+    address_format: Optional[RestAddressFormat] = Field(default=None, alias="addressFormat")
+    iso_code3: Optional[StrictStr] = Field(default=None, description="The country's three-letter code (ISO 3166-1 alpha-3 format).", alias="isoCode3")
+    state_codes: Optional[List[StrictStr]] = Field(default=None, description="The codes of all regions (e.g. states, provinces) of the country (ISO 3166-2 format).", alias="stateCodes")
+    name: Optional[StrictStr] = Field(default=None, description="The name of the country.")
+    numeric_code: Optional[StrictStr] = Field(default=None, description="The country's three-digit code (ISO 3166-1 numeric format).", alias="numericCode")
+    __properties: ClassVar[List[str]] = ["isoCode2", "addressFormat", "isoCode3", "stateCodes", "name", "numericCode"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class RestCountry:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'address_format': 'RestAddressFormat',
-        'iso_code2': 'str',
-        'iso_code3': 'str',
-        'name': 'str',
-        'numeric_code': 'str',
-        'state_codes': 'list[str]',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of RestCountry from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'address_format': 'addressFormat','iso_code2': 'isoCode2','iso_code3': 'isoCode3','name': 'name','numeric_code': 'numericCode','state_codes': 'stateCodes',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _address_format = None
-    _iso_code2 = None
-    _iso_code3 = None
-    _name = None
-    _numeric_code = None
-    _state_codes = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.address_format = kwargs.get('address_format', None)
-        self.iso_code2 = kwargs.get('iso_code2', None)
-        self.iso_code3 = kwargs.get('iso_code3', None)
-        self.name = kwargs.get('name', None)
-        self.numeric_code = kwargs.get('numeric_code', None)
-        self.state_codes = kwargs.get('state_codes', None)
-        
-
-    
-    @property
-    def address_format(self):
-        """Gets the address_format of this RestCountry.
-
-            The country's way of formatting addresses.
-
-        :return: The address_format of this RestCountry.
-        :rtype: RestAddressFormat
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._address_format
+        excluded_fields: Set[str] = set([
+            "iso_code2",
+            "iso_code3",
+            "state_codes",
+            "name",
+            "numeric_code",
+        ])
 
-    @address_format.setter
-    def address_format(self, address_format):
-        """Sets the address_format of this RestCountry.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of address_format
+        if self.address_format:
+            _dict['addressFormat'] = self.address_format.to_dict()
+        return _dict
 
-            The country's way of formatting addresses.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of RestCountry from a dict"""
+        if obj is None:
+            return None
 
-        :param address_format: The address_format of this RestCountry.
-        :type: RestAddressFormat
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._address_format = address_format
-    
-    @property
-    def iso_code2(self):
-        """Gets the iso_code2 of this RestCountry.
+        _obj = cls.model_validate({
+            "isoCode2": obj.get("isoCode2"),
+            "addressFormat": RestAddressFormat.from_dict(obj["addressFormat"]) if obj.get("addressFormat") is not None else None,
+            "isoCode3": obj.get("isoCode3"),
+            "stateCodes": obj.get("stateCodes"),
+            "name": obj.get("name"),
+            "numericCode": obj.get("numericCode")
+        })
+        return _obj
 
-            The country's two-letter code (ISO 3166-1 alpha-2 format).
 
-        :return: The iso_code2 of this RestCountry.
-        :rtype: str
-        """
-        return self._iso_code2
-
-    @iso_code2.setter
-    def iso_code2(self, iso_code2):
-        """Sets the iso_code2 of this RestCountry.
-
-            The country's two-letter code (ISO 3166-1 alpha-2 format).
-
-        :param iso_code2: The iso_code2 of this RestCountry.
-        :type: str
-        """
-
-        self._iso_code2 = iso_code2
-    
-    @property
-    def iso_code3(self):
-        """Gets the iso_code3 of this RestCountry.
-
-            The country's three-letter code (ISO 3166-1 alpha-3 format).
-
-        :return: The iso_code3 of this RestCountry.
-        :rtype: str
-        """
-        return self._iso_code3
-
-    @iso_code3.setter
-    def iso_code3(self, iso_code3):
-        """Sets the iso_code3 of this RestCountry.
-
-            The country's three-letter code (ISO 3166-1 alpha-3 format).
-
-        :param iso_code3: The iso_code3 of this RestCountry.
-        :type: str
-        """
-
-        self._iso_code3 = iso_code3
-    
-    @property
-    def name(self):
-        """Gets the name of this RestCountry.
-
-            The name of the country.
-
-        :return: The name of this RestCountry.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this RestCountry.
-
-            The name of the country.
-
-        :param name: The name of this RestCountry.
-        :type: str
-        """
-
-        self._name = name
-    
-    @property
-    def numeric_code(self):
-        """Gets the numeric_code of this RestCountry.
-
-            The country's three-digit code (ISO 3166-1 numeric format).
-
-        :return: The numeric_code of this RestCountry.
-        :rtype: str
-        """
-        return self._numeric_code
-
-    @numeric_code.setter
-    def numeric_code(self, numeric_code):
-        """Sets the numeric_code of this RestCountry.
-
-            The country's three-digit code (ISO 3166-1 numeric format).
-
-        :param numeric_code: The numeric_code of this RestCountry.
-        :type: str
-        """
-
-        self._numeric_code = numeric_code
-    
-    @property
-    def state_codes(self):
-        """Gets the state_codes of this RestCountry.
-
-            The codes of all regions (e.g. states, provinces) of the country (ISO 3166-2 format).
-
-        :return: The state_codes of this RestCountry.
-        :rtype: list[str]
-        """
-        return self._state_codes
-
-    @state_codes.setter
-    def state_codes(self, state_codes):
-        """Sets the state_codes of this RestCountry.
-
-            The codes of all regions (e.g. states, provinces) of the country (ISO 3166-2 format).
-
-        :param state_codes: The state_codes of this RestCountry.
-        :type: list[str]
-        """
-
-        self._state_codes = state_codes
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(RestCountry, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, RestCountry):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

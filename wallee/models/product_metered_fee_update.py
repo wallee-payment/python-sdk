@@ -1,256 +1,109 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.product_metered_tier_pricing import ProductMeteredTierPricing
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ProductMeteredFeeUpdate(BaseModel):
+    """
+    ProductMeteredFeeUpdate
+    """
+    component: Optional[StrictInt] = Field(default=None, description="The product component that the fee belongs to.")
+    tier_pricing: Optional[ProductMeteredTierPricing] = Field(default=None, alias="tierPricing")
+    metric: Optional[StrictInt] = Field(default=None, description="The metric used to determine the resource consumption billed to the customer.")
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the fee that is displayed to the customer.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the fee that is displayed to the customer.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["component", "tierPricing", "metric", "name", "description", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ProductMeteredFeeUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'component': 'int',
-        'description': 'dict(str, str)',
-        'metric': 'int',
-        'name': 'dict(str, str)',
-        'tier_pricing': 'ProductMeteredTierPricing',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ProductMeteredFeeUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','component': 'component','description': 'description','metric': 'metric','name': 'name','tier_pricing': 'tierPricing',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _component = None
-    _description = None
-    _metric = None
-    _name = None
-    _tier_pricing = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.component = kwargs.get('component', None)
-        self.description = kwargs.get('description', None)
-        self.metric = kwargs.get('metric', None)
-        self.name = kwargs.get('name', None)
-        self.tier_pricing = kwargs.get('tier_pricing', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this ProductMeteredFeeUpdate.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this ProductMeteredFeeUpdate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ProductMeteredFeeUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ProductMeteredFeeUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this ProductMeteredFeeUpdate.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this ProductMeteredFeeUpdate.
+        _obj = cls.model_validate({
+            "component": obj.get("component"),
+            "tierPricing": obj.get("tierPricing"),
+            "metric": obj.get("metric"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this ProductMeteredFeeUpdate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this ProductMeteredFeeUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this ProductMeteredFeeUpdate.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def component(self):
-        """Gets the component of this ProductMeteredFeeUpdate.
-
-            The product component that the fee belongs to.
-
-        :return: The component of this ProductMeteredFeeUpdate.
-        :rtype: int
-        """
-        return self._component
-
-    @component.setter
-    def component(self, component):
-        """Sets the component of this ProductMeteredFeeUpdate.
-
-            The product component that the fee belongs to.
-
-        :param component: The component of this ProductMeteredFeeUpdate.
-        :type: int
-        """
-
-        self._component = component
-    
-    @property
-    def description(self):
-        """Gets the description of this ProductMeteredFeeUpdate.
-
-            The localized description of the fee that is displayed to the customer.
-
-        :return: The description of this ProductMeteredFeeUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this ProductMeteredFeeUpdate.
-
-            The localized description of the fee that is displayed to the customer.
-
-        :param description: The description of this ProductMeteredFeeUpdate.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def metric(self):
-        """Gets the metric of this ProductMeteredFeeUpdate.
-
-            The metric used to determine the resource consumption billed to the customer.
-
-        :return: The metric of this ProductMeteredFeeUpdate.
-        :rtype: int
-        """
-        return self._metric
-
-    @metric.setter
-    def metric(self, metric):
-        """Sets the metric of this ProductMeteredFeeUpdate.
-
-            The metric used to determine the resource consumption billed to the customer.
-
-        :param metric: The metric of this ProductMeteredFeeUpdate.
-        :type: int
-        """
-
-        self._metric = metric
-    
-    @property
-    def name(self):
-        """Gets the name of this ProductMeteredFeeUpdate.
-
-            The localized name of the fee that is displayed to the customer.
-
-        :return: The name of this ProductMeteredFeeUpdate.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this ProductMeteredFeeUpdate.
-
-            The localized name of the fee that is displayed to the customer.
-
-        :param name: The name of this ProductMeteredFeeUpdate.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def tier_pricing(self):
-        """Gets the tier_pricing of this ProductMeteredFeeUpdate.
-
-            The method used to calculate the tier price.
-
-        :return: The tier_pricing of this ProductMeteredFeeUpdate.
-        :rtype: ProductMeteredTierPricing
-        """
-        return self._tier_pricing
-
-    @tier_pricing.setter
-    def tier_pricing(self, tier_pricing):
-        """Sets the tier_pricing of this ProductMeteredFeeUpdate.
-
-            The method used to calculate the tier price.
-
-        :param tier_pricing: The tier_pricing of this ProductMeteredFeeUpdate.
-        :type: ProductMeteredTierPricing
-        """
-
-        self._tier_pricing = tier_pricing
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ProductMeteredFeeUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ProductMeteredFeeUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

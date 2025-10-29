@@ -1,204 +1,112 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from wallee.models.persistable_currency_amount_update import PersistableCurrencyAmountUpdate
+from typing import Optional, Set
+from typing_extensions import Self
+
+class ProductMeteredTierFeeUpdate(BaseModel):
+    """
+    ProductMeteredTierFeeUpdate
+    """
+    start_range: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Starting from and including this quantity is contained in the tier.", alias="startRange")
+    metered_fee: Optional[StrictInt] = Field(default=None, description="The metered fee that this tier belongs to.", alias="meteredFee")
+    fee: Optional[List[PersistableCurrencyAmountUpdate]] = Field(default=None, description="The amount charged to the customer for each consumed unit at the end of a billing cycle.")
+    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
+    __properties: ClassVar[List[str]] = ["startRange", "meteredFee", "fee", "version"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class ProductMeteredTierFeeUpdate:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'id': 'int',
-        'version': 'int',
-        'fee': 'list[PersistableCurrencyAmountUpdate]',
-        'metered_fee': 'int',
-        'start_range': 'float',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of ProductMeteredTierFeeUpdate from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'id': 'id','version': 'version','fee': 'fee','metered_fee': 'meteredFee','start_range': 'startRange',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _id = None
-    _version = None
-    _fee = None
-    _metered_fee = None
-    _start_range = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.id = kwargs.get('id')
-
-        self.version = kwargs.get('version')
-
-        self.fee = kwargs.get('fee', None)
-        self.metered_fee = kwargs.get('metered_fee', None)
-        self.start_range = kwargs.get('start_range', None)
-        
-
-    
-    @property
-    def id(self):
-        """Gets the id of this ProductMeteredTierFeeUpdate.
-
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
-
-        :return: The id of this ProductMeteredTierFeeUpdate.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ProductMeteredTierFeeUpdate.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in fee (list)
+        _items = []
+        if self.fee:
+            for _item_fee in self.fee:
+                if _item_fee:
+                    _items.append(_item_fee.to_dict())
+            _dict['fee'] = _items
+        return _dict
 
-            The ID is the primary key of the entity. The ID identifies the entity uniquely.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of ProductMeteredTierFeeUpdate from a dict"""
+        if obj is None:
+            return None
 
-        :param id: The id of this ProductMeteredTierFeeUpdate.
-        :type: int
-        """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._id = id
-    
-    @property
-    def version(self):
-        """Gets the version of this ProductMeteredTierFeeUpdate.
+        _obj = cls.model_validate({
+            "startRange": obj.get("startRange"),
+            "meteredFee": obj.get("meteredFee"),
+            "fee": [PersistableCurrencyAmountUpdate.from_dict(_item) for _item in obj["fee"]] if obj.get("fee") is not None else None,
+            "version": obj.get("version")
+        })
+        return _obj
 
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
 
-        :return: The version of this ProductMeteredTierFeeUpdate.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this ProductMeteredTierFeeUpdate.
-
-            The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-
-        :param version: The version of this ProductMeteredTierFeeUpdate.
-        :type: int
-        """
-        if version is None:
-            raise ValueError("Invalid value for `version`, must not be `None`")
-
-        self._version = version
-    
-    @property
-    def fee(self):
-        """Gets the fee of this ProductMeteredTierFeeUpdate.
-
-            The amount charged to the customer for each consumed unit at the end of a billing cycle.
-
-        :return: The fee of this ProductMeteredTierFeeUpdate.
-        :rtype: list[PersistableCurrencyAmountUpdate]
-        """
-        return self._fee
-
-    @fee.setter
-    def fee(self, fee):
-        """Sets the fee of this ProductMeteredTierFeeUpdate.
-
-            The amount charged to the customer for each consumed unit at the end of a billing cycle.
-
-        :param fee: The fee of this ProductMeteredTierFeeUpdate.
-        :type: list[PersistableCurrencyAmountUpdate]
-        """
-
-        self._fee = fee
-    
-    @property
-    def metered_fee(self):
-        """Gets the metered_fee of this ProductMeteredTierFeeUpdate.
-
-            The metered fee that this tier belongs to.
-
-        :return: The metered_fee of this ProductMeteredTierFeeUpdate.
-        :rtype: int
-        """
-        return self._metered_fee
-
-    @metered_fee.setter
-    def metered_fee(self, metered_fee):
-        """Sets the metered_fee of this ProductMeteredTierFeeUpdate.
-
-            The metered fee that this tier belongs to.
-
-        :param metered_fee: The metered_fee of this ProductMeteredTierFeeUpdate.
-        :type: int
-        """
-
-        self._metered_fee = metered_fee
-    
-    @property
-    def start_range(self):
-        """Gets the start_range of this ProductMeteredTierFeeUpdate.
-
-            Starting from and including this quantity is contained in the tier.
-
-        :return: The start_range of this ProductMeteredTierFeeUpdate.
-        :rtype: float
-        """
-        return self._start_range
-
-    @start_range.setter
-    def start_range(self, start_range):
-        """Sets the start_range of this ProductMeteredTierFeeUpdate.
-
-            Starting from and including this quantity is contained in the tier.
-
-        :param start_range: The start_range of this ProductMeteredTierFeeUpdate.
-        :type: float
-        """
-
-        self._start_range = start_range
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(ProductMeteredTierFeeUpdate, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, ProductMeteredTierFeeUpdate):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

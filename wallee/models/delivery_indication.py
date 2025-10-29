@@ -1,432 +1,158 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.delivery_indication_decision_reason import DeliveryIndicationDecisionReason
+from wallee.models.delivery_indication_state import DeliveryIndicationState
+from wallee.models.transaction import Transaction
+from wallee.models.transaction_completion import TransactionCompletion
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DeliveryIndication(BaseModel):
+    """
+    DeliveryIndication
+    """
+    completion: Optional[TransactionCompletion] = None
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    automatic_decision_reason: Optional[DeliveryIndicationDecisionReason] = Field(default=None, alias="automaticDecisionReason")
+    automatically_decided_on: Optional[datetime] = Field(default=None, description="The date and time when an automatic decision was made.", alias="automaticallyDecidedOn")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    manually_decided_by: Optional[StrictInt] = Field(default=None, description="The ID of the user who manually decided the delivery indication's state.", alias="manuallyDecidedBy")
+    timeout_on: Optional[datetime] = Field(default=None, description="The date and time when the delivery indication will expire.", alias="timeoutOn")
+    manual_decision_timeout_on: Optional[datetime] = Field(default=None, description="The date and time by which a decision must be made before the system automatically proceeds according to the connector's predefined settings.", alias="manualDecisionTimeoutOn")
+    manually_decided_on: Optional[datetime] = Field(default=None, description="The date and time when a manual decision was made.", alias="manuallyDecidedOn")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    state: Optional[DeliveryIndicationState] = None
+    linked_transaction: Optional[StrictInt] = Field(default=None, description="The payment transaction this object is linked to.", alias="linkedTransaction")
+    transaction: Optional[Transaction] = None
+    __properties: ClassVar[List[str]] = ["completion", "plannedPurgeDate", "automaticDecisionReason", "automaticallyDecidedOn", "createdOn", "linkedSpaceId", "manuallyDecidedBy", "timeoutOn", "manualDecisionTimeoutOn", "manuallyDecidedOn", "id", "state", "linkedTransaction", "transaction"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DeliveryIndication:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'automatic_decision_reason': 'DeliveryIndicationDecisionReason',
-        'automatically_decided_on': 'datetime',
-        'completion': 'int',
-        'created_on': 'datetime',
-        'id': 'int',
-        'linked_space_id': 'int',
-        'linked_transaction': 'int',
-        'manual_decision_timeout_on': 'datetime',
-        'manually_decided_by': 'int',
-        'manually_decided_on': 'datetime',
-        'planned_purge_date': 'datetime',
-        'state': 'DeliveryIndicationState',
-        'timeout_on': 'datetime',
-        'transaction': 'Transaction',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DeliveryIndication from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'automatic_decision_reason': 'automaticDecisionReason','automatically_decided_on': 'automaticallyDecidedOn','completion': 'completion','created_on': 'createdOn','id': 'id','linked_space_id': 'linkedSpaceId','linked_transaction': 'linkedTransaction','manual_decision_timeout_on': 'manualDecisionTimeoutOn','manually_decided_by': 'manuallyDecidedBy','manually_decided_on': 'manuallyDecidedOn','planned_purge_date': 'plannedPurgeDate','state': 'state','timeout_on': 'timeoutOn','transaction': 'transaction',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _automatic_decision_reason = None
-    _automatically_decided_on = None
-    _completion = None
-    _created_on = None
-    _id = None
-    _linked_space_id = None
-    _linked_transaction = None
-    _manual_decision_timeout_on = None
-    _manually_decided_by = None
-    _manually_decided_on = None
-    _planned_purge_date = None
-    _state = None
-    _timeout_on = None
-    _transaction = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.automatic_decision_reason = kwargs.get('automatic_decision_reason', None)
-        self.automatically_decided_on = kwargs.get('automatically_decided_on', None)
-        self.completion = kwargs.get('completion', None)
-        self.created_on = kwargs.get('created_on', None)
-        self.id = kwargs.get('id', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.linked_transaction = kwargs.get('linked_transaction', None)
-        self.manual_decision_timeout_on = kwargs.get('manual_decision_timeout_on', None)
-        self.manually_decided_by = kwargs.get('manually_decided_by', None)
-        self.manually_decided_on = kwargs.get('manually_decided_on', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.state = kwargs.get('state', None)
-        self.timeout_on = kwargs.get('timeout_on', None)
-        self.transaction = kwargs.get('transaction', None)
-        
-
-    
-    @property
-    def automatic_decision_reason(self):
-        """Gets the automatic_decision_reason of this DeliveryIndication.
-
-            The reason for the automatic system decision about the delivery indication.
-
-        :return: The automatic_decision_reason of this DeliveryIndication.
-        :rtype: DeliveryIndicationDecisionReason
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._automatic_decision_reason
+        excluded_fields: Set[str] = set([
+            "planned_purge_date",
+            "automatically_decided_on",
+            "created_on",
+            "linked_space_id",
+            "manually_decided_by",
+            "timeout_on",
+            "manual_decision_timeout_on",
+            "manually_decided_on",
+            "id",
+            "linked_transaction",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of completion
+        if self.completion:
+            _dict['completion'] = self.completion.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of automatic_decision_reason
+        if self.automatic_decision_reason:
+            _dict['automaticDecisionReason'] = self.automatic_decision_reason.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of transaction
+        if self.transaction:
+            _dict['transaction'] = self.transaction.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DeliveryIndication from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "completion": TransactionCompletion.from_dict(obj["completion"]) if obj.get("completion") is not None else None,
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "automaticDecisionReason": DeliveryIndicationDecisionReason.from_dict(obj["automaticDecisionReason"]) if obj.get("automaticDecisionReason") is not None else None,
+            "automaticallyDecidedOn": obj.get("automaticallyDecidedOn"),
+            "createdOn": obj.get("createdOn"),
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "manuallyDecidedBy": obj.get("manuallyDecidedBy"),
+            "timeoutOn": obj.get("timeoutOn"),
+            "manualDecisionTimeoutOn": obj.get("manualDecisionTimeoutOn"),
+            "manuallyDecidedOn": obj.get("manuallyDecidedOn"),
+            "id": obj.get("id"),
+            "state": obj.get("state"),
+            "linkedTransaction": obj.get("linkedTransaction"),
+            "transaction": Transaction.from_dict(obj["transaction"]) if obj.get("transaction") is not None else None
+        })
+        return _obj
 
-    @automatic_decision_reason.setter
-    def automatic_decision_reason(self, automatic_decision_reason):
-        """Sets the automatic_decision_reason of this DeliveryIndication.
 
-            The reason for the automatic system decision about the delivery indication.
-
-        :param automatic_decision_reason: The automatic_decision_reason of this DeliveryIndication.
-        :type: DeliveryIndicationDecisionReason
-        """
-
-        self._automatic_decision_reason = automatic_decision_reason
-    
-    @property
-    def automatically_decided_on(self):
-        """Gets the automatically_decided_on of this DeliveryIndication.
-
-            The date and time when an automatic decision was made.
-
-        :return: The automatically_decided_on of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._automatically_decided_on
-
-    @automatically_decided_on.setter
-    def automatically_decided_on(self, automatically_decided_on):
-        """Sets the automatically_decided_on of this DeliveryIndication.
-
-            The date and time when an automatic decision was made.
-
-        :param automatically_decided_on: The automatically_decided_on of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._automatically_decided_on = automatically_decided_on
-    
-    @property
-    def completion(self):
-        """Gets the completion of this DeliveryIndication.
-
-            The transaction completion that the delivery indication is linked to.
-
-        :return: The completion of this DeliveryIndication.
-        :rtype: int
-        """
-        return self._completion
-
-    @completion.setter
-    def completion(self, completion):
-        """Sets the completion of this DeliveryIndication.
-
-            The transaction completion that the delivery indication is linked to.
-
-        :param completion: The completion of this DeliveryIndication.
-        :type: int
-        """
-
-        self._completion = completion
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this DeliveryIndication.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._created_on
-
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this DeliveryIndication.
-
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def id(self):
-        """Gets the id of this DeliveryIndication.
-
-            A unique identifier for the object.
-
-        :return: The id of this DeliveryIndication.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DeliveryIndication.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DeliveryIndication.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this DeliveryIndication.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this DeliveryIndication.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this DeliveryIndication.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this DeliveryIndication.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def linked_transaction(self):
-        """Gets the linked_transaction of this DeliveryIndication.
-
-            The payment transaction this object is linked to.
-
-        :return: The linked_transaction of this DeliveryIndication.
-        :rtype: int
-        """
-        return self._linked_transaction
-
-    @linked_transaction.setter
-    def linked_transaction(self, linked_transaction):
-        """Sets the linked_transaction of this DeliveryIndication.
-
-            The payment transaction this object is linked to.
-
-        :param linked_transaction: The linked_transaction of this DeliveryIndication.
-        :type: int
-        """
-
-        self._linked_transaction = linked_transaction
-    
-    @property
-    def manual_decision_timeout_on(self):
-        """Gets the manual_decision_timeout_on of this DeliveryIndication.
-
-            The date and time by which a decision must be made before the system automatically proceeds according to the connector's predefined settings.
-
-        :return: The manual_decision_timeout_on of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._manual_decision_timeout_on
-
-    @manual_decision_timeout_on.setter
-    def manual_decision_timeout_on(self, manual_decision_timeout_on):
-        """Sets the manual_decision_timeout_on of this DeliveryIndication.
-
-            The date and time by which a decision must be made before the system automatically proceeds according to the connector's predefined settings.
-
-        :param manual_decision_timeout_on: The manual_decision_timeout_on of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._manual_decision_timeout_on = manual_decision_timeout_on
-    
-    @property
-    def manually_decided_by(self):
-        """Gets the manually_decided_by of this DeliveryIndication.
-
-            The ID of the user who manually decided the delivery indication's state.
-
-        :return: The manually_decided_by of this DeliveryIndication.
-        :rtype: int
-        """
-        return self._manually_decided_by
-
-    @manually_decided_by.setter
-    def manually_decided_by(self, manually_decided_by):
-        """Sets the manually_decided_by of this DeliveryIndication.
-
-            The ID of the user who manually decided the delivery indication's state.
-
-        :param manually_decided_by: The manually_decided_by of this DeliveryIndication.
-        :type: int
-        """
-
-        self._manually_decided_by = manually_decided_by
-    
-    @property
-    def manually_decided_on(self):
-        """Gets the manually_decided_on of this DeliveryIndication.
-
-            The date and time when a manual decision was made.
-
-        :return: The manually_decided_on of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._manually_decided_on
-
-    @manually_decided_on.setter
-    def manually_decided_on(self, manually_decided_on):
-        """Sets the manually_decided_on of this DeliveryIndication.
-
-            The date and time when a manual decision was made.
-
-        :param manually_decided_on: The manually_decided_on of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._manually_decided_on = manually_decided_on
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this DeliveryIndication.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this DeliveryIndication.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def state(self):
-        """Gets the state of this DeliveryIndication.
-
-            The object's current state.
-
-        :return: The state of this DeliveryIndication.
-        :rtype: DeliveryIndicationState
-        """
-        return self._state
-
-    @state.setter
-    def state(self, state):
-        """Sets the state of this DeliveryIndication.
-
-            The object's current state.
-
-        :param state: The state of this DeliveryIndication.
-        :type: DeliveryIndicationState
-        """
-
-        self._state = state
-    
-    @property
-    def timeout_on(self):
-        """Gets the timeout_on of this DeliveryIndication.
-
-            The date and time when the delivery indication will expire.
-
-        :return: The timeout_on of this DeliveryIndication.
-        :rtype: datetime
-        """
-        return self._timeout_on
-
-    @timeout_on.setter
-    def timeout_on(self, timeout_on):
-        """Sets the timeout_on of this DeliveryIndication.
-
-            The date and time when the delivery indication will expire.
-
-        :param timeout_on: The timeout_on of this DeliveryIndication.
-        :type: datetime
-        """
-
-        self._timeout_on = timeout_on
-    
-    @property
-    def transaction(self):
-        """Gets the transaction of this DeliveryIndication.
-
-            The payment transaction that the delivery indication is linked to.
-
-        :return: The transaction of this DeliveryIndication.
-        :rtype: Transaction
-        """
-        return self._transaction
-
-    @transaction.setter
-    def transaction(self, transaction):
-        """Sets the transaction of this DeliveryIndication.
-
-            The payment transaction that the delivery indication is linked to.
-
-        :param transaction: The transaction of this DeliveryIndication.
-        :type: Transaction
-        """
-
-        self._transaction = transaction
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DeliveryIndication, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DeliveryIndication):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

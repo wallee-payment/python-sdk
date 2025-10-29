@@ -1,354 +1,142 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.feature import Feature
+from typing import Optional, Set
+from typing_extensions import Self
+
+class Permission(BaseModel):
+    """
+    Permission
+    """
+    parent: Optional[StrictInt] = Field(default=None, description="The group that this permission belongs to.")
+    feature: Optional[Feature] = None
+    name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    path_to_root: Optional[List[StrictInt]] = Field(default=None, description="All parents of this permission up to the root of the permission tree.", alias="pathToRoot")
+    web_app_enabled: Optional[StrictBool] = Field(default=None, alias="webAppEnabled")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    leaf: Optional[StrictBool] = Field(default=None, description="Whether this is a leaf in the tree of permissions, and not a group.")
+    title: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
+    group: Optional[StrictBool] = Field(default=None, description="Whether this is a permission group.")
+    two_factor_required: Optional[StrictBool] = Field(default=None, description="Whether users with this permission are required to enable two-factor authentication.", alias="twoFactorRequired")
+    __properties: ClassVar[List[str]] = ["parent", "feature", "name", "pathToRoot", "webAppEnabled", "description", "id", "leaf", "title", "group", "twoFactorRequired"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class Permission:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'description': 'dict(str, str)',
-        'feature': 'int',
-        'group': 'bool',
-        'id': 'int',
-        'leaf': 'bool',
-        'name': 'dict(str, str)',
-        'parent': 'int',
-        'path_to_root': 'list[int]',
-        'title': 'dict(str, str)',
-        'two_factor_required': 'bool',
-        'web_app_enabled': 'bool',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of Permission from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'description': 'description','feature': 'feature','group': 'group','id': 'id','leaf': 'leaf','name': 'name','parent': 'parent','path_to_root': 'pathToRoot','title': 'title','two_factor_required': 'twoFactorRequired','web_app_enabled': 'webAppEnabled',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _description = None
-    _feature = None
-    _group = None
-    _id = None
-    _leaf = None
-    _name = None
-    _parent = None
-    _path_to_root = None
-    _title = None
-    _two_factor_required = None
-    _web_app_enabled = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.description = kwargs.get('description', None)
-        self.feature = kwargs.get('feature', None)
-        self.group = kwargs.get('group', None)
-        self.id = kwargs.get('id', None)
-        self.leaf = kwargs.get('leaf', None)
-        self.name = kwargs.get('name', None)
-        self.parent = kwargs.get('parent', None)
-        self.path_to_root = kwargs.get('path_to_root', None)
-        self.title = kwargs.get('title', None)
-        self.two_factor_required = kwargs.get('two_factor_required', None)
-        self.web_app_enabled = kwargs.get('web_app_enabled', None)
-        
-
-    
-    @property
-    def description(self):
-        """Gets the description of this Permission.
-
-            The localized description of the object.
-
-        :return: The description of this Permission.
-        :rtype: dict(str, str)
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._description
+        excluded_fields: Set[str] = set([
+            "parent",
+            "name",
+            "path_to_root",
+            "web_app_enabled",
+            "description",
+            "id",
+            "leaf",
+            "title",
+            "group",
+            "two_factor_required",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of feature
+        if self.feature:
+            _dict['feature'] = self.feature.to_dict()
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of Permission from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "parent": obj.get("parent"),
+            "feature": Feature.from_dict(obj["feature"]) if obj.get("feature") is not None else None,
+            "name": obj.get("name"),
+            "pathToRoot": obj.get("pathToRoot"),
+            "webAppEnabled": obj.get("webAppEnabled"),
+            "description": obj.get("description"),
+            "id": obj.get("id"),
+            "leaf": obj.get("leaf"),
+            "title": obj.get("title"),
+            "group": obj.get("group"),
+            "twoFactorRequired": obj.get("twoFactorRequired")
+        })
+        return _obj
 
-    @description.setter
-    def description(self, description):
-        """Sets the description of this Permission.
 
-            The localized description of the object.
-
-        :param description: The description of this Permission.
-        :type: dict(str, str)
-        """
-
-        self._description = description
-    
-    @property
-    def feature(self):
-        """Gets the feature of this Permission.
-
-            The feature that this permission belongs to.
-
-        :return: The feature of this Permission.
-        :rtype: int
-        """
-        return self._feature
-
-    @feature.setter
-    def feature(self, feature):
-        """Sets the feature of this Permission.
-
-            The feature that this permission belongs to.
-
-        :param feature: The feature of this Permission.
-        :type: int
-        """
-
-        self._feature = feature
-    
-    @property
-    def group(self):
-        """Gets the group of this Permission.
-
-            Whether this is a permission group.
-
-        :return: The group of this Permission.
-        :rtype: bool
-        """
-        return self._group
-
-    @group.setter
-    def group(self, group):
-        """Sets the group of this Permission.
-
-            Whether this is a permission group.
-
-        :param group: The group of this Permission.
-        :type: bool
-        """
-
-        self._group = group
-    
-    @property
-    def id(self):
-        """Gets the id of this Permission.
-
-            A unique identifier for the object.
-
-        :return: The id of this Permission.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this Permission.
-
-            A unique identifier for the object.
-
-        :param id: The id of this Permission.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def leaf(self):
-        """Gets the leaf of this Permission.
-
-            Whether this is a leaf in the tree of permissions, and not a group.
-
-        :return: The leaf of this Permission.
-        :rtype: bool
-        """
-        return self._leaf
-
-    @leaf.setter
-    def leaf(self, leaf):
-        """Sets the leaf of this Permission.
-
-            Whether this is a leaf in the tree of permissions, and not a group.
-
-        :param leaf: The leaf of this Permission.
-        :type: bool
-        """
-
-        self._leaf = leaf
-    
-    @property
-    def name(self):
-        """Gets the name of this Permission.
-
-            The localized name of the object.
-
-        :return: The name of this Permission.
-        :rtype: dict(str, str)
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        """Sets the name of this Permission.
-
-            The localized name of the object.
-
-        :param name: The name of this Permission.
-        :type: dict(str, str)
-        """
-
-        self._name = name
-    
-    @property
-    def parent(self):
-        """Gets the parent of this Permission.
-
-            The group that this permission belongs to.
-
-        :return: The parent of this Permission.
-        :rtype: int
-        """
-        return self._parent
-
-    @parent.setter
-    def parent(self, parent):
-        """Sets the parent of this Permission.
-
-            The group that this permission belongs to.
-
-        :param parent: The parent of this Permission.
-        :type: int
-        """
-
-        self._parent = parent
-    
-    @property
-    def path_to_root(self):
-        """Gets the path_to_root of this Permission.
-
-            All parents of this permission up to the root of the permission tree.
-
-        :return: The path_to_root of this Permission.
-        :rtype: list[int]
-        """
-        return self._path_to_root
-
-    @path_to_root.setter
-    def path_to_root(self, path_to_root):
-        """Sets the path_to_root of this Permission.
-
-            All parents of this permission up to the root of the permission tree.
-
-        :param path_to_root: The path_to_root of this Permission.
-        :type: list[int]
-        """
-
-        self._path_to_root = path_to_root
-    
-    @property
-    def title(self):
-        """Gets the title of this Permission.
-
-            The localized name of the object.
-
-        :return: The title of this Permission.
-        :rtype: dict(str, str)
-        """
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        """Sets the title of this Permission.
-
-            The localized name of the object.
-
-        :param title: The title of this Permission.
-        :type: dict(str, str)
-        """
-
-        self._title = title
-    
-    @property
-    def two_factor_required(self):
-        """Gets the two_factor_required of this Permission.
-
-            Whether users with this permission are required to enable two-factor authentication.
-
-        :return: The two_factor_required of this Permission.
-        :rtype: bool
-        """
-        return self._two_factor_required
-
-    @two_factor_required.setter
-    def two_factor_required(self, two_factor_required):
-        """Sets the two_factor_required of this Permission.
-
-            Whether users with this permission are required to enable two-factor authentication.
-
-        :param two_factor_required: The two_factor_required of this Permission.
-        :type: bool
-        """
-
-        self._two_factor_required = two_factor_required
-    
-    @property
-    def web_app_enabled(self):
-        """Gets the web_app_enabled of this Permission.
-
-            
-
-        :return: The web_app_enabled of this Permission.
-        :rtype: bool
-        """
-        return self._web_app_enabled
-
-    @web_app_enabled.setter
-    def web_app_enabled(self, web_app_enabled):
-        """Sets the web_app_enabled of this Permission.
-
-            
-
-        :param web_app_enabled: The web_app_enabled of this Permission.
-        :type: bool
-        """
-
-        self._web_app_enabled = web_app_enabled
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(Permission, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, Permission):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

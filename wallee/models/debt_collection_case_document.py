@@ -1,332 +1,146 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
+from wallee.models.label import Label
+from typing import Optional, Set
+from typing_extensions import Self
+
+class DebtCollectionCaseDocument(BaseModel):
+    """
+    DebtCollectionCaseDocument
+    """
+    linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    file_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The file name of the document.", alias="fileName")
+    planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    debt_collection_case: Optional[StrictInt] = Field(default=None, description="The debt collection case that this document belongs to.", alias="debtCollectionCase")
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    mime_type: Optional[StrictStr] = Field(default=None, description="The MIME type of the document's content.", alias="mimeType")
+    created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
+    version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
+    unique_id: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(default=None, description="A unique identifier of the document.", alias="uniqueId")
+    labels: Optional[List[Label]] = Field(default=None, description="The labels providing additional information about the object.")
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "fileName", "plannedPurgeDate", "debtCollectionCase", "id", "mimeType", "createdOn", "version", "uniqueId", "labels"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class DebtCollectionCaseDocument:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'created_on': 'datetime',
-        'debt_collection_case': 'int',
-        'file_name': 'str',
-        'id': 'int',
-        'labels': 'list[Label]',
-        'linked_space_id': 'int',
-        'mime_type': 'str',
-        'planned_purge_date': 'datetime',
-        'unique_id': 'str',
-        'version': 'int',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of DebtCollectionCaseDocument from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'created_on': 'createdOn','debt_collection_case': 'debtCollectionCase','file_name': 'fileName','id': 'id','labels': 'labels','linked_space_id': 'linkedSpaceId','mime_type': 'mimeType','planned_purge_date': 'plannedPurgeDate','unique_id': 'uniqueId','version': 'version',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _created_on = None
-    _debt_collection_case = None
-    _file_name = None
-    _id = None
-    _labels = None
-    _linked_space_id = None
-    _mime_type = None
-    _planned_purge_date = None
-    _unique_id = None
-    _version = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.created_on = kwargs.get('created_on', None)
-        self.debt_collection_case = kwargs.get('debt_collection_case', None)
-        self.file_name = kwargs.get('file_name', None)
-        self.id = kwargs.get('id', None)
-        self.labels = kwargs.get('labels', None)
-        self.linked_space_id = kwargs.get('linked_space_id', None)
-        self.mime_type = kwargs.get('mime_type', None)
-        self.planned_purge_date = kwargs.get('planned_purge_date', None)
-        self.unique_id = kwargs.get('unique_id', None)
-        self.version = kwargs.get('version', None)
-        
-
-    
-    @property
-    def created_on(self):
-        """Gets the created_on of this DebtCollectionCaseDocument.
-
-            The date and time when the object was created.
-
-        :return: The created_on of this DebtCollectionCaseDocument.
-        :rtype: datetime
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        return self._created_on
+        excluded_fields: Set[str] = set([
+            "linked_space_id",
+            "file_name",
+            "planned_purge_date",
+            "debt_collection_case",
+            "id",
+            "mime_type",
+            "created_on",
+            "version",
+            "unique_id",
+            "labels",
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        # override the default output from pydantic by calling `to_dict()` of each item in labels (list)
+        _items = []
+        if self.labels:
+            for _item_labels in self.labels:
+                if _item_labels:
+                    _items.append(_item_labels.to_dict())
+            _dict['labels'] = _items
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of DebtCollectionCaseDocument from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "linkedSpaceId": obj.get("linkedSpaceId"),
+            "fileName": obj.get("fileName"),
+            "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "debtCollectionCase": obj.get("debtCollectionCase"),
+            "id": obj.get("id"),
+            "mimeType": obj.get("mimeType"),
+            "createdOn": obj.get("createdOn"),
+            "version": obj.get("version"),
+            "uniqueId": obj.get("uniqueId"),
+            "labels": [Label.from_dict(_item) for _item in obj["labels"]] if obj.get("labels") is not None else None
+        })
+        return _obj
 
-    @created_on.setter
-    def created_on(self, created_on):
-        """Sets the created_on of this DebtCollectionCaseDocument.
 
-            The date and time when the object was created.
-
-        :param created_on: The created_on of this DebtCollectionCaseDocument.
-        :type: datetime
-        """
-
-        self._created_on = created_on
-    
-    @property
-    def debt_collection_case(self):
-        """Gets the debt_collection_case of this DebtCollectionCaseDocument.
-
-            The debt collection case that this document belongs to.
-
-        :return: The debt_collection_case of this DebtCollectionCaseDocument.
-        :rtype: int
-        """
-        return self._debt_collection_case
-
-    @debt_collection_case.setter
-    def debt_collection_case(self, debt_collection_case):
-        """Sets the debt_collection_case of this DebtCollectionCaseDocument.
-
-            The debt collection case that this document belongs to.
-
-        :param debt_collection_case: The debt_collection_case of this DebtCollectionCaseDocument.
-        :type: int
-        """
-
-        self._debt_collection_case = debt_collection_case
-    
-    @property
-    def file_name(self):
-        """Gets the file_name of this DebtCollectionCaseDocument.
-
-            The file name of the document.
-
-        :return: The file_name of this DebtCollectionCaseDocument.
-        :rtype: str
-        """
-        return self._file_name
-
-    @file_name.setter
-    def file_name(self, file_name):
-        """Sets the file_name of this DebtCollectionCaseDocument.
-
-            The file name of the document.
-
-        :param file_name: The file_name of this DebtCollectionCaseDocument.
-        :type: str
-        """
-        if file_name is not None and len(file_name) > 100:
-            raise ValueError("Invalid value for `file_name`, length must be less than or equal to `100`")
-
-        self._file_name = file_name
-    
-    @property
-    def id(self):
-        """Gets the id of this DebtCollectionCaseDocument.
-
-            A unique identifier for the object.
-
-        :return: The id of this DebtCollectionCaseDocument.
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this DebtCollectionCaseDocument.
-
-            A unique identifier for the object.
-
-        :param id: The id of this DebtCollectionCaseDocument.
-        :type: int
-        """
-
-        self._id = id
-    
-    @property
-    def labels(self):
-        """Gets the labels of this DebtCollectionCaseDocument.
-
-            The labels providing additional information about the object.
-
-        :return: The labels of this DebtCollectionCaseDocument.
-        :rtype: list[Label]
-        """
-        return self._labels
-
-    @labels.setter
-    def labels(self, labels):
-        """Sets the labels of this DebtCollectionCaseDocument.
-
-            The labels providing additional information about the object.
-
-        :param labels: The labels of this DebtCollectionCaseDocument.
-        :type: list[Label]
-        """
-
-        self._labels = labels
-    
-    @property
-    def linked_space_id(self):
-        """Gets the linked_space_id of this DebtCollectionCaseDocument.
-
-            The ID of the space this object belongs to.
-
-        :return: The linked_space_id of this DebtCollectionCaseDocument.
-        :rtype: int
-        """
-        return self._linked_space_id
-
-    @linked_space_id.setter
-    def linked_space_id(self, linked_space_id):
-        """Sets the linked_space_id of this DebtCollectionCaseDocument.
-
-            The ID of the space this object belongs to.
-
-        :param linked_space_id: The linked_space_id of this DebtCollectionCaseDocument.
-        :type: int
-        """
-
-        self._linked_space_id = linked_space_id
-    
-    @property
-    def mime_type(self):
-        """Gets the mime_type of this DebtCollectionCaseDocument.
-
-            The MIME type of the document's content.
-
-        :return: The mime_type of this DebtCollectionCaseDocument.
-        :rtype: str
-        """
-        return self._mime_type
-
-    @mime_type.setter
-    def mime_type(self, mime_type):
-        """Sets the mime_type of this DebtCollectionCaseDocument.
-
-            The MIME type of the document's content.
-
-        :param mime_type: The mime_type of this DebtCollectionCaseDocument.
-        :type: str
-        """
-
-        self._mime_type = mime_type
-    
-    @property
-    def planned_purge_date(self):
-        """Gets the planned_purge_date of this DebtCollectionCaseDocument.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :return: The planned_purge_date of this DebtCollectionCaseDocument.
-        :rtype: datetime
-        """
-        return self._planned_purge_date
-
-    @planned_purge_date.setter
-    def planned_purge_date(self, planned_purge_date):
-        """Sets the planned_purge_date of this DebtCollectionCaseDocument.
-
-            The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-
-        :param planned_purge_date: The planned_purge_date of this DebtCollectionCaseDocument.
-        :type: datetime
-        """
-
-        self._planned_purge_date = planned_purge_date
-    
-    @property
-    def unique_id(self):
-        """Gets the unique_id of this DebtCollectionCaseDocument.
-
-            A unique identifier of the document.
-
-        :return: The unique_id of this DebtCollectionCaseDocument.
-        :rtype: str
-        """
-        return self._unique_id
-
-    @unique_id.setter
-    def unique_id(self, unique_id):
-        """Sets the unique_id of this DebtCollectionCaseDocument.
-
-            A unique identifier of the document.
-
-        :param unique_id: The unique_id of this DebtCollectionCaseDocument.
-        :type: str
-        """
-        if unique_id is not None and len(unique_id) > 500:
-            raise ValueError("Invalid value for `unique_id`, length must be less than or equal to `500`")
-
-        self._unique_id = unique_id
-    
-    @property
-    def version(self):
-        """Gets the version of this DebtCollectionCaseDocument.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :return: The version of this DebtCollectionCaseDocument.
-        :rtype: int
-        """
-        return self._version
-
-    @version.setter
-    def version(self, version):
-        """Sets the version of this DebtCollectionCaseDocument.
-
-            The version is used for optimistic locking and incremented whenever the object is updated.
-
-        :param version: The version of this DebtCollectionCaseDocument.
-        :type: int
-        """
-
-        self._version = version
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(DebtCollectionCaseDocument, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, DebtCollectionCaseDocument):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other

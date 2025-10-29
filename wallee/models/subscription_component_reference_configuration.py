@@ -1,120 +1,100 @@
 # coding: utf-8
+
+"""
+Wallee AG Python SDK
+
+This library allows to interact with the Wallee AG payment service.
+
+Copyright owner: Wallee AG
+Website: https://en.wallee.com
+Developer email: ecosystem-team@wallee.com
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
+
+from __future__ import annotations
 import pprint
-import six
-from enum import Enum
+import re
+import json
+
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Optional, Set
+from typing_extensions import Self
+
+class SubscriptionComponentReferenceConfiguration(BaseModel):
+    """
+    The component reference configuration adjusts the product component for a particular subscription.
+    """
+    quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity that should be applied to the component.")
+    product_component_reference_id: Optional[StrictInt] = Field(default=None, description="The ID of the component reference that is being configured.", alias="productComponentReferenceId")
+    __properties: ClassVar[List[str]] = ["quantity", "productComponentReferenceId"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
 
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
 
-class SubscriptionComponentReferenceConfiguration:
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
-    swagger_types = {
-    
-        'product_component_reference_id': 'int',
-        'quantity': 'float',
-    }
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of SubscriptionComponentReferenceConfiguration from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-    attribute_map = {
-        'product_component_reference_id': 'productComponentReferenceId','quantity': 'quantity',
-    }
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
 
-    
-    _product_component_reference_id = None
-    _quantity = None
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
 
-    def __init__(self, **kwargs):
-        self.discriminator = None
-        
-        self.product_component_reference_id = kwargs.get('product_component_reference_id', None)
-        self.quantity = kwargs.get('quantity', None)
-        
-
-    
-    @property
-    def product_component_reference_id(self):
-        """Gets the product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
-
-            The ID of the component reference that is being configured.
-
-        :return: The product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
-        :rtype: int
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
         """
-        return self._product_component_reference_id
+        excluded_fields: Set[str] = set([
+        ])
 
-    @product_component_reference_id.setter
-    def product_component_reference_id(self, product_component_reference_id):
-        """Sets the product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
 
-            The ID of the component reference that is being configured.
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of SubscriptionComponentReferenceConfiguration from a dict"""
+        if obj is None:
+            return None
 
-        :param product_component_reference_id: The product_component_reference_id of this SubscriptionComponentReferenceConfiguration.
-        :type: int
-        """
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
 
-        self._product_component_reference_id = product_component_reference_id
-    
-    @property
-    def quantity(self):
-        """Gets the quantity of this SubscriptionComponentReferenceConfiguration.
+        _obj = cls.model_validate({
+            "quantity": obj.get("quantity"),
+            "productComponentReferenceId": obj.get("productComponentReferenceId")
+        })
+        return _obj
 
-            The quantity that should be applied to the component.
 
-        :return: The quantity of this SubscriptionComponentReferenceConfiguration.
-        :rtype: float
-        """
-        return self._quantity
-
-    @quantity.setter
-    def quantity(self, quantity):
-        """Sets the quantity of this SubscriptionComponentReferenceConfiguration.
-
-            The quantity that should be applied to the component.
-
-        :param quantity: The quantity of this SubscriptionComponentReferenceConfiguration.
-        :type: float
-        """
-
-        self._quantity = quantity
-    
-
-    def to_dict(self):
-        result = {}
-
-        for attr, _ in six.iteritems(self.swagger_types):
-            value = getattr(self, attr)
-            if isinstance(value, list):
-                result[attr] = list(map(
-                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
-                    value
-                ))
-            elif hasattr(value, "to_dict"):
-                result[attr] = value.to_dict()
-            elif isinstance(value, dict):
-                result[attr] = dict(map(
-                    lambda item: (item[0], item[1].to_dict())
-                    if hasattr(item[1], "to_dict") else item,
-                    value.items()
-                ))
-            elif isinstance(value, Enum):
-                result[attr] = value.value
-            else:
-                result[attr] = value
-        if issubclass(SubscriptionComponentReferenceConfiguration, dict):
-            for key, value in self.items():
-                result[key] = value
-
-        return result
-
-    def to_str(self):
-        return pprint.pformat(self.to_dict())
-
-    def __repr__(self):
-        return self.to_str()
-
-    def __eq__(self, other):
-        if not isinstance(other, SubscriptionComponentReferenceConfiguration):
-            return False
-
-        return self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not self == other
