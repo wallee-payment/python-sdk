@@ -181,7 +181,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '6.0.0',
+            'x-meta-sdk-version': '6.1.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()

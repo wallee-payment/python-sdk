@@ -119,9 +119,14 @@ Web Api client: [*link*](https://app-wallee.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;Deactivate an account
   <br><br>
 - <strong>AnalyticsQueriesService</strong><br>
-  &nbsp;&nbsp;* <code>delete_analytics_queries_query_token</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /analytics/queries/{queryToken}
-  &nbsp;&nbsp;&nbsp;&nbsp;Cancel a query execution
+  &nbsp;&nbsp;* <code>delete_analytics_queries_query_external_id_query_external_id</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /analytics/queries/queryExternalId/{queryExternalId}
+  &nbsp;&nbsp;&nbsp;&nbsp;Cancel a query execution, identifying it by its external id.
+  <br><br>
+- <strong>AnalyticsQueriesService</strong><br>
+  &nbsp;&nbsp;* <code>delete_analytics_queries_query_token_query_token</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /analytics/queries/queryToken/{queryToken}
+  &nbsp;&nbsp;&nbsp;&nbsp;Cancel a query execution, identifying it by its query token.
   <br><br>
 - <strong>AnalyticsQueriesService</strong><br>
   &nbsp;&nbsp;* <code>get_analytics_queries</code>
@@ -129,14 +134,24 @@ Web Api client: [*link*](https://app-wallee.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;Get portion of query executions for account
   <br><br>
 - <strong>AnalyticsQueriesService</strong><br>
-  &nbsp;&nbsp;* <code>get_analytics_queries_query_token</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/{queryToken}
-  &nbsp;&nbsp;&nbsp;&nbsp;Retrieve a query execution information
+  &nbsp;&nbsp;* <code>get_analytics_queries_query_external_id_query_external_id</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/queryExternalId/{queryExternalId}
+  &nbsp;&nbsp;&nbsp;&nbsp;Retrieve a query execution information by its external id
   <br><br>
 - <strong>AnalyticsQueriesService</strong><br>
-  &nbsp;&nbsp;* <code>get_analytics_queries_query_token_result</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/{queryToken}/result
-  &nbsp;&nbsp;&nbsp;&nbsp;Generate a temporary URL to download the query result
+  &nbsp;&nbsp;* <code>get_analytics_queries_query_external_id_query_external_id_result</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/queryExternalId/{queryExternalId}/result
+  &nbsp;&nbsp;&nbsp;&nbsp;Generate a temporary URL to download the query result. It retrieves the query by its external id
+  <br><br>
+- <strong>AnalyticsQueriesService</strong><br>
+  &nbsp;&nbsp;* <code>get_analytics_queries_query_token_query_token</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/queryToken/{queryToken}
+  &nbsp;&nbsp;&nbsp;&nbsp;Retrieve a query execution information by its query token
+  <br><br>
+- <strong>AnalyticsQueriesService</strong><br>
+  &nbsp;&nbsp;* <code>get_analytics_queries_query_token_query_token_result</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /analytics/queries/queryToken/{queryToken}/result
+  &nbsp;&nbsp;&nbsp;&nbsp;Generate a temporary URL to download the query result. It retrieves the query by its query token
   <br><br>
 - <strong>AnalyticsQueriesService</strong><br>
   &nbsp;&nbsp;* <code>post_analytics_queries_submit</code>

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wallee"
-version = "6.0.0"
+version = "6.1.0"
 description = "SDK that allows you to access Wallee Group AG API"
 authors = ["Wallee AG"]
 license = "Apache-2.0"

@@ -23,7 +23,7 @@ limitations under the License.
 """
 
 
-__version__ = "6.0.0"
+__version__ = "6.1.0"
 
 from wallee.service.accounts_service import AccountsService
 from wallee.service.analytics_queries_service import AnalyticsQueriesService
