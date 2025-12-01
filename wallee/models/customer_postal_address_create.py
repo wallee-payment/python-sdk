@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import date
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class CustomerPostalAddressCreate(BaseModel):
     """
     CustomerPostalAddressCreate
-    """
+    """ # noqa: E501
     country: Optional[StrictStr] = Field(default=None, description="The two-letter country code (ISO 3166 format).")
     mobile_phone_number: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The phone number of a mobile phone.", alias="mobilePhoneNumber")
     gender: Optional[Gender] = None

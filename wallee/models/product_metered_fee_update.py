@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class ProductMeteredFeeUpdate(BaseModel):
     """
     ProductMeteredFeeUpdate
-    """
+    """ # noqa: E501
     component: Optional[StrictInt] = Field(default=None, description="The product component that the fee belongs to.")
     tier_pricing: Optional[ProductMeteredTierPricing] = Field(default=None, alias="tierPricing")
     metric: Optional[StrictInt] = Field(default=None, description="The metric used to determine the resource consumption billed to the customer.")

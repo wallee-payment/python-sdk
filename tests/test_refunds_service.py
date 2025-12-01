@@ -49,7 +49,7 @@ class TestRefundsService(unittest.TestCase):
             transaction.id, SPACE_ID, MOCK_CARD_DATA
         )
 
-        transaction_completion = self.transactions_service.post_payment_transactions_id_complete_offline(
+        transaction_completion = self.transactions_service.post_payment_transactions_id_complete_online(
             transaction.id, SPACE_ID
         )
 
@@ -92,7 +92,7 @@ class TestRefundsService(unittest.TestCase):
             transaction.id, SPACE_ID, MOCK_CARD_DATA
         )
 
-        self.transactions_service.post_payment_transactions_id_complete_offline(
+        self.transactions_service.post_payment_transactions_id_complete_online(
             transaction.id, SPACE_ID
         )
 

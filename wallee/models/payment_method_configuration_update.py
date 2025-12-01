@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class PaymentMethodConfigurationUpdate(BaseModel):
     """
     PaymentMethodConfigurationUpdate
-    """
+    """ # noqa: E501
     image_resource_path: Optional[StrictStr] = Field(default=None, description="The resource path to a custom image for the payment method, displayed to the customer for visual identification.", alias="imageResourcePath")
     sort_order: Optional[StrictInt] = Field(default=None, description="When listing payment methods, they can be sorted by this number.", alias="sortOrder")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment method configuration.")

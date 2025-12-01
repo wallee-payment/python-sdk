@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class ProductPeriodFee(BaseModel):
     """
     ProductPeriodFee
-    """
+    """ # noqa: E501
     period_fee: Optional[List[PersistableCurrencyAmount]] = Field(default=None, description="The amount charged to the customer for each billing cycle during the term of a subscription.", alias="periodFee")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     component: Optional[SubscriptionProductComponent] = None

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class PaymentAppProcessor(BaseModel):
     """
     PaymentAppProcessor
-    """
+    """ # noqa: E501
     documentation_url: Optional[StrictStr] = Field(default=None, description="A URL pointing to the documentation that explains how to configure and use the processor.", alias="documentationUrl")
     configured_environment: Optional[ChargeAttemptEnvironment] = Field(default=None, alias="configuredEnvironment")
     external_id: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

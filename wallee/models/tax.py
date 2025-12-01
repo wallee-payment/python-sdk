@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class Tax(BaseModel):
     """
     Tax
-    """
+    """ # noqa: E501
     rate: Optional[Union[Annotated[float, Field(le=100, strict=True)], Annotated[int, Field(le=100, strict=True)]]] = Field(default=None, description="The tax rate to be applied.")
     title: Optional[Annotated[str, Field(min_length=2, strict=True, max_length=40)]] = Field(default=None, description="The name of the tax.")
     __properties: ClassVar[List[str]] = ["rate", "title"]

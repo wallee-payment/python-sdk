@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class DebtCollectorConfiguration(BaseModel):
     """
     The debt collector configuration defines the behavior of the collection process for a particular collector.
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     skip_review_enabled: Optional[StrictBool] = Field(default=None, description="Whether the review of debt collection cases is skipped.", alias="skipReviewEnabled")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the debt collector configuration.")

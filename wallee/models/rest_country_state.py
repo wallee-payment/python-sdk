@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class RestCountryState(BaseModel):
     """
     RestCountryState
-    """
+    """ # noqa: E501
     code: Optional[StrictStr] = Field(default=None, description="The state's code used within addresses.")
     country_code: Optional[StrictStr] = Field(default=None, description="The two-letter code of the state's country (ISO 3166-1 alpha-2 format).", alias="countryCode")
     name: Optional[StrictStr] = Field(default=None, description="The name of the state.")

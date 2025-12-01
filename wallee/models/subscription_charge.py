@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -44,7 +44,7 @@ from typing_extensions import Self
 class SubscriptionCharge(BaseModel):
     """
     The subscription charge represents a single charge carried out for a particular subscription.
-    """
+    """ # noqa: E501
     discarded_on: Optional[datetime] = Field(default=None, description="The date and time when the charge was discarded.", alias="discardedOn")
     planned_execution_date: Optional[datetime] = Field(default=None, description="The date and time when the execution of the charge is planned.", alias="plannedExecutionDate")
     processing_type: Optional[SubscriptionChargeProcessingType] = Field(default=None, alias="processingType")

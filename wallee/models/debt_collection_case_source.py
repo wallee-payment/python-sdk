@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class DebtCollectionCaseSource(BaseModel):
     """
     The debt collection case source represents the origin of the case. It allows to understand where the amount receivable is coming from.
-    """
+    """ # noqa: E501
     forced_preparing_state: Optional[StrictBool] = Field(default=None, description="Whether debt collection cases created from this source will skip review and directly enter preparing state.", alias="forcedPreparingState")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")

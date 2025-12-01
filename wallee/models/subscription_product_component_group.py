@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class SubscriptionProductComponentGroup(BaseModel):
     """
     SubscriptionProductComponentGroup
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     product_version: Optional[SubscriptionProductVersion] = Field(default=None, alias="productVersion")
     sort_order: Optional[StrictInt] = Field(default=None, description="When listing component groups, they can be sorted by this number.", alias="sortOrder")

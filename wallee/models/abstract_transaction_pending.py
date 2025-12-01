@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class AbstractTransactionPending(BaseModel):
     """
     AbstractTransactionPending
-    """
+    """ # noqa: E501
     customer_email_address: Optional[Annotated[str, Field(strict=True, max_length=254)]] = Field(default=None, description="The customer's email address.", alias="customerEmailAddress")
     shipping_method: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The name of the shipping method used to ship the products.", alias="shippingMethod")
     invoice_merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the invoice.", alias="invoiceMerchantReference")

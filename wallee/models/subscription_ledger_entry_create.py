@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionLedgerEntryCreate(BaseModel):
     """
     The subscription ledger entry represents a single change on the subscription balance.
-    """
+    """ # noqa: E501
     quantity: Union[StrictFloat, StrictInt] = Field(description="The number of items that were consumed.")
     subscription_version: StrictInt = Field(description="The subscription version that the ledger entry belongs to.", alias="subscriptionVersion")
     external_id: StrictStr = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

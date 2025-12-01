@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class AbstractTokenUpdate(BaseModel):
     """
     AbstractTokenUpdate
-    """
+    """ # noqa: E501
     enabled_for_one_click_payment: Optional[StrictBool] = Field(default=None, description="Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.", alias="enabledForOneClickPayment")
     customer_email_address: Optional[Annotated[str, Field(strict=True, max_length=150)]] = Field(default=None, description="The customer's email address.", alias="customerEmailAddress")
     token_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The reference used to identify the payment token (e.g. the customer's ID or email address).", alias="tokenReference")

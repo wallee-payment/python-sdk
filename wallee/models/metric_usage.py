@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class MetricUsage(BaseModel):
     """
     The metric usage provides details about the consumption of a particular metric.
-    """
+    """ # noqa: E501
     consumed_units: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of consumed units.", alias="consumedUnits")
     metric_description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The description of the consumed unit's metric.", alias="metricDescription")
     metric_name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name of the consumed units' metric.", alias="metricName")

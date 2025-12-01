@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class ChargeFlow(BaseModel):
     """
     ChargeFlow
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     name: Optional[StrictStr] = Field(default=None, description="The name used to identify the charge flow.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")

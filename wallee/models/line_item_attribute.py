@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class LineItemAttribute(BaseModel):
     """
     LineItemAttribute
-    """
+    """ # noqa: E501
     label: Optional[Annotated[str, Field(strict=True, max_length=512)]] = Field(default=None, description="The label describing the line item attribute.")
     value: Optional[Annotated[str, Field(strict=True, max_length=512)]] = Field(default=None, description="The value of the line item attribute.")
     __properties: ClassVar[List[str]] = ["label", "value"]

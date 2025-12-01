@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class ExpressCheckoutShippingOption(BaseModel):
     """
     ExpressCheckoutShippingOption
-    """
+    """ # noqa: E501
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Total cost of this shipping option.")
     description: Optional[StrictStr] = Field(default=None, description="Description of the option")
     currency: Optional[StrictStr] = Field(default=None, description="Currency of the option")

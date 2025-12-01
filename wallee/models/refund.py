@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -47,7 +47,7 @@ from typing_extensions import Self
 class Refund(BaseModel):
     """
     A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
-    """
+    """ # noqa: E501
     total_settled_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total amount settled for the refund, factoring in reductions, taxes, and any additional applied fees.", alias="totalSettledAmount")
     reductions: Optional[List[LineItemReduction]] = Field(default=None, description="The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.")
     base_line_items: Optional[List[LineItem]] = Field(default=None, description="The original base line items from the transaction prior to the refund, serving as a reference for the refunded amounts.", alias="baseLineItems")

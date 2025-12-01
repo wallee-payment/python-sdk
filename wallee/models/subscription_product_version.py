@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -42,7 +42,7 @@ from typing_extensions import Self
 class SubscriptionProductVersion(BaseModel):
     """
     SubscriptionProductVersion
-    """
+    """ # noqa: E501
     retiring_finished_on: Optional[datetime] = Field(default=None, description="The date and time when the product version was retired.", alias="retiringFinishedOn")
     enabled_currencies: Optional[List[StrictStr]] = Field(default=None, description="The three-letter codes (ISO 4217 format) of the currencies that the product version supports.", alias="enabledCurrencies")
     product: Optional[SubscriptionProduct] = None

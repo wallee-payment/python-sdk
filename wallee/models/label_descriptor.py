@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class LabelDescriptor(BaseModel):
     """
     LabelDescriptor
-    """
+    """ # noqa: E501
     features: Optional[List[Feature]] = Field(default=None, description="The features that this label belongs to.")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")

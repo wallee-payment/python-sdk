@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class PaymentTerminalCreate(BaseModel):
     """
     PaymentTerminalCreate
-    """
+    """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal.")
     identifier: Optional[StrictStr] = Field(default=None, description="The unique identifier of the terminal, that is displayed on the device.")
     configuration_version: Optional[StrictInt] = Field(default=None, description="The configuration that is assigned to the terminal and determines how it works.", alias="configurationVersion")

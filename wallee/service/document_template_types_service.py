@@ -89,7 +89,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_serialize(
             after=after,
@@ -167,7 +167,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_serialize(
             after=after,
@@ -246,7 +246,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_serialize(
             after=after,
@@ -391,7 +391,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_id_serialize(
             id=id,
@@ -457,7 +457,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_id_serialize(
             id=id,
@@ -524,7 +524,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_id_serialize(
             id=id,
@@ -658,7 +658,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_search_serialize(
             expand=expand,
@@ -736,7 +736,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_search_serialize(
             expand=expand,
@@ -815,7 +815,7 @@ class DocumentTemplateTypesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_document_templates_types_search_serialize(
             expand=expand,

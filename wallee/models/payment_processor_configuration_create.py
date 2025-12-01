@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class PaymentProcessorConfigurationCreate(BaseModel):
     """
     PaymentProcessorConfigurationCreate
-    """
+    """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment method configuration.")
     state: Optional[CreationEntityState] = None
     processor: StrictInt = Field(description="The payment processor that the configuration is for.")

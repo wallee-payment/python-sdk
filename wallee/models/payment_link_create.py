@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -43,7 +43,7 @@ from typing_extensions import Self
 class PaymentLinkCreate(BaseModel):
     """
     PaymentLinkCreate
-    """
+    """ # noqa: E501
     line_items: Optional[List[LineItemCreate]] = Field(default=None, description="The line items representing what is being sold. If not specified, they can be supplied via request parameters.", alias="lineItems")
     available_until: Optional[datetime] = Field(default=None, description="The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.", alias="availableUntil")
     shipping_address_handling_mode: Optional[PaymentLinkAddressHandlingMode] = Field(default=None, alias="shippingAddressHandlingMode")

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class ChargeFlowLevel(BaseModel):
     """
     ChargeFlowLevel
-    """
+    """ # noqa: E501
     synchronous_charge: Optional[Charge] = Field(default=None, alias="synchronousCharge")
     configuration: Optional[ChargeFlowLevelConfiguration] = None
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")

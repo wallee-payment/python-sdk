@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionMetricCreate(BaseModel):
     """
     A metric represents the usage of a resource that can be measured.
-    """
+    """ # noqa: E501
     name: Dict[str, StrictStr] = Field(description="The localized name of the metric that is displayed to the customer.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the metric that is displayed to the customer.")
     type: StrictInt = Field(description="The type of the metric.")

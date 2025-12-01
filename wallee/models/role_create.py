@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RoleCreate(BaseModel):
     """
     RoleCreate
-    """
+    """ # noqa: E501
     permissions: Optional[List[Permission]] = Field(default=None, description="The permissions granted to users with this role.")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name used to identify the role.")
     two_factor_required: Optional[StrictBool] = Field(default=None, description="Whether users with this role are required to use two-factor authentication.", alias="twoFactorRequired")

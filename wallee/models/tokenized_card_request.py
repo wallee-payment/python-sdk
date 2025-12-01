@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class TokenizedCardRequest(BaseModel):
     """
     TokenizedCardRequest
-    """
+    """ # noqa: E501
     card_data: Optional[TokenizedCardDataCreate] = Field(default=None, alias="cardData")
     payment_method_configuration: Optional[StrictInt] = Field(default=None, description="The ID of the payment method configuration to use.", alias="paymentMethodConfiguration")
     __properties: ClassVar[List[str]] = ["cardData", "paymentMethodConfiguration"]

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class WebhookUrl(BaseModel):
     """
     WebhookUrl
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     application_managed: Optional[StrictBool] = Field(default=None, description="Whether the webhook URL is managed by the application, and therefore cannot be changed via the user interface.", alias="applicationManaged")
     name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name used to identify the webhook URL.")

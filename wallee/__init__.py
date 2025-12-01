@@ -1,5 +1,7 @@
 # coding: utf-8
 
+# flake8: noqa
+
 """
 Wallee AG Python SDK
 
@@ -23,8 +25,9 @@ limitations under the License.
 """
 
 
-__version__ = "6.1.0"
+__version__ = "6.2.0"
 
+# import apis into sdk package
 from wallee.service.accounts_service import AccountsService
 from wallee.service.analytics_queries_service import AnalyticsQueriesService
 from wallee.service.application_users_service import ApplicationUsersService
@@ -118,7 +121,7 @@ from wallee.service.webhook_encryption_keys_service import WebhookEncryptionKeys
 from wallee.service.webhook_listeners_service import WebhookListenersService
 from wallee.service.webhook_urls_service import WebhookURLsService
 
-
+# import ApiClient
 from wallee.api_response import ApiResponse
 from wallee.api_client import ApiClient
 from wallee.configuration import Configuration
@@ -128,7 +131,12 @@ from wallee.exceptions import ApiValueError
 from wallee.exceptions import ApiKeyError
 from wallee.exceptions import ApiAttributeError
 from wallee.exceptions import ApiException
+from wallee.wallee_sdk_exception import WalleeSdkException
 
+# import utils into sdk package
+from wallee.utils.encryption_util import EncryptionUtil
+
+# import models into sdk package
 from wallee.models.abstract_account_update import AbstractAccountUpdate
 from wallee.models.abstract_application_user_update import AbstractApplicationUserUpdate
 from wallee.models.abstract_customer_active import AbstractCustomerActive

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class RestApplicationUserMacKeyCreated(BaseModel):
     """
     RestApplicationUserMacKeyCreated
-    """
+    """ # noqa: E501
     creation_time: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="creationTime")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[ApplicationKeyState] = None

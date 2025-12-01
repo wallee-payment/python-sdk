@@ -75,7 +75,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_web_apps_installed_serialize(
             space=space,
@@ -138,7 +138,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_web_apps_installed_serialize(
             space=space,
@@ -202,7 +202,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_web_apps_installed_serialize(
             space=space,
@@ -321,7 +321,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_confirm_code_serialize(
             code=code,
@@ -389,7 +389,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_confirm_code_serialize(
             code=code,
@@ -458,7 +458,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_confirm_code_serialize(
             code=code,
@@ -582,7 +582,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_uninstall_serialize(
             space=space,
@@ -646,7 +646,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_uninstall_serialize(
             space=space,
@@ -711,7 +711,7 @@ class WebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_web_apps_uninstall_serialize(
             space=space,

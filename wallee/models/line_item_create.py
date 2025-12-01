@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class LineItemCreate(BaseModel):
     """
     LineItemCreate
-    """
+    """ # noqa: E501
     shipping_required: Optional[StrictBool] = Field(default=None, description="Whether the item required shipping.", alias="shippingRequired")
     quantity: Union[StrictFloat, StrictInt] = Field(description="The number of items that were purchased.")
     name: Annotated[str, Field(min_length=1, strict=True, max_length=150)] = Field(description="The name of the product, ideally in the customer's language.")

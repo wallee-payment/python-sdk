@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionProductCreate(BaseModel):
     """
     A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
-    """
+    """ # noqa: E501
     sort_order: Optional[StrictInt] = Field(default=None, description="When listing products, they can be sorted by this number.", alias="sortOrder")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the product.")
     product_locked: Optional[StrictBool] = Field(default=None, description="Whether subscriptions can be switched to or from this product, or whether they are locked in.", alias="productLocked")

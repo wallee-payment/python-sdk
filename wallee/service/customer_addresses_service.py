@@ -85,7 +85,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -155,7 +155,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -226,7 +226,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -367,7 +367,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -453,7 +453,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -540,7 +540,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -699,7 +699,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -773,7 +773,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -848,7 +848,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -996,7 +996,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_search_serialize(
             customer_id=customer_id,
@@ -1082,7 +1082,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_search_serialize(
             customer_id=customer_id,
@@ -1169,7 +1169,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_customers_customer_id_addresses_search_serialize(
             customer_id=customer_id,
@@ -1331,7 +1331,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -1410,7 +1410,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -1490,7 +1490,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_customers_customer_id_addresses_id_serialize(
             customer_id=customer_id,
@@ -1647,7 +1647,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -1722,7 +1722,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -1798,7 +1798,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_serialize(
             customer_id=customer_id,
@@ -1948,7 +1948,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_id_default_serialize(
             customer_id=customer_id,
@@ -2019,7 +2019,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_id_default_serialize(
             customer_id=customer_id,
@@ -2091,7 +2091,7 @@ class CustomerAddressesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_customers_customer_id_addresses_id_default_serialize(
             customer_id=customer_id,

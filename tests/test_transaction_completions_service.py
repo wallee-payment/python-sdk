@@ -55,7 +55,7 @@ class TestTransactionCompletionsService(unittest.TestCase):
             "State must be FULFILL"
         )
 
-        transaction_completion = self.transactions_service.post_payment_transactions_id_complete_offline(
+        transaction_completion = self.transactions_service.post_payment_transactions_id_complete_online(
             transaction.id, SPACE_ID
         )
 

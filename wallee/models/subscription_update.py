@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionUpdate(BaseModel):
     """
     SubscriptionUpdate
-    """
+    """ # noqa: E501
     description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="A description used to identify the subscription.")
     planned_termination_date: Optional[datetime] = Field(default=None, description="The date and time when the subscription is planned to be terminated.", alias="plannedTerminationDate")
     affiliate: Optional[StrictInt] = Field(default=None, description="The affiliate that led to the creation of the subscription.")

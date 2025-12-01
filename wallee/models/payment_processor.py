@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentProcessor(BaseModel):
     """
     Payment processors serve as intermediaries that establish connections with third-party companies, known as payment service providers. These providers are responsible for managing the technical aspects of payment transactions, ensuring seamless and secure payment processing.
-    """
+    """ # noqa: E501
     company_name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name of the company to which the processor belongs.", alias="companyName")
     headquarters_location: Optional[Dict[str, StrictStr]] = Field(default=None, description="Where the processor's headquarters are located.", alias="headquartersLocation")
     logo_path: Optional[StrictStr] = Field(default=None, description="The path to the logo image of the processor.", alias="logoPath")

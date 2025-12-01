@@ -24,20 +24,35 @@ limitations under the License.
 
 
 import copy
+import http.client as httplib
 import logging
 from logging import FileHandler
 import multiprocessing
 import sys
-from typing import Optional
-import urllib3
+from typing import Any, ClassVar, Dict, List, Literal, Optional, TypedDict, Union
+from typing_extensions import NotRequired, Self
 
-import http.client as httplib
+import urllib3
 
 JSON_SCHEMA_VALIDATION_KEYWORDS = {
     'multipleOf', 'maximum', 'exclusiveMaximum',
     'minimum', 'exclusiveMinimum', 'maxLength',
     'minLength', 'pattern', 'maxItems', 'minItems'
 }
+
+ServerVariablesT = Dict[str, str]
+
+class HostSettingVariable(TypedDict):
+    description: str
+    default_value: str
+    enum_values: List[str]
+
+
+class HostSetting(TypedDict):
+    url: str
+    description: str
+    variables: NotRequired[Dict[str, HostSettingVariable]]
+
 
 class Configuration:
     """This class contains various settings of the API client.
@@ -48,20 +63,23 @@ class Configuration:
 
     _default = None
 
-    def __init__(self,
-                 host=None,
-                 user_id='',
-                 authentication_key='',
-                 server_index=None, server_variables=None,
-                 server_operation_index=None, server_operation_variables=None,
-                 ignore_operation_servers=False,
-                 ssl_ca_cert=None,
-                 retries=None,
-                 default_headers={},
-                 request_timeout=25,
-                 *,
-                 debug: Optional[bool] = None
-                 ) -> None:
+    def __init__(
+        self,
+        host: Optional[str]=None,
+        user_id='',
+        authentication_key='',
+        server_index: Optional[int]=None,
+        server_variables: Optional[ServerVariablesT]=None,
+        server_operation_index: Optional[Dict[int, int]]=None,
+        server_operation_variables: Optional[Dict[int, ServerVariablesT]]=None,
+        ignore_operation_servers: bool=False,
+        ssl_ca_cert: Optional[str]=None,
+        retries: Optional[int] = None,
+        default_headers={},
+        request_timeout=25,
+        *,
+        debug: Optional[bool] = None
+    ) -> None:
         self._base_path = "https://app-wallee.com/api/v2.0" if host is None else host
         """Default Base url
         """
@@ -86,9 +104,11 @@ class Configuration:
         self._authentication_key = authentication_key
         """Authentication key used for request authentication.
         """
-        self.logger = {"package_logger": logging.getLogger("wallee"), "urllib3_logger": logging.getLogger("urllib3")}
+        self.logger = {}
         """Logging Settings
         """
+        self.logger["package_logger"] = logging.getLogger("wallee")
+        self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
         """Log format
         """
@@ -173,7 +193,7 @@ class Configuration:
         """the time limit for HTTP request in seconds. (Default value is: 25)
         """
 
-    def __deepcopy__(self, memo):
+    def __deepcopy__(self, memo:  Dict[int, Any]) -> Self:
         cls = self.__class__
         result = cls.__new__(cls)
         memo[id(self)] = result
@@ -187,22 +207,32 @@ class Configuration:
         result.debug = self.debug
         return result
 
-    def __setattr__(self, name, value):
+    def __setattr__(self, name: str, value: Any) -> None:
         object.__setattr__(self, name, value)
 
     @classmethod
-    def set_default(cls, default):
+    def set_default(cls, default: Optional[Self]) -> None:
         """Set default instance of configuration.
 
         It stores default configuration, which can be
-        returned by get_default method.
+        returned by get_default_copy method.
 
         :param default: object of Configuration
         """
         cls._default = default
 
     @classmethod
-    def get_default(cls):
+    def get_default_copy(cls) -> Self:
+        """Deprecated. Please use `get_default` instead.
+
+        Deprecated. Please use `get_default` instead.
+
+        :return: The configuration object.
+        """
+        return cls.get_default()
+
+    @classmethod
+    def get_default(cls) -> Self:
         """Return the default configuration.
 
         This method returns newly created, based on default constructor,
@@ -212,11 +242,11 @@ class Configuration:
         :return: The configuration object.
         """
         if cls._default is None:
-            cls._default = Configuration()
+            cls._default = cls()
         return cls._default
 
     @property
-    def logger_file(self):
+    def logger_file(self) -> Optional[str]:
         """The logger file.
 
         If the logger_file is None, then add stream handler and remove file
@@ -228,7 +258,7 @@ class Configuration:
         return self.__logger_file
 
     @logger_file.setter
-    def logger_file(self, value):
+    def logger_file(self, value: Optional[str]) -> None:
         """The logger file.
 
         If the logger_file is None, then add stream handler and remove file
@@ -247,7 +277,7 @@ class Configuration:
                 logger.addHandler(self.logger_file_handler)
 
     @property
-    def debug(self):
+    def debug(self) -> bool:
         """Debug status
 
         :param value: The debug status, True or False.
@@ -256,7 +286,7 @@ class Configuration:
         return self.__debug
 
     @debug.setter
-    def debug(self, value):
+    def debug(self, value: bool) -> None:
         """Debug status
 
         :param value: The debug status, True or False.
@@ -278,15 +308,15 @@ class Configuration:
             httplib.HTTPConnection.debuglevel = 0
 
     @property
-    def request_timeout(self):
+    def request_timeout(self) -> int:
         return self._request_timeout
 
     @request_timeout.setter
-    def request_timeout(self, value):
+    def request_timeout(self, value) -> int:
         self._request_timeout = value
 
     @property
-    def logger_format(self):
+    def logger_format(self) -> str:
         """The logger format.
 
         The logger_formatter will be updated when sets logger_format.
@@ -297,7 +327,7 @@ class Configuration:
         return self.__logger_format
 
     @logger_format.setter
-    def logger_format(self, value):
+    def logger_format(self, value: str) -> None:
         """The logger format.
 
         The logger_formatter will be updated when sets logger_format.
@@ -308,7 +338,7 @@ class Configuration:
         self.__logger_format = value
         self.logger_formatter = logging.Formatter(self.__logger_format)
 
-    def to_debug_report(self):
+    def to_debug_report(self) -> str:
         """Gets the essential information for debugging.
 
         :return: The report for debugging.
@@ -317,10 +347,10 @@ class Configuration:
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2.0\n"\
-               "SDK Package Version: 6.1.0".\
+               "SDK Package Version: 6.2.0".\
                format(env=sys.platform, pyversion=sys.version)
 
-    def get_host_settings(self):
+    def get_host_settings(self) -> List[HostSetting]:
         """Gets an array of host settings
 
         :return: An array of host settings
@@ -332,7 +362,12 @@ class Configuration:
             }
         ]
 
-    def get_host_from_settings(self, index, variables=None, servers=None):
+    def get_host_from_settings(
+        self,
+        index: Optional[int],
+        variables: Optional[ServerVariablesT]=None,
+        servers: Optional[List[HostSetting]]=None,
+    ) -> str:
         """Gets host URL based on the index and variables
         :param index: array index of the host settings
         :param variables: hash of variable and the corresponding value
@@ -372,12 +407,12 @@ class Configuration:
         return url
 
     @property
-    def host(self):
+    def host(self) -> str:
         """Return generated host."""
         return self.get_host_from_settings(self.server_index, variables=self.server_variables)
 
     @host.setter
-    def host(self, value):
+    def host(self, value: str) -> None:
         """Fix base path."""
         self._base_path = value
         self.server_index = None

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -43,7 +43,7 @@ from typing_extensions import Self
 class PaymentAppConnector(BaseModel):
     """
     PaymentAppConnector
-    """
+    """ # noqa: E501
     payment_page_endpoint: Optional[StrictStr] = Field(default=None, description="The URL where the user is redirected to process a payment. This endpoint is provided by the external service provider.", alias="paymentPageEndpoint")
     external_id: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     updated_on: Optional[datetime] = Field(default=None, description="The date and time when the connector was last updated.", alias="updatedOn")

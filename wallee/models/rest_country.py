@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RestCountry(BaseModel):
     """
     RestCountry
-    """
+    """ # noqa: E501
     iso_code2: Optional[StrictStr] = Field(default=None, description="The country's two-letter code (ISO 3166-1 alpha-2 format).", alias="isoCode2")
     address_format: Optional[RestAddressFormat] = Field(default=None, alias="addressFormat")
     iso_code3: Optional[StrictStr] = Field(default=None, description="The country's three-letter code (ISO 3166-1 alpha-3 format).", alias="isoCode3")

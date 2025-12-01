@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class DebtCollectorConfigurationUpdate(BaseModel):
     """
     The debt collector configuration defines the behavior of the collection process for a particular collector.
-    """
+    """ # noqa: E501
     skip_review_enabled: Optional[StrictBool] = Field(default=None, description="Whether the review of debt collection cases is skipped.", alias="skipReviewEnabled")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the debt collector configuration.")
     enabled_space_views: Optional[List[StrictInt]] = Field(default=None, description="The space views for which the debt collector configuration is enabled. If empty, it is enabled for all space views.", alias="enabledSpaceViews")

@@ -76,7 +76,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_serialize(
             expand=expand,
@@ -138,7 +138,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_serialize(
             expand=expand,
@@ -201,7 +201,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_serialize(
             expand=expand,
@@ -319,7 +319,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_code_serialize(
             code=code,
@@ -381,7 +381,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_code_serialize(
             code=code,
@@ -444,7 +444,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_code_serialize(
             code=code,
@@ -571,7 +571,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_search_serialize(
             expand=expand,
@@ -649,7 +649,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_search_serialize(
             expand=expand,
@@ -728,7 +728,7 @@ class LanguagesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_languages_search_serialize(
             expand=expand,

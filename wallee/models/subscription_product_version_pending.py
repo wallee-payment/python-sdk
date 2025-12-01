@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionProductVersionPending(BaseModel):
     """
     SubscriptionProductVersionPending
-    """
+    """ # noqa: E501
     enabled_currencies: Optional[List[StrictStr]] = Field(default=None, description="The three-letter codes (ISO 4217 format) of the currencies that the product version supports.", alias="enabledCurrencies")
     product: Optional[StrictInt] = Field(default=None, description="The product that the version belongs to.")
     tax_calculation: Optional[TaxCalculation] = Field(default=None, alias="taxCalculation")

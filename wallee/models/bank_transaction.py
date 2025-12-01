@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -42,7 +42,7 @@ from typing_extensions import Self
 class BankTransaction(BaseModel):
     """
     BankTransaction
-    """
+    """ # noqa: E501
     adjustments: Optional[List[PaymentAdjustment]] = Field(default=None, description="Adjustments are changes made to the initial transaction amount, such as fees or corrections.")
     currency_bank_account: Optional[CurrencyBankAccount] = Field(default=None, alias="currencyBankAccount")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")

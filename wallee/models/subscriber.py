@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class Subscriber(BaseModel):
     """
     A subscriber represents everyone who is subscribed to a product.
-    """
+    """ # noqa: E501
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="The description used to identify the subscriber.")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

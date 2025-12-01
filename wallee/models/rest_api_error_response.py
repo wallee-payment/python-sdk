@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RestApiErrorResponse(BaseModel):
     """
     RestApiErrorResponse
-    """
+    """ # noqa: E501
     var_date: Optional[datetime] = Field(default=None, description="The date and time when the error occurred.", alias="date")
     code: Optional[StrictStr] = Field(default=None, description="A brief explanation of the error that can be used to programmatically handle it.")
     id: Optional[StrictStr] = Field(default=None, description="The unique identifier of the error.")

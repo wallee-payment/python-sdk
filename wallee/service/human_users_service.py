@@ -29,7 +29,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictInt, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from wallee.models.human_user import HumanUser
 from wallee.models.human_user_create import HumanUserCreate
@@ -80,7 +80,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_human_users_id_serialize(
             id=id,
@@ -143,7 +143,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_human_users_id_serialize(
             id=id,
@@ -207,7 +207,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_human_users_id_serialize(
             id=id,
@@ -334,7 +334,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_serialize(
             after=after,
@@ -412,7 +412,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_serialize(
             after=after,
@@ -491,7 +491,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_serialize(
             after=after,
@@ -647,7 +647,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_export_serialize(
             fields=fields,
@@ -727,7 +727,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_export_serialize(
             fields=fields,
@@ -808,7 +808,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_export_serialize(
             fields=fields,
@@ -954,7 +954,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_id_serialize(
             id=id,
@@ -1020,7 +1020,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_id_serialize(
             id=id,
@@ -1087,7 +1087,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_id_serialize(
             id=id,
@@ -1221,7 +1221,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_search_serialize(
             expand=expand,
@@ -1299,7 +1299,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_search_serialize(
             expand=expand,
@@ -1378,7 +1378,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_human_users_search_serialize(
             expand=expand,
@@ -1526,7 +1526,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_human_users_id_serialize(
             id=id,
@@ -1597,7 +1597,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_human_users_id_serialize(
             id=id,
@@ -1669,7 +1669,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_human_users_id_serialize(
             id=id,
@@ -1812,7 +1812,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_human_users_serialize(
             human_user_create=human_user_create,
@@ -1879,7 +1879,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_human_users_serialize(
             human_user_create=human_user_create,
@@ -1947,7 +1947,7 @@ class HumanUsersService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_human_users_serialize(
             human_user_create=human_user_create,

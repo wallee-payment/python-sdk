@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionProductComponentUpdate(BaseModel):
     """
     SubscriptionProductComponentUpdate
-    """
+    """ # noqa: E501
     reference: Optional[StrictInt] = Field(default=None, description="The reference is used to link components across different product versions.")
     tax_class: Optional[StrictInt] = Field(default=None, description="The tax class to be applied to fees.", alias="taxClass")
     quantity_step: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity step determines the interval in which the quantity can be increased.", alias="quantityStep")

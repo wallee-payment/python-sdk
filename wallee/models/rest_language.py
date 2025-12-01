@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class RestLanguage(BaseModel):
     """
     RestLanguage
-    """
+    """ # noqa: E501
     primary_of_group: Optional[StrictBool] = Field(default=None, description="Whether this is the primary language in a group of languages.", alias="primaryOfGroup")
     country_code: Optional[StrictStr] = Field(default=None, description="The two-letter code of the language's region (ISO 3166-1 alpha-2 format).", alias="countryCode")
     iso2_code: Optional[StrictStr] = Field(default=None, description="The language's two-letter code (ISO 639-1 format).", alias="iso2Code")

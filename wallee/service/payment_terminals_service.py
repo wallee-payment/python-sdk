@@ -85,7 +85,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_terminals_id_serialize(
             id=id,
@@ -152,7 +152,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_terminals_id_serialize(
             id=id,
@@ -220,7 +220,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_terminals_id_serialize(
             id=id,
@@ -354,7 +354,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_serialize(
             space=space,
@@ -436,7 +436,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_serialize(
             space=space,
@@ -519,7 +519,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_serialize(
             space=space,
@@ -671,7 +671,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_serialize(
             id=id,
@@ -741,7 +741,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_serialize(
             id=id,
@@ -812,7 +812,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_serialize(
             id=id,
@@ -947,7 +947,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_till_connection_credentials_serialize(
             id=id,
@@ -1021,7 +1021,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_till_connection_credentials_serialize(
             id=id,
@@ -1096,7 +1096,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_id_till_connection_credentials_serialize(
             id=id,
@@ -1243,7 +1243,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_search_serialize(
             space=space,
@@ -1325,7 +1325,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_search_serialize(
             space=space,
@@ -1408,7 +1408,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_terminals_search_serialize(
             space=space,
@@ -1563,7 +1563,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
@@ -1638,7 +1638,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
@@ -1714,7 +1714,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
@@ -1864,7 +1864,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_serialize(
             space=space,
@@ -1935,7 +1935,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_serialize(
             space=space,
@@ -2007,7 +2007,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_serialize(
             space=space,
@@ -2161,7 +2161,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_perform_transaction_serialize(
             transaction_id=transaction_id,
@@ -2242,7 +2242,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_perform_transaction_serialize(
             transaction_id=transaction_id,
@@ -2324,7 +2324,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_perform_transaction_serialize(
             transaction_id=transaction_id,
@@ -2466,7 +2466,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_trigger_final_balance_serialize(
             identifier=identifier,
@@ -2533,7 +2533,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_trigger_final_balance_serialize(
             identifier=identifier,
@@ -2601,7 +2601,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_by_identifier_identifier_trigger_final_balance_serialize(
             identifier=identifier,
@@ -2727,7 +2727,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_link_serialize(
             id=id,
@@ -2798,7 +2798,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_link_serialize(
             id=id,
@@ -2870,7 +2870,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_link_serialize(
             id=id,
@@ -3010,7 +3010,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_perform_transaction_serialize(
             id=id,
@@ -3091,7 +3091,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_perform_transaction_serialize(
             id=id,
@@ -3173,7 +3173,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_perform_transaction_serialize(
             id=id,
@@ -3315,7 +3315,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_trigger_final_balance_serialize(
             id=id,
@@ -3382,7 +3382,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_trigger_final_balance_serialize(
             id=id,
@@ -3450,7 +3450,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_trigger_final_balance_serialize(
             id=id,
@@ -3573,7 +3573,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_unlink_serialize(
             id=id,
@@ -3640,7 +3640,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_unlink_serialize(
             id=id,
@@ -3708,7 +3708,7 @@ class PaymentTerminalsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_terminals_id_unlink_serialize(
             id=id,

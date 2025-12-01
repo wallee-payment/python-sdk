@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class AuthenticatedCardData(BaseModel):
     """
     AuthenticatedCardData
-    """
+    """ # noqa: E501
     initial_recurring_transaction: Optional[StrictBool] = Field(default=None, description="Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.", alias="initialRecurringTransaction")
     recurring_indicator: Optional[RecurringIndicator] = Field(default=None, alias="recurringIndicator")
     token_requestor_id: Optional[StrictStr] = Field(default=None, description="The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.", alias="tokenRequestorId")

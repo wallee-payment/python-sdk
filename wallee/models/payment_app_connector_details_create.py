@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class PaymentAppConnectorDetailsCreate(BaseModel):
     """
     PaymentAppConnectorDetailsCreate
-    """
+    """ # noqa: E501
     external_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=40)]] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     __properties: ClassVar[List[str]] = ["externalId"]
 

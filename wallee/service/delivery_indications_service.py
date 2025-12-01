@@ -92,7 +92,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_serialize(
             space=space,
@@ -174,7 +174,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_serialize(
             space=space,
@@ -257,7 +257,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_serialize(
             space=space,
@@ -409,7 +409,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_id_serialize(
             id=id,
@@ -479,7 +479,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_id_serialize(
             id=id,
@@ -550,7 +550,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_id_serialize(
             id=id,
@@ -691,7 +691,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_search_serialize(
             space=space,
@@ -773,7 +773,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_search_serialize(
             space=space,
@@ -856,7 +856,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_delivery_indications_search_serialize(
             space=space,
@@ -1008,7 +1008,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_not_suitable_serialize(
             id=id,
@@ -1079,7 +1079,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_not_suitable_serialize(
             id=id,
@@ -1151,7 +1151,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_not_suitable_serialize(
             id=id,
@@ -1284,7 +1284,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_suitable_serialize(
             id=id,
@@ -1355,7 +1355,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_suitable_serialize(
             id=id,
@@ -1427,7 +1427,7 @@ class DeliveryIndicationsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_delivery_indications_id_mark_suitable_serialize(
             id=id,

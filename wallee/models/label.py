@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class Label(BaseModel):
     """
     Label
-    """
+    """ # noqa: E501
     content_as_string: Optional[StrictStr] = Field(default=None, description="The label's content formatted as string.", alias="contentAsString")
     descriptor: Optional[LabelDescriptor] = None
     content: Optional[Any] = Field(default=None, description="The label's actual content.")

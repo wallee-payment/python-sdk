@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class Feature(BaseModel):
     """
     Feature
-    """
+    """ # noqa: E501
     required_features: Optional[List[StrictInt]] = Field(default=None, description="The features that must be enabled for this feature to work properly.", alias="requiredFeatures")
     visible: Optional[StrictBool] = Field(default=None, description="Whether the feature is visible to the user.")
     logo_path: Optional[StrictStr] = Field(default=None, description="The path to the feature's logo image.", alias="logoPath")

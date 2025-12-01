@@ -92,7 +92,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_serialize(
             space=space,
@@ -174,7 +174,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_serialize(
             space=space,
@@ -257,7 +257,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_serialize(
             space=space,
@@ -409,7 +409,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_id_serialize(
             id=id,
@@ -479,7 +479,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_id_serialize(
             id=id,
@@ -550,7 +550,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_id_serialize(
             id=id,
@@ -691,7 +691,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_search_serialize(
             space=space,
@@ -773,7 +773,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_search_serialize(
             space=space,
@@ -856,7 +856,7 @@ class SubscriptionProductRetirementsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_products_retirements_search_serialize(
             space=space,

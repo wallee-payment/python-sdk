@@ -25,11 +25,11 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from wallee.models.payment_terminal_location_state import PaymentTerminalLocationState
@@ -39,15 +39,26 @@ from typing_extensions import Self
 class PaymentTerminalLocation(BaseModel):
     """
     PaymentTerminalLocation
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
+    production_merchant_id: Optional[Annotated[str, Field(min_length=15, strict=True, max_length=15)]] = Field(default=None, alias="productionMerchantId")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal location.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[PaymentTerminalLocationState] = None
     version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
-    __properties: ClassVar[List[str]] = ["linkedSpaceId", "name", "plannedPurgeDate", "externalId", "id", "state", "version"]
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "productionMerchantId", "name", "plannedPurgeDate", "externalId", "id", "state", "version"]
+
+    @field_validator('production_merchant_id')
+    def production_merchant_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"([0-9a-zA-Z])+", value):
+            raise ValueError(r"must validate the regular expression /([0-9a-zA-Z])+/")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,9 +96,11 @@ class PaymentTerminalLocation(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "linked_space_id",
+            "production_merchant_id",
             "name",
             "planned_purge_date",
             "external_id",
@@ -113,6 +126,7 @@ class PaymentTerminalLocation(BaseModel):
 
         _obj = cls.model_validate({
             "linkedSpaceId": obj.get("linkedSpaceId"),
+            "productionMerchantId": obj.get("productionMerchantId"),
             "name": obj.get("name"),
             "plannedPurgeDate": obj.get("plannedPurgeDate"),
             "externalId": obj.get("externalId"),

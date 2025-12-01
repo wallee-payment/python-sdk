@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class TransactionInvoiceReplacement(BaseModel):
     """
     TransactionInvoiceReplacement
-    """
+    """ # noqa: E501
     line_items: List[LineItemCreate] = Field(description="The invoiced line items that will appear on the invoice document.", alias="lineItems")
     due_on: Optional[datetime] = Field(default=None, description="The due date for payment of the invoice.", alias="dueOn")
     external_id: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

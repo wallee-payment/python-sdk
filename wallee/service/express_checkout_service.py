@@ -77,7 +77,7 @@ class ExpressCheckoutService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_express_checkout_create_session_serialize(
             space=space,
@@ -144,7 +144,7 @@ class ExpressCheckoutService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_express_checkout_create_session_serialize(
             space=space,
@@ -212,7 +212,7 @@ class ExpressCheckoutService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_express_checkout_create_session_serialize(
             space=space,

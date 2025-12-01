@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -42,7 +42,7 @@ from typing_extensions import Self
 class PaymentTerminal(BaseModel):
     """
     PaymentTerminal
-    """
+    """ # noqa: E501
     identifier: Optional[StrictStr] = Field(default=None, description="The unique identifier of the terminal, that is displayed on the device.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

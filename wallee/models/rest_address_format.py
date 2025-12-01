@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RestAddressFormat(BaseModel):
     """
     RestAddressFormat
-    """
+    """ # noqa: E501
     post_code_examples: Optional[List[StrictStr]] = Field(default=None, description="A list of sample post codes.", alias="postCodeExamples")
     required_fields: Optional[List[RestAddressFormatField]] = Field(default=None, description="The fields that are required in the address format.", alias="requiredFields")
     used_fields: Optional[List[RestAddressFormatField]] = Field(default=None, description="The fields that are used in the address format.", alias="usedFields")

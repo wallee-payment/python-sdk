@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionCreateRequest(BaseModel):
     """
     SubscriptionCreateRequest
-    """
+    """ # noqa: E501
     component_configurations: Optional[List[SubscriptionComponentReferenceConfiguration]] = Field(default=None, description="The configurations of the subscription's components.", alias="componentConfigurations")
     product: Optional[StrictInt] = Field(default=None, description="The product to subscribe to.")
     currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.")

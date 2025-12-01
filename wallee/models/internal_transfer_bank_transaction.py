@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class InternalTransferBankTransaction(BaseModel):
     """
     InternalTransferBankTransaction
-    """
+    """ # noqa: E501
     source_bank_transaction: Optional[BankTransaction] = Field(default=None, alias="sourceBankTransaction")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     target_bank_transaction: Optional[BankTransaction] = Field(default=None, alias="targetBankTransaction")

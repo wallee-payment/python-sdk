@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class DunningCase(BaseModel):
     """
     DunningCase
-    """
+    """ # noqa: E501
     canceled_on: Optional[datetime] = Field(default=None, alias="canceledOn")
     derecognized_on: Optional[datetime] = Field(default=None, alias="derecognizedOn")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")

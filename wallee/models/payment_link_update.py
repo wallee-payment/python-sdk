@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class PaymentLinkUpdate(BaseModel):
     """
     PaymentLinkUpdate
-    """
+    """ # noqa: E501
     shipping_address_handling_mode: Optional[PaymentLinkAddressHandlingMode] = Field(default=None, alias="shippingAddressHandlingMode")
     allowed_redirection_domains: Optional[Annotated[List[StrictStr], Field(min_length=1)]] = Field(default=None, description="The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. ", alias="allowedRedirectionDomains")
     language: Optional[StrictStr] = Field(default=None, description="The language for displaying the payment page. If not specified, it can be supplied via the 'language' request parameter.")

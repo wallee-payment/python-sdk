@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubscriptionMetricUsageReport(BaseModel):
     """
     The metric usage is the actual usage of a metric for a particular subscription as collected by an external application.
-    """
+    """ # noqa: E501
     consumed_units: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of resources consumed, will be charged in the next billing cycle.", alias="consumedUnits")
     created_by_user_id: Optional[StrictInt] = Field(default=None, description="The ID of the user the usage report was created by.", alias="createdByUserId")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")

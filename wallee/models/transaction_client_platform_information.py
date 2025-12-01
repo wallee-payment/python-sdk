@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class TransactionClientPlatformInformation(BaseModel):
     """
     TransactionClientPlatformInformation
-    """
+    """ # noqa: E501
     space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="spaceId")
     integration_type: Optional[StrictStr] = Field(default=None, description="The type of integration that was used to collect the payment information.", alias="integrationType")
     os_version: Optional[StrictStr] = Field(default=None, description="The version of the operating system that was used to collect the payment information.", alias="osVersion")

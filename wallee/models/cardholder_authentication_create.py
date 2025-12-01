@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class CardholderAuthenticationCreate(BaseModel):
     """
     CardholderAuthenticationCreate
-    """
+    """ # noqa: E501
     authentication_identifier: Optional[StrictStr] = Field(default=None, description="The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.", alias="authenticationIdentifier")
     authentication_response: CardAuthenticationResponse = Field(alias="authenticationResponse")
     electronic_commerce_indicator: Optional[StrictStr] = Field(default=None, description="The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.", alias="electronicCommerceIndicator")

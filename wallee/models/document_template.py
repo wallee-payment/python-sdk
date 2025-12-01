@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class DocumentTemplate(BaseModel):
     """
     A document template contains the customizations for a particular document template type.
-    """
+    """ # noqa: E501
     delivery_enabled: Optional[StrictBool] = Field(default=None, description="Whether documents of this template should be delivered.", alias="deliveryEnabled")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="spaceId")

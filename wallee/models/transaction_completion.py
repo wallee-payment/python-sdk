@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -44,7 +44,7 @@ from typing_extensions import Self
 class TransactionCompletion(BaseModel):
     """
     TransactionCompletion
-    """
+    """ # noqa: E501
     line_item_version: Optional[TransactionLineItemVersion] = Field(default=None, alias="lineItemVersion")
     statement_descriptor: Optional[Annotated[str, Field(strict=True, max_length=80)]] = Field(default=None, description="The statement descriptor that appears on a customer's bank statement, providing an explanation for charges or payments, helping customers identify the transaction.", alias="statementDescriptor")
     base_line_items: Optional[List[LineItem]] = Field(default=None, description="The original line items from the transaction that serve as the baseline for this completion.", alias="baseLineItems")

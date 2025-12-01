@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentTerminalTransactionSummaryReference(BaseModel):
     """
     PaymentTerminalTransactionSummaryReference
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     terminal_id: Optional[StrictInt] = Field(default=None, description="The unique identifier of the terminal.", alias="terminalId")

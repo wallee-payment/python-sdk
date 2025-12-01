@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, field_validator
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class PaymentAppChargeAttemptUpdate(BaseModel):
     """
     A request to update the state of a charge attempt. The charge attempt must be associated with a processor created by the invoking payment web app.
-    """
+    """ # noqa: E501
     reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="A unique identifier for the charge attempt within the systems of the external service provider. This field is mandatory when the target state is set to 'SUCCESSFUL'.")
     target_state: Optional[PaymentAppChargeAttemptTargetState] = Field(default=None, alias="targetState")
     failure_reason: Optional[StrictInt] = Field(default=None, description="The reason for the charge attempt's failure. This field is mandatory when the target state is set to 'FAILED'.", alias="failureReason")

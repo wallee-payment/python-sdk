@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class ExpressCheckoutSession(BaseModel):
     """
     ExpressCheckoutSession
-    """
+    """ # noqa: E501
     line_items: Optional[List[LineItem]] = Field(default=None, alias="lineItems")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The spaceId linked to the entity.", alias="linkedSpaceId")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, alias="metaData")

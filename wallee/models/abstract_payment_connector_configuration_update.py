@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class AbstractPaymentConnectorConfigurationUpdate(BaseModel):
     """
     AbstractPaymentConnectorConfigurationUpdate
-    """
+    """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the connector configuration.")
     enabled_space_views: Optional[List[StrictInt]] = Field(default=None, description="The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.", alias="enabledSpaceViews")
     conditions: Optional[List[Condition]] = Field(default=None, description="Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.")

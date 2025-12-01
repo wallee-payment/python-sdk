@@ -94,7 +94,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_serialize(
             space=space,
@@ -176,7 +176,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_serialize(
             space=space,
@@ -259,7 +259,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_serialize(
             space=space,
@@ -411,7 +411,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_serialize(
             id=id,
@@ -481,7 +481,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_serialize(
             id=id,
@@ -552,7 +552,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_serialize(
             id=id,
@@ -681,7 +681,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_document_serialize(
             id=id,
@@ -747,7 +747,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_document_serialize(
             id=id,
@@ -814,7 +814,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_id_document_serialize(
             id=id,
@@ -948,7 +948,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_search_serialize(
             space=space,
@@ -1030,7 +1030,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_search_serialize(
             space=space,
@@ -1113,7 +1113,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_refunds_search_serialize(
             space=space,
@@ -1265,7 +1265,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_serialize(
             space=space,
@@ -1336,7 +1336,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_serialize(
             space=space,
@@ -1408,7 +1408,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_serialize(
             space=space,
@@ -1554,7 +1554,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_failed_serialize(
             id=id,
@@ -1625,7 +1625,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_failed_serialize(
             id=id,
@@ -1697,7 +1697,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_failed_serialize(
             id=id,
@@ -1830,7 +1830,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_succeeded_serialize(
             id=id,
@@ -1901,7 +1901,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_succeeded_serialize(
             id=id,
@@ -1973,7 +1973,7 @@ class RefundsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_refunds_id_mark_succeeded_serialize(
             id=id,

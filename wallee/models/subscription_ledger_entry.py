@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class SubscriptionLedgerEntry(BaseModel):
     """
     The subscription ledger entry represents a single change on the subscription balance.
-    """
+    """ # noqa: E501
     quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of items that were consumed.")
     amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The leger entry's amount with discounts applied, excluding taxes.", alias="amountExcludingTax")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")

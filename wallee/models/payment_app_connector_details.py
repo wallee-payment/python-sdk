@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentAppConnectorDetails(BaseModel):
     """
     PaymentAppConnectorDetails
-    """
+    """ # noqa: E501
     __properties: ClassVar[List[str]] = []
 
     model_config = ConfigDict(

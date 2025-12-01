@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class TransactionCompletionDetails(BaseModel):
     """
     TransactionCompletionDetails
-    """
+    """ # noqa: E501
     line_items: Optional[List[CompletionLineItemCreate]] = Field(default=None, description="The line items to be captured in the transaction completion.", alias="lineItems")
     last_completion: Optional[StrictBool] = Field(default=None, description="Whether this is the final completion for the transaction, meaning no further completions can occur, and the transaction will move to its completed state upon success.", alias="lastCompletion")
     statement_descriptor: Optional[Annotated[str, Field(strict=True, max_length=80)]] = Field(default=None, description="The statement descriptor that appears on a customer's bank statement, providing an explanation for charges or payments, helping customers identify the transaction.", alias="statementDescriptor")

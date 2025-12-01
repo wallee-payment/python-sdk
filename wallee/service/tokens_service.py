@@ -85,7 +85,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_tokens_id_serialize(
             id=id,
@@ -152,7 +152,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_tokens_id_serialize(
             id=id,
@@ -220,7 +220,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_tokens_id_serialize(
             id=id,
@@ -354,7 +354,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_serialize(
             space=space,
@@ -436,7 +436,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_serialize(
             space=space,
@@ -519,7 +519,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_serialize(
             space=space,
@@ -671,7 +671,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_serialize(
             id=id,
@@ -741,7 +741,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_serialize(
             id=id,
@@ -812,7 +812,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_serialize(
             id=id,
@@ -944,7 +944,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_active_version_serialize(
             id=id,
@@ -1014,7 +1014,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_active_version_serialize(
             id=id,
@@ -1085,7 +1085,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_id_active_version_serialize(
             id=id,
@@ -1226,7 +1226,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_search_serialize(
             space=space,
@@ -1308,7 +1308,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_search_serialize(
             space=space,
@@ -1391,7 +1391,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_tokens_search_serialize(
             space=space,
@@ -1546,7 +1546,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_tokens_id_serialize(
             id=id,
@@ -1621,7 +1621,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_tokens_id_serialize(
             id=id,
@@ -1697,7 +1697,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_tokens_id_serialize(
             id=id,
@@ -1847,7 +1847,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_serialize(
             space=space,
@@ -1918,7 +1918,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_serialize(
             space=space,
@@ -1990,7 +1990,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_serialize(
             space=space,
@@ -2136,7 +2136,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_id_create_transaction_for_token_update_serialize(
             id=id,
@@ -2207,7 +2207,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_id_create_transaction_for_token_update_serialize(
             id=id,
@@ -2279,7 +2279,7 @@ class TokensService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_tokens_id_create_transaction_for_token_update_serialize(
             id=id,

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class WebhookListenerEntity(BaseModel):
     """
     WebhookListenerEntity
-    """
+    """ # noqa: E501
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name used to identify the webhook listener entity.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     technical_name: Optional[StrictStr] = Field(default=None, description="The name used to programmatically identify the webhook listener entity.", alias="technicalName")

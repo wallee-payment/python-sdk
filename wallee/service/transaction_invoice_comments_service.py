@@ -85,7 +85,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -155,7 +155,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -226,7 +226,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -367,7 +367,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -453,7 +453,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -540,7 +540,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -699,7 +699,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -773,7 +773,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -848,7 +848,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -996,7 +996,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_search_serialize(
             invoice_id=invoice_id,
@@ -1082,7 +1082,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_search_serialize(
             invoice_id=invoice_id,
@@ -1169,7 +1169,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_invoice_id_comments_search_serialize(
             invoice_id=invoice_id,
@@ -1331,7 +1331,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -1410,7 +1410,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -1490,7 +1490,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_invoices_invoice_id_comments_id_serialize(
             invoice_id=invoice_id,
@@ -1647,7 +1647,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -1722,7 +1722,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -1798,7 +1798,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_serialize(
             invoice_id=invoice_id,
@@ -1948,7 +1948,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_pin_serialize(
             invoice_id=invoice_id,
@@ -2019,7 +2019,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_pin_serialize(
             invoice_id=invoice_id,
@@ -2091,7 +2091,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_pin_serialize(
             invoice_id=invoice_id,
@@ -2221,7 +2221,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_unpin_serialize(
             invoice_id=invoice_id,
@@ -2292,7 +2292,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_unpin_serialize(
             invoice_id=invoice_id,
@@ -2364,7 +2364,7 @@ class TransactionInvoiceCommentsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_invoice_id_comments_id_unpin_serialize(
             invoice_id=invoice_id,

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -42,7 +42,7 @@ from typing_extensions import Self
 class TransactionLineItemVersion(BaseModel):
     """
     TransactionLineItemVersion
-    """
+    """ # noqa: E501
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total amount of the updated line items, including taxes.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     processing_on: Optional[datetime] = Field(default=None, description="The date and time when the processing of the line item version was started.", alias="processingOn")

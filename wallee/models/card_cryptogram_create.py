@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class CardCryptogramCreate(BaseModel):
     """
     CardCryptogramCreate
-    """
+    """ # noqa: E501
     eci: Optional[StrictStr] = Field(default=None, description="The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.")
     value: StrictStr = Field(description="The cryptogram value used for securing card transactions, format varying based on the PAN type.")
     __properties: ClassVar[List[str]] = ["eci", "value"]

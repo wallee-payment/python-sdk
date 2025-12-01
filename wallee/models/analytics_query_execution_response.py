@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class AnalyticsQueryExecutionResponse(BaseModel):
     """
     AnalyticsQueryExecutionResponse
-    """
+    """ # noqa: E501
     query_token: Optional[StrictStr] = Field(default=None, description="The unique query token associated with a submitted analytics query execution. This token can be used to check the execution status of the query.", alias="queryToken")
     __properties: ClassVar[List[str]] = ["queryToken"]
 

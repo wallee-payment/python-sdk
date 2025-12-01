@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class PaymentTerminalUpdate(BaseModel):
     """
     PaymentTerminalUpdate
-    """
+    """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal.")
     version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
     __properties: ClassVar[List[str]] = ["name", "version"]

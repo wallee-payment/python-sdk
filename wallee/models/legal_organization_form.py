@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class LegalOrganizationForm(BaseModel):
     """
     LegalOrganizationForm
-    """
+    """ # noqa: E501
     country: Optional[StrictStr] = Field(default=None, description="The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).")
     shortcut: Optional[List[LocalizedString]] = Field(default=None, description="The localized shortcuts of the legal organization form.")
     english_description: Optional[StrictStr] = Field(default=None, description="The English name of the legal organization form.", alias="englishDescription")

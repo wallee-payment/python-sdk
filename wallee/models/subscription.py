@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -43,7 +43,7 @@ from typing_extensions import Self
 class Subscription(BaseModel):
     """
     Subscription
-    """
+    """ # noqa: E501
     subscriber: Optional[Subscriber] = None
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     terminated_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the subscription was terminated by.", alias="terminatedBy")

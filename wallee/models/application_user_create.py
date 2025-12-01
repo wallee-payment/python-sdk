@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class ApplicationUserCreate(BaseModel):
     """
     ApplicationUserCreate
-    """
+    """ # noqa: E501
     request_limit: Optional[StrictInt] = Field(default=None, description="The maximum number of API requests that are accepted every 2 minutes.", alias="requestLimit")
     name: Optional[Annotated[str, Field(strict=True, max_length=256)]] = Field(default=None, description="The name used to identify the application user.")
     state: Optional[CreationEntityState] = None

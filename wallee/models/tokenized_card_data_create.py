@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class TokenizedCardDataCreate(BaseModel):
     """
     TokenizedCardDataCreate
-    """
+    """ # noqa: E501
     expiry_date: Optional[Annotated[str, Field(strict=True)]] = Field(default=None, description="The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).", alias="expiryDate")
     pan_type: Optional[PanType] = Field(default=None, alias="panType")
     card_holder_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name of the cardholder, as printed on the card, identifying the card owner.", alias="cardHolderName")

@@ -182,9 +182,6 @@ class RESTClientObject:
                     read=_request_timeout[1]
                 )
 
-        if 'Content-Type' not in headers:
-            headers['Content-Type'] = 'application/json'
-
         try:
             # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
             if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
@@ -244,7 +241,7 @@ class RESTClientObject:
                         headers=headers,
                         preload_content=False
                     )
-                elif headers['Content-Type'] == 'text/plain' and isinstance(body, bool):
+                elif headers['Content-Type'].startswith('text/') and isinstance(body, bool):
                     request_body = "true" if body else "false"
                     r = self.pool_manager.request(
                         method,

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class TransactionLineItemVersionCreate(BaseModel):
     """
     TransactionLineItemVersionCreate
-    """
+    """ # noqa: E501
     line_items: List[LineItemCreate] = Field(description="The line items that replace the original line items in the transaction.", alias="lineItems")
     external_id: StrictStr = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     transaction: StrictInt = Field(description="The transaction that the line item version belongs to.")

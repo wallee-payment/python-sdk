@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class TwoFactorAuthenticationType(BaseModel):
     """
     TwoFactorAuthenticationType
-    """
+    """ # noqa: E501
     feature: Optional[StrictInt] = Field(default=None, description="The feature that this type belongs to.")
     icon: Optional[StrictStr] = Field(default=None, description="The identifier of the icon representing this type.")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")

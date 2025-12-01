@@ -80,7 +80,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_roles_id_serialize(
             id=id,
@@ -143,7 +143,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_roles_id_serialize(
             id=id,
@@ -207,7 +207,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_roles_id_serialize(
             id=id,
@@ -334,7 +334,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_serialize(
             after=after,
@@ -412,7 +412,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_serialize(
             after=after,
@@ -491,7 +491,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_serialize(
             after=after,
@@ -636,7 +636,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_id_serialize(
             id=id,
@@ -702,7 +702,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_id_serialize(
             id=id,
@@ -769,7 +769,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_id_serialize(
             id=id,
@@ -903,7 +903,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_search_serialize(
             expand=expand,
@@ -981,7 +981,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_search_serialize(
             expand=expand,
@@ -1060,7 +1060,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_roles_search_serialize(
             expand=expand,
@@ -1208,7 +1208,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_roles_id_serialize(
             id=id,
@@ -1279,7 +1279,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_roles_id_serialize(
             id=id,
@@ -1351,7 +1351,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_roles_id_serialize(
             id=id,
@@ -1494,7 +1494,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_roles_serialize(
             role_create=role_create,
@@ -1561,7 +1561,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_roles_serialize(
             role_create=role_create,
@@ -1629,7 +1629,7 @@ class RolesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_roles_serialize(
             role_create=role_create,

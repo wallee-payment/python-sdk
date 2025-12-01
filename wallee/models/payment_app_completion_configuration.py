@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentAppCompletionConfiguration(BaseModel):
     """
     PaymentAppCompletionConfiguration
-    """
+    """ # noqa: E501
     multiple_completions_supported: Optional[StrictBool] = Field(default=None, description="Whether the payment connector can process multiple completions for a single transaction.", alias="multipleCompletionsSupported")
     maximal_completion_delay_in_days: Optional[StrictInt] = Field(default=None, description="The maximum number of days after a transaction's authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.", alias="maximalCompletionDelayInDays")
     completion_endpoint: Optional[StrictStr] = Field(default=None, description="The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.", alias="completionEndpoint")

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class SubscriberActive(BaseModel):
     """
     A subscriber represents everyone who is subscribed to a product.
-    """
+    """ # noqa: E501
     reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the subscriber.")
     additional_allowed_payment_method_configurations: Optional[List[StrictInt]] = Field(default=None, description="Allow the subscriber to use these payment methods even if subscription products do not accept them.", alias="additionalAllowedPaymentMethodConfigurations")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")

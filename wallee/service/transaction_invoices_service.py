@@ -94,7 +94,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_serialize(
             space=space,
@@ -176,7 +176,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_serialize(
             space=space,
@@ -259,7 +259,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_serialize(
             space=space,
@@ -411,7 +411,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_serialize(
             id=id,
@@ -481,7 +481,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_serialize(
             id=id,
@@ -552,7 +552,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_serialize(
             id=id,
@@ -681,7 +681,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_check_replacement_possible_serialize(
             id=id,
@@ -747,7 +747,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_check_replacement_possible_serialize(
             id=id,
@@ -814,7 +814,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_check_replacement_possible_serialize(
             id=id,
@@ -936,7 +936,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_document_serialize(
             id=id,
@@ -1002,7 +1002,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_document_serialize(
             id=id,
@@ -1069,7 +1069,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_id_document_serialize(
             id=id,
@@ -1203,7 +1203,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_search_serialize(
             space=space,
@@ -1285,7 +1285,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_search_serialize(
             space=space,
@@ -1368,7 +1368,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_invoices_search_serialize(
             space=space,
@@ -1520,7 +1520,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_derecognize_serialize(
             id=id,
@@ -1591,7 +1591,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_derecognize_serialize(
             id=id,
@@ -1663,7 +1663,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_derecognize_serialize(
             id=id,
@@ -1796,7 +1796,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_mark_paid_serialize(
             id=id,
@@ -1867,7 +1867,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_mark_paid_serialize(
             id=id,
@@ -1939,7 +1939,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_mark_paid_serialize(
             id=id,
@@ -2075,7 +2075,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_replace_serialize(
             id=id,
@@ -2150,7 +2150,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_replace_serialize(
             id=id,
@@ -2226,7 +2226,7 @@ class TransactionInvoicesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_invoices_id_replace_serialize(
             id=id,

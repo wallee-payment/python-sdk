@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class BankAccountType(BaseModel):
     """
     BankAccountType
-    """
+    """ # noqa: E501
     identifier_name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The identifier name specifies how the bank account type's identifier is called.", alias="identifierName")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")

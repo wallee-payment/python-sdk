@@ -92,7 +92,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_serialize(
             space=space,
@@ -174,7 +174,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_serialize(
             space=space,
@@ -257,7 +257,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_serialize(
             space=space,
@@ -409,7 +409,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_serialize(
             id=id,
@@ -479,7 +479,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_serialize(
             id=id,
@@ -550,7 +550,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_serialize(
             id=id,
@@ -679,7 +679,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_notification_serialize(
             id=id,
@@ -745,7 +745,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_notification_serialize(
             id=id,
@@ -812,7 +812,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_id_notification_serialize(
             id=id,
@@ -947,7 +947,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_search_serialize(
             space=space,
@@ -1029,7 +1029,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_search_serialize(
             space=space,
@@ -1112,7 +1112,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_manual_tasks_search_serialize(
             space=space,
@@ -1264,7 +1264,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_manual_tasks_id_action_action_id_serialize(
             id=id,
@@ -1335,7 +1335,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_manual_tasks_id_action_action_id_serialize(
             id=id,
@@ -1407,7 +1407,7 @@ class ManualTasksService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_manual_tasks_id_action_action_id_serialize(
             id=id,

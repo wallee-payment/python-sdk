@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class CustomerAddressCreate(BaseModel):
     """
     CustomerAddressCreate
-    """
+    """ # noqa: E501
     address: Optional[CustomerPostalAddressCreate] = None
     address_type: Optional[CustomerAddressType] = Field(default=None, alias="addressType")
     customer: StrictInt = Field(description="The customer that the object belongs to.")

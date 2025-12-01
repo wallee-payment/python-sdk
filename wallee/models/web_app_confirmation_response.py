@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class WebAppConfirmationResponse(BaseModel):
     """
     The confirmation response provides details about the installation of the web app.
-    """
+    """ # noqa: E501
     access_token: Optional[StrictStr] = Field(default=None, description="The access code granting permissions to the web service API according to the OAuth standard.")
     scope: Optional[StrictStr] = Field(default=None, description="The list of the permissions granted to the web app within the space.")
     state: Optional[StrictStr] = Field(default=None, description="The state parameter that was provided in the authorization request.")

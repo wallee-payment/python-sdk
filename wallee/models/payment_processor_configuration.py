@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class PaymentProcessorConfiguration(BaseModel):
     """
     PaymentProcessorConfiguration
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     application_managed: Optional[StrictBool] = Field(default=None, description="Whether the processor configuration is managed by the application and therefore cannot be changed.", alias="applicationManaged")
     contract_id: Optional[StrictInt] = Field(default=None, description="The ID of the payment contract the processor configuration is linked to.", alias="contractId")

@@ -84,7 +84,7 @@ class ConsumedResourcesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_spaces_consumed_resources_serialize(
             start_date=start_date,
@@ -158,7 +158,7 @@ class ConsumedResourcesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_spaces_consumed_resources_serialize(
             start_date=start_date,
@@ -233,7 +233,7 @@ class ConsumedResourcesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_spaces_consumed_resources_serialize(
             start_date=start_date,

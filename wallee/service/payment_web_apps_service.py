@@ -91,7 +91,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -158,7 +158,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -226,7 +226,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -349,7 +349,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -416,7 +416,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -484,7 +484,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -613,7 +613,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_charge_attempts_id_serialize(
             id=id,
@@ -689,7 +689,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_charge_attempts_id_serialize(
             id=id,
@@ -766,7 +766,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_charge_attempts_id_serialize(
             id=id,
@@ -920,7 +920,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_completions_id_serialize(
             id=id,
@@ -996,7 +996,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_completions_id_serialize(
             id=id,
@@ -1073,7 +1073,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_completions_id_serialize(
             id=id,
@@ -1226,7 +1226,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -1301,7 +1301,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -1377,7 +1377,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_connectors_connector_external_id_serialize(
             connector_external_id=connector_external_id,
@@ -1530,7 +1530,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -1605,7 +1605,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -1681,7 +1681,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_processors_external_id_serialize(
             external_id=external_id,
@@ -1835,7 +1835,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_refunds_id_serialize(
             id=id,
@@ -1911,7 +1911,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_refunds_id_serialize(
             id=id,
@@ -1988,7 +1988,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_refunds_id_serialize(
             id=id,
@@ -2142,7 +2142,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_voids_id_serialize(
             id=id,
@@ -2218,7 +2218,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_voids_id_serialize(
             id=id,
@@ -2295,7 +2295,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_web_apps_voids_id_serialize(
             id=id,
@@ -2445,7 +2445,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_serialize(
             space=space,
@@ -2516,7 +2516,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_serialize(
             space=space,
@@ -2588,7 +2588,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_serialize(
             space=space,
@@ -2734,7 +2734,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_activate_for_production_serialize(
             external_id=external_id,
@@ -2805,7 +2805,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_activate_for_production_serialize(
             external_id=external_id,
@@ -2877,7 +2877,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_activate_for_production_serialize(
             external_id=external_id,
@@ -3013,7 +3013,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_connectors_serialize(
             external_id=external_id,
@@ -3088,7 +3088,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_connectors_serialize(
             external_id=external_id,
@@ -3164,7 +3164,7 @@ class PaymentWebAppsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_web_apps_processors_external_id_connectors_serialize(
             external_id=external_id,

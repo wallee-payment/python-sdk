@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PersistableCurrencyAmountUpdate(BaseModel):
     """
     PersistableCurrencyAmountUpdate
-    """
+    """ # noqa: E501
     amount: Optional[Union[StrictFloat, StrictInt]] = None
     currency: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["amount", "currency"]

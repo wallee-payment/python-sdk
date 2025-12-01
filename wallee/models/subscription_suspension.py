@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -42,7 +42,7 @@ from typing_extensions import Self
 class SubscriptionSuspension(BaseModel):
     """
     SubscriptionSuspension
-    """
+    """ # noqa: E501
     effective_end_date: Optional[datetime] = Field(default=None, description="The date and time when the suspension ended.", alias="effectiveEndDate")
     note: Optional[Annotated[str, Field(strict=True, max_length=300)]] = Field(default=None, description="A note that contains details about the suspension. It is not disclosed to the subscriber.")
     reason: Optional[SubscriptionSuspensionReason] = None

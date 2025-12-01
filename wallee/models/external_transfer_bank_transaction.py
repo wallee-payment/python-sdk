@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class ExternalTransferBankTransaction(BaseModel):
     """
     ExternalTransferBankTransaction
-    """
+    """ # noqa: E501
     external_bank_name: Optional[StrictStr] = Field(default=None, description="The external bank account's name.", alias="externalBankName")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     external_account_identifier: Optional[StrictStr] = Field(default=None, description="The identifier is used to uniquely identify the external bank account.", alias="externalAccountIdentifier")

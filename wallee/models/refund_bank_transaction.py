@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class RefundBankTransaction(BaseModel):
     """
     RefundBankTransaction
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     refund_currency_value_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The value amount represents the net monetary value of the bank transaction, recorded in the refund's currency, after applicable deductions.", alias="refundCurrencyValueAmount")
     refund_currency_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The posting amount represents the monetary value of the bank transaction, recorded in the refund's currency, before applying any adjustments.", alias="refundCurrencyAmount")

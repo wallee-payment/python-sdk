@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class PaymentAdjustment(BaseModel):
     """
     PaymentAdjustment
-    """
+    """ # noqa: E501
     amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The adjustment's amount, excluding taxes.", alias="amountExcludingTax")
     rate_in_percentage: Optional[Union[Annotated[float, Field(le=100, strict=True)], Annotated[int, Field(le=100, strict=True)]]] = Field(default=None, description="The percentage rate used to calculate the adjustment amount.", alias="rateInPercentage")
     tax: Optional[Tax] = None

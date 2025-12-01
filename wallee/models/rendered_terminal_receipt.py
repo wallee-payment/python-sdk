@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictBytes, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RenderedTerminalReceipt(BaseModel):
     """
     RenderedTerminalReceipt
-    """
+    """ # noqa: E501
     printed: Optional[StrictBool] = Field(default=None, description="Whether the terminal's configuration mandates printing and the device has receipt printing capabilities.")
     data: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The receipt document data in binary format, presented as a Base64-encoded string.")
     receipt_type: Optional[PaymentTerminalReceiptType] = Field(default=None, alias="receiptType")

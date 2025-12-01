@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -43,7 +43,7 @@ from typing_extensions import Self
 class TransactionInvoice(BaseModel):
     """
     TransactionInvoice
-    """
+    """ # noqa: E501
     completion: Optional[TransactionCompletion] = None
     derecognized_on: Optional[datetime] = Field(default=None, description="The date and time when the invoice was derecognized, meaning it is no longer considered outstanding or valid in the system.", alias="derecognizedOn")
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total sum of all line items on the invoice, including taxes.")

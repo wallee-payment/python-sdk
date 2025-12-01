@@ -77,7 +77,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_serialize(
             expand=expand,
@@ -139,7 +139,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_serialize(
             expand=expand,
@@ -202,7 +202,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_serialize(
             expand=expand,
@@ -323,7 +323,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_code_serialize(
             code=code,
@@ -389,7 +389,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_code_serialize(
             code=code,
@@ -456,7 +456,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_code_serialize(
             code=code,
@@ -578,7 +578,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
@@ -640,7 +640,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
@@ -703,7 +703,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
@@ -830,7 +830,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_search_serialize(
             expand=expand,
@@ -908,7 +908,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_search_serialize(
             expand=expand,
@@ -987,7 +987,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_search_serialize(
             expand=expand,
@@ -1126,7 +1126,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
             _content_type=_content_type,
@@ -1184,7 +1184,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
             _content_type=_content_type,
@@ -1243,7 +1243,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
             _content_type=_content_type,
@@ -1354,7 +1354,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_id_serialize(
             id=id,
@@ -1416,7 +1416,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_id_serialize(
             id=id,
@@ -1479,7 +1479,7 @@ class CountriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_countries_states_id_serialize(
             id=id,

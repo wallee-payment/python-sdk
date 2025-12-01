@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class DebtCollectionCaseUpdate(BaseModel):
     """
     The debt collection case represents a try to collect the money from the debtor.
-    """
+    """ # noqa: E501
     line_items: Optional[List[LineItemCreate]] = Field(default=None, description="The line items that are subject of this debt collection case.", alias="lineItems")
     contract_date: Optional[datetime] = Field(default=None, description="The date and time when the contract with the debtor was signed.", alias="contractDate")
     environment: Optional[DebtCollectionEnvironment] = None

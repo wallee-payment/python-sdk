@@ -181,7 +181,7 @@ class ApiClient:
 
         # predefined default headers
         default_headers = {
-            'x-meta-sdk-version': '6.1.0',
+            'x-meta-sdk-version': '6.2.0',
             'x-meta-sdk-language': 'python',
             'x-meta-sdk-provider': 'wallee',
             'x-meta-sdk-language-version': platform.python_version()
@@ -195,7 +195,7 @@ class ApiClient:
         if header_params:
             header_params = self.sanitize_for_serialization(header_params)
             header_params = dict(
-                self.parameters_to_tuples(header_params, collection_formats)
+                self.parameters_to_tuples(header_params,collection_formats)
             )
 
         # path parameters
@@ -342,7 +342,6 @@ class ApiClient:
         """Builds a JSON POST object.
 
         If obj is None, return None.
-        If obj is Enum, return obj.value
         If obj is SecretStr, return obj.get_secret_value()
         If obj is str, int, long, float, bool, return directly.
         If obj is datetime.datetime, datetime.date
@@ -379,6 +378,11 @@ class ApiClient:
         elif isinstance(obj, dict):
             obj_dict = obj
         else:
+            # Convert model obj to dict except
+            # attributes `openapi_types`, `attribute_map`
+            # and attributes which value is not None.
+            # Convert attribute name to json key in
+            # model definition for request.
             if hasattr(obj, 'to_dict') and callable(getattr(obj, 'to_dict')):
                 obj_dict = obj.to_dict()
             else:
@@ -411,7 +415,7 @@ class ApiClient:
                 data = ""
             else:
                 data = json.loads(response_text)
-        elif re.match(r'^text/plain\s*(;|$)', content_type, re.IGNORECASE):
+        elif re.match(r'^text\/[a-z.+-]+\s*(;|$)', content_type, re.IGNORECASE):
             data = response_text
         else:
             raise ApiException(

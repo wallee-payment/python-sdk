@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class DebtCollectionReceiptSource(BaseModel):
     """
     The debt collection receipt source represents the origin of a particular part of the collected amount. It allows to understand from where the amount is coming from, e.g. if it was added manually or in some other way.
-    """
+    """ # noqa: E501
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")

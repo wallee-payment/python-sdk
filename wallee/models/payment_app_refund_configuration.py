@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentAppRefundConfiguration(BaseModel):
     """
     PaymentAppRefundConfiguration
-    """
+    """ # noqa: E501
     refund_timeout_in_minutes: Optional[StrictInt] = Field(default=None, description="The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.", alias="refundTimeoutInMinutes")
     multiple_refunds_supported: Optional[StrictBool] = Field(default=None, description="Whether the payment connector can process multiple refunds for a single transaction.", alias="multipleRefundsSupported")
     refund_endpoint: Optional[StrictStr] = Field(default=None, description="The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.", alias="refundEndpoint")

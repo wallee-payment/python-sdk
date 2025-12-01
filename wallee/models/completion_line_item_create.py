@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class CompletionLineItemCreate(BaseModel):
     """
     CompletionLineItemCreate
-    """
+    """ # noqa: E501
     amount: Union[StrictFloat, StrictInt] = Field(description="The total amount of the line item to be captured, including taxes.")
     quantity: Union[StrictFloat, StrictInt] = Field(description="The number of items to be captured.")
     unique_id: Annotated[str, Field(strict=True, max_length=200)] = Field(description="The unique identifier of the line item within the set of line items.", alias="uniqueId")

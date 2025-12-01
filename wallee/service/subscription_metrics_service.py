@@ -82,7 +82,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_subscriptions_metrics_id_serialize(
             id=id,
@@ -148,7 +148,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_subscriptions_metrics_id_serialize(
             id=id,
@@ -215,7 +215,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_subscriptions_metrics_id_serialize(
             id=id,
@@ -349,7 +349,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_serialize(
             space=space,
@@ -431,7 +431,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_serialize(
             space=space,
@@ -514,7 +514,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_serialize(
             space=space,
@@ -666,7 +666,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_id_serialize(
             id=id,
@@ -736,7 +736,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_id_serialize(
             id=id,
@@ -807,7 +807,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_id_serialize(
             id=id,
@@ -948,7 +948,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_search_serialize(
             space=space,
@@ -1030,7 +1030,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_search_serialize(
             space=space,
@@ -1113,7 +1113,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_metrics_search_serialize(
             space=space,
@@ -1268,7 +1268,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_subscriptions_metrics_id_serialize(
             id=id,
@@ -1343,7 +1343,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_subscriptions_metrics_id_serialize(
             id=id,
@@ -1419,7 +1419,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_subscriptions_metrics_id_serialize(
             id=id,
@@ -1569,7 +1569,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_metrics_serialize(
             space=space,
@@ -1640,7 +1640,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_metrics_serialize(
             space=space,
@@ -1712,7 +1712,7 @@ class SubscriptionMetricsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_metrics_serialize(
             space=space,

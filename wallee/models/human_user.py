@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class HumanUser(BaseModel):
     """
     HumanUser
-    """
+    """ # noqa: E501
     mobile_phone_number: Optional[Annotated[str, Field(strict=True, max_length=30)]] = Field(default=None, description="The user's mobile phone number.", alias="mobilePhoneNumber")
     two_factor_enabled: Optional[StrictBool] = Field(default=None, description="Whether two-factor authentication is enabled for this user.", alias="twoFactorEnabled")
     email_address: Optional[Annotated[str, Field(strict=True, max_length=128)]] = Field(default=None, description="The user's email address.", alias="emailAddress")

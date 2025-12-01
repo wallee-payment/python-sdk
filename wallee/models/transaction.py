@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -53,7 +53,7 @@ from typing_extensions import Self
 class Transaction(BaseModel):
     """
     Transaction
-    """
+    """ # noqa: E501
     parent: Optional[Transaction] = None
     total_settled_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total amount that was settled, in the transaction's currency.", alias="totalSettledAmount")
     device_session_identifier: Optional[Annotated[str, Field(min_length=10, strict=True, max_length=40)]] = Field(default=None, description="Allows to link the transaction to the data collected from the customer's device.", alias="deviceSessionIdentifier")

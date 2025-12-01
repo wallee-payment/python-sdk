@@ -79,7 +79,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -145,7 +145,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -212,7 +212,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -334,7 +334,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -400,7 +400,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -467,7 +467,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -592,7 +592,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_serialize(
             offset=offset,
@@ -662,7 +662,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_serialize(
             offset=offset,
@@ -733,7 +733,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_serialize(
             offset=offset,
@@ -865,7 +865,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -934,7 +934,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -1004,7 +1004,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_serialize(
             query_external_id=query_external_id,
@@ -1128,7 +1128,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_result_serialize(
             query_external_id=query_external_id,
@@ -1197,7 +1197,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_result_serialize(
             query_external_id=query_external_id,
@@ -1267,7 +1267,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_external_id_query_external_id_result_serialize(
             query_external_id=query_external_id,
@@ -1394,7 +1394,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -1463,7 +1463,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -1533,7 +1533,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_serialize(
             query_token=query_token,
@@ -1657,7 +1657,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_result_serialize(
             query_token=query_token,
@@ -1726,7 +1726,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_result_serialize(
             query_token=query_token,
@@ -1796,7 +1796,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_analytics_queries_query_token_query_token_result_serialize(
             query_token=query_token,
@@ -1924,7 +1924,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_analytics_queries_submit_serialize(
             query_external_id=query_external_id,
@@ -1995,7 +1995,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_analytics_queries_submit_serialize(
             query_external_id=query_external_id,
@@ -2067,7 +2067,7 @@ class AnalyticsQueriesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_analytics_queries_submit_serialize(
             query_external_id=query_external_id,

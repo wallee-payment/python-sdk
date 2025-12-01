@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class SubscriptionProductComponent(BaseModel):
     """
     SubscriptionProductComponent
-    """
+    """ # noqa: E501
     tax_class: Optional[TaxClass] = Field(default=None, alias="taxClass")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the component that is displayed to the customer.")
     component_change_weight: Optional[StrictInt] = Field(default=None, description="If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.", alias="componentChangeWeight")

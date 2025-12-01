@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class TransactionGroup(BaseModel):
     """
     TransactionGroup
-    """
+    """ # noqa: E501
     begin_date: Optional[datetime] = Field(default=None, description="The date and time when the initial transaction in the group was created.", alias="beginDate")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     end_date: Optional[datetime] = Field(default=None, description="The date and time when the final transaction in the group was last updated.", alias="endDate")

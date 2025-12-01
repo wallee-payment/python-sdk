@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class ProductSetupFee(BaseModel):
     """
     ProductSetupFee
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     component: Optional[SubscriptionProductComponent] = None
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the fee that is displayed to the customer.")

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class PaymentInformationHash(BaseModel):
     """
     A payment information hash is generated from user input, ensuring consistent and collision-free results for identical inputs.
-    """
+    """ # noqa: E501
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     type: Optional[PaymentInformationHashType] = None
     value: Optional[StrictStr] = Field(default=None, description="The hash value generated based on the specified type.")

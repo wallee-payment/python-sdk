@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class ScopeSingleSignOnProvider(BaseModel):
     """
     ScopeSingleSignOnProvider
-    """
+    """ # noqa: E501
     sign_in_url: Optional[StrictStr] = Field(default=None, description="The URL where the user will be redirected to sign in.", alias="signInUrl")
     scope: Optional[Scope] = None
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the provider.")

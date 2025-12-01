@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionComponentConfiguration(BaseModel):
     """
     SubscriptionComponentConfiguration
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     component: Optional[StrictInt] = Field(default=None, description="The component that is being configured.")
     quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity that should be applied to the component.")

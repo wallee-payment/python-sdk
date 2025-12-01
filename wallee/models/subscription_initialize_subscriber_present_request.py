@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionInitializeSubscriberPresentRequest(BaseModel):
     """
     SubscriptionInitializeSubscriberPresentRequest
-    """
+    """ # noqa: E501
     success_url: Optional[StrictStr] = Field(default=None, description="The URL that the user is redirected to if the transaction succeeds.", alias="successUrl")
     failure_url: Optional[StrictStr] = Field(default=None, description="The URL that the user is redirected to if the transaction fails.", alias="failureUrl")
     __properties: ClassVar[List[str]] = ["successUrl", "failureUrl"]

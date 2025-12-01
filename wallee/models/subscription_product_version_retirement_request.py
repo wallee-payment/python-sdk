@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionProductVersionRetirementRequest(BaseModel):
     """
     SubscriptionProductVersionRetirementRequest
-    """
+    """ # noqa: E501
     respect_termination_periods: Optional[StrictBool] = Field(default=None, description="Whether the subscriptions' termination periods should be respected.", alias="respectTerminationPeriods")
     target_product: Optional[StrictInt] = Field(default=None, description="The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.", alias="targetProduct")
     __properties: ClassVar[List[str]] = ["respectTerminationPeriods", "targetProduct"]

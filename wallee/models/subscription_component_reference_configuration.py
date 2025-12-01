@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionComponentReferenceConfiguration(BaseModel):
     """
     The component reference configuration adjusts the product component for a particular subscription.
-    """
+    """ # noqa: E501
     quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The quantity that should be applied to the component.")
     product_component_reference_id: Optional[StrictInt] = Field(default=None, description="The ID of the component reference that is being configured.", alias="productComponentReferenceId")
     __properties: ClassVar[List[str]] = ["quantity", "productComponentReferenceId"]

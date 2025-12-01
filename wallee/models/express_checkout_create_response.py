@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class ExpressCheckoutCreateResponse(BaseModel):
     """
     ExpressCheckoutCreateResponse
-    """
+    """ # noqa: E501
     iframe_src: Optional[StrictStr] = Field(default=None, alias="iframeSrc")
     session: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = ["iframeSrc", "session"]

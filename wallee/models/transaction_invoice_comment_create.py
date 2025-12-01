@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class TransactionInvoiceCommentCreate(BaseModel):
     """
     TransactionInvoiceCommentCreate
-    """
+    """ # noqa: E501
     content: Optional[Annotated[str, Field(strict=True, max_length=262144)]] = Field(default=None, description="The comment's actual content.")
     transaction_invoice: StrictInt = Field(description="The transaction invoice that the comment belongs to.", alias="transactionInvoice")
     __properties: ClassVar[List[str]] = ["content", "transactionInvoice"]

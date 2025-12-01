@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class AbstractWebhookUrlUpdate(BaseModel):
     """
     AbstractWebhookUrlUpdate
-    """
+    """ # noqa: E501
     name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name used to identify the webhook URL.")
     state: Optional[CreationEntityState] = None
     url: Optional[Annotated[str, Field(min_length=9, strict=True, max_length=500)]] = Field(default=None, description="The actual URL where notifications about entity changes are sent to.")

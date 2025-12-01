@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class AbstractWebhookListenerUpdate(BaseModel):
     """
     AbstractWebhookListenerUpdate
-    """
+    """ # noqa: E501
     entity_states: Optional[List[StrictStr]] = Field(default=None, description="The entity's target states that are to be monitored.", alias="entityStates")
     name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name used to identify the webhook listener.")
     state: Optional[CreationEntityState] = None

@@ -93,7 +93,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_serialize(
             space=space,
@@ -175,7 +175,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_serialize(
             space=space,
@@ -258,7 +258,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_serialize(
             space=space,
@@ -410,7 +410,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_id_serialize(
             id=id,
@@ -480,7 +480,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_id_serialize(
             id=id,
@@ -551,7 +551,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_id_serialize(
             id=id,
@@ -692,7 +692,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_search_serialize(
             space=space,
@@ -774,7 +774,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_search_serialize(
             space=space,
@@ -857,7 +857,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_subscriptions_period_bills_search_serialize(
             space=space,
@@ -1015,7 +1015,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_period_bills_id_close_serialize(
             id=id,
@@ -1094,7 +1094,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_period_bills_id_close_serialize(
             id=id,
@@ -1174,7 +1174,7 @@ class SubscriptionPeriodBillsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_subscriptions_period_bills_id_close_serialize(
             id=id,

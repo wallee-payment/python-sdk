@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -50,7 +50,7 @@ from typing_extensions import Self
 class ChargeAttempt(BaseModel):
     """
     ChargeAttempt
-    """
+    """ # noqa: E501
     language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
     sales_channel: Optional[StrictInt] = Field(default=None, description="The sales channel through which the charge attempt was made.", alias="salesChannel")
     created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")

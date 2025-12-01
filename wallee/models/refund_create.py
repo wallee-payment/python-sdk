@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
@@ -39,7 +39,7 @@ from typing_extensions import Self
 class RefundCreate(BaseModel):
     """
     A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
-    """
+    """ # noqa: E501
     completion: Optional[StrictInt] = Field(default=None, description="The transaction completion that the refund belongs to.")
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total monetary amount of the refund, representing the exact credit issued to the customer.")
     reductions: Optional[List[LineItemReductionCreate]] = Field(default=None, description="The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.")

@@ -93,7 +93,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_serialize(
             space=space,
@@ -175,7 +175,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_serialize(
             space=space,
@@ -258,7 +258,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_serialize(
             space=space,
@@ -410,7 +410,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_id_serialize(
             id=id,
@@ -480,7 +480,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_id_serialize(
             id=id,
@@ -551,7 +551,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_id_serialize(
             id=id,
@@ -692,7 +692,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_search_serialize(
             space=space,
@@ -774,7 +774,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_search_serialize(
             space=space,
@@ -857,7 +857,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_dunning_cases_search_serialize(
             space=space,
@@ -1009,7 +1009,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_id_suspend_serialize(
             id=id,
@@ -1080,7 +1080,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_id_suspend_serialize(
             id=id,
@@ -1152,7 +1152,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_id_suspend_serialize(
             id=id,
@@ -1290,7 +1290,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_invoice_invoice_id_serialize(
             invoice_id=invoice_id,
@@ -1357,7 +1357,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_invoice_invoice_id_serialize(
             invoice_id=invoice_id,
@@ -1425,7 +1425,7 @@ class DunningCasesService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_dunning_cases_invoice_invoice_id_serialize(
             invoice_id=invoice_id,

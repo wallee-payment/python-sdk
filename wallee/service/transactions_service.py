@@ -29,7 +29,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictInt, StrictStr
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from wallee.models.authenticated_card_request import AuthenticatedCardRequest
 from wallee.models.charge import Charge
@@ -97,7 +97,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_by_credentials_credentials_one_click_tokens_id_serialize(
             credentials=credentials,
@@ -167,7 +167,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_by_credentials_credentials_one_click_tokens_id_serialize(
             credentials=credentials,
@@ -238,7 +238,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._delete_payment_transactions_by_credentials_credentials_one_click_tokens_id_serialize(
             credentials=credentials,
@@ -376,7 +376,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_serialize(
             space=space,
@@ -458,7 +458,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_serialize(
             space=space,
@@ -541,7 +541,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_serialize(
             space=space,
@@ -693,7 +693,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_serialize(
             credentials=credentials,
@@ -763,7 +763,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_serialize(
             credentials=credentials,
@@ -834,7 +834,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_serialize(
             credentials=credentials,
@@ -963,7 +963,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_mobile_sdk_url_serialize(
             credentials=credentials,
@@ -1029,7 +1029,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_mobile_sdk_url_serialize(
             credentials=credentials,
@@ -1096,7 +1096,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_mobile_sdk_url_serialize(
             credentials=credentials,
@@ -1222,7 +1222,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_one_click_tokens_serialize(
             credentials=credentials,
@@ -1292,7 +1292,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_one_click_tokens_serialize(
             credentials=credentials,
@@ -1363,7 +1363,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_one_click_tokens_serialize(
             credentials=credentials,
@@ -1498,7 +1498,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_payment_method_configurations_serialize(
             credentials=credentials,
@@ -1572,7 +1572,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_payment_method_configurations_serialize(
             credentials=credentials,
@@ -1647,7 +1647,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_by_credentials_credentials_payment_method_configurations_serialize(
             credentials=credentials,
@@ -1795,7 +1795,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_export_serialize(
             space=space,
@@ -1878,7 +1878,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_export_serialize(
             space=space,
@@ -1962,7 +1962,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_export_serialize(
             space=space,
@@ -2115,7 +2115,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_serialize(
             id=id,
@@ -2185,7 +2185,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_serialize(
             id=id,
@@ -2256,7 +2256,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_serialize(
             id=id,
@@ -2385,7 +2385,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_charge_flow_payment_page_url_serialize(
             id=id,
@@ -2451,7 +2451,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_charge_flow_payment_page_url_serialize(
             id=id,
@@ -2518,7 +2518,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_charge_flow_payment_page_url_serialize(
             id=id,
@@ -2641,7 +2641,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_check_token_creation_possible_serialize(
             id=id,
@@ -2707,7 +2707,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_check_token_creation_possible_serialize(
             id=id,
@@ -2774,7 +2774,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_check_token_creation_possible_serialize(
             id=id,
@@ -2897,7 +2897,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_credentials_serialize(
             id=id,
@@ -2964,7 +2964,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_credentials_serialize(
             id=id,
@@ -3032,7 +3032,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_credentials_serialize(
             id=id,
@@ -3155,7 +3155,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_iframe_javascript_url_serialize(
             id=id,
@@ -3221,7 +3221,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_iframe_javascript_url_serialize(
             id=id,
@@ -3288,7 +3288,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_iframe_javascript_url_serialize(
             id=id,
@@ -3411,7 +3411,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_invoice_document_serialize(
             id=id,
@@ -3477,7 +3477,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_invoice_document_serialize(
             id=id,
@@ -3544,7 +3544,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_invoice_document_serialize(
             id=id,
@@ -3669,7 +3669,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_latest_line_item_version_serialize(
             id=id,
@@ -3739,7 +3739,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_latest_line_item_version_serialize(
             id=id,
@@ -3810,7 +3810,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_latest_line_item_version_serialize(
             id=id,
@@ -3939,7 +3939,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_lightbox_javascript_url_serialize(
             id=id,
@@ -4005,7 +4005,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_lightbox_javascript_url_serialize(
             id=id,
@@ -4072,7 +4072,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_lightbox_javascript_url_serialize(
             id=id,
@@ -4195,7 +4195,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_packing_slip_document_serialize(
             id=id,
@@ -4261,7 +4261,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_packing_slip_document_serialize(
             id=id,
@@ -4328,7 +4328,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_packing_slip_document_serialize(
             id=id,
@@ -4456,7 +4456,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_method_configurations_serialize(
             id=id,
@@ -4530,7 +4530,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_method_configurations_serialize(
             id=id,
@@ -4605,7 +4605,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_method_configurations_serialize(
             id=id,
@@ -4740,7 +4740,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_page_url_serialize(
             id=id,
@@ -4806,7 +4806,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_page_url_serialize(
             id=id,
@@ -4873,7 +4873,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_payment_page_url_serialize(
             id=id,
@@ -5002,7 +5002,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_terminal_receipts_serialize(
             id=id,
@@ -5076,7 +5076,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_terminal_receipts_serialize(
             id=id,
@@ -5151,7 +5151,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_id_terminal_receipts_serialize(
             id=id,
@@ -5297,7 +5297,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_search_serialize(
             space=space,
@@ -5379,7 +5379,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_search_serialize(
             space=space,
@@ -5462,7 +5462,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_transactions_search_serialize(
             space=space,
@@ -5617,7 +5617,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_id_serialize(
             id=id,
@@ -5692,7 +5692,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_id_serialize(
             id=id,
@@ -5768,7 +5768,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._patch_payment_transactions_id_serialize(
             id=id,
@@ -5918,7 +5918,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_serialize(
             space=space,
@@ -5989,7 +5989,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_serialize(
             space=space,
@@ -6061,7 +6061,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_serialize(
             space=space,
@@ -6208,7 +6208,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_by_credentials_credentials_one_click_tokens_id_process_serialize(
             credentials=credentials,
@@ -6280,7 +6280,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_by_credentials_credentials_one_click_tokens_id_process_serialize(
             credentials=credentials,
@@ -6353,7 +6353,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_by_credentials_credentials_one_click_tokens_id_process_serialize(
             credentials=credentials,
@@ -6484,7 +6484,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_apply_serialize(
             id=id,
@@ -6555,7 +6555,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_apply_serialize(
             id=id,
@@ -6627,7 +6627,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_apply_serialize(
             id=id,
@@ -6760,7 +6760,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_cancel_serialize(
             id=id,
@@ -6831,7 +6831,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_cancel_serialize(
             id=id,
@@ -6903,7 +6903,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_cancel_serialize(
             id=id,
@@ -7039,7 +7039,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_update_recipient_serialize(
             id=id,
@@ -7114,7 +7114,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_update_recipient_serialize(
             id=id,
@@ -7190,7 +7190,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_charge_flow_update_recipient_serialize(
             id=id,
@@ -7328,7 +7328,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_offline_serialize(
             id=id,
@@ -7399,7 +7399,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_offline_serialize(
             id=id,
@@ -7471,7 +7471,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_offline_serialize(
             id=id,
@@ -7604,7 +7604,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_online_serialize(
             id=id,
@@ -7675,7 +7675,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_online_serialize(
             id=id,
@@ -7747,7 +7747,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_online_serialize(
             id=id,
@@ -7883,7 +7883,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_offline_serialize(
             id=id,
@@ -7958,7 +7958,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_offline_serialize(
             id=id,
@@ -8034,7 +8034,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_offline_serialize(
             id=id,
@@ -8187,7 +8187,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_online_serialize(
             id=id,
@@ -8262,7 +8262,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_online_serialize(
             id=id,
@@ -8338,7 +8338,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_complete_partially_online_serialize(
             id=id,
@@ -8491,7 +8491,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_confirm_serialize(
             id=id,
@@ -8566,7 +8566,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_confirm_serialize(
             id=id,
@@ -8642,7 +8642,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_confirm_serialize(
             id=id,
@@ -8795,7 +8795,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_serialize(
             id=id,
@@ -8870,7 +8870,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_serialize(
             id=id,
@@ -8946,7 +8946,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_serialize(
             id=id,
@@ -9097,7 +9097,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_threed_serialize(
             id=id,
@@ -9169,7 +9169,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_threed_serialize(
             id=id,
@@ -9242,7 +9242,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_card_details_threed_serialize(
             id=id,
@@ -9386,7 +9386,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_with_token_serialize(
             id=id,
@@ -9457,7 +9457,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_with_token_serialize(
             id=id,
@@ -9529,7 +9529,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_with_token_serialize(
             id=id,
@@ -9662,7 +9662,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_without_interaction_serialize(
             id=id,
@@ -9733,7 +9733,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_without_interaction_serialize(
             id=id,
@@ -9805,7 +9805,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_process_without_interaction_serialize(
             id=id,
@@ -9938,7 +9938,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_offline_serialize(
             id=id,
@@ -10009,7 +10009,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_offline_serialize(
             id=id,
@@ -10081,7 +10081,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_offline_serialize(
             id=id,
@@ -10214,7 +10214,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_online_serialize(
             id=id,
@@ -10285,7 +10285,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_online_serialize(
             id=id,
@@ -10357,7 +10357,7 @@ class TransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._post_payment_transactions_id_void_online_serialize(
             id=id,

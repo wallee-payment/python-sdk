@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -43,7 +43,7 @@ from typing_extensions import Self
 class PaymentConnector(BaseModel):
     """
     PaymentConnector
-    """
+    """ # noqa: E501
     supported_features: Optional[List[PaymentConnectorFeature]] = Field(default=None, description="The features that are supported by the connector.", alias="supportedFeatures")
     supported_customers_presences: Optional[List[CustomersPresence]] = Field(default=None, description="The types of customer's presence that are supported by the connector.", alias="supportedCustomersPresences")
     data_collection_type: Optional[DataCollectionType] = Field(default=None, alias="dataCollectionType")

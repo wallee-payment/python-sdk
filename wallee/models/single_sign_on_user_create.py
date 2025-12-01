@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SingleSignOnUserCreate(BaseModel):
     """
     SingleSignOnUserCreate
-    """
+    """ # noqa: E501
     firstname: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The user's first name.")
     time_zone: Optional[StrictStr] = Field(default=None, description="The user's time zone. If none is specified, the one provided by the browser will be used.", alias="timeZone")
     language: Optional[StrictStr] = Field(default=None, description="The user's preferred language.")

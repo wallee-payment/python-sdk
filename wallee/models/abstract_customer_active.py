@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class AbstractCustomerActive(BaseModel):
     """
     AbstractCustomerActive
-    """
+    """ # noqa: E501
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     email_address: Optional[Annotated[str, Field(strict=True, max_length=254)]] = Field(default=None, description="The customer's email address.", alias="emailAddress")
     family_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The customer's family or last name.", alias="familyName")

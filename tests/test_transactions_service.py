@@ -319,83 +319,7 @@ class TestTransactionsService(unittest.TestCase):
             "Transaction state must be FULFILLED"
         )
 
-    def test_complete_offline_should_make_transaction_completion_state_successful(self):
-        """
-        Authorizes and completes a transaction offline using card details.
 
-        Verifies that:
-        - Transaction completion state is SUCCESSFUL
-        - Transaction state is FULFILL
-        """
-
-        transaction_create = Utils.get_transaction_create_payload()
-        transaction_create.tokenization_mode = TokenizationMode.FORCE_CREATION
-        transaction_create.customers_presence = CustomersPresence.NOT_PRESENT
-        transaction_create.completion_behavior = TransactionCompletionBehavior.COMPLETE_IMMEDIATELY
-
-        transaction = self.create(transaction_create)
-
-        authorized_transaction = self.transactions_service.post_payment_transactions_id_process_card_details(
-            transaction.id, SPACE_ID, MOCK_CARD_DATA
-        )
-
-        processed_transaction = self.transactions_service.post_payment_transactions_id_complete_offline(
-            authorized_transaction.id, SPACE_ID
-        )
-
-        self.assertEqual(
-            TransactionCompletionState.SUCCESSFUL,
-            processed_transaction.state,
-            "Transaction completion state must be SUCCESSFUL"
-        )
-
-        completed_transaction = self.transactions_service.get_payment_transactions_id(
-            transaction.id, SPACE_ID
-        )
-
-        self.assertEqual(
-            TransactionState.FULFILL,
-            completed_transaction.state,
-            "Transaction state must be FULFILLED"
-        )
-
-    def test_complete_offline_partially_should_make_transaction_completion_state_successful(self):
-        """
-        Authorizes and completes a transaction offline partially using card details.
-
-        Verifies that:
-        - Transaction completion state is SUCCESSFUL
-        - Transaction state is FULFILL
-        """
-
-        transaction = self.create(Utils.get_transaction_create_payload())
-
-        authorized_transaction = self.transactions_service.post_payment_transactions_id_process_card_details(
-            transaction.id, SPACE_ID, MOCK_CARD_DATA
-        )
-
-        tcd = TransactionCompletionDetails()
-        tcd.external_id = str(uuid.uuid4())
-
-        processed_transaction = self.transactions_service.post_payment_transactions_id_complete_partially_offline(
-            authorized_transaction.id, SPACE_ID, tcd
-        )
-
-        self.assertEqual(
-            TransactionCompletionState.SUCCESSFUL,
-            processed_transaction.state,
-            "Transaction completion state must be SUCCESSFUL"
-        )
-
-        completed_transaction = self.transactions_service.get_payment_transactions_id(
-            transaction.id, SPACE_ID
-        )
-
-        self.assertEqual(
-            TransactionState.FULFILL,
-            completed_transaction.state,
-            "Transaction state must be FULFILLED"
-        )
 
     def test_void_transaction_online_should_return_voided_transaction(self):
         """
@@ -443,51 +367,6 @@ class TestTransactionsService(unittest.TestCase):
             "Transaction state should be VOIDED"
         )
 
-    def test_void_transaction_offline_should_return_voided_transaction(self):
-        """
-        Authorizes and voids a transaction offline.
-
-        Verifies that:
-        - Transaction void state is SUCCESSFUL
-        - Transaction state is VOIDED
-        """
-
-        transaction_create = Utils.get_transaction_create_payload()
-        transaction_create.tokenization_mode = TokenizationMode.FORCE_CREATION
-        transaction_create.customers_presence = CustomersPresence.NOT_PRESENT
-        transaction_create.completion_behavior = TransactionCompletionBehavior.COMPLETE_DEFERRED
-
-        transaction = self.create(transaction_create)
-
-        authorized_transaction = self.transactions_service.post_payment_transactions_id_process_card_details(
-            transaction.id, SPACE_ID, MOCK_CARD_DATA
-        )
-
-        self.assertEqual(
-            TransactionState.AUTHORIZED,
-            authorized_transaction.state,
-            "Transaction state should be AUTHORIZED"
-        )
-
-        expand = {"transaction"}
-
-        transaction_void = self.transactions_service.post_payment_transactions_id_void_offline(
-            authorized_transaction.id, SPACE_ID, expand
-        )
-
-        self.assertEqual(
-            TransactionVoidState.SUCCESSFUL,
-            transaction_void.state,
-            "Transaction void state should be SUCCESSFUL"
-        )
-
-        self.assertIsNotNone(transaction_void.transaction)
-
-        self.assertEqual(
-            TransactionState.VOIDED,
-            transaction_void.transaction.state,
-            "Transaction state should be VOIDED"
-        )
 
     def test_check_if_possible_to_create_token_for_fulfilled_transaction(self):
         """

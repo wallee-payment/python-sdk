@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class AbstractSubscriptionAffiliateUpdate(BaseModel):
     """
     AbstractSubscriptionAffiliateUpdate
-    """
+    """ # noqa: E501
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     name: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=255)]] = Field(default=None, description="The name used to identify the affiliate.")
     language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")

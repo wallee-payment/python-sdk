@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class UserSpaceRole(BaseModel):
     """
     UserSpaceRole
-    """
+    """ # noqa: E501
     role: Optional[StrictInt] = Field(default=None, description="The role that is assigned to the user.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     user: Optional[StrictInt] = Field(default=None, description="The user whose role this defines.")

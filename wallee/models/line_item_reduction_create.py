@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class LineItemReductionCreate(BaseModel):
     """
     LineItemReductionCreate
-    """
+    """ # noqa: E501
     quantity_reduction: Union[StrictFloat, StrictInt] = Field(description="The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.", alias="quantityReduction")
     unit_price_reduction: Union[StrictFloat, StrictInt] = Field(description="The monetary amount by which the line item's unit price is discounted. This reduction adjusts the price without altering the quantity.", alias="unitPriceReduction")
     line_item_unique_id: Annotated[str, Field(strict=True, max_length=200)] = Field(description="The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.", alias="lineItemUniqueId")

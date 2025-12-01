@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class ResultPortionModel(BaseModel):
     """
     ResultPortionModel
-    """
+    """ # noqa: E501
     offset: Optional[StrictInt] = Field(default=None, description="0-based offset of items.")
     limit: Optional[StrictInt] = Field(default=None, description="Amount of items in portion.")
     total_count: Optional[StrictInt] = Field(default=None, description="Total count of items.", alias="totalCount")

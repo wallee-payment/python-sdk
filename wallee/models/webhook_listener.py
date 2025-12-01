@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -41,7 +41,7 @@ from typing_extensions import Self
 class WebhookListener(BaseModel):
     """
     WebhookListener
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     entity_states: Optional[List[StrictStr]] = Field(default=None, description="The entity's target states that are to be monitored.", alias="entityStates")
     identity: Optional[WebhookIdentity] = None

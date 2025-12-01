@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -49,7 +49,7 @@ from typing_extensions import Self
 class TokenVersion(BaseModel):
     """
     TokenVersion
-    """
+    """ # noqa: E501
     payment_information_hashes: Optional[List[PaymentInformationHash]] = Field(default=None, description="The hashed payment information that the token version represents.", alias="paymentInformationHashes")
     language: Optional[StrictStr] = Field(default=None, description="The language that is linked to the object.")
     type: Optional[TokenVersionType] = None

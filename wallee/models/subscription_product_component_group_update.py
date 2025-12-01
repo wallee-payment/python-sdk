@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class SubscriptionProductComponentGroupUpdate(BaseModel):
     """
     SubscriptionProductComponentGroupUpdate
-    """
+    """ # noqa: E501
     product_version: Optional[StrictInt] = Field(default=None, description="The product version that the component group belongs to.", alias="productVersion")
     sort_order: Optional[StrictInt] = Field(default=None, description="When listing component groups, they can be sorted by this number.", alias="sortOrder")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the component group that is displayed to the customer.")

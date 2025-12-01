@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class PaymentMethodBrand(BaseModel):
     """
     PaymentMethodBrand
-    """
+    """ # noqa: E501
     gray_image_path: Optional[StrictStr] = Field(default=None, description="The path to the payment method brand's grayscale image.", alias="grayImagePath")
     image_path: Optional[StrictStr] = Field(default=None, description="The path to the payment method brand's image.", alias="imagePath")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")

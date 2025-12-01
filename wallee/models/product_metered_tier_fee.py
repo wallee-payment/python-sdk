@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class ProductMeteredTierFee(BaseModel):
     """
     ProductMeteredTierFee
-    """
+    """ # noqa: E501
     start_range: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Starting from and including this quantity is contained in the tier.", alias="startRange")
     metered_fee: Optional[ProductMeteredFee] = Field(default=None, alias="meteredFee")
     fee: Optional[List[PersistableCurrencyAmount]] = Field(default=None, description="The amount charged to the customer for each consumed unit at the end of a billing cycle.")

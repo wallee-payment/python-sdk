@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class TokenVersionType(BaseModel):
     """
     TokenVersionType
-    """
+    """ # noqa: E501
     feature: Optional[Feature] = None
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")

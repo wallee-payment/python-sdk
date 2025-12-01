@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class RestCurrency(BaseModel):
     """
     RestCurrency
-    """
+    """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="The name of the currency.")
     fraction_digits: Optional[StrictInt] = Field(default=None, description="The currency's number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.", alias="fractionDigits")
     currency_code: Optional[StrictStr] = Field(default=None, description="The currency's three-letter code (ISO 4217 format).", alias="currencyCode")

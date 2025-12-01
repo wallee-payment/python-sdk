@@ -92,7 +92,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_serialize(
             space=space,
@@ -174,7 +174,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_serialize(
             space=space,
@@ -257,7 +257,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_serialize(
             space=space,
@@ -409,7 +409,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_id_serialize(
             id=id,
@@ -479,7 +479,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_id_serialize(
             id=id,
@@ -550,7 +550,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_id_serialize(
             id=id,
@@ -691,7 +691,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_search_serialize(
             space=space,
@@ -773,7 +773,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_search_serialize(
             space=space,
@@ -856,7 +856,7 @@ class ExternalTransferBankTransactionsService:
                             in the spec for a single request.
         :type _host_index: int, optional
         :return: Returns the result object.
-        """
+        """ # noqa: E501
 
         _param = self._get_payment_bank_transactions_external_transfers_search_serialize(
             space=space,

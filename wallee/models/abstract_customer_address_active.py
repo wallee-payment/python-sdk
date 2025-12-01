@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class AbstractCustomerAddressActive(BaseModel):
     """
     AbstractCustomerAddressActive
-    """
+    """ # noqa: E501
     address: Optional[CustomerPostalAddressCreate] = None
     address_type: Optional[CustomerAddressType] = Field(default=None, alias="addressType")
     __properties: ClassVar[List[str]] = ["address", "addressType"]

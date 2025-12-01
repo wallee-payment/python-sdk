@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class Permission(BaseModel):
     """
     Permission
-    """
+    """ # noqa: E501
     parent: Optional[StrictInt] = Field(default=None, description="The group that this permission belongs to.")
     feature: Optional[Feature] = None
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")

@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
@@ -36,7 +36,7 @@ from typing_extensions import Self
 class UserAccountRole(BaseModel):
     """
     UserAccountRole
-    """
+    """ # noqa: E501
     role: Optional[StrictInt] = Field(default=None, description="The role that is assigned to the user.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     applies_on_sub_account: Optional[StrictBool] = Field(default=None, description="Whether the role is assigned to the user in subaccounts only.", alias="appliesOnSubAccount")

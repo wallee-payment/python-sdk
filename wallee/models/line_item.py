@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class LineItem(BaseModel):
     """
     LineItem
-    """
+    """ # noqa: E501
     tax_amount_per_unit: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The calculated tax amount per unit.", alias="taxAmountPerUnit")
     undiscounted_amount_excluding_tax: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The line item price with discounts not applied, excluding taxes.", alias="undiscountedAmountExcludingTax")
     quantity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of items that were purchased.")

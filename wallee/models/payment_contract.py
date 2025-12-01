@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class PaymentContract(BaseModel):
     """
     PaymentContract
-    """
+    """ # noqa: E501
     contract_type: Optional[PaymentContractType] = Field(default=None, alias="contractType")
     terminated_by: Optional[StrictInt] = Field(default=None, description="The ID of the user the contract was terminated by.", alias="terminatedBy")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

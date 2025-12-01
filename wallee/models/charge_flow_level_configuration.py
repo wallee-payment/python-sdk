@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -40,7 +40,7 @@ from typing_extensions import Self
 class ChargeFlowLevelConfiguration(BaseModel):
     """
     ChargeFlowLevelConfiguration
-    """
+    """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     period: Optional[StrictStr] = Field(default=None, description="The duration specifies how long the level remains active before transitioning to the next one.")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the charge flow level configuration.")

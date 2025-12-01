@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -38,7 +38,7 @@ from typing_extensions import Self
 class SubmittedAnalyticsQueryExecution(BaseModel):
     """
     SubmittedAnalyticsQueryExecution
-    """
+    """ # noqa: E501
     query_external_id: Optional[StrictStr] = Field(default=None, description="The external id associated with this query, if any.", alias="queryExternalId")
     account_id: Optional[StrictInt] = Field(default=None, description="The ID of the target account for which the analytics query will be executed, determining the data scope for the request.", alias="accountId")
     total_billed_execution_time_ms: Optional[StrictInt] = Field(default=None, description="The total execution time, in milliseconds, that has been billed for the query.", alias="totalBilledExecutionTimeMs")

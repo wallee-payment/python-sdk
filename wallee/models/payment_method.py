@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class PaymentMethod(BaseModel):
     """
     PaymentMethod
-    """
+    """ # noqa: E501
     supported_currencies: Optional[List[StrictStr]] = Field(default=None, description="The currencies that the payment method supports.", alias="supportedCurrencies")
     data_collection_types: Optional[List[DataCollectionType]] = Field(default=None, description="The data collection types that payment method supports.", alias="dataCollectionTypes")
     image_path: Optional[StrictStr] = Field(default=None, description="The path to the payment method's image.", alias="imagePath")

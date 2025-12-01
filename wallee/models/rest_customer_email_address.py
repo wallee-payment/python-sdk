@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from datetime import datetime
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class RestCustomerEmailAddress(BaseModel):
     """
     RestCustomerEmailAddress
-    """
+    """ # noqa: E501
     email_address: Optional[StrictStr] = Field(default=None, description="An email address associated with a customer.", alias="emailAddress")
     created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
     __properties: ClassVar[List[str]] = ["emailAddress", "createdOn"]

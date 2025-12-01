@@ -25,7 +25,7 @@ limitations under the License.
 
 from __future__ import annotations
 import pprint
-import re
+import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
@@ -37,7 +37,7 @@ from typing_extensions import Self
 class ProductPeriodFeeUpdate(BaseModel):
     """
     ProductPeriodFeeUpdate
-    """
+    """ # noqa: E501
     period_fee: Optional[List[PersistableCurrencyAmountUpdate]] = Field(default=None, description="The amount charged to the customer for each billing cycle during the term of a subscription.", alias="periodFee")
     component: Optional[StrictInt] = Field(default=None, description="The product component that the fee belongs to.")
     number_of_free_trial_periods: Optional[StrictInt] = Field(default=None, description="The number of subscription billing cycles that count as a trial phase and during which no fees are charged.", alias="numberOfFreeTrialPeriods")
