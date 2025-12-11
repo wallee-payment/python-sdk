@@ -23,14 +23,20 @@ limitations under the License.
 """
 
 
-from wallee.error_code import ErrorCode
-
 class WalleeSdkException(Exception):
-    def __init__(self, error_code: ErrorCode, details: str):
-        self.error_code = error_code
-        self.details = details
-        self.message = f"Error code: {error_code.code}. {details}"
-        super().__init__(self.message)
+    """
+    Exception thrown when an internal SDK error occurs
+    """
+    def __init__(self, code: str, message: str):
+        """
+        Constructor.
+
+        :param code: SDK error code (string)
+        :param message: Exception message details
+        """
+        self.code = code
+        self.message = message
+        super().__init__(f"Error code: {code}. {message}")
 
     def __str__(self):
-        return self.message
+        return super().__str__()

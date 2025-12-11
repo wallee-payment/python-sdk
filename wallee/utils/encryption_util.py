@@ -33,7 +33,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 
 from wallee.wallee_sdk_exception import WalleeSdkException
-from wallee.error_code import ErrorCode
+from wallee.sdk_exception_error_codes import SdkExceptionErrorCodes
 
 
 class EncryptionUtil:
@@ -42,14 +42,14 @@ class EncryptionUtil:
 
         if not encryption_algorithm:
             raise WalleeSdkException(
-                ErrorCode.MISSING_WEBHOOK_ENCRYPTION_ALGORYTHM,
+                SdkExceptionErrorCodes.MISSING_WEBHOOK_ENCRYPTION_ALGORYTHM.code,
                 "Webhook signature algorithm was not provided"
             )
 
         algorithm_class = EncryptionUtil._get_algorithm_class(encryption_algorithm)
         if algorithm_class is None:
             raise WalleeSdkException(
-                ErrorCode.UNSUPPORTED_WEBHOOK_ENCRYPTION_ALGORYTHM,
+                SdkExceptionErrorCodes.UNSUPPORTED_WEBHOOK_ENCRYPTION_ALGORYTHM.code,
                 f"Unsupported encryption algorithm: {encryption_algorithm}"
             )
 
@@ -57,7 +57,7 @@ class EncryptionUtil:
             signature = base64.b64decode(signature)
         except binascii.Error:
             raise WalleeSdkException(
-                ErrorCode.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE,
+                SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE.code,
                 "Invalid signature value format"
             )
 
@@ -65,7 +65,7 @@ class EncryptionUtil:
             public_key_bytes = base64.b64decode(public_key)
         except binascii.Error:
             raise WalleeSdkException(
-                ErrorCode.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+                SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY.code,
                 "Invalid public key value base64 format"
             )
 
@@ -73,7 +73,7 @@ class EncryptionUtil:
             public_key = serialization.load_der_public_key(public_key_bytes, backend=default_backend())
         except (ValueError, binascii.Error) as e:
             raise WalleeSdkException(
-                ErrorCode.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+                SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY.code,
                 f"Invalid public key format: {str(e)}"
             )
 

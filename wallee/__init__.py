@@ -25,7 +25,7 @@ limitations under the License.
 """
 
 
-__version__ = "6.2.0"
+__version__ = "6.3.0"
 
 # import apis into sdk package
 from wallee.service.accounts_service import AccountsService
@@ -74,6 +74,7 @@ from wallee.service.payment_methods_service import PaymentMethodsService
 from wallee.service.payment_processor_configurations_service import PaymentProcessorConfigurationsService
 from wallee.service.payment_processors_service import PaymentProcessorsService
 from wallee.service.payment_sales_channels_service import PaymentSalesChannelsService
+from wallee.service.payment_terminal_transaction_summaries_service import PaymentTerminalTransactionSummariesService
 from wallee.service.payment_terminals_service import PaymentTerminalsService
 from wallee.service.payment_web_apps_service import PaymentWebAppsService
 from wallee.service.permissions_service import PermissionsService
@@ -131,6 +132,8 @@ from wallee.exceptions import ApiValueError
 from wallee.exceptions import ApiKeyError
 from wallee.exceptions import ApiAttributeError
 from wallee.exceptions import ApiException
+from wallee.api_exception_error_codes import ApiExceptionErrorCodes
+from wallee.sdk_exception_error_codes import SdkExceptionErrorCodes
 from wallee.wallee_sdk_exception import WalleeSdkException
 
 # import utils into sdk package
@@ -460,6 +463,7 @@ from wallee.models.payment_terminal_configuration_state import PaymentTerminalCo
 from wallee.models.payment_terminal_configuration_version import PaymentTerminalConfigurationVersion
 from wallee.models.payment_terminal_configuration_version_state import PaymentTerminalConfigurationVersionState
 from wallee.models.payment_terminal_create import PaymentTerminalCreate
+from wallee.models.payment_terminal_dcc_transaction_sum import PaymentTerminalDccTransactionSum
 from wallee.models.payment_terminal_location import PaymentTerminalLocation
 from wallee.models.payment_terminal_location_state import PaymentTerminalLocationState
 from wallee.models.payment_terminal_location_version import PaymentTerminalLocationVersion
@@ -467,6 +471,8 @@ from wallee.models.payment_terminal_location_version_state import PaymentTermina
 from wallee.models.payment_terminal_preparing import PaymentTerminalPreparing
 from wallee.models.payment_terminal_receipt_type import PaymentTerminalReceiptType
 from wallee.models.payment_terminal_state import PaymentTerminalState
+from wallee.models.payment_terminal_transaction_sum import PaymentTerminalTransactionSum
+from wallee.models.payment_terminal_transaction_summary import PaymentTerminalTransactionSummary
 from wallee.models.payment_terminal_transaction_summary_reference import PaymentTerminalTransactionSummaryReference
 from wallee.models.payment_terminal_type import PaymentTerminalType
 from wallee.models.payment_terminal_update import PaymentTerminalUpdate
@@ -526,6 +532,7 @@ from wallee.models.refund_type import RefundType
 from wallee.models.rendered_document import RenderedDocument
 from wallee.models.rendered_terminal_receipt import RenderedTerminalReceipt
 from wallee.models.rendered_terminal_receipt_list_response import RenderedTerminalReceiptListResponse
+from wallee.models.rendered_terminal_transaction_summary import RenderedTerminalTransactionSummary
 from wallee.models.rest_address_format import RestAddressFormat
 from wallee.models.rest_address_format_field import RestAddressFormatField
 from wallee.models.rest_api_bulk_operation_result import RestApiBulkOperationResult
@@ -651,6 +658,8 @@ from wallee.models.tenant_database import TenantDatabase
 from wallee.models.terminal_list_response import TerminalListResponse
 from wallee.models.terminal_receipt_format import TerminalReceiptFormat
 from wallee.models.terminal_search_response import TerminalSearchResponse
+from wallee.models.terminal_transaction_summary_list_response import TerminalTransactionSummaryListResponse
+from wallee.models.terminal_transaction_summary_search_response import TerminalTransactionSummarySearchResponse
 from wallee.models.token import Token
 from wallee.models.token_create import TokenCreate
 from wallee.models.token_list_response import TokenListResponse
