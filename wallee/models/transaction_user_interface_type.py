@@ -42,6 +42,7 @@ class TransactionUserInterfaceType(str, Enum):
     PAYMENT_PAGE = 'PAYMENT_PAGE'
     MOBILE_SDK = 'MOBILE_SDK'
     TERMINAL = 'TERMINAL'
+    CLOUD_TILL_INTERFACE = 'CLOUD_TILL_INTERFACE'
     EXPRESS_CHECKOUT = 'EXPRESS_CHECKOUT'
 
     @classmethod

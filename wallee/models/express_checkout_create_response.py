@@ -39,7 +39,8 @@ class ExpressCheckoutCreateResponse(BaseModel):
     """ # noqa: E501
     iframe_src: Optional[StrictStr] = Field(default=None, alias="iframeSrc")
     session: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["iframeSrc", "session"]
+    session_token: Optional[StrictStr] = Field(default=None, alias="sessionToken")
+    __properties: ClassVar[List[str]] = ["iframeSrc", "session", "sessionToken"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,7 +94,8 @@ class ExpressCheckoutCreateResponse(BaseModel):
 
         _obj = cls.model_validate({
             "iframeSrc": obj.get("iframeSrc"),
-            "session": obj.get("session")
+            "session": obj.get("session"),
+            "sessionToken": obj.get("sessionToken")
         })
         return _obj
 

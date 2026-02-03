@@ -28,7 +28,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from wallee.models.express_checkout_shipping_option import ExpressCheckoutShippingOption
 from wallee.models.line_item import LineItem
@@ -40,8 +40,10 @@ class ExpressCheckoutSessionCreate(BaseModel):
     ExpressCheckoutSessionCreate
     """ # noqa: E501
     line_items: Optional[List[LineItem]] = Field(default=None, alias="lineItems")
+    merchant_shipping_callback_url: Optional[StrictStr] = Field(default=None, description="The URL to fetch the shipping options from.", alias="merchantShippingCallbackUrl")
+    currency: Optional[StrictStr] = Field(default=None, description="The currency of the session.")
     shipping_options: Optional[List[ExpressCheckoutShippingOption]] = Field(default=None, alias="shippingOptions")
-    __properties: ClassVar[List[str]] = ["lineItems", "shippingOptions"]
+    __properties: ClassVar[List[str]] = ["lineItems", "merchantShippingCallbackUrl", "currency", "shippingOptions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -109,6 +111,8 @@ class ExpressCheckoutSessionCreate(BaseModel):
 
         _obj = cls.model_validate({
             "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "merchantShippingCallbackUrl": obj.get("merchantShippingCallbackUrl"),
+            "currency": obj.get("currency"),
             "shippingOptions": [ExpressCheckoutShippingOption.from_dict(_item) for _item in obj["shippingOptions"]] if obj.get("shippingOptions") is not None else None
         })
         return _obj

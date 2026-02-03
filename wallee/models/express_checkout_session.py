@@ -30,6 +30,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.address import Address
 from wallee.models.express_checkout_session_state import ExpressCheckoutSessionState
 from wallee.models.express_checkout_shipping_option import ExpressCheckoutShippingOption
 from wallee.models.express_checkout_wallet_type import ExpressCheckoutWalletType
@@ -42,13 +43,17 @@ class ExpressCheckoutSession(BaseModel):
     ExpressCheckoutSession
     """ # noqa: E501
     line_items: Optional[List[LineItem]] = Field(default=None, alias="lineItems")
+    merchant_shipping_callback_url: Optional[StrictStr] = Field(default=None, description="The URL to fetch the shipping options from.", alias="merchantShippingCallbackUrl")
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The spaceId linked to the entity.", alias="linkedSpaceId")
     meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, alias="metaData")
     wallet_type: Optional[ExpressCheckoutWalletType] = Field(default=None, alias="walletType")
+    shipping_address: Optional[Address] = Field(default=None, alias="shippingAddress")
+    currency: Optional[StrictStr] = Field(default=None, description="The currency of the session.")
+    billing_address: Optional[Address] = Field(default=None, alias="billingAddress")
     id: Optional[StrictInt] = Field(default=None, description="Id of the entity.")
     state: Optional[ExpressCheckoutSessionState] = None
     shipping_options: Optional[List[ExpressCheckoutShippingOption]] = Field(default=None, alias="shippingOptions")
-    __properties: ClassVar[List[str]] = ["lineItems", "linkedSpaceId", "metaData", "walletType", "id", "state", "shippingOptions"]
+    __properties: ClassVar[List[str]] = ["lineItems", "merchantShippingCallbackUrl", "linkedSpaceId", "metaData", "walletType", "shippingAddress", "currency", "billingAddress", "id", "state", "shippingOptions"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,11 +90,15 @@ class ExpressCheckoutSession(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "line_items",
+            "merchant_shipping_callback_url",
             "linked_space_id",
             "meta_data",
+            "currency",
             "id",
             "shipping_options",
         ])
@@ -109,6 +118,12 @@ class ExpressCheckoutSession(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of wallet_type
         if self.wallet_type:
             _dict['walletType'] = self.wallet_type.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of shipping_address
+        if self.shipping_address:
+            _dict['shippingAddress'] = self.shipping_address.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of billing_address
+        if self.billing_address:
+            _dict['billingAddress'] = self.billing_address.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in shipping_options (list)
         _items = []
         if self.shipping_options:
@@ -129,9 +144,13 @@ class ExpressCheckoutSession(BaseModel):
 
         _obj = cls.model_validate({
             "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "merchantShippingCallbackUrl": obj.get("merchantShippingCallbackUrl"),
             "linkedSpaceId": obj.get("linkedSpaceId"),
             "metaData": obj.get("metaData"),
             "walletType": ExpressCheckoutWalletType.from_dict(obj["walletType"]) if obj.get("walletType") is not None else None,
+            "shippingAddress": Address.from_dict(obj["shippingAddress"]) if obj.get("shippingAddress") is not None else None,
+            "currency": obj.get("currency"),
+            "billingAddress": Address.from_dict(obj["billingAddress"]) if obj.get("billingAddress") is not None else None,
             "id": obj.get("id"),
             "state": obj.get("state"),
             "shippingOptions": [ExpressCheckoutShippingOption.from_dict(_item) for _item in obj["shippingOptions"]] if obj.get("shippingOptions") is not None else None

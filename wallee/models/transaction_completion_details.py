@@ -28,7 +28,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from wallee.models.completion_line_item_create import CompletionLineItemCreate
@@ -40,11 +40,13 @@ class TransactionCompletionDetails(BaseModel):
     TransactionCompletionDetails
     """ # noqa: E501
     line_items: Optional[List[CompletionLineItemCreate]] = Field(default=None, description="The line items to be captured in the transaction completion.", alias="lineItems")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     last_completion: Optional[StrictBool] = Field(default=None, description="Whether this is the final completion for the transaction, meaning no further completions can occur, and the transaction will move to its completed state upon success.", alias="lastCompletion")
     statement_descriptor: Optional[Annotated[str, Field(strict=True, max_length=80)]] = Field(default=None, description="The statement descriptor that appears on a customer's bank statement, providing an explanation for charges or payments, helping customers identify the transaction.", alias="statementDescriptor")
     external_id: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=100)]] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     invoice_merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the invoice.", alias="invoiceMerchantReference")
-    __properties: ClassVar[List[str]] = ["lineItems", "lastCompletion", "statementDescriptor", "externalId", "invoiceMerchantReference"]
+    id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
+    __properties: ClassVar[List[str]] = ["lineItems", "metaData", "lastCompletion", "statementDescriptor", "externalId", "invoiceMerchantReference", "id"]
 
     @field_validator('statement_descriptor')
     def statement_descriptor_validate_regular_expression(cls, value):
@@ -135,10 +137,12 @@ class TransactionCompletionDetails(BaseModel):
 
         _obj = cls.model_validate({
             "lineItems": [CompletionLineItemCreate.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "metaData": obj.get("metaData"),
             "lastCompletion": obj.get("lastCompletion"),
             "statementDescriptor": obj.get("statementDescriptor"),
             "externalId": obj.get("externalId"),
-            "invoiceMerchantReference": obj.get("invoiceMerchantReference")
+            "invoiceMerchantReference": obj.get("invoiceMerchantReference"),
+            "id": obj.get("id")
         })
         return _obj
 

@@ -55,6 +55,7 @@ class TransactionCompletion(BaseModel):
     created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
     line_items: Optional[List[LineItem]] = Field(default=None, description="The line items captured in this transaction completion.", alias="lineItems")
     mode: Optional[TransactionCompletionMode] = None
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     succeeded_on: Optional[datetime] = Field(default=None, description="The date and time when the transaction completion succeeded.", alias="succeededOn")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[TransactionCompletionState] = None
@@ -76,7 +77,7 @@ class TransactionCompletion(BaseModel):
     tax_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The portion of the captured amount that corresponds to taxes.", alias="taxAmount")
     failed_on: Optional[datetime] = Field(default=None, description="The date and time when the transaction completion failed.", alias="failedOn")
     processor_reference: Optional[StrictStr] = Field(default=None, description="The reference ID provided by the payment processor, used to trace the completion through the external payment system.", alias="processorReference")
-    __properties: ClassVar[List[str]] = ["lineItemVersion", "statementDescriptor", "baseLineItems", "processingOn", "invoiceMerchantReference", "language", "remainingLineItems", "createdOn", "lineItems", "mode", "succeededOn", "id", "state", "linkedTransaction", "paymentInformation", "amount", "lastCompletion", "plannedPurgeDate", "externalId", "timeZone", "spaceViewId", "version", "labels", "linkedSpaceId", "timeoutOn", "createdBy", "nextUpdateOn", "failureReason", "taxAmount", "failedOn", "processorReference"]
+    __properties: ClassVar[List[str]] = ["lineItemVersion", "statementDescriptor", "baseLineItems", "processingOn", "invoiceMerchantReference", "language", "remainingLineItems", "createdOn", "lineItems", "mode", "metaData", "succeededOn", "id", "state", "linkedTransaction", "paymentInformation", "amount", "lastCompletion", "plannedPurgeDate", "externalId", "timeZone", "spaceViewId", "version", "labels", "linkedSpaceId", "timeoutOn", "createdBy", "nextUpdateOn", "failureReason", "taxAmount", "failedOn", "processorReference"]
 
     @field_validator('statement_descriptor')
     def statement_descriptor_validate_regular_expression(cls, value):
@@ -165,6 +166,7 @@ class TransactionCompletion(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "statement_descriptor",
@@ -175,6 +177,7 @@ class TransactionCompletion(BaseModel):
             "remaining_line_items",
             "created_on",
             "line_items",
+            "meta_data",
             "succeeded_on",
             "id",
             "linked_transaction",
@@ -257,6 +260,7 @@ class TransactionCompletion(BaseModel):
             "createdOn": obj.get("createdOn"),
             "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
             "mode": obj.get("mode"),
+            "metaData": obj.get("metaData"),
             "succeededOn": obj.get("succeededOn"),
             "id": obj.get("id"),
             "state": obj.get("state"),

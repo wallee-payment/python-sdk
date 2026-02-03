@@ -338,3 +338,12 @@ class TestQuerying(unittest.TestCase):
             response.payment_connector_configuration.processor_configuration.linked_space_id,
             "Items in nested response should be present"
         )
+
+    def test_search_with_quote_sign_should_return_correct_amount_of_items(self):
+        """
+        Querying with single quote sign.
+        """
+        response = self.transactions_service.get_payment_transactions_search(SPACE_ID, [], 1, 0, "", "completedOn:<'2026-01-15'")
+
+        self.assertIsNotNone(response.data, "Response should not be None")
+        self.assertNotEqual(0, len(response.data), "Response list should not be empty")

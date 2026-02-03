@@ -25,7 +25,7 @@ limitations under the License.
 """
 
 
-__version__ = "6.3.0"
+__version__ = "6.4.0"
 
 # import apis into sdk package
 from wallee.service.accounts_service import AccountsService
@@ -34,6 +34,7 @@ from wallee.service.application_users_service import ApplicationUsersService
 from wallee.service.application_users_roles_service import ApplicationUsersRolesService
 from wallee.service.bank_accounts_service import BankAccountsService
 from wallee.service.bank_transactions_service import BankTransactionsService
+from wallee.service.bogus_express_checkout_service import BogusExpressCheckoutService
 from wallee.service.charge_attempts_service import ChargeAttemptsService
 from wallee.service.charge_bank_transactions_service import ChargeBankTransactionsService
 from wallee.service.charge_flow_levels_service import ChargeFlowLevelsService
@@ -204,6 +205,8 @@ from wallee.models.bank_transaction_type import BankTransactionType
 from wallee.models.billing_cycle_model import BillingCycleModel
 from wallee.models.billing_cycle_type import BillingCycleType
 from wallee.models.billing_day_customization import BillingDayCustomization
+from wallee.models.bogus_express_checkout_approval_request import BogusExpressCheckoutApprovalRequest
+from wallee.models.bogus_express_checkout_payment_data import BogusExpressCheckoutPaymentData
 from wallee.models.card_authentication_response import CardAuthenticationResponse
 from wallee.models.card_authentication_version import CardAuthenticationVersion
 from wallee.models.card_cryptogram import CardCryptogram
@@ -325,10 +328,15 @@ from wallee.models.dunning_flow_list_response import DunningFlowListResponse
 from wallee.models.dunning_flow_search_response import DunningFlowSearchResponse
 from wallee.models.dunning_flow_type import DunningFlowType
 from wallee.models.environment import Environment
+from wallee.models.express_checkout_approval_response import ExpressCheckoutApprovalResponse
 from wallee.models.express_checkout_create_response import ExpressCheckoutCreateResponse
 from wallee.models.express_checkout_session import ExpressCheckoutSession
 from wallee.models.express_checkout_session_create import ExpressCheckoutSessionCreate
 from wallee.models.express_checkout_session_state import ExpressCheckoutSessionState
+from wallee.models.express_checkout_shipping_address_change_request import ExpressCheckoutShippingAddressChangeRequest
+from wallee.models.express_checkout_shipping_address_change_response import ExpressCheckoutShippingAddressChangeResponse
+from wallee.models.express_checkout_shipping_method_change_request import ExpressCheckoutShippingMethodChangeRequest
+from wallee.models.express_checkout_shipping_method_change_response import ExpressCheckoutShippingMethodChangeResponse
 from wallee.models.express_checkout_shipping_option import ExpressCheckoutShippingOption
 from wallee.models.express_checkout_wallet_type import ExpressCheckoutWalletType
 from wallee.models.external_transfer_bank_transaction import ExternalTransferBankTransaction

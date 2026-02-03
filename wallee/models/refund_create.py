@@ -28,7 +28,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from wallee.models.line_item_reduction_create import LineItemReductionCreate
@@ -41,13 +41,14 @@ class RefundCreate(BaseModel):
     A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
     """ # noqa: E501
     completion: Optional[StrictInt] = Field(default=None, description="The transaction completion that the refund belongs to.")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The total monetary amount of the refund, representing the exact credit issued to the customer.")
     reductions: Optional[List[LineItemReductionCreate]] = Field(default=None, description="The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.")
     external_id: Annotated[str, Field(min_length=1, strict=True, max_length=100)] = Field(description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     type: RefundType
     merchant_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The merchant's reference used to identify the refund.", alias="merchantReference")
     transaction: Optional[StrictInt] = Field(default=None, description="The transaction that the refund belongs to.")
-    __properties: ClassVar[List[str]] = ["completion", "amount", "reductions", "externalId", "type", "merchantReference", "transaction"]
+    __properties: ClassVar[List[str]] = ["completion", "metaData", "amount", "reductions", "externalId", "type", "merchantReference", "transaction"]
 
     @field_validator('external_id')
     def external_id_validate_regular_expression(cls, value):
@@ -125,6 +126,7 @@ class RefundCreate(BaseModel):
 
         _obj = cls.model_validate({
             "completion": obj.get("completion"),
+            "metaData": obj.get("metaData"),
             "amount": obj.get("amount"),
             "reductions": [LineItemReductionCreate.from_dict(_item) for _item in obj["reductions"]] if obj.get("reductions") is not None else None,
             "externalId": obj.get("externalId"),

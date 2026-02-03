@@ -39,7 +39,7 @@ class ExpressCheckoutShippingOption(BaseModel):
     """ # noqa: E501
     amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Total cost of this shipping option.")
     description: Optional[StrictStr] = Field(default=None, description="Description of the option")
-    currency: Optional[StrictStr] = Field(default=None, description="Currency of the option")
+    currency: Optional[StrictStr] = Field(default=None, description="Currency code (ISO-4217) of this shipping option.")
     id: Optional[StrictStr] = Field(default=None, description="Identifier of the option.")
     label: Optional[StrictStr] = Field(default=None, description="Label of the option.")
     tax_amount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Amount related to taxes.", alias="taxAmount")

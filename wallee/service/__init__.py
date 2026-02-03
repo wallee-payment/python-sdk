@@ -7,6 +7,7 @@ from wallee.service.application_users_service import ApplicationUsersService
 from wallee.service.application_users_roles_service import ApplicationUsersRolesService
 from wallee.service.bank_accounts_service import BankAccountsService
 from wallee.service.bank_transactions_service import BankTransactionsService
+from wallee.service.bogus_express_checkout_service import BogusExpressCheckoutService
 from wallee.service.charge_attempts_service import ChargeAttemptsService
 from wallee.service.charge_bank_transactions_service import ChargeBankTransactionsService
 from wallee.service.charge_flow_levels_service import ChargeFlowLevelsService

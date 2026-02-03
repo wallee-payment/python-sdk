@@ -49,12 +49,12 @@ class Scope(BaseModel):
     features: Optional[List[Feature]] = Field(default=None, description="The list of features that are active in the scope.")
     themes: Optional[List[StrictStr]] = Field(default=None, description="The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.")
     port: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="The port where the scope can be accessed.")
-    preprod_domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The preprod domain name that belongs to the scope.", alias="preprodDomainName")
-    domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The domain name that belongs to the scope.", alias="domainName")
+    preprod_domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The preprod domain name that belongs to the scope.", alias="preprodDomainName")
+    domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The domain name that belongs to the scope.", alias="domainName")
     name: Optional[Annotated[str, Field(strict=True, max_length=50)]] = Field(default=None, description="The name used to identify the scope.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[CreationEntityState] = None
-    sandbox_domain_name: Optional[Annotated[str, Field(strict=True, max_length=40)]] = Field(default=None, description="The sandbox domain name that belongs to the scope.", alias="sandboxDomainName")
+    sandbox_domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The sandbox domain name that belongs to the scope.", alias="sandboxDomainName")
     __properties: ClassVar[List[str]] = ["plannedPurgeDate", "sslActive", "version", "machineName", "url", "features", "themes", "port", "preprodDomainName", "domainName", "name", "id", "state", "sandboxDomainName"]
 
     @field_validator('machine_name')

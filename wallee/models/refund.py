@@ -57,6 +57,7 @@ class Refund(BaseModel):
     type: Optional[RefundType] = None
     created_on: Optional[datetime] = Field(default=None, description="The date and time when the object was created.", alias="createdOn")
     line_items: Optional[List[LineItem]] = Field(default=None, description="The line items included in the refund, representing the reductions.", alias="lineItems")
+    meta_data: Optional[Dict[str, StrictStr]] = Field(default=None, description="Allow to store additional information about the object.", alias="metaData")
     succeeded_on: Optional[datetime] = Field(default=None, description="The date and time when the refund succeeded.", alias="succeededOn")
     reduced_line_items: Optional[List[LineItem]] = Field(default=None, description="The line items from the original transaction, adjusted to reflect any reductions applied during the refund process.", alias="reducedLineItems")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
@@ -80,7 +81,7 @@ class Refund(BaseModel):
     failed_on: Optional[datetime] = Field(default=None, description="The date and time when the refund failed.", alias="failedOn")
     transaction: Optional[Transaction] = None
     processor_reference: Optional[Annotated[str, Field(strict=True, max_length=150)]] = Field(default=None, description="The reference ID provided by the payment processor, used to trace the refund through the external payment system.", alias="processorReference")
-    __properties: ClassVar[List[str]] = ["totalSettledAmount", "reductions", "baseLineItems", "processingOn", "taxes", "language", "type", "createdOn", "lineItems", "succeededOn", "reducedLineItems", "id", "state", "merchantReference", "completion", "amount", "plannedPurgeDate", "externalId", "timeZone", "version", "labels", "linkedSpaceId", "timeoutOn", "environment", "createdBy", "nextUpdateOn", "updatedInvoice", "failureReason", "totalAppliedFees", "failedOn", "transaction", "processorReference"]
+    __properties: ClassVar[List[str]] = ["totalSettledAmount", "reductions", "baseLineItems", "processingOn", "taxes", "language", "type", "createdOn", "lineItems", "metaData", "succeededOn", "reducedLineItems", "id", "state", "merchantReference", "completion", "amount", "plannedPurgeDate", "externalId", "timeZone", "version", "labels", "linkedSpaceId", "timeoutOn", "environment", "createdBy", "nextUpdateOn", "updatedInvoice", "failureReason", "totalAppliedFees", "failedOn", "transaction", "processorReference"]
 
     @field_validator('merchant_reference')
     def merchant_reference_validate_regular_expression(cls, value):
@@ -159,6 +160,7 @@ class Refund(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "total_settled_amount",
@@ -169,6 +171,7 @@ class Refund(BaseModel):
             "language",
             "created_on",
             "line_items",
+            "meta_data",
             "succeeded_on",
             "reduced_line_items",
             "id",
@@ -264,6 +267,7 @@ class Refund(BaseModel):
             "type": obj.get("type"),
             "createdOn": obj.get("createdOn"),
             "lineItems": [LineItem.from_dict(_item) for _item in obj["lineItems"]] if obj.get("lineItems") is not None else None,
+            "metaData": obj.get("metaData"),
             "succeededOn": obj.get("succeededOn"),
             "reducedLineItems": [LineItem.from_dict(_item) for _item in obj["reducedLineItems"]] if obj.get("reducedLineItems") is not None else None,
             "id": obj.get("id"),
