@@ -44,6 +44,7 @@ class PaymentTerminal(BaseModel):
     PaymentTerminal
     """ # noqa: E501
     identifier: Optional[StrictStr] = Field(default=None, description="The unique identifier of the terminal, that is displayed on the device.")
+    deactivated_on: Optional[datetime] = Field(default=None, alias="deactivatedOn")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")
     type: Optional[PaymentTerminalType] = None
@@ -53,11 +54,14 @@ class PaymentTerminal(BaseModel):
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
     configuration_version: Optional[PaymentTerminalConfigurationVersion] = Field(default=None, alias="configurationVersion")
     location_version: Optional[PaymentTerminalLocationVersion] = Field(default=None, alias="locationVersion")
+    activated_on: Optional[datetime] = Field(default=None, alias="activatedOn")
+    decommissioned_on: Optional[datetime] = Field(default=None, alias="decommissionedOn")
     default_currency: Optional[StrictStr] = Field(default=None, description="The default currency of the terminal.", alias="defaultCurrency")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal.")
+    activation_code: Optional[StrictStr] = Field(default=None, alias="activationCode")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[PaymentTerminalState] = None
-    __properties: ClassVar[List[str]] = ["identifier", "plannedPurgeDate", "externalId", "type", "deviceName", "version", "deviceSerialNumber", "linkedSpaceId", "configurationVersion", "locationVersion", "defaultCurrency", "name", "id", "state"]
+    __properties: ClassVar[List[str]] = ["identifier", "deactivatedOn", "plannedPurgeDate", "externalId", "type", "deviceName", "version", "deviceSerialNumber", "linkedSpaceId", "configurationVersion", "locationVersion", "activatedOn", "decommissionedOn", "defaultCurrency", "name", "activationCode", "id", "state"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -99,17 +103,25 @@ class PaymentTerminal(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "identifier",
+            "deactivated_on",
             "planned_purge_date",
             "external_id",
             "device_name",
             "version",
             "device_serial_number",
             "linked_space_id",
+            "activated_on",
+            "decommissioned_on",
             "default_currency",
             "name",
+            "activation_code",
             "id",
         ])
 
@@ -140,6 +152,7 @@ class PaymentTerminal(BaseModel):
 
         _obj = cls.model_validate({
             "identifier": obj.get("identifier"),
+            "deactivatedOn": obj.get("deactivatedOn"),
             "plannedPurgeDate": obj.get("plannedPurgeDate"),
             "externalId": obj.get("externalId"),
             "type": PaymentTerminalType.from_dict(obj["type"]) if obj.get("type") is not None else None,
@@ -149,8 +162,11 @@ class PaymentTerminal(BaseModel):
             "linkedSpaceId": obj.get("linkedSpaceId"),
             "configurationVersion": PaymentTerminalConfigurationVersion.from_dict(obj["configurationVersion"]) if obj.get("configurationVersion") is not None else None,
             "locationVersion": PaymentTerminalLocationVersion.from_dict(obj["locationVersion"]) if obj.get("locationVersion") is not None else None,
+            "activatedOn": obj.get("activatedOn"),
+            "decommissionedOn": obj.get("decommissionedOn"),
             "defaultCurrency": obj.get("defaultCurrency"),
             "name": obj.get("name"),
+            "activationCode": obj.get("activationCode"),
             "id": obj.get("id"),
             "state": obj.get("state")
         })

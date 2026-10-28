@@ -35,6 +35,7 @@ from wallee.models.country_list_response import CountryListResponse
 from wallee.models.country_search_response import CountrySearchResponse
 from wallee.models.rest_country import RestCountry
 from wallee.models.rest_country_state import RestCountryState
+from wallee.models.state_list_response import StateListResponse
 
 from wallee.api_client import ApiClient, RequestSerialized
 from wallee.api_response import ApiResponse
@@ -552,16 +553,19 @@ class CountriesService:
     def get_countries_country_code_states(
         self,
         country_code: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RestCountryState]:
+    ) -> StateListResponse:
         """List all states for a country
 
 
 
         :param country_code: (required)
         :type country_code: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -582,13 +586,14 @@ class CountriesService:
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -614,16 +619,19 @@ class CountriesService:
     def get_countries_country_code_states_with_http_info(
         self,
         country_code: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RestCountryState]]:
+    ) -> ApiResponse[StateListResponse]:
         """List all states for a country
 
 
 
         :param country_code: (required)
         :type country_code: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -644,13 +652,14 @@ class CountriesService:
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -677,6 +686,7 @@ class CountriesService:
     def get_countries_country_code_states_without_preload_content(
         self,
         country_code: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
@@ -687,6 +697,8 @@ class CountriesService:
 
         :param country_code: (required)
         :type country_code: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -707,13 +719,14 @@ class CountriesService:
 
         _param = self._get_countries_country_code_states_serialize(
             country_code=country_code,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -734,6 +747,7 @@ class CountriesService:
     def _get_countries_country_code_states_serialize(
         self,
         country_code,
+        expand,
         _content_type,
         _headers,
         _host_index,
@@ -742,6 +756,7 @@ class CountriesService:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'expand': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -757,6 +772,10 @@ class CountriesService:
         if country_code is not None:
             _path_params['countryCode'] = country_code
         # process the query parameters
+        if expand is not None:
+            
+            _query_params.append(('expand', expand))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1102,14 +1121,17 @@ class CountriesService:
     @validate_call
     def get_countries_states(
         self,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[RestCountryState]:
+    ) -> StateListResponse:
         """List all country states
 
 
 
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1129,13 +1151,14 @@ class CountriesService:
         """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -1160,14 +1183,17 @@ class CountriesService:
     @validate_call
     def get_countries_states_with_http_info(
         self,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[RestCountryState]]:
+    ) -> ApiResponse[StateListResponse]:
         """List all country states
 
 
 
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1187,13 +1213,14 @@ class CountriesService:
         """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -1219,6 +1246,7 @@ class CountriesService:
     @validate_call
     def get_countries_states_without_preload_content(
         self,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
@@ -1227,6 +1255,8 @@ class CountriesService:
 
 
 
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1246,13 +1276,14 @@ class CountriesService:
         """ # noqa: E501
 
         _param = self._get_countries_states_serialize(
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[RestCountryState]",
+            '200': "StateListResponse",
             '400': "RestApiErrorResponse",
             '401': "RestApiErrorResponse",
             '403': "RestApiErrorResponse",
@@ -1272,6 +1303,7 @@ class CountriesService:
 
     def _get_countries_states_serialize(
         self,
+        expand,
         _content_type,
         _headers,
         _host_index,
@@ -1280,6 +1312,7 @@ class CountriesService:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'expand': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1293,6 +1326,10 @@ class CountriesService:
 
         # process the path parameters
         # process the query parameters
+        if expand is not None:
+            
+            _query_params.append(('expand', expand))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -1328,6 +1365,7 @@ class CountriesService:
     def get_countries_states_id(
         self,
         id: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
@@ -1338,6 +1376,8 @@ class CountriesService:
 
         :param id: (required)
         :type id: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1358,6 +1398,7 @@ class CountriesService:
 
         _param = self._get_countries_states_id_serialize(
             id=id,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
@@ -1390,6 +1431,7 @@ class CountriesService:
     def get_countries_states_id_with_http_info(
         self,
         id: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
@@ -1400,6 +1442,8 @@ class CountriesService:
 
         :param id: (required)
         :type id: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1420,6 +1464,7 @@ class CountriesService:
 
         _param = self._get_countries_states_id_serialize(
             id=id,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
@@ -1453,6 +1498,7 @@ class CountriesService:
     def get_countries_states_id_without_preload_content(
         self,
         id: StrictStr,
+        expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
@@ -1463,6 +1509,8 @@ class CountriesService:
 
         :param id: (required)
         :type id: str
+        :param expand:
+        :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1483,6 +1531,7 @@ class CountriesService:
 
         _param = self._get_countries_states_id_serialize(
             id=id,
+            expand=expand,
             _content_type=_content_type,
             _headers=_headers,
             _host_index=_host_index
@@ -1510,6 +1559,7 @@ class CountriesService:
     def _get_countries_states_id_serialize(
         self,
         id,
+        expand,
         _content_type,
         _headers,
         _host_index,
@@ -1518,6 +1568,7 @@ class CountriesService:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'expand': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1533,6 +1584,10 @@ class CountriesService:
         if id is not None:
             _path_params['id'] = id
         # process the query parameters
+        if expand is not None:
+            
+            _query_params.append(('expand', expand))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter

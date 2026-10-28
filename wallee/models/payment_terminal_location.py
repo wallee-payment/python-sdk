@@ -41,7 +41,7 @@ class PaymentTerminalLocation(BaseModel):
     PaymentTerminalLocation
     """ # noqa: E501
     linked_space_id: Optional[StrictInt] = Field(default=None, description="The ID of the space this object belongs to.", alias="linkedSpaceId")
-    production_merchant_id: Optional[Annotated[str, Field(min_length=15, strict=True, max_length=15)]] = Field(default=None, alias="productionMerchantId")
+    production_merchant_id: Optional[Annotated[str, Field(min_length=15, strict=True, max_length=15)]] = Field(default=None, description="The production merchant identifier assigned to the location.", alias="productionMerchantId")
     name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal location.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
     external_id: Optional[StrictStr] = Field(default=None, description="A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.", alias="externalId")

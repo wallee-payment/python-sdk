@@ -45,12 +45,13 @@ class ProductMeteredFee(BaseModel):
     component: Optional[SubscriptionProductComponent] = None
     tier_pricing: Optional[ProductMeteredTierPricing] = Field(default=None, alias="tierPricing")
     metric: Optional[SubscriptionMetric] = None
+    number_of_free_trial_periods: Optional[StrictInt] = Field(default=None, description="The number of subscription billing cycles that count as a trial phase and during which no fees are charged.", alias="numberOfFreeTrialPeriods")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the fee that is displayed to the customer.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the fee that is displayed to the customer.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     type: Optional[ProductFeeType] = None
     version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
-    __properties: ClassVar[List[str]] = ["linkedSpaceId", "component", "tierPricing", "metric", "name", "description", "id", "type", "version"]
+    __properties: ClassVar[List[str]] = ["linkedSpaceId", "component", "tierPricing", "metric", "numberOfFreeTrialPeriods", "name", "description", "id", "type", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,9 +88,11 @@ class ProductMeteredFee(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "linked_space_id",
+            "number_of_free_trial_periods",
             "name",
             "description",
             "id",
@@ -123,6 +126,7 @@ class ProductMeteredFee(BaseModel):
             "component": SubscriptionProductComponent.from_dict(obj["component"]) if obj.get("component") is not None else None,
             "tierPricing": obj.get("tierPricing"),
             "metric": SubscriptionMetric.from_dict(obj["metric"]) if obj.get("metric") is not None else None,
+            "numberOfFreeTrialPeriods": obj.get("numberOfFreeTrialPeriods"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "id": obj.get("id"),

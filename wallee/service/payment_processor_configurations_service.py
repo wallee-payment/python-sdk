@@ -276,7 +276,7 @@ class PaymentProcessorConfigurationsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -602,7 +602,7 @@ class PaymentProcessorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -875,7 +875,7 @@ class PaymentProcessorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1201,7 +1201,7 @@ class PaymentProcessorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1490,7 +1490,7 @@ class PaymentProcessorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_processor_configuration_active is not None:
@@ -1779,7 +1779,7 @@ class PaymentProcessorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_processor_configuration_create is not None:
@@ -1811,6 +1811,299 @@ class PaymentProcessorConfigurationsService:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/payment/processor-configurations',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            collection_formats=_collection_formats,
+            _host=_host
+        )
+
+
+
+
+
+    @validate_call
+    def post_payment_processor_configurations_id_link_contract(
+        self,
+        id: StrictInt,
+        contract_id: Annotated[StrictInt, Field(description="The contract to link with the payment processor configuration.")],
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        expand: Optional[List[StrictStr]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> PaymentProcessorConfiguration:
+        """Link a contract with a payment processor configuration
+
+
+
+        :param id: (required)
+        :type id: int
+        :param contract_id: The contract to link with the payment processor configuration. (required)
+        :type contract_id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param expand:
+        :type expand: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_processor_configurations_id_link_contract_serialize(
+            id=id,
+            contract_id=contract_id,
+            space=space,
+            expand=expand,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaymentProcessorConfiguration",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def post_payment_processor_configurations_id_link_contract_with_http_info(
+        self,
+        id: StrictInt,
+        contract_id: Annotated[StrictInt, Field(description="The contract to link with the payment processor configuration.")],
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        expand: Optional[List[StrictStr]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[PaymentProcessorConfiguration]:
+        """Link a contract with a payment processor configuration
+
+
+
+        :param id: (required)
+        :type id: int
+        :param contract_id: The contract to link with the payment processor configuration. (required)
+        :type contract_id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param expand:
+        :type expand: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_processor_configurations_id_link_contract_serialize(
+            id=id,
+            contract_id=contract_id,
+            space=space,
+            expand=expand,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaymentProcessorConfiguration",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def post_payment_processor_configurations_id_link_contract_without_preload_content(
+        self,
+        id: StrictInt,
+        contract_id: Annotated[StrictInt, Field(description="The contract to link with the payment processor configuration.")],
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        expand: Optional[List[StrictStr]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Link a contract with a payment processor configuration
+
+
+
+        :param id: (required)
+        :type id: int
+        :param contract_id: The contract to link with the payment processor configuration. (required)
+        :type contract_id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param expand:
+        :type expand: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_processor_configurations_id_link_contract_serialize(
+            id=id,
+            contract_id=contract_id,
+            space=space,
+            expand=expand,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "PaymentProcessorConfiguration",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        return response_data.response
+
+
+    def _post_payment_processor_configurations_id_link_contract_serialize(
+        self,
+        id,
+        contract_id,
+        space,
+        expand,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'expand': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if contract_id is not None:
+            
+            _query_params.append(('contractId', contract_id))
+            
+        if expand is not None:
+            
+            _query_params.append(('expand', expand))
+            
+        # process the header parameters
+        if space is not None:
+            _header_params['space'] = space
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/payment/processor-configurations/{id}/link-contract',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

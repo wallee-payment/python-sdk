@@ -33,6 +33,7 @@ from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from wallee.models.authenticated_card_request import AuthenticatedCardRequest
 from wallee.models.charge import Charge
+from wallee.models.charge_attempt_lookup_result import ChargeAttemptLookupResult
 from wallee.models.payment_method_configuration_list_response import PaymentMethodConfigurationListResponse
 from wallee.models.rendered_document import RenderedDocument
 from wallee.models.rendered_terminal_receipt_list_response import RenderedTerminalReceiptListResponse
@@ -46,6 +47,7 @@ from wallee.models.transaction_completion_details import TransactionCompletionDe
 from wallee.models.transaction_create import TransactionCreate
 from wallee.models.transaction_line_item_version import TransactionLineItemVersion
 from wallee.models.transaction_list_response import TransactionListResponse
+from wallee.models.transaction_overview import TransactionOverview
 from wallee.models.transaction_pending import TransactionPending
 from wallee.models.transaction_search_response import TransactionSearchResponse
 from wallee.models.transaction_void import TransactionVoid
@@ -300,7 +302,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -626,7 +628,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -899,7 +901,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1154,7 +1156,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1428,7 +1430,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1718,7 +1720,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -2047,7 +2049,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -2321,7 +2323,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -2576,7 +2578,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -2832,7 +2834,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -3090,7 +3092,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -3346,7 +3348,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -3602,7 +3604,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -3875,7 +3877,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -4130,7 +4132,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -4148,6 +4150,264 @@ class TransactionsService:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/payment/transactions/{id}/lightbox-javascript-url',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            collection_formats=_collection_formats,
+            _host=_host
+        )
+
+
+
+
+
+    @validate_call
+    def get_payment_transactions_id_overview(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> TransactionOverview:
+        """Retrieve a transaction overview
+
+        Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under 'successfulChargeAttempt'. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_overview_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionOverview",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_payment_transactions_id_overview_with_http_info(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[TransactionOverview]:
+        """Retrieve a transaction overview
+
+        Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under 'successfulChargeAttempt'. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_overview_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionOverview",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_payment_transactions_id_overview_without_preload_content(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve a transaction overview
+
+        Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under 'successfulChargeAttempt'. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_overview_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "TransactionOverview",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        return response_data.response
+
+
+    def _get_payment_transactions_id_overview_serialize(
+        self,
+        id,
+        space,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if space is not None:
+            _header_params['space'] = space
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/payment/transactions/{id}/overview',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -4386,7 +4646,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -4676,7 +4936,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -4931,7 +5191,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -4949,6 +5209,264 @@ class TransactionsService:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/payment/transactions/{id}/payment-page-url',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            collection_formats=_collection_formats,
+            _host=_host
+        )
+
+
+
+
+
+    @validate_call
+    def get_payment_transactions_id_successful_charge_attempt(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ChargeAttemptLookupResult:
+        """Retrieve the successful charge attempt
+
+        Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_successful_charge_attempt_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChargeAttemptLookupResult",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_payment_transactions_id_successful_charge_attempt_with_http_info(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ChargeAttemptLookupResult]:
+        """Retrieve the successful charge attempt
+
+        Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_successful_charge_attempt_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChargeAttemptLookupResult",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_payment_transactions_id_successful_charge_attempt_without_preload_content(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Retrieve the successful charge attempt
+
+        Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_payment_transactions_id_successful_charge_attempt_serialize(
+            id=id,
+            space=space,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ChargeAttemptLookupResult",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        return response_data.response
+
+
+    def _get_payment_transactions_id_successful_charge_attempt_serialize(
+        self,
+        id,
+        space,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if space is not None:
+            _header_params['space'] = space
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/payment/transactions/{id}/successful-charge-attempt',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -5221,7 +5739,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -5547,7 +6065,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -5836,7 +6354,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_pending is not None:
@@ -6125,7 +6643,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_create is not None:
@@ -6416,7 +6934,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -6693,7 +7211,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -6969,7 +7487,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -7261,7 +7779,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -7537,7 +8055,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -7813,7 +8331,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -8102,7 +8620,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_completion_details is not None:
@@ -8406,7 +8924,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_completion_details is not None:
@@ -8710,7 +9228,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_pending is not None:
@@ -9014,7 +9532,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if authenticated_card_request is not None:
@@ -9303,7 +9821,7 @@ class TransactionsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if tokenized_card_request is not None:
@@ -9595,7 +10113,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -9871,7 +10389,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -10147,7 +10665,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -10423,7 +10941,7 @@ class TransactionsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 

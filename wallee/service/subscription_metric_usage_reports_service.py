@@ -343,7 +343,7 @@ class SubscriptionMetricUsageReportsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -616,7 +616,7 @@ class SubscriptionMetricUsageReportsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -942,7 +942,7 @@ class SubscriptionMetricUsageReportsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1216,7 +1216,7 @@ class SubscriptionMetricUsageReportsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if subscription_metric_usage_report_create is not None:

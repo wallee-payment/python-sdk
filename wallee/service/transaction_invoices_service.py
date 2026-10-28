@@ -344,7 +344,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -617,7 +617,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -872,7 +872,7 @@ class TransactionInvoicesService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1127,7 +1127,7 @@ class TransactionInvoicesService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1453,7 +1453,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1729,7 +1729,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1746,6 +1746,315 @@ class TransactionInvoicesService:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/payment/transactions/invoices/{id}/derecognize',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            collection_formats=_collection_formats,
+            _host=_host
+        )
+
+
+
+
+
+    @validate_call
+    def post_payment_transactions_invoices_id_instant_payment_url(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        success_url: Optional[StrictStr] = None,
+        failure_url: Optional[StrictStr] = None,
+        ttl_in_minutes: Annotated[Optional[StrictInt], Field(description="Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.")] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> str:
+        """Create an instant invoice payment URL
+
+
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param success_url:
+        :type success_url: str
+        :param failure_url:
+        :type failure_url: str
+        :param ttl_in_minutes: Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.
+        :type ttl_in_minutes: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_transactions_invoices_id_instant_payment_url_serialize(
+            id=id,
+            space=space,
+            success_url=success_url,
+            failure_url=failure_url,
+            ttl_in_minutes=ttl_in_minutes,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def post_payment_transactions_invoices_id_instant_payment_url_with_http_info(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        success_url: Optional[StrictStr] = None,
+        failure_url: Optional[StrictStr] = None,
+        ttl_in_minutes: Annotated[Optional[StrictInt], Field(description="Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.")] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[str]:
+        """Create an instant invoice payment URL
+
+
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param success_url:
+        :type success_url: str
+        :param failure_url:
+        :type failure_url: str
+        :param ttl_in_minutes: Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.
+        :type ttl_in_minutes: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_transactions_invoices_id_instant_payment_url_serialize(
+            id=id,
+            space=space,
+            success_url=success_url,
+            failure_url=failure_url,
+            ttl_in_minutes=ttl_in_minutes,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def post_payment_transactions_invoices_id_instant_payment_url_without_preload_content(
+        self,
+        id: StrictInt,
+        space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
+        success_url: Optional[StrictStr] = None,
+        failure_url: Optional[StrictStr] = None,
+        ttl_in_minutes: Annotated[Optional[StrictInt], Field(description="Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.")] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Create an instant invoice payment URL
+
+
+
+        :param id: (required)
+        :type id: int
+        :param space: Specifies the ID of the space the operation should be executed in. (required)
+        :type space: int
+        :param success_url:
+        :type success_url: str
+        :param failure_url:
+        :type failure_url: str
+        :param ttl_in_minutes: Optional TTL in minutes relative to now. Allowed range is 1 to 561600 (13 months in minutes). If omitted, 30 minutes is used.
+        :type ttl_in_minutes: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._post_payment_transactions_invoices_id_instant_payment_url_serialize(
+            id=id,
+            space=space,
+            success_url=success_url,
+            failure_url=failure_url,
+            ttl_in_minutes=ttl_in_minutes,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+            '400': "RestApiErrorResponse",
+            '401': "RestApiErrorResponse",
+            '403': "RestApiErrorResponse",
+            '404': "RestApiErrorResponse",
+            '406': "RestApiErrorResponse",
+            '409': "RestApiErrorResponse",
+            '415': "RestApiErrorResponse",
+            '422': "RestApiErrorResponse",
+            '429': "RestApiErrorResponse",
+            '5XX': "RestApiErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout = self.api_client.configuration.request_timeout
+        )
+        return response_data.response
+
+
+    def _post_payment_transactions_invoices_id_instant_payment_url_serialize(
+        self,
+        id,
+        space,
+        success_url,
+        failure_url,
+        ttl_in_minutes,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        if success_url is not None:
+            
+            _query_params.append(('successUrl', success_url))
+            
+        if failure_url is not None:
+            
+            _query_params.append(('failureUrl', failure_url))
+            
+        if ttl_in_minutes is not None:
+            
+            _query_params.append(('ttlInMinutes', ttl_in_minutes))
+            
+        # process the header parameters
+        if space is not None:
+            _header_params['space'] = space
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/payment/transactions/invoices/{id}/instant-payment-url',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -2005,7 +2314,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -2294,7 +2603,7 @@ class TransactionInvoicesService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if transaction_invoice_replacement is not None:

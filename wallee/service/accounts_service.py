@@ -32,7 +32,7 @@ from pydantic import Field, StrictInt, StrictStr
 from typing import List, Optional
 from typing_extensions import Annotated
 from wallee.models.account import Account
-from wallee.models.account_create import AccountCreate
+from wallee.models.account_create_with_owner import AccountCreateWithOwner
 from wallee.models.account_list_response import AccountListResponse
 from wallee.models.account_search_response import AccountSearchResponse
 from wallee.models.account_update import AccountUpdate
@@ -1464,7 +1464,8 @@ class AccountsService:
     @validate_call
     def post_accounts(
         self,
-        account_create: AccountCreate,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
+        account_create_with_owner: AccountCreateWithOwner,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1474,8 +1475,10 @@ class AccountsService:
 
 
 
-        :param account_create: (required)
-        :type account_create: AccountCreate
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
+        :param account_create_with_owner: (required)
+        :type account_create_with_owner: AccountCreateWithOwner
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1497,7 +1500,8 @@ class AccountsService:
         """ # noqa: E501
 
         _param = self._post_accounts_serialize(
-            account_create=account_create,
+            account=account,
+            account_create_with_owner=account_create_with_owner,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1531,7 +1535,8 @@ class AccountsService:
     @validate_call
     def post_accounts_with_http_info(
         self,
-        account_create: AccountCreate,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
+        account_create_with_owner: AccountCreateWithOwner,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1541,8 +1546,10 @@ class AccountsService:
 
 
 
-        :param account_create: (required)
-        :type account_create: AccountCreate
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
+        :param account_create_with_owner: (required)
+        :type account_create_with_owner: AccountCreateWithOwner
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1564,7 +1571,8 @@ class AccountsService:
         """ # noqa: E501
 
         _param = self._post_accounts_serialize(
-            account_create=account_create,
+            account=account,
+            account_create_with_owner=account_create_with_owner,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1599,7 +1607,8 @@ class AccountsService:
     @validate_call
     def post_accounts_without_preload_content(
         self,
-        account_create: AccountCreate,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
+        account_create_with_owner: AccountCreateWithOwner,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1609,8 +1618,10 @@ class AccountsService:
 
 
 
-        :param account_create: (required)
-        :type account_create: AccountCreate
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
+        :param account_create_with_owner: (required)
+        :type account_create_with_owner: AccountCreateWithOwner
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1632,7 +1643,8 @@ class AccountsService:
         """ # noqa: E501
 
         _param = self._post_accounts_serialize(
-            account_create=account_create,
+            account=account,
+            account_create_with_owner=account_create_with_owner,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1661,7 +1673,8 @@ class AccountsService:
 
     def _post_accounts_serialize(
         self,
-        account_create,
+        account,
+        account_create_with_owner,
         expand,
         _content_type,
         _headers,
@@ -1690,10 +1703,12 @@ class AccountsService:
             _query_params.append(('expand', expand))
             
         # process the header parameters
+        if account is not None:
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
-        if account_create is not None:
-            _body_params = account_create
+        if account_create_with_owner is not None:
+            _body_params = account_create_with_owner
 
 
         # set the HTTP header `Accept`

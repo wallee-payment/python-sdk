@@ -40,8 +40,9 @@ class AbstractRoleUpdate(BaseModel):
     """ # noqa: E501
     permissions: Optional[List[Permission]] = Field(default=None, description="The permissions granted to users with this role.")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name used to identify the role.")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional information that describes the role.")
     two_factor_required: Optional[StrictBool] = Field(default=None, description="Whether users with this role are required to use two-factor authentication.", alias="twoFactorRequired")
-    __properties: ClassVar[List[str]] = ["permissions", "name", "twoFactorRequired"]
+    __properties: ClassVar[List[str]] = ["permissions", "name", "description", "twoFactorRequired"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -103,6 +104,7 @@ class AbstractRoleUpdate(BaseModel):
         _obj = cls.model_validate({
             "permissions": [Permission.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None,
             "name": obj.get("name"),
+            "description": obj.get("description"),
             "twoFactorRequired": obj.get("twoFactorRequired")
         })
         return _obj

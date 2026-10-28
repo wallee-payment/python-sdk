@@ -41,10 +41,11 @@ class ProductMeteredFeeUpdate(BaseModel):
     component: Optional[StrictInt] = Field(default=None, description="The product component that the fee belongs to.")
     tier_pricing: Optional[ProductMeteredTierPricing] = Field(default=None, alias="tierPricing")
     metric: Optional[StrictInt] = Field(default=None, description="The metric used to determine the resource consumption billed to the customer.")
+    number_of_free_trial_periods: Optional[StrictInt] = Field(default=None, description="The number of subscription billing cycles that count as a trial phase and during which no fees are charged.", alias="numberOfFreeTrialPeriods")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the fee that is displayed to the customer.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the fee that is displayed to the customer.")
     version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
-    __properties: ClassVar[List[str]] = ["component", "tierPricing", "metric", "name", "description", "version"]
+    __properties: ClassVar[List[str]] = ["component", "tierPricing", "metric", "numberOfFreeTrialPeriods", "name", "description", "version"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -100,6 +101,7 @@ class ProductMeteredFeeUpdate(BaseModel):
             "component": obj.get("component"),
             "tierPricing": obj.get("tierPricing"),
             "metric": obj.get("metric"),
+            "numberOfFreeTrialPeriods": obj.get("numberOfFreeTrialPeriods"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "version": obj.get("version")

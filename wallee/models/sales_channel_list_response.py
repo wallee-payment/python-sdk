@@ -88,13 +88,6 @@ class SalesChannelListResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict['data'] = _items
         return _dict
 
     @classmethod
@@ -107,7 +100,7 @@ class SalesChannelListResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": [SalesChannel.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "data": obj.get("data"),
             "hasMore": obj.get("hasMore"),
             "limit": obj.get("limit")
         })

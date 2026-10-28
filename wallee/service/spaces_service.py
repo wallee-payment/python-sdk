@@ -1464,6 +1464,7 @@ class SpacesService:
     @validate_call
     def post_spaces(
         self,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
         space_create: SpaceCreate,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1474,6 +1475,8 @@ class SpacesService:
 
 
 
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
         :param space_create: (required)
         :type space_create: SpaceCreate
         :param expand:
@@ -1497,6 +1500,7 @@ class SpacesService:
         """ # noqa: E501
 
         _param = self._post_spaces_serialize(
+            account=account,
             space_create=space_create,
             expand=expand,
             _content_type=_content_type,
@@ -1531,6 +1535,7 @@ class SpacesService:
     @validate_call
     def post_spaces_with_http_info(
         self,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
         space_create: SpaceCreate,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1541,6 +1546,8 @@ class SpacesService:
 
 
 
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
         :param space_create: (required)
         :type space_create: SpaceCreate
         :param expand:
@@ -1564,6 +1571,7 @@ class SpacesService:
         """ # noqa: E501
 
         _param = self._post_spaces_serialize(
+            account=account,
             space_create=space_create,
             expand=expand,
             _content_type=_content_type,
@@ -1599,6 +1607,7 @@ class SpacesService:
     @validate_call
     def post_spaces_without_preload_content(
         self,
+        account: Annotated[StrictInt, Field(description="Specifies the ID of the account the operation should be executed in.")],
         space_create: SpaceCreate,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
@@ -1609,6 +1618,8 @@ class SpacesService:
 
 
 
+        :param account: Specifies the ID of the account the operation should be executed in. (required)
+        :type account: int
         :param space_create: (required)
         :type space_create: SpaceCreate
         :param expand:
@@ -1632,6 +1643,7 @@ class SpacesService:
         """ # noqa: E501
 
         _param = self._post_spaces_serialize(
+            account=account,
             space_create=space_create,
             expand=expand,
             _content_type=_content_type,
@@ -1661,6 +1673,7 @@ class SpacesService:
 
     def _post_spaces_serialize(
         self,
+        account,
         space_create,
         expand,
         _content_type,
@@ -1690,6 +1703,8 @@ class SpacesService:
             _query_params.append(('expand', expand))
             
         # process the header parameters
+        if account is not None:
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
         if space_create is not None:

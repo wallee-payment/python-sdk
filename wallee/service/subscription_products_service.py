@@ -346,7 +346,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -619,7 +619,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -945,7 +945,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1234,7 +1234,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if subscription_product_active is not None:
@@ -1523,7 +1523,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if subscription_product_create is not None:
@@ -1827,7 +1827,7 @@ class SubscriptionProductsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if subscription_product_retirement_request is not None:

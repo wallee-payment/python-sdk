@@ -273,7 +273,7 @@ class DebtCollectorConfigurationsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -599,7 +599,7 @@ class DebtCollectorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -872,7 +872,7 @@ class DebtCollectorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1198,7 +1198,7 @@ class DebtCollectorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -1487,7 +1487,7 @@ class DebtCollectorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if debt_collector_configuration_update is not None:
@@ -1776,7 +1776,7 @@ class DebtCollectorConfigurationsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if debt_collector_configuration_create is not None:

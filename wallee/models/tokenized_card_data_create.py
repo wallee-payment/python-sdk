@@ -47,10 +47,11 @@ class TokenizedCardDataCreate(BaseModel):
     card_verification_code: Optional[Annotated[str, Field(min_length=3, strict=True, max_length=4)]] = Field(default=None, description="The security code used to validate the card during transactions.", alias="cardVerificationCode")
     primary_account_number: Annotated[str, Field(min_length=10, strict=True, max_length=30)] = Field(description="The card's primary account number (PAN), the unique identifier of the card.", alias="primaryAccountNumber")
     recurring_indicator: Optional[RecurringIndicator] = Field(default=None, alias="recurringIndicator")
+    transaction_link_identifier: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="A reference specific to linking card transaction lifecycle events within the payment scheme.", alias="transactionLinkIdentifier")
     scheme_transaction_reference: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="A reference specific to the card's transaction within its payment scheme.", alias="schemeTransactionReference")
     token_requestor_id: Optional[StrictStr] = Field(default=None, description="The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.", alias="tokenRequestorId")
     cryptogram: Optional[CardCryptogramCreate] = None
-    __properties: ClassVar[List[str]] = ["expiryDate", "panType", "cardHolderName", "cardVerificationCode", "primaryAccountNumber", "recurringIndicator", "schemeTransactionReference", "tokenRequestorId", "cryptogram"]
+    __properties: ClassVar[List[str]] = ["expiryDate", "panType", "cardHolderName", "cardVerificationCode", "primaryAccountNumber", "recurringIndicator", "transactionLinkIdentifier", "schemeTransactionReference", "tokenRequestorId", "cryptogram"]
 
     @field_validator('expiry_date')
     def expiry_date_validate_regular_expression(cls, value):
@@ -139,6 +140,7 @@ class TokenizedCardDataCreate(BaseModel):
             "cardVerificationCode": obj.get("cardVerificationCode"),
             "primaryAccountNumber": obj.get("primaryAccountNumber"),
             "recurringIndicator": obj.get("recurringIndicator"),
+            "transactionLinkIdentifier": obj.get("transactionLinkIdentifier"),
             "schemeTransactionReference": obj.get("schemeTransactionReference"),
             "tokenRequestorId": obj.get("tokenRequestorId"),
             "cryptogram": CardCryptogramCreate.from_dict(obj["cryptogram"]) if obj.get("cryptogram") is not None else None

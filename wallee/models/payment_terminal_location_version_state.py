@@ -40,6 +40,7 @@ class PaymentTerminalLocationVersionState(str, Enum):
     PENDING = 'PENDING'
     SCHEDULING = 'SCHEDULING'
     ACTIVE = 'ACTIVE'
+    OBSOLETE = 'OBSOLETE'
     DELETING = 'DELETING'
     DELETED = 'DELETED'
 

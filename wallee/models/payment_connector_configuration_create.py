@@ -98,13 +98,6 @@ class PaymentConnectorConfigurationCreate(BaseModel):
                 if _item_conditions:
                     _items.append(_item_conditions.to_dict())
             _dict['conditions'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in enabled_sales_channels (list)
-        _items = []
-        if self.enabled_sales_channels:
-            for _item_enabled_sales_channels in self.enabled_sales_channels:
-                if _item_enabled_sales_channels:
-                    _items.append(_item_enabled_sales_channels.to_dict())
-            _dict['enabledSalesChannels'] = _items
         return _dict
 
     @classmethod
@@ -121,7 +114,7 @@ class PaymentConnectorConfigurationCreate(BaseModel):
             "enabledSpaceViews": obj.get("enabledSpaceViews"),
             "conditions": [Condition.from_dict(_item) for _item in obj["conditions"]] if obj.get("conditions") is not None else None,
             "priority": obj.get("priority"),
-            "enabledSalesChannels": [SalesChannel.from_dict(_item) for _item in obj["enabledSalesChannels"]] if obj.get("enabledSalesChannels") is not None else None,
+            "enabledSalesChannels": obj.get("enabledSalesChannels"),
             "paymentMethodConfiguration": obj.get("paymentMethodConfiguration"),
             "connector": obj.get("connector"),
             "state": obj.get("state"),

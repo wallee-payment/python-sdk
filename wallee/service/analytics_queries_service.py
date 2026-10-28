@@ -270,7 +270,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -525,7 +525,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -799,7 +799,7 @@ class AnalyticsQueriesService:
             
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -1063,7 +1063,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -1327,7 +1327,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -1592,7 +1592,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -1856,7 +1856,7 @@ class AnalyticsQueriesService:
         # process the query parameters
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
 
@@ -2130,7 +2130,7 @@ class AnalyticsQueriesService:
             
         # process the header parameters
         if account is not None:
-            _header_params['Account'] = account
+            _header_params['account'] = account
         # process the form parameters
         # process the body parameter
         if analytics_query_execution_request is not None:

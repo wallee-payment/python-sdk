@@ -44,12 +44,13 @@ class Role(BaseModel):
     permissions: Optional[List[Permission]] = Field(default=None, description="The permissions granted to users with this role.")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The name used to identify the role.")
     planned_purge_date: Optional[datetime] = Field(default=None, description="The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.", alias="plannedPurgeDate")
+    description: Optional[Dict[str, StrictStr]] = Field(default=None, description="Additional information that describes the role.")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[RoleState] = None
     version: Optional[StrictInt] = Field(default=None, description="The version is used for optimistic locking and incremented whenever the object is updated.")
     account: Optional[Account] = None
     two_factor_required: Optional[StrictBool] = Field(default=None, description="Whether users with this role are required to use two-factor authentication.", alias="twoFactorRequired")
-    __properties: ClassVar[List[str]] = ["permissions", "name", "plannedPurgeDate", "id", "state", "version", "account", "twoFactorRequired"]
+    __properties: ClassVar[List[str]] = ["permissions", "name", "plannedPurgeDate", "description", "id", "state", "version", "account", "twoFactorRequired"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,11 +88,13 @@ class Role(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "permissions",
             "name",
             "planned_purge_date",
+            "description",
             "id",
             "version",
             "two_factor_required",
@@ -127,6 +130,7 @@ class Role(BaseModel):
             "permissions": [Permission.from_dict(_item) for _item in obj["permissions"]] if obj.get("permissions") is not None else None,
             "name": obj.get("name"),
             "plannedPurgeDate": obj.get("plannedPurgeDate"),
+            "description": obj.get("description"),
             "id": obj.get("id"),
             "state": obj.get("state"),
             "version": obj.get("version"),

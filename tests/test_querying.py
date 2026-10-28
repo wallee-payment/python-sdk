@@ -279,7 +279,7 @@ class TestQuerying(unittest.TestCase):
         self.assertIsNotNone(self.transaction1, "Transaction should be present for this test")
 
         response = self.transactions_service.get_payment_transactions_id(
-            self.transaction1.id, SPACE_ID, set()
+            self.transaction1.id, SPACE_ID
         )
 
         self.assertIsNotNone(response.group, "Group always should be present")

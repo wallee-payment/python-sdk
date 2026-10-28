@@ -28,7 +28,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from wallee.models.feature import Feature
 from typing import Optional, Set
@@ -38,13 +38,16 @@ class WalletType(BaseModel):
     """
     WalletType
     """ # noqa: E501
+    required_features: Optional[List[Feature]] = Field(default=None, alias="requiredFeatures")
     feature: Optional[Feature] = None
+    standard_checkout_supported: Optional[StrictBool] = Field(default=None, alias="standardCheckoutSupported")
     sort_order: Optional[StrictInt] = Field(default=None, alias="sortOrder")
+    express_checkout_supported: Optional[StrictBool] = Field(default=None, alias="expressCheckoutSupported")
     name: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized name of the object.")
     description: Optional[Dict[str, StrictStr]] = Field(default=None, description="The localized description of the object.")
     navigation_path: Optional[StrictStr] = Field(default=None, alias="navigationPath")
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
-    __properties: ClassVar[List[str]] = ["feature", "sortOrder", "name", "description", "navigationPath", "id"]
+    __properties: ClassVar[List[str]] = ["requiredFeatures", "feature", "standardCheckoutSupported", "sortOrder", "expressCheckoutSupported", "name", "description", "navigationPath", "id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -81,9 +84,15 @@ class WalletType(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
+            "required_features",
+            "standard_checkout_supported",
             "sort_order",
+            "express_checkout_supported",
             "name",
             "description",
             "navigation_path",
@@ -95,6 +104,13 @@ class WalletType(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in required_features (list)
+        _items = []
+        if self.required_features:
+            for _item_required_features in self.required_features:
+                if _item_required_features:
+                    _items.append(_item_required_features.to_dict())
+            _dict['requiredFeatures'] = _items
         # override the default output from pydantic by calling `to_dict()` of feature
         if self.feature:
             _dict['feature'] = self.feature.to_dict()
@@ -110,8 +126,11 @@ class WalletType(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "requiredFeatures": [Feature.from_dict(_item) for _item in obj["requiredFeatures"]] if obj.get("requiredFeatures") is not None else None,
             "feature": Feature.from_dict(obj["feature"]) if obj.get("feature") is not None else None,
+            "standardCheckoutSupported": obj.get("standardCheckoutSupported"),
             "sortOrder": obj.get("sortOrder"),
+            "expressCheckoutSupported": obj.get("expressCheckoutSupported"),
             "name": obj.get("name"),
             "description": obj.get("description"),
             "navigationPath": obj.get("navigationPath"),

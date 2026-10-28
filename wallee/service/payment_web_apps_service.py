@@ -284,7 +284,7 @@ class PaymentWebAppsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -542,7 +542,7 @@ class PaymentWebAppsService:
         # process the query parameters
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -834,7 +834,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_charge_attempt_update is not None:
@@ -1141,7 +1141,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_completion_update is not None:
@@ -1445,7 +1445,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_connector_details is not None:
@@ -1749,7 +1749,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_processor_details is not None:
@@ -2056,7 +2056,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_refund_update is not None:
@@ -2363,7 +2363,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_void_update is not None:
@@ -2652,7 +2652,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_processor_details_create is not None:
@@ -2943,7 +2943,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
 
@@ -3232,7 +3232,7 @@ class PaymentWebAppsService:
             
         # process the header parameters
         if space is not None:
-            _header_params['Space'] = space
+            _header_params['space'] = space
         # process the form parameters
         # process the body parameter
         if payment_app_connector_details_create is not None:

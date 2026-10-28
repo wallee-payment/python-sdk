@@ -48,6 +48,7 @@ class Scope(BaseModel):
     url: Optional[StrictStr] = Field(default=None, description="The URL where the scope can be accessed.")
     features: Optional[List[Feature]] = Field(default=None, description="The list of features that are active in the scope.")
     themes: Optional[List[StrictStr]] = Field(default=None, description="The themes that determine the look and feel of the scope's user interface. A fall-through strategy is applied when building the actual theme.")
+    trusted_external_origins: Optional[List[StrictStr]] = Field(default=None, description="Trusted external origins (e.g. merchant shops) for browser API access (CORS on /api/) and absolute target redirect URLs.", alias="trustedExternalOrigins")
     port: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="The port where the scope can be accessed.")
     preprod_domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The preprod domain name that belongs to the scope.", alias="preprodDomainName")
     domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The domain name that belongs to the scope.", alias="domainName")
@@ -55,7 +56,7 @@ class Scope(BaseModel):
     id: Optional[StrictInt] = Field(default=None, description="A unique identifier for the object.")
     state: Optional[CreationEntityState] = None
     sandbox_domain_name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The sandbox domain name that belongs to the scope.", alias="sandboxDomainName")
-    __properties: ClassVar[List[str]] = ["plannedPurgeDate", "sslActive", "version", "machineName", "url", "features", "themes", "port", "preprodDomainName", "domainName", "name", "id", "state", "sandboxDomainName"]
+    __properties: ClassVar[List[str]] = ["plannedPurgeDate", "sslActive", "version", "machineName", "url", "features", "themes", "trustedExternalOrigins", "port", "preprodDomainName", "domainName", "name", "id", "state", "sandboxDomainName"]
 
     @field_validator('machine_name')
     def machine_name_validate_regular_expression(cls, value):
@@ -110,6 +111,7 @@ class Scope(BaseModel):
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
         * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
         excluded_fields: Set[str] = set([
             "planned_purge_date",
@@ -119,6 +121,7 @@ class Scope(BaseModel):
             "url",
             "features",
             "themes",
+            "trusted_external_origins",
             "port",
             "preprod_domain_name",
             "domain_name",
@@ -158,6 +161,7 @@ class Scope(BaseModel):
             "url": obj.get("url"),
             "features": [Feature.from_dict(_item) for _item in obj["features"]] if obj.get("features") is not None else None,
             "themes": obj.get("themes"),
+            "trustedExternalOrigins": obj.get("trustedExternalOrigins"),
             "port": obj.get("port"),
             "preprodDomainName": obj.get("preprodDomainName"),
             "domainName": obj.get("domainName"),

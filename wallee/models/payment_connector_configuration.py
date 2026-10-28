@@ -126,13 +126,6 @@ class PaymentConnectorConfiguration(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of payment_method_configuration
         if self.payment_method_configuration:
             _dict['paymentMethodConfiguration'] = self.payment_method_configuration.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in enabled_sales_channels (list)
-        _items = []
-        if self.enabled_sales_channels:
-            for _item_enabled_sales_channels in self.enabled_sales_channels:
-                if _item_enabled_sales_channels:
-                    _items.append(_item_enabled_sales_channels.to_dict())
-            _dict['enabledSalesChannels'] = _items
         # override the default output from pydantic by calling `to_dict()` of processor_configuration
         if self.processor_configuration:
             _dict['processorConfiguration'] = self.processor_configuration.to_dict()
@@ -162,7 +155,7 @@ class PaymentConnectorConfiguration(BaseModel):
             "imagePath": obj.get("imagePath"),
             "plannedPurgeDate": obj.get("plannedPurgeDate"),
             "priority": obj.get("priority"),
-            "enabledSalesChannels": [SalesChannel.from_dict(_item) for _item in obj["enabledSalesChannels"]] if obj.get("enabledSalesChannels") is not None else None,
+            "enabledSalesChannels": obj.get("enabledSalesChannels"),
             "version": obj.get("version"),
             "processorConfiguration": PaymentProcessorConfiguration.from_dict(obj["processorConfiguration"]) if obj.get("processorConfiguration") is not None else None,
             "linkedSpaceId": obj.get("linkedSpaceId"),
