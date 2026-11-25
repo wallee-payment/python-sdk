@@ -28,9 +28,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from wallee.models.subscription_component_reference_configuration import SubscriptionComponentReferenceConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -38,8 +38,11 @@ class SubscriptionUpdateRequest(BaseModel):
     """
     SubscriptionUpdateRequest
     """ # noqa: E501
-    description: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(default=None, description="A description used to identify the subscription.")
-    __properties: ClassVar[List[str]] = ["description"]
+    component_configurations: Optional[List[SubscriptionComponentReferenceConfiguration]] = Field(default=None, description="The configurations of the subscription's components.", alias="componentConfigurations")
+    product: Optional[StrictInt] = Field(default=None, description="The product to subscribe to.")
+    currency: Optional[StrictStr] = Field(default=None, description="The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.")
+    respect_termination_period: Optional[StrictBool] = Field(default=None, description="Whether the subscriptions' termination periods should be respected.", alias="respectTerminationPeriod")
+    __properties: ClassVar[List[str]] = ["componentConfigurations", "product", "currency", "respectTerminationPeriod"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +83,13 @@ class SubscriptionUpdateRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in component_configurations (list)
+        _items = []
+        if self.component_configurations:
+            for _item_component_configurations in self.component_configurations:
+                if _item_component_configurations:
+                    _items.append(_item_component_configurations.to_dict())
+            _dict['componentConfigurations'] = _items
         return _dict
 
     @classmethod
@@ -92,7 +102,10 @@ class SubscriptionUpdateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description")
+            "componentConfigurations": [SubscriptionComponentReferenceConfiguration.from_dict(_item) for _item in obj["componentConfigurations"]] if obj.get("componentConfigurations") is not None else None,
+            "product": obj.get("product"),
+            "currency": obj.get("currency"),
+            "respectTerminationPeriod": obj.get("respectTerminationPeriod")
         })
         return _obj
 

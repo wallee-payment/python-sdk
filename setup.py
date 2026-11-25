@@ -32,15 +32,16 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "wallee"
-VERSION = "7.0.0"
+VERSION = "8.0.0"
 PYTHON_REQUIRES = ">=3.9"
 REQUIRES = [
     "pydantic >= 2.10.4",
-    "PyJWT >= 2.10.1",
+    "PyJWT >= 2.15.0",
     "python-dateutil >= 2.9.0.post0",
     "typing-extensions >= 4.12.2",
-    "urllib3 >= 2.3, < 3",
-    "cryptography >= 2.0"
+    "urllib3 >= 2.8.0, < 3; python_version >= '3.10'",
+    "urllib3 >= 2.6.3, < 3; python_version < '3.10'",
+    "cryptography >= 49.0.0"
 ]
 
 EXTRAS_REQUIRE = {

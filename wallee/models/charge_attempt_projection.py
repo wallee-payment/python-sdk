@@ -42,6 +42,7 @@ from wallee.models.label import Label
 from wallee.models.payment_connector_configuration import PaymentConnectorConfiguration
 from wallee.models.payment_terminal import PaymentTerminal
 from wallee.models.token_version import TokenVersion
+from wallee.models.transaction_amounts import TransactionAmounts
 from wallee.models.transaction_completion_behavior import TransactionCompletionBehavior
 from wallee.models.wallet_type import WalletType
 from typing import Optional, Set
@@ -80,7 +81,8 @@ class ChargeAttemptProjection(BaseModel):
     failure_reason: Optional[FailureReason] = Field(default=None, alias="failureReason")
     customers_presence: Optional[CustomersPresence] = Field(default=None, alias="customersPresence")
     failed_on: Optional[datetime] = Field(default=None, description="The date and time when the charge attempt failed.", alias="failedOn")
-    __properties: ClassVar[List[str]] = ["language", "salesChannel", "createdOn", "initializingTokenVersion", "tokenVersion", "succeededOn", "id", "state", "linkedTransaction", "redirectionUrl", "charge", "wallet", "plannedPurgeDate", "timeZone", "spaceViewId", "terminal", "userFailureMessage", "completionBehavior", "version", "labels", "linkedSpaceId", "timeoutOn", "environment", "invocation", "connectorConfiguration", "nextUpdateOn", "failureReason", "customersPresence", "failedOn"]
+    transaction_amounts: Optional[TransactionAmounts] = Field(default=None, alias="transactionAmounts")
+    __properties: ClassVar[List[str]] = ["language", "salesChannel", "createdOn", "initializingTokenVersion", "tokenVersion", "succeededOn", "id", "state", "linkedTransaction", "redirectionUrl", "charge", "wallet", "plannedPurgeDate", "timeZone", "spaceViewId", "terminal", "userFailureMessage", "completionBehavior", "version", "labels", "linkedSpaceId", "timeoutOn", "environment", "invocation", "connectorConfiguration", "nextUpdateOn", "failureReason", "customersPresence", "failedOn", "transactionAmounts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -185,6 +187,9 @@ class ChargeAttemptProjection(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of failure_reason
         if self.failure_reason:
             _dict['failureReason'] = self.failure_reason.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of transaction_amounts
+        if self.transaction_amounts:
+            _dict['transactionAmounts'] = self.transaction_amounts.to_dict()
         return _dict
 
     @classmethod
@@ -225,7 +230,8 @@ class ChargeAttemptProjection(BaseModel):
             "nextUpdateOn": obj.get("nextUpdateOn"),
             "failureReason": FailureReason.from_dict(obj["failureReason"]) if obj.get("failureReason") is not None else None,
             "customersPresence": obj.get("customersPresence"),
-            "failedOn": obj.get("failedOn")
+            "failedOn": obj.get("failedOn"),
+            "transactionAmounts": TransactionAmounts.from_dict(obj["transactionAmounts"]) if obj.get("transactionAmounts") is not None else None
         })
         return _obj
 

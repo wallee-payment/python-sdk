@@ -30,6 +30,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from wallee.models.space_address_create import SpaceAddressCreate
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -39,10 +40,12 @@ class WalleejoinCreatePartnershipApiRequestDto(BaseModel):
     """ # noqa: E501
     email_message: Optional[StrictStr] = Field(default=None, alias="emailMessage")
     partner_account_id: Optional[StrictInt] = Field(default=None, alias="partnerAccountId")
+    merchant_account_name: Optional[StrictStr] = Field(default=None, description="The name of the subaccount created for the merchant. Only used for ISV partnerships when a merchant email address is provided. If empty, a generated name is used.", alias="merchantAccountName")
+    merchant_address: Optional[SpaceAddressCreate] = Field(default=None, alias="merchantAddress")
     pricing_profile_sell_rate_id: Optional[StrictInt] = Field(default=None, alias="pricingProfileSellRateId")
     subscription_product_id: Optional[StrictInt] = Field(default=None, alias="subscriptionProductId")
     merchant_email_address: Optional[StrictStr] = Field(default=None, alias="merchantEmailAddress")
-    __properties: ClassVar[List[str]] = ["emailMessage", "partnerAccountId", "pricingProfileSellRateId", "subscriptionProductId", "merchantEmailAddress"]
+    __properties: ClassVar[List[str]] = ["emailMessage", "partnerAccountId", "merchantAccountName", "merchantAddress", "pricingProfileSellRateId", "subscriptionProductId", "merchantEmailAddress"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,6 +86,9 @@ class WalleejoinCreatePartnershipApiRequestDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of merchant_address
+        if self.merchant_address:
+            _dict['merchantAddress'] = self.merchant_address.to_dict()
         return _dict
 
     @classmethod
@@ -97,6 +103,8 @@ class WalleejoinCreatePartnershipApiRequestDto(BaseModel):
         _obj = cls.model_validate({
             "emailMessage": obj.get("emailMessage"),
             "partnerAccountId": obj.get("partnerAccountId"),
+            "merchantAccountName": obj.get("merchantAccountName"),
+            "merchantAddress": SpaceAddressCreate.from_dict(obj["merchantAddress"]) if obj.get("merchantAddress") is not None else None,
             "pricingProfileSellRateId": obj.get("pricingProfileSellRateId"),
             "subscriptionProductId": obj.get("subscriptionProductId"),
             "merchantEmailAddress": obj.get("merchantEmailAddress")

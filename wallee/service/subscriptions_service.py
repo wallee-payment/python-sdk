@@ -38,6 +38,7 @@ from wallee.models.subscription_charge import SubscriptionCharge
 from wallee.models.subscription_create_request import SubscriptionCreateRequest
 from wallee.models.subscription_initialize_subscriber_present_request import SubscriptionInitializeSubscriberPresentRequest
 from wallee.models.subscription_list_response import SubscriptionListResponse
+from wallee.models.subscription_partial_update_request import SubscriptionPartialUpdateRequest
 from wallee.models.subscription_search_response import SubscriptionSearchResponse
 from wallee.models.subscription_suspension import SubscriptionSuspension
 from wallee.models.subscription_update_request import SubscriptionUpdateRequest
@@ -1326,7 +1327,7 @@ class SubscriptionsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        subscription_update_request: SubscriptionUpdateRequest,
+        subscription_partial_update_request: SubscriptionPartialUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1340,8 +1341,8 @@ class SubscriptionsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param subscription_update_request: (required)
-        :type subscription_update_request: SubscriptionUpdateRequest
+        :param subscription_partial_update_request: (required)
+        :type subscription_partial_update_request: SubscriptionPartialUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1365,7 +1366,7 @@ class SubscriptionsService:
         _param = self._patch_subscriptions_id_serialize(
             id=id,
             space=space,
-            subscription_update_request=subscription_update_request,
+            subscription_partial_update_request=subscription_partial_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1401,7 +1402,7 @@ class SubscriptionsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        subscription_update_request: SubscriptionUpdateRequest,
+        subscription_partial_update_request: SubscriptionPartialUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1415,8 +1416,8 @@ class SubscriptionsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param subscription_update_request: (required)
-        :type subscription_update_request: SubscriptionUpdateRequest
+        :param subscription_partial_update_request: (required)
+        :type subscription_partial_update_request: SubscriptionPartialUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1440,7 +1441,7 @@ class SubscriptionsService:
         _param = self._patch_subscriptions_id_serialize(
             id=id,
             space=space,
-            subscription_update_request=subscription_update_request,
+            subscription_partial_update_request=subscription_partial_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1477,7 +1478,7 @@ class SubscriptionsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        subscription_update_request: SubscriptionUpdateRequest,
+        subscription_partial_update_request: SubscriptionPartialUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1491,8 +1492,8 @@ class SubscriptionsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param subscription_update_request: (required)
-        :type subscription_update_request: SubscriptionUpdateRequest
+        :param subscription_partial_update_request: (required)
+        :type subscription_partial_update_request: SubscriptionPartialUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1516,7 +1517,7 @@ class SubscriptionsService:
         _param = self._patch_subscriptions_id_serialize(
             id=id,
             space=space,
-            subscription_update_request=subscription_update_request,
+            subscription_partial_update_request=subscription_partial_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1547,7 +1548,7 @@ class SubscriptionsService:
         self,
         id,
         space,
-        subscription_update_request,
+        subscription_partial_update_request,
         expand,
         _content_type,
         _headers,
@@ -1582,8 +1583,8 @@ class SubscriptionsService:
             _header_params['space'] = space
         # process the form parameters
         # process the body parameter
-        if subscription_update_request is not None:
-            _body_params = subscription_update_request
+        if subscription_partial_update_request is not None:
+            _body_params = subscription_partial_update_request
 
 
         # set the HTTP header `Accept`

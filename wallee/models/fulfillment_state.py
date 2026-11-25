@@ -41,6 +41,7 @@ class FulfillmentState(str, Enum):
     TRACKING = 'TRACKING'
     FULFILLED = 'FULFILLED'
     FAILED = 'FAILED'
+    CANCELED = 'CANCELED'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

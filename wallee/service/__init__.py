@@ -30,6 +30,7 @@ from wallee.service.dunning_case_levels_service import DunningCaseLevelsService
 from wallee.service.dunning_cases_service import DunningCasesService
 from wallee.service.dunning_flow_levels_service import DunningFlowLevelsService
 from wallee.service.dunning_flows_service import DunningFlowsService
+from wallee.service.express_checkout_session_service import ExpressCheckoutSessionService
 from wallee.service.external_transfer_bank_transactions_service import ExternalTransferBankTransactionsService
 from wallee.service.fulfillments_service import FulfillmentsService
 from wallee.service.human_users_service import HumanUsersService

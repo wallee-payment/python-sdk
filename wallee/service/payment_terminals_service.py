@@ -35,7 +35,7 @@ from wallee.models.payment_terminal import PaymentTerminal
 from wallee.models.payment_terminal_activation_status_detail_search_response import PaymentTerminalActivationStatusDetailSearchResponse
 from wallee.models.payment_terminal_creation_request import PaymentTerminalCreationRequest
 from wallee.models.payment_terminal_transaction_summary_reference import PaymentTerminalTransactionSummaryReference
-from wallee.models.payment_terminal_update import PaymentTerminalUpdate
+from wallee.models.payment_terminal_update_request import PaymentTerminalUpdateRequest
 from wallee.models.sorting_order import SortingOrder
 from wallee.models.terminal_list_response import TerminalListResponse
 from wallee.models.terminal_search_response import TerminalSearchResponse
@@ -1890,7 +1890,7 @@ class PaymentTerminalsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        payment_terminal_update: PaymentTerminalUpdate,
+        payment_terminal_update_request: PaymentTerminalUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1904,8 +1904,8 @@ class PaymentTerminalsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param payment_terminal_update: (required)
-        :type payment_terminal_update: PaymentTerminalUpdate
+        :param payment_terminal_update_request: (required)
+        :type payment_terminal_update_request: PaymentTerminalUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -1929,7 +1929,7 @@ class PaymentTerminalsService:
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
             space=space,
-            payment_terminal_update=payment_terminal_update,
+            payment_terminal_update_request=payment_terminal_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -1965,7 +1965,7 @@ class PaymentTerminalsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        payment_terminal_update: PaymentTerminalUpdate,
+        payment_terminal_update_request: PaymentTerminalUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -1979,8 +1979,8 @@ class PaymentTerminalsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param payment_terminal_update: (required)
-        :type payment_terminal_update: PaymentTerminalUpdate
+        :param payment_terminal_update_request: (required)
+        :type payment_terminal_update_request: PaymentTerminalUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -2004,7 +2004,7 @@ class PaymentTerminalsService:
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
             space=space,
-            payment_terminal_update=payment_terminal_update,
+            payment_terminal_update_request=payment_terminal_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -2041,7 +2041,7 @@ class PaymentTerminalsService:
         self,
         id: StrictInt,
         space: Annotated[StrictInt, Field(description="Specifies the ID of the space the operation should be executed in.")],
-        payment_terminal_update: PaymentTerminalUpdate,
+        payment_terminal_update_request: PaymentTerminalUpdateRequest,
         expand: Optional[List[StrictStr]] = None,
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
@@ -2055,8 +2055,8 @@ class PaymentTerminalsService:
         :type id: int
         :param space: Specifies the ID of the space the operation should be executed in. (required)
         :type space: int
-        :param payment_terminal_update: (required)
-        :type payment_terminal_update: PaymentTerminalUpdate
+        :param payment_terminal_update_request: (required)
+        :type payment_terminal_update_request: PaymentTerminalUpdateRequest
         :param expand:
         :type expand: List[str]
         :param _request_timeout: timeout setting for this request. If one
@@ -2080,7 +2080,7 @@ class PaymentTerminalsService:
         _param = self._patch_payment_terminals_id_serialize(
             id=id,
             space=space,
-            payment_terminal_update=payment_terminal_update,
+            payment_terminal_update_request=payment_terminal_update_request,
             expand=expand,
             _content_type=_content_type,
             _headers=_headers,
@@ -2111,7 +2111,7 @@ class PaymentTerminalsService:
         self,
         id,
         space,
-        payment_terminal_update,
+        payment_terminal_update_request,
         expand,
         _content_type,
         _headers,
@@ -2146,8 +2146,8 @@ class PaymentTerminalsService:
             _header_params['space'] = space
         # process the form parameters
         # process the body parameter
-        if payment_terminal_update is not None:
-            _body_params = payment_terminal_update
+        if payment_terminal_update_request is not None:
+            _body_params = payment_terminal_update_request
 
 
         # set the HTTP header `Accept`

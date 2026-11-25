@@ -28,19 +28,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class PaymentTerminalUpdate(BaseModel):
+class MerchantApplicationSubmitRequestDto(BaseModel):
     """
-    PaymentTerminalUpdate
+    The confirmation required to submit a merchant application.
     """ # noqa: E501
-    name: Optional[Annotated[str, Field(strict=True, max_length=100)]] = Field(default=None, description="The name used to identify the payment terminal.")
-    version: StrictInt = Field(description="The version number indicates the version of the entity. The version is incremented whenever the entity is changed.")
-    __properties: ClassVar[List[str]] = ["name", "version"]
+    accepted_wallee_terms: Optional[StrictBool] = Field(default=None, description="Whether the merchant accepts the terms and conditions required for submission.", alias="acceptedWalleeTerms")
+    __properties: ClassVar[List[str]] = ["acceptedWalleeTerms"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -60,7 +58,7 @@ class PaymentTerminalUpdate(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PaymentTerminalUpdate from a JSON string"""
+        """Create an instance of MerchantApplicationSubmitRequestDto from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +83,7 @@ class PaymentTerminalUpdate(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PaymentTerminalUpdate from a dict"""
+        """Create an instance of MerchantApplicationSubmitRequestDto from a dict"""
         if obj is None:
             return None
 
@@ -93,8 +91,7 @@ class PaymentTerminalUpdate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "name": obj.get("name"),
-            "version": obj.get("version")
+            "acceptedWalleeTerms": obj.get("acceptedWalleeTerms")
         })
         return _obj
 
